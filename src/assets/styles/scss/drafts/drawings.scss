@@ -1,0 +1,80 @@
+.foldable-block {
+  position: sticky;
+  top: 0;
+  padding-top: $m;
+  border-top: solid $border-stroke-weight-s $light;
+  background-color: $lightest;
+
+  .grouped-definition-list,
+  .definition-list {
+    display: none;
+  }
+
+  &::after {
+    position: absolute;
+    top: $m;
+    right: 0;
+    content: "expand_more";
+    font-family: "Material Icons", sans-serif;
+    font-size: $m;
+  }
+
+  &__headline {
+    padding-bottom: $m;
+    margin: 0;
+    font-size: $m;
+    font-weight: $fw-regular;
+  }
+
+  &.is-expanded {
+    &::after {
+      transform: rotate(180deg);
+    }
+
+    .grouped-definition-list,
+    .definition-list {
+      display: block;
+    }
+  }
+}
+
+.image-description {
+  padding: $m;
+  padding-left: 0;
+
+  &-date {
+    font-weight: $fw-semibold;
+    display: inline-block;
+  }
+
+  &-title {
+    font-weight: $fw-semibold;
+    display: inline-block;
+    color: $darkest;
+
+    & + .image-description-title::before {
+      content: "//";
+      margin-left: $xxs;
+      margin-right: $xxs;
+      display: inline-block;
+      color: $dark;
+      font-weight: $fw-light;
+    }
+
+    & + .image-description-date::before {
+      content: ", ";
+    }
+  }
+
+  dl {
+    margin-top: $m;
+    &::before {
+      content: " ";
+      display: block;
+      width: $xl;
+      margin-top: $xs;
+      margin-bottom: $xs;
+      border-top: solid $border-stroke-weight-s $darken-strong;
+    }
+  }
+}

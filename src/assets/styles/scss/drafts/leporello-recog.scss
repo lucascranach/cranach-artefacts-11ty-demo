@@ -1,0 +1,35 @@
+.leporello-recog {
+  margin: $l;
+
+  // Responsive Large
+  // --------------------------------------------------------------------------
+  @media only screen and (min-width: $vp-medium) {
+    display: grid;
+    gap: $m;
+    grid-template-columns: max($tile-xs) 1fr;
+  }
+
+  @media only screen and (min-width: $vp-xlarge) {
+    display: grid;
+    gap: $m;
+    grid-template-columns: 1fr $vp-medium;
+  }
+
+  // Image
+  // --------------------------------------------------------------------------
+
+  &__image {
+    padding: 0;
+    margin: 0;
+
+    & > img {
+      width: 100%;
+    }
+  }
+
+  // Text
+  // --------------------------------------------------------------------------
+  &__text {
+    max-width: $column-medium;
+  }
+}

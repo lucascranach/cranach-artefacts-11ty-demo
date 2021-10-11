@@ -1,0 +1,81 @@
+* {
+  box-sizing: content-box;
+}
+
+body {
+  background-color: $lightest;
+  color: $darkest;
+  font-family: $font-sans-serif;
+  font-size: $bfs;
+  font-weight: $fw-light;
+}
+
+a {
+  color: $darkest;
+  text-decoration: none;
+}
+
+/* Templates
+---------------------------------------------------------------------------- */
+
+.template {
+  background-color: $darkest;
+  color: $darkest;
+}
+
+/* Title & Subtitle
+---------------------------------------------------------------------------- */
+
+.title,
+.subtitle,
+.chapter {
+  position: relative;
+  margin-bottom: $l;
+  font-size: $m;
+  line-height: $lh-headlines;
+}
+
+.subtitle,
+.chapter {
+  font-weight: $fw-regular;
+}
+
+.title {
+  font-weight: $fw-bold;
+
+  &::after {
+    display: block;
+    width: $xl;
+    border-top: solid $border-stroke-weight $accent;
+    margin-top: $xs;
+    margin-bottom: $xs;
+    content: " ";
+  }
+}
+
+.title + .subtitle {
+  margin-top: -$l + $xs;
+}
+
+.headline {
+  margin-bottom: $m;
+  font-size: $bfs;
+  font-weight: $fw-semibold;
+}
+
+/* Text
+---------------------------------------------------------------------------- */
+
+p,
+th,
+td {
+  line-height: $lh-normal;
+}
+
+/* Artfact Header
+---------------------------------------------------------------------------- */
+
+.artefact-header {
+  padding-bottom: $m;
+  margin-bottom: $m;
+}
