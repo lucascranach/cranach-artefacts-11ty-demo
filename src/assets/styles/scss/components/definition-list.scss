@@ -1,11 +1,10 @@
 .definition-list {
   width: 100%;
   flex-wrap: wrap;
-  margin-bottom: $l;
   font-weight: $fw-light;
+  margin-top: 0;
 
   &__term {
-    padding-top: $s;
     padding-bottom: $xxs;
     font-weight: $fw-regular;
     line-height: $lh-normal;

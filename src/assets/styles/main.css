@@ -485,10 +485,8 @@ td {
 .definition-list {
   width: 100%;
   flex-wrap: wrap;
-  margin-bottom: 2.1rem;
   font-weight: 200; }
   .definition-list__term {
-    padding-top: 0.8rem;
     padding-bottom: 0.3rem;
     font-weight: 300;
     line-height: 140%; }

@@ -47,6 +47,12 @@ const getTexts = ({ content }) => {
         ${historicDates}
       </dl>
 
+      <dl class="definition-list">
+      <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
+      ${content.dimensions}
+
+    </dl>
+
     </div>
   `;
 }

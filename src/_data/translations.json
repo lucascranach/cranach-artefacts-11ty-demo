@@ -8,4 +8,9 @@
     "de": "Datierung",
     "en": "Production Date"
   }
+  ,
+  "dimensions":{
+    "de": "Maße",
+    "en": "Dimensions"
+  }
 }
