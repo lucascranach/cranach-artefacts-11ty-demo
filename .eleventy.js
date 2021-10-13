@@ -1,4 +1,4 @@
-const htmlmin = require('html-minifier');
+// const htmlmin = require('html-minifier');
 const markdownIt = require('markdown-it');
 const rimraf = require('rimraf');
 
@@ -12,7 +12,7 @@ const markdownItRenderer = new markdownIt();
 module.exports = function (eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false);
   eleventyConfig.setWatchJavaScriptDependencies(true);
-  eleventyConfig.addWatchTarget("./src/_components/");
+  // eleventyConfig.addWatchTarget("./src/_components/");
 
 
   /* Compilation

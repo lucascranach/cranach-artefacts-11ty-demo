@@ -4,8 +4,6 @@ const getTitle = ({ content }) => {
   return content.metadata.title;
 }
 
-
-
 const getImage = ({ content }) => {
   const src = content.metadata.imgSrc;
   const alt = content.metadata.title;
@@ -22,7 +20,7 @@ const getTexts = ({ content }) => {
     (item) => {
       const remarks = item.remarks ? `<span className="remarks">${item.remarks}</span>` : '';
       return `
-        <dd className="involved-persons-list__item" key={idx}>
+        <dd class="definition-list__definition">
           ${item.alternativeName}, ${item.role}${remarks}
         </dd>
       `;
@@ -36,7 +34,8 @@ const getTexts = ({ content }) => {
   return `
     <div class="foldable-block">
       <h2 class="foldable-block__headline">Texte</h2>
-      <dl>${this.translate("attribution", langCode)}</dt>
+      <dl class="definition-list">
+        <dt class="definition-list__term">${this.translate("attribution", langCode)}</dt>
         ${attribution}
       </dl>
     </div>

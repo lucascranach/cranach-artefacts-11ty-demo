@@ -1,0 +1,45 @@
+.definition-list {
+  width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: $l;
+  font-weight: $fw-light;
+
+  &__term {
+    padding-top: $s;
+    padding-bottom: $xxs;
+    font-weight: $fw-regular;
+    line-height: $lh-normal;
+
+    &::after {
+      content: ":";
+    }
+
+    &:last-of-type {
+      border-bottom: none !important;
+    }
+  }
+
+  .definition-list-term:last-child {
+    border-bottom: none;
+  }
+
+  &__definition {
+    display: flex;
+    padding-bottom: $s;
+    border-bottom: solid $border-stroke-weight-s $darken-medium;
+    margin: 0;
+    line-height: $lh-normal;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    & > .literature-table {
+      margin-top: -$xs;
+    }
+  }
+
+  &-term + &-definition:not(:nth-child(2)),
+  &-term:first-child + &-definition:nth-child(2) {
+  }
+}
