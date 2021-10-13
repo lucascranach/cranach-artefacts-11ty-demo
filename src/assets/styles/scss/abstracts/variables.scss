@@ -30,20 +30,24 @@ $vp-4xlarge: 2300px;
 ---------------------------------------------------------------------------- */
 
 $bfs: 1rem;
+$scale: 0.0035;
 
-/* Entlang der Fibonacci Reihe */
+/* Entlang der Renard20 Reihe 
+100, 110, 125, 140, 160, 180, 200, 220, 250, 280, 320, 360, 400, 420, 450, 480
 
-$xxxs: $bfs * 0.2;
-$xxs: $bfs * 0.3;
-$xs: $bfs * 0.5;
-$s: $bfs * 0.8;
-$m: $bfs * 1.3;
-$l: $bfs * 2.1;
-$xl: $bfs * 3.4;
-$xxl: $bfs * 5.5;
+*/
+
+$xxxs: $bfs * 100 * $scale;
+$xxs: $bfs * 125 * $scale;
+$xs: $bfs * 160 * $scale;
+$s: $bfs * 200 * $scale;
+$m: $bfs * 250 * $scale;
+$l: $bfs * 320 * $scale;
+$xl: $bfs * 400 * $scale;
+$xxl: $bfs * 450 * $scale;
 
 /* Texte */
-$column-medium: $m * 30;
+$column-medium: $m * 40;
 
 /* Schriften
 ---------------------------------------------------------------------------- */
@@ -79,10 +83,10 @@ $tr-fast: 0.3s;
 /* Kacheln
 ---------------------------------------------------------------------------- */
 
-$tile-xxxs: 5em;
-$tile-xxs: 8em;
-$tile-xs: 13em;
-$tile-s: 21em;
+$tile-xxxs: $m * 5;
+$tile-xxs: $m * 8;
+$tile-xs: $m * 13;
+$tile-s: $m * 21;
 
 /* Levels (z-Index)
 ---------------------------------------------------------------------------- */

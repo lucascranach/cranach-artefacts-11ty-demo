@@ -33,9 +33,8 @@ const getTexts = ({ content }) => {
 
   
   return `
-    <div class="foldable-block">
-      <h2 class="foldable-block__headline">Texte</h2>
-
+    <div class="block">
+    
       <dl class="definition-list">
         <dt class="definition-list__term">${this.translate("attribution", langCode)}</dt>
         ${attribution}
@@ -52,6 +51,11 @@ const getTexts = ({ content }) => {
         ${content.dimensions}
       </dl>
 
+      <dl class="definition-list">
+        <dt class="definition-list__term">${this.translate("signature", langCode)}</dt>
+        ${content.signature}
+      </dl>
+
     </div>
   `;
 }
@@ -63,12 +67,37 @@ const getCopyText = ({ content }) => {
   `;
 }
 
+const getLocation = ({ content }) => {
+  const langCode = content.metadata.langCode;
+  return `
+    <div class="block">
+
+      <dl class="definition-list">
+        <dt class="definition-list__term">${this.translate("owner", langCode)}</dt>
+        ${content.owner}
+      </dl>
+
+      <dl class="definition-list">
+        <dt class="definition-list__term">${this.translate("repository", langCode)}</dt>
+        ${content.repository}
+      </dl>
+
+      <dl class="definition-list">
+        <dt class="definition-list__term">${this.translate("location", langCode)}</dt>
+        ${content.locations[0].term}
+      </dl>
+
+    </div>
+  `;
+}
+
 exports.render = function (data) {
   const header = getHeader(data);
   const title = getTitle(data);
   const image = getImage(data);
   const copy = getCopyText(data);
   const texts = getTexts(data);
+  const location = getLocation(data);
   
   return `
   <!doctype html>
@@ -85,9 +114,14 @@ exports.render = function (data) {
         <div class="leporello-recog__text">
           ${header}
           <div class="copytext">
-          ${copy}
+            ${copy}
           </div>
-          ${texts}
+          <div class="block">
+            ${texts}
+          </div>
+          <div class="block">
+            ${location}
+          </div>
         </div>
       </section>
     </body>

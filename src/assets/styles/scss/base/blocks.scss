@@ -1,0 +1,56 @@
+/* According to CUBE
+    https://cube.fyi/composition.html#why-macro-level-thinking
+############################################################################ */
+
+// Foldable Block
+// --------------------------------------------------------------------------
+
+.foldable-block {
+  position: sticky;
+  top: 0;
+  padding-top: $m;
+  border-top: solid $border-stroke-weight-s $light;
+  background-color: $lightest;
+
+  .grouped-definition-list,
+  .definition-list {
+   /* display: none; */
+  }
+
+  &::after {
+    position: absolute;
+    top: $m;
+    right: 0;
+    content: "expand_more";
+    font-family: "Material Icons", sans-serif;
+    font-size: $m;
+  }
+
+  &__headline {
+    padding-bottom: $m;
+    margin: 0;
+    font-size: $m;
+    font-weight: $fw-regular;
+  }
+
+  &.is-expanded {
+    &::after {
+      transform: rotate(180deg);
+    }
+
+    .grouped-definition-list,
+    .definition-list {
+      display: block;
+    }
+  }
+}
+
+// Block
+// --------------------------------------------------------------------------
+
+.block {
+  & + & {
+    padding-top: $m;
+    border-top: solid $border-stroke-weight-s $light;
+  }
+}
