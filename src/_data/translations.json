@@ -1,21 +1,4 @@
 {
-  "attribution":{
-    "de": "Zuschreibung",
-    "en": "Attribution"
-  }
-  ,
-  "productionDate":{
-    "de": "Datierung",
-    "en": "Production Date"
-  }
-  ,
-  "dimensions":{
-    "de": "Maße",
-    "en": "Dimensions"
-  }
-}
-
-{
   "all":{
      "de":"Alle",
      "en":"All"
