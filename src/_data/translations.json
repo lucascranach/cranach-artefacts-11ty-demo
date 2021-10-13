@@ -14,3 +14,118 @@
     "en": "Dimensions"
   }
 }
+
+{
+  "all":{
+     "de":"Alle",
+     "en":"All"
+  },
+  "referenceOnPage":{
+     "de":"Erwähnt auf Seite",
+     "en":"reference on page"
+  },
+  "prints":{
+     "de":"Drucke und Zeichnungen",
+     "en":"Prints and Drawings"
+  },
+  "paintings":{
+     "de":"Gemälde",
+     "en":"Paintings"
+  },
+  "archivalDocuments":{
+     "de":"Archivalien",
+     "en":"Archival Documents"
+  },
+  "literature":{
+     "de":"Literatur",
+     "en":"Literature"
+  },
+  "back":{
+     "de":"zurück zur Übersicht",
+     "en":"back to the overview"
+  },
+  "conditionPrint":{
+     "de":"Druckzustand, Version",
+     "en":"Condition"
+  },
+  "dating":{
+     "de":"Datierung",
+     "en":"Dating"
+  },
+  "dimensions":{
+     "de":"Maße",
+     "en":"Dimensions"
+  },
+  "medium":{
+     "de":"Material / Technik",
+     "en":"Medium"
+  },
+  "owner":{
+     "de":"Eigentümer",
+     "en":"Owner"
+  },
+  "repository":{
+     "de":"Besitzer",
+     "en":"Repository"
+  },
+  "location":{
+     "de":"Standort",
+     "en":"Location"
+  },
+  "signature":{
+     "de":"Signatur / Datierung",
+     "en":"Signature / Dating"
+  },
+  "inscriptions":{
+     "de":"Inschriften",
+     "en":"Inscriptions"
+  },
+  "stamps":{
+     "de":"Stempel, Siegel, Beschriftungen",
+     "en":"Stamps, Seals, Labels"
+  },
+  "shortDescription":{
+     "de":"Kurzbeschreibung",
+     "en":"Short description"
+  },
+  "provenance":{
+     "de":"Provenienz",
+     "en":"Provenance"
+  },
+  "literature":{
+     "de":"Quellen / Publikationen",
+     "en":"Literature"
+  },
+  "exhibitions":{
+     "de":"Ausstellungen",
+     "en":"Exhibitions"
+  },
+  "vd16No":{
+     "de":"VD16-Nr.",
+     "en":"VD16-No."
+  },
+  "artTechnologicalExamination":{
+     "de":"Kunsttechnologische Untersuchung",
+     "en":"Art-technological examination"
+  },
+  "condition":{
+     "de":"Erhaltungszustand",
+     "en":"Condition"
+  },
+  "conservation":{
+     "de":"Restaurierungsgeschichte",
+     "en":"Conservation"
+  },
+  "attribution":{
+     "de":"Zuschreibung",
+     "en":"Attribution"
+  },
+  "productionDate":{
+     "de":"Datierung",
+     "en":"Production date"
+  },
+  "persistentLink":{
+     "de":"Permalink",
+     "en":"Persistent Link"
+  }
+  }
