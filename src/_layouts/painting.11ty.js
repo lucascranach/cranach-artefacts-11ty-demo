@@ -48,10 +48,9 @@ const getTexts = ({ content }) => {
       </dl>
 
       <dl class="definition-list">
-      <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
-      ${content.dimensions}
-
-    </dl>
+        <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
+        ${content.dimensions}
+      </dl>
 
     </div>
   `;
@@ -85,7 +84,7 @@ exports.render = function (data) {
         ${image}
         <div class="leporello-recog__text">
           ${header}
-          <div class="">
+          <div class="copytext">
           ${copy}
           </div>
           ${texts}
