@@ -1,12 +1,12 @@
 .definition-list {
   width: 100%;
-  flex-wrap: wrap;
-  font-weight: $fw-light;
   margin-top: 0;
+  font-weight: $fw-light;
 
   &__term {
+    display: inline;
     padding-bottom: $xxs;
-    font-weight: $fw-regular;
+    font-weight: $fw-semibold;
     line-height: $lh-normal;
 
     &::after {
@@ -18,13 +18,12 @@
     }
   }
 
-  .definition-list-term:last-child {
+  .definition-list__term:last-child {
     border-bottom: none;
   }
 
   &__definition {
-    display: flex;
-    padding-bottom: $s;
+    display: inline;
     border-bottom: solid $border-stroke-weight-s $darken-medium;
     margin: 0;
     line-height: $lh-normal;
@@ -36,9 +35,5 @@
     & > .literature-table {
       margin-top: -$xs;
     }
-  }
-
-  &-term + &-definition:not(:nth-child(2)),
-  &-term:first-child + &-definition:nth-child(2) {
   }
 }
