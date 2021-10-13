@@ -3,4 +3,9 @@
     "de": "Zuschreibung",
     "en": "Attribution"
   }
+  ,
+  "productionDate":{
+    "de": "Datierung",
+    "en": "Production Date"
+  }
 }

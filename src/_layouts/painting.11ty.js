@@ -28,16 +28,25 @@ const getTexts = ({ content }) => {
   );
   
   const historicDates = content.dating.historicEventInformations.map(date => {
-   // console.log(date);
+    return `<dd class="definition-list__definition">${date.text} ${date.remarks}</dd>`;
   });
+
   
   return `
     <div class="foldable-block">
       <h2 class="foldable-block__headline">Texte</h2>
+
       <dl class="definition-list">
         <dt class="definition-list__term">${this.translate("attribution", langCode)}</dt>
         ${attribution}
       </dl>
+
+      <dl class="definition-list">
+        <dt class="definition-list__term">${this.translate("productionDate", langCode)}</dt>
+        ${content.dating.dated} ${content.dating.remarks}
+        ${historicDates}
+      </dl>
+
     </div>
   `;
 }

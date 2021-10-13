@@ -381,25 +381,25 @@ i.icon.red {
   font-family: IBMPlexSans;
   font-style: normal;
   font-weight: 200;
-  src: url("../../../fonts/IBM_Plex_Sans/IBMPlexSans-Light.ttf"); }
+  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-Light.ttf"); }
 
 @font-face {
   font-family: IBMPlexSans;
   font-style: normal;
   font-weight: 300;
-  src: url("../../../fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf"); }
+  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf"); }
 
 @font-face {
   font-family: IBMPlexSans;
   font-style: normal;
   font-weight: 400;
-  src: url("../../../fonts/IBM_Plex_Sans/IBMPlexSans-Medium.ttf"); }
+  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-Medium.ttf"); }
 
 @font-face {
   font-family: IBMPlexSans;
   font-style: normal;
   font-weight: 600;
-  src: url("../../../fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf"); }
+  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf"); }
 
 @font-face {
   font-family: 'MaterialIcons';
