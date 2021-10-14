@@ -1,5 +1,11 @@
 const getHeader = require('../_components/header');
-  
+
+let langCode;
+
+const getLangCode = ({ content }) => {
+  return content.metadata.langCode;
+}
+
 const getTitle = ({ content }) => {
   return content.metadata.title;
 }
@@ -14,8 +20,7 @@ const getImage = ({ content }) => {
   `;
 }
 
-const getTexts = ({ content }) => {
-  const langCode = content.metadata.langCode;
+const getTextBlock = ({ content }) => {
   const attribution = content.involvedPersons.map(
     (item) => {
       const remarks = item.remarks ? `<span className="remarks">${item.remarks}</span>` : '';
@@ -67,8 +72,31 @@ const getCopyText = ({ content }) => {
   `;
 }
 
-const getLocation = ({ content }) => {
-  const langCode = content.metadata.langCode;
+const getLocationBlock = ({ content }) => {
+
+  return `
+    <div class="block">
+
+      <dl class="definition-list">
+        <dt class="definition-list__term">${this.translate("owner", langCode)}</dt>
+        ${content.owner}
+      </dl>
+
+      <dl class="definition-list">
+        <dt class="definition-list__term">${this.translate("repository", langCode)}</dt>
+        ${content.repository}
+      </dl>
+
+      <dl class="definition-list">
+        <dt class="definition-list__term">${this.translate("location", langCode)}</dt>
+        ${content.locations[0].term}
+      </dl>
+
+    </div>
+  `;
+}
+
+const getInscriptionBlock = ({ content }) => {
   return `
     <div class="block">
 
@@ -92,13 +120,14 @@ const getLocation = ({ content }) => {
 }
 
 exports.render = function (data) {
-  const langCode = data.content.metadata.langCode;
+  langCode = getLangCode(data);
   const header = getHeader(data);
   const title = getTitle(data);
   const image = getImage(data);
   const copy = getCopyText(data);
-  const texts = getTexts(data);
-  const location = getLocation(data);
+  const texts = getTextBlock(data);
+  const location = getLocationBlock(data);
+  const inscription = getInscriptionBlock(data);
   
   return `
   <!doctype html>
@@ -123,6 +152,10 @@ exports.render = function (data) {
           <div class="block">
             ${location}
           </div>
+          <div class="block">
+            ${inscription}
+          </div>
+          
         </div>
       </section>
     </body>
