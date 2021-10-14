@@ -92,6 +92,7 @@ const getLocation = ({ content }) => {
 }
 
 exports.render = function (data) {
+  const langCode = data.content.metadata.langCode;
   const header = getHeader(data);
   const title = getTitle(data);
   const image = getImage(data);
@@ -103,7 +104,7 @@ exports.render = function (data) {
   <!doctype html>
   <html lang="de">
     <head>
-      <title>cda // ${title}</title>
+      <title>cda // ${this.translate("paintings", langCode)} // ${title}</title>
       ${this.meta()}
       <link href="${this.url('/assets/main.css')}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
