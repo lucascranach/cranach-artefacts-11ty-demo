@@ -1,7 +1,8 @@
 .definition-list {
   width: 100%;
-  margin-top: 0;
+  margin-top: -$xs;
   font-weight: $fw-light;
+  margin-bottom: $l;
 
   &__term {
     display: inline;
@@ -9,22 +10,19 @@
     font-weight: $fw-semibold;
     line-height: $lh-normal;
 
+    &::before{
+      content: "";
+      display:block;
+      height: $xs;
+    }
+
     &::after {
       content: ":";
     }
-
-    &:last-of-type {
-      border-bottom: none !important;
-    }
-  }
-
-  .definition-list__term:last-child {
-    border-bottom: none;
   }
 
   &__definition {
     display: inline;
-    border-bottom: solid $border-stroke-weight-s $darken-medium;
     margin: 0;
     line-height: $lh-normal;
 
