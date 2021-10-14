@@ -97,10 +97,13 @@ const getInscriptionBlock = ({ content }) => {
         ${inscription}
 
         <dt class="definition-list__term">CDA ID</dt>
-        ${content.metadata.id}
+        <dd class="definition-list__definition">${content.metadata.id}</dd>
+
+        <dt class="definition-list__term">${this.translate("objectName", langCode)}</dt>
+        <dd class="definition-list__definition">${content.objectName}</dd>
       
         <dt class="definition-list__term">${this.translate("permalink", langCode)}</dt>
-        ${content.url}
+        <dd class="definition-list__definition">${content.url}</dd>
       </dl>
 
     </div>
