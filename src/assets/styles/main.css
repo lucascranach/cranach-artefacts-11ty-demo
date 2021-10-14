@@ -307,7 +307,11 @@ h1 {
 ---------------------------------------------------------------------------- */
 /* Größen und Abstände
 ---------------------------------------------------------------------------- */
-/* Entlang der Fibonacci Reihe */
+/* Entlang der Renard20 Reihe 
+100, 110, 125, 140, 160, 180, 200, 220, 250, 280, 320, 360, 400, 420, 450, 
+500, 560, 630
+
+*/
 /* Texte */
 /* Schriften
 ---------------------------------------------------------------------------- */
@@ -416,7 +420,7 @@ body {
   background-color: #fff;
   color: #000;
   font-family: "IBMPlexSans", sans-serif;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 200; }
 
 a {
@@ -435,8 +439,8 @@ a {
 .subtitle,
 .chapter {
   position: relative;
-  margin-bottom: 2.1rem;
-  font-size: 1.3rem;
+  margin-bottom: 1.12rem;
+  font-size: 1.12rem;
   line-height: 120%; }
 
 .subtitle,
@@ -444,20 +448,21 @@ a {
   font-weight: 300; }
 
 .title {
-  font-weight: 600; }
+  font-weight: 600;
+  font-size: 1.4rem; }
   .title::after {
     display: block;
-    width: 3.4rem;
+    width: 1.4rem;
     border-top: solid 2px #fc0;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.56rem;
+    margin-bottom: 0.56rem;
     content: " "; }
 
 .title + .subtitle {
-  margin-top: -1.6rem; }
+  margin-top: -0.56rem; }
 
 .headline {
-  margin-bottom: 1.3rem;
+  margin-bottom: 0.875rem;
   font-size: 1rem;
   font-weight: 400; }
 
@@ -468,12 +473,6 @@ th,
 td {
   line-height: 140%; }
 
-/* Artfact Header
----------------------------------------------------------------------------- */
-.artefact-header {
-  padding-bottom: 1.3rem;
-  margin-bottom: 1.3rem; }
-
 /* According to CUBE
     https://cube.fyi/composition.html#why-macro-level-thinking
 ############################################################################ */
@@ -483,7 +482,7 @@ td {
 .foldable-block {
   position: sticky;
   top: 0;
-  padding-top: 1.3rem;
+  padding-top: 0.875rem;
   border-top: solid 1px #b4b4b4;
   background-color: #fff; }
   .foldable-block .grouped-definition-list,
@@ -491,15 +490,15 @@ td {
     /* display: none; */ }
   .foldable-block::after {
     position: absolute;
-    top: 1.3rem;
+    top: 0.875rem;
     right: 0;
     content: "expand_more";
     font-family: "Material Icons", sans-serif;
-    font-size: 1.3rem; }
+    font-size: 0.875rem; }
   .foldable-block__headline {
-    padding-bottom: 1.3rem;
+    padding-bottom: 0.875rem;
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 0.875rem;
     font-weight: 300; }
   .foldable-block.is-expanded::after {
     transform: rotate(180deg); }
@@ -508,36 +507,46 @@ td {
     display: block; }
 
 .block + .block {
+  padding-top: 0.875rem;
   border-top: solid 1px #b4b4b4; }
+
+/* Artfact Header
+---------------------------------------------------------------------------- */
+.artefact-header {
+  margin-bottom: 0.875rem; }
+
+/* Copy Text 
+---------------------------------------------------------------------------- */
+.copytext {
+  margin-bottom: 2.205rem; }
 
 .definition-list {
   width: 100%;
-  flex-wrap: wrap;
+  margin-top: -0.56rem;
   font-weight: 200;
-  margin-top: 0; }
+  margin-bottom: 1.12rem; }
   .definition-list__term {
-    padding-bottom: 0.3rem;
-    font-weight: 300;
+    display: inline;
+    padding-bottom: 0.4375rem;
+    font-weight: 400;
     line-height: 140%; }
+    .definition-list__term::before {
+      content: "";
+      display: block;
+      height: 0.56rem; }
     .definition-list__term::after {
       content: ":"; }
-    .definition-list__term:last-of-type {
-      border-bottom: none !important; }
-  .definition-list .definition-list-term:last-child {
-    border-bottom: none; }
   .definition-list__definition {
-    display: flex;
-    padding-bottom: 0.8rem;
-    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+    display: inline;
     margin: 0;
     line-height: 140%; }
     .definition-list__definition:last-child {
       border-bottom: none; }
     .definition-list__definition > .literature-table {
-      margin-top: -0.5rem; }
+      margin-top: -0.56rem; }
 
 .image-description {
-  padding: 1.3rem;
+  padding: 0.875rem;
   padding-left: 0; }
   .image-description-date {
     font-weight: 400;
@@ -548,34 +557,34 @@ td {
     color: #000; }
     .image-description-title + .image-description-title::before {
       content: "//";
-      margin-left: 0.3rem;
-      margin-right: 0.3rem;
+      margin-left: 0.4375rem;
+      margin-right: 0.4375rem;
       display: inline-block;
       color: #444;
       font-weight: 200; }
     .image-description-title + .image-description-date::before {
       content: ", "; }
   .image-description dl {
-    margin-top: 1.3rem; }
+    margin-top: 0.875rem; }
     .image-description dl::before {
       content: " ";
       display: block;
-      width: 3.4rem;
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
+      width: 1.4rem;
+      margin-top: 0.56rem;
+      margin-bottom: 0.56rem;
       border-top: solid 1px rgba(0, 0, 0, 0.2); }
 
 .leporello-recog {
-  margin: 2.1rem; }
+  margin: 1.12rem; }
   @media only screen and (min-width: 720px) {
     .leporello-recog {
       display: grid;
-      gap: 1.3rem;
-      grid-template-columns: 13em 1fr; } }
+      gap: 0.875rem;
+      grid-template-columns: 11.375rem 1fr; } }
   @media only screen and (min-width: 1400px) {
     .leporello-recog {
       display: grid;
-      gap: 1.3rem;
+      gap: 0.875rem;
       grid-template-columns: 1fr 720px; } }
   .leporello-recog__image {
     padding: 0;
@@ -583,6 +592,6 @@ td {
     .leporello-recog__image > img {
       width: 100%; }
   .leporello-recog__text {
-    max-width: 39rem; }
+    max-width: 35rem; }
 
 /*# sourceMappingURL=main.css.map */

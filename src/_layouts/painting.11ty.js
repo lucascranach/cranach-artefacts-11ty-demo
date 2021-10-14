@@ -39,28 +39,21 @@ const getTextBlock = ({ content }) => {
   
   return `
     <div class="block">
-    
       <dl class="definition-list">
+        
         <dt class="definition-list__term">${this.translate("attribution", langCode)}</dt>
         ${attribution}
-      </dl>
 
-      <dl class="definition-list">
         <dt class="definition-list__term">${this.translate("productionDate", langCode)}</dt>
-        ${content.dating.dated} ${content.dating.remarks}
+        <dd class="definition-list__definition">${content.dating.dated} ${content.dating.remarks}</dd>
         ${historicDates}
-      </dl>
 
-      <dl class="definition-list">
         <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
-        ${content.dimensions}
-      </dl>
+        <dd class="definition-list__definition">${content.dimensions}</dd>
 
-      <dl class="definition-list">
         <dt class="definition-list__term">${this.translate("signature", langCode)}</dt>
-        ${content.signature}
+        <dd class="definition-list__definition">${content.signature}</dd>
       </dl>
-
     </div>
   `;
 }
@@ -80,14 +73,10 @@ const getLocationBlock = ({ content }) => {
       <dl class="definition-list">
         <dt class="definition-list__term">${this.translate("owner", langCode)}</dt>
         ${content.owner}
-      </dl>
 
-      <dl class="definition-list">
         <dt class="definition-list__term">${this.translate("repository", langCode)}</dt>
         ${content.repository}
-      </dl>
 
-      <dl class="definition-list">
         <dt class="definition-list__term">${this.translate("location", langCode)}</dt>
         ${content.locations[0].term}
       </dl>
@@ -97,22 +86,21 @@ const getLocationBlock = ({ content }) => {
 }
 
 const getInscriptionBlock = ({ content }) => {
+  const inscription = content.inscription || content.markings ? `
+  <dt class="definition-list__term">${this.translate("inscriptions", langCode)}</dt>
+  <dd class="definition-list__definition">${content.inscription}${content.markings}</dd>` : '';
+  
   return `
     <div class="block">
 
       <dl class="definition-list">
-        <dt class="definition-list__term">${this.translate("owner", langCode)}</dt>
-        ${content.owner}
-      </dl>
+        ${inscription}
 
-      <dl class="definition-list">
-        <dt class="definition-list__term">${this.translate("repository", langCode)}</dt>
-        ${content.repository}
-      </dl>
-
-      <dl class="definition-list">
-        <dt class="definition-list__term">${this.translate("location", langCode)}</dt>
-        ${content.locations[0].term}
+        <dt class="definition-list__term">CDA ID</dt>
+        ${content.metadata.id}
+      
+        <dt class="definition-list__term">${this.translate("permalink", langCode)}</dt>
+        ${content.url}
       </dl>
 
     </div>
@@ -121,6 +109,8 @@ const getInscriptionBlock = ({ content }) => {
 
 exports.render = function (data) {
   langCode = getLangCode(data);
+  data.content.url = `${this.getBaseUrl()}${data.page.url}`;
+  
   const header = getHeader(data);
   const title = getTitle(data);
   const image = getImage(data);

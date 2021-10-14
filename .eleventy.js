@@ -8,6 +8,7 @@ const translations = require("./src/_data/translations.json");
 const markdownItRenderer = new markdownIt();
 // const pathPrefix = (process.env.ELEVENTY_ENV === 'production') ? "slides" : "";
 
+const cdaBaseUrl = "https://lucascranach.org";
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false);
@@ -42,8 +43,12 @@ module.exports = function (eleventyConfig) {
   /* Functions
   ########################################################################## */
 
-  eleventyConfig.addFilter("translate", (term,lang) => {
+  eleventyConfig.addJavaScriptFunction("translate", (term,lang) => {
     return translations[term][lang];
+  });
+
+  eleventyConfig.addJavaScriptFunction("getBaseUrl", () => {
+    return cdaBaseUrl;
   });
 
 
