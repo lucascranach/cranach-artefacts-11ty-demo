@@ -55,6 +55,7 @@
 
     & > .is-active {
       & > .cell {
+        padding-top: $l;
         border-top: solid $border-stroke-weight $light;
         font-weight: $fw-semibold;
       }
