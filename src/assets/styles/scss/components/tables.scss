@@ -1,0 +1,42 @@
+.dynamic-table {
+  width: 100%;
+
+  & > .table {
+    width: 100%;
+    border-spacing: 0;
+
+    & > .head {
+      position: sticky;
+      top: 0;
+      background-color: $lightest;
+
+      & > .row {
+        & > .cell {
+          width: 50%;
+          padding: $xxxs;
+          font-weight: $fw-regular;
+          text-align: left;
+          vertical-align: top;
+        }
+      }
+    }
+
+    & > .body {
+      & > .row {
+        & > .cell {
+          padding: $xxxs;
+
+          &.-center {
+            text-align: center;
+          }
+        }
+
+        &:nth-child(odd) {
+          .cell {
+            background-color: $lighter;
+          }
+        }
+      }
+    }
+  }
+}

@@ -545,6 +545,24 @@ td {
     .definition-list__definition > .literature-table {
       margin-top: -0.56rem; }
 
+.dynamic-table {
+  width: 100%; }
+  .dynamic-table > .table {
+    width: 100%; }
+    .dynamic-table > .table > .head {
+      position: sticky;
+      top: 0;
+      background-color: #fff; }
+      .dynamic-table > .table > .head > .row > .cell {
+        text-align: left;
+        width: 50%; }
+    .dynamic-table > .table > .body > .row > .cell {
+      border-top: solid 1px rgba(0, 0, 0, 0.06); }
+      .dynamic-table > .table > .body > .row > .cell.-center {
+        text-align: center; }
+    .dynamic-table > .table > .head > .row > .cell, .dynamic-table > .table > .body > .row > .cell {
+      padding: 0.5rem 1rem 0.5rem 0; }
+
 .image-description {
   padding: 0.875rem;
   padding-left: 0; }

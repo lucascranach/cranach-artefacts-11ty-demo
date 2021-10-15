@@ -1,11 +1,20 @@
 // const htmlmin = require('html-minifier');
 const markdownIt = require('markdown-it');
+
 const rimraf = require('rimraf');
 
 const paintingsDataDE = require("./src/_data/cda-paintings-v2.de.json");
+const literatureData = {
+  "de": require("./src/_data/cda-literaturereferences-v2.de")
+};
 const translations = require("./src/_data/translations.json");
 
-const markdownItRenderer = new markdownIt();
+const markdownItRenderer = new markdownIt('commonmark', {
+  html: true,
+  breaks: true,
+  linkify: true,
+  typographer: true
+});
 // const pathPrefix = (process.env.ELEVENTY_ENV === 'production') ? "slides" : "";
 
 const cdaBaseUrl = "https://lucascranach.org";
@@ -43,7 +52,7 @@ module.exports = function (eleventyConfig) {
   /* Functions
   ########################################################################## */
 
-  eleventyConfig.addJavaScriptFunction("translate", (term,lang) => {
+  eleventyConfig.addJavaScriptFunction("translate", (term, lang) => {
     return translations[term][lang];
   });
 
@@ -51,12 +60,29 @@ module.exports = function (eleventyConfig) {
     return cdaBaseUrl;
   });
 
+  eleventyConfig.addJavaScriptFunction("getLiteratureReference", (ref, lang) => {
+    const literatureReference = literatureData[lang].items.filter(item => item.referenceId === ref);
+    return literatureReference.shift();
+  });
 
+  
+  eleventyConfig.addJavaScriptFunction("getLiteratureReferenceTableData", (ref, id) => {
+    const connectedObjects = ref.connectedObjects.filter(item => item.inventoryNumber === id);
+    return connectedObjects.shift();
+  });
+  
   /* Filter
   ########################################################################## */
 
-  eleventyConfig.addFilter("markdownify", (str) => {
-    return markdownItRenderer.renderInline(str);
+  eleventyConfig.addFilter("markdownify", (str, modus) => {
+    if (modus === "log") {
+      console.log(str);
+    }
+    return markdownItRenderer.render(str);
+  });
+
+  eleventyConfig.addFilter("altText", (str) => {
+    return str.replace(/"/g, "\'");
   });
 
   /* Collections

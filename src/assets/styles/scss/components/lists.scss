@@ -1,0 +1,62 @@
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding: 0;
+    margin-bottom: $xs;
+    list-style-type: none;
+    margin-left: $s;
+    line-height: $lh-normal;
+
+    &::before{
+      content: "•";
+      color: $dark;
+      font-weight: $fw-semibold;
+      display: inline-block;
+      margin-left: -$s;
+      width: $s;
+    }
+  }
+}
+
+// Definition List
+//-----------------------------------------------------------------------------
+
+.definition-list {
+  width: 100%;
+  margin-top: -$xs;
+  margin-bottom: $l;
+  font-weight: $fw-light;
+
+  &__term {
+    display: inline;
+    padding-bottom: $xxs;
+    font-weight: $fw-semibold;
+    line-height: $lh-normal;
+
+    &::before {
+      display: block;
+      height: $xs;
+      content: "";
+    }
+
+    &::after {
+      content: ":";
+    }
+  }
+
+  &__definition {
+    display: inline;
+    margin: 0;
+    line-height: $lh-normal;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    & > .literature-table {
+      margin-top: -$xs;
+    }
+  }
+}

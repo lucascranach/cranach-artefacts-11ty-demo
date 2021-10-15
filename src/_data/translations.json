@@ -114,5 +114,14 @@
   "objectName":{
      "de":"FR (1978) Nr.",
      "en":"FR (1978) Nr."
+  },
+  "catalogueNumber":{
+    "de": "Katalognummer",
+    "en": "Catalogue Number"
+  },
+  "plate":{
+    "de": "Tafel",
+    "en": "Figure/Plate"
   }
+
 }
