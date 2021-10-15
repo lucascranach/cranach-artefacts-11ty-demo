@@ -70,6 +70,7 @@ module.exports = function (eleventyConfig) {
     const connectedObjects = ref.connectedObjects.filter(item => item.inventoryNumber === id);
     return connectedObjects.shift();
   });
+
   
   /* Filter
   ########################################################################## */

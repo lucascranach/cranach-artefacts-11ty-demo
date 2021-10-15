@@ -111,6 +111,7 @@ const getInscriptionBlock = ({ content }) => {
 }
 
 const getSourcesBlock = ({ content }) => {
+
   const provenance = !content.provenance ? '' : `
     <div class="block">
       <h3 class="is-medium">${this.translate("provenance", langCode)}</h3>
@@ -123,38 +124,83 @@ const getSourcesBlock = ({ content }) => {
       ${this.markdownify(content.exhibitionHistory)}
     </div>`;
   
+  
+  const getLiteraturDetails = (item) => {
+    const author = item.persons.filter(person => person.role === "AUTHOR").map(person => person.name);
+    const publisher = item.persons.filter(person => person.role === "PUBLISHER").map(person => person.name);
+    const editor = item.persons.filter(person => person.role === "EDITORIAL_STAFF").map(person => person.name);
+    const alternateNumbers = item.alternateNumbers.map(alternateNumber => {
+      return `
+        ${alternateNumber.dewscription}
+        ${alternateNumber.number}
+      `;
+    });
+
+    const getRow = (content, translationID) => {
+      return !content ? '' : `<tr><th>${this.translate(translationID, langCode)}</th><td>${content}</td></tr>`;
+    };
+
+    return `
+      <table class="literature-item-details-table">
+        ${getRow(author.join(", "), "author")}
+        ${getRow(publisher.join(", "), "publisher")}
+        ${getRow(editor.join(", "), "publisher")}
+        ${getRow(item.title, "title")}
+        ${getRow(item.pages, "pages")}
+        ${getRow(item.series, "series")}
+        ${getRow(item.volume, "volume")}
+        ${getRow(item.journal, "journal")}
+        ${getRow(item.issue, "issue")}
+        ${getRow(item.publication, "publication")}
+        ${getRow(item.publishDate, "publishDate")}
+        ${getRow(item.publishLocation, "publishLocation")}
+        ${getRow(item.periodOfOrigin, "periodOfOrigin")}
+        ${getRow(item.physicalDescription, "physicalDescription")}
+        ${getRow(item.mention, "mention")}
+        ${getRow(item.link, "permalink")}
+        ${getRow(alternateNumbers.join(", "), "alternativeNumbers")}
+      </table>
+    `;
+  };
+
   const publicationList = content.publications.map(
-    (item) => {
+    (item, index) => {
       const literatureReference = this.getLiteratureReference(item.referenceId, langCode);
       const literatureReferenceTableData = this.getLiteratureReferenceTableData(literatureReference, content.metadata.id);
+      const hasBackground = index % 2 ? "has-bg" : '';
       return `
-        <tr class="row">
+        <tr class="row ${hasBackground}">
           <td class="cell">${item.title}</td>
           <td class="cell">${item.pageNumber}</td>
           <td class="cell">${literatureReferenceTableData.catalogNumber}</td>
           <td class="cell">${literatureReferenceTableData.figureNumber}</td>
-        </tr>`;
+        </tr>
+        <tr class="row  ${hasBackground}">
+          <td class="cell" colspan="4">
+            ${getLiteraturDetails(literatureReference)}
+          </td>
+        </tr>
+        `;
     }
   );
+
   
   const publications = content.publications ? `
     <div class="block"> 
       <h3 class="is-medium">${this.translate("literature", langCode)}</h3>
-      <div class="dynamic-table">
-        <table class="table">
-          <thead class="head">
-            <tr class="row">
-              <td class="cell" style="width: 40%"></td>
-              <td class="cell" style="width: 20%">${this.translate("referenceOnPage", langCode)}</td>
-              <td class="cell" style="width: 20%">${this.translate("catalogueNumber", langCode)}</td>
-              <td class="cell" style="width: 20%">${this.translate("plate", langCode)}</td>
-            </tr>
-          </thead>
-          <tbody class="body">
-          ${publicationList.join("\n")}
-          </tbody>
-        </table>
-      </div>
+      <table class="table literature">
+        <thead class="head">
+          <tr class="row">
+            <td class="cell" style="width: 40%"></td>
+            <td class="cell" style="width: 20%">${this.translate("referenceOnPage", langCode)}</td>
+            <td class="cell" style="width: 20%">${this.translate("catalogueNumber", langCode)}</td>
+            <td class="cell" style="width: 20%">${this.translate("plate", langCode)}</td>
+          </tr>
+        </thead>
+        <tbody class="body">
+        ${publicationList.join("\n")}
+        </tbody>
+      </table>
     </div>` : '';
   
   return `

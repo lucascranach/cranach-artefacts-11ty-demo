@@ -1,127 +1,250 @@
 {
-  "all":{
-     "de":"Alle",
-     "en":"All"
+  "all": {
+    "de": "Alle",
+    "en": "All"
   },
-  "referenceOnPage":{
-     "de":"Erwähnt auf Seite",
-     "en":"reference on page"
+  "referenceOnPage": {
+    "de": "Erwähnt auf Seite",
+    "en": "reference on page"
   },
-  "prints":{
-     "de":"Drucke und Zeichnungen",
-     "en":"Prints and Drawings"
+  "prints": {
+    "de": "Drucke und Zeichnungen",
+    "en": "Prints and Drawings"
   },
-  "paintings":{
-     "de":"Gemälde",
-     "en":"Paintings"
+  "paintings": {
+    "de": "Gemälde",
+    "en": "Paintings"
   },
-  "archivalDocuments":{
-     "de":"Archivalien",
-     "en":"Archival Documents"
+  "archivalDocuments": {
+    "de": "Archivalien",
+    "en": "Archival Documents"
   },
-  "literatureDocuments":{
-     "de":"Literatur",
-     "en":"Literature"
+  "literatureDocuments": {
+    "de": "Literatur",
+    "en": "Literature"
   },
-  "back":{
-     "de":"zurück zur Übersicht",
-     "en":"back to the overview"
+  "back": {
+    "de": "zurück zur Übersicht",
+    "en": "back to the overview"
   },
-  "conditionPrint":{
-     "de":"Druckzustand, Version",
-     "en":"Condition"
+  "conditionPrint": {
+    "de": "Druckzustand, Version",
+    "en": "Condition"
   },
-  "dating":{
-     "de":"Datierung",
-     "en":"Dating"
+  "dating": {
+    "de": "Datierung",
+    "en": "Dating"
   },
-  "dimensions":{
-     "de":"Maße",
-     "en":"Dimensions"
+  "dimensions": {
+    "de": "Maße",
+    "en": "Dimensions"
   },
-  "medium":{
-     "de":"Material / Technik",
-     "en":"Medium"
+  "medium": {
+    "de": "Material / Technik",
+    "en": "Medium"
   },
-  "owner":{
-     "de":"Eigentümer",
-     "en":"Owner"
+  "owner": {
+    "de": "Eigentümer",
+    "en": "Owner"
   },
-  "repository":{
-     "de":"Besitzer",
-     "en":"Repository"
+  "repository": {
+    "de": "Besitzer",
+    "en": "Repository"
   },
-  "location":{
-     "de":"Standort",
-     "en":"Location"
+  "location": {
+    "de": "Standort",
+    "en": "Location"
   },
-  "signature":{
-     "de":"Signatur / Datierung",
-     "en":"Signature / Dating"
+  "signature": {
+    "de": "Signatur / Datierung",
+    "en": "Signature / Dating"
   },
-  "inscriptions":{
-     "de":"Inschriften",
-     "en":"Inscriptions"
+  "inscriptions": {
+    "de": "Inschriften",
+    "en": "Inscriptions"
   },
-  "stamps":{
-     "de":"Stempel, Siegel, Beschriftungen",
-     "en":"Stamps, Seals, Labels"
+  "stamps": {
+    "de": "Stempel, Siegel, Beschriftungen",
+    "en": "Stamps, Seals, Labels"
   },
-  "shortDescription":{
-     "de":"Kurzbeschreibung",
-     "en":"Short description"
+  "shortDescription": {
+    "de": "Kurzbeschreibung",
+    "en": "Short description"
   },
-  "provenance":{
-     "de":"Provenienz",
-     "en":"Provenance"
+  "provenance": {
+    "de": "Provenienz",
+    "en": "Provenance"
   },
-  "literature":{
-     "de":"Quellen / Publikationen",
-     "en":"Literature"
+  "literature": {
+    "de": "Quellen / Publikationen",
+    "en": "Literature"
   },
-  "exhibitions":{
-     "de":"Ausstellungen",
-     "en":"Exhibitions"
+  "exhibitions": {
+    "de": "Ausstellungen",
+    "en": "Exhibitions"
   },
-  "vd16No":{
-     "de":"VD16-Nr.",
-     "en":"VD16-No."
+  "vd16No": {
+    "de": "VD16-Nr.",
+    "en": "VD16-No."
   },
-  "artTechnologicalExamination":{
-     "de":"Kunsttechnologische Untersuchung",
-     "en":"Art-technological examination"
+  "artTechnologicalExamination": {
+    "de": "Kunsttechnologische Untersuchung",
+    "en": "Art-technological examination"
   },
-  "condition":{
-     "de":"Erhaltungszustand",
-     "en":"Condition"
+  "condition": {
+    "de": "Erhaltungszustand",
+    "en": "Condition"
   },
-  "conservation":{
-     "de":"Restaurierungsgeschichte",
-     "en":"Conservation"
+  "conservation": {
+    "de": "Restaurierungsgeschichte",
+    "en": "Conservation"
   },
-  "attribution":{
-     "de":"Zuschreibung",
-     "en":"Attribution"
+  "attribution": {
+    "de": "Zuschreibung",
+    "en": "Attribution"
   },
-  "productionDate":{
-     "de":"Datierung",
-     "en":"Production date"
+  "productionDate": {
+    "de": "Datierung",
+    "en": "Production date"
   },
-  "permalink":{
-     "de":"Permalink",
-     "en":"Persistent Link"
+  "permalink": {
+    "de": "Permalink",
+    "en": "Persistent Link"
   },
-  "objectName":{
-     "de":"FR (1978) Nr.",
-     "en":"FR (1978) Nr."
+  "objectName": {
+    "de": "FR (1978) Nr.",
+    "en": "FR (1978) Nr."
   },
-  "catalogueNumber":{
+  "catalogueNumber": {
     "de": "Katalognummer",
     "en": "Catalogue Number"
   },
-  "plate":{
+  "plate": {
     "de": "Tafel",
     "en": "Figure/Plate"
+  },
+  "title": {
+    "de": "Title",
+    "en": "Title"
+  },
+  "subTitle": {
+    "de": "Untertitel",
+    "en": "Subtitle"
+  },
+  "shortTitle": {
+    "de": "Kurztitel",
+    "en": "Short title"
+  },
+  "longTitle": {
+    "de": "Titel",
+    "en": "Title"
+  },
+  "journal": {
+    "de": "Zeitschrift",
+    "en": "Journal"
+  },
+  "series": {
+    "de": "Reihe",
+    "en": "Series"
+  },
+  "volume": {
+    "de": "Band",
+    "en": "Volume"
+  },
+  "edition": {
+    "de": "Ausgabe",
+    "en": "Edition"
+  },
+  "publishLocation": {
+    "de": "Ort der Veröffentlichung",
+    "en": "Place of Publication"
+  },
+  "publishDate": {
+    "de": "Jahr der Veröffentlichung",
+    "en": "Year of Publication"
+  },
+  "referenceNumber": {
+    "de": "Referenznummer",
+    "en": "Reference Number"
+  },
+  "copyright": {
+    "de": "Copyright",
+    "en": "Copyright"
+  },
+  "publisher": {
+    "de": "Herausgeber",
+    "en": "Publisher"
+  },
+  "editorialStaff": {
+    "de": "Redaktion",
+    "en": "Editorial staff"
+  },
+  "editing": {
+    "de": "Bearbeitung",
+    "en": "Editing"
+  },
+  "illustrator": {
+    "de": "Illustrator",
+    "en": "Illustrator"
+  },
+  "publishingHouse": {
+    "de": "Verlag",
+    "en": "Publishing house"
+  },
+  "inCollaboration": {
+    "de": "Verlag",
+    "en": "In collaboration"
+  },
+  "illustrations": {
+    "de": "Abbildungen",
+    "en": "Illustrations"
+  },
+  "translation": {
+    "de": "Übersetzung",
+    "en": "Translation"
+  },
+  "print": {
+    "de": "Druck",
+    "en": "Print"
+  },
+  "officin": {
+    "de": "Offizin",
+    "en": "Officin"
+  },
+  "unknown": {
+    "de": "Unbekannt",
+    "en": "Unknown"
+  },
+  "pages": {
+    "de": "Seiten",
+    "en": "Pages"
+  },
+  "issue": {
+    "de": "Jahrgang",
+    "en": "Issue"
+  },
+  "publication": {
+    "de": "Veröffentlichung",
+    "en": "Publication"
+  },
+  "mention": {
+    "de": "Erwähnung",
+    "en": "Mention"
+  },
+  "bookFormat": {
+    "de": "Buchformat",
+    "en": "Book format"
+  },
+  "periodOfOrigin": {
+    "de": "Entstehungszeitraum",
+    "en": "Period of Origin"
+  },
+  "author": {
+    "de": "Autor/in",
+    "en": "Author"
+  },
+  "alternativeNumbers": {
+    "de": "weitere Nummern",
+    "en": "Alternative Numbers"
   }
-
 }

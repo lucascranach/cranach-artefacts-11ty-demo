@@ -1,42 +1,73 @@
-.dynamic-table {
+.table {
   width: 100%;
+  border-spacing: 0;
 
-  & > .table {
-    width: 100%;
-    border-spacing: 0;
+  & > .head {
+    position: sticky;
+    top: 0;
+    background-color: $lightest;
 
-    & > .head {
-      position: sticky;
-      top: 0;
-      background-color: $lightest;
+    & > .row {
+      & > .cell {
+        width: 50%;
+        padding: $xxxs;
+        font-weight: $fw-regular;
+        text-align: left;
+        vertical-align: top;
+      }
+    }
+  }
 
-      & > .row {
-        & > .cell {
-          width: 50%;
-          padding: $xxxs;
-          font-weight: $fw-regular;
-          text-align: left;
-          vertical-align: top;
+  & > .body {
+    & > .row {
+      & > .cell {
+        padding: $xxxs;
+
+        &.-center {
+          text-align: center;
         }
       }
     }
 
-    & > .body {
-      & > .row {
-        & > .cell {
-          padding: $xxxs;
-
-          &.-center {
-            text-align: center;
-          }
-        }
-
-        &:nth-child(odd) {
-          .cell {
-            background-color: $lighter;
-          }
-        }
+    & > .has-bg{
+      & > .cell {
+        background-color: $lighter;
       }
+    }
+  }
+
+}
+
+// literature-item-details-table
+// ----------------------------------------------------------------------------
+
+.literature-item-details-table {
+  width: 100%;
+  margin-bottom: $s;
+  table-layout: fixed;
+
+  th {
+    width: 40%;
+    padding: $quad;
+    font-weight: $fw-regular;
+    text-align: right;
+    vertical-align: top;
+
+    &::after {
+      display: inline-block;
+      content: ":";
+    }
+  }
+
+  td {
+    padding: $quad;
+    vertical-align: top;
+  }
+
+  tr + tr {
+    th,
+    td {
+      border-top: solid $border-stroke-weight-s $darken;
     }
   }
 }
