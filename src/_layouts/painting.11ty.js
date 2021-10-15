@@ -137,7 +137,7 @@ const getSourcesBlock = ({ content }) => {
     });
 
     const getRow = (content, translationID) => {
-      return !content ? '' : `<tr><th>${this.translate(translationID, langCode)}</th><td>${content}</td></tr>`;
+      return !content ? '' : `<tr><th>${this.translate(translationID, langCode)}</th><td>${this.stripTags(content)}</td></tr>`;
     };
 
     return `
@@ -259,6 +259,10 @@ exports.render = function (data) {
           ${sources}
           
         </div>
+      </section>
+
+      <section class="leporello-explore">
+
       </section>
     </body>
     <script src="${this.url('/assets/scripts/main.js')}"></script>

@@ -86,6 +86,10 @@ module.exports = function (eleventyConfig) {
     return str.replace(/"/g, "\'");
   });
 
+  eleventyConfig.addFilter("stripTags", (str) => {
+    return str.replace(/<.*?>/g, "");
+  });
+
   /* Collections
   ########################################################################## */
 
