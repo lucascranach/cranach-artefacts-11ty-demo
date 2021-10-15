@@ -26,16 +26,40 @@
         &.-center {
           text-align: center;
         }
+
+        &.has-interaction {
+          & > a {
+            border-bottom: solid $border-stroke-weight-s $accent;
+          }
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
     }
 
-    & > .has-bg{
+    & > .has-bg {
       & > .cell {
         background-color: $lighter;
       }
     }
-  }
 
+    & > .is-detail {
+      display: none;
+    }
+
+    & > .is-detail.is-visible {
+      display: table-row;
+    }
+
+    & > .is-active {
+      & > .cell {
+        border-top: solid $border-stroke-weight $light;
+        font-weight: $fw-semibold;
+      }
+    }
+  }
 }
 
 // literature-item-details-table

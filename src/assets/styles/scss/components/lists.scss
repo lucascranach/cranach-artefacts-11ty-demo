@@ -1,21 +1,21 @@
 ul {
-  margin: 0;
   padding: 0;
+  margin: 0;
 
   li {
     padding: 0;
     margin-bottom: $xs;
-    list-style-type: none;
     margin-left: $s;
     line-height: $lh-normal;
+    list-style-type: none;
 
-    &::before{
-      content: "•";
-      color: $dark;
-      font-weight: $fw-semibold;
+    &::before {
       display: inline-block;
-      margin-left: -$s;
       width: $s;
+      margin-left: -$s;
+      color: $dark;
+      content: "•";
+      font-weight: $fw-semibold;
     }
   }
 }

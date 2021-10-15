@@ -169,13 +169,16 @@ const getSourcesBlock = ({ content }) => {
       const literatureReferenceTableData = this.getLiteratureReferenceTableData(literatureReference, content.metadata.id);
       const hasBackground = index % 2 ? "has-bg" : '';
       return `
-        <tr class="row ${hasBackground}">
-          <td class="cell">${item.title}</td>
+        <tr
+          class="row ${hasBackground} is-head" 
+          id="litRef${item.referenceId}">
+
+          <td class="cell has-interaction"><a href="#" data-js-toggle-literature="${item.referenceId}">${item.title}</a></td>
           <td class="cell">${item.pageNumber}</td>
           <td class="cell">${literatureReferenceTableData.catalogNumber}</td>
           <td class="cell">${literatureReferenceTableData.figureNumber}</td>
         </tr>
-        <tr class="row  ${hasBackground}">
+        <tr class="row ${hasBackground} is-detail" id="litRefData${item.referenceId}">
           <td class="cell" colspan="4">
             ${getLiteraturDetails(literatureReference)}
           </td>
@@ -184,7 +187,6 @@ const getSourcesBlock = ({ content }) => {
     }
   );
 
-  
   const publications = content.publications ? `
     <div class="block"> 
       <h3 class="is-medium">${this.translate("literature", langCode)}</h3>
