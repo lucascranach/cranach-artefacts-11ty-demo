@@ -218,11 +218,45 @@ const getImageStack = ({ content }) => {
 
 const getImageBasePath = () => {
   const config = this.getConfig();
-  return JSON.stringify(config['image-tiles']);
+  return JSON.stringify(config['imageTiles']);
 }
 
 const getTranslations = () => {
   return JSON.stringify(this.getTranslations());
+}
+
+const getImageStripe = ({ content }) => {
+  const config = this.getConfig();
+  const imageStack = content.images;
+  const imageTypes = config['imageTypes'];
+  const imageStripe = [];
+  
+  for (const [key, value] of Object.entries(imageTypes)) {
+    if (imageStack[key]) {
+      const images = imageStack[key].images;
+      const html = images.map((image, index) => {
+        const title = image.metadata ? this.altText(image.metadata[langCode].description) : `${key}`;
+        return `
+          <li
+            class="image-stripe-list__item has-interaction"
+            data-image-type="${key}" 
+            data-image-index="${index}"
+            data-js-change-image='{"key":"${key}","index":${index}}'>
+            <img src="${image.sizes.xsmall.src}" alt="${title}">
+          </li>
+        `;
+      });
+    
+      imageStripe.push(html.join(""));
+    }
+  }
+
+  return `
+    <ul class="image-stripe-list">
+      ${imageStripe.join("")}
+    </ul>
+  `;
+  
 }
 
 exports.render = function (data) {
@@ -240,6 +274,7 @@ exports.render = function (data) {
   const imageStack = getImageStack(data);
   const imageBasePath = getImageBasePath(data);
   const translations = getTranslations(data);
+  const imageStripe = getImageStripe(data);
   
   return `
   <!doctype html>
@@ -286,12 +321,18 @@ exports.render = function (data) {
       </section>
 
       <section class="leporello-explore">
+
         <figure class="main-image">
           <div class="image-viewer">
             <div id="viewer-content" class="image-viewer__content"></div>
           </div>
           <figcaption id="image-caption"></figcaption>
         </figure>
+
+        <div class="expore-content">
+          ${imageStripe}
+        </div>
+
       </section>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4.2/build/openseadragon/openseadragon.min.js"></script>

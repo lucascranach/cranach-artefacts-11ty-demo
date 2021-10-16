@@ -3,9 +3,63 @@ const markdownIt = require('markdown-it');
 const rimraf = require('rimraf');
 
 const devConfig = {
-  "image-tiles": {
-    "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
-    "production": "https://lucascranach.org/imageserver-2021"
+  "imageTiles":{
+     "development":"https://lucascranach.org/data-proxy/image-tiles.php?obj=",
+     "production":"https://lucascranach.org/imageserver-2021"
+  },
+  "imageTypes":{
+     "overall":{
+        "fragment":"Overall",
+        "sort":"01"
+     },
+     "reverse":{
+        "fragment":"Reverse",
+        "sort":"02"
+     },
+     "irr":{
+        "fragment":"IRR",
+        "sort":"03"
+     },
+     "xRadiograph":{
+        "fragment":"X-radiograph",
+        "sort":"04"
+     },
+     "uvLight":{
+        "fragment":"UV-light",
+        "sort":"05"
+     },
+     "detail":{
+        "fragment":"Detail",
+        "sort":"06"
+     },
+     "photomicrograph":{
+        "fragment":"Photomicrograph",
+        "sort":"07"
+     },
+     "conservation":{
+        "fragment":"Conservation",
+        "sort":"08"
+     },
+     "other":{
+        "fragment":"Other",
+        "sort":"09"
+     },
+     "analysis":{
+        "fragment":"Analysis",
+        "sort":"10"
+     },
+     "rkd":{
+        "fragment":"RKD",
+        "sort":"11"
+     },
+     "koe":{
+        "fragment":"KOE",
+        "sort":"12"
+     },
+     "transmittedLight":{
+        "fragment":"Transmitted-light",
+        "sort":"13"
+     }
   }
 }
 

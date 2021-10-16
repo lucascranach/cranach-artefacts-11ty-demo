@@ -1,15 +1,5 @@
-const handleEvents = () => {
-  document.addEventListener('click', (event) => {
-    const { target } = event;
-
-    if (target.dataset.jsToggleLiterature) {
-      event.preventDefault();
-      toggleLiteratureDetails(target.dataset.jsToggleLiterature);
-    }
-
-  }, true);
-}
-
+/* Toggle Literature Details
+============================================================================ */
 const toggleLiteratureDetails = (referenceId) => {
   const headId = `litRef${referenceId}`;
   const dataId = `litRefData${referenceId}`;
@@ -17,6 +7,8 @@ const toggleLiteratureDetails = (referenceId) => {
   document.getElementById(dataId).classList.toggle('is-visible');
 }
 
+/* ImageViewer
+============================================================================ */
 class ImageViewer {
   constructor(id, captionId) {
     this.viewer = OpenSeadragon({
@@ -40,7 +32,7 @@ class ImageViewer {
   setCaption(img) {
     const metadata = img.metadata[langCode];
     const fileType = !metadata.fileType ? '' : `<li class="image-description-title">${metadata.fileType}</li>`;
-    const description = !metadata.description ? '' : `<li class="image-description-title">${metadata.description}</li>`;
+    const description = !metadata.description ? '' : `<li class="image-description-text">${metadata.description}</li>`;
     const date = !metadata.date ? '' : `<li class="image-description-date">${metadata.date}</li>`;
     const author = !metadata.created ? '' : `
       <dt class="definition-list__term">${translations['authorAndRights'][langCode]}</dt>
@@ -52,19 +44,23 @@ class ImageViewer {
     `;
     const caption = `
     <ul class="image-description">
-      ${fileType}${description}${date}
+      ${fileType}${date}
       <li class="image-description-text">
         <dl class="definition-list">
           ${author}
           ${source}
         </dl>
       </li>
+      ${description}
+
     </ul>
     `;
     this.caption.innerHTML = caption;
   }
 
-  setImage(img) {
+  setImage(type, index) {
+
+    const img = imageStack[type].images[index];
     const initialUrl = img.sizes.tiles.src;
     const url = env==='development' ? this.adaptUrl(initialUrl) : initialUrl;
     
@@ -73,8 +69,29 @@ class ImageViewer {
   }
 }
 
+/* Main
+============================================================================ */
 
-handleEvents();
+document.addEventListener("DOMContentLoaded", function(event) {
+  
+  const imageViewer = new ImageViewer("viewer-content", "image-caption");
+  imageViewer.setImage('overall', 0);
 
-const imageViewer = new ImageViewer("viewer-content", "image-caption");
-imageViewer.setImage(imageStack.overall.images[0]);
+  document.addEventListener('click', (event) => {
+    const { target } = event;
+
+    if (target.dataset.jsToggleLiterature) {
+      event.preventDefault();
+      toggleLiteratureDetails(target.dataset.jsToggleLiterature);
+    }
+    
+    if (target.dataset.jsChangeImage) {
+      const data = JSON.parse(target.dataset.jsChangeImage);
+      imageViewer.setImage(data.key, data.index);
+    }
+
+  }, true);
+
+});
+
+

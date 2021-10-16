@@ -1,9 +1,10 @@
 .image-description {
+  display: block;
+  max-width: $column-small;
   padding: $m;
   padding-top: $xxs;
-  display: block;
 
-  &-text{
+  &-text {
     display: block;
   }
 
@@ -45,7 +46,7 @@
     }
   }
 
-  .flat-text{
+  .flat-text {
     margin-top: 0;
     margin-bottom: 0;
   }
