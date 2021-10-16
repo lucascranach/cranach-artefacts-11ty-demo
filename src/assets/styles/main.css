@@ -307,8 +307,8 @@ h1 {
 ---------------------------------------------------------------------------- */
 /* Größen und Abstände
 ---------------------------------------------------------------------------- */
-/* Entlang der Renard20 Reihe 
-100, 110, 125, 140, 160, 180, 200, 220, 250, 280, 320, 360, 400, 420, 450, 
+/* Entlang der Renard20 Reihe
+100, 110, 125, 140, 160, 180, 200, 220, 250, 280, 320, 360, 400, 420, 450,
 500, 560, 630
 
 */
@@ -521,21 +521,21 @@ td {
   margin-bottom: 2.205rem; }
 
 ul {
-  margin: 0;
-  padding: 0; }
+  padding: 0;
+  margin: 0; }
   ul li {
     padding: 0;
     margin-bottom: 0.56rem;
-    list-style-type: none;
     margin-left: 0.7rem;
-    line-height: 140%; }
+    line-height: 140%;
+    list-style-type: none; }
     ul li::before {
-      content: "•";
-      color: #444;
-      font-weight: 400;
       display: inline-block;
+      width: 0.7rem;
       margin-left: -0.7rem;
-      width: 0.7rem; }
+      color: #444;
+      content: "•";
+      font-weight: 400; }
 
 .definition-list {
   width: 100%;
@@ -562,27 +562,57 @@ ul {
     .definition-list__definition > .literature-table {
       margin-top: -0.56rem; }
 
-.dynamic-table {
-  width: 100%; }
-  .dynamic-table > .table {
-    width: 100%;
-    border-spacing: 0; }
-    .dynamic-table > .table > .head {
-      position: sticky;
-      top: 0;
-      background-color: #fff; }
-      .dynamic-table > .table > .head > .row > .cell {
-        width: 50%;
-        padding: 0.35rem;
-        font-weight: 300;
-        text-align: left;
-        vertical-align: top; }
-    .dynamic-table > .table > .body > .row > .cell {
-      padding: 0.35rem; }
-      .dynamic-table > .table > .body > .row > .cell.-center {
-        text-align: center; }
-    .dynamic-table > .table > .body > .row:nth-child(odd) .cell {
-      background-color: #f2f2f2; }
+.table {
+  width: 100%;
+  border-spacing: 0; }
+  .table > .head {
+    position: sticky;
+    top: 0;
+    background-color: #fff; }
+    .table > .head > .row > .cell {
+      width: 50%;
+      padding: 0.35rem;
+      font-weight: 300;
+      text-align: left;
+      vertical-align: top; }
+  .table > .body > .row > .cell {
+    padding: 0.35rem; }
+    .table > .body > .row > .cell.-center {
+      text-align: center; }
+    .table > .body > .row > .cell.has-interaction > a {
+      border-bottom: solid 1px #fc0; }
+    .table > .body > .row > .cell.has-interaction:hover {
+      cursor: pointer; }
+  .table > .body > .has-bg > .cell {
+    background-color: #f2f2f2; }
+  .table > .body > .is-detail {
+    display: none; }
+  .table > .body > .is-detail.is-visible {
+    display: table-row; }
+  .table > .body > .is-active > .cell {
+    padding-top: 1.12rem;
+    border-top: solid 2px #b4b4b4;
+    font-weight: 400; }
+
+.literature-item-details-table {
+  width: 100%;
+  margin-bottom: 0.7rem;
+  table-layout: fixed; }
+  .literature-item-details-table th {
+    width: 40%;
+    padding: 0.21875rem;
+    font-weight: 300;
+    text-align: right;
+    vertical-align: top; }
+    .literature-item-details-table th::after {
+      display: inline-block;
+      content: ":"; }
+  .literature-item-details-table td {
+    padding: 0.21875rem;
+    vertical-align: top; }
+  .literature-item-details-table tr + tr th,
+  .literature-item-details-table tr + tr td {
+    border-top: solid 1px rgba(0, 0, 0, 0.06); }
 
 .image-description {
   padding: 0.875rem;
@@ -632,5 +662,12 @@ ul {
       width: 100%; }
   .leporello-recog__text {
     max-width: 35rem; }
+
+.leporello-explore {
+  height: 300px; }
+
+.image-viewer {
+  width: 300px;
+  height: 300px; }
 
 /*# sourceMappingURL=main.css.map */

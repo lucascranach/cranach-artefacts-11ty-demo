@@ -1,7 +1,13 @@
 // const htmlmin = require('html-minifier');
 const markdownIt = require('markdown-it');
-
 const rimraf = require('rimraf');
+
+const devConfig = {
+  "image-tiles": {
+    "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
+    "production": "https://lucascranach.org/imageserver-2021"
+  }
+}
 
 const paintingsDataDE = require("./src/_data/cda-paintings-v2.de.json");
 const literatureData = {
@@ -45,6 +51,7 @@ module.exports = function (eleventyConfig) {
   // Copy asset images
   eleventyConfig.addPassthroughCopy({ 'src/assets/images': 'assets/images' });
 
+
   // Copy Scripts
   eleventyConfig.addPassthroughCopy({ 'src/assets/scripts': 'assets/scripts' });
   eleventyConfig.addWatchTarget("./src/assets/scripts");
@@ -60,18 +67,25 @@ module.exports = function (eleventyConfig) {
     return cdaBaseUrl;
   });
 
+  eleventyConfig.addJavaScriptFunction("getConfig", () => {
+    return devConfig;
+  });
+
   eleventyConfig.addJavaScriptFunction("getLiteratureReference", (ref, lang) => {
     const literatureReference = literatureData[lang].items.filter(item => item.referenceId === ref);
     return literatureReference.shift();
   });
 
-  
   eleventyConfig.addJavaScriptFunction("getLiteratureReferenceTableData", (ref, id) => {
     const connectedObjects = ref.connectedObjects.filter(item => item.inventoryNumber === id);
     return connectedObjects.shift();
   });
 
-  
+  eleventyConfig.addJavaScriptFunction("getENV", () => {
+    return process.env.ELEVENTY_ENV;
+  });
+
+
   /* Filter
   ########################################################################## */
 
@@ -96,8 +110,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("paintingsDE", (collection) => {
     return paintingsDE = paintingsDataDE.items.slice(0, 3);
   });
-
-
 
   /* Shortcodes
   ########################################################################## */

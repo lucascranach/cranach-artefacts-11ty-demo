@@ -1,0 +1,28 @@
+.leporello-explore {
+  height: 300px;
+  position: sticky;
+  top: 0;
+  border-top: solid $border-stroke-weight-s $light;
+  box-shadow: $shadow-top;
+  min-height: 50vh;
+
+  // Responsive Large
+  // --------------------------------------------------------------------------
+  @media only screen and (min-width: $vp-medium) {
+    display: grid;
+    gap: $m;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media only screen and (min-width: $vp-xlarge) {
+    display: grid;
+    gap: $m;
+    grid-template-columns: 1fr max($column-medium);
+  }
+}
+
+.image-viewer {
+  width: 100%;
+  min-height: 50vh;
+  background-color: $darken;
+}

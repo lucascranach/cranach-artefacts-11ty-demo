@@ -1,5 +1,7 @@
 .leporello-recog {
   margin: $l;
+  max-height: 80vh;
+  overflow: hidden;
 
   // Responsive Large
   // --------------------------------------------------------------------------

@@ -212,6 +212,17 @@ const getSourcesBlock = ({ content }) => {
   `;
 }
 
+const getImageStack = ({ content }) => {
+  return JSON.stringify(content.images);
+}
+
+const getImageBasePath = () => {
+  const config = this.getConfig();
+  return JSON.stringify(config['image-tiles']);
+}
+
+
+
 exports.render = function (data) {
   langCode = getLangCode(data);
   data.content.url = `${this.getBaseUrl()}${data.page.url}`;
@@ -224,6 +235,8 @@ exports.render = function (data) {
   const location = getLocationBlock(data);
   const inscription = getInscriptionBlock(data);
   const sources = getSourcesBlock(data);
+  const imageStack = getImageStack(data);
+  const imageBasePath = getImageBasePath(data);
   
   return `
   <!doctype html>
@@ -233,8 +246,14 @@ exports.render = function (data) {
       ${this.meta()}
       <link href="${this.url('/assets/main.css')}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
+      <script>
+      const imageStack = ${imageStack};
+      const imageBasePath = ${imageBasePath};
+      const env = "${this.getENV()}";
+      </script>
     </head>
     <body>
+    
       <section class="leporello-recog">
         ${image}
         <div class="leporello-recog__text">
@@ -262,9 +281,11 @@ exports.render = function (data) {
       </section>
 
       <section class="leporello-explore">
-
+        <div id="image-viewer" class="image-viewer">
+        </div>
       </section>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4.2/build/openseadragon/openseadragon.min.js"></script>
     <script src="${this.url('/assets/scripts/main.js')}"></script>
   </html>`;
 };
