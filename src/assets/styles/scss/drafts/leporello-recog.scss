@@ -1,7 +1,7 @@
 .leporello-recog {
-  margin: $l;
-  max-height: 80vh;
   overflow: hidden;
+  max-height: 80vh;
+  margin: $l;
 
   // Responsive Large
   // --------------------------------------------------------------------------
@@ -9,12 +9,6 @@
     display: grid;
     gap: $m;
     grid-template-columns: max($tile-xs) 1fr;
-  }
-
-  @media only screen and (min-width: $vp-xlarge) {
-    display: grid;
-    gap: $m;
-    grid-template-columns: 1fr $vp-medium;
   }
 
   // Image

@@ -1,23 +1,28 @@
 .image-description {
   padding: $m;
-  padding-left: 0;
+  padding-top: $xxs;
+  display: block;
+
+  &-text{
+    display: block;
+  }
 
   &-date {
-    font-weight: $fw-semibold;
     display: inline-block;
+    font-weight: $fw-semibold;
   }
 
   &-title {
-    font-weight: $fw-semibold;
     display: inline-block;
     color: $darkest;
+    font-weight: $fw-semibold;
 
     & + .image-description-title::before {
-      content: "//";
-      margin-left: $xxs;
-      margin-right: $xxs;
       display: inline-block;
+      margin-right: $xxs;
+      margin-left: $xxs;
       color: $dark;
+      content: "//";
       font-weight: $fw-light;
     }
 
@@ -26,15 +31,22 @@
     }
   }
 
-  dl {
+  .definition-list {
     margin-top: $m;
+    list-style: none;
+
     &::before {
-      content: " ";
       display: block;
       width: $xl;
+      border-top: solid $border-stroke-weight-s $darken-strong;
       margin-top: $xs;
       margin-bottom: $xs;
-      border-top: solid $border-stroke-weight-s $darken-strong;
+      content: " ";
     }
+  }
+
+  .flat-text{
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }

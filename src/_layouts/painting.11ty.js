@@ -221,7 +221,9 @@ const getImageBasePath = () => {
   return JSON.stringify(config['image-tiles']);
 }
 
-
+const getTranslations = () => {
+  return JSON.stringify(this.getTranslations());
+}
 
 exports.render = function (data) {
   langCode = getLangCode(data);
@@ -237,6 +239,7 @@ exports.render = function (data) {
   const sources = getSourcesBlock(data);
   const imageStack = getImageStack(data);
   const imageBasePath = getImageBasePath(data);
+  const translations = getTranslations(data);
   
   return `
   <!doctype html>
@@ -247,9 +250,11 @@ exports.render = function (data) {
       <link href="${this.url('/assets/main.css')}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
       <script>
+      const langCode = "${langCode}";
       const imageStack = ${imageStack};
       const imageBasePath = ${imageBasePath};
       const env = "${this.getENV()}";
+      const translations = ${translations};
       </script>
     </head>
     <body>
@@ -281,8 +286,12 @@ exports.render = function (data) {
       </section>
 
       <section class="leporello-explore">
-        <div id="image-viewer" class="image-viewer">
-        </div>
+        <figure class="main-image">
+          <div class="image-viewer">
+            <div id="viewer-content" class="image-viewer__content"></div>
+          </div>
+          <figcaption id="image-caption"></figcaption>
+        </figure>
       </section>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4.2/build/openseadragon/openseadragon.min.js"></script>

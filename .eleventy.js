@@ -85,6 +85,9 @@ module.exports = function (eleventyConfig) {
     return process.env.ELEVENTY_ENV;
   });
 
+  eleventyConfig.addJavaScriptFunction("getTranslations", () => {
+    return translations;
+  });
 
   /* Filter
   ########################################################################## */

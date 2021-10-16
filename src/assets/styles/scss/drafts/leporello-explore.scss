@@ -1,10 +1,8 @@
 .leporello-explore {
-  height: 300px;
   position: sticky;
   top: 0;
   border-top: solid $border-stroke-weight-s $light;
   box-shadow: $shadow-top;
-  min-height: 50vh;
 
   // Responsive Large
   // --------------------------------------------------------------------------
@@ -21,8 +19,23 @@
   }
 }
 
-.image-viewer {
+.main-image {
   width: 100%;
-  min-height: 50vh;
-  background-color: $darken;
+  padding: 0;
+  margin: 0;
+
+  .image-viewer {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    background-color: $darken;
+
+    &__content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
 }

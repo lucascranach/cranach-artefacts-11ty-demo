@@ -246,5 +246,13 @@
   "alternativeNumbers": {
     "de": "weitere Nummern",
     "en": "Alternative Numbers"
+  },
+  "authorAndRights": {
+    "de": "Autor und Rechte",
+    "en": "Author & Rights"
+  },
+  "source": {
+    "de": "Quelle",
+    "en": "Source"
   }
 }
