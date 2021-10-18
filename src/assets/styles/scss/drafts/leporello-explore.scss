@@ -66,8 +66,6 @@
   grid-template-columns: repeat(auto-fill, minmax($tile-xxxs, 1fr));
   list-style: none;
 
-
-
   &__item {
     width: 100%;
     aspect-ratio: 1/1;
@@ -82,7 +80,8 @@
     }
 
     &.is-active {
-      border: solid $border-stroke-weight-s $accent;
+      box-sizing: border-box;
+      border: solid $border-stroke-weight $accent;
     }
   }
 }

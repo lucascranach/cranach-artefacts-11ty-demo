@@ -20,6 +20,7 @@ class ImageViewer {
       },
     });
 
+    this.activeTrigger = false;
     this.caption = document.getElementById(captionId);
   }
 
@@ -58,12 +59,20 @@ class ImageViewer {
     this.caption.innerHTML = caption;
   }
 
-  setImage(type, index) {
+  handleTrigger(trigger) {
+    if (this.activeTrigger) { this.activeTrigger.classList.remove("is-active"); }
+    trigger.classList.add("is-active");
+    this.activeTrigger = trigger;
+    return;
+  }
 
+  showImage(type, index, trigger) {
+    
     const img = imageStack[type].images[index];
     const initialUrl = img.sizes.tiles.src;
     const url = env==='development' ? this.adaptUrl(initialUrl) : initialUrl;
     
+    if (trigger) this.handleTrigger(trigger);
     this.setCaption(img);
     this.viewer.open(url);
   }
@@ -75,8 +84,10 @@ class ImageViewer {
 document.addEventListener("DOMContentLoaded", function(event) {
   
   const imageViewer = new ImageViewer("viewer-content", "image-caption");
-  imageViewer.setImage('overall', 0);
-
+  const firstImageInStripe = document.querySelector("[data-js-change-image]");
+  const firstImageData = JSON.parse(firstImageInStripe.dataset.jsChangeImage);
+  imageViewer.showImage(firstImageData.key, firstImageData.index, firstImageInStripe);
+  
   document.addEventListener('click', (event) => {
     const { target } = event;
 
@@ -87,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
     if (target.dataset.jsChangeImage) {
       const data = JSON.parse(target.dataset.jsChangeImage);
-      imageViewer.setImage(data.key, data.index);
+      imageViewer.showImage(data.key, data.index, target);
     }
 
   }, true);
