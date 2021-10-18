@@ -131,6 +131,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addJavaScriptFunction("getLiteratureReferenceTableData", (ref, id) => {
+    if (!ref || !ref.connectedObjects) return '';
     const connectedObjects = ref.connectedObjects.filter(item => item.inventoryNumber === id);
     return connectedObjects.shift();
   });
