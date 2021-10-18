@@ -2,7 +2,7 @@
   display: block;
   max-width: $column-small;
   padding: $m;
-  padding-top: $xxs;
+  padding-top: $s;
 
   &-text {
     display: block;
@@ -33,15 +33,15 @@
   }
 
   .definition-list {
-    margin-top: $m;
+    margin-top: 0;
     list-style: none;
 
     &::before {
       display: block;
       width: $xl;
       border-top: solid $border-stroke-weight-s $darken-strong;
-      margin-top: $xs;
-      margin-bottom: $xs;
+      margin-top: $quad;
+      margin-bottom: $quad;
       content: " ";
     }
   }

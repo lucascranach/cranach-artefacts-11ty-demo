@@ -11,13 +11,11 @@
   // --------------------------------------------------------------------------
   @media only screen and (min-width: $vp-medium) {
     display: grid;
-    gap: $m;
     grid-template-columns: 1fr 1fr;
   }
 
   @media only screen and (min-width: $vp-xlarge) {
     display: grid;
-    gap: $m;
     grid-template-columns: 1fr max($column-medium);
   }
 }
@@ -61,13 +59,14 @@
   margin-bottom: $m;
   background-color: transparent;
   grid-auto-rows: 1fr;
-  grid-column-gap: $xs;
-  grid-row-gap: $xs;
-  grid-template-columns: repeat(auto-fill, minmax($tile-xxxs, 1fr));
+  grid-column-gap: $quad;
+  grid-row-gap: $quad;
+  grid-template-columns: repeat(auto-fit, minmax($tile-xxxs, 1fr));
   list-style: none;
 
   &__item {
-    width: 100%;
+    width: $tile-xxxs;
+    height: $tile-xxxs;
     aspect-ratio: 1/1;
     background-color: $lighter;
     transition: transform $tr-fast;
