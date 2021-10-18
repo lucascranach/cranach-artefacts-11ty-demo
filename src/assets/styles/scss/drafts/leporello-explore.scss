@@ -19,7 +19,8 @@
     grid-template-columns: 1fr max($column-medium);
   }
 
-  .block, .foldable-block {
+  .block,
+  .foldable-block {
     background-color: $lighter;
   }
 }
@@ -65,11 +66,12 @@
   overflow: hidden;
   height: 0;
   padding: 0;
+  margin-bottom: $xxs;
   background-color: transparent;
   grid-auto-rows: 1fr;
   grid-column-gap: $quad;
   grid-row-gap: $quad;
-  grid-template-columns: repeat(auto-fit, minmax($tile-xxxs, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax($tile-xxxs, 1fr));
   list-style: none;
   opacity: 0;
   transition: opacity $tr-fast;
@@ -97,6 +99,10 @@
       box-sizing: border-box;
       border: solid $border-stroke-weight $accent;
     }
+
+    &.is-hidden {
+      display: none;
+    }
   }
 }
 
@@ -122,6 +128,8 @@
     -webkit-appearance: none;
     appearance: none;
     background-color: transparent;
+    font-size: $m;
+    padding-right: $m;
 
     &::-ms-expand {
       display: none;
@@ -131,7 +139,7 @@
   &::before {
     position: absolute;
     top: 0;
-    right: 0;
+    right: $half;
     bottom: 0;
     display: flex;
     align-items: center;

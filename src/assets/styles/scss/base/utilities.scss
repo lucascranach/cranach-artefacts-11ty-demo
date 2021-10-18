@@ -1,3 +1,7 @@
 .has-interaction:hover {
   cursor: pointer;
 }
+
+.is-less-important{
+  opacity: $op-medium;
+}

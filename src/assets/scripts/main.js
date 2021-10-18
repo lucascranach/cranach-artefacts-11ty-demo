@@ -22,6 +22,7 @@ class ImageViewer {
 
     this.activeTrigger = false;
     this.caption = document.getElementById(captionId);
+    this.imageStripeItems = document.querySelectorAll("[data-js-change-image]");
   }
 
   adaptUrl(url) {
@@ -76,6 +77,15 @@ class ImageViewer {
     this.setCaption(img);
     this.viewer.open(url);
   }
+
+  filterImageStripe(element) {
+    const imageType = element.value;
+    this.imageStripeItems.forEach(item => {
+      const type = item.dataset.imageType;
+      item.classList.remove("is-hidden");
+      if (type !== imageType && imageType !== "all") item.classList.add("is-hidden");
+    });
+  }
 }
 
 /* Expand & Reduce Blocks
@@ -122,6 +132,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if (target.dataset.jsChangeImage) {
       const data = JSON.parse(target.dataset.jsChangeImage);
       imageViewer.showImage(data.key, data.index, target);
+    }
+
+  }, true);
+
+  document.addEventListener('change', (event) => {
+    const { target } = event;
+  
+    if (target.dataset.jsImageSelector) {
+      imageViewer.filterImageStripe(target);
     }
 
   }, true);

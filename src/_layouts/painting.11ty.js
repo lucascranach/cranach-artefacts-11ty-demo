@@ -31,12 +31,12 @@ const getTextBlock = ({ content }) => {
       `;
     }
   );
-  
+
   const historicDates = content.dating.historicEventInformations.map(date => {
     return `<dd class="definition-list__definition">${date.text} ${date.remarks}</dd>`;
   });
 
-  
+
   return `
     <div class="block">
       <dl class="definition-list">
@@ -89,7 +89,7 @@ const getInscriptionBlock = ({ content }) => {
   const inscription = content.inscription || content.markings ? `
   <dt class="definition-list__term">${this.translate("inscriptions", langCode)}</dt>
   <dd class="definition-list__definition">${content.inscription}${content.markings}</dd>` : '';
-  
+
   return `
     <div class="block">
 
@@ -117,14 +117,14 @@ const getSourcesBlock = ({ content }) => {
       <h3 class="is-medium">${this.translate("provenance", langCode)}</h3>
       ${this.markdownify(content.provenance)}
     </div>`;
-  
+
   const exhibitions = !content.exhibitionHistory ? '' : `
     <div class="block"> 
       <h3 class="is-medium">${this.translate("exhibitions", langCode)}</h3>
       ${this.markdownify(content.exhibitionHistory)}
     </div>`;
-  
-  
+
+
   const getLiteraturDetails = (item) => {
     const author = item && item.persons ? item.persons.filter(person => person.role === "AUTHOR").map(person => person.name) : [];
     const publisher = item && item.persons ? item.persons.filter(person => person.role === "PUBLISHER").map(person => person.name) : [];
@@ -204,7 +204,7 @@ const getSourcesBlock = ({ content }) => {
         </tbody>
       </table>
     </div>` : '';
-  
+
   return `
     ${provenance}
     ${exhibitions}
@@ -229,27 +229,43 @@ const getImageStripe = ({ content }) => {
   const config = this.getConfig();
   const imageStack = content.images;
   const imageTypes = config['imageTypes'];
-  const imageStripe = [];
   
-  for (const [key, value] of Object.entries(imageTypes)) {
-    if (imageStack && imageStack[key]) {
-      const images = imageStack[key].images;
-      const html = images.map((image, index) => {
-        const title = image.metadata && image.metadata[langCode] ? this.altText(image.metadata[langCode].description) : `${key}`;
-        return `
-          <li
-            class="image-stripe-list__item has-interaction"
-            data-image-type="${key}" 
-            data-image-index="${index}"
-            data-js-change-image='{"key":"${key}","index":${index}}'>
-            <img src="${image.sizes.xsmall.src}" alt="${title}">
-          </li>
-        `;
-      });
-    
-      imageStripe.push(html.join(""));
-    }
-  }
+  const imageStripe = Object.keys(imageTypes).map(key => {
+
+    if (!imageStack || !imageStack[key]) return;
+
+    const images = imageStack[key].images;
+    const html = images.map((image, index) => {
+      const title = image.metadata && image.metadata[langCode] ? this.altText(image.metadata[langCode].description) : `${key}`;
+      return `
+        <li
+          class="image-stripe-list__item has-interaction"
+          data-image-type="${key}" 
+          data-image-index="${index}"
+          data-js-change-image='{"key":"${key}","index":${index}}'>
+          <img src="${image.sizes.xsmall.src}" alt="${title}">
+        </li>
+      `;
+    });
+    return (html.join(""));
+
+  });
+
+  const availableImageTypes = Object.keys(imageTypes).map(key => {
+    if (!imageStack || !imageStack[key]) return;
+    const numberOfImages = imageStack[key].images.length;
+    const type = (numberOfImages === 0) ? '' : `<option value="${key}">${this.translate(key, langCode)} <span class="is-less-important">#${numberOfImages}</span></option>`;
+    return type;
+  });
+
+  const imageTypeSelector = `
+    <div class="imagetype-selector">
+      <select size="1" data-js-image-selector="true">
+        <option value="all">${this.translate('allImages', langCode)}</option>
+        ${availableImageTypes}
+      </select>
+    </div>
+  `;
 
   return `
     <div class="foldable-block">
@@ -257,15 +273,16 @@ const getImageStripe = ({ content }) => {
       <ul id="image-stripe" class="image-stripe-list">
         ${imageStripe.join("")}
       </ul>
+      ${imageTypeSelector}
     </div>
   `;
-  
+
 }
 
 exports.render = function (data) {
   langCode = getLangCode(data);
   data.content.url = `${this.getBaseUrl()}${data.page.url}`;
-  
+
   const header = getHeader(data);
   const title = getTitle(data);
   const image = getImage(data);
@@ -278,7 +295,7 @@ exports.render = function (data) {
   const imageBasePath = getImageBasePath(data);
   const translations = getTranslations(data);
   const imageStripe = getImageStripe(data);
-  
+
   return `
   <!doctype html>
   <html lang="de">
