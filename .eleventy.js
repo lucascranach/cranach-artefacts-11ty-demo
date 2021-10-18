@@ -1,4 +1,4 @@
-// const htmlmin = require('html-minifier');
+const htmlmin = require('html-minifier');
 const markdownIt = require('markdown-it');
 const rimraf = require('rimraf');
 
