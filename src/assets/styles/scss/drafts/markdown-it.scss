@@ -1,0 +1,18 @@
+.markdown-it{
+
+  ul{
+    li{
+      
+      margin-left: $s;
+
+      &::before {
+        display: inline-block;
+        width: $s;
+        margin-left: -$s;
+        color: $dark;
+        content: "•";
+        font-weight: $fw-semibold;
+      }
+    }
+  }
+}

@@ -151,7 +151,7 @@ module.exports = function (eleventyConfig) {
     if (modus === "log") {
       console.log(str);
     }
-    return markdownItRenderer.render(str);
+    return `<div class="markdown-it">${markdownItRenderer.render(str)}</div>`;
   });
 
   eleventyConfig.addFilter("altText", (str) => {

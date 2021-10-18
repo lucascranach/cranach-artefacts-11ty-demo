@@ -66,6 +66,8 @@
   grid-template-columns: repeat(auto-fill, minmax($tile-xxxs, 1fr));
   list-style: none;
 
+
+
   &__item {
     width: 100%;
     aspect-ratio: 1/1;
