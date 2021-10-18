@@ -5,7 +5,7 @@
   position: sticky;
   top: 100px;
   border-top: solid $border-stroke-weight-s $light;
-  box-shadow: $shadow-top;
+  background-color: $lighter;
 
   // Responsive Large
   // --------------------------------------------------------------------------
@@ -17,6 +17,10 @@
   @media only screen and (min-width: $vp-xlarge) {
     display: grid;
     grid-template-columns: 1fr max($column-medium);
+  }
+
+  .block, .foldable-block {
+    background-color: $lighter;
   }
 }
 
@@ -32,7 +36,6 @@
     position: relative;
     width: 100%;
     min-height: 80vh;
-    background-color: $darken;
 
     &__content {
       position: absolute;
@@ -49,26 +52,38 @@
   }
 }
 
+// Explore Content
+// --------------------------------------------------------------------------
+.explore-content {
+  padding: $m;
+}
+
 // Image Stripe List
 // --------------------------------------------------------------------------
-
 .image-stripe-list {
   display: grid;
+  overflow: hidden;
+  height: 0;
   padding: 0;
-  margin: $m;
-  margin-bottom: $m;
   background-color: transparent;
   grid-auto-rows: 1fr;
   grid-column-gap: $quad;
   grid-row-gap: $quad;
   grid-template-columns: repeat(auto-fit, minmax($tile-xxxs, 1fr));
   list-style: none;
+  opacity: 0;
+  transition: opacity $tr-fast;
+
+  &.is-visible {
+    height: auto;
+    opacity: 1;
+  }
 
   &__item {
     width: $tile-xxxs;
     height: $tile-xxxs;
     aspect-ratio: 1/1;
-    background-color: $lighter;
+    background-color: $darken-medium;
     transition: transform $tr-fast;
 
     img {

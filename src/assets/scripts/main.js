@@ -78,22 +78,45 @@ class ImageViewer {
   }
 }
 
+/* Expand & Reduce Blocks
+============================================================================ */
+const expandReduce = (trigger, targetId) => {
+  document.getElementById(targetId).classList.toggle("is-visible");
+  trigger.classList.toggle("is-expanded");
+}
+
 /* Main
 ============================================================================ */
 
 document.addEventListener("DOMContentLoaded", function(event) {
   
+  /* Image Viewer
+  --------------------------------------------------------------------------  */
   const imageViewer = new ImageViewer("viewer-content", "image-caption");
   const firstImageInStripe = document.querySelector("[data-js-change-image]");
   const firstImageData = JSON.parse(firstImageInStripe.dataset.jsChangeImage);
   imageViewer.showImage(firstImageData.key, firstImageData.index, firstImageInStripe);
   
+  /* Expand Blocks
+  --------------------------------------------------------------------------  */
+  const expandableBlocks = document.querySelectorAll("[data-js-expanded]");
+  expandableBlocks.forEach(block => {
+    expandReduce(block, block.dataset.jsExpandable);
+  });
+
+  /* Events
+  --------------------------------------------------------------------------  */
   document.addEventListener('click', (event) => {
     const { target } = event;
 
     if (target.dataset.jsToggleLiterature) {
       event.preventDefault();
       toggleLiteratureDetails(target.dataset.jsToggleLiterature);
+    }
+
+    if (target.dataset.jsExpandable) {
+      event.preventDefault();
+      expandReduce(target, target.dataset.jsExpandable);
     }
     
     if (target.dataset.jsChangeImage) {

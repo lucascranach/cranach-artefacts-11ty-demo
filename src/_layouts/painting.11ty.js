@@ -252,9 +252,12 @@ const getImageStripe = ({ content }) => {
   }
 
   return `
-    <ul class="image-stripe-list">
-      ${imageStripe.join("")}
-    </ul>
+    <div class="foldable-block">
+      <h2 class="foldable-block__headline is-expandable" data-js-expanded="true" data-js-expandable="image-stripe">Abbildungen</h2>
+      <ul id="image-stripe" class="image-stripe-list">
+        ${imageStripe.join("")}
+      </ul>
+    </div>
   `;
   
 }
@@ -329,7 +332,7 @@ exports.render = function (data) {
           <figcaption id="image-caption"></figcaption>
         </figure>
 
-        <div class="expore-content">
+        <div class="explore-content has-seperator">
           ${imageStripe}
         </div>
 

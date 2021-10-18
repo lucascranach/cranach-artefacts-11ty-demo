@@ -8,39 +8,41 @@
 .foldable-block {
   position: sticky;
   top: 0;
-  padding-top: $m;
-  border-top: solid $border-stroke-weight-s $light;
   background-color: $lightest;
 
-  .grouped-definition-list,
-  .definition-list {
-   /* display: none; */
-  }
-
-  &::after {
-    position: absolute;
-    top: $m;
-    right: 0;
-    content: "expand_more";
-    font-family: "Material Icons", sans-serif;
-    font-size: $m;
+  &.has-separator {
+    padding-top: $m;
+    border-top: solid $border-stroke-weight-s $light;
   }
 
   &__headline {
     padding-bottom: $m;
     margin: 0;
     font-size: $m;
-    font-weight: $fw-regular;
-  }
+    font-weight: $fw-semibold;
 
-  &.is-expanded {
-    &::after {
-      transform: rotate(180deg);
-    }
+    &.is-expandable {
+      position: relative;
 
-    .grouped-definition-list,
-    .definition-list {
-      display: block;
+      &:hover{
+        cursor: pointer;
+      }
+
+      &::after {
+        transition: transform $tr-fast;
+        position: absolute;
+        right: 0;
+        top: 0;
+        content: "expand_more";
+        font-family: $font-icons;
+        font-size: $m;
+      }
+
+      &.is-expanded {
+        &::after {
+          transform: rotate(180deg);
+        }
+      }
     }
   }
 }
@@ -52,6 +54,10 @@
   & + & {
     padding-top: $m;
     border-top: solid $border-stroke-weight-s $light;
+  }
+
+  h2, h3 {
+    margin-top: 0;
   }
 }
 
