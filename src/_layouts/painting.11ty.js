@@ -413,7 +413,7 @@ exports.render = function (data) {
       </section>
 
       <section class="leporello-explore">
-        <div>
+        <div class="main-image-wrap">
           <figure class="main-image">
             <div class="image-viewer">
               <div id="viewer-content" class="image-viewer__content"></div>

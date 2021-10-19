@@ -4,6 +4,10 @@
   padding: $m;
   padding-top: $s;
 
+  @media only screen and (min-width: $vp-xlarge) {
+    padding-left: 0;
+  }
+
   &-text {
     display: block;
   }
