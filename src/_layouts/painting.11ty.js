@@ -262,7 +262,7 @@ const getImageStripe = ({ content }) => {
     <div class="imagetype-selector">
       <select size="1" data-js-image-selector="true">
         <option value="all">${this.translate('allImages', langCode)}</option>
-        ${availableImageTypes}
+        ${availableImageTypes.join("")}
       </select>
     </div>
   `;

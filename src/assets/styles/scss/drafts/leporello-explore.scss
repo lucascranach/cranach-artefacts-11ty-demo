@@ -112,10 +112,11 @@
 .imagetype-selector {
   position: relative;
   display: inline-block;
-  border: solid $border-stroke-weight-s $light;
+  border: solid $border-stroke-weight-s $darken-medium;
   margin-bottom: $m;
   background-color: $darken;
   border-radius: $radius-s;
+
 
   &:hover {
     box-shadow: $shadow-xs;
@@ -123,13 +124,15 @@
 
   select {
     padding: $xxxs $xxs;
+    padding-right: $m;
     border: none;
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
     background-color: transparent;
+    color: $dark;
     font-size: $m;
-    padding-right: $m;
+    font-weight: $fw-regular;
 
     &::-ms-expand {
       display: none;
