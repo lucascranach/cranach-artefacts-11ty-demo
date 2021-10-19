@@ -2,6 +2,17 @@
   cursor: pointer;
 }
 
-.is-less-important{
+.is-less-important {
   opacity: $op-medium;
+}
+
+.has-small-seperator{
+  &::before {
+    display: block;
+    width: $xl;
+    border-top: solid $border-stroke-weight-s $darken-strong;
+    margin-top: $quad;
+    margin-bottom: $quad;
+    content: " ";
+  }
 }

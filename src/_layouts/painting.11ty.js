@@ -235,14 +235,15 @@ const getImageStripe = ({ content }) => {
     if (!imageStack || !imageStack[key]) return;
 
     const images = imageStack[key].images;
-    const html = images.map((image, index) => {
+    const html = images.map(image => {
+  
       const title = image.metadata && image.metadata[langCode] ? this.altText(image.metadata[langCode].description) : `${key}`;
       return `
         <li
           class="image-stripe-list__item has-interaction"
           data-image-type="${key}" 
-          data-image-index="${index}"
-          data-js-change-image='{"key":"${key}","index":${index}}'>
+          data-image-id="${image.id}"
+          data-js-change-image='{"key":"${key}","id":"${image.id}"}'>
           <img src="${image.sizes.xsmall.src}" alt="${title}">
         </li>
       `;
@@ -269,14 +270,84 @@ const getImageStripe = ({ content }) => {
 
   return `
     <div class="foldable-block">
-      <h2 class="foldable-block__headline is-expandable" data-js-expanded="true" data-js-expandable="image-stripe">Abbildungen</h2>
-      <ul id="image-stripe" class="image-stripe-list">
-        ${imageStripe.join("")}
-      </ul>
-      ${imageTypeSelector}
+      <h2 class="foldable-block__headline is-expandable" data-js-expanded="true" data-js-expandable="image-stripe">${this.translate("illustrations", langCode)}</h2>
+      <div id="image-stripe" class="expandable-content image-stripe">
+        <ul class="image-stripe-list">
+          ${imageStripe.join("")}
+        </ul>
+        ${imageTypeSelector}
+      </div>
     </div>
   `;
+}
 
+const ART_TECH_EXAMINATION = 'ArtTechExamination';
+const CONDITION_REPORT = 'ConditionReport';
+const CONSERVATION_REPORT = 'ConservationReport';
+
+const getArtTechExaminations = ({ content }) => {
+  const artTechExaminations = content.restorationSurveys.filter((rs) => rs.type === ART_TECH_EXAMINATION);
+
+  const artTechExaminationList = artTechExaminations.reverse().map(artTechExamination => {
+
+    const imageStripeItems = artTechExamination.fileReferences.map((file, index) => {
+      const type = file.type;
+      const id = file.id;
+      
+      if (!content.images[type]) return;
+      const image = content.images[type].images.filter(image => image.id === id).shift();
+      if(!image) return; 
+      
+      return `
+      <li
+        class="image-stripe-list__item has-interaction"
+        data-image-type="${type}" 
+        data-image-id="${id}"
+        data-js-change-image='{"key":"${type}","id":"${id}"}'>
+        <img src="${image.sizes.xsmall.src}" alt="${type}">
+      </li>
+      `;
+    });
+
+    const imageStripe = `<ul class="image-stripe-list">${imageStripeItems.join("")}</ul>`;
+
+    const tests = artTechExamination.tests.sort((a, b) => {return a.order-b.order}).map(test => {
+      const keywords = test.keywords.map(keyword => { return `<li>${keyword.name}</li>`; });
+      const order = `${test.order.toString().substr(0, 1)}.${test.order.toString().substr(1, 3)}`;
+      
+      const text = this.markdownify(test.text.replace(/\n/g, "\n\n"));
+      return `
+      <dt class="definition-list__term">${test.purpose}</dt>
+      <dd class="definition-list__definition">
+        <p>${keywords.join("<br>")}</p>
+        ${imageStripe}
+        <p>${order} ${test.kind}</p>
+        
+        ${text}
+      </dd>
+      `;
+    });
+    const processingDates = artTechExamination.processingDates;
+    const date = processingDates.beginDate !== processingDates.endDate ? `${processingDates.beginDate} - ${processingDates.endDate}` : processingDates.beginDate;
+
+    return `
+    <dl class="definition-list is-tight has-small-seperator">
+      <dt class="definition-list__term">${this.translate("date", langCode)}</dt>
+      <dd class="definition-list__definition">${date}</dd>
+      ${tests.join("")}
+    </dl>
+    `;
+  });
+  
+  return (artTechExaminations && artTechExaminations.length > 0) ? 
+    `
+    <div class="foldable-block">
+      <h2 class="foldable-block__headline is-expandable" data-js-expanded="true" data-js-expandable="art-technological-examination-content">${this.translate("artTechnologicalExamination", langCode)}</h2>
+      <div id="art-technological-examination-content" class="expandable-content">
+        ${artTechExaminationList.join("")}
+      </div>
+    </div>
+    ` : '';
 }
 
 exports.render = function (data) {
@@ -295,6 +366,7 @@ exports.render = function (data) {
   const imageBasePath = getImageBasePath(data);
   const translations = getTranslations(data);
   const imageStripe = getImageStripe(data);
+  const artTechExaminations = getArtTechExaminations(data);
 
   return `
   <!doctype html>
@@ -341,16 +413,17 @@ exports.render = function (data) {
       </section>
 
       <section class="leporello-explore">
-
-        <figure class="main-image">
-          <div class="image-viewer">
-            <div id="viewer-content" class="image-viewer__content"></div>
-          </div>
-          <figcaption id="image-caption"></figcaption>
-        </figure>
-
-        <div class="explore-content has-seperator">
+        <div>
+          <figure class="main-image">
+            <div class="image-viewer">
+              <div id="viewer-content" class="image-viewer__content"></div>
+            </div>
+            <figcaption id="image-caption"></figcaption>
+          </figure>
+        </div>
+        <div class="explore-content">
           ${imageStripe}
+          ${artTechExaminations}
         </div>
 
       </section>

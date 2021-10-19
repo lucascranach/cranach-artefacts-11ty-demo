@@ -47,7 +47,7 @@ class ImageViewer {
     const caption = `
     <ul class="image-description">
       ${fileType}${date}
-      <li class="image-description-text">
+      <li class="image-description-text has-small-seperator">
         <dl class="definition-list">
           ${author}
           ${source}
@@ -67,9 +67,9 @@ class ImageViewer {
     return;
   }
 
-  showImage(type, index, trigger) {
+  showImage(type, id, trigger) {
     
-    const img = imageStack[type].images[index];
+    const img = imageStack[type].images.filter(image => image.id === id).shift();
     const initialUrl = img.sizes.tiles.src;
     const url = env==='development' ? this.adaptUrl(initialUrl) : initialUrl;
     
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const imageViewer = new ImageViewer("viewer-content", "image-caption");
   const firstImageInStripe = document.querySelector("[data-js-change-image]");
   const firstImageData = JSON.parse(firstImageInStripe.dataset.jsChangeImage);
-  imageViewer.showImage(firstImageData.key, firstImageData.index, firstImageInStripe);
+  imageViewer.showImage(firstImageData.key, firstImageData.id, firstImageInStripe);
   
   /* Expand Blocks
   --------------------------------------------------------------------------  */
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
     if (target.dataset.jsChangeImage) {
       const data = JSON.parse(target.dataset.jsChangeImage);
-      imageViewer.showImage(data.key, data.index, target);
+      imageViewer.showImage(data.key, data.id, target);
     }
 
   }, true);

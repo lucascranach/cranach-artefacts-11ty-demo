@@ -7,10 +7,15 @@
 
 .foldable-block {
   position: sticky;
-  top: 0;
+  top: $m;
   background-color: $lightest;
 
   &.has-separator {
+    padding-top: $m;
+    border-top: solid $border-stroke-weight-s $light;
+  }
+
+  & + & {
     padding-top: $m;
     border-top: solid $border-stroke-weight-s $light;
   }
@@ -45,7 +50,20 @@
       }
     }
   }
+
+  .expandable-content {
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    transition: opacity $tr-fast;
+  
+    &.is-visible {
+      height: auto;
+      opacity: 1;
+    }
+  }
 }
+
 
 // Block
 // --------------------------------------------------------------------------

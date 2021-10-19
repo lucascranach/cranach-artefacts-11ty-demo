@@ -1,4 +1,8 @@
 {
+  "date":{
+    "de": "Datum",
+    "en": "Date"
+  },
   "all": {
     "de": "Alle",
     "en": "All"

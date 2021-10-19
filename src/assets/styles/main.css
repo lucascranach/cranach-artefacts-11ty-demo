@@ -493,8 +493,8 @@ a {
 }
 
 .title {
-  font-weight: 600;
   font-size: 1.68rem;
+  font-weight: 600;
 }
 .title::after {
   display: block;
@@ -523,6 +523,13 @@ td {
   line-height: 140%;
 }
 
+/* Headline
+---------------------------------------------------------------------------- */
+h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
 /* According to CUBE
     https://cube.fyi/composition.html#why-macro-level-thinking
 ############################################################################ */
@@ -531,10 +538,14 @@ td {
 ############################################################################ */
 .foldable-block {
   position: sticky;
-  top: 0;
+  top: 1.05rem;
   background-color: #fff;
 }
 .foldable-block.has-separator {
+  padding-top: 1.05rem;
+  border-top: solid 1px #b4b4b4;
+}
+.foldable-block + .foldable-block {
   padding-top: 1.05rem;
   border-top: solid 1px #b4b4b4;
 }
@@ -561,6 +572,16 @@ td {
 }
 .foldable-block__headline.is-expandable.is-expanded::after {
   transform: rotate(180deg);
+}
+.foldable-block .expandable-content {
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.foldable-block .expandable-content.is-visible {
+  height: auto;
+  opacity: 1;
 }
 
 .block + .block {
@@ -590,6 +611,15 @@ td {
 
 .is-less-important {
   opacity: 0.5;
+}
+
+.has-small-seperator::before {
+  display: block;
+  width: 1.68rem;
+  border-top: solid 1px rgba(0, 0, 0, 0.2);
+  margin-top: 0.2625rem;
+  margin-bottom: 0.2625rem;
+  content: " ";
 }
 
 ul {
@@ -633,6 +663,10 @@ ul li {
 }
 .definition-list__definition > .literature-table {
   margin-top: -0.672rem;
+}
+.definition-list.is-tight .definition-list__term,
+.definition-list.is-tight .definition-list__definition {
+  padding-bottom: 0;
 }
 
 .table {
@@ -733,14 +767,6 @@ ul li {
   margin-top: 0;
   list-style: none;
 }
-.image-description .definition-list::before {
-  display: block;
-  width: 1.68rem;
-  border-top: solid 1px rgba(0, 0, 0, 0.2);
-  margin-top: 0.2625rem;
-  margin-bottom: 0.2625rem;
-  content: " ";
-}
 .image-description .flat-text {
   margin-top: 0;
   margin-bottom: 0;
@@ -768,8 +794,6 @@ ul li {
 }
 
 .leporello-explore {
-  position: sticky;
-  top: 100px;
   border-top: solid 1px #b4b4b4;
   background-color: #f2f2f2;
 }
@@ -791,6 +815,8 @@ ul li {
 }
 
 .main-image {
+  position: sticky;
+  top: 1.05rem;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -813,13 +839,14 @@ ul li {
 }
 
 .explore-content {
-  padding: 1.05rem;
+  padding: 1.05rem 1.68rem 1.344rem 1.05rem;
 }
 
+.image-stripe {
+  padding-bottom: 1.344rem;
+}
 .image-stripe-list {
   display: grid;
-  overflow: hidden;
-  height: 0;
   padding: 0;
   margin-bottom: 0.525rem;
   background-color: transparent;
@@ -828,12 +855,6 @@ ul li {
   grid-row-gap: 0.2625rem;
   grid-template-columns: repeat(auto-fill, minmax(5.25rem, 1fr));
   list-style: none;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.image-stripe-list.is-visible {
-  height: auto;
-  opacity: 1;
 }
 .image-stripe-list__item {
   width: 5.25rem;
@@ -891,7 +912,7 @@ ul li {
   align-items: center;
   justify-content: center;
   content: "expand_more";
-  font-family: "Material Icons";
+  font-family: "MaterialIcons";
   font-size: 1.05rem;
 }
 

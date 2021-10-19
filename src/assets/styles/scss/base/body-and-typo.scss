@@ -41,8 +41,8 @@ a {
 }
 
 .title {
-  font-weight: $fw-bold;
   font-size: $xl;
+  font-weight: $fw-bold;
 
   &::after {
     display: block;
@@ -73,4 +73,10 @@ td {
   line-height: $lh-normal;
 }
 
+/* Headline
+---------------------------------------------------------------------------- */
 
+h3 {
+  font-size: $m;
+  font-weight: $fw-bold;
+}

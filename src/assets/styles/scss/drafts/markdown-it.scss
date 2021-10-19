@@ -1,18 +1,10 @@
-.markdown-it{
+.markdown-it {
+  ul {
+    list-style-type: disc;
 
-  ul{
-    li{
-      
+    li {
       margin-left: $s;
-
-      &::before {
-        display: inline-block;
-        width: $s;
-        margin-left: -$s;
-        color: $dark;
-        content: "•";
-        font-weight: $fw-semibold;
-      }
+      list-style-type: square;
     }
   }
 }

@@ -10,7 +10,7 @@ ul {
   }
 }
 
-// Definition List 
+// Definition List
 //-----------------------------------------------------------------------------
 
 .definition-list {
@@ -47,6 +47,13 @@ ul {
 
     & > .literature-table {
       margin-top: -$xs;
+    }
+  }
+
+  &.is-tight {
+    .definition-list__term,
+    .definition-list__definition {
+      padding-bottom: 0;
     }
   }
 }

@@ -60,7 +60,7 @@ const devConfig = {
         "fragment":"Transmitted-light",
         "sort":"13"
      }
-  }
+  },
 }
 
 const paintingsDataDE = require("./src/_data/cda-paintings-v2.de.json");
@@ -166,7 +166,7 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   eleventyConfig.addCollection("paintingsDE", (collection) => {
-    return paintingsDE = paintingsDataDE.items.slice(0, 3);
+    return paintingsDE = paintingsDataDE.items.slice(2, 3);
   });
 
   /* Shortcodes

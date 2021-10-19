@@ -36,14 +36,6 @@
     margin-top: 0;
     list-style: none;
 
-    &::before {
-      display: block;
-      width: $xl;
-      border-top: solid $border-stroke-weight-s $darken-strong;
-      margin-top: $quad;
-      margin-bottom: $quad;
-      content: " ";
-    }
   }
 
   .flat-text {
