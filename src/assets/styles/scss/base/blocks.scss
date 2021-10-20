@@ -25,28 +25,28 @@
     margin: 0;
     font-size: $l;
     font-weight: $fw-semibold;
+  }
 
-    &.is-expandable {
-      position: relative;
+  .is-expand-trigger {
+    position: relative;
 
-      &:hover {
-        cursor: pointer;
-      }
+    &:hover {
+      cursor: pointer;
+    }
 
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      content: "expand_more";
+      font-family: $font-icons;
+      font-size: $m;
+      transition: transform $tr-fast;
+    }
+
+    &.is-expanded {
       &::after {
-        position: absolute;
-        top: 0;
-        right: 0;
-        content: "expand_more";
-        font-family: $font-icons;
-        font-size: $m;
-        transition: transform $tr-fast;
-      }
-
-      &.is-expanded {
-        &::after {
-          transform: rotate(180deg);
-        }
+        transform: rotate(180deg);
       }
     }
   }
@@ -56,14 +56,13 @@
     height: 0;
     opacity: 0;
     transition: opacity $tr-fast;
-  
+
     &.is-visible {
       height: auto;
       opacity: 1;
     }
   }
 }
-
 
 // Block
 // --------------------------------------------------------------------------

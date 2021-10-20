@@ -6,7 +6,7 @@
   opacity: $op-medium;
 }
 
-.has-small-seperator{
+.has-small-seperator {
   &::before {
     display: block;
     width: $xl;
@@ -14,5 +14,16 @@
     margin-top: $quad;
     margin-bottom: $quad;
     content: " ";
+  }
+}
+
+.is-identifier {
+  display: inline;
+  font-weight: $fw-semibold;
+
+  &::after {
+    display: inline-block;
+    padding-right: $quad;
+    content: ":";
   }
 }

@@ -1,0 +1,51 @@
+.survey {
+  padding-bottom: $m;
+  margin-bottom: $m;
+
+  &-title {
+    margin-top: 0;
+    margin-bottom: $quad;
+    font-weight: $fw-semibold;
+    line-height: $lh-normal;
+  }
+
+  &-keywords {
+    margin-bottom: $l;
+    color: $dark;
+    font-weight: $fw-regular;
+
+    & > li {
+      display: inline;
+    }
+
+    li + li::before {
+      display: inline-block;
+      padding-right: $quad;
+      content: ",";
+    }
+  }
+
+  &-persons {
+    position: relative;
+    font-weight: $fw-regular;
+
+    & > li{
+      margin-left: $xxl;
+    }
+
+    &::before {
+      color: $dark;
+      content: "people";
+      font-family: $font-icons;
+      font-size: $l;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+  }
+
+  &-kind {
+    font-weight: $fw-regular;
+  }
+}

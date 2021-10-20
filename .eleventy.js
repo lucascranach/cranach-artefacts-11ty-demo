@@ -151,6 +151,8 @@ module.exports = function (eleventyConfig) {
     if (modus === "log") {
       console.log(str);
     }
+
+    // str = str.replace(/([a-zA-Z0-9].*?)\:/g, "<span class='is-identifier'>$1</span>");
     return `<div class="markdown-it">${markdownItRenderer.render(str)}</div>`;
   });
 
@@ -160,6 +162,16 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("stripTags", (str) => {
     return str.replace(/<.*?>/g, "");
+  });
+
+  eleventyConfig.addFilter("slugify", (str) => {
+    str = str.replace(/^\s+|\s+$/g, '').toLowerCase();
+    const from = "ÁÄÂÀÃÅČÇĆĎÉĚËÈÊẼĔȆÍÌÎÏŇÑÓÖÒÔÕØŘŔŠŤÚŮÜÙÛÝŸŽáäâàãåčçćďéěëèêẽĕȇíìîïňñóöòôõøðřŕšťúůüùûýÿžþÞĐđßÆa·/_,:;",
+      to   = "AAAAAACCCDEEEEEEEEIIIINNOOOOOORRSTUUUUUYYZaaaaaacccdeeeeeeeeiiiinnooooooorrstuuuuuyyzbBDdBAa------";
+    for (var i=0, l=from.length ; i<l ; i++) {
+        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+    }
+    return str.replace(/[^a-z0-9 -]/g, '') .replace(/\s+/g, '-') .replace(/-+/g, '-'); 
   });
 
   /* Collections
@@ -177,7 +189,6 @@ module.exports = function (eleventyConfig) {
     <meta name="googlebot" content="noindex">
     <meta name="googlebot-news" content="noindex">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 `});
 
 

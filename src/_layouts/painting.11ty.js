@@ -23,7 +23,7 @@ const getImage = ({ content }) => {
 const getTextBlock = ({ content }) => {
   const attribution = content.involvedPersons.map(
     (item) => {
-      const remarks = item.remarks ? `<span className="remarks">${item.remarks}</span>` : '';
+      const remarks = item.remarks ? `<span class="remarks">${item.remarks}</span>` : '';
       return `
         <dd class="definition-list__definition">
           ${item.alternativeName}, ${item.role}${remarks}
@@ -72,13 +72,13 @@ const getLocationBlock = ({ content }) => {
 
       <dl class="definition-list">
         <dt class="definition-list__term">${this.translate("owner", langCode)}</dt>
-        ${content.owner}
+        <dd class="definition-list__definition">${content.owner}</dd>
 
         <dt class="definition-list__term">${this.translate("repository", langCode)}</dt>
-        ${content.repository}
+        <dd class="definition-list__definition">${content.repository}</dd>
 
         <dt class="definition-list__term">${this.translate("location", langCode)}</dt>
-        ${content.locations[0].term}
+        <dd class="definition-list__definition">${content.locations[0].term}</dd>
       </dl>
 
     </div>
@@ -255,7 +255,7 @@ const getImageStripe = ({ content }) => {
   const availableImageTypes = Object.keys(imageTypes).map(key => {
     if (!imageStack || !imageStack[key]) return;
     const numberOfImages = imageStack[key].images.length;
-    const type = (numberOfImages === 0) ? '' : `<option value="${key}">${this.translate(key, langCode)} <span class="is-less-important">#${numberOfImages}</span></option>`;
+    const type = (numberOfImages === 0) ? '' : `<option value="${key}">${this.translate(key, langCode)} (${numberOfImages})</option>`;
     return type;
   });
 
@@ -270,7 +270,7 @@ const getImageStripe = ({ content }) => {
 
   return `
     <div class="foldable-block">
-      <h2 class="foldable-block__headline is-expandable" data-js-expanded="true" data-js-expandable="image-stripe">${this.translate("illustrations", langCode)}</h2>
+      <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="true" data-js-expandable="image-stripe">${this.translate("illustrations", langCode)}</h2>
       <div id="image-stripe" class="expandable-content image-stripe">
         <ul class="image-stripe-list">
           ${imageStripe.join("")}
@@ -288,9 +288,9 @@ const CONSERVATION_REPORT = 'ConservationReport';
 const getArtTechExaminations = ({ content }) => {
   const artTechExaminations = content.restorationSurveys.filter((rs) => rs.type === ART_TECH_EXAMINATION);
 
-  const artTechExaminationList = artTechExaminations.reverse().map(artTechExamination => {
+  const artTechExaminationList = artTechExaminations.reverse().map((artTechExamination, index) => {
 
-    const imageStripeItems = artTechExamination.fileReferences.map((file, index) => {
+    const imageStripeItems = artTechExamination.fileReferences.map((file) => {
       const type = file.type;
       const id = file.id;
       
@@ -308,41 +308,57 @@ const getArtTechExaminations = ({ content }) => {
       </li>
       `;
     });
+    console.log(imageStripeItems.length);
+    const imageStripeExamination= imageStripeItems.length > 0 ? `<ul class="image-stripe-list">${imageStripeItems.join("")}</ul>` : '';
 
-    const imageStripe = `<ul class="image-stripe-list">${imageStripeItems.join("")}</ul>`;
+    const involvedPersons = artTechExamination.involvedPersons.map(person => {
+      return `<li>${person.role} ${person.name}</li>`;
+    })
+    
+    const firstItem = artTechExamination.tests && artTechExamination.tests.length > 0 ? artTechExamination.tests[0]: false;
+    const surveyTitle = firstItem.purpose;
+    const surveyKeywords = !firstItem ? [] : firstItem.keywords.map(keyword => {
+      return `<li>${keyword.name}</li>`;
+    });
 
-    const tests = artTechExamination.tests.sort((a, b) => {return a.order-b.order}).map(test => {
-      const keywords = test.keywords.map(keyword => { return `<li>${keyword.name}</li>`; });
+    const surveyContent = artTechExamination.tests.sort((a, b) => {return a.order-b.order}).map(test => {
       const order = `${test.order.toString().substr(0, 1)}.${test.order.toString().substr(1, 3)}`;
-      
       const text = this.markdownify(test.text.replace(/\n/g, "\n\n"));
       return `
-      <dt class="definition-list__term">${test.purpose}</dt>
-      <dd class="definition-list__definition">
-        <p>${keywords.join("<br>")}</p>
-        ${imageStripe}
-        <p>${order} ${test.kind}</p>
-        
+        <h4 class="survey-kind">${order} ${test.kind}</h4>
         ${text}
-      </dd>
       `;
     });
     const processingDates = artTechExamination.processingDates;
     const date = processingDates.beginDate !== processingDates.endDate ? `${processingDates.beginDate} - ${processingDates.endDate}` : processingDates.beginDate;
 
+    const surveySlug = this.slugify(`${date}-${surveyTitle}-${index}`);
+
     return `
-    <dl class="definition-list is-tight has-small-seperator">
-      <dt class="definition-list__term">${this.translate("date", langCode)}</dt>
-      <dd class="definition-list__definition">${date}</dd>
-      ${tests.join("")}
-    </dl>
+    <div class="survey foldable-block">
+      <header class="survey-header is-expand-trigger" data-js-expanded="false" data-js-expandable="${surveySlug}">
+        <h3 class="survey-title"><span class="is-identifier">${date}</span>${surveyTitle}</h3>
+        <ul class="survey-keywords">
+          ${surveyKeywords.join("")}
+        </ul>
+        ${imageStripeExamination}
+      </header>
+
+      <div class="survey-content expandable-content" id="${surveySlug}">
+        ${surveyContent.join("")}
+        <ul class="survey-persons">
+          ${involvedPersons}
+        </ul>
+      </div>
+    </div>
     `;
   });
+
   
   return (artTechExaminations && artTechExaminations.length > 0) ? 
     `
     <div class="foldable-block">
-      <h2 class="foldable-block__headline is-expandable" data-js-expanded="true" data-js-expandable="art-technological-examination-content">${this.translate("artTechnologicalExamination", langCode)}</h2>
+      <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="true" data-js-expandable="art-technological-examination-content">${this.translate("artTechnologicalExamination", langCode)}</h2>
       <div id="art-technological-examination-content" class="expandable-content">
         ${artTechExaminationList.join("")}
       </div>
@@ -368,8 +384,7 @@ exports.render = function (data) {
   const imageStripe = getImageStripe(data);
   const artTechExaminations = getArtTechExaminations(data);
 
-  return `
-  <!doctype html>
+  return `<!doctype html>
   <html lang="de">
     <head>
       <title>cda // ${this.translate("paintings", langCode)} // ${title}</title>
@@ -425,10 +440,10 @@ exports.render = function (data) {
           ${imageStripe}
           ${artTechExaminations}
         </div>
-
       </section>
+
+      <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4.2/build/openseadragon/openseadragon.min.js"></script>
+      <script src="${this.url('/assets/scripts/main.js')}"></script>
     </body>
-    <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4.2/build/openseadragon/openseadragon.min.js"></script>
-    <script src="${this.url('/assets/scripts/main.js')}"></script>
   </html>`;
 };
