@@ -91,7 +91,7 @@
     "de": "VD16-Nr.",
     "en": "VD16-No."
   },
-  "artTechnologicalExamination": {
+  "ArtTechExamination": {
     "de": "Kunsttechnologische Untersuchung",
     "en": "Art-technological examination"
   },
@@ -99,7 +99,12 @@
     "de": "Erhaltungszustand",
     "en": "Condition"
   },
-  "conservationHistory": {
+
+  "ConditionReport": {
+    "de": "Erhaltungszustand",
+    "en": "Condition Reports"
+  },
+  "ConservationReport": {
     "de": "Restaurierungsgeschichte",
     "en": "Conservation History"
   },

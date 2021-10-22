@@ -269,7 +269,7 @@ const getImageStripe = ({ content }) => {
   `;
 
   return `
-    <div class="foldable-block">
+    <div class="foldable-block is-sticky">
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="true" data-js-expandable="image-stripe">${this.translate("illustrations", langCode)}</h2>
       <div id="image-stripe" class="expandable-content image-stripe">
         <ul class="image-stripe-list">
@@ -285,12 +285,11 @@ const ART_TECH_EXAMINATION = 'ArtTechExamination';
 const CONDITION_REPORT = 'ConditionReport';
 const CONSERVATION_REPORT = 'ConservationReport';
 
-const getArtTechExaminations = ({ content }) => {
-  const artTechExaminations = content.restorationSurveys.filter((rs) => rs.type === ART_TECH_EXAMINATION);
+const getReports = ({ content }, type) => {
+  const reports = content.restorationSurveys.filter((rs) => rs.type === type);
+  const reportList = reports.reverse().map((report, index) => {
 
-  const artTechExaminationList = artTechExaminations.reverse().map((artTechExamination, index) => {
-
-    const imageStripeItems = artTechExamination.fileReferences.map((file) => {
+    const imageStripeItems = report.fileReferences.map((file) => {
       const type = file.type;
       const id = file.id;
       
@@ -308,20 +307,17 @@ const getArtTechExaminations = ({ content }) => {
       </li>
       `;
     });
-    console.log(imageStripeItems.length);
-    const imageStripeExamination= imageStripeItems.length > 0 ? `<ul class="image-stripe-list">${imageStripeItems.join("")}</ul>` : '';
-
-    const involvedPersons = artTechExamination.involvedPersons.map(person => {
+    const imageStripeReport = imageStripeItems.length > 0 ? `<ul class="image-stripe-list">${imageStripeItems.join("")}</ul>` : '';
+    const involvedPersons = report.involvedPersons.map(person => {
       return `<li>${person.role} ${person.name}</li>`;
     })
-    
-    const firstItem = artTechExamination.tests && artTechExamination.tests.length > 0 ? artTechExamination.tests[0]: false;
+    const firstItem = report.tests && report.tests.length > 0 ? report.tests[0]: false;
     const surveyTitle = firstItem.purpose;
-    const surveyKeywords = !firstItem ? [] : firstItem.keywords.map(keyword => {
+    const surveyKeywordList = !firstItem ? [] : firstItem.keywords.map(keyword => {
       return `<li>${keyword.name}</li>`;
     });
-
-    const surveyContent = artTechExamination.tests.sort((a, b) => {return a.order-b.order}).map(test => {
+    const surveyKeywords = surveyKeywordList.length > 0 ? `<ul class="survey-keywords">${surveyKeywordList.join("")}</ul>`: '';
+    const surveyContent = report.tests.sort((a, b) => {return a.order-b.order}).map(test => {
       const order = `${test.order.toString().substr(0, 1)}.${test.order.toString().substr(1, 3)}`;
       const text = this.markdownify(test.text.replace(/\n/g, "\n\n"));
       return `
@@ -329,23 +325,29 @@ const getArtTechExaminations = ({ content }) => {
         ${text}
       `;
     });
-    const processingDates = artTechExamination.processingDates;
+    const processingDates = report.processingDates;
+    const project = report.project ? this.markdownify(report.project.replace(/\n/g, "\n\n")) : '';
+    const overallAnalysis = report.overallAnalysis ? this.markdownify(report.overallAnalysis.replace(/\n/g, "\n\n")) : '';
+    const remarks = report.remarks ? this.markdownify(report.remarks.replace(/\n/g, "\n\n")) : '';
     const date = processingDates.beginDate !== processingDates.endDate ? `${processingDates.beginDate} - ${processingDates.endDate}` : processingDates.beginDate;
-
-    const surveySlug = this.slugify(`${date}-${surveyTitle}-${index}`);
+    const surveySlug = this.slugify(`${date}-${surveyTitle}-${index}-${type}`);
+    const title = surveyTitle ?
+      `<h3 class="survey-title"><span class="is-identifier">${date}</span>${surveyTitle}</h3>` :
+      `<h3 class="survey-title"><span class="is-identifier">${this.translate("date", langCode)}</span>${date}</h3>`;
 
     return `
     <div class="survey foldable-block">
-      <header class="survey-header is-expand-trigger" data-js-expanded="false" data-js-expandable="${surveySlug}">
-        <h3 class="survey-title"><span class="is-identifier">${date}</span>${surveyTitle}</h3>
-        <ul class="survey-keywords">
-          ${surveyKeywords.join("")}
-        </ul>
-        ${imageStripeExamination}
+      <header class="survey-header is-expand-trigger" data-js-expanded="true" data-js-expandable="${surveySlug}">
+        ${title}
+        ${surveyKeywords}
+        ${imageStripeReport}
       </header>
 
       <div class="survey-content expandable-content" id="${surveySlug}">
         ${surveyContent.join("")}
+        ${project}
+        ${overallAnalysis}
+        ${remarks}
         <ul class="survey-persons">
           ${involvedPersons}
         </ul>
@@ -355,16 +357,18 @@ const getArtTechExaminations = ({ content }) => {
   });
 
   
-  return (artTechExaminations && artTechExaminations.length > 0) ? 
+  return (reports && reports.length > 0) ? 
     `
     <div class="foldable-block">
-      <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="true" data-js-expandable="art-technological-examination-content">${this.translate("artTechnologicalExamination", langCode)}</h2>
-      <div id="art-technological-examination-content" class="expandable-content">
-        ${artTechExaminationList.join("")}
+      <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="report-${type}">${this.translate(type, langCode)}</h2>
+      <div id="report-${type}" class="expandable-content">
+        ${reportList.join("")}
       </div>
     </div>
     ` : '';
 }
+
+
 
 exports.render = function (data) {
   langCode = getLangCode(data);
@@ -382,7 +386,9 @@ exports.render = function (data) {
   const imageBasePath = getImageBasePath(data);
   const translations = getTranslations(data);
   const imageStripe = getImageStripe(data);
-  const artTechExaminations = getArtTechExaminations(data);
+  const artTechExaminations = getReports(data, ART_TECH_EXAMINATION);
+  const conditionReport = getReports(data, CONDITION_REPORT);
+  const conservationReport = getReports(data, CONSERVATION_REPORT);
 
   return `<!doctype html>
   <html lang="de">
@@ -439,6 +445,8 @@ exports.render = function (data) {
         <div class="explore-content">
           ${imageStripe}
           ${artTechExaminations}
+          ${conditionReport}
+          ${conservationReport}
         </div>
       </section>
 

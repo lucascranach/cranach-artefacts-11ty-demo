@@ -1,6 +1,5 @@
 .survey {
   padding-bottom: $m;
-  margin-bottom: $m;
 
   &-title {
     margin-top: 0;
@@ -29,19 +28,19 @@
     position: relative;
     font-weight: $fw-regular;
 
-    & > li{
+    & > li {
       margin-left: $xxl;
     }
 
     &::before {
-      color: $dark;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      color: $darken-strong;
       content: "people";
       font-family: $font-icons;
       font-size: $l;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
     }
   }
 

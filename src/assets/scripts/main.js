@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   
   /* Expand Blocks
   --------------------------------------------------------------------------  */
-  const expandableBlocks = document.querySelectorAll("[data-js-expanded]");
+  const expandableBlocks = document.querySelectorAll("[data-js-expanded=true]");
   expandableBlocks.forEach(block => {
     expandReduce(block, block.dataset.jsExpandable);
   });
