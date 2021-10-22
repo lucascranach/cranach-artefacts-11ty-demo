@@ -8,6 +8,13 @@ ul {
     line-height: $lh-normal;
     list-style-type: none;
   }
+
+  &.simple{
+    li{
+      list-style-type: square;
+      margin-left: $m;
+    }
+  }
 }
 
 // Definition List
@@ -43,6 +50,10 @@ ul {
 
     &:last-child {
       border-bottom: none;
+    }
+
+    &.is-block{
+      display: block;
     }
 
     & > .literature-table {

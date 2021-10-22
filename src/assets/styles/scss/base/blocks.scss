@@ -11,17 +11,13 @@
   position: relative;
 
   &.has-separator {
-    padding-top: $m;
     border-top: solid $border-stroke-weight-s $light;
-  }
-
-  & + & {
-    padding-top: $m;
-    border-top: solid $border-stroke-weight-s $light;
+    padding-top: $s;
   }
 
   &__headline {
     padding-bottom: $m;
+
     margin: 0;
     font-size: $l;
     font-weight: $fw-light;
@@ -75,13 +71,14 @@
 
 .block {
   & + & {
-    padding-top: $m;
+    padding-top: $s;
     border-top: solid $border-stroke-weight-s $light;
   }
 
   h2,
   h3 {
     margin-top: 0;
+    font-weight: $fw-light;
   }
 }
 

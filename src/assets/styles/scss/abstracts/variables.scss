@@ -11,20 +11,19 @@ $lightest:#fff;
 $lighten: rgba(255, 255, 255, 0.06);
 $lighten-strong: rgba(255, 255, 255, 0.2);
 $accent: #fc0;
+$accent-dark: #E68E0B;
 $error: #c00;
 $darken: rgba(0, 0, 0, 0.06);
 $darken-medium: rgba(0, 0, 0, 0.1);
-$darken-strong: rgba(0, 0, 0, 0.2);
+$darken-strong: rgba(0, 0, 0, 0.6);
 
 /* Viewports
 ---------------------------------------------------------------------------- */
 
-$vp-medium: 720px;
+$vp-medium: 768px;
 $vp-large: 1024px;
-$vp-xlarge: 1400px;
-$vp-xxlarge: 1700px;
-$vp-3xlarge: 2000px;
-$vp-4xlarge: 2300px;
+$vp-xlarge: 1440px;
+$vp-xxlarge: 1900px;
 
 /* Größen und Abstände
 ---------------------------------------------------------------------------- */

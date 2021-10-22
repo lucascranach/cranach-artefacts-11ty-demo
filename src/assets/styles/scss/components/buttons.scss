@@ -1,0 +1,66 @@
+.button {
+  border: none;
+  border-radius: $radius-s;
+  font-weight: $fw-light;
+  padding: $quad $half;
+  display: flex;
+  align-items: center;
+  border: solid $border-stroke-weight-s $darken-medium;
+  margin: $quad 0;
+
+  &:hover{
+    cursor: pointer;
+  }
+
+  &.unfold-more{
+    margin-left: -$m;
+    opacity: $op-medium;
+
+    &:hover{
+      opacity: 1;
+    }
+
+    &::before{
+      display: inline-block;
+      content: "unfold_more";
+      font-family: $font-icons;
+      padding-right: $quad;
+      margin-left: -$quad;
+      color: $accent-dark;
+    }
+  }
+
+  &.unfold-more::after{
+    content: attr(data-text-more);
+  }
+
+  &.is-expanded.unfold-more::before{
+    content: "unfold_less";
+  }
+
+  &.is-expanded.unfold-more::after{
+    content: attr(data-text-less);
+  }
+
+  .icon{
+    display: inline-block;
+    padding-right: $quad;
+    margin-left: -$quad;
+  }
+
+  &.is-transparent {
+    background-color: transparent;
+    border: none;
+    padding-left: 0;
+  }
+
+  &.is-small{
+    font-size: $s;
+  }
+
+  &.has-accent{
+    .icon{
+      color: $accent-dark;
+    }
+  }
+}

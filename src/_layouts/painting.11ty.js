@@ -23,7 +23,7 @@ const getImage = ({ content }) => {
 const getTextBlock = ({ content }) => {
   const attribution = content.involvedPersons.map(
     (item) => {
-      const remarks = item.remarks ? `<span class="remarks">${item.remarks}</span>` : '';
+      const remarks = item.remarks ? `<span class="is-remark">${item.remarks}</span>` : '';
       return `
         <dd class="definition-list__definition">
           ${item.alternativeName}, ${item.role}${remarks}
@@ -32,9 +32,24 @@ const getTextBlock = ({ content }) => {
     }
   );
 
-  const historicDates = content.dating.historicEventInformations.map(date => {
-    return `<dd class="definition-list__definition">${date.text} ${date.remarks}</dd>`;
+  const historicDateList = content.dating.historicEventInformations.map(date => {
+    return `<li>${date.text} ${date.remarks}</li>`;
   });
+
+  const historicDates = content.dating.historicEventInformations.length === 0 ? '' : `
+    <div class="foldable-block">
+      <button
+        class="button is-transparent has-accent unfold-more"
+        data-js-expanded="false"
+        data-js-expandable="historic-date-list"
+        data-text-more="${this.translate('showMore', langCode)}"
+        data-text-less="${this.translate('showLess', langCode)}"></button>
+      <ul id="historic-date-list" class="simple expandable-content">
+        ${historicDateList.join("")}
+      </ul>
+    </div>
+  `;
+
 
 
   return `
@@ -49,10 +64,10 @@ const getTextBlock = ({ content }) => {
         ${historicDates}
 
         <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
-        <dd class="definition-list__definition">${content.dimensions}</dd>
+        <dd class="definition-list__definition">${content.dimensions.replace(/\n/, "; ")}</dd>
 
         <dt class="definition-list__term">${this.translate("signature", langCode)}</dt>
-        <dd class="definition-list__definition">${content.signature}</dd>
+        <dd class="definition-list__definition">${content.signature.replace(/\n/, "; ")}</dd>
       </dl>
     </div>
   `;
@@ -114,14 +129,16 @@ const getSourcesBlock = ({ content }) => {
 
   const provenance = !content.provenance ? '' : `
     <div class="block">
-      <h3 class="is-medium">${this.translate("provenance", langCode)}</h3>
+      <h2>${this.translate("provenance", langCode)}</h2>
       ${this.markdownify(content.provenance)}
     </div>`;
 
   const exhibitions = !content.exhibitionHistory ? '' : `
-    <div class="block"> 
-      <h3 class="is-medium">${this.translate("exhibitions", langCode)}</h3>
+    <div class="foldable-block has-separator"> 
+      <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="exhibition-history">${this.translate("exhibitions", langCode)}</h2>
+      <div class="expandable-content" id="exhibition-history">
       ${this.markdownify(content.exhibitionHistory)}
+      </div>
     </div>`;
 
 
@@ -188,21 +205,23 @@ const getSourcesBlock = ({ content }) => {
   );
 
   const publications = content.publications ? `
-    <div class="block"> 
-      <h3 class="is-medium">${this.translate("literature", langCode)}</h3>
-      <table class="table literature">
-        <thead class="head">
-          <tr class="row">
-            <td class="cell" style="width: 40%"></td>
-            <td class="cell" style="width: 20%">${this.translate("referenceOnPage", langCode)}</td>
-            <td class="cell" style="width: 20%">${this.translate("catalogueNumber", langCode)}</td>
-            <td class="cell" style="width: 20%">${this.translate("plate", langCode)}</td>
-          </tr>
-        </thead>
-        <tbody class="body">
-        ${publicationList.join("\n")}
-        </tbody>
-      </table>
+    <div class="foldable-block has-separator"> 
+      <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="literature-list">${this.translate("literature", langCode)}</h2>
+      <div id="literature-list" class="expandable-content">
+        <table class="table literature">
+          <thead class="head">
+            <tr class="row">
+              <td class="cell" style="width: 40%"></td>
+              <td class="cell" style="width: 20%">${this.translate("referenceOnPage", langCode)}</td>
+              <td class="cell" style="width: 20%">${this.translate("catalogueNumber", langCode)}</td>
+              <td class="cell" style="width: 20%">${this.translate("plate", langCode)}</td>
+            </tr>
+          </thead>
+          <tbody class="body">
+          ${publicationList.join("\n")}
+          </tbody>
+        </table>
+      </div>
     </div>` : '';
 
   return `
@@ -319,7 +338,8 @@ const getReports = ({ content }, type) => {
     const surveyKeywords = surveyKeywordList.length > 0 ? `<ul class="survey-keywords">${surveyKeywordList.join("")}</ul>`: '';
     const surveyContent = report.tests.sort((a, b) => {return a.order-b.order}).map(test => {
       const order = `${test.order.toString().substr(0, 1)}.${test.order.toString().substr(1, 3)}`;
-      const text = this.markdownify(test.text.replace(/\n/g, "\n\n"));
+      
+      const text = this.markdownify(test.text.replace(/\n/g, "\n"));
       return `
         <h4 class="survey-kind">${order} ${test.kind}</h4>
         ${text}
@@ -336,7 +356,7 @@ const getReports = ({ content }, type) => {
       `<h3 class="survey-title"><span class="is-identifier">${this.translate("date", langCode)}</span>${date}</h3>`;
 
     return `
-    <div class="survey foldable-block">
+    <div class="survey foldable-block has-separator">
       <header class="survey-header is-expand-trigger" data-js-expanded="true" data-js-expandable="${surveySlug}">
         ${title}
         ${surveyKeywords}
@@ -349,7 +369,7 @@ const getReports = ({ content }, type) => {
         ${overallAnalysis}
         ${remarks}
         <ul class="survey-persons">
-          ${involvedPersons}
+          ${involvedPersons.join("")}
         </ul>
       </div>
     </div>
@@ -359,7 +379,7 @@ const getReports = ({ content }, type) => {
   
   return (reports && reports.length > 0) ? 
     `
-    <div class="foldable-block">
+    <div class="foldable-block has-separator">
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="report-${type}">${this.translate(type, langCode)}</h2>
       <div id="report-${type}" class="expandable-content">
         ${reportList.join("")}

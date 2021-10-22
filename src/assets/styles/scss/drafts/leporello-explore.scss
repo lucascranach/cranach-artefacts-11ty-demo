@@ -43,10 +43,12 @@
   padding: 0;
   margin: 0;
 
+
   .image-viewer {
     position: relative;
     width: 100%;
     min-height: 80vh;
+    background-color: $darken;
 
     &__content {
       position: absolute;
@@ -106,7 +108,7 @@
 
       &.is-active {
         box-sizing: border-box;
-        border: solid $border-stroke-weight $accent;
+        border: solid $border-stroke-weight-s $accent-dark;
       }
 
       &.is-hidden {

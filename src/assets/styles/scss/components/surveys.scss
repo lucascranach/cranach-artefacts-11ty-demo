@@ -27,14 +27,19 @@
   &-persons {
     position: relative;
     font-weight: $fw-regular;
+    color: $darken-strong;
+    border-top: dotted $border-stroke-weight $darken-medium;
+    padding-top: $xs;
+    margin-top: $m;
 
     & > li {
       margin-left: $xxl;
+      margin-bottom: 0;
     }
 
     &::before {
       position: absolute;
-      top: 0;
+      top: $s;
       bottom: 0;
       left: 0;
       color: $darken-strong;

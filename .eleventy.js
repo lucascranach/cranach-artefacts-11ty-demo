@@ -151,9 +151,21 @@ module.exports = function (eleventyConfig) {
     if (modus === "log") {
       console.log(str);
     }
+    
+    function replacePre(match, str) {
+      const items = str.split("\n\n").map(line => {
+        if (line) return `<li><p>${line}</p></li>`;
+      });
+      
+      return `<ul class="is-block">${items.join("")}</ul>`;
+    }
+    
 
+    let renderedText = markdownItRenderer.render(str);
+    renderedText = renderedText.replace(/<pre><code>(.*?)<\/code><\/pre>/sg, replacePre);
+    
     // str = str.replace(/([a-zA-Z0-9].*?)\:/g, "<span class='is-identifier'>$1</span>");
-    return `<div class="markdown-it">${markdownItRenderer.render(str)}</div>`;
+    return `<div class="markdown-it">${renderedText}</div>`;
   });
 
   eleventyConfig.addFilter("altText", (str) => {
@@ -178,7 +190,9 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   eleventyConfig.addCollection("paintingsDE", (collection) => {
-    return paintingsDE = paintingsDataDE.items.slice(2, 3);
+    const paintings = paintingsDataDE.items.filter(item => item.inventoryNumber === "DE_StMT");
+
+    return paintings;
   });
 
   /* Shortcodes

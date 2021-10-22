@@ -27,3 +27,18 @@
     content: ":";
   }
 }
+
+.is-remark{
+  display: inline;
+  padding-left: $quad;
+  color: $darken-strong;
+  
+
+  &::before {
+    vertical-align: bottom;
+    color: $darken-medium;
+    content: "attach_file";
+    font-family: $font-icons;
+    font-size: $l;
+  }
+}

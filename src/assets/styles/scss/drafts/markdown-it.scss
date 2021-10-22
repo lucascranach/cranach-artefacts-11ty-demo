@@ -1,10 +1,23 @@
 .markdown-it {
   ul {
-    list-style-type: disc;
-
     li {
       margin-left: $s;
       list-style-type: square;
+    }
+
+    &.is-block{
+      li{
+        display: block;
+        margin-left: 0;
+      }
+    }
+  }
+
+  ol{
+    margin-left: 0;
+    padding-left: 0;
+    li{
+      margin-left: $m;
     }
   }
 }

@@ -311,5 +311,13 @@
   "rkd": { 
     "de": "Max J. Friedländer-Archiv",
     "en":"Max J. Friedländer Archive"
+  },
+  "showMore":{
+    "de": "mehr Inhalte zeigen",
+    "en": "show more content"
+  },
+  "showLess":{
+    "de": "weniger Inhalte zeigen",
+    "en": "hide content"
   }
 }

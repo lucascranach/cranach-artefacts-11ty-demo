@@ -29,7 +29,7 @@
 
         &.has-interaction {
           & > a {
-            border-bottom: solid $border-stroke-weight-s $accent;
+            border-bottom: solid $border-stroke-weight-s $accent-dark;
           }
         }
       }
