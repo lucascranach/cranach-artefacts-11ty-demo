@@ -395,7 +395,7 @@ const getReports = ({ content }, type) => {
 const getAdditionalTextInformation = ({ content }) => {
   const additionalInfos = content.additionalTextInformation;
   const additionalInfoTypes = additionalInfos.map(item => item.type);
-  const uniqueAdditionalInfoTypes = additionalInfoTypes.filter((item, index) => additionalInfoTypes.indexOf(item) === index);;
+  const uniqueAdditionalInfoTypes = additionalInfoTypes.filter((item, index) => additionalInfoTypes.indexOf(item) === index);
   const getTypeContent = (type) => {
     const typeContent = additionalInfos.filter(item => item.type === type);
     return typeContent.length === 0 ? '' : typeContent.map(item=> `
@@ -404,8 +404,6 @@ const getAdditionalTextInformation = ({ content }) => {
       </div>
     `);
   }
-
-  console.log(additionalInfoTypes);
   return uniqueAdditionalInfoTypes.length === 0 ? '' : uniqueAdditionalInfoTypes.map(type => {
     return `
     <div class="foldable-block has-separator">
@@ -420,13 +418,34 @@ const getAdditionalTextInformation = ({ content }) => {
 
 const getReferences = ({ content }) => {
   const references = content.references.concat(content.secondaryReferences);
-  return references.length === 0 ? '' : references.map(item => {
-    // console.log(item);
-  })
+  const referenceTypes = references.map(item => item.text);
+  const uniqueReferenceTypes = referenceTypes.filter((item, index) => referenceTypes.indexOf(item) === index);
+  const getTypeContent = (type) => {
+    const typeContent = references.filter(item => item.text === type);
+    
+    return typeContent.length === 0 ? '' : typeContent.map(item => {
+      
+      const refObject = this.getReferenceObject(content.currentCollection, item.inventoryNumber);
+      const refObjectMeta = refObject ? refObject.metadata : false;
+      console.log(refObjectMeta);
+    });
+  }
+
+  return uniqueReferenceTypes.length === 0 ? '' : uniqueReferenceTypes.map(type => {
+    return `
+    <div class="foldable-block has-separator">
+        <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="${this.slugify(type)}">${type}</h2>
+        <div class="expandable-content" id="${this.slugify(type)}">
+          ${getTypeContent(type).join("")}
+        </div>
+      </div>
+    `;
+  });
 }
 
 exports.render = function (data) {
   langCode = getLangCode(data);
+  data.content.currentCollection = data.collections[data.collectionID];
   data.content.url = `${this.getBaseUrl()}${data.page.url}`;
 
   const header = getHeader(data);

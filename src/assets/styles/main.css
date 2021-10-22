@@ -499,7 +499,7 @@ a {
 .title::after {
   display: block;
   width: 1.68rem;
-  border-top: solid 2px #fc0;
+  border-top: solid 2px #E8A60C;
   margin-top: 0.672rem;
   margin-bottom: 0.672rem;
   content: " ";
@@ -585,6 +585,9 @@ h3 {
   opacity: 1;
 }
 
+.block.has-padding {
+  padding-bottom: 1.05rem;
+}
 .block + .block {
   padding-top: 0.84rem;
   border-top: solid 1px #b4b4b4;
@@ -593,6 +596,8 @@ h3 {
 .block h3 {
   margin-top: 0;
   font-weight: 200;
+  margin-bottom: 0.84rem;
+  font-size: 1.344rem;
 }
 
 /* Artfact Header
@@ -724,7 +729,7 @@ ul.simple li {
   text-align: center;
 }
 .table > .body > .row > .cell.has-interaction > a {
-  border-bottom: solid 1px #fc0;
+  border-bottom: solid 1px #E8A60C;
 }
 .table > .body > .has-bg > .cell {
   background-color: #f2f2f2;
@@ -822,9 +827,17 @@ ul.simple li {
   display: flex;
   align-items: center;
   border: solid 1px rgba(0, 0, 0, 0.1);
+  margin: 0.2625rem 0;
 }
 .button:hover {
   cursor: pointer;
+}
+.button.unfold-more {
+  margin-left: -1.05rem;
+  opacity: 0.5;
+}
+.button.unfold-more:hover {
+  opacity: 1;
 }
 .button.unfold-more::before {
   display: inline-block;
@@ -832,6 +845,7 @@ ul.simple li {
   font-family: "MaterialIcons";
   padding-right: 0.2625rem;
   margin-left: -0.2625rem;
+  color: #E8A60C;
 }
 .button.unfold-more::after {
   content: attr(data-text-more);
@@ -856,7 +870,7 @@ ul.simple li {
   font-size: 0.84rem;
 }
 .button.has-accent .icon {
-  color: #fc0;
+  color: #E8A60C;
 }
 
 .image-description {
@@ -1015,7 +1029,7 @@ ul.simple li {
 }
 .image-stripe-list__item.is-active {
   box-sizing: border-box;
-  border: solid 2px #fc0;
+  border: solid 1px #E8A60C;
 }
 .image-stripe-list__item.is-hidden {
   display: none;
