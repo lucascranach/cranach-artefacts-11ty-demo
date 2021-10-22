@@ -189,8 +189,10 @@ module.exports = function (eleventyConfig) {
   /* Collections
   ########################################################################## */
 
+
   eleventyConfig.addCollection("paintingsDE", (collection) => {
-    const paintings = paintingsDataDE.items.filter(item => item.inventoryNumber === "DE_StMT");
+    const testObjects = ["DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"];
+    const paintings = paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
 
     return paintings;
   });

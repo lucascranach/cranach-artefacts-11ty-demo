@@ -125,22 +125,28 @@ const getInscriptionBlock = ({ content }) => {
   `;
 }
 
-const getSourcesBlock = ({ content }) => {
-
-  const provenance = !content.provenance ? '' : `
-    <div class="block">
-      <h2>${this.translate("provenance", langCode)}</h2>
-      ${this.markdownify(content.provenance)}
-    </div>`;
-
-  const exhibitions = !content.exhibitionHistory ? '' : `
+const getExhibitions = ({ content }) => {
+  return !content.exhibitionHistory ? '' : `
     <div class="foldable-block has-separator"> 
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="exhibition-history">${this.translate("exhibitions", langCode)}</h2>
       <div class="expandable-content" id="exhibition-history">
       ${this.markdownify(content.exhibitionHistory)}
       </div>
     </div>`;
+};
 
+const getProvenance = ({ content }) => {
+  return !content.provenance ? '' : `
+    <div class="foldable-block has-separator">
+      <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="provenance">${this.translate("provenance", langCode)}</h2>
+      <div class="expandable-content" id="provenance">
+      ${this.markdownify(content.provenance)}
+      </div>
+    </div>
+  `;
+}
+
+const getSources = ({ content }) => {
 
   const getLiteraturDetails = (item) => {
     const author = item && item.persons ? item.persons.filter(person => person.role === "AUTHOR").map(person => person.name) : [];
@@ -224,11 +230,7 @@ const getSourcesBlock = ({ content }) => {
       </div>
     </div>` : '';
 
-  return `
-    ${provenance}
-    ${exhibitions}
-    ${publications}
-  `;
+  return publications;
 }
 
 const getImageStack = ({ content }) => {
@@ -327,9 +329,13 @@ const getReports = ({ content }, type) => {
       `;
     });
     const imageStripeReport = imageStripeItems.length > 0 ? `<ul class="image-stripe-list">${imageStripeItems.join("")}</ul>` : '';
-    const involvedPersons = report.involvedPersons.map(person => {
+    const involvedPersonList = report.involvedPersons.map(person => {
       return `<li>${person.role} ${person.name}</li>`;
     })
+    const involvedPersons = involvedPersonList.length === 0 ? '' : `
+      <ul class="survey-persons">
+        ${involvedPersonList.join("")}
+      </ul>`;
     const firstItem = report.tests && report.tests.length > 0 ? report.tests[0]: false;
     const surveyTitle = firstItem.purpose;
     const surveyKeywordList = !firstItem ? [] : firstItem.keywords.map(keyword => {
@@ -368,9 +374,7 @@ const getReports = ({ content }, type) => {
         ${project}
         ${overallAnalysis}
         ${remarks}
-        <ul class="survey-persons">
-          ${involvedPersons.join("")}
-        </ul>
+        ${involvedPersons}
       </div>
     </div>
     `;
@@ -388,7 +392,38 @@ const getReports = ({ content }, type) => {
     ` : '';
 }
 
+const getAdditionalTextInformation = ({ content }) => {
+  const additionalInfos = content.additionalTextInformation;
+  const additionalInfoTypes = additionalInfos.map(item => item.type);
+  const uniqueAdditionalInfoTypes = additionalInfoTypes.filter((item, index) => additionalInfoTypes.indexOf(item) === index);;
+  const getTypeContent = (type) => {
+    const typeContent = additionalInfos.filter(item => item.type === type);
+    return typeContent.length === 0 ? '' : typeContent.map(item=> `
+      <div class="block has-padding">
+        ${this.markdownify(item.text)}
+      </div>
+    `);
+  }
 
+  console.log(additionalInfoTypes);
+  return uniqueAdditionalInfoTypes.length === 0 ? '' : uniqueAdditionalInfoTypes.map(type => {
+    return `
+    <div class="foldable-block has-separator">
+        <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="${this.slugify(type)}">${type}</h2>
+        <div class="expandable-content" id="${this.slugify(type)}">
+          ${getTypeContent(type).join("")}
+        </div>
+      </div>
+    `;
+  })
+}
+
+const getReferences = ({ content }) => {
+  const references = content.references.concat(content.secondaryReferences);
+  return references.length === 0 ? '' : references.map(item => {
+    // console.log(item);
+  })
+}
 
 exports.render = function (data) {
   langCode = getLangCode(data);
@@ -401,7 +436,9 @@ exports.render = function (data) {
   const texts = getTextBlock(data);
   const location = getLocationBlock(data);
   const inscription = getInscriptionBlock(data);
-  const sources = getSourcesBlock(data);
+  const exhibitions = getExhibitions(data);
+  const provenance = getProvenance(data);
+  const sources = getSources(data);
   const imageStack = getImageStack(data);
   const imageBasePath = getImageBasePath(data);
   const translations = getTranslations(data);
@@ -409,6 +446,8 @@ exports.render = function (data) {
   const artTechExaminations = getReports(data, ART_TECH_EXAMINATION);
   const conditionReport = getReports(data, CONDITION_REPORT);
   const conservationReport = getReports(data, CONSERVATION_REPORT);
+  const additionalTextInformation = getAdditionalTextInformation(data);
+  const references = getReferences(data);
 
   return `<!doctype html>
   <html lang="de">
@@ -448,7 +487,10 @@ exports.render = function (data) {
             ${inscription}
           </div>
 
+          ${provenance}
+          ${exhibitions}
           ${sources}
+          ${additionalTextInformation}
           
         </div>
       </section>
@@ -467,6 +509,7 @@ exports.render = function (data) {
           ${artTechExaminations}
           ${conditionReport}
           ${conservationReport}
+          ${references}
         </div>
       </section>
 

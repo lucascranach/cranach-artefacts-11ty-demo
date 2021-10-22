@@ -47,7 +47,7 @@ a {
   &::after {
     display: block;
     width: $xl;
-    border-top: solid $border-stroke-weight $accent;
+    border-top: solid $border-stroke-weight $accent-dark;
     margin-top: $xs;
     margin-bottom: $xs;
     content: " ";
