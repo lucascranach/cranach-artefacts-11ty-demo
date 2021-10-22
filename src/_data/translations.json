@@ -319,5 +319,21 @@
   "showLess":{
     "de": "weniger Inhalte zeigen",
     "en": "hide content"
+  },
+  "RELATED_IN_CONTENT_TO":{
+    "de": "Versionen",
+    "en": "Versions"
+  },
+  "SIMILAR_TO":{
+    "de": "Vergleichbare Motive",
+    "en": "Similar Motifs"
+  },
+  "BELONGS_TO":{
+    "de": "Bildträger aus dem selben Baum gefertigt",
+    "en": "Support made from the same tree"
+  },
+  "GRAPHIC":{
+    "de": "Grafik",
+    "en": "Graphic Art"
   }
 }

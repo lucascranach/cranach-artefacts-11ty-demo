@@ -15,6 +15,11 @@
     padding-top: $s;
   }
 
+  &.has-strong-separator {
+    border-top: solid $border-stroke-weight-s $dark;
+    padding-top: $s;
+  }
+
   &__headline {
     padding-bottom: $m;
 
@@ -42,12 +47,17 @@
       right: 0;
       content: "expand_more";
       font-family: $font-icons;
+      font-weight: $fw-bold;
+      padding: $xxxs $xxs;
       font-size: $m;
-      transition: transform $tr-fast;
+      transition: transform $tr-fast, background-color $tr-fast;
+      color: $accent-dark;
+      background-color: $darken;
     }
 
     &.is-expanded {
       &::after {
+        background-color: transparent;
         transform: rotate(180deg);
       }
     }

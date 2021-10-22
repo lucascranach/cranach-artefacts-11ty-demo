@@ -61,6 +61,12 @@ const devConfig = {
         "sort":"13"
      }
   },
+  "relatedObjectTypes": [
+    "RELATED_IN_CONTENT_TO",
+    "SIMILAR_TO",
+    "BELONGS_TO",
+    "GRAPHIC"
+  ]
 }
 
 const paintingsDataDE = require("./src/_data/cda-paintings-v2.de.json");
@@ -121,6 +127,10 @@ module.exports = function (eleventyConfig) {
     return cdaBaseUrl;
   });
 
+  eleventyConfig.addJavaScriptFunction("getRelatedObjectTypes", () => {
+    return devConfig.relatedObjectTypes;
+  });
+
   eleventyConfig.addJavaScriptFunction("getConfig", () => {
     return devConfig;
   });
@@ -130,9 +140,14 @@ module.exports = function (eleventyConfig) {
     return literatureReference.shift();
   });
 
-  eleventyConfig.addJavaScriptFunction("getReferenceObject", (collection, id) => {
+  eleventyConfig.addJavaScriptFunction("getReferenceObjectMeta", (collection, id) => {
     const reference = collection.filter(item => item.inventoryNumber === id);
-    return reference[0] ? reference[0] : false;
+    
+    if (!reference[0]) return false;
+    const metadata = reference[0].metadata;
+    metadata.owner = reference[0].owner;
+
+    return metadata;
   });
 
   eleventyConfig.addJavaScriptFunction("getLiteratureReferenceTableData", (ref, id) => {
@@ -148,6 +163,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addJavaScriptFunction("getTranslations", () => {
     return translations;
   });
+
 
   /* Filter
   ########################################################################## */

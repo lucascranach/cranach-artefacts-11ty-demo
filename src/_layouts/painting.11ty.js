@@ -1,6 +1,7 @@
 const getHeader = require('../_components/header');
 
 let langCode;
+let config;
 
 const getLangCode = ({ content }) => {
   return content.metadata.langCode;
@@ -127,7 +128,7 @@ const getInscriptionBlock = ({ content }) => {
 
 const getExhibitions = ({ content }) => {
   return !content.exhibitionHistory ? '' : `
-    <div class="foldable-block has-separator"> 
+    <div class="foldable-block has-strong-separator"> 
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="exhibition-history">${this.translate("exhibitions", langCode)}</h2>
       <div class="expandable-content" id="exhibition-history">
       ${this.markdownify(content.exhibitionHistory)}
@@ -137,7 +138,7 @@ const getExhibitions = ({ content }) => {
 
 const getProvenance = ({ content }) => {
   return !content.provenance ? '' : `
-    <div class="foldable-block has-separator">
+    <div class="foldable-block has-strong-separator">
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="provenance">${this.translate("provenance", langCode)}</h2>
       <div class="expandable-content" id="provenance">
       ${this.markdownify(content.provenance)}
@@ -211,7 +212,7 @@ const getSources = ({ content }) => {
   );
 
   const publications = content.publications ? `
-    <div class="foldable-block has-separator"> 
+    <div class="foldable-block has-strong-separator"> 
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="literature-list">${this.translate("literature", langCode)}</h2>
       <div id="literature-list" class="expandable-content">
         <table class="table literature">
@@ -238,7 +239,6 @@ const getImageStack = ({ content }) => {
 }
 
 const getImageBasePath = () => {
-  const config = this.getConfig();
   return JSON.stringify(config['imageTiles']);
 }
 
@@ -247,9 +247,9 @@ const getTranslations = () => {
 }
 
 const getImageStripe = ({ content }) => {
-  const config = this.getConfig();
   const imageStack = content.images;
   const imageTypes = config['imageTypes'];
+  
   
   const imageStripe = Object.keys(imageTypes).map(key => {
 
@@ -383,7 +383,7 @@ const getReports = ({ content }, type) => {
   
   return (reports && reports.length > 0) ? 
     `
-    <div class="foldable-block has-separator">
+    <div class="foldable-block has-strong-separator">
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="report-${type}">${this.translate(type, langCode)}</h2>
       <div id="report-${type}" class="expandable-content">
         ${reportList.join("")}
@@ -406,7 +406,7 @@ const getAdditionalTextInformation = ({ content }) => {
   }
   return uniqueAdditionalInfoTypes.length === 0 ? '' : uniqueAdditionalInfoTypes.map(type => {
     return `
-    <div class="foldable-block has-separator">
+    <div class="foldable-block has-strong-separator">
         <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="${this.slugify(type)}">${type}</h2>
         <div class="expandable-content" id="${this.slugify(type)}">
           ${getTypeContent(type).join("")}
@@ -418,33 +418,52 @@ const getAdditionalTextInformation = ({ content }) => {
 
 const getReferences = ({ content }) => {
   const references = content.references.concat(content.secondaryReferences);
-  const referenceTypes = references.map(item => item.text);
-  const uniqueReferenceTypes = referenceTypes.filter((item, index) => referenceTypes.indexOf(item) === index);
+  const relatedObjectTypes = this.getRelatedObjectTypes();
   const getTypeContent = (type) => {
-    const typeContent = references.filter(item => item.text === type);
-    
-    return typeContent.length === 0 ? '' : typeContent.map(item => {
-      
-      const refObject = this.getReferenceObject(content.currentCollection, item.inventoryNumber);
-      const refObjectMeta = refObject ? refObject.metadata : false;
-      console.log(refObjectMeta);
+    const typeContentItems = references.filter(item => item.kind === type);
+    const typeContentItemList = typeContentItems.map(item => {
+      const refObjectMeta = this.getReferenceObjectMeta(content.currentCollection, item.inventoryNumber);
+      const refObjectLink = `/${langCode}/${this.page.fileSlug}/${refObjectMeta.id}/`;
+      return `
+        <div class="related-item-wrap">
+          <a href="${refObjectLink}">
+          <figure class="related-item">
+            <div class="related-item__image">
+              <img src="${refObjectMeta.imgSrc}" alt="${this.altText(refObjectMeta.title)}">
+            </div>
+            <figcaption class="related-item__caption">
+              <ul>
+                <li class="related-item__title">${refObjectMeta.title}</li>
+                <li class="related-item__id">${refObjectMeta.id}</li>
+                <li class="related-item__text">${refObjectMeta.owner}</li></ul>
+            </figcaption>
+          </figure>
+          </a>
+        </div>
+      `;
     });
-  }
 
-  return uniqueReferenceTypes.length === 0 ? '' : uniqueReferenceTypes.map(type => {
-    return `
-    <div class="foldable-block has-separator">
-        <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="${this.slugify(type)}">${type}</h2>
+    return typeContentItems.length === 0 ? '' : `
+      <div class="foldable-block has-strong-separator">
+        <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="${this.slugify(type)}">${this.translate(type, langCode)}</h2>
         <div class="expandable-content" id="${this.slugify(type)}">
-          ${getTypeContent(type).join("")}
+        ${typeContentItemList.join("")}
         </div>
       </div>
     `;
+  }
+  const relatedObjectContent = relatedObjectTypes.map(type => {
+    return getTypeContent(type);
   });
+
+  return `
+    ${relatedObjectContent.join("")}
+  `;
 }
 
 exports.render = function (data) {
   langCode = getLangCode(data);
+  config = this.getConfig();
   data.content.currentCollection = data.collections[data.collectionID];
   data.content.url = `${this.getBaseUrl()}${data.page.url}`;
 
