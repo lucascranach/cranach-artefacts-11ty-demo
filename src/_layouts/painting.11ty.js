@@ -22,12 +22,12 @@ const getImage = ({ content }) => {
 }
 
 const getTextBlock = ({ content }) => {
-  const attribution = content.involvedPersons.map(
-    (item) => {
-      const remarks = item.remarks ? `<span class="is-remark">${item.remarks}</span>` : '';
+  const attribution = content.involvedPersons.map((item) => {
+    const remarks = item.remarks ? `<span class="is-remark">${item.remarks}</span>` : '';
+    const alternativeName = item.alternativeName ? `${item.alternativeName}, ` : '';
       return `
-        <dd class="definition-list__definition">
-          ${item.alternativeName}, ${item.role}${remarks}
+        <dd class="definition-list__definition is-block">
+         ${alternativeName} ${item.role}${remarks}
         </dd>
       `;
     }
@@ -51,14 +51,12 @@ const getTextBlock = ({ content }) => {
     </div>
   `;
 
-
-
   return `
     <div class="block">
       <dl class="definition-list">
         
         <dt class="definition-list__term">${this.translate("attribution", langCode)}</dt>
-        ${attribution}
+        ${attribution.join("")}
 
         <dt class="definition-list__term">${this.translate("productionDate", langCode)}</dt>
         <dd class="definition-list__definition">${content.dating.dated} ${content.dating.remarks}</dd>
@@ -363,7 +361,7 @@ const getReports = ({ content }, type) => {
 
     return `
     <div class="survey foldable-block has-separator">
-      <header class="survey-header is-expand-trigger" data-js-expanded="true" data-js-expandable="${surveySlug}">
+      <header class="survey-header is-expand-trigger" data-js-expanded="false" data-js-expandable="${surveySlug}">
         ${title}
         ${surveyKeywords}
         ${imageStripeReport}
@@ -467,6 +465,8 @@ exports.render = function (data) {
   data.content.currentCollection = data.collections[data.collectionID];
   data.content.url = `${this.getBaseUrl()}${data.page.url}`;
 
+  this.log(data);
+
   const header = getHeader(data);
   const title = getTitle(data);
   const image = getImage(data);
@@ -495,11 +495,11 @@ exports.render = function (data) {
       <link href="${this.url('/assets/main.css')}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
       <script>
-      const langCode = "${langCode}";
-      const imageStack = ${imageStack};
-      const imageBasePath = ${imageBasePath};
-      const env = "${this.getENV()}";
-      const translations = ${translations};
+        const langCode = "${langCode}";
+        const imageStack = ${imageStack};
+        const imageBasePath = ${imageBasePath};
+        const env = "${this.getENV()}";
+        const translations = ${translations};
       </script>
     </head>
     <body>

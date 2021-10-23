@@ -164,6 +164,9 @@ module.exports = function (eleventyConfig) {
     return translations;
   });
 
+  eleventyConfig.addJavaScriptFunction("log", ({ content }) => {
+    console.log(`\nWorking on ${content.inventoryNumber}`);
+  });
 
   /* Filter
   ########################################################################## */
@@ -211,7 +214,8 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   eleventyConfig.addCollection("paintingsDE", (collection) => {
-    const testObjects = ["DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"];
+    const testObjects = ["DE_SKD_GG1906A"];
+    // "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
     const paintings = paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
     return paintings;
   });

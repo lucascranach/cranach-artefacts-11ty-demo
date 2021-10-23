@@ -16,7 +16,7 @@
   }
 
   &.has-strong-separator {
-    border-top: solid $border-stroke-weight-s $dark;
+    border-top: solid $border-stroke-weight-s $darken-strong;
     padding-top: $s;
   }
 
@@ -72,6 +72,7 @@
     &.is-visible {
       height: auto;
       opacity: 1;
+      padding-bottom: $xl;
     }
   }
 }
