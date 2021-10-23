@@ -305,6 +305,7 @@ const CONDITION_REPORT = 'ConditionReport';
 const CONSERVATION_REPORT = 'ConservationReport';
 
 const getReports = ({ content }, type) => {
+  console.log(`- Report Type:${type}`);
   const reports = content.restorationSurveys.filter((rs) => rs.type === type);
   const reportList = reports.reverse().map((report, index) => {
 
@@ -312,7 +313,7 @@ const getReports = ({ content }, type) => {
       const type = file.type;
       const id = file.id;
       
-      if (!content.images[type]) return;
+      if (!content.images || !content.images[type]) return;
       const image = content.images[type].images.filter(image => image.id === id).shift();
       if(!image) return; 
       
@@ -349,15 +350,22 @@ const getReports = ({ content }, type) => {
         ${text}
       `;
     });
-    const processingDates = report.processingDates;
+    
     const project = report.project ? this.markdownify(report.project.replace(/\n/g, "\n\n")) : '';
     const overallAnalysis = report.overallAnalysis ? this.markdownify(report.overallAnalysis.replace(/\n/g, "\n\n")) : '';
     const remarks = report.remarks ? this.markdownify(report.remarks.replace(/\n/g, "\n\n")) : '';
-    const date = processingDates.beginDate !== processingDates.endDate ? `${processingDates.beginDate} - ${processingDates.endDate}` : processingDates.beginDate;
-    const surveySlug = this.slugify(`${date}-${surveyTitle}-${index}-${type}`);
-    const title = surveyTitle ?
-      `<h3 class="survey-title"><span class="is-identifier">${date}</span>${surveyTitle}</h3>` :
-      `<h3 class="survey-title"><span class="is-identifier">${this.translate("date", langCode)}</span>${date}</h3>`;
+    const getDate = () => {
+      const processingDates = report.processingDates;
+      return processingDates.beginDate !== processingDates.endDate ? `${processingDates.beginDate} - ${processingDates.endDate}` : processingDates.beginDate;
+    }
+    const date = report.processingDates ? getDate() : false;
+    const surveySlug = this.slugify(`${surveyTitle}-${index}-${type}`);
+    const getTitle = () => {
+      if (surveyTitle && date) return `<h3 class="survey-title"><span class="is-identifier">${date}</span>${surveyTitle}</h3>`;
+      if (date) return `<h3 class="survey-title"><span class="is-identifier">${this.translate("date", langCode)}</span>${date}</h3>`;
+      return '';
+    }
+    const title = getTitle();
 
     return `
     <div class="survey foldable-block has-separator">

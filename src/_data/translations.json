@@ -296,6 +296,10 @@
     "de": "Mikroskopaufnahmen",
     "en": "Photomicrographs"
   },
+  "koe":{
+    "de": "KOE",
+    "en": "KOE"
+  },
   "conservation":{
     "de": "Restaurierung",
     "en":"Conservation"
