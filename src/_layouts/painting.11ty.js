@@ -25,12 +25,12 @@ const getTextBlock = ({ content }) => {
   const attribution = content.involvedPersons.map((item) => {
     const remarks = item.remarks ? `<span class="is-remark">${item.remarks}</span>` : '';
     const alternativeName = item.alternativeName ? `${item.alternativeName}, ` : '';
-      return `
+    return `
         <dd class="definition-list__definition is-block">
          ${alternativeName} ${item.role}${remarks}
         </dd>
       `;
-    }
+  }
   );
 
   const historicDateList = content.dating.historicEventInformations.map(date => {
@@ -247,15 +247,15 @@ const getClientTranslations = () => {
 const getImageStripe = ({ content }) => {
   const imageStack = content.images;
   const imageTypes = config['imageTypes'];
-  
-  
+
+
   const imageStripe = Object.keys(imageTypes).map(key => {
 
     if (!imageStack || !imageStack[key]) return;
 
     const images = imageStack[key].images;
     const html = images.map(image => {
-  
+
       const title = image.metadata && image.metadata[langCode] ? this.altText(image.metadata[langCode].description) : `${key}`;
       return `
         <li
@@ -312,11 +312,11 @@ const getReports = ({ content }, type) => {
     const imageStripeItems = report.fileReferences.map((file) => {
       const type = file.type;
       const id = file.id;
-      
+
       if (!content.images || !content.images[type]) return;
       const image = content.images[type].images.filter(image => image.id === id).shift();
-      if(!image) return; 
-      
+      if (!image) return;
+
       return `
       <li
         class="image-stripe-list__item has-interaction"
@@ -335,22 +335,22 @@ const getReports = ({ content }, type) => {
       <ul class="survey-persons">
         ${involvedPersonList.join("")}
       </ul>`;
-    const firstItem = report.tests && report.tests.length > 0 ? report.tests[0]: false;
+    const firstItem = report.tests && report.tests.length > 0 ? report.tests[0] : false;
     const surveyTitle = firstItem.purpose;
     const surveyKeywordList = !firstItem ? [] : firstItem.keywords.map(keyword => {
       return `<li>${keyword.name}</li>`;
     });
-    const surveyKeywords = surveyKeywordList.length > 0 ? `<ul class="survey-keywords">${surveyKeywordList.join("")}</ul>`: '';
-    const surveyContent = report.tests.sort((a, b) => {return a.order-b.order}).map(test => {
+    const surveyKeywords = surveyKeywordList.length > 0 ? `<ul class="survey-keywords">${surveyKeywordList.join("")}</ul>` : '';
+    const surveyContent = report.tests.sort((a, b) => { return a.order - b.order }).map(test => {
       const order = `${test.order.toString().substr(0, 1)}.${test.order.toString().substr(1, 3)}`;
-      
+
       const text = this.markdownify(test.text.replace(/\n/g, "\n"));
       return `
         <h4 class="survey-kind">${order} ${test.kind}</h4>
         ${text}
       `;
     });
-    
+
     const project = report.project ? this.markdownify(report.project.replace(/\n/g, "\n\n")) : '';
     const overallAnalysis = report.overallAnalysis ? this.markdownify(report.overallAnalysis.replace(/\n/g, "\n\n")) : '';
     const remarks = report.remarks ? this.markdownify(report.remarks.replace(/\n/g, "\n\n")) : '';
@@ -386,8 +386,8 @@ const getReports = ({ content }, type) => {
     `;
   });
 
-  
-  return (reports && reports.length > 0) ? 
+
+  return (reports && reports.length > 0) ?
     `
     <div class="foldable-block has-strong-separator">
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="report-${type}">${this.translate(type, langCode)}</h2>
@@ -404,7 +404,7 @@ const getAdditionalTextInformation = ({ content }) => {
   const uniqueAdditionalInfoTypes = additionalInfoTypes.filter((item, index) => additionalInfoTypes.indexOf(item) === index);
   const getTypeContent = (type) => {
     const typeContent = additionalInfos.filter(item => item.type === type);
-    return typeContent.length === 0 ? '' : typeContent.map(item=> `
+    return typeContent.length === 0 ? '' : typeContent.map(item => `
       <div class="block has-padding">
         ${this.markdownify(item.text)}
       </div>
@@ -517,27 +517,29 @@ exports.render = function (data) {
         <div class="leporello-recog__text">
           ${header}
 
-          <div class="copytext">
-            ${copy}
-          </div>
+          <div class="grid-wrapper">
+            <div class="main-column">
+              <div class="copytext">
+                ${copy}
+              </div>
+              <div class="block">
+                ${texts}
+              </div>
+              <div class="block">
+                ${location}
+              </div>
+              <div class="block">
+                ${inscription}
+              </div>
+            </div>
 
-          <div class="block">
-            ${texts}
+            <div class="marginal-content">
+              ${provenance}
+              ${exhibitions}
+              ${sources}
+              ${additionalTextInformation}
+            </div>
           </div>
-
-          <div class="block">
-            ${location}
-          </div>
-
-          <div class="block">
-            ${inscription}
-          </div>
-
-          ${provenance}
-          ${exhibitions}
-          ${sources}
-          ${additionalTextInformation}
-          
         </div>
       </section>
 

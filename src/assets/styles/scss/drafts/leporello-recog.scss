@@ -1,7 +1,7 @@
 .leporello-recog {
   // overflow: hidden;
   // max-height: 80vh;
-  margin: $l;
+  padding: $l;
 
   // Responsive Large
   // --------------------------------------------------------------------------
@@ -11,6 +11,11 @@
     grid-template-columns: max($tile-xs) 1fr;
   }
 
+  @media only screen and (min-width: $vp-xlarge) {
+    gap: $xxl;
+    padding: $xxl 0;
+  }  
+
   // Image
   // --------------------------------------------------------------------------
 
@@ -19,14 +24,31 @@
     margin: 0;
     margin-bottom: $l;
 
+    @media only screen and (min-width: $vp-xlarge) {
+      margin-left: $xxl;
+    }  
+
     & > img {
       width: 100%;
     }
   }
 
-  // Text
-  // --------------------------------------------------------------------------
-  &__text {
-    max-width: $column-medium;
+  .grid-wrapper{
+    .main-column{  
+      max-width: $column-large;
+    }
+
+    .marginal-content{
+      padding-right: $xxl;
+      max-width: $column-large;
+    }
+
+    @media only screen and (min-width: $vp-xxlarge) {
+      display: grid;
+      gap: $xxl;
+      grid-template-columns: 1fr $column-large;
+
+
+    }
   }
 }

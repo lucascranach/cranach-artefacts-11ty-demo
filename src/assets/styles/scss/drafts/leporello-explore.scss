@@ -13,9 +13,13 @@
   }
 
   @media only screen and (min-width: $vp-xlarge) {
-    display: grid;
     gap: $m;
     grid-template-columns: 1fr max($column-medium);
+  }
+
+  @media only screen and (min-width: $vp-xxlarge) {
+    gap: $xxl;
+    grid-template-columns: 1fr $column-large;
   }
 
   .block,
@@ -28,9 +32,7 @@
 // --------------------------------------------------------------------------
 
 .main-image-wrap {
-  @media only screen and (min-width: $vp-xlarge) {
-    padding: 0 0 0 $xl;
-  }
+
 }
 
 // Main Image
@@ -71,7 +73,7 @@
   padding: $m $xl $l $m;
 
   @media only screen and (min-width: $vp-xlarge) {
-    padding: $m $xxxl $xl $xl;
+    padding: $m $xxxl $xl 0;
   }
 }
 

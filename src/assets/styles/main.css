@@ -494,7 +494,7 @@ a {
 
 .title {
   font-size: 1.68rem;
-  font-weight: 600;
+  font-weight: 400;
 }
 .title::after {
   display: block;
@@ -982,15 +982,28 @@ ul.simple li {
     grid-template-columns: 13.65rem 1fr;
   }
 }
+@media only screen and (min-width: 1440px) {
+  .leporello-recog {
+    gap: 1.89rem;
+    margin: 1.89rem;
+  }
+}
+@media only screen and (min-width: 1900px) {
+  .leporello-recog {
+    gap: 1.89rem;
+    grid-template-columns: 13.65rem 1fr 768px;
+  }
+}
 .leporello-recog__image {
   padding: 0;
   margin: 0;
+  margin-bottom: 1.344rem;
 }
 .leporello-recog__image > img {
   width: 100%;
 }
 .leporello-recog__text {
-  max-width: 42rem;
+  max-width: 52.5rem;
 }
 
 .leporello-explore {
