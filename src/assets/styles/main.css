@@ -424,33 +424,33 @@ i.icon.red {
   font-family: IBMPlexSans;
   font-style: normal;
   font-weight: 200;
-  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-Light.ttf");
+  src: url("./fonts/IBM_Plex_Sans/IBMPlexSans-Light.ttf");
 }
 @font-face {
   font-family: IBMPlexSans;
   font-style: normal;
   font-weight: 300;
-  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf");
+  src: url("./fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf");
 }
 @font-face {
   font-family: IBMPlexSans;
   font-style: normal;
   font-weight: 400;
-  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-Medium.ttf");
+  src: url("./fonts/IBM_Plex_Sans/IBMPlexSans-Medium.ttf");
 }
 @font-face {
   font-family: IBMPlexSans;
   font-style: normal;
   font-weight: 600;
-  src: url("/assets/fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf");
+  src: url("./fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf");
 }
 @font-face {
   font-family: "MaterialIcons";
   font-style: normal;
   font-weight: 400;
-  src: url("/assets/fonts/MaterialIcons/MaterialIcons-Regular.eot");
+  src: url("./fonts/MaterialIcons/MaterialIcons-Regular.eot");
   /* For IE6-8 */
-  src: local("Material Icons"), local("MaterialIcons-Regular"), url("/assets/fonts/MaterialIcons/MaterialIcons-Regular.woff2") format("woff2"), url("/assets/fonts/MaterialIcons/MaterialIcons-Regular.woff") format("woff"), url("/assets/fonts/MaterialIcons/MaterialIcons-Regular.ttf") format("truetype");
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url("./fonts/MaterialIcons/MaterialIcons-Regular.woff2") format("woff2"), url("./fonts/MaterialIcons/MaterialIcons-Regular.woff") format("woff"), url("./fonts/MaterialIcons/MaterialIcons-Regular.ttf") format("truetype");
 }
 * {
   box-sizing: content-box;
@@ -613,7 +613,8 @@ h3 {
 /* Artfact Header
 ---------------------------------------------------------------------------- */
 .artefact-header {
-  margin-bottom: 1.05rem;
+  margin-bottom: 2.646rem;
+  max-width: 52.5rem;
 }
 
 /* Copy Text
@@ -973,7 +974,7 @@ ul.simple li {
 }
 
 .leporello-recog {
-  margin: 1.344rem;
+  padding: 1.344rem;
 }
 @media only screen and (min-width: 768px) {
   .leporello-recog {
@@ -985,13 +986,7 @@ ul.simple li {
 @media only screen and (min-width: 1440px) {
   .leporello-recog {
     gap: 1.89rem;
-    margin: 1.89rem;
-  }
-}
-@media only screen and (min-width: 1900px) {
-  .leporello-recog {
-    gap: 1.89rem;
-    grid-template-columns: 13.65rem 1fr 768px;
+    padding: 1.89rem 0;
   }
 }
 .leporello-recog__image {
@@ -999,11 +994,27 @@ ul.simple li {
   margin: 0;
   margin-bottom: 1.344rem;
 }
+@media only screen and (min-width: 1440px) {
+  .leporello-recog__image {
+    margin-left: 1.89rem;
+  }
+}
 .leporello-recog__image > img {
   width: 100%;
 }
-.leporello-recog__text {
+.leporello-recog .grid-wrapper .main-column {
   max-width: 52.5rem;
+}
+.leporello-recog .grid-wrapper .marginal-content {
+  padding-right: 1.89rem;
+  max-width: 52.5rem;
+}
+@media only screen and (min-width: 1900px) {
+  .leporello-recog .grid-wrapper {
+    display: grid;
+    gap: 1.89rem;
+    grid-template-columns: 1fr 52.5rem;
+  }
 }
 
 .leporello-explore {
@@ -1018,20 +1029,19 @@ ul.simple li {
 }
 @media only screen and (min-width: 1440px) {
   .leporello-explore {
-    display: grid;
     gap: 1.05rem;
     grid-template-columns: 1fr 42rem;
+  }
+}
+@media only screen and (min-width: 1900px) {
+  .leporello-explore {
+    gap: 1.89rem;
+    grid-template-columns: 1fr 52.5rem;
   }
 }
 .leporello-explore .block,
 .leporello-explore .foldable-block {
   background-color: #f2f2f2;
-}
-
-@media only screen and (min-width: 1440px) {
-  .main-image-wrap {
-    padding: 0 0 0 1.68rem;
-  }
 }
 
 .main-image {
@@ -1064,7 +1074,7 @@ ul.simple li {
 }
 @media only screen and (min-width: 1440px) {
   .explore-content {
-    padding: 1.05rem 2.1rem 1.68rem 1.68rem;
+    padding: 1.05rem 2.1rem 1.68rem 0;
   }
 }
 
@@ -1139,6 +1149,9 @@ ul.simple li {
   font-size: 1.05rem;
 }
 
+.markdown-it p {
+  margin-top: 0;
+}
 .markdown-it ul li {
   margin-left: 0.84rem;
   list-style-type: square;

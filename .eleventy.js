@@ -83,7 +83,8 @@ const markdownItRenderer = new markdownIt('commonmark', {
   linkify: true,
   typographer: true
 });
-// const pathPrefix = (process.env.ELEVENTY_ENV === 'production') ? "slides" : "";
+
+const pathPrefix = (process.env.ELEVENTY_ENV === 'production') ? "paintings" : "";
 
 const cdaBaseUrl = "https://lucascranach.org";
 
@@ -226,9 +227,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("paintingsDE", () => {
     const testObjects = ["DE_SKD_GG1906A"];
     // "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
-    const paintings = paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
-    // const paintings = paintingsDataDE.items.slice(0,5000);
-    return paintings;
+    //const paintings = paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
+    const paintings = paintingsDataDE.items.slice(0,5000);
+    return paintings; 
   });
 
   eleventyConfig.addCollection("paintingsDEall", () => {
@@ -252,6 +253,7 @@ module.exports = function (eleventyConfig) {
   if (process.env.ELEVENTY_ENV === 'production') {
     eleventyConfig.addTransform('htmlmin', (content, outputPath) => {
       if (outputPath.endsWith('.html')) {
+        return content;
         return minified = htmlmin.minify(content, {
           collapseInlineTagWhitespace: false,
           collapseWhitespace: true,
@@ -272,7 +274,7 @@ module.exports = function (eleventyConfig) {
       layouts: '_layouts',
       output: 'docs',
     },
-    pathPrefix: '',
+    pathPrefix,
     markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
     templateFormats: [

@@ -13,10 +13,10 @@ class ImageViewer {
   constructor(id, captionId) {
     this.viewer = OpenSeadragon({
       id,
-      prefixUrl: '/assets/images/icons/',
+      prefixUrl: `${asseturl}/images/icons/`,
       tileSources: {
         type: 'image',
-        url: '/assets/images/no-image-l.svg',
+        url: `${asseturl}/images/no-image-l.svg`,
       },
     });
 

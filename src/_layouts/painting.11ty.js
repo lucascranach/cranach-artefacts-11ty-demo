@@ -508,6 +508,7 @@ exports.render = function (data) {
         const imageBasePath = ${imageBasePath};
         const env = "${this.getENV()}";
         const translations = ${translationsClient};
+        const asseturl = "${this.url('/assets')}";
       </script>
     </head>
     <body>

@@ -4,8 +4,8 @@
   padding: $m;
   padding-top: $s;
 
-  @media only screen and (min-width: $vp-xlarge) {
-    padding-left: 0;
+  @media only screen and (min-width: $vp-xxlarge) {
+    padding-left: $xxl;
   }
 
   &-text {
