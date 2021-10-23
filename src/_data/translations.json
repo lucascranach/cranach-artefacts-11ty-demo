@@ -335,5 +335,9 @@
   "GRAPHIC":{
     "de": "Grafik",
     "en": "Graphic Art"
+  },
+  "PART_OF_WORK":{
+    "de": "Zugehörige Werke",
+    "en": "Connected Works"
   }
 }

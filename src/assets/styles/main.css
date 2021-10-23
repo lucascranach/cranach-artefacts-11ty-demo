@@ -707,6 +707,7 @@ ul.simple li {
 }
 .definition-list__definition.is-block {
   display: block;
+  margin-bottom: 0.525rem;
 }
 .definition-list__definition > .literature-table {
   margin-top: -0.672rem;

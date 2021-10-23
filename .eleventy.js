@@ -65,7 +65,8 @@ const devConfig = {
     "RELATED_IN_CONTENT_TO",
     "SIMILAR_TO",
     "BELONGS_TO",
-    "GRAPHIC"
+    "GRAPHIC",
+    "PART_OF_WORK"
   ]
 }
 
@@ -74,6 +75,7 @@ const literatureData = {
   "de": require("./src/_data/cda-literaturereferences-v2.de")
 };
 const translations = require("./src/_data/translations.json");
+const translationsClient = require("./src/_data/translations-client.json");
 
 const markdownItRenderer = new markdownIt('commonmark', {
   html: true,
@@ -162,6 +164,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addJavaScriptFunction("getTranslations", () => {
     return translations;
+  });
+
+  eleventyConfig.addJavaScriptFunction("getClientTranslations", () => {
+    return translationsClient;
   });
 
   eleventyConfig.addJavaScriptFunction("log", ({ content }) => {

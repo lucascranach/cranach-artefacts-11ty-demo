@@ -240,8 +240,8 @@ const getImageBasePath = () => {
   return JSON.stringify(config['imageTiles']);
 }
 
-const getTranslations = () => {
-  return JSON.stringify(this.getTranslations());
+const getClientTranslations = () => {
+  return JSON.stringify(this.getClientTranslations());
 }
 
 const getImageStripe = ({ content }) => {
@@ -479,7 +479,7 @@ exports.render = function (data) {
   const sources = getSources(data);
   const imageStack = getImageStack(data);
   const imageBasePath = getImageBasePath(data);
-  const translations = getTranslations(data);
+  const translationsClient = getClientTranslations(data);
   const imageStripe = getImageStripe(data);
   const artTechExaminations = getReports(data, ART_TECH_EXAMINATION);
   const conditionReport = getReports(data, CONDITION_REPORT);
@@ -499,7 +499,7 @@ exports.render = function (data) {
         const imageStack = ${imageStack};
         const imageBasePath = ${imageBasePath};
         const env = "${this.getENV()}";
-        const translations = ${translations};
+        const translations = ${translationsClient};
       </script>
     </head>
     <body>
