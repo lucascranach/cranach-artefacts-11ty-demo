@@ -3,16 +3,13 @@
   // max-height: 80vh;
   padding: $l;
 
-  // Responsive Large
-  // --------------------------------------------------------------------------
   @media only screen and (min-width: $vp-medium) {
     display: grid;
-    gap: $m;
+    gap: $xxl;
     grid-template-columns: max($tile-xs) 1fr;
   }
 
   @media only screen and (min-width: $vp-xlarge) {
-    gap: $xxl;
     padding: $xxl 0;
   }  
 
@@ -47,8 +44,6 @@
       display: grid;
       gap: $xxl;
       grid-template-columns: 1fr $column-large;
-
-
     }
   }
 }

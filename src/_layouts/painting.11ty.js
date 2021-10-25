@@ -422,9 +422,14 @@ const getAdditionalTextInformation = ({ content }) => {
   })
 }
 
-const getReferences = ({ content }) => {
+const RELATED_IN_CONTENT_TO = 'RELATED_IN_CONTENT_TO';
+const SIMILAR_TO = 'SIMILAR_TO';
+const BELONGS_TO = 'BELONGS_TO';
+const GRAPHIC = 'GRAPHIC';
+const PART_OF_WORK = 'PART_OF_WORK';
+
+const getReference = ({ content }, type, isOpen = false) => {
   const references = content.references.concat(content.secondaryReferences);
-  const relatedObjectTypes = this.getRelatedObjectTypes();
   const getTypeContent = (type) => {
     const typeContentItems = references.filter(item => item.kind === type);
     const typeContentItemList = typeContentItems.map(item => {
@@ -449,22 +454,20 @@ const getReferences = ({ content }) => {
       `;
     });
 
+
+    const state = isOpen ? 'true' : 'false';
+      
     return typeContentItems.length === 0 ? '' : `
       <div class="foldable-block has-strong-separator">
-        <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="${this.slugify(type)}">${this.translate(type, langCode)}</h2>
+        <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="${state}" data-js-expandable="${this.slugify(type)}">${this.translate(type, langCode)}</h2>
         <div class="expandable-content" id="${this.slugify(type)}">
         ${typeContentItemList.join("")}
         </div>
       </div>
     `;
   }
-  const relatedObjectContent = relatedObjectTypes.map(type => {
-    return getTypeContent(type);
-  });
 
-  return `
-    ${relatedObjectContent.join("")}
-  `;
+  return getTypeContent(type);
 }
 
 exports.render = function (data) {
@@ -493,7 +496,11 @@ exports.render = function (data) {
   const conditionReport = getReports(data, CONDITION_REPORT);
   const conservationReport = getReports(data, CONSERVATION_REPORT);
   const additionalTextInformation = getAdditionalTextInformation(data);
-  const references = getReferences(data);
+  const relatedInContentTo = getReference(data, RELATED_IN_CONTENT_TO);
+  const similarTo = getReference(data, SIMILAR_TO);
+  const belongsTo = getReference(data, BELONGS_TO);
+  const graphic = getReference(data, GRAPHIC);
+  const partOfWork = getReference(data, PART_OF_WORK, true);
 
   return `<!doctype html>
   <html lang="de">
@@ -539,6 +546,7 @@ exports.render = function (data) {
               ${exhibitions}
               ${sources}
               ${additionalTextInformation}
+              ${partOfWork}
             </div>
           </div>
         </div>
@@ -558,7 +566,10 @@ exports.render = function (data) {
           ${artTechExaminations}
           ${conditionReport}
           ${conservationReport}
-          ${references}
+          ${relatedInContentTo}
+          ${similarTo}
+          ${belongsTo}
+          ${graphic}
         </div>
       </section>
 

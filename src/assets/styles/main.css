@@ -935,9 +935,9 @@ ul.simple li {
   padding: 1.05rem;
   padding-top: 0.84rem;
 }
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1900px) {
   .image-description {
-    padding-left: 0;
+    padding-left: 1.89rem;
   }
 }
 .image-description-text {
@@ -979,13 +979,12 @@ ul.simple li {
 @media only screen and (min-width: 768px) {
   .leporello-recog {
     display: grid;
-    gap: 1.05rem;
+    gap: 1.89rem;
     grid-template-columns: 13.65rem 1fr;
   }
 }
 @media only screen and (min-width: 1440px) {
   .leporello-recog {
-    gap: 1.89rem;
     padding: 1.89rem 0;
   }
 }
