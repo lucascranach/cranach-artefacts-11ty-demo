@@ -24,10 +24,12 @@ const getImage = ({ content }) => {
 const getTextBlock = ({ content }) => {
   const attribution = content.involvedPersons.map((item) => {
     const remarks = item.remarks ? `<span class="is-remark">${item.remarks}</span>` : '';
-    const alternativeName = item.alternativeName ? `${item.alternativeName}, ` : '';
+    const name = item.name ? `${item.name}, ` : '';
+    const prefix = item.prefix ? `${item.prefix}, ` : '';
+    const suffix = item.suffix ? `${item.suffix}, ` : '';
     return `
         <dd class="definition-list__definition is-block">
-         ${alternativeName} ${item.role}${remarks}
+        ${name}${prefix}${suffix} ${remarks}
         </dd>
       `;
   }

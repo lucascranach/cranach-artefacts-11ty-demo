@@ -4,6 +4,853 @@
       "metadata": {
         "entityType": "PAINTING",
         "langCode": "de",
+        "id": "DE_StSKA_002A",
+        "title": "Anna-Selbdritt-Altar mit Darstellung der vierzehn Nothelfer [Mitteltafel]",
+        "subtitle": "Werkstatt Lucas Cranach der Ältere",
+        "date": "um 1515-1520",
+        "additionalInfos": [
+          "Malerei",
+          "Maße sichtbarer Bildfläche: 116,5 x 115,5 cm \nMaße mit Rahmen: 126 x 124,8 cm \n[Heydenreich, cda  2017]"
+        ],
+        "classification": "Malerei",
+        "imgSrc": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-s.jpg"
+      },
+      "involvedPersons": [
+        {
+          "displayOrder": 1,
+          "id": "attribution.workshop_of_lucas_cranach_the_elder",
+          "role": "Künstler",
+          "name": "Werkstatt Lucas Cranach der Ältere",
+          "prefix": "",
+          "suffix": "",
+          "nameType": "Primärer Name",
+          "alternativeName": "",
+          "remarks": "[cda 2017]\n[Zehm 2015, 143-156]",
+          "date": "",
+          "isUnknown": false
+        },
+        {
+          "displayOrder": 3,
+          "id": "attribution.lucas_cranach_the_elder_and_workshop",
+          "role": "Künstler",
+          "name": "Lucas Cranach der Ältere",
+          "prefix": "",
+          "suffix": "(und Werkstatt)",
+          "nameType": "Primärer Name",
+          "alternativeName": "Lucas Cranach der Ältere",
+          "remarks": "[Zehm 2015, 143-156]",
+          "date": "",
+          "isUnknown": false
+        },
+        {
+          "displayOrder": 5,
+          "id": "attribution.circle_of_lucas_cranach_the_elder",
+          "role": "Künstler",
+          "name": "",
+          "prefix": "",
+          "suffix": "Umkreis von Lucas Cranach dem Älteren",
+          "nameType": "",
+          "alternativeName": "",
+          "remarks": "\"Cranach-Schule\" [Soffner 1993, 19] [Brinkmann 1904, 47-49; http://digi.ub.uni-heidelberg.de/diglit/bkds_bd25/0074] (accessed 2017-02-17)",
+          "date": "",
+          "isUnknown": true
+        }
+      ],
+      "involvedPersonsNames": [
+        {
+          "constituentId": "32400",
+          "details": [
+            {
+              "name": "Lucas Cranach der Ältere",
+              "nameType": "Primärer Name"
+            },
+            {
+              "name": "Lucas Cranach the Elder",
+              "nameType": "Andere Suchform"
+            },
+            {
+              "name": "Lucas Sunders",
+              "nameType": "Falsche Namensform"
+            },
+            {
+              "name": "Lukas Kranach",
+              "nameType": ""
+            }
+          ]
+        },
+        {
+          "constituentId": "113288",
+          "details": [
+            {
+              "name": "Werkstatt Lucas Cranach der Ältere",
+              "nameType": "Primärer Name"
+            },
+            {
+              "name": "Workshop Lucas Cranach the Elder",
+              "nameType": "Alternativer Name"
+            }
+          ]
+        }
+      ],
+      "titles": [
+        {
+          "type": "Titel",
+          "title": "Anna-Selbdritt-Altar mit Darstellung der vierzehn Nothelfer [Mitteltafel]",
+          "remarks": ""
+        }
+      ],
+      "classification": {
+        "classification": "Malerei"
+      },
+      "objectName": "FR-none",
+      "inventoryNumber": "DE_StSKA_002A",
+      "objectId": 896187,
+      "dimensions": "Maße sichtbarer Bildfläche: 116,5 x 115,5 cm \nMaße mit Rahmen: 126 x 124,8 cm \n[Heydenreich, cda  2017]",
+      "dating": {
+        "dated": "um 1515-1520",
+        "begin": 1515,
+        "end": 1520,
+        "remarks": "[cda 2017]",
+        "historicEventInformations": [
+          {
+            "eventType": "DATING",
+            "text": "um 1512-1520",
+            "begin": 1512,
+            "end": 1520,
+            "remarks": "[Zehm 2015, 143-156]"
+          }
+        ]
+      },
+      "description": "Anna, das Christuskind auf dem Schoß haltend, neben ihr sitzt Maria und gibt dem Kind einen Apfel. Rechts hinter Maria ein bärtiger Mann (Joseph); links hinter Anna drei Männer, da sie dreimal verheiratet war.\n[Soffner 1993, 19]",
+      "provenance": "- um 1904 links hinter dem Altar der Stephanikirche\n[Brinkmann 1904, 47-49; http://digi.ub.uni-heidelberg.de/diglit/bkds_bd25/0074] (accessed 2017-02-17)\n- um 1993 an der südlichen Langhauswand\n[Soffner 1993, 16]",
+      "medium": "Malerei auf augenscheinlich Lindenholz \n[Heydenreich, cda 2017]",
+      "signature": "Keine",
+      "inscription": "Keine",
+      "markings": "",
+      "relatedWorks": "",
+      "exhibitionHistory": "",
+      "bibliography": "",
+      "references": [
+        {
+          "text": "Teil eines Werkes",
+          "kind": "PART_OF_WORK",
+          "inventoryNumber": "DE_StSKA_002B",
+          "remarks": [
+          ]
+        },
+        {
+          "text": "Teil eines Werkes",
+          "kind": "PART_OF_WORK",
+          "inventoryNumber": "DE_StSKA_002C",
+          "remarks": [
+          ]
+        }
+      ],
+      "secondaryReferences": [
+      ],
+      "additionalTextInformation": [
+      ],
+      "publications": [
+        {
+          "title": "Brinkmann 1904",
+          "pageNumber": "47-49",
+          "referenceId": "29719"
+        },
+        {
+          "title": "Heydenreich 2017 A",
+          "pageNumber": "75",
+          "referenceId": "29737"
+        },
+        {
+          "title": "Soffner 1993",
+          "pageNumber": "17, 19",
+          "referenceId": "29722"
+        },
+        {
+          "title": "Zehm 2015",
+          "pageNumber": "",
+          "referenceId": "29695"
+        }
+      ],
+      "keywords": [
+        {
+          "type": "Schlagwort",
+          "term": "010101",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Funktion > Altarretabel",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010204",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Form > Triptychon",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010304",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Bestandteile > Mitteltafel",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "0104030408",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Die Madonna > Anna Selbdritt",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030202",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Weibliche Heilige > Hl. Anna",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010306",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Bestandteile > Originaler Rahmen",
+          "url": ""
+        }
+      ],
+      "locations": [
+        {
+          "type": "Standort Cranach Objekt",
+          "term": "Aschersleben",
+          "path": "Deutschland > states > Sachsen-Anhalt > districts (national) > Halle > inhabited places > Aschersleben",
+          "url": "http://vocab.getty.edu/page/tgn/1036362"
+        },
+        {
+          "type": "Standort Cranach Objekt",
+          "term": "Aschersleben",
+          "path": "Deutschland > states > Sachsen-Anhalt > districts (national) > Halle > inhabited places > Aschersleben",
+          "url": "http://vocab.getty.edu/page/tgn/1036362"
+        }
+      ],
+      "repository": "St. Stephani Kirche, Aschersleben",
+      "owner": "Evangelisches Kirchspiel Aschersleben",
+      "collectionRepositoryId": "collection_repository.country.germany.aschersleben",
+      "sortingNumber": "1517-003-18",
+      "catalogWorkReferences": [
+      ],
+      "structuredDimension": {
+        "element": "",
+        "width": null,
+        "height": null
+      },
+      "isBestOf": false,
+      "restorationSurveys": [
+        {
+          "type": "ArtTechExamination",
+          "project": "",
+          "overallAnalysis": "",
+          "remarks": "",
+          "tests": [
+            {
+              "order": 701,
+              "kind": "Bildträger",
+              "text": "- augenscheinlich Lindenholz",
+              "purpose": "Technologische Untersuchung",
+              "keywords": [
+              ]
+            },
+            {
+              "order": 704,
+              "kind": "Farbschichten und Metallauflagen",
+              "text": "- Hintergrund blattvergoldet",
+              "purpose": "Technologische Untersuchung",
+              "keywords": [
+              ]
+            },
+            {
+              "order": 705,
+              "kind": "Rahmung",
+              "text": "- Rahmen original\n[Heydenreich, cda 2017]",
+              "purpose": "Technologische Untersuchung",
+              "keywords": [
+              ]
+            }
+          ],
+          "involvedPersons": [
+          ],
+          "processingDates": null,
+          "signature": {
+            "date": "17. Februar 2017",
+            "name": "Jana Herrschaft,"
+          },
+          "fileReferences": [
+          ]
+        },
+        {
+          "type": "ArtTechExamination",
+          "project": "",
+          "overallAnalysis": "",
+          "remarks": "",
+          "tests": [
+            {
+              "order": 703,
+              "kind": "Unterzeichnung",
+              "text": "BESCHREIBUNG \n\nZeichengeräte/Material:\n- flüssiges, schwarzes Zeichenmedium, unterschiedliche Pinsel; eventuell über einer Erstanlage mit dem Stift\n\nTyp/Duktus:\n- detailreiche, freie Unterzeichnung nach einer Vorlage\n- dünne bis breitere Linien\n- Ritzung in der Grundierung markieren die Grenze zur Vergoldung\n\nFunktion:\n- relativ verbindlich für die Malerei; Hauptkonturen, Binnenformen und Gesichtszüge sind angegeben; Andeutung plastischer Form durch bogenförmige Striche; gelegentliche Schattierungen mit Strichen\n\nAbweichungen:\n- Präzisierungen der Form während des Malprozesses; nur kleine Änderungen\n\nINTERPRETATION\nZuschreibung: \n- Mitarbeiter der Cranachwerkstatt\n[Sandner, Heydenreich, Smith-Contini, cda 2017]",
+              "purpose": "Technologische Untersuchung / Naturwissenschaftliche Materialanalyse",
+              "keywords": [
+                {
+                  "id": "examination_analysis.infrared_reflectography",
+                  "name": "Infrarot-Reflektografie",
+                  "additional": ""
+                }
+              ]
+            }
+          ],
+          "involvedPersons": [
+            {
+              "role": "fotografiert von",
+              "name": "Ingo Sandner"
+            },
+            {
+              "role": "fotografiert von",
+              "name": "Gunnar Heydenreich"
+            }
+          ],
+          "processingDates": {
+            "beginDate": "03. 2016",
+            "beginYear": null,
+            "endDate": "03. 2016",
+            "endYear": null
+          },
+          "signature": {
+            "date": "12. Oktober 2017",
+            "name": "Helen Smith,"
+          },
+          "fileReferences": [
+            {
+              "type": "irr",
+              "id": "DE_StSKA_002A_FR-none_2016-03_IRR"
+            }
+          ]
+        }
+      ],
+      "images": {
+        "overall": {
+          "infos": {
+            "maxDimensions": {
+              "width": 7950,
+              "height": 4164
+            }
+          },
+          "images": [
+            {
+              "id": "DE_StSKA_002A_FR-none_2016-03_Overall",
+              "metadata": {
+                "de": {
+                  "fileType": "Digitale Aufnahme",
+                  "description": "Gesamtaufnahme",
+                  "created": "Gunnar Heydenreich, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                },
+                "en": {
+                  "fileType": "Digital image",
+                  "description": "Overall",
+                  "created": "Gunnar Heydenreich, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                }
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 610
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 5586,
+                    "height": 5676
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 406
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 203
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StSKA_002A_FR-none_2016-03_Overall-001",
+              "metadata": {
+                "de": {
+                  "fileType": "Digitale Aufnahme",
+                  "description": "Gesamtaufnahme",
+                  "created": "Gunnar Heydenreich, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                },
+                "en": {
+                  "fileType": "Digital image",
+                  "description": "Overall",
+                  "created": "Gunnar Heydenreich, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                }
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 625
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-001-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 5646,
+                    "height": 5880
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-001-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 417
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-001-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-001.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 208
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-001-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StSKA_002A_FR-none_2016-03_Overall-002",
+              "metadata": {
+                "de": {
+                  "fileType": "Digitale Aufnahme",
+                  "description": "Gesamtaufnahme",
+                  "created": "Gunnar Heydenreich, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                },
+                "en": {
+                  "fileType": "Digital image",
+                  "description": "Overall",
+                  "created": "Gunnar Heydenreich, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                }
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 314
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-002-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 7950,
+                    "height": 4164
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-002-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 210
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-002-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-002.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 105
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/01_Overall/DE_StSKA_002A_FR-none_2016-03_Overall-002-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            }
+          ]
+        },
+        "irr": {
+          "infos": {
+            "maxDimensions": {
+              "width": 7086,
+              "height": 7023
+            }
+          },
+          "images": [
+            {
+              "id": "DE_StSKA_002A_FR-none_2016-03_IRR",
+              "metadata": {
+                "de": {
+                  "fileType": "Digitale Aufnahme",
+                  "description": "OSIRIS Infrarot-Reflektografie, 900-1700nm",
+                  "created": "Gunnar Heydenreich,  Ingo Sandner, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                },
+                "en": {
+                  "fileType": "Digital image",
+                  "description": "OSIRIS Infrared-Reflectogram, 900-1700nm",
+                  "created": "Gunnar Heydenreich, Ingo Sandner, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                }
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 595
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/03_IRR/DE_StSKA_002A_FR-none_2016-03_IRR-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 7086,
+                    "height": 7023
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/03_IRR/DE_StSKA_002A_FR-none_2016-03_IRR-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 396
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/03_IRR/DE_StSKA_002A_FR-none_2016-03_IRR-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/03_IRR/DE_StSKA_002A_FR-none_2016-03_IRR.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 198
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/03_IRR/DE_StSKA_002A_FR-none_2016-03_IRR-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            }
+          ]
+        },
+        "detail": {
+          "infos": {
+            "maxDimensions": {
+              "width": 4912,
+              "height": 7360
+            }
+          },
+          "images": [
+            {
+              "id": "DE_StSKA_002A_FR-none_2016-03_Detail-001",
+              "metadata": {
+                "de": {
+                  "fileType": "Digitale Aufnahme",
+                  "description": "Detail",
+                  "created": "Gunnar Heydenreich, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                },
+                "en": {
+                  "fileType": "Digital image",
+                  "description": "Detail",
+                  "created": "Gunnar Heydenreich, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                }
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 400
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-001-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 7360,
+                    "height": 4912
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-001-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 267
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-001-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-001.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 133
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-001-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StSKA_002A_FR-none_2016-03_Detail-002",
+              "metadata": {
+                "de": {
+                  "fileType": "Digitale Aufnahme",
+                  "description": "Detail",
+                  "created": "Gunnar Heydenreich, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                },
+                "en": {
+                  "fileType": "Digital image",
+                  "description": "Detail",
+                  "created": "Gunnar Heydenreich, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                }
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 400
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-002-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 7360,
+                    "height": 4912
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-002-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 267
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-002-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-002.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 133
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-002-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StSKA_002A_FR-none_2016-03_Detail-003",
+              "metadata": {
+                "de": {
+                  "fileType": "Digitale Aufnahme",
+                  "description": "Detail, Christus",
+                  "created": "Gunnar Heydenreich, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                },
+                "en": {
+                  "fileType": "Digital image",
+                  "description": "Detail, Christ",
+                  "created": "Gunnar Heydenreich, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                }
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 899
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-003-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 4912,
+                    "height": 7360
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-003-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 599
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-003-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-003.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 300
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-003-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StSKA_002A_FR-none_2016-03_Detail-004",
+              "metadata": {
+                "de": {
+                  "fileType": "Digitale Aufnahme",
+                  "description": "Detail, Maria",
+                  "created": "Gunnar Heydenreich, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                },
+                "en": {
+                  "fileType": "Digital image",
+                  "description": "Detail, Virgin",
+                  "created": "Gunnar Heydenreich, cda",
+                  "date": "2016-03",
+                  "source": "cda"
+                }
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 899
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-004-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 4912,
+                    "height": 7360
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-004-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 599
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-004-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-004.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 300
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StSKA_002A_FR-none/06_Detail/DE_StSKA_002A_FR-none_2016-03_Detail-004-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "entityType": "PAINTING",
+        "langCode": "de",
         "id": "DE_SKD_GG1906A",
         "title": "Katharinenaltar [Mitteltafel]",
         "subtitle": "Lucas Cranach der Ältere",
