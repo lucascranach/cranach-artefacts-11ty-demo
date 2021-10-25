@@ -81,6 +81,17 @@ const pathPrefix = (process.env.ELEVENTY_ENV === 'production') ? "paintings" : "
 
 const cdaBaseUrl = "https://lucascranach.org";
 
+const foldify = str => {
+  const replaceWithIcon = (match, str) => {
+    return `
+      <span class="is-foldable-text" data-js-foldable-text="${str}">…</span>
+    `;
+  }
+  str = str.replace(/\n/g, "");
+  str = str.replace(/\[(.*?)]/g, replaceWithIcon);
+  return str;
+}
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false);
   eleventyConfig.setWatchJavaScriptDependencies(true);
@@ -184,12 +195,17 @@ module.exports = function (eleventyConfig) {
       return `<ul class="is-block">${items.join("")}</ul>`;
     }
     
+    str = foldify(str);
 
     let renderedText = markdownItRenderer.render(str);
     renderedText = renderedText.replace(/<pre><code>(.*?)<\/code><\/pre>/sg, replacePre);
     
     // str = str.replace(/([a-zA-Z0-9].*?)\:/g, "<span class='is-identifier'>$1</span>");
     return `<div class="markdown-it">${renderedText}</div>`;
+  });
+
+  eleventyConfig.addFilter("foldify", (str) => {
+    return foldify(str);;
   });
 
   eleventyConfig.addFilter("altText", (str) => {
@@ -214,11 +230,11 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   eleventyConfig.addCollection("paintingsDE", () => {
-    const testObjects = ["DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"];
+    const testObjects = ["DE_StSKA_002B","DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"];
     // "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
-    const paintings = paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
-    // const paintings = paintingsDataDE.items.slice(0,3);
-    return paintings; 
+    /// const paintings = paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
+    /// const paintings = paintingsDataDE.items.slice(0,3);
+    return paintingsDataDE.items; 
   });
 
   eleventyConfig.addCollection("paintingsDEall", () => {

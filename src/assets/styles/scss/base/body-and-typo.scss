@@ -3,11 +3,11 @@
   transition: all $tr-fast;
 }
 
+
 body {
   background-color: $lightest;
   color: $darkest;
   font-family: $font-sans-serif;
-  font-size: $m;
   font-weight: $fw-light;
 }
 
@@ -38,7 +38,6 @@ a {
 
 .subtitle,
 .chapter {
-  font-size: $m;
   font-weight: $fw-regular;
 }
 

@@ -28,17 +28,23 @@
   }
 }
 
-.is-remark{
-  display: inline;
-  padding-left: $quad;
-  color: $darken-strong;
-  
+.is-foldable-text {
+  font-weight: $fw-light;
+  opacity: $op-medium;
+  transition: opacity $tr-fast;
 
-  &::before {
-    vertical-align: bottom;
-    color: $darken-medium;
-    content: "attach_file";
-    font-family: $font-icons;
-    font-size: $l;
+  &:hover{
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  &::before{
+    content: "[";
+    color: $accent-dark;
+  }
+
+  &::after{
+    content: "]";
+    color: $accent-dark;
   }
 }

@@ -1,5 +1,3 @@
-const getHeader = require('../_components/header');
-
 let langCode;
 let config;
 
@@ -21,12 +19,22 @@ const getImage = ({ content }) => {
   `;
 }
 
+const getHeader = ({ content }) => {
+  const title = content.metadata.title;
+  const subtitle = content.medium ? `<p class="subtitle">${content.medium}</p>` : '';
+  return `
+  <header class="artefact-header">
+    <h1 class="title">${title}</h1>
+    ${this.foldify(subtitle)}
+  </header>`;
+}
+
 const getTextBlock = ({ content }) => {
   const attribution = content.involvedPersons.map((item) => {
-    const remarks = item.remarks ? `<span class="is-remark">${item.remarks}</span>` : '';
-    const name = item.name ? `${item.name}, ` : '';
-    const prefix = item.prefix ? `${item.prefix}, ` : '';
-    const suffix = item.suffix ? `${item.suffix}, ` : '';
+    const remarks = item.remarks ? `<span class="is-remark">${this.foldify(item.remarks)}</span>` : '';
+    const name = item.name ? `${item.name} ` : '';
+    const prefix = item.prefix ? `${item.prefix} ` : '';
+    const suffix = item.suffix ? `${item.suffix} ` : '';
     return `
         <dd class="definition-list__definition is-block">
         ${name}${prefix}${suffix} ${remarks}
@@ -36,7 +44,7 @@ const getTextBlock = ({ content }) => {
   );
 
   const historicDateList = content.dating.historicEventInformations.map(date => {
-    return `<li>${date.text} ${date.remarks}</li>`;
+    return `<li>${this.foldify(date.text)} ${this.foldify(date.remarks)}</li>`;
   });
 
   const historicDates = content.dating.historicEventInformations.length === 0 ? '' : `
@@ -61,14 +69,14 @@ const getTextBlock = ({ content }) => {
         ${attribution.join("")}
 
         <dt class="definition-list__term">${this.translate("productionDate", langCode)}</dt>
-        <dd class="definition-list__definition">${content.dating.dated} ${content.dating.remarks}</dd>
+        <dd class="definition-list__definition">${this.foldify(content.dating.dated)} ${this.foldify(content.dating.remarks)}</dd>
         ${historicDates}
 
         <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
-        <dd class="definition-list__definition">${content.dimensions.replace(/\n/, "; ")}</dd>
+        <dd class="definition-list__definition">${this.foldify(content.dimensions.replace(/\n/, "; "))}</dd>
 
         <dt class="definition-list__term">${this.translate("signature", langCode)}</dt>
-        <dd class="definition-list__definition">${content.signature.replace(/\n/, "; ")}</dd>
+        <dd class="definition-list__definition">${this.foldify(content.signature.replace(/\n/, "; "))}</dd>
       </dl>
     </div>
   `;
@@ -104,7 +112,7 @@ const getLocationBlock = ({ content }) => {
 const getInscriptionBlock = ({ content }) => {
   const inscription = content.inscription || content.markings ? `
   <dt class="definition-list__term">${this.translate("inscriptions", langCode)}</dt>
-  <dd class="definition-list__definition">${content.inscription}${content.markings}</dd>` : '';
+  <dd class="definition-list__definition">${this.foldify(content.inscription)}${this.foldify(content.markings)}</dd>` : '';
 
   return `
     <div class="block">
@@ -141,7 +149,7 @@ const getProvenance = ({ content }) => {
     <div class="foldable-block has-strong-separator">
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="provenance">${this.translate("provenance", langCode)}</h2>
       <div class="expandable-content" id="provenance">
-      ${this.markdownify(content.provenance)}
+      ${this.foldify(content.provenance)}
       </div>
     </div>
   `;
@@ -155,7 +163,7 @@ const getSources = ({ content }) => {
     const editor = item && item.persons ? item.persons.filter(person => person.role === "EDITORIAL_STAFF").map(person => person.name) : [];
     const alternateNumbers = (!item || !item.alternateNumbers) ? [] : item.alternateNumbers.map(alternateNumber => {
       return `
-        ${alternateNumber.dewscription}
+        ${alternateNumber.description}
         ${alternateNumber.number}
       `;
     });
@@ -536,10 +544,10 @@ exports.render = function (data) {
                 ${texts}
               </div>
               <div class="block">
-                ${location}
+                ${inscription}
               </div>
               <div class="block">
-                ${inscription}
+                ${location}
               </div>
             </div>
 

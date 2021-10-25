@@ -7,6 +7,25 @@ const toggleLiteratureDetails = (referenceId) => {
   document.getElementById(dataId).classList.toggle('is-visible');
 }
 
+/* Expand remarks
+============================================================================ */
+
+const expandRemarks = () => {
+  const foldable_content = (content) => {
+    
+    if (!content) console.log(content);
+    return `
+      <span class="foldable-text" data-js-foldable-text="${content}">…</span>
+    `;
+  }
+  const elements = document.querySelectorAll("p");
+  elements.forEach(element => {
+    const text = element.textContent.replace(/\n|\r/g, "");
+    // element.innerHTML = text.replace(/\[(.*?)\]/sg, foldable_content(RegExp.$1));
+    
+  });
+}
+
 /* ImageViewer
 ============================================================================ */
 class ImageViewer {
@@ -95,19 +114,32 @@ const expandReduce = (trigger, targetId) => {
   trigger.classList.toggle("is-expanded");
 }
 
+/* Expand & Reduce Text
+============================================================================ */
+const expandReduceText = (trigger, state) => {
+
+  if (state === 'isExpanded') {
+    trigger.dataset.jsFoldableText = trigger.innerHTML;
+    trigger.innerHTML = '…';
+  } else {
+    trigger.innerHTML = state;
+    trigger.dataset.jsFoldableText = 'isExpanded';
+  }
+}
+
 /* Main
 ============================================================================ */
 
 document.addEventListener("DOMContentLoaded", function(event) {
   
-  /* Image Viewer
+  /* Image viewer
   --------------------------------------------------------------------------  */
   const imageViewer = new ImageViewer("viewer-content", "image-caption");
   const firstImageInStripe = document.querySelector("[data-js-change-image]");
   const firstImageData = JSON.parse(firstImageInStripe.dataset.jsChangeImage);
   imageViewer.showImage(firstImageData.key, firstImageData.id, firstImageInStripe);
   
-  /* Expand Blocks
+  /* Expand blocks
   --------------------------------------------------------------------------  */
   const expandableBlocks = document.querySelectorAll("[data-js-expanded=true]");
   expandableBlocks.forEach(block => {
@@ -128,11 +160,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
       event.preventDefault();
       expandReduce(target, target.dataset.jsExpandable);
     }
+
+    if (target.dataset.jsFoldableText) {
+      event.preventDefault();
+      expandReduceText(target, target.dataset.jsFoldableText);
+    }
     
     if (target.dataset.jsChangeImage) {
       const data = JSON.parse(target.dataset.jsChangeImage);
       imageViewer.showImage(data.key, data.id, target);
     }
+
+
 
   }, true);
 
