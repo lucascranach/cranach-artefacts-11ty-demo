@@ -109,7 +109,7 @@ const getLocationBlock = ({ content }) => {
   `;
 }
 
-const getInscriptionBlock = ({ content }) => {
+const getInscriptions = ({ content }) => {
   const inscription = content.inscription || content.markings ? `
   <dt class="definition-list__term">${this.translate("inscriptions", langCode)}</dt>
   <dd class="definition-list__definition">${this.foldify(content.inscription)}${this.foldify(content.markings)}</dd>` : '';
@@ -119,7 +119,17 @@ const getInscriptionBlock = ({ content }) => {
 
       <dl class="definition-list">
         ${inscription}
+      </dl>
 
+    </div>
+  `;
+}
+
+const getIdBlock = ({ content }) => {
+  return `
+    <div class="block">
+
+      <dl class="definition-list">
         <dt class="definition-list__term">CDA ID</dt>
         <dd class="definition-list__definition">${content.metadata.id}</dd>
 
@@ -149,7 +159,7 @@ const getProvenance = ({ content }) => {
     <div class="foldable-block has-strong-separator">
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="provenance">${this.translate("provenance", langCode)}</h2>
       <div class="expandable-content" id="provenance">
-      ${this.foldify(content.provenance)}
+      ${this.markdownify(content.provenance)}
       </div>
     </div>
   `;
@@ -291,7 +301,7 @@ const getImageStripe = ({ content }) => {
   const imageTypeSelector = `
     <div class="imagetype-selector">
       <select size="1" data-js-image-selector="true">
-        <option value="all">${this.translate('allImages', langCode)}</option>
+        <option value="all">${this.translate('all', langCode)}</option>
         ${availableImageTypes.join("")}
       </select>
     </div>
@@ -301,10 +311,10 @@ const getImageStripe = ({ content }) => {
     <div class="foldable-block is-sticky">
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="true" data-js-expandable="image-stripe">${this.translate("illustrations", langCode)}</h2>
       <div id="image-stripe" class="expandable-content image-stripe">
+        ${imageTypeSelector}
         <ul class="image-stripe-list">
           ${imageStripe.join("")}
         </ul>
-        ${imageTypeSelector}
       </div>
     </div>
   `;
@@ -494,7 +504,8 @@ exports.render = function (data) {
   const copy = getCopyText(data);
   const texts = getTextBlock(data);
   const location = getLocationBlock(data);
-  const inscription = getInscriptionBlock(data);
+  const inscription = getInscriptions(data);
+  const ids = getIdBlock(data);
   const exhibitions = getExhibitions(data);
   const provenance = getProvenance(data);
   const sources = getSources(data);
@@ -544,10 +555,13 @@ exports.render = function (data) {
                 ${texts}
               </div>
               <div class="block">
+                ${location}
+              </div>
+              <div class="block">
                 ${inscription}
               </div>
               <div class="block">
-                ${location}
+                ${ids}
               </div>
             </div>
 

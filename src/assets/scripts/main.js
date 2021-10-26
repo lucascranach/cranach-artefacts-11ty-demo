@@ -120,10 +120,12 @@ const expandReduceText = (trigger, state) => {
 
   if (state === 'isExpanded') {
     trigger.dataset.jsFoldableText = trigger.innerHTML;
-    trigger.innerHTML = '…';
+    trigger.innerHTML = '';
+    trigger.classList.remove("is-expanded");
   } else {
     trigger.innerHTML = state;
     trigger.dataset.jsFoldableText = 'isExpanded';
+    trigger.classList.add("is-expanded");
   }
 }
 
