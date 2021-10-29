@@ -5,8 +5,6 @@
   border-top: solid $border-stroke-weight-s $light;
   background-color: $lighter;
 
-  // Responsive Large
-  // --------------------------------------------------------------------------
   @media only screen and (min-width: $vp-medium) {
     display: grid;
     grid-template-columns: 1fr 1fr;

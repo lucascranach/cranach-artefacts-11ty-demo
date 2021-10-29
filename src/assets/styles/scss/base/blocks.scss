@@ -2,6 +2,19 @@
     https://cube.fyi/composition.html#why-macro-level-thinking
 ############################################################################ */
 
+
+// Info Block
+// --------------------------------------------------------------------------
+
+.info-block{
+
+  &__title{
+    margin-top: 0;
+    font-size: $m;
+    font-weight: $fw-semibold;
+  }
+}
+
 // Foldable Block
 // --------------------------------------------------------------------------
 
@@ -48,7 +61,7 @@
       content: "expand_more";
       font-family: $font-icons;
       font-weight: $fw-bold;
-      padding: $xxxs $xxs;
+      padding: $xxxs $xxs * 0.9;
       font-size: $m;
       transition: transform $tr-fast, background-color $tr-fast;
       color: $accent-dark;
@@ -91,8 +104,7 @@
     border-top: solid $border-stroke-weight-s $light;
   }
 
-  h2,
-  h3 {
+  h2{
     margin-top: 0;
     font-weight: $fw-light;
     margin-bottom: $s;

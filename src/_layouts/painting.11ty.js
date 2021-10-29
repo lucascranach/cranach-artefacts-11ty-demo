@@ -29,8 +29,8 @@ const getHeader = ({ content }) => {
   </header>`;
 }
 
-const getTextBlock = ({ content }) => {
-  const attribution = content.involvedPersons.map((item) => {
+const getAttribution = ({ content }) => {
+  const attributionList = content.involvedPersons.map((item) => {
     const remarks = item.remarks ? `<span class="is-remark">${this.foldify(item.remarks)}</span>` : '';
     const name = item.name ? `${item.name} ` : '';
     const prefix = item.prefix ? `${item.prefix} ` : '';
@@ -40,9 +40,18 @@ const getTextBlock = ({ content }) => {
         ${name}${prefix}${suffix} ${remarks}
         </dd>
       `;
-  }
+    }
   );
 
+  return `
+    <dl class="definition-list">
+      <dt class="definition-list__term">${this.translate("attribution", langCode)}</dt>
+      ${attributionList.join("")}
+    </dl>
+  `;
+}
+
+const getDating= ({ content }) => {
   const historicDateList = content.dating.historicEventInformations.map(date => {
     return `<li>${this.foldify(date.text)} ${this.foldify(date.remarks)}</li>`;
   });
@@ -64,21 +73,92 @@ const getTextBlock = ({ content }) => {
   return `
     <div class="block">
       <dl class="definition-list">
-        
-        <dt class="definition-list__term">${this.translate("attribution", langCode)}</dt>
-        ${attribution.join("")}
-
         <dt class="definition-list__term">${this.translate("productionDate", langCode)}</dt>
         <dd class="definition-list__definition">${this.foldify(content.dating.dated)} ${this.foldify(content.dating.remarks)}</dd>
         ${historicDates}
+      </dl>
+    </div>
+  `;
+}
 
-        <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
-        <dd class="definition-list__definition">${this.foldify(content.dimensions.replace(/\n/, "; "))}</dd>
+const getSignature = ({ content }) => {
+  return `
+    <dl class="definition-list">
+      <dt class="definition-list__term">${this.translate("signature", langCode)}</dt>
+      <dd class="definition-list__definition">${this.foldify(content.signature.replace(/\n/, "; "))}</dd>
+    </dl>
+  `;
+}
+
+const getTextBlockTable = ({ content }) => {
+  const attributionList = content.involvedPersons.map((item) => {
+    const remarks = item.remarks ? item.remarks : '';
+    const name = item.name ? `${item.name} ` : '';
+    const prefix = item.prefix ? `${item.prefix} ` : '';
+    const suffix = item.suffix ? `${item.suffix} ` : '';
+    return `
+        <tr>
+          <td class="info-table__data">${name}${prefix}${suffix}</td>
+          <td class="info-table__remark">${this.markdownify(remarks)}</td>
+        </tr>
+      `;
+  }
+  );
+
+  const attribution = attributionList.length === 0 ? '' : `
+    <table class="info-table">
+      ${attributionList.join("")}
+    </table>
+  `;
+
+  const date = `
+    <tr>
+      <td class="info-table__data">${content.dating.dated}</td>
+      <td class="info-table__remark">${content.dating.remarks}</td>
+    </tr>
+  `;
+  const historicDateList = content.dating.historicEventInformations.map(date => {
+    return `
+    <tr>
+      <td class="info-table__data">${date.text}</td>
+      <td class="info-table__remark">${date.remarks}</td>
+    </tr>`;
+  });
+
+  const dates = `
+    <table class="info-table">
+      ${date}
+      ${historicDateList.join("")}
+    </table>
+  `;
+
+  return `
+    <div class="block">
+    <div class="info-block">
+    <h3 class="info-block__title">${this.translate("attribution", langCode)}:</h3>
+    ${attribution}
+  </div>
+
+  <div class="info-block">
+  <h3 class="info-block__title">${this.translate("productionDate", langCode)}:</h3>
+  ${dates}
+</div>
+
+      <dl class="definition-list">
 
         <dt class="definition-list__term">${this.translate("signature", langCode)}</dt>
         <dd class="definition-list__definition">${this.foldify(content.signature.replace(/\n/, "; "))}</dd>
       </dl>
     </div>
+  `;
+}
+
+const getDimensions = ({ content }) => {
+  return `
+    <dl class="definition-list">
+      <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
+      <dd class="definition-list__definition">${this.foldify(content.dimensions.replace(/\n/, "; "))}</dd>
+    </dl>
   `;
 }
 
@@ -110,19 +190,14 @@ const getLocationBlock = ({ content }) => {
 }
 
 const getInscriptions = ({ content }) => {
-  const inscription = content.inscription || content.markings ? `
-  <dt class="definition-list__term">${this.translate("inscriptions", langCode)}</dt>
-  <dd class="definition-list__definition">${this.foldify(content.inscription)}${this.foldify(content.markings)}</dd>` : '';
-
-  return `
+  return content.inscription || content.markings ? `
     <div class="block">
-
       <dl class="definition-list">
-        ${inscription}
+        <dt class="definition-list__term">${this.translate("inscriptions", langCode)}</dt>
+        <dd class="definition-list__definition">${this.foldify(content.inscription)}${this.foldify(content.markings)}</dd>
       </dl>
-
     </div>
-  `;
+  ` : '';
 }
 
 const getIdBlock = ({ content }) => {
@@ -476,7 +551,7 @@ const getReference = ({ content }, type, isOpen = false) => {
 
 
     const state = isOpen ? 'true' : 'false';
-      
+
     return typeContentItems.length === 0 ? '' : `
       <div class="foldable-block has-strong-separator">
         <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="${state}" data-js-expandable="${this.slugify(type)}">${this.translate(type, langCode)}</h2>
@@ -502,8 +577,11 @@ exports.render = function (data) {
   const title = getTitle(data);
   const image = getImage(data);
   const copy = getCopyText(data);
-  const texts = getTextBlock(data);
+  const dating = getDating(data);
+  const dimensions = getDimensions(data);
+  const attribution = getAttribution(data);
   const location = getLocationBlock(data);
+  const signature  = getSignature(data);
   const inscription = getInscriptions(data);
   const ids = getIdBlock(data);
   const exhibitions = getExhibitions(data);
@@ -552,13 +630,16 @@ exports.render = function (data) {
                 ${copy}
               </div>
               <div class="block">
-                ${texts}
+                ${dating}
+                ${dimensions}
+                ${attribution}
+              </div>
+              <div class="block">
+                ${signature}
+                ${inscription}
               </div>
               <div class="block">
                 ${location}
-              </div>
-              <div class="block">
-                ${inscription}
               </div>
               <div class="block">
                 ${ids}

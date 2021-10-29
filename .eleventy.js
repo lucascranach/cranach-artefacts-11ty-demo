@@ -85,6 +85,7 @@ const foldify = str => {
   const replaceWithIcon = (match, str) => {
     return `<span class="is-foldable-text" data-js-foldable-text="[${str}]"></span>`;
   }
+  return str;
   str = str.replace(/\n/g, "");
   str = str.replace(/\[(.*)]/g, replaceWithIcon);
   return str;
@@ -193,7 +194,7 @@ module.exports = function (eleventyConfig) {
       return `<ul class="is-block">${items.join("")}</ul>`;
     }
     
-    str = foldify(str);
+    // str = foldify(str);
 
     let renderedText = markdownItRenderer.render(str);
     renderedText = renderedText.replace(/<pre><code>(.*?)<\/code><\/pre>/sg, replacePre);

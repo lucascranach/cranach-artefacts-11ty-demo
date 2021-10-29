@@ -92,3 +92,37 @@
     }
   }
 }
+
+
+// info table
+// ----------------------------------------------------------------------------
+
+.info-table{
+  width: 100%;
+  margin-bottom: $s;
+  margin-top: -$quad;
+  border-image-width: 0 !important;
+  padding: 0;
+  border: none;
+  border-spacing: 0;
+
+  &__data{
+    width: $tile-xs;
+  }
+
+  &__data, &__remark{
+    vertical-align: top;
+    padding: 0;
+    padding-bottom: $quad;
+  }
+
+  &__remark{
+    color: $darken-strong;
+    padding-left: $m;
+  }
+
+  tr + tr td{
+    padding-top: $quad;
+    border-top: solid $border-stroke-weight-s $darken-medium;
+  } 
+}
