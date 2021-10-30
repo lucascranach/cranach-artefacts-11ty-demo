@@ -4,8 +4,8 @@
   "description": "Mitlaufendes Projekt für das Modul Frontend Development",
   "main": "index.js",
   "scripts": {
-    "lint:css": "stylelint src/assets/styles/**/*.scss",
-    "lint:css:fix": "stylelint src/assets/styles/**/*.scss --fix",
+    "lint:css": "stylelint src/assets/styles/scss/**/*.scss",
+    "lint:css:fix": "stylelint src/assets/styles/scss/**/*.scss --fix",
     "lint:js": "eslint src/scripts/**/*.js",
     "lint:js:fix": "eslint src/scripts/**/*.js --fix",
     "dev:css": "sass src/assets/styles/scss/main.scss:src/assets/styles/main.css",

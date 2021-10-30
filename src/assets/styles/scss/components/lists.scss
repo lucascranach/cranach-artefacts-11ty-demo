@@ -9,10 +9,10 @@ ul {
     list-style-type: none;
   }
 
-  &.simple{
-    li{
-      list-style-type: square;
+  &.simple {
+    li {
       margin-left: $m;
+      list-style-type: square;
     }
   }
 }
@@ -52,7 +52,7 @@ ul {
       border-bottom: none;
     }
 
-    &.is-block{
+    &.is-block {
       display: block;
       margin-bottom: $half;
     }
@@ -69,4 +69,3 @@ ul {
     }
   }
 }
-

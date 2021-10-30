@@ -107,6 +107,47 @@ class ImageViewer {
   }
 }
 
+/* SwitchableContent
+============================================================================ */
+
+class SwitchableContent {
+  constructor(ele) {
+    this.element = ele;
+    this.id = ele.id;
+    this.data = JSON.parse(ele.dataset.jsSwitchableContent);
+    this.firstItem = document.getElementById(this.data[0]);
+    this.secondItem = document.getElementById(this.data[1]);
+    this.addHandle();
+    this.addAffordance();
+    this.state = "normal";
+  }
+
+  addAffordance() {
+    this.element.classList.add("has-interaction", "js-switch-content");
+  }
+
+  switchContent() {
+    if (this.state === "normal") {
+      this.firstItem.classList.add("is-cut");
+      this.secondItem.classList.remove("is-cut");
+      this.state = "switched";
+    } else {
+      this.firstItem.classList.remove("is-cut");
+      this.secondItem.classList.add("is-cut");
+      this.state = "normal";
+    }
+  }
+
+  addHandle() {
+    const handleIcon = `
+      <span class="switchable-content-handle">…</span>
+    `;
+    const contentElements = this.firstItem.querySelector(".markdown-it").children;
+    const target = contentElements[contentElements.length-1];
+    target.innerHTML += handleIcon;
+  }
+}
+
 /* Expand & Reduce Blocks
 ============================================================================ */
 const expandReduce = (trigger, targetId) => {
@@ -132,7 +173,15 @@ const expandReduceText = (trigger, state) => {
 /* Main
 ============================================================================ */
 
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
+  
+    /* Switchable Content
+  --------------------------------------------------------------------------  */
+  const switchableContentList= document.querySelectorAll("[data-js-switchable-content]");
+  const switchableContentElements = [];
+  switchableContentList.forEach(element => {
+    switchableContentElements[element.id] = new SwitchableContent(element);
+  });
   
   /* Image viewer
   --------------------------------------------------------------------------  */
@@ -151,8 +200,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   /* Events
   --------------------------------------------------------------------------  */
   document.addEventListener('click', (event) => {
-    const { target } = event;
-
+    const target = event.target;
+    
     if (target.dataset.jsToggleLiterature) {
       event.preventDefault();
       toggleLiteratureDetails(target.dataset.jsToggleLiterature);
@@ -172,8 +221,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
       const data = JSON.parse(target.dataset.jsChangeImage);
       imageViewer.showImage(data.key, data.id, target);
     }
-
-
+    
+    if (target.closest('.js-switch-content')) {
+      const element = target.closest('.js-switch-content');
+      const id = element.id;
+      switchableContentElements[id].switchContent();
+    }
 
   }, true);
 
@@ -184,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       imageViewer.filterImageStripe(target);
     }
 
-  }, true);
+  }, false);
 
 });
 

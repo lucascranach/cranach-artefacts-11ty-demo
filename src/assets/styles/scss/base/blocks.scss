@@ -2,13 +2,11 @@
     https://cube.fyi/composition.html#why-macro-level-thinking
 ############################################################################ */
 
-
 // Info Block
 // --------------------------------------------------------------------------
 
-.info-block{
-
-  &__title{
+.info-block {
+  &__title {
     margin-top: 0;
     font-size: $m;
     font-weight: $fw-semibold;
@@ -19,23 +17,22 @@
 // --------------------------------------------------------------------------
 
 .foldable-block {
-  background-color: $lightest;
-  z-index: $level-content;
   position: relative;
+  z-index: $level-content;
+  background-color: $lightest;
 
   &.has-separator {
-    border-top: solid $border-stroke-weight-s $light;
     padding-top: $s;
+    border-top: solid $border-stroke-weight-s $light;
   }
 
   &.has-strong-separator {
-    border-top: solid $border-stroke-weight-s $darken-strong;
     padding-top: $s;
+    border-top: solid $border-stroke-weight-s $darken-strong;
   }
 
   &__headline {
     padding-bottom: $m;
-
     margin: 0;
     font-size: $l;
     font-weight: $fw-light;
@@ -43,8 +40,8 @@
 
   &.is-sticky {
     position: sticky;
-    top: $m;
     z-index: $level-background;
+    top: $m;
   }
 
   .is-expand-trigger {
@@ -58,14 +55,14 @@
       position: absolute;
       top: 0;
       right: 0;
+      padding: $xxxs $xxs * 0.9;
+      background-color: $darken;
+      color: $accent-dark;
       content: "expand_more";
       font-family: $font-icons;
-      font-weight: $fw-bold;
-      padding: $xxxs $xxs * 0.9;
       font-size: $m;
+      font-weight: $fw-bold;
       transition: transform $tr-fast, background-color $tr-fast;
-      color: $accent-dark;
-      background-color: $darken;
     }
 
     &.is-expanded {
@@ -84,8 +81,8 @@
 
     &.is-visible {
       height: auto;
-      opacity: 1;
       padding-bottom: $xl;
+      opacity: 1;
     }
   }
 }
@@ -95,17 +92,17 @@
 
 .block {
   padding-bottom: $xxxs;
-  
+
   & + & {
     padding-top: $s;
     border-top: solid $border-stroke-weight-s $light;
   }
 
-  h2{
+  h2 {
     margin-top: 0;
-    font-weight: $fw-light;
     margin-bottom: $s;
     font-size: $l;
+    font-weight: $fw-light;
   }
 }
 
@@ -113,8 +110,8 @@
 ---------------------------------------------------------------------------- */
 
 .artefact-header {
-  margin-bottom: $xxxxl;
   max-width: $column-large;
+  margin-bottom: $xxxxl;
 }
 
 /* Copy Text

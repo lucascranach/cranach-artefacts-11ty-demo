@@ -1,5 +1,24 @@
-.has-interaction:hover {
-  cursor: pointer;
+.has-interaction{
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.is-hidden {
+  display: none;
+  opacity: 0 !important;
+}
+
+.is-cut{
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.is-visible {
+  display: block;
+  opacity: 1;
 }
 
 .is-less-important {
@@ -29,11 +48,10 @@
 }
 
 .is-foldable-text {
+  position: relative;
+  color: $darken-strong;
   font-weight: $fw-light;
   transition: opacity $tr-fast;
-  color: $darken-strong;
-
-  position: relative;
 
   &:hover {
     cursor: pointer;
@@ -41,14 +59,14 @@
 
   &::before {
     display: inline-block;
-    vertical-align: bottom;
+    padding: 0 $quad;
+    color: $accent-dark;
     content: "expand_more";
     font-family: $font-icons;
-    font-weight: $fw-bold;
-    padding: 0 $quad;
     font-size: $m;
+    font-weight: $fw-bold;
     transition: transform $tr-fast, background-color $tr-fast;
-    color: $accent-dark;
+    vertical-align: bottom;
   }
 
   &.is-expanded {
@@ -58,5 +76,3 @@
     }
   }
 }
-
-

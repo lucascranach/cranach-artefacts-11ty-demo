@@ -11,7 +11,7 @@
 
   @media only screen and (min-width: $vp-xlarge) {
     padding: $xxl 0;
-  }  
+  }
 
   // Image
   // --------------------------------------------------------------------------
@@ -23,21 +23,21 @@
 
     @media only screen and (min-width: $vp-xlarge) {
       margin-left: $xxl;
-    }  
+    }
 
     & > img {
       width: 100%;
     }
   }
 
-  .grid-wrapper{
-    .main-column{  
+  .grid-wrapper {
+    .main-column {
       max-width: $column-large;
     }
 
-    .marginal-content{
-      padding-right: $xxl;
+    .marginal-content {
       max-width: $column-large;
+      padding-right: $xxl;
     }
 
     @media only screen and (min-width: $vp-xxlarge) {

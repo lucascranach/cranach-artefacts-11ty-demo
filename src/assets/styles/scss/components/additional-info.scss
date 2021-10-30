@@ -1,11 +1,25 @@
-.expandable-text{
+.switchable-content-handle {
+  background-color: $darken;
+  font-weight: $fw-bold;
+  color: $accent-dark;
+  padding: 2px $xxxs;
+  display: inline-block;
+  margin-left: $quad;
+  transition: background-color $tr-fast;
 
-  .hidden-text{
-    opacity: $op-medium;
-    display: none;
-    
-    &::before{
-      content: " "
-    }
+  &:hover{
+    background-color: $darken-medium;
   }
+}
+
+.preview-text{
+  opacity: 1;
+  transition: opacity $tr-fast;
+  height: auto;
+}
+
+.full-text{
+  opacity: 1;
+  transition: opacity $tr-fast;
+  height: auto;
 }

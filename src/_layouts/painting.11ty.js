@@ -147,16 +147,18 @@ const getDimensions = ({ content }) => {
 
 const getCopyText = ({ content }) => {
   const numberOfWords = 30;
-  const [description, author] = content.description.split(/\[/);
-  const words = description.split(/ /);
-  const visibleDescription = words.slice(0, numberOfWords).join(" ");
-  const invisibleDescription = words.slice(numberOfWords, words.length).join(" ");
-  const text =  this.markdownify(`${visibleDescription}<div class="hidden-text">${this.markdownify(invisibleDescription)}<p class="remark">[${author}</p></div>`);
-  return `
-    <div class="expandable-text" data-js-expandable-text="true">
-      ${text}
+  const [fulltext, author] = content.description.split(/\[/);
+  const words = fulltext.split(/ /);
+  const preview = words.slice(0, numberOfWords).join(" ");
+  const text = words.length > numberOfWords ? `
+    <div id="switchableCopyText" data-js-switchable-content='["previewText","fullText"]'>
+      <div id="previewText" class="preview-text">${this.markdownify(preview)}</div>
+      <div class="is-cut full-text" id="fullText">${this.markdownify(fulltext)}<p class="remark">[${author}</p></div>
     </div>
-  `;
+    `: `
+      ${this.markdownify(fulltext)}<p class="remark">[${author}</p>
+    `;
+  return text;
 }
 
 const getLocation = ({ content }) => {

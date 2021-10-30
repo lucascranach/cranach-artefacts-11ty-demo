@@ -93,41 +93,41 @@
   }
 }
 
-
 // info table
 // ----------------------------------------------------------------------------
 
-.info-table{
+.info-table {
   width: 100%;
-  margin-bottom: $s;
-  margin-top: -$quad;
-  border-image-width: 0 !important;
   padding: 0;
   border: none;
+  margin-top: -$quad;
+  margin-bottom: $s;
+  border-image-width: 0 !important;
   border-spacing: 0;
 
-  &.is-hidden{
+  &.is-hidden {
     display: none;
   }
 
-  &__data{
+  &__data {
     padding-right: $xs;
   }
 
-  &__data, &__remark{
-    vertical-align: top;
+  &__data,
+  &__remark {
+    width: 50%;
     padding: 0;
     padding-bottom: $quad;
-    width: 50%;
+    vertical-align: top;
   }
 
-  &__remark{
-    color: $darken-strong;
+  &__remark {
     padding-left: $xs;
+    color: $darken-strong;
   }
 
-  tr + tr td{
+  tr + tr td {
     padding-top: $quad;
     border-top: solid $border-stroke-weight-s $darken-medium;
-  } 
+  }
 }

@@ -3,7 +3,6 @@
   transition: all $tr-fast;
 }
 
-
 body {
   background-color: $lightest;
   color: $darkest;
@@ -44,11 +43,9 @@ a {
 .title {
   font-size: $xl;
   font-weight: $fw-semibold;
-
 }
 
-.subtitle{
-
+.subtitle {
   &::before {
     display: block;
     width: $xl;
