@@ -94,11 +94,8 @@
 // --------------------------------------------------------------------------
 
 .block {
+  padding-bottom: $xxxs;
   
-  &.has-padding{
-    padding-bottom: $m;
-  }
-
   & + & {
     padding-top: $s;
     border-top: solid $border-stroke-weight-s $light;

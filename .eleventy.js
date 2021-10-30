@@ -3,63 +3,63 @@ const markdownIt = require('markdown-it');
 const rimraf = require('rimraf');
 
 const devConfig = {
-  "imageTiles":{
-     "development":"https://lucascranach.org/data-proxy/image-tiles.php?obj=",
-     "production":"https://lucascranach.org/imageserver-2021"
+  "imageTiles": {
+    "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
+    "production": "https://lucascranach.org/imageserver-2021"
   },
-  "imageTypes":{
-     "overall":{
-        "fragment":"Overall",
-        "sort":"01"
-     },
-     "reverse":{
-        "fragment":"Reverse",
-        "sort":"02"
-     },
-     "irr":{
-        "fragment":"IRR",
-        "sort":"03"
-     },
-     "xRadiograph":{
-        "fragment":"X-radiograph",
-        "sort":"04"
-     },
-     "uvLight":{
-        "fragment":"UV-light",
-        "sort":"05"
-     },
-     "detail":{
-        "fragment":"Detail",
-        "sort":"06"
-     },
-     "photomicrograph":{
-        "fragment":"Photomicrograph",
-        "sort":"07"
-     },
-     "conservation":{
-        "fragment":"Conservation",
-        "sort":"08"
-     },
-     "other":{
-        "fragment":"Other",
-        "sort":"09"
-     },
-     "analysis":{
-        "fragment":"Analysis",
-        "sort":"10"
-     },
-     "rkd":{
-        "fragment":"RKD",
-        "sort":"11"
-     },
-     "koe":{
-        "fragment":"KOE",
-        "sort":"12"
-     },
-     "transmittedLight":{
-        "fragment":"Transmitted-light",
-        "sort":"13"
-     }
+  "imageTypes": {
+    "overall": {
+      "fragment": "Overall",
+      "sort": "01"
+    },
+    "reverse": {
+      "fragment": "Reverse",
+      "sort": "02"
+    },
+    "irr": {
+      "fragment": "IRR",
+      "sort": "03"
+    },
+    "xRadiograph": {
+      "fragment": "X-radiograph",
+      "sort": "04"
+    },
+    "uvLight": {
+      "fragment": "UV-light",
+      "sort": "05"
+    },
+    "detail": {
+      "fragment": "Detail",
+      "sort": "06"
+    },
+    "photomicrograph": {
+      "fragment": "Photomicrograph",
+      "sort": "07"
+    },
+    "conservation": {
+      "fragment": "Conservation",
+      "sort": "08"
+    },
+    "other": {
+      "fragment": "Other",
+      "sort": "09"
+    },
+    "analysis": {
+      "fragment": "Analysis",
+      "sort": "10"
+    },
+    "rkd": {
+      "fragment": "RKD",
+      "sort": "11"
+    },
+    "koe": {
+      "fragment": "KOE",
+      "sort": "12"
+    },
+    "transmittedLight": {
+      "fragment": "Transmitted-light",
+      "sort": "13"
+    }
   }
 }
 
@@ -81,6 +81,7 @@ const pathPrefix = (process.env.ELEVENTY_ENV === 'production') ? "paintings" : "
 
 const cdaBaseUrl = "https://lucascranach.org";
 
+
 const foldify = str => {
   const replaceWithIcon = (match, str) => {
     return `<span class="is-foldable-text" data-js-foldable-text="[${str}]"></span>`;
@@ -89,6 +90,22 @@ const foldify = str => {
   str = str.replace(/\n/g, "");
   str = str.replace(/\[(.*)]/g, replaceWithIcon);
   return str;
+}
+
+const markdownify = str => {
+
+  function replacePre(match, str) {
+    const items = str.split("\n\n").map(line => {
+      if (line) return `<li><p>${line}</p></li>`;
+    });
+
+    return `<ul class="is-block">${items.join("")}</ul>`;
+  }
+
+  let renderedText = markdownItRenderer.render(str);
+  renderedText = renderedText.replace(/<pre><code>(.*?)<\/code><\/pre>/sg, replacePre);
+
+  return `<div class="markdown-it">${renderedText}</div>`;
 }
 
 module.exports = function (eleventyConfig) {
@@ -148,7 +165,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addJavaScriptFunction("getReferenceObjectMeta", (collection, id) => {
     const reference = collection.filter(item => item.inventoryNumber === id);
-    
+
     if (!reference[0]) return false;
     const metadata = reference[0].metadata;
     metadata.owner = reference[0].owner;
@@ -160,6 +177,21 @@ module.exports = function (eleventyConfig) {
     if (!ref || !ref.connectedObjects) return '';
     const connectedObjects = ref.connectedObjects.filter(item => item.inventoryNumber === id);
     return connectedObjects.shift();
+  });
+
+  eleventyConfig.addJavaScriptFunction("getRemarkDataTable", (id, data) => {
+    const rows = data.map(item => {
+      const remark = item.remark ? `<td class="info-table__remark">${markdownify(item.remark)}</td>` : '';
+      return `
+          <tr><td class="info-table__data">${markdownify(item.text)}</td>${remark}</tr>
+        `;
+    });
+
+    return rows.length === 0 ? '' : `
+      <table id="completeData${id}" class="info-table is-hidden" data-js-additional-content="is-hidden">
+        ${rows.join("")}
+      </table>
+    `;
   });
 
   eleventyConfig.addJavaScriptFunction("getENV", () => {
@@ -181,26 +213,8 @@ module.exports = function (eleventyConfig) {
   /* Filter
   ########################################################################## */
 
-  eleventyConfig.addFilter("markdownify", (str, modus) => {
-    if (modus === "log") {
-      console.log(str);
-    }
-    
-    function replacePre(match, str) {
-      const items = str.split("\n\n").map(line => {
-        if (line) return `<li><p>${line}</p></li>`;
-      });
-      
-      return `<ul class="is-block">${items.join("")}</ul>`;
-    }
-    
-    // str = foldify(str);
-
-    let renderedText = markdownItRenderer.render(str);
-    renderedText = renderedText.replace(/<pre><code>(.*?)<\/code><\/pre>/sg, replacePre);
-    
-    // str = str.replace(/([a-zA-Z0-9].*?)\:/g, "<span class='is-identifier'>$1</span>");
-    return `<div class="markdown-it">${renderedText}</div>`;
+  eleventyConfig.addFilter("markdownify", (str) => {
+    return markdownify(str);
   });
 
   eleventyConfig.addFilter("foldify", (str) => {
@@ -218,22 +232,22 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("slugify", (str) => {
     str = str.replace(/^\s+|\s+$/g, '').toLowerCase();
     const from = "ÁÄÂÀÃÅČÇĆĎÉĚËÈÊẼĔȆÍÌÎÏŇÑÓÖÒÔÕØŘŔŠŤÚŮÜÙÛÝŸŽáäâàãåčçćďéěëèêẽĕȇíìîïňñóöòôõøðřŕšťúůüùûýÿžþÞĐđßÆa·/_,:;",
-      to   = "AAAAAACCCDEEEEEEEEIIIINNOOOOOORRSTUUUUUYYZaaaaaacccdeeeeeeeeiiiinnooooooorrstuuuuuyyzbBDdBAa------";
-    for (var i=0, l=from.length ; i<l ; i++) {
-        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+      to = "AAAAAACCCDEEEEEEEEIIIINNOOOOOORRSTUUUUUYYZaaaaaacccdeeeeeeeeiiiinnooooooorrstuuuuuyyzbBDdBAa------";
+    for (var i = 0, l = from.length; i < l; i++) {
+      str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
     }
-    return str.replace(/[^a-z0-9 -]/g, '') .replace(/\s+/g, '-') .replace(/-+/g, '-'); 
+    return str.replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
   });
 
   /* Collections
   ########################################################################## */
 
   eleventyConfig.addCollection("paintingsDE", () => {
-    const testObjects = ["DE_StSKA_002B","DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"];
+    const testObjects = ["DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"];
     // "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
     const paintings = paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
     /// const paintings = paintingsDataDE.items.slice(0,3);
-    return paintings; 
+    return paintings;
   });
 
   eleventyConfig.addCollection("paintingsDEall", () => {

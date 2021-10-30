@@ -45,7 +45,11 @@ a {
   font-size: $xl;
   font-weight: $fw-semibold;
 
-  &::after {
+}
+
+.subtitle{
+
+  &::before {
     display: block;
     width: $xl;
     border-top: solid $border-stroke-weight $accent-dark;

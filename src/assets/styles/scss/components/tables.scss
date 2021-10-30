@@ -106,19 +106,24 @@
   border: none;
   border-spacing: 0;
 
+  &.is-hidden{
+    display: none;
+  }
+
   &__data{
-    width: $tile-xs;
+    padding-right: $xs;
   }
 
   &__data, &__remark{
     vertical-align: top;
     padding: 0;
     padding-bottom: $quad;
+    width: 50%;
   }
 
   &__remark{
     color: $darken-strong;
-    padding-left: $m;
+    padding-left: $xs;
   }
 
   tr + tr td{

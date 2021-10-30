@@ -23,7 +23,7 @@ ul {
 .definition-list {
   width: 100%;
   margin-top: -$xs;
-  margin-bottom: $l;
+  margin-bottom: $xs;
   font-weight: $fw-light;
 
   &__term {
@@ -69,3 +69,4 @@ ul {
     }
   }
 }
+

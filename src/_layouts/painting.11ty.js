@@ -5,8 +5,28 @@ const getLangCode = ({ content }) => {
   return content.metadata.langCode;
 }
 
-const getTitle = ({ content }) => {
+const getDocumentTitle = ({ content }) => {
   return content.metadata.title;
+}
+
+const getTitle = (content) => {
+  const titleList = content.titles.map(item => { return {"text": item.title, "remark": item.remark }});
+  const allTitles = this.getRemarkDataTable("Titles", titleList);
+  return `
+    <h1 class="title">${content.metadata.title}</h1>
+    ${allTitles}
+  `; ;
+}
+
+const getMedium = (content) => {
+  const [text, remark] = content.medium.split(/\n/);
+  const medium = [{"text": text, "remark": remark}];
+  const mediumTable = this.getRemarkDataTable("Medium", medium);
+  
+  return !content.medium ? '' : `
+    <p class="subtitle">${medium[0].text}</p>
+    ${mediumTable}
+  `;
 }
 
 const getImage = ({ content }) => {
@@ -20,202 +40,150 @@ const getImage = ({ content }) => {
 }
 
 const getHeader = ({ content }) => {
-  const title = content.metadata.title;
-  const subtitle = content.medium ? `<p class="subtitle">${content.medium}</p>` : '';
+  const title = getTitle(content);
+  const subtitle = getMedium(content);
   return `
   <header class="artefact-header">
-    <h1 class="title">${title}</h1>
-    ${this.foldify(subtitle)}
+    ${title}
+    ${subtitle}
   </header>`;
 }
 
 const getAttribution = ({ content }) => {
-  const attributionList = content.involvedPersons.map((item) => {
-    const remarks = item.remarks ? `<span class="is-remark">${this.foldify(item.remarks)}</span>` : '';
+  const numberOfItems = 2;
+  const attributionShortListItems = content.involvedPersons.slice(0, numberOfItems);
+  const attributionShortList = attributionShortListItems.map((item) => {
     const name = item.name ? `${item.name} ` : '';
     const prefix = item.prefix ? `${item.prefix} ` : '';
     const suffix = item.suffix ? `${item.suffix} ` : '';
     return `
-        <dd class="definition-list__definition is-block">
-        ${name}${prefix}${suffix} ${remarks}
+        <dd class="definition-list__definition">
+        ${prefix}${name}${suffix}
         </dd>
       `;
     }
   );
-
+  const attributionFullList = content.involvedPersons.map(item => {
+    return { "text": `${item.prefix}${item.name}${item.suffix}`, "remark": item.remarks }
+  });
+  const allAttributions = this.getRemarkDataTable("Attributions", attributionFullList);
   return `
     <dl class="definition-list">
       <dt class="definition-list__term">${this.translate("attribution", langCode)}</dt>
-      ${attributionList.join("")}
+      ${attributionShortList.join("")}
     </dl>
+    ${allAttributions}
   `;
 }
 
 const getDating= ({ content }) => {
-  const historicDateList = content.dating.historicEventInformations.map(date => {
-    return `<li>${this.foldify(date.text)} ${this.foldify(date.remarks)}</li>`;
-  });
 
-  const historicDates = content.dating.historicEventInformations.length === 0 ? '' : `
-    <div class="foldable-block">
-      <button
-        class="button is-transparent has-accent unfold-more"
-        data-js-expanded="false"
-        data-js-expandable="historic-date-list"
-        data-text-more="${this.translate('showMore', langCode)}"
-        data-text-less="${this.translate('showLess', langCode)}"></button>
-      <ul id="historic-date-list" class="simple expandable-content">
-        ${historicDateList.join("")}
-      </ul>
-    </div>
-  `;
+  const datesFullList = content.dating.historicEventInformations.map(item => {
+    return { "text": `${item.text}`, "remark": item.remarks }
+  });
+  const allDates = this.getRemarkDataTable("Dates", datesFullList);
 
   return `
-    <div class="block">
-      <dl class="definition-list">
-        <dt class="definition-list__term">${this.translate("productionDate", langCode)}</dt>
-        <dd class="definition-list__definition">${this.foldify(content.dating.dated)} ${this.foldify(content.dating.remarks)}</dd>
-        ${historicDates}
-      </dl>
-    </div>
+    <dl class="definition-list">
+      <dt class="definition-list__term">${this.translate("productionDate", langCode)}</dt>
+      <dd class="definition-list__definition">${this.foldify(content.dating.dated)}</dd>
+    </dl>
+
+    ${allDates}
   `;
 }
 
 const getSignature = ({ content }) => {
-  return `
+  const signatureItems = content.signature.split(/\]\n\n/).map(item => {
+    const seperator = item.match(/\n\n/) ? '\n\n' : '\n';
+    const elements = item.split(seperator);
+    return {"text": elements.shift(), "remark": elements.join("\n")}
+  });
+  const signatureTable = signatureItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Signature", signatureItems);
+  return !content.signature ? '' : `
     <dl class="definition-list">
       <dt class="definition-list__term">${this.translate("signature", langCode)}</dt>
-      <dd class="definition-list__definition">${this.foldify(content.signature.replace(/\n/, "; "))}</dd>
+      <dd class="definition-list__definition">${signatureItems[0].text}</dd>
     </dl>
-  `;
-}
-
-const getTextBlockTable = ({ content }) => {
-  const attributionList = content.involvedPersons.map((item) => {
-    const remarks = item.remarks ? item.remarks : '';
-    const name = item.name ? `${item.name} ` : '';
-    const prefix = item.prefix ? `${item.prefix} ` : '';
-    const suffix = item.suffix ? `${item.suffix} ` : '';
-    return `
-        <tr>
-          <td class="info-table__data">${name}${prefix}${suffix}</td>
-          <td class="info-table__remark">${this.markdownify(remarks)}</td>
-        </tr>
-      `;
-  }
-  );
-
-  const attribution = attributionList.length === 0 ? '' : `
-    <table class="info-table">
-      ${attributionList.join("")}
-    </table>
-  `;
-
-  const date = `
-    <tr>
-      <td class="info-table__data">${content.dating.dated}</td>
-      <td class="info-table__remark">${content.dating.remarks}</td>
-    </tr>
-  `;
-  const historicDateList = content.dating.historicEventInformations.map(date => {
-    return `
-    <tr>
-      <td class="info-table__data">${date.text}</td>
-      <td class="info-table__remark">${date.remarks}</td>
-    </tr>`;
-  });
-
-  const dates = `
-    <table class="info-table">
-      ${date}
-      ${historicDateList.join("")}
-    </table>
-  `;
-
-  return `
-    <div class="block">
-    <div class="info-block">
-    <h3 class="info-block__title">${this.translate("attribution", langCode)}:</h3>
-    ${attribution}
-  </div>
-
-  <div class="info-block">
-  <h3 class="info-block__title">${this.translate("productionDate", langCode)}:</h3>
-  ${dates}
-</div>
-
-      <dl class="definition-list">
-
-        <dt class="definition-list__term">${this.translate("signature", langCode)}</dt>
-        <dd class="definition-list__definition">${this.foldify(content.signature.replace(/\n/, "; "))}</dd>
-      </dl>
-    </div>
-  `;
-}
-
-const getDimensions = ({ content }) => {
-  return `
-    <dl class="definition-list">
-      <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
-      <dd class="definition-list__definition">${this.foldify(content.dimensions.replace(/\n/, "; "))}</dd>
-    </dl>
-  `;
-}
-
-const getCopyText = ({ content }) => {
-  const description = content.description ? `${this.markdownify(content.description)}` : '';
-  return `
-    ${description}
-  `;
-}
-
-const getLocationBlock = ({ content }) => {
-
-  return `
-    <div class="block">
-
-      <dl class="definition-list">
-        <dt class="definition-list__term">${this.translate("owner", langCode)}</dt>
-        <dd class="definition-list__definition">${content.owner}</dd>
-
-        <dt class="definition-list__term">${this.translate("repository", langCode)}</dt>
-        <dd class="definition-list__definition">${content.repository}</dd>
-
-        <dt class="definition-list__term">${this.translate("location", langCode)}</dt>
-        <dd class="definition-list__definition">${content.locations[0].term}</dd>
-      </dl>
-
-    </div>
+    ${signatureTable}
   `;
 }
 
 const getInscriptions = ({ content }) => {
-  return content.inscription || content.markings ? `
-    <div class="block">
-      <dl class="definition-list">
-        <dt class="definition-list__term">${this.translate("inscriptions", langCode)}</dt>
-        <dd class="definition-list__definition">${this.foldify(content.inscription)}${this.foldify(content.markings)}</dd>
-      </dl>
-    </div>
-  ` : '';
+  let inscriptionsRaw = `${content.inscription}${content.markings}`.replace(/\:\n/, ": ");
+  inscriptionsRaw = inscriptionsRaw.replace(/\n *?\n/sg, "\n\n");
+
+  const inscriptionItems = inscriptionsRaw.split(/\]\n\n/).map(item => {
+    const seperator = item.match(/\n\n/) ? '\n\n' : '\n';
+    const elements = item.split(seperator);
+    return {"text": elements.shift(), "remark": elements.join("\n")}
+  });
+  
+  const inscriptionTable = inscriptionItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Inscriptions", inscriptionItems);
+  return !inscriptionsRaw ? '' : `
+    <dl class="definition-list">
+      <dt class="definition-list__term">${this.translate("inscriptions", langCode)}</dt>
+      <dd class="definition-list__definition">${inscriptionItems[0].text}</dd>
+    </dl>
+    ${inscriptionTable}
+  `;
 }
 
-const getIdBlock = ({ content }) => {
+const getDimensions = ({ content }) => {
+  content.dimensions.match(/(.*?)\n|;/);
+  const visibleContent = RegExp.$1.replace(/Maße/, "");
+  const [text, remark] = content.dimensions.split(/\[/);
+  const dimensions = [{ "text": text, "remark": `[${remark}` }];
+  const dimensionsTable = this.getRemarkDataTable("Dimensions", dimensions);
+  
   return `
-    <div class="block">
+    <dl class="definition-list">
+      <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
+      <dd class="definition-list__definition">${visibleContent}</dd>
+    </dl>
+    ${dimensionsTable}
+  `;
+}
 
-      <dl class="definition-list">
-        <dt class="definition-list__term">CDA ID</dt>
-        <dd class="definition-list__definition">${content.metadata.id}</dd>
-
-        <dt class="definition-list__term">${this.translate("objectName", langCode)}</dt>
-        <dd class="definition-list__definition">${content.objectName}</dd>
-      
-        <dt class="definition-list__term">${this.translate("permalink", langCode)}</dt>
-        <dd class="definition-list__definition">${content.url}</dd>
-      </dl>
-
+const getCopyText = ({ content }) => {
+  const numberOfWords = 30;
+  const [description, author] = content.description.split(/\[/);
+  const words = description.split(/ /);
+  const visibleDescription = words.slice(0, numberOfWords).join(" ");
+  const invisibleDescription = words.slice(numberOfWords, words.length).join(" ");
+  const text =  this.markdownify(`${visibleDescription}<div class="hidden-text">${this.markdownify(invisibleDescription)}<p class="remark">[${author}</p></div>`);
+  return `
+    <div class="expandable-text" data-js-expandable-text="true">
+      ${text}
     </div>
+  `;
+}
+
+const getLocation = ({ content }) => {
+
+  return `
+    <dl class="definition-list">
+      <dt class="definition-list__term">${this.translate("owner", langCode)}</dt>
+      <dd class="definition-list__definition">${content.owner}</dd>
+      <dt class="definition-list__term">${this.translate("repository", langCode)}</dt>
+      <dd class="definition-list__definition">${content.repository}</dd>
+      <dt class="definition-list__term">${this.translate("location", langCode)}</dt>
+      <dd class="definition-list__definition">${content.locations[0].term}</dd>
+    </dl>
+  `;
+}
+
+
+const getIds = ({ content }) => {
+  return `
+    <dl class="definition-list">
+      <dt class="definition-list__term">CDA ID</dt>
+      <dd class="definition-list__definition">${content.metadata.id}</dd>
+      <dt class="definition-list__term">${this.translate("objectName", langCode)}</dt>
+      <dd class="definition-list__definition">${content.objectName}</dd>
+      <dt class="definition-list__term">${this.translate("permalink", langCode)}</dt>
+      <dd class="definition-list__definition">${content.url}</dd>
+    </dl>
   `;
 }
 
@@ -572,18 +540,17 @@ exports.render = function (data) {
   data.content.url = `${this.getBaseUrl()}${data.page.url}`;
 
   this.log(data);
-
+  const documentTitle = getDocumentTitle(data);
   const header = getHeader(data);
-  const title = getTitle(data);
   const image = getImage(data);
   const copy = getCopyText(data);
   const dating = getDating(data);
   const dimensions = getDimensions(data);
   const attribution = getAttribution(data);
-  const location = getLocationBlock(data);
+  const location = getLocation(data);
   const signature  = getSignature(data);
   const inscription = getInscriptions(data);
-  const ids = getIdBlock(data);
+  const ids = getIds(data);
   const exhibitions = getExhibitions(data);
   const provenance = getProvenance(data);
   const sources = getSources(data);
@@ -604,7 +571,7 @@ exports.render = function (data) {
   return `<!doctype html>
   <html lang="de">
     <head>
-      <title>cda // ${this.translate("paintings", langCode)} // ${title}</title>
+      <title>cda // ${this.translate("paintings", langCode)} // ${documentTitle}</title>
       ${this.meta()}
       <link href="${this.url('/assets/main.css')}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
@@ -630,9 +597,9 @@ exports.render = function (data) {
                 ${copy}
               </div>
               <div class="block">
+                ${attribution}
                 ${dating}
                 ${dimensions}
-                ${attribution}
               </div>
               <div class="block">
                 ${signature}

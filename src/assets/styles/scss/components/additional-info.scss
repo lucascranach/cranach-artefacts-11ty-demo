@@ -1,0 +1,11 @@
+.expandable-text{
+
+  .hidden-text{
+    opacity: $op-medium;
+    display: none;
+    
+    &::before{
+      content: " "
+    }
+  }
+}
