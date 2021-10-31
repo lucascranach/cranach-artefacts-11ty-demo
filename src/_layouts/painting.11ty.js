@@ -311,10 +311,9 @@ const getClientTranslations = () => {
 
 const getImageStripe = ({ content }) => {
   const imageStack = content.images;
-  const imageTypes = config['imageTypes'];
+  const contentTypes = config['contentTypes'];
 
-
-  const imageStripe = Object.keys(imageTypes).map(key => {
+  const imageStripe = Object.keys(contentTypes).map(key => {
 
     if (!imageStack || !imageStack[key]) return;
 
@@ -336,18 +335,18 @@ const getImageStripe = ({ content }) => {
 
   });
 
-  const availableImageTypes = Object.keys(imageTypes).map(key => {
+  const availablecontentTypes = Object.keys(contentTypes).map(key => {
     if (!imageStack || !imageStack[key]) return;
     const numberOfImages = imageStack[key].images.length;
     const type = (numberOfImages === 0) ? '' : `<option value="${key}">${this.translate(key, langCode)} (${numberOfImages})</option>`;
     return type;
   });
 
-  const imageTypeSelector = `
+  const imageTypeselector = `
     <div class="imagetype-selector">
       <select size="1" data-js-image-selector="true">
         <option value="all">${this.translate('all', langCode)}</option>
-        ${availableImageTypes.join("")}
+        ${availablecontentTypes.join("")}
       </select>
     </div>
   `;
@@ -356,7 +355,7 @@ const getImageStripe = ({ content }) => {
     <div class="foldable-block is-sticky">
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="true" data-js-expandable="image-stripe">${this.translate("illustrations", langCode)}</h2>
       <div id="image-stripe" class="expandable-content image-stripe">
-        ${imageTypeSelector}
+        ${imageTypeselector}
         <ul class="image-stripe-list">
           ${imageStripe.join("")}
         </ul>
@@ -370,29 +369,46 @@ const CONDITION_REPORT = 'ConditionReport';
 const CONSERVATION_REPORT = 'ConservationReport';
 
 const getReports = ({ content }, type) => {
-  console.log(`- Report Type:${type}`);
+  const contentTypes = config['contentTypes'];
+  const documentsPath = `${config['documentsBasePath']}/${content.inventoryNumber}_${content.objectName}`;
   const reports = content.restorationSurveys.filter((rs) => rs.type === type);
+  const getImage = (itemId, itemType) => {
+    if (!content.images || !content.images[itemType]) return false;
+    const image = content.images[itemType].images.filter(image => image.id === itemId).shift();
+    if (!image) return false;
+    return image;
+  }
   const reportList = reports.reverse().map((report, index) => {
-
-    const imageStripeItems = report.fileReferences.map((file) => {
-      const type = file.type;
+    const imageItems = [];
+    const otherItems = [];
+    report.fileReferences.forEach((file) => {
       const id = file.id;
-
-      if (!content.images || !content.images[type]) return;
-      const image = content.images[type].images.filter(image => image.id === id).shift();
-      if (!image) return;
-
+      const type = file.type;
+      const image = getImage(id, type);
+      if (image) imageItems.push({"type":type, "id": id, "image": image});
+      else otherItems.push({"type":type, "id": id});
+    });
+    const imageStripeItems = imageItems.map(item => {
       return `
       <li
         class="image-stripe-list__item has-interaction"
-        data-image-type="${type}" 
-        data-image-id="${id}"
-        data-js-change-image='{"key":"${type}","id":"${id}"}'>
-        <img loading="lazy" src="${image.sizes.xsmall.src}" alt="${type}">
+        data-image-type="${item.type}" 
+        data-image-id="${item.id}"
+        data-js-change-image='{"key":"${item.type}","id":"${item.id}"}'>
+        <img loading="lazy" src="${item.image.sizes.xsmall.src}" alt="${item.type}">
+      </li>
+      `;
+    });
+    const documentStripeItems = otherItems.map(item => {
+      const typeData = contentTypes[item.type];
+      return !typeData ? '' : `
+      <li>
+        <a href="${documentsPath}/${typeData['sort']}_${typeData['fragment']}/${item.id}.pdf" data-filetype="pdf"></a>
       </li>
       `;
     });
     const imageStripeReport = imageStripeItems.length > 0 ? `<ul class="image-stripe-list">${imageStripeItems.join("")}</ul>` : '';
+    const documentStripeReport = documentStripeItems.length > 0 ? `<ul class="document-stripe-list">${documentStripeItems.join("")}</ul>` : '';
     const involvedPersonList = report.involvedPersons.map(person => {
       return `<li>${person.role} ${person.name}</li>`;
     })
@@ -408,7 +424,6 @@ const getReports = ({ content }, type) => {
     const surveyKeywords = surveyKeywordList.length > 0 ? `<ul class="survey-keywords">${surveyKeywordList.join("")}</ul>` : '';
     const surveyContent = report.tests.sort((a, b) => { return a.order - b.order }).map(test => {
       const order = `${test.order.toString().substr(0, 1)}.${test.order.toString().substr(1, 3)}`;
-
       const text = this.markdownify(test.text.replace(/\n/g, "\n"));
       return `
         <h4 class="survey-kind">${order} ${test.kind}</h4>
@@ -437,6 +452,7 @@ const getReports = ({ content }, type) => {
       <header class="survey-header is-expand-trigger" data-js-expanded="false" data-js-expandable="${surveySlug}">
         ${title}
         ${surveyKeywords}
+        ${documentStripeReport}
         ${imageStripeReport}
       </header>
 

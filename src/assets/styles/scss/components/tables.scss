@@ -102,12 +102,13 @@
   max-width: $column-large;
   padding: 0;
   border: none;
-  margin-bottom: $xl;
+  margin-bottom: $xxxl;
   border-image-width: 0 !important;
   border-spacing: 0;
   background-color: $lighter;
   border-radius: $radius-s;
   position: relative;
+
 
   &__data,
   &__remark {

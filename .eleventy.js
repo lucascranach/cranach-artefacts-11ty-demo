@@ -7,7 +7,8 @@ const devConfig = {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2021"
   },
-  "imageTypes": {
+  "documentsBasePath": "https://lucascranach.org/documents",
+  "contentTypes": {
     "overall": {
       "fragment": "Overall",
       "sort": "01"
@@ -64,6 +65,8 @@ const devConfig = {
 }
 
 const paintingsDataDE = require("./src/_data/cda-paintings-v2.de.json");
+const paintingsDataEN = require("./src/_data/cda-paintings-v2.en.json");
+
 const literatureData = {
   "de": require("./src/_data/cda-literaturereferences-v2.de")
 };
@@ -156,6 +159,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addJavaScriptFunction("getConfig", () => {
     return devConfig;
   });
+  
 
   eleventyConfig.addJavaScriptFunction("getLiteratureReference", (ref, lang) => {
     const literatureReference = literatureData[lang].items.filter(item => item.referenceId === ref);
@@ -239,16 +243,17 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   eleventyConfig.addCollection("paintingsDE", () => {
-    const testObjects = ["DE_BStGS_1416"];
+    const testObjects = ["DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"];
     // "DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
     const paintings = paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
     /// const paintings = paintingsDataDE.items.slice(0,3);
-    return paintings;
-  });
-
-  eleventyConfig.addCollection("paintingsDEall", () => {
     return paintingsDataDE.items;
   });
+
+  eleventyConfig.addCollection("paintingsEN", () => {
+    return paintingsDataEN.items;
+  });
+
 
   /* Shortcodes
   ########################################################################## */

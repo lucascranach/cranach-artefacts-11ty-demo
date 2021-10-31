@@ -428,34 +428,50 @@ i.icon.red {
   text-transform: none;
 }
 
+[data-filetype=pdf] {
+  display: inline-block;
+  background: url(./images/icon-sprite-2021.svg) no-repeat;
+  background-position: -2400px 0;
+  transition: opacity 0.25s;
+  height: 24px;
+  width: 24px;
+  margin: 5px 5px 5px 0;
+  vertical-align: middle;
+}
+
 @font-face {
   font-family: IBMPlexSans;
   font-style: normal;
   font-weight: 200;
+  font-display: swap;
   src: url("./fonts/IBM_Plex_Sans/IBMPlexSans-Light.ttf");
 }
 @font-face {
   font-family: IBMPlexSans;
   font-style: normal;
   font-weight: 300;
+  font-display: swap;
   src: url("./fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf");
 }
 @font-face {
   font-family: IBMPlexSans;
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url("./fonts/IBM_Plex_Sans/IBMPlexSans-Medium.ttf");
 }
 @font-face {
   font-family: IBMPlexSans;
   font-style: normal;
   font-weight: 600;
+  font-display: swap;
   src: url("./fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf");
 }
 @font-face {
   font-family: "MaterialIcons";
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url("./fonts/MaterialIcons/MaterialIcons-Regular.eot");
   /* For IE6-8 */
   src: local("Material Icons"), local("MaterialIcons-Regular"), url("./fonts/MaterialIcons/MaterialIcons-Regular.woff2") format("woff2"), url("./fonts/MaterialIcons/MaterialIcons-Regular.woff") format("woff"), url("./fonts/MaterialIcons/MaterialIcons-Regular.ttf") format("truetype");
@@ -539,6 +555,12 @@ h3 {
   font-weight: 600;
 }
 
+/* Remarks
+---------------------------------------------------------------------------- */
+.remark {
+  color: rgba(0, 0, 0, 0.6);
+}
+
 /* According to CUBE
     https://cube.fyi/composition.html#why-macro-level-thinking
 ############################################################################ */
@@ -558,11 +580,11 @@ h3 {
 }
 .foldable-block.has-separator {
   padding-top: 0.8rem;
-  border-top: solid 1px #b4b4b4;
+  border-top: solid 1px rgba(0, 0, 0, 0.1);
 }
 .foldable-block.has-strong-separator {
   padding-top: 0.8rem;
-  border-top: solid 1px rgba(0, 0, 0, 0.6);
+  border-top: solid 1px rgba(0, 0, 0, 0.1);
 }
 .foldable-block__headline {
   padding-bottom: 1rem;
@@ -580,6 +602,9 @@ h3 {
 }
 .foldable-block .is-expand-trigger:hover {
   cursor: pointer;
+}
+.foldable-block .is-expand-trigger:hover::after {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .foldable-block .is-expand-trigger::after {
   position: absolute;
@@ -615,7 +640,7 @@ h3 {
 }
 .block + .block {
   padding-top: 0.8rem;
-  border-top: solid 1px #b4b4b4;
+  border-top: solid 1px rgba(0, 0, 0, 0.1);
 }
 .block h2 {
   margin-top: 0;
@@ -634,7 +659,7 @@ h3 {
 /* Copy Text
 ---------------------------------------------------------------------------- */
 .copytext {
-  margin-bottom: 2.1rem;
+  margin-bottom: 1.2rem;
 }
 
 ul {
@@ -758,33 +783,38 @@ ul.simple li {
 }
 
 .info-table {
+  box-sizing: border-box;
   width: 100%;
+  max-width: 50rem;
   padding: 0;
   border: none;
-  margin-top: -0.25rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.8rem;
   border-image-width: 0 !important;
   border-spacing: 0;
-}
-.info-table.is-hidden {
-  display: none;
-}
-.info-table__data {
-  padding-right: 0.7rem;
+  background-color: #f2f2f2;
+  border-radius: 2px;
+  position: relative;
+  /* &::before{
+    content:"\A";
+    width: 0; 
+    height: 0; 
+    border-left: $xxs solid transparent;
+    border-right: $xxs solid transparent;
+    border-bottom: $xxs solid $lighter;
+    top: -$xxs;
+    position: absolute;
+  }*/
 }
 .info-table__data, .info-table__remark {
   width: 50%;
-  padding: 0;
-  padding-bottom: 0.25rem;
+  padding: 1rem 1rem 1.2rem 1rem;
   vertical-align: top;
 }
 .info-table__remark {
-  padding-left: 0.7rem;
   color: rgba(0, 0, 0, 0.6);
 }
 .info-table tr + tr td {
-  padding-top: 0.25rem;
-  border-top: solid 1px rgba(0, 0, 0, 0.1);
+  border-top: solid 2px #fff;
 }
 
 .survey {
@@ -933,29 +963,103 @@ ul.simple li {
   line-height: 0;
 }
 
+/* Switchable Content Handle
+---------------------------------------------------------------------------- */
 .switchable-content-handle {
-  background-color: rgba(0, 0, 0, 0.06);
   font-weight: 600;
   color: #e8a60c;
-  padding: 2px 0.3rem;
   display: inline-block;
   margin-left: 0.25rem;
   transition: background-color 0.3s;
+  opacity: 0.5;
 }
 .switchable-content-handle:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 1;
 }
 
+/* Preview Text
+---------------------------------------------------------------------------- */
 .preview-text {
   opacity: 1;
-  transition: opacity 0.3s 0.3s;
+  transition: opacity 0.3s;
   height: auto;
 }
 
+/* Full Text
+---------------------------------------------------------------------------- */
 .full-text {
+  padding-bottom: 1.3rem;
   opacity: 1;
-  transition: opacity 0.3s 0.3s;
+  transition: opacity 0.5s, padding 0.5s 0.3s;
   height: auto;
+}
+.full-text.is-cut {
+  padding: 0;
+}
+
+/* Is Foldable Text
+---------------------------------------------------------------------------- */
+.is-foldable-text {
+  position: relative;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 200;
+  transition: opacity 0.3s;
+}
+.is-foldable-text:hover {
+  cursor: pointer;
+}
+.is-foldable-text::before {
+  display: inline-block;
+  padding: 0 0.25rem;
+  color: #e8a60c;
+  content: "expand_more";
+  font-family: "MaterialIcons";
+  font-size: 1rem;
+  font-weight: 600;
+  transition: transform 0.3s, background-color 0.3s;
+  vertical-align: bottom;
+}
+.is-foldable-text.is-expanded::before {
+  background-color: transparent;
+  transform: rotate(180deg);
+}
+
+/* Has Additional Content
+---------------------------------------------------------------------------- */
+.has-additional-content > .preview-text {
+  transition: opacity 0.3s;
+  opacity: 1;
+}
+.has-additional-content[data-additional-content-state=is-visible] > .preview-text {
+  opacity: 0.2;
+}
+.has-additional-content[data-additional-content-state=is-visible]::after {
+  transform: rotate(180deg);
+}
+.has-additional-content:hover {
+  cursor: pointer;
+}
+.has-additional-content:hover::after {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.06);
+  margin-left: 0.25rem;
+}
+.has-additional-content::after {
+  content: "expand_more";
+  font-family: "MaterialIcons";
+  color: #e8a60c;
+  vertical-align: bottom;
+  display: inline-block;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  opacity: 0.5;
+  transition: all 0.3s;
+  transform-origin: center;
+}
+
+.is-additional-content {
+  opacity: 1;
+  transition: all 0.5s;
 }
 
 .image-description {
@@ -1180,6 +1284,9 @@ ul.simple li {
 .markdown-it p {
   margin-top: 0;
 }
+.markdown-it > *:last-child {
+  margin-bottom: 0;
+}
 .markdown-it ul li {
   margin-left: 0.8rem;
   list-style-type: square;
@@ -1202,7 +1309,6 @@ ul.simple li {
 
 .is-hidden {
   display: none;
-  opacity: 0 !important;
 }
 
 .is-cut {
@@ -1237,31 +1343,6 @@ ul.simple li {
   display: inline-block;
   padding-right: 0.25rem;
   content: ":";
-}
-
-.is-foldable-text {
-  position: relative;
-  color: rgba(0, 0, 0, 0.6);
-  font-weight: 200;
-  transition: opacity 0.3s;
-}
-.is-foldable-text:hover {
-  cursor: pointer;
-}
-.is-foldable-text::before {
-  display: inline-block;
-  padding: 0 0.25rem;
-  color: #e8a60c;
-  content: "expand_more";
-  font-family: "MaterialIcons";
-  font-size: 1rem;
-  font-weight: 600;
-  transition: transform 0.3s, background-color 0.3s;
-  vertical-align: bottom;
-}
-.is-foldable-text.is-expanded::before {
-  background-color: transparent;
-  transform: rotate(180deg);
 }
 
 /*# sourceMappingURL=main.css.map */
