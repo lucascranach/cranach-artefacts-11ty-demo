@@ -178,7 +178,7 @@ module.exports = function (eleventyConfig) {
     return connectedObjects.shift();
   });
 
-  eleventyConfig.addJavaScriptFunction("getRemarkDataTable", (id, data) => {
+  eleventyConfig.addJavaScriptFunction("getRemarkDataTable", (id, data, hideElement) => {
     const rows = data.map(item => {
       const remark = item.remark ? `<td class="info-table__remark">${markdownify(item.remark)}</td>` : '';
       return `
@@ -187,7 +187,7 @@ module.exports = function (eleventyConfig) {
     });
 
     return rows.length === 0 ? '' : `
-      <table id="completeData${id}" class="info-table is-hidden" data-js-additional-content="is-hidden">
+      <table id="completeData${id}" class="info-table is-hidden js-additional-content" data-is-additional-content-to="${hideElement}">
         ${rows.join("")}
       </table>
     `;

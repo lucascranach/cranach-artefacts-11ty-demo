@@ -46,33 +46,3 @@
     content: ":";
   }
 }
-
-.is-foldable-text {
-  position: relative;
-  color: $darken-strong;
-  font-weight: $fw-light;
-  transition: opacity $tr-fast;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &::before {
-    display: inline-block;
-    padding: 0 $quad;
-    color: $accent-dark;
-    content: "expand_more";
-    font-family: $font-icons;
-    font-size: $m;
-    font-weight: $fw-bold;
-    transition: transform $tr-fast, background-color $tr-fast;
-    vertical-align: bottom;
-  }
-
-  &.is-expanded {
-    &::before {
-      background-color: transparent;
-      transform: rotate(180deg);
-    }
-  }
-}

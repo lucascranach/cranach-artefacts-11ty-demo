@@ -1,30 +1,113 @@
+/* Switchable Content Handle
+---------------------------------------------------------------------------- */
+
 .switchable-content-handle {
-  background-color: $darken;
+  // background-color: $darken;
   font-weight: $fw-bold;
   color: $accent-dark;
-  padding: 2px $xxxs;
+  // padding: 2px $xxxs;
   display: inline-block;
   margin-left: $quad;
   transition: background-color $tr-fast;
+  opacity: $op-medium;
 
-  &:hover{
-    background-color: $darken-medium;
+  &:hover {
+    // background-color: $darken-medium;
+    opacity: 1;
   }
 }
 
-.preview-text{
+/* Preview Text
+---------------------------------------------------------------------------- */
+
+.preview-text {
   opacity: 1;
   transition: opacity $tr-fast;
   height: auto;
 }
 
-.full-text{
+/* Full Text
+---------------------------------------------------------------------------- */
+
+.full-text {
   padding-bottom: $xl;
   opacity: 1;
   transition: opacity $tr-fast, padding $tr-medium $tr-fast;
   height: auto;
 
-  &.is-cut{
+  &.is-cut {
     padding: 0;
+  }
+}
+
+/* Is Foldable Text
+---------------------------------------------------------------------------- */
+
+.is-foldable-text {
+  position: relative;
+  color: $darken-strong;
+  font-weight: $fw-light;
+  transition: opacity $tr-fast;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &::before {
+    display: inline-block;
+    padding: 0 $quad;
+    color: $accent-dark;
+    content: "expand_more";
+    font-family: $font-icons;
+    font-size: $m;
+    font-weight: $fw-bold;
+    transition: transform $tr-fast, background-color $tr-fast;
+    vertical-align: bottom;
+  }
+
+  &.is-expanded {
+    &::before {
+      background-color: transparent;
+      transform: rotate(180deg);
+    }
+  }
+}
+
+/* Has Additional Content
+---------------------------------------------------------------------------- */
+
+.has-additional-content {
+  & > .preview-text {
+    transition: opacity $tr-fast;
+    opacity: 1;
+  }
+
+  &[data-additional-content-state="is-visible"] {
+    & > .preview-text {
+      opacity: $op-low;
+    }
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &::after {
+    content: "expand_more";
+    font-family: $font-icons;
+    color: $accent-dark;
+    vertical-align: bottom;
+    display: inline-block;
+    padding-left: $quad;
+    opacity: $op-medium;
+    transition: opacity $tr-fast, transform $tr-fast;
+    transform-origin: center;
   }
 }

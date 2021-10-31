@@ -107,7 +107,7 @@ class ImageViewer {
   }
 }
 
-/* SwitchableContent
+/* Switchable Content
 ============================================================================ */
 
 class SwitchableContent {
@@ -148,6 +148,43 @@ class SwitchableContent {
   }
 }
 
+/* Additional Content
+============================================================================ */
+
+class AdditionalContent {
+  constructor(ele) {
+    this.element = ele;
+    this.id = ele.id;
+    this.relatedPreviewElement = document.getElementById(ele.dataset.isAdditionalContentTo);
+    this.wrapText();
+    this.addHandle();
+    this.state = "is-hidden";
+  }
+
+  wrapText() {
+    this.relatedPreviewElement.innerHTML = `<span class="preview-text">${this.relatedPreviewElement.innerHTML}</span>`;
+  }
+
+  toggleContent() {
+    if (this.state === "is-hidden") {
+      this.element.classList.remove("is-hidden");
+      this.relatedPreviewElement.dataset.additionalContentState = "is-visible";
+      this.state = "is-visible";
+    } else {
+      this.element.classList.add("is-hidden");
+      this.relatedPreviewElement.dataset.additionalContentState = "is-hidden";
+      this.state = "is-hidden";
+    }
+  }
+
+  addHandle() {
+    this.relatedPreviewElement.classList.add("has-additional-content", "js-toggle-additional-content");
+    this.relatedPreviewElement.dataset.additionalContentState = "is-hidden";
+    this.relatedPreviewElement.dataset.fullDataElement= this.id;
+
+  }
+}
+
 /* Expand & Reduce Blocks
 ============================================================================ */
 const expandReduce = (trigger, targetId) => {
@@ -175,13 +212,24 @@ const expandReduceText = (trigger, state) => {
 
 document.addEventListener("DOMContentLoaded", function (event) {
   
-    /* Switchable Content
+  /* Switchable Content
   --------------------------------------------------------------------------  */
   const switchableContentList= document.querySelectorAll("[data-js-switchable-content]");
   const switchableContentElements = [];
   switchableContentList.forEach(element => {
     switchableContentElements[element.id] = new SwitchableContent(element);
   });
+
+  /* Additional Content
+  --------------------------------------------------------------------------  */
+  const additionalContentList= document.querySelectorAll(".js-additional-content");
+  const additionalContentElements = [];
+  additionalContentList.forEach(element => {
+    console.log(element.id);
+    additionalContentElements[element.id] = new AdditionalContent(element);
+  });
+
+  // console.log(additionalContentList);
   
   /* Image viewer
   --------------------------------------------------------------------------  */
@@ -226,6 +274,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
       const element = target.closest('.js-switch-content');
       const id = element.id;
       switchableContentElements[id].switchContent();
+    }
+
+    if (target.closest('.js-toggle-additional-content')) {
+      const element = target.closest('.js-toggle-additional-content');
+      const id = element.dataset.fullDataElement;
+      additionalContentElements[id].toggleContent();
     }
 
   }, true);

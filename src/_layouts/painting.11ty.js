@@ -11,9 +11,9 @@ const getDocumentTitle = ({ content }) => {
 
 const getTitle = (content) => {
   const titleList = content.titles.map(item => { return {"text": item.title, "remark": item.remark }});
-  const allTitles = this.getRemarkDataTable("Titles", titleList);
+  const allTitles = this.getRemarkDataTable("Titles", titleList, "mainTitle");
   return `
-    <h1 class="title">${content.metadata.title}</h1>
+    <h1 id="mainTitle" class="title">${content.metadata.title}</h1>
     ${allTitles}
   `; ;
 }
@@ -21,10 +21,10 @@ const getTitle = (content) => {
 const getMedium = (content) => {
   const [text, remark] = content.medium.split(/\n/);
   const medium = [{"text": text, "remark": remark}];
-  const mediumTable = this.getRemarkDataTable("Medium", medium);
+  const mediumTable = this.getRemarkDataTable("Medium", medium, "subtitle");
   
   return !content.medium ? '' : `
-    <p class="subtitle">${medium[0].text}</p>
+    <p id="subtitle" class="subtitle">${medium[0].text}</p>
     ${mediumTable}
   `;
 }
@@ -57,7 +57,7 @@ const getAttribution = ({ content }) => {
     const prefix = item.prefix ? `${item.prefix} ` : '';
     const suffix = item.suffix ? `${item.suffix} ` : '';
     return `
-        <dd class="definition-list__definition">
+        <dd id="attributionData" class="definition-list__definition">
         ${prefix}${name}${suffix}
         </dd>
       `;
@@ -66,7 +66,7 @@ const getAttribution = ({ content }) => {
   const attributionFullList = content.involvedPersons.map(item => {
     return { "text": `${item.prefix}${item.name}${item.suffix}`, "remark": item.remarks }
   });
-  const allAttributions = this.getRemarkDataTable("Attributions", attributionFullList);
+  const allAttributions = this.getRemarkDataTable("Attributions", attributionFullList, "attributionData");
   return `
     <dl class="definition-list">
       <dt class="definition-list__term">${this.translate("attribution", langCode)}</dt>
@@ -81,12 +81,12 @@ const getDating= ({ content }) => {
   const datesFullList = content.dating.historicEventInformations.map(item => {
     return { "text": `${item.text}`, "remark": item.remarks }
   });
-  const allDates = this.getRemarkDataTable("Dates", datesFullList);
+  const allDates = this.getRemarkDataTable("Dates", datesFullList, "dataList");
 
   return `
     <dl class="definition-list">
       <dt class="definition-list__term">${this.translate("productionDate", langCode)}</dt>
-      <dd class="definition-list__definition">${content.dating.dated}</dd>
+      <dd id="dataList" class="definition-list__definition">${content.dating.dated}</dd>
     </dl>
 
     ${allDates}
@@ -99,11 +99,11 @@ const getSignature = ({ content }) => {
     const elements = item.split(seperator);
     return {"text": elements.shift(), "remark": elements.join("\n")}
   });
-  const signatureTable = signatureItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Signature", signatureItems);
+  const signatureTable = signatureItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Signature", signatureItems, "signature");
   return !content.signature ? '' : `
     <dl class="definition-list">
       <dt class="definition-list__term">${this.translate("signature", langCode)}</dt>
-      <dd class="definition-list__definition">${signatureItems[0].text}</dd>
+      <dd id="signature" class="definition-list__definition">${signatureItems[0].text}</dd>
     </dl>
     ${signatureTable}
   `;
@@ -119,11 +119,11 @@ const getInscriptions = ({ content }) => {
     return {"text": elements.shift(), "remark": elements.join("\n")}
   });
   
-  const inscriptionTable = inscriptionItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Inscriptions", inscriptionItems);
+  const inscriptionTable = inscriptionItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Inscriptions", inscriptionItems, "inscriptions");
   return !inscriptionsRaw ? '' : `
     <dl class="definition-list">
       <dt class="definition-list__term">${this.translate("inscriptions", langCode)}</dt>
-      <dd class="definition-list__definition">${inscriptionItems[0].text}</dd>
+      <dd id="inscriptions" class="definition-list__definition">${inscriptionItems[0].text}</dd>
     </dl>
     ${inscriptionTable}
   `;
@@ -134,12 +134,12 @@ const getDimensions = ({ content }) => {
   const visibleContent = RegExp.$1.replace(/Maße/, "");
   const [text, remark] = content.dimensions.split(/\[/);
   const dimensions = [{ "text": text, "remark": `[${remark}` }];
-  const dimensionsTable = this.getRemarkDataTable("Dimensions", dimensions);
+  const dimensionsTable = this.getRemarkDataTable("Dimensions", dimensions, "dimensions");
   
   return `
     <dl class="definition-list">
       <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
-      <dd class="definition-list__definition">${visibleContent}</dd>
+      <dd id="dimensions" class="definition-list__definition">${visibleContent}</dd>
     </dl>
     ${dimensionsTable}
   `;
