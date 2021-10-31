@@ -34,7 +34,7 @@ const getImage = ({ content }) => {
   const alt = content.metadata.title;
   return `
     <figure class="leporello-recog__image">
-      <img src="${src}" alt="${this.altText(alt)}">
+      <img loading="lazy" src="${src}" alt="${this.altText(alt)}">
     </figure>
   `;
 }
@@ -328,7 +328,7 @@ const getImageStripe = ({ content }) => {
           data-image-type="${key}" 
           data-image-id="${image.id}"
           data-js-change-image='{"key":"${key}","id":"${image.id}"}'>
-          <img src="${image.sizes.xsmall.src}" alt="${title}">
+          <img loading="lazy" src="${image.sizes.xsmall.src}" alt="${title}">
         </li>
       `;
     });
@@ -388,7 +388,7 @@ const getReports = ({ content }, type) => {
         data-image-type="${type}" 
         data-image-id="${id}"
         data-js-change-image='{"key":"${type}","id":"${id}"}'>
-        <img src="${image.sizes.xsmall.src}" alt="${type}">
+        <img loading="lazy" src="${image.sizes.xsmall.src}" alt="${type}">
       </li>
       `;
     });
@@ -505,7 +505,7 @@ const getReference = ({ content }, type, isOpen = false) => {
           <a href="${refObjectLink}">
           <figure class="related-item">
             <div class="related-item__image">
-              <img src="${refObjectMeta.imgSrc}" alt="${this.altText(refObjectMeta.title)}">
+              <img loading="lazy" src="${refObjectMeta.imgSrc}" alt="${this.altText(refObjectMeta.title)}">
             </div>
             <figcaption class="related-item__caption">
               <ul>
