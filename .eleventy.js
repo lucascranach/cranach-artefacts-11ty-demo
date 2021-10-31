@@ -187,7 +187,7 @@ module.exports = function (eleventyConfig) {
     });
 
     return rows.length === 0 ? '' : `
-      <table id="completeData${id}" class="info-table is-hidden js-additional-content" data-is-additional-content-to="${hideElement}">
+      <table id="completeData${id}" class="info-table is-additional-content js-additional-content" data-is-additional-content-to="${hideElement}">
         ${rows.join("")}
       </table>
     `;

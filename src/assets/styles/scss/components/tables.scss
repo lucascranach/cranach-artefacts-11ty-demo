@@ -97,17 +97,19 @@
 // ----------------------------------------------------------------------------
 
 .info-table {
+  box-sizing: border-box;
   width: 100%;
-  padding: 0;
+  max-width: $column-large;
+  padding: $xs;
+  padding-bottom: $m;
   border: none;
   margin-top: -$quad;
-  margin-bottom: $s;
+  margin-bottom: $xl;
   border-image-width: 0 !important;
   border-spacing: 0;
-
-  &.is-hidden {
-    display: none;
-  }
+  background-color: $lighter;
+  border-radius: $radius-s;
+  position: relative;
 
   &__data {
     padding-right: $xs;
@@ -129,5 +131,16 @@
   tr + tr td {
     padding-top: $quad;
     border-top: solid $border-stroke-weight-s $darken-medium;
+  }
+
+  &::before{
+    content:"\A";
+    width: 0; 
+    height: 0; 
+    border-left: $xxs solid transparent;
+    border-right: $xxs solid transparent;
+    border-bottom: $xxs solid $lighter;
+    top: -$xxs;
+    position: absolute;
   }
 }

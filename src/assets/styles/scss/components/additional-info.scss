@@ -32,7 +32,7 @@
 .full-text {
   padding-bottom: $xl;
   opacity: 1;
-  transition: opacity $tr-fast, padding $tr-medium $tr-fast;
+  transition: opacity $tr-medium, padding $tr-medium $tr-fast;
   height: auto;
 
   &.is-cut {
@@ -77,12 +77,14 @@
 ---------------------------------------------------------------------------- */
 
 .has-additional-content {
+
   & > .preview-text {
     transition: opacity $tr-fast;
     opacity: 1;
   }
 
   &[data-additional-content-state="is-visible"] {
+
     & > .preview-text {
       opacity: $op-low;
     }
@@ -110,4 +112,10 @@
     transition: opacity $tr-fast, transform $tr-fast;
     transform-origin: center;
   }
+}
+
+
+.is-additional-content{
+  opacity: 1;
+  transition: all $tr-medium;
 }

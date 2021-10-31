@@ -157,8 +157,13 @@ class AdditionalContent {
     this.id = ele.id;
     this.relatedPreviewElement = document.getElementById(ele.dataset.isAdditionalContentTo);
     this.wrapText();
+    this.hideAdditionalContent();
     this.addHandle();
     this.state = "is-hidden";
+  }
+
+  hideAdditionalContent() {
+    this.element.classList.add("is-hidden");
   }
 
   wrapText() {
