@@ -175,6 +175,17 @@ const getLocation = ({ content }) => {
   `;
 }
 
+const getImageDescriptionObjectInfo = ({ content }) => {
+
+  const date = content.metadata.date ? `, ${content.metadata.date}` : '';
+  const attribution = !content.metadata.subtitle ? '' : `<li class="image-description-text has-small-seperator">${content.metadata.subtitle}</li>`;
+  return `
+    <ul class="image-description">
+      <li class="image-description-title">${content.metadata.title}${date}</li>
+      ${attribution}
+    </ul>
+  `;
+}
 
 const getIds = ({ content }) => {
   return `
@@ -467,7 +478,6 @@ const getReports = ({ content }, type) => {
     `;
   });
 
-
   return (reports && reports.length > 0) ?
     `
     <div class="foldable-block has-strong-separator">
@@ -585,6 +595,7 @@ exports.render = function (data) {
   const belongsTo = getReference(data, BELONGS_TO);
   const graphic = getReference(data, GRAPHIC);
   const partOfWork = getReference(data, PART_OF_WORK, true);
+  const imageDescriptionObjectInfo = getImageDescriptionObjectInfo(data);
 
   return `<!doctype html>
   <html lang="de">
@@ -646,7 +657,10 @@ exports.render = function (data) {
             <div class="image-viewer">
               <div id="viewer-content" class="image-viewer__content"></div>
             </div>
-            <figcaption id="image-caption"></figcaption>
+            <figcaption class="image-description-wrap">
+              ${imageDescriptionObjectInfo}
+              <div id="image-caption"></div>
+            </figcaption>
           </figure>
         </div>
         <div class="explore-content">

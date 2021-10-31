@@ -7,25 +7,6 @@ const toggleLiteratureDetails = (referenceId) => {
   document.getElementById(dataId).classList.toggle('is-visible');
 }
 
-/* Expand remarks
-============================================================================ */
-
-const expandRemarks = () => {
-  const foldable_content = (content) => {
-    
-    if (!content) console.log(content);
-    return `
-      <span class="foldable-text" data-js-foldable-text="${content}">…</span>
-    `;
-  }
-  const elements = document.querySelectorAll("p");
-  elements.forEach(element => {
-    const text = element.textContent.replace(/\n|\r/g, "");
-    // element.innerHTML = text.replace(/\[(.*?)\]/sg, foldable_content(RegExp.$1));
-    
-  });
-}
-
 /* ImageViewer
 ============================================================================ */
 class ImageViewer {
@@ -52,9 +33,10 @@ class ImageViewer {
 
   setCaption(img) {
     const metadata = img.metadata[langCode];
-    const fileType = !metadata.fileType ? '' : `<li class="image-description-title">${metadata.fileType}</li>`;
+    
+    const date = !metadata.date ? '' : `, ${metadata.date}`;
+    const fileType = !metadata.fileType ? '' : `<li class="image-description-title">${metadata.fileType}${date}</li>`;
     const description = !metadata.description ? '' : `<li class="image-description-text">${metadata.description}</li>`;
-    const date = !metadata.date ? '' : `<li class="image-description-date">${metadata.date}</li>`;
     const author = !metadata.created ? '' : `
       <dt class="definition-list__term">${translations['authorAndRights'][langCode]}</dt>
       <dd class="definition-list__definition"><p class="flat-text">${metadata.created}</p></dd>
@@ -64,18 +46,18 @@ class ImageViewer {
       <dd class="definition-list__definition"><p class="flat-text">${metadata.source}</p></dd>
     `;
     const caption = `
-    <ul class="image-description">
-      ${fileType}${date}
-      <li class="image-description-text has-small-seperator">
+    <ul class="image-description is-secondary">
+      ${fileType}
+      <li class="image-description-text">
         <dl class="definition-list">
           ${author}
           ${source}
         </dl>
       </li>
       ${description}
-
     </ul>
     `;
+    
     this.caption.innerHTML = caption;
   }
 
@@ -230,11 +212,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const additionalContentList= document.querySelectorAll(".js-additional-content");
   const additionalContentElements = [];
   additionalContentList.forEach(element => {
-    console.log(element.id);
     additionalContentElements[element.id] = new AdditionalContent(element);
   });
-
-  // console.log(additionalContentList);
   
   /* Image viewer
   --------------------------------------------------------------------------  */

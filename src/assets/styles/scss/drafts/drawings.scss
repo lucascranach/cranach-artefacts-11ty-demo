@@ -1,21 +1,31 @@
+// Image Description (Wrap)
+// --------------------------------------------------------------------------
+
+.image-description-wrap{
+
+  max-width: $column-large;
+  margin-left: $m;
+
+  @media only screen and (min-width: $vp-large) {
+    margin-left: $xxl;
+    display: grid;
+    gap: $m;
+    grid-template-columns: 1fr 1fr
+  }
+}
+
+// Image Description
+// --------------------------------------------------------------------------
+
 .image-description {
   display: block;
   max-width: $column-small;
-  padding: $m;
+  padding-right: $m;
   padding-top: $s;
-
-  @media only screen and (min-width: $vp-xxlarge) {
-    padding-left: $xxl;
-  }
 
   &-text {
     display: block;
     color: $dark;
-  }
-
-  &-date {
-    display: inline-block;
-    font-weight: $fw-semibold;
   }
 
   &-title {
@@ -31,10 +41,6 @@
       content: "//";
       font-weight: $fw-light;
     }
-
-    & + .image-description-date::before {
-      content: ", ";
-    }
   }
 
   .definition-list {
@@ -45,5 +51,17 @@
   .flat-text {
     margin-top: 0;
     margin-bottom: 0;
+  }
+
+  &.is-secondary{
+
+    .image-description-title, .definition-list__term {
+      font-weight: $fw-regular;
+      color: $darkest;
+    }
+
+    .image-description-text{
+      margin-top: $quad;
+    }
   }
 }

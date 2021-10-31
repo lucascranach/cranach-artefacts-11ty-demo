@@ -222,7 +222,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("altText", (str) => {
-    return str.replace(/"/g, "\'");
+    return str ? str.replace(/"/g, "\'") : 'no alt text';
   });
 
   eleventyConfig.addFilter("stripTags", (str) => {
@@ -247,7 +247,7 @@ module.exports = function (eleventyConfig) {
     // "DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
     const paintings = paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
     /// const paintings = paintingsDataDE.items.slice(0,3);
-    return paintingsDataDE.items;
+    return paintings;
   });
 
   eleventyConfig.addCollection("paintingsEN", () => {
