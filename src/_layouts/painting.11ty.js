@@ -602,8 +602,6 @@ exports.render = function (data) {
                 ${attribution}
                 ${dating}
                 ${dimensions}
-              </div>
-              <div class="block">
                 ${signature}
                 ${inscription}
               </div>
