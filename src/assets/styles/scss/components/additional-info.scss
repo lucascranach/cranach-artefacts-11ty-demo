@@ -98,6 +98,8 @@
 
     &::after {
       opacity: 1;
+      background-color: $darken;
+      margin-left: $quad;
     }
   }
 
@@ -108,8 +110,9 @@
     vertical-align: bottom;
     display: inline-block;
     padding-left: $quad;
+    padding-right: $quad;
     opacity: $op-medium;
-    transition: opacity $tr-fast, transform $tr-fast;
+    transition: all $tr-fast;
     transform-origin: center;
   }
 }

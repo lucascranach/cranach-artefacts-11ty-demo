@@ -100,10 +100,8 @@
   box-sizing: border-box;
   width: 100%;
   max-width: $column-large;
-  padding: $xs;
-  padding-bottom: $m;
+  padding: 0;
   border: none;
-  margin-top: -$quad;
   margin-bottom: $xl;
   border-image-width: 0 !important;
   border-spacing: 0;
@@ -111,29 +109,22 @@
   border-radius: $radius-s;
   position: relative;
 
-  &__data {
-    padding-right: $xs;
-  }
-
   &__data,
   &__remark {
     width: 50%;
-    padding: 0;
-    padding-bottom: $quad;
+    padding: $m $m $l $m;
     vertical-align: top;
   }
 
   &__remark {
-    padding-left: $xs;
     color: $darken-strong;
   }
 
   tr + tr td {
-    padding-top: $quad;
-    border-top: solid $border-stroke-weight-s $darken-medium;
+    border-top: solid $border-stroke-weight $lightest;
   }
 
-  &::before{
+  /* &::before{
     content:"\A";
     width: 0; 
     height: 0; 
@@ -142,5 +133,5 @@
     border-bottom: $xxs solid $lighter;
     top: -$xxs;
     position: absolute;
-  }
+  }*/
 }

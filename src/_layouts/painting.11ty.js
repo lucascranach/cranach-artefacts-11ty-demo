@@ -50,7 +50,7 @@ const getHeader = ({ content }) => {
 }
 
 const getAttribution = ({ content }) => {
-  const numberOfItems = 2;
+  const numberOfItems = 1;
   const attributionShortListItems = content.involvedPersons.slice(0, numberOfItems);
   const attributionShortList = attributionShortListItems.map((item) => {
     const name = item.name ? `${item.name} ` : '';
@@ -258,14 +258,14 @@ const getSources = ({ content }) => {
       return `
         <tr
           class="row ${hasBackground} is-head" 
-          id="litRef${item.referenceId}">
+          id="litRef${item.referenceId}-${index}">
 
-          <td class="cell has-interaction"><a href="#" data-js-toggle-literature="${item.referenceId}">${item.title}</a></td>
+          <td class="cell has-interaction"><a href="#" data-js-toggle-literature="${item.referenceId}-${index}">${item.title}</a></td>
           <td class="cell">${item.pageNumber}</td>
           <td class="cell">${literatureReferenceTableData.catalogNumber}</td>
           <td class="cell">${literatureReferenceTableData.figureNumber}</td>
         </tr>
-        <tr class="row ${hasBackground} is-detail" id="litRefData${item.referenceId}">
+        <tr class="row ${hasBackground} is-detail" id="litRefData${item.referenceId}-${index}">
           <td class="cell" colspan="4">
             ${getLiteraturDetails(literatureReference)}
           </td>

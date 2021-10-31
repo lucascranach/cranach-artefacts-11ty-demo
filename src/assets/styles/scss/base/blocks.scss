@@ -23,12 +23,12 @@
 
   &.has-separator {
     padding-top: $s;
-    border-top: solid $border-stroke-weight-s $light;
+    border-top: solid $border-stroke-weight-s $darken-medium;
   }
 
   &.has-strong-separator {
     padding-top: $s;
-    border-top: solid $border-stroke-weight-s $darken-strong;
+    border-top: solid $border-stroke-weight-s $darken-medium;
   }
 
   &__headline {
@@ -99,7 +99,7 @@
 
   & + & {
     padding-top: $s;
-    border-top: solid $border-stroke-weight-s $light;
+    border-top: solid $border-stroke-weight-s $darken-medium;
   }
 
   h2 {
