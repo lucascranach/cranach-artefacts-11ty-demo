@@ -19,7 +19,12 @@
 }
 
 .full-text{
+  padding-bottom: $xl;
   opacity: 1;
-  transition: opacity $tr-fast;
+  transition: opacity $tr-fast, padding $tr-medium $tr-fast;
   height: auto;
+
+  &.is-cut{
+    padding: 0;
+  }
 }

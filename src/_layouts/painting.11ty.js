@@ -86,7 +86,7 @@ const getDating= ({ content }) => {
   return `
     <dl class="definition-list">
       <dt class="definition-list__term">${this.translate("productionDate", langCode)}</dt>
-      <dd class="definition-list__definition">${this.foldify(content.dating.dated)}</dd>
+      <dd class="definition-list__definition">${content.dating.dated}</dd>
     </dl>
 
     ${allDates}

@@ -82,13 +82,12 @@ const pathPrefix = (process.env.ELEVENTY_ENV === 'production') ? "paintings" : "
 const cdaBaseUrl = "https://lucascranach.org";
 
 
-const foldify = str => {
-  const replaceWithIcon = (match, str) => {
-    return `<span class="is-foldable-text" data-js-foldable-text="[${str}]"></span>`;
+const markRemarks = str => {
+  const mark = (match, str) => {
+    return `<span class="is-remark">${str}</span>`;
   }
-  return str;
   str = str.replace(/\n/g, "");
-  str = str.replace(/\[(.*)]/g, replaceWithIcon);
+  str = str.replace(/\[(.*)]/g, mark);
   return str;
 }
 
@@ -214,11 +213,8 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   eleventyConfig.addFilter("markdownify", (str) => {
+    str = markRemarks(str);
     return markdownify(str);
-  });
-
-  eleventyConfig.addFilter("foldify", (str) => {
-    return foldify(str);;
   });
 
   eleventyConfig.addFilter("altText", (str) => {
