@@ -4,20 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Screendesign // {{ title }}</title>
+    <title>cda Gemälde // {{ title }}</title>
 
     <link
       rel="icon"
       type="image/png"
       href="/assets/images/outline_face_black_24dp.png"
     />
+      <link href="{{'/assets/main.css' | url }}" rel="stylesheet">
+      <link href="{{'/assets/images/favicon.svg' | url }}" rel="icon" type="image/svg">
 
   </head>
   <body>
 
       {{ content | safe }}
-
-      </main>
-    </div>
   </body>
 </html>

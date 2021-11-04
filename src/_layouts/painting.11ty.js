@@ -32,6 +32,7 @@ const getMedium = (content) => {
 const getImage = ({ content }) => {
   const src = content.metadata.imgSrc;
   const alt = content.metadata.title;
+  console.log(content);
   return `
     <figure class="leporello-recog__image">
       <img loading="lazy" src="${src}" alt="${this.altText(alt)}">

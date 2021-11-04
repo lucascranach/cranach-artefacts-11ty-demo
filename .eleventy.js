@@ -243,11 +243,17 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   eleventyConfig.addCollection("paintingsDE", () => {
-    const testObjects = ["DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"];
-    // "DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
+    const testObjects = ["DE_KBG-Lost_NONE-KBG001a"];
+    // "DE_KBG-Lost_NONE-KBG001a","DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
     const paintings = paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
-    /// const paintings = paintingsDataDE.items.slice(0,3);
-    return paintings;
+    // const paintings = paintingsDataDE.items;
+
+    const sortedPaintings = paintings.sort((a, b)=>{
+      if (a.sortingNumber < b.sortingNumber) return -1;
+      if (a.sortingNumber > b.sortingNumber) return 1;
+      return 0;
+  });
+    return sortedPaintings;
   });
 
   eleventyConfig.addCollection("paintingsEN", () => {

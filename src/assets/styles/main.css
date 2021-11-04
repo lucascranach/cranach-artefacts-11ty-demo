@@ -1062,8 +1062,13 @@ ul.simple li {
   transition: all 0.5s;
 }
 
-@media only screen and (min-width: 768px) {
+.image-description-wrap {
+  max-width: 50rem;
+  margin-left: 1rem;
+}
+@media only screen and (min-width: 1024px) {
   .image-description-wrap {
+    margin-left: 1.5rem;
     display: grid;
     gap: 1rem;
     grid-template-columns: 1fr 1fr;
@@ -1073,21 +1078,12 @@ ul.simple li {
 .image-description {
   display: block;
   max-width: 30rem;
-  padding: 1rem;
+  padding-right: 1rem;
   padding-top: 0.8rem;
-}
-@media only screen and (min-width: 1800px) {
-  .image-description {
-    padding-left: 1.5rem;
-  }
 }
 .image-description-text {
   display: block;
   color: #444;
-}
-.image-description-date {
-  display: inline-block;
-  font-weight: 400;
 }
 .image-description-title {
   display: inline-block;
@@ -1102,9 +1098,6 @@ ul.simple li {
   content: "//";
   font-weight: 200;
 }
-.image-description-title + .image-description-date::before {
-  content: ", ";
-}
 .image-description .definition-list {
   margin-top: 0;
   list-style: none;
@@ -1112,6 +1105,13 @@ ul.simple li {
 .image-description .flat-text {
   margin-top: 0;
   margin-bottom: 0;
+}
+.image-description.is-secondary .image-description-title, .image-description.is-secondary .definition-list__term {
+  font-weight: 300;
+  color: #000;
+}
+.image-description.is-secondary .image-description-text {
+  margin-top: 0.25rem;
 }
 
 .leporello-recog {
@@ -1339,7 +1339,7 @@ ul.simple li {
   width: 1.3rem;
   border-top: solid 1px rgba(0, 0, 0, 0.6);
   margin-top: 0.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.7rem;
   content: " ";
 }
 
