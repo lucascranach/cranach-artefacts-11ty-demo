@@ -234,7 +234,7 @@ const getSources = ({ content }) => {
 
   const getLiteraturDetails = (item) => {
     const author = item && item.persons ? item.persons.filter(person => person.role === "AUTHOR").map(person => person.name) : [];
-    const publisher = item && item.persons ? item.persons.filter(person => person.role === "PUBLISHER").map(person => person.name) : [];
+    const publisher = item && item.persons ? item.persons.filter(person => person.role === "PUBLISHER" || person.role === "UNKNOWN").map(person => person.name) : [];
     const editor = item && item.persons ? item.persons.filter(person => person.role === "EDITORIAL_STAFF").map(person => person.name) : [];
     const alternateNumbers = (!item || !item.alternateNumbers) ? [] : item.alternateNumbers.map(alternateNumber => {
       return `
@@ -251,20 +251,22 @@ const getSources = ({ content }) => {
       <table class="literature-item-details-table">
         ${getRow(author.join(", "), "author")}
         ${getRow(publisher.join(", "), "publisher")}
-        ${getRow(editor.join(", "), "publisher")}
+        ${getRow(editor.join(", "), "editor")}
         ${item && item.title ? getRow(item.title, "title") : ''}
+        ${item && item.subtitle ? getRow(item.subtitle, "publication") : ''}
         ${item && item.pages ? getRow(item.pages, "pages") : ''}
         ${item && item.series ? getRow(item.series, "series") : ''}
         ${item && item.volume ? getRow(item.volume, "volume") : ''}
         ${item && item.journal ? getRow(item.journal, "journal") : ''}
         ${item && item.issue ? getRow(item.issue, "issue") : ''}
         ${item && item.publication ? getRow(item.publication, "publication") : ''}
-        ${item && item.publishDate ? getRow(item.publishDate, "publishDate") : ''}
         ${item && item.publishLocation ? getRow(item.publishLocation, "publishLocation") : ''}
+        ${item && item.publishDate ? getRow(item.publishDate, "publishDate") : ''}
         ${item && item.periodOfOrigin ? getRow(item.periodOfOrigin, "periodOfOrigin") : ''}
         ${item && item.physicalDescription ? getRow(item.physicalDescription, "physicalDescription") : ''}
         ${item && item.mention ? getRow(item.mention, "mention") : ''}
         ${item && item.link ? getRow(item.link, "permalink") : ''}
+        ${item && item.pageNumbers ? getRow(item.pageNumbers, "pages") : ''}
         ${getRow(alternateNumbers.join(", "), "alternativeNumbers")}
       </table>
     `;
