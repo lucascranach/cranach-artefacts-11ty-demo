@@ -1099,6 +1099,7 @@ ul.simple li {
   transition: opacity 0.5s 0.5s;
   opacity: 0;
 }
+
 .image-description-wrap {
   margin-left: 1rem;
 }

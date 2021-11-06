@@ -111,10 +111,18 @@
   "attribution": {
     "de": "Zuschreibung",
     "en": "Attribution"
+  },  
+  "attributions": {
+    "de": "Zuschreibungen",
+    "en": "Attributions"
   },
   "productionDate": {
     "de": "Datierung",
     "en": "Production date"
+  },
+  "productionDates": {
+    "de": "Datierungen",
+    "en": "Production dates"
   },
   "permalink": {
     "de": "Permalink",
