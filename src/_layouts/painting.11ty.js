@@ -10,7 +10,7 @@ const getDocumentTitle = ({ content }) => {
 }
 
 const getTitle = (content) => {
-  const titleList = content.titles.map(item => { return {"text": item.title, "remark": item.remark }});
+  const titleList = content.titles.map(item => { return {"text": item.title, "remark": item.remarks }});
   const allTitles = this.getRemarkDataTable("Titles", titleList, "mainTitle");
   return `
     <h1 id="mainTitle" class="title">${content.metadata.title}</h1>
@@ -32,7 +32,6 @@ const getMedium = (content) => {
 const getImage = ({ content }) => {
   const src = content.metadata.imgSrc;
   const alt = content.metadata.title;
-  console.log(content);
   return `
     <figure class="leporello-recog__image">
       <img loading="lazy" src="${src}" alt="${this.altText(alt)}">
@@ -51,43 +50,50 @@ const getHeader = ({ content }) => {
 }
 
 const getAttribution = ({ content }) => {
-  const numberOfItems = 1;
+  const numberOfItems = 2;
+  const getAttributer = (item) => {
+    const fragments = [];
+    if (item.prefix) fragments.push(item.prefix);
+    if (item.name) fragments.push(item.name);
+    if (item.suffix) fragments.push(item.suffix);
+    return fragments.join(" ");
+  }
   const attributionShortListItems = content.involvedPersons.slice(0, numberOfItems);
-  const attributionShortList = attributionShortListItems.map((item) => {
-    const name = item.name ? `${item.name} ` : '';
-    const prefix = item.prefix ? `${item.prefix} ` : '';
-    const suffix = item.suffix ? `${item.suffix} ` : '';
-    return `
-        <dd id="attributionData" class="definition-list__definition">
-        ${prefix}${name}${suffix}
-        </dd>
-      `;
-    }
-  );
+  const attributionShortList = attributionShortListItems.map((item) => { return getAttributer(item);});
   const attributionFullList = content.involvedPersons.map(item => {
-    return { "text": `${item.prefix}${item.name}${item.suffix}`, "remark": item.remarks }
+    return { "text": `${getAttributer(item)}`, "remark": item.remarks }
   });
   const allAttributions = this.getRemarkDataTable("Attributions", attributionFullList, "attributionData");
   return `
-    <dl class="definition-list">
+    <dl class="definition-list is-compact">
       <dt class="definition-list__term">${this.translate("attribution", langCode)}</dt>
-      ${attributionShortList.join("")}
+      <dd id="attributionData" class="definition-list__definition">
+        ${attributionShortList.join("<br>")}
+      </dd>
     </dl>
     ${allAttributions}
   `;
 }
 
 const getDating= ({ content }) => {
-
-  const datesFullList = content.dating.historicEventInformations.map(item => {
+  const numberOfItems = 2;
+  const combinedDates = [
+    { "text": content.dating.dated, "remarks": content.dating.remarks },
+    ...content.dating.historicEventInformations
+  ];
+  const datesShortListItems = combinedDates.slice(0, numberOfItems);
+  const datesShortList = datesShortListItems.map(item => {
+    return item.text;
+  });
+  const datesFullList = combinedDates.map(item => {
     return { "text": `${item.text}`, "remark": item.remarks }
   });
   const allDates = this.getRemarkDataTable("Dates", datesFullList, "dataList");
 
   return `
-    <dl class="definition-list">
+    <dl class="definition-list is-compact">
       <dt class="definition-list__term">${this.translate("productionDate", langCode)}</dt>
-      <dd id="dataList" class="definition-list__definition">${content.dating.dated}</dd>
+      <dd id="dataList" class="definition-list__definition">${datesShortList.join("<br>")}</dd>
     </dl>
 
     ${allDates}
@@ -147,17 +153,19 @@ const getDimensions = ({ content }) => {
 }
 
 const getCopyText = ({ content }) => {
-  const numberOfWords = 30;
-  const [fulltext, author] = content.description.split(/\[/);
+
+  const numberOfWords = 50;
+  const [fulltext, author] = content.description.match(/\[/) ? content.description.split(/\[/) : [content.description, false];
   const words = fulltext.split(/ /);
   const preview = words.slice(0, numberOfWords).join(" ");
+  const authorHTML = author ? `<p class="remark">[${author}</p>` : '';
   const text = words.length > numberOfWords ? `
     <div id="switchableCopyText" data-js-switchable-content='["previewText","fullText"]'>
       <div id="previewText" class="preview-text">${this.markdownify(preview)}</div>
       <div class="is-cut full-text" id="fullText">${this.markdownify(fulltext)}<p class="remark">[${author}</p></div>
     </div>
     `: `
-      ${this.markdownify(fulltext)}<p class="remark">[${author}</p>
+      ${this.markdownify(fulltext)}
     `;
   return text;
 }
@@ -262,10 +270,16 @@ const getSources = ({ content }) => {
     `;
   };
 
-  const publicationList = content.publications.map(
+  const publicationListData = content.publications.map(item => {
+    item.referenceData = this.getLiteratureReference(item.referenceId, langCode);
+    return item;
+  });
+  const publicationListDataByDate = publicationListData.sort((a, b) => { return b.referenceData.date - a.referenceData.date });
+  const publicationList = publicationListDataByDate.map(
     (item, index) => {
+      console.log(item);
       const literatureReference = this.getLiteratureReference(item.referenceId, langCode);
-      const literatureReferenceTableData = this.getLiteratureReferenceTableData(literatureReference, content.metadata.id);
+      const literatureReferenceTableData = this.getLiteratureReferenceTableData(item.referenceData, content.metadata.id);
       const hasBackground = index % 2 ? "has-bg" : '';
       return `
         <tr

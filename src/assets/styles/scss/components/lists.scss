@@ -26,6 +26,22 @@ ul {
   margin-bottom: $xs;
   font-weight: $fw-light;
 
+  $self: &;
+
+  &.is-compact{
+    display: flex;
+    gap: $xs;
+    align-items: flex-start;
+
+    #{$self}__definition{
+      &::before {
+        display: block;
+        height: $xs;
+        content: "";
+      }
+    }
+  }
+
   &__term {
     display: inline;
     padding-bottom: $xxs;

@@ -683,6 +683,16 @@ ul.simple li {
   margin-bottom: 0.7rem;
   font-weight: 200;
 }
+.definition-list.is-compact {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+}
+.definition-list.is-compact .definition-list__definition::before {
+  display: block;
+  height: 0.7rem;
+  content: "";
+}
 .definition-list__term {
   display: inline;
   padding-bottom: 0.5rem;
@@ -791,30 +801,28 @@ ul.simple li {
   margin-bottom: 1.8rem;
   border-image-width: 0 !important;
   border-spacing: 0;
-  background-color: #f2f2f2;
-  border-radius: 2px;
   position: relative;
-  /* &::before{
+  /*&::before{
     content:"\A";
     width: 0; 
     height: 0; 
-    border-left: $xxs solid transparent;
-    border-right: $xxs solid transparent;
-    border-bottom: $xxs solid $lighter;
-    top: -$xxs;
+    border-left: $xxxs solid transparent;
+    border-right: $xxxs solid transparent;
+    border-bottom: $xxxs solid $light;
+    top: -$xxxs;
     position: absolute;
   }*/
 }
 .info-table__data, .info-table__remark {
   width: 50%;
-  padding: 1rem 1rem 1.2rem 1rem;
+  padding: 0.7rem 0 1rem 0;
   vertical-align: top;
 }
 .info-table__remark {
   color: rgba(0, 0, 0, 0.6);
 }
-.info-table tr + tr td {
-  border-top: solid 2px #fff;
+.info-table td {
+  border-top: solid 1px rgba(0, 0, 0, 0.06);
 }
 
 .survey {
@@ -1317,6 +1325,10 @@ ul.simple li {
 
 .is-hidden {
   display: none;
+}
+
+.is-remark {
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .is-cut {

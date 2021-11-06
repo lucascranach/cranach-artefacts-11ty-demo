@@ -105,15 +105,13 @@
   margin-bottom: $xxxl;
   border-image-width: 0 !important;
   border-spacing: 0;
-  background-color: $lighter;
-  border-radius: $radius-s;
   position: relative;
 
 
   &__data,
   &__remark {
     width: 50%;
-    padding: $m $m $l $m;
+    padding: $xs 0 $m 0;
     vertical-align: top;
   }
 
@@ -121,18 +119,18 @@
     color: $darken-strong;
   }
 
-  tr + tr td {
-    border-top: solid $border-stroke-weight $lightest;
+  td {
+    border-top: solid $border-stroke-weight-s $darken;
   }
 
-  /* &::before{
+  /*&::before{
     content:"\A";
     width: 0; 
     height: 0; 
-    border-left: $xxs solid transparent;
-    border-right: $xxs solid transparent;
-    border-bottom: $xxs solid $lighter;
-    top: -$xxs;
+    border-left: $xxxs solid transparent;
+    border-right: $xxxs solid transparent;
+    border-bottom: $xxxs solid $light;
+    top: -$xxxs;
     position: absolute;
   }*/
 }
