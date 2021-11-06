@@ -279,7 +279,6 @@ const getSources = ({ content }) => {
   const publicationListDataByDate = publicationListData.sort((a, b) => { return b.referenceData.date - a.referenceData.date });
   const publicationList = publicationListDataByDate.map(
     (item, index) => {
-      console.log(item);
       const literatureReference = this.getLiteratureReference(item.referenceId, langCode);
       const literatureReferenceTableData = this.getLiteratureReferenceTableData(item.referenceData, content.metadata.id);
       const hasBackground = index % 2 ? "has-bg" : '';

@@ -79,5 +79,13 @@
   "showLess":{
     "de": "weniger Inhalte zeigen",
     "en": "hide content"
+  },
+  "kindOfImage":{
+    "de": "Art der Abbildung",
+    "en": "File type / description"
+  },
+  "fileName":{
+    "de": "Dateiname",
+    "en": "File name"
   }
 }

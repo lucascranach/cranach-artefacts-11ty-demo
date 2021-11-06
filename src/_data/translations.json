@@ -343,5 +343,9 @@
   "PART_OF_WORK":{
     "de": "Zugehörige Werke",
     "en": "Connected Works"
+  },
+  "kindOfImage":{
+    "de": "Art der Abbildung",
+    "en": "File type / description"
   }
 }

@@ -802,18 +802,11 @@ ul.simple li {
   border-image-width: 0 !important;
   border-spacing: 0;
   position: relative;
-  /*&::before{
-    content:"\A";
-    width: 0; 
-    height: 0; 
-    border-left: $xxxs solid transparent;
-    border-right: $xxxs solid transparent;
-    border-bottom: $xxxs solid $light;
-    top: -$xxxs;
-    position: absolute;
-  }*/
 }
-.info-table__data, .info-table__remark {
+.info-table__title {
+  font-weight: 300;
+}
+.info-table__title, .info-table__data, .info-table__remark {
   width: 50%;
   padding: 0.7rem 0 1rem 0;
   vertical-align: top;
@@ -823,6 +816,14 @@ ul.simple li {
 }
 .info-table td {
   border-top: solid 1px rgba(0, 0, 0, 0.06);
+}
+.info-table.is-one-third .info-table__title {
+  width: 33%;
+}
+.info-table.is-tight .info-table__data,
+.info-table.is-tight .info-table__title,
+.info-table.is-tight .info-table__remark {
+  padding: 0.3rem 0 0.5rem 0;
 }
 
 .survey {
@@ -1070,8 +1071,20 @@ ul.simple li {
   transition: all 0.5s;
 }
 
+#texteingabe {
+  line-height: 140%;
+}
+#texteingabe i {
+  display: block;
+  margin-bottom: 1rem;
+}
+#texteingabe b {
+  display: block;
+  margin-top: 1.2rem;
+  margin-bottom: 0.7rem;
+}
+
 .image-description-wrap {
-  max-width: 50rem;
   margin-left: 1rem;
 }
 @media only screen and (min-width: 1024px) {
@@ -1085,9 +1098,11 @@ ul.simple li {
 
 .image-description {
   display: block;
-  max-width: 30rem;
   padding-right: 1rem;
   padding-top: 0.8rem;
+}
+.image-description:not(.is-secondary) {
+  max-width: 30rem;
 }
 .image-description-text {
   display: block;
@@ -1113,6 +1128,7 @@ ul.simple li {
 .image-description .flat-text {
   margin-top: 0;
   margin-bottom: 0;
+  display: inline;
 }
 .image-description.is-secondary .image-description-title, .image-description.is-secondary .definition-list__term {
   font-weight: 300;

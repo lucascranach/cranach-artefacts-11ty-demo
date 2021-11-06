@@ -2,9 +2,8 @@
 // --------------------------------------------------------------------------
 
 .image-description-wrap{
-
-  max-width: $column-large;
   margin-left: $m;
+
 
   @media only screen and (min-width: $vp-large) {
     margin-left: $xxl;
@@ -19,9 +18,12 @@
 
 .image-description {
   display: block;
-  max-width: $column-small;
   padding-right: $m;
   padding-top: $s;
+
+  &:not(.is-secondary){
+    max-width: $column-small;
+  }
 
   &-text {
     display: block;
@@ -51,6 +53,7 @@
   .flat-text {
     margin-top: 0;
     margin-bottom: 0;
+    display: inline;
   }
 
   &.is-secondary{

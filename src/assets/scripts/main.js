@@ -1,3 +1,5 @@
+window.globals = {};
+
 /* Toggle Literature Details
 ============================================================================ */
 const toggleLiteratureDetails = (referenceId) => {
@@ -31,36 +33,50 @@ class ImageViewer {
     return url.replace(prodPath, devPath, url);
   }
 
-  setCaption(img) {
+  addAdditionalContentInteraction(captionId) {
+    const caption = document.getElementById(captionId);
+    globals.additionalContentElements[captionId] = new AdditionalContent(caption);
+    return;
+  }
 
+  setCaption(img) {
     if (!img.metadata) return;
     const metadata = img.metadata;
+    const captionId = "ImageDescTitle";
+    const description = !metadata.description ? '' : `<li id="${captionId}" class="image-description-title">${metadata.description}</li>`;
+
+    const getCompleteImageData = (id, data) => {
+      const rows = data.map(item => {
+        return `
+            <tr><td class="info-table__title">${item.name}:</td><td class="info-table__data">${item.content}</td></tr>
+          `;
+      });
+  
+      return rows.length === 0 ? '' : `
+        <table id="completeData${id}" class="info-table is-additional-content js-additional-content is-two-third is-tight" data-is-additional-content-to="${id}">
+          ${rows.join("")}
+        </table>
+      `;
+    }
     
-    const date = !metadata.date ? '' : `, ${metadata.date}`;
-    const fileType = !metadata.fileType ? '' : `<li class="image-description-title">${metadata.fileType}${date}</li>`;
-    const description = !metadata.description ? '' : `<li class="image-description-text">${metadata.description}</li>`;
-    const author = !metadata.created ? '' : `
-      <dt class="definition-list__term">${translations['authorAndRights'][langCode]}</dt>
-      <dd class="definition-list__definition"><p class="flat-text">${metadata.created}</p></dd>
-    `;
-    const source = !metadata.source ? '' : `
-      <dt class="definition-list__term">${translations['source'][langCode]}</dt>
-      <dd class="definition-list__definition"><p class="flat-text">${metadata.source}</p></dd>
-    `;
+    const data = [];
+    data.push({ "name": translations['fileName'][langCode], "content": img.id });
+    if (metadata.created) data.push({ "name": translations['authorAndRights'][langCode], "content": metadata.created });
+    if (metadata.source) data.push({ "name": translations['source'][langCode], "content": metadata.source });
+    if (metadata.date) data.push({ "name": translations['date'][langCode], "content": metadata.date });
+    if (metadata.fileType) data.push({ "name": translations['kindOfImage'][langCode], "content": metadata.fileType });
+
+    const completeData = getCompleteImageData(captionId, data);
+
     const caption = `
-    <ul class="image-description is-secondary">
-      ${fileType}
-      <li class="image-description-text">
-        <dl class="definition-list">
-          ${author}
-          ${source}
-        </dl>
-      </li>
-      ${description}
-    </ul>
+      <ul class="image-description is-secondary">
+        ${description}
+        ${completeData}
+      </ul>
     `;
     
     this.caption.innerHTML = caption;
+    this.addAdditionalContentInteraction(`completeData${captionId}`);
   }
 
   handleTrigger(trigger) {
@@ -138,8 +154,8 @@ class SwitchableContent {
 class AdditionalContent {
   constructor(ele) {
     this.element = ele;
-    this.id = ele.id;
-    this.relatedPreviewElement = document.getElementById(ele.dataset.isAdditionalContentTo);
+    this.id = ele.id; 
+    this.relatedPreviewElement = document.getElementById(this.element.dataset.isAdditionalContentTo);
     this.wrapText();
     this.hideAdditionalContent();
     this.addHandle();
@@ -212,9 +228,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
   /* Additional Content
   --------------------------------------------------------------------------  */
   const additionalContentList= document.querySelectorAll(".js-additional-content");
-  const additionalContentElements = [];
+  globals.additionalContentElements = ["asas"];
   additionalContentList.forEach(element => {
-    additionalContentElements[element.id] = new AdditionalContent(element);
+    globals.additionalContentElements[element.id] = new AdditionalContent(element);
   });
   
   /* Image viewer
@@ -265,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     if (target.closest('.js-toggle-additional-content')) {
       const element = target.closest('.js-toggle-additional-content');
       const id = element.dataset.fullDataElement;
-      additionalContentElements[id].toggleContent();
+      globals.additionalContentElements[id].toggleContent();
     }
 
   }, true);
