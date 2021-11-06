@@ -66,7 +66,7 @@ const getAttribution = ({ content }) => {
   const allAttributions = this.getRemarkDataTable("Attributions", attributionFullList, "attributionData");
   const label = content.involvedPersons.length > 1 ? this.translate("attributions", langCode) : this.translate("attribution", langCode)
   return `
-    <dl class="definition-list is-compact">
+    <dl class="definition-list">
       <dt class="definition-list__term">${label}</dt>
       <dd id="attributionData" class="definition-list__definition">
         ${attributionShortList.join("<br>")}
@@ -93,7 +93,7 @@ const getDating= ({ content }) => {
   const label = datesFullList.length > 1 ? this.translate("productionDates", langCode) : this.translate("productionDate", langCode);
   
   return `
-    <dl class="definition-list is-compact">
+    <dl class="definition-list">
       <dt class="definition-list__term">${label}</dt>
       <dd id="dataList" class="definition-list__definition">${datesShortList.join("<br>")}</dd>
     </dl>
@@ -138,12 +138,49 @@ const getInscriptions = ({ content }) => {
   `;
 }
 
+const getStructuredDimensions = (dimensions) => {
+  const lines = dimensions.split(/\n/s);
+  const dimensionData = [];
+  let dimensionsPerEntry = [];
+  let sourcesPerEntry = [];  
+  const addToDimensions = (dimensions, sources) => {
+    dimensionData.push({
+      'text': dimensions.join("<br>"),
+      'remark': sources.join("<br>"),
+    });
+    mode = 'collectDimensions';
+    dimensionsPerEntry = [];
+    sourcesPerEntry = [];
+  }
+  let mode = 'collectDimensions';
+  lines.forEach(line => {
+    if (!line.match(/[a-zA-Z]/)) return;
+    if (line.match(/cm/)) {
+      if (mode === 'collectSources') {
+        addToDimensions(dimensionsPerEntry, sourcesPerEntry);
+        mode = 'collectDimensions';
+        dimensionsPerEntry = [];
+        sourcesPerEntry = [];
+      }
+      dimensionsPerEntry.push(line);
+    } else {
+      mode = 'collectSources';
+      sourcesPerEntry.push(line);
+    }
+  });
+  addToDimensions(dimensionsPerEntry, sourcesPerEntry);
+  return dimensionData;
+}
+
 const getDimensions = ({ content }) => {
+  
+  const structuredDimensions = getStructuredDimensions(content.dimensions);
   content.dimensions.match(/(.*?)\n|;/);
   const visibleContent = RegExp.$1.replace(/Maße/, "");
+
   const [text, remark] = content.dimensions.split(/\[/);
   const dimensions = [{ "text": text, "remark": `[${remark}` }];
-  const dimensionsTable = this.getRemarkDataTable("Dimensions", dimensions, "dimensions");
+  const dimensionsTable = this.getRemarkDataTable("Dimensions", structuredDimensions, "dimensions");
   
   return `
     <dl class="definition-list">
@@ -237,7 +274,7 @@ const getSources = ({ content }) => {
   const getLiteraturDetails = (item) => {
     const author = item && item.persons ? item.persons.filter(person => person.role === "AUTHOR").map(person => person.name) : [];
     const publisher = item && item.persons ? item.persons.filter(person => person.role === "PUBLISHER" || person.role === "UNKNOWN").map(person => person.name) : [];
-    const editor = item && item.persons ? item.persons.filter(person => person.role === "EDITORIAL_STAFF").map(person => person.name) : [];
+    const editing = item && item.persons ? item.persons.filter(person => person.role === "EDITORIAL_STAFF").map(person => person.name) : [];
     const alternateNumbers = (!item || !item.alternateNumbers) ? [] : item.alternateNumbers.map(alternateNumber => {
       return `
         ${alternateNumber.description}
@@ -253,7 +290,7 @@ const getSources = ({ content }) => {
       <table class="literature-item-details-table">
         ${getRow(author.join(", "), "author")}
         ${getRow(publisher.join(", "), "publisher")}
-        ${getRow(editor.join(", "), "editor")}
+        ${getRow(editing.join(", "), "editing")}
         ${item && item.title ? getRow(item.title, "title") : ''}
         ${item && item.subtitle ? getRow(item.subtitle, "publication") : ''}
         ${item && item.pages ? getRow(item.pages, "pages") : ''}
@@ -278,7 +315,13 @@ const getSources = ({ content }) => {
     item.referenceData = this.getLiteratureReference(item.referenceId, langCode);
     return item;
   });
-  const publicationListDataByDate = publicationListData.sort((a, b) => { return b.referenceData.date - a.referenceData.date });
+  const publicationListDataByDate = publicationListData.sort((a, b) => {
+    if (!a.referenceData) return 0;
+    if (!b.referenceData) return 0;
+    const dateA = a.referenceData.date ? a.referenceData.date : a.referenceData.publishDate;
+    const dateB = b.referenceData.date ? b.referenceData.date : b.referenceData.publishDate;
+    return dateB - dateA;
+  });
   const publicationList = publicationListDataByDate.map(
     (item, index) => {
       const literatureReference = this.getLiteratureReference(item.referenceId, langCode);

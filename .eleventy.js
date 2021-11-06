@@ -1,6 +1,7 @@
 const htmlmin = require('html-minifier');
 const markdownIt = require('markdown-it');
 const rimraf = require('rimraf');
+const fs = require('fs');
 
 const devConfig = {
   "imageTiles": {
@@ -108,6 +109,22 @@ const markdownify = str => {
   renderedText = renderedText.replace(/<pre><code>(.*?)<\/code><\/pre>/sg, replacePre);
 
   return `<div class="markdown-it">${renderedText}</div>`;
+}
+
+const appendToFile = (path, str) => {
+  const filepath = `./${path}`;
+  fs.appendFileSync(filepath, str);
+}
+
+const evaluateData = (data) => {
+  data.forEach(item => {
+    item.dimensions = item.dimensions.replace(/\n\n/g, "\n");
+    const logStr = `${item.metadata.id}:\n${item.dimensions}\n-----\n`;
+    const filename = "dimensions.txt";
+    appendToFile(filename, logStr);
+  });
+
+  return;
 }
 
 module.exports = function (eleventyConfig) {
@@ -243,16 +260,18 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   eleventyConfig.addCollection("paintingsDE", () => {
-    const testObjects = ["DE_WSCH_NONE-WSCH001A","DE_WSCH_NONE-WSCH001D", "AT_KHM_GG877"];
+    const testObjects = ["DE_smbGG_1907"];
     // "DE_WSCH_NONE-WSCH001A", "DE_KBG-Lost_NONE-KBG001a", "DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
     const paintings = paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
     // const paintings = paintingsDataDE.items;
 
-    const sortedPaintings = paintings.sort((a, b)=>{
+    let sortedPaintings = paintings.sort((a, b)=>{
       if (a.sortingNumber < b.sortingNumber) return -1;
       if (a.sortingNumber > b.sortingNumber) return 1;
       return 0;
-  });
+    });
+
+    evaluateData(sortedPaintings, 'dimensions');
     return sortedPaintings;
   });
 

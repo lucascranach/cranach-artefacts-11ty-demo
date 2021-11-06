@@ -121,7 +121,12 @@
     vertical-align: top;
   }
 
+  &__data{
+    padding-right: $half;
+  }
+
   &__remark {
+    padding-left: $half;
     color: $darken-strong;
   }
 
