@@ -87,5 +87,13 @@
   "fileName":{
     "de": "Dateiname",
     "en": "File name"
+  },
+  "copiedToClipboard":{
+    "de": "Das Element wurde in die Zwischenablage kopiert.",
+    "en": "Element has been copied to clipboard."
+  },
+  "somethingWentWrong":{
+    "de": "Irgendetwas ist schief gelaufen :(",
+    "en": "Something went wrong :("
   }
 }

@@ -1,4 +1,50 @@
 window.globals = {};
+window.globalFunctions = {};
+
+/* Global Notification
+============================================================================ */
+class Notification {
+  constructor(content) {
+    this.content = content;
+    this.id = this.createId();
+    this.notification = this.createNotificationHTML();
+    this.showNotification();
+    this.setNotificationKiller();
+  }
+
+  show(element) {
+    element.classList.add("is-visible");
+  }
+
+  showNotification() {
+    window.setTimeout(this.show, 100, this.notification);
+  }
+
+  createNotificationHTML() {
+    const notificationText = document.createTextNode(this.content);
+    const notification = document.createElement("div");
+    notification.id = this.id;
+    notification.classList.add("notification");
+    notification.appendChild(notificationText); 
+    document.body.append(notification);
+    return document.getElementById(notification.id);
+  }
+
+  createId() {
+    return this.content.replace(/[^a-zA-Z]/g, "");
+  }
+
+  removeNotification(id) {
+    const notification = document.getElementById(id);
+    notification.parentNode.removeChild(notification);
+    window.clearTimeout(this.timeout);
+  }
+
+  setNotificationKiller() {
+    this.timeout = window.setTimeout(this.removeNotification, 2000, this.id);
+  }
+
+}
 
 /* Toggle Literature Details
 ============================================================================ */
@@ -39,6 +85,11 @@ class ImageViewer {
     return;
   }
 
+  addClipboardInteraction(id) {
+    const element = document.getElementById(id);
+    globals.clipableElements[id] = new ClipableElement(element);
+  }
+
   setCaption(img) {
     if (!img.metadata) return;
     const metadata = img.metadata;
@@ -59,8 +110,11 @@ class ImageViewer {
       `;
     }
     
+    const fileName = `
+      <span id="${img.id}" data-clipable-content="${img.id}">${img.id}</span>
+    `;
     const data = [];
-    data.push({ "name": translations['fileName'][langCode], "content": img.id });
+    data.push({ "name": translations['fileName'][langCode], "content": fileName });
     if (metadata.created) data.push({ "name": translations['authorAndRights'][langCode], "content": metadata.created });
     if (metadata.source) data.push({ "name": translations['source'][langCode], "content": metadata.source });
     if (metadata.date) data.push({ "name": translations['date'][langCode], "content": metadata.date });
@@ -77,6 +131,7 @@ class ImageViewer {
     
     this.caption.innerHTML = caption;
     this.addAdditionalContentInteraction(`completeData${captionId}`);
+    this.addClipboardInteraction(img.id);
   }
 
   handleTrigger(trigger) {
@@ -107,9 +162,33 @@ class ImageViewer {
   }
 }
 
+/* Clipable Element
+============================================================================ */
+class ClipableElement {
+  constructor(ele) {
+    this.element = ele;
+    this.id = ele.id;
+    this.content = ele.dataset.clipableContent;
+    this.addAffordance();
+  }
+
+  addAffordance() {
+    this.element.classList.add("has-interaction", "is-clipable-content", "js-copy-to-clipboard");
+  }
+
+  copyToClipBoard() {
+    navigator.clipboard.writeText(this.content)
+      .then(() => {
+          new Notification(translations['copiedToClipboard'][langCode]);
+    })
+        .catch(err => {
+          new Notification(translations['somethingWentWrong'][langCode]);
+    })
+  }
+}
+
 /* Switchable Content
 ============================================================================ */
-
 class SwitchableContent {
   constructor(ele) {
     this.element = ele;
@@ -150,7 +229,6 @@ class SwitchableContent {
 
 /* Additional Content
 ============================================================================ */
-
 class AdditionalContent {
   constructor(ele) {
     this.element = ele;
@@ -186,7 +264,6 @@ class AdditionalContent {
     this.relatedPreviewElement.classList.add("has-additional-content", "js-toggle-additional-content");
     this.relatedPreviewElement.dataset.additionalContentState = "is-hidden";
     this.relatedPreviewElement.dataset.fullDataElement= this.id;
-
   }
 }
 
@@ -228,11 +305,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
   /* Additional Content
   --------------------------------------------------------------------------  */
   const additionalContentList= document.querySelectorAll(".js-additional-content");
-  globals.additionalContentElements = ["asas"];
+  globals.additionalContentElements = [];
   additionalContentList.forEach(element => {
     globals.additionalContentElements[element.id] = new AdditionalContent(element);
   });
   
+  /* Clipboard 
+  --------------------------------------------------------------------------  */
+  if (navigator.clipboard) {
+    const clipableElementList = document.querySelectorAll("[data-clipable-content]");
+    globals.clipableElements = [];
+    clipableElementList.forEach((element, index) => {
+      const id = element.id ? element.id : `genId-${Date.now()}-${index}`;
+      if (!element.id) element.id = id;
+      globals.clipableElements[id] = new ClipableElement(element);
+    });
+  }
+
   /* Image viewer
   --------------------------------------------------------------------------  */
   const imageViewer = new ImageViewer("viewer-content", "image-caption");
@@ -282,6 +371,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
       const element = target.closest('.js-toggle-additional-content');
       const id = element.dataset.fullDataElement;
       globals.additionalContentElements[id].toggleContent();
+    }
+
+    if (target.closest('.js-copy-to-clipboard')) {
+      const element = target.closest('.js-copy-to-clipboard');
+      const id = element.id;
+      globals.clipableElements[id].copyToClipBoard();
     }
 
   }, true);

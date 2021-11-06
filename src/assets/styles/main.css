@@ -817,8 +817,9 @@ ul.simple li {
 .info-table td {
   border-top: solid 1px rgba(0, 0, 0, 0.06);
 }
-.info-table.is-one-third .info-table__title {
+.info-table.is-two-third .info-table__title {
   width: 33%;
+  padding-left: 0.8rem;
 }
 .info-table.is-tight .info-table__data,
 .info-table.is-tight .info-table__title,
@@ -1084,6 +1085,20 @@ ul.simple li {
   margin-bottom: 0.7rem;
 }
 
+.notification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fc0;
+  color: #000;
+  text-align: center;
+  padding: 0.3rem 0.3rem;
+  font-size: 0.8rem;
+  z-index: 100;
+  transition: opacity 0.5s 0.5s;
+  opacity: 0;
+}
 .image-description-wrap {
   margin-left: 1rem;
 }
@@ -1379,6 +1394,27 @@ ul.simple li {
   display: inline-block;
   padding-right: 0.25rem;
   content: ":";
+}
+
+.is-clipable-content:hover {
+  cursor: pointer;
+}
+.is-clipable-content:hover::after {
+  opacity: 1;
+  transform: rotate(5deg);
+}
+.is-clipable-content::after {
+  margin-left: 0.25rem;
+  content: "content_paste";
+  font-family: "MaterialIcons";
+  color: #e8a60c;
+  vertical-align: bottom;
+  display: inline-block;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  opacity: 0.5;
+  transition: all 0.3s;
+  transform-origin: center;
 }
 
 /*# sourceMappingURL=main.css.map */

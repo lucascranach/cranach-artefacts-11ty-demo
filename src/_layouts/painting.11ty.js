@@ -162,7 +162,7 @@ const getCopyText = ({ content }) => {
   const text = words.length > numberOfWords ? `
     <div id="switchableCopyText" data-js-switchable-content='["previewText","fullText"]'>
       <div id="previewText" class="preview-text">${this.markdownify(preview)}</div>
-      <div class="is-cut full-text" id="fullText">${this.markdownify(fulltext)}<p class="remark">[${author}</p></div>
+      <div class="is-cut full-text" id="fullText">${this.markdownify(fulltext)}${authorHTML}</div>
     </div>
     `: `
       ${this.markdownify(fulltext)}
@@ -200,11 +200,11 @@ const getIds = ({ content }) => {
   return `
     <dl class="definition-list">
       <dt class="definition-list__term">CDA ID</dt>
-      <dd class="definition-list__definition">${content.metadata.id}</dd>
+      <dd class="definition-list__definition" data-clipable-content="${content.metadata.id}">${content.metadata.id}</dd>
       <dt class="definition-list__term">${this.translate("objectName", langCode)}</dt>
-      <dd class="definition-list__definition">${content.objectName}</dd>
+      <dd class="definition-list__definition" data-clipable-content="${content.objectName}">${content.objectName}</dd>
       <dt class="definition-list__term">${this.translate("permalink", langCode)}</dt>
-      <dd class="definition-list__definition">${content.url}</dd>
+      <dd class="definition-list__definition" data-clipable-content="${content.url}">${content.url}</dd>
     </dl>
   `;
 }

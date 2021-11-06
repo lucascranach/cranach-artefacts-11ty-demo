@@ -49,3 +49,28 @@
     content: ":";
   }
 }
+
+.is-clipable-content{
+  &:hover {
+    cursor: pointer;
+
+    &::after {
+      opacity: 1;
+      transform: rotate(5deg);
+    }
+  }
+
+  &::after {
+    margin-left: $quad;
+    content: "content_paste";
+    font-family: $font-icons;
+    color: $accent-dark;
+    vertical-align: bottom;
+    display: inline-block;
+    padding-left: $quad;
+    padding-right: $quad;
+    opacity: $op-medium;
+    transition: all $tr-fast;
+    transform-origin: center;
+  }
+}
