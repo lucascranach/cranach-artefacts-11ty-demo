@@ -1,0 +1,15 @@
+#texteingabe{
+
+  line-height: $lh-normal;
+
+  i{
+    display:block;
+    margin-bottom: $m;
+  }
+
+  b{
+    display:block;
+    margin-top: $l;
+    margin-bottom: $xs;
+  }
+}
