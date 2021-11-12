@@ -3,13 +3,14 @@
 
 .image-description-wrap{
   margin-left: $m;
+  margin-bottom: $l;
+  padding-top: $m;
 
-
-  @media only screen and (min-width: $vp-large) {
+  @media only screen and (min-width: $vp-xxlarge) {
     margin-left: $xxl;
     display: grid;
     gap: $m;
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: $column-small 1fr;
   }
 }
 
@@ -19,11 +20,6 @@
 .image-description {
   display: block;
   padding-right: $m;
-  padding-top: $s;
-
-  &:not(.is-secondary){
-    max-width: $column-small;
-  }
 
   &-text {
     display: block;
@@ -57,6 +53,10 @@
   }
 
   &.is-secondary{
+    
+    @media only screen and (max-width: $vp-xxlarge) {
+      @include small-seperator;
+    }
 
     .image-description-title, .definition-list__term {
       font-weight: $fw-regular;

@@ -115,10 +115,10 @@ class ImageViewer {
     `;
     const data = [];
     data.push({ "name": translations['fileName'][langCode], "content": fileName });
+    if (metadata.fileType) data.push({ "name": translations['kindOfImage'][langCode], "content": metadata.fileType });
+    if (metadata.date) data.push({ "name": translations['date'][langCode], "content": metadata.date });
     if (metadata.created) data.push({ "name": translations['authorAndRights'][langCode], "content": metadata.created });
     if (metadata.source) data.push({ "name": translations['source'][langCode], "content": metadata.source });
-    if (metadata.date) data.push({ "name": translations['date'][langCode], "content": metadata.date });
-    if (metadata.fileType) data.push({ "name": translations['kindOfImage'][langCode], "content": metadata.fileType });
 
     const completeData = getCompleteImageData(captionId, data);
 

@@ -249,7 +249,6 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addJavaScriptFunction("getFormatedText", (str) => {
     const formatedText = markdownify(str);
-    console.log(formatedText);
     return formatedText;
   });
 
