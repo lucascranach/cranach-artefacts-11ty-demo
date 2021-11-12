@@ -260,7 +260,7 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   eleventyConfig.addCollection("paintingsDE", () => {
-    const testObjects = ["DE_smbGG_1907"];
+    const testObjects = ["DE_smbGG_1907", "DE_WSCH_NONE-WSCH001A", "DE_KBG-Lost_NONE-KBG001a", "DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"];
     // "DE_WSCH_NONE-WSCH001A", "DE_KBG-Lost_NONE-KBG001a", "DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
     const paintings = paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
     // const paintings = paintingsDataDE.items;
@@ -271,7 +271,7 @@ module.exports = function (eleventyConfig) {
       return 0;
     });
 
-    evaluateData(sortedPaintings, 'dimensions');
+    // evaluateData(sortedPaintings, 'dimensions');
     return sortedPaintings;
   });
 

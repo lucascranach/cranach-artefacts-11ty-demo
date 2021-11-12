@@ -66,7 +66,7 @@ const getAttribution = ({ content }) => {
   const allAttributions = this.getRemarkDataTable("Attributions", attributionFullList, "attributionData");
   const label = content.involvedPersons.length > 1 ? this.translate("attributions", langCode) : this.translate("attribution", langCode)
   return `
-    <dl class="definition-list">
+    <dl class="definition-list is-compact">
       <dt class="definition-list__term">${label}</dt>
       <dd id="attributionData" class="definition-list__definition">
         ${attributionShortList.join("<br>")}
@@ -93,7 +93,7 @@ const getDating= ({ content }) => {
   const label = datesFullList.length > 1 ? this.translate("productionDates", langCode) : this.translate("productionDate", langCode);
   
   return `
-    <dl class="definition-list">
+    <dl class="definition-list is-compact">
       <dt class="definition-list__term">${label}</dt>
       <dd id="dataList" class="definition-list__definition">${datesShortList.join("<br>")}</dd>
     </dl>

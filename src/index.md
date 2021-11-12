@@ -34,7 +34,7 @@ figcaption{
 <ul class="overview">
 {%- for item in collections.paintingsDE -%}
   <li class="overview-item">
-  <a href="de/paintings/{{item.metadata.id}}">
+  <a href="../../de/paintings/{{item.metadata.id}}">
     <figure>
       <div class="img-wrap">
         <img src="{{item.metadata.imgSrc}}">
