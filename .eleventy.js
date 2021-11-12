@@ -90,7 +90,6 @@ const markRemarks = str => {
   const mark = (match, str) => {
     return `<span class="is-remark">[${str}]</span>`;
   }
-  // str = str.replace(/\n/g, "");
   str = str.replace(/\[(.*)]/g, mark);
   return str;
 }
@@ -248,6 +247,11 @@ module.exports = function (eleventyConfig) {
     return structuredData;
   });
 
+  eleventyConfig.addJavaScriptFunction("getFormatedText", (str) => {
+    const formatedText = markdownify(str);
+    console.log(formatedText);
+    return formatedText;
+  });
 
   eleventyConfig.addJavaScriptFunction("getENV", () => {
     return process.env.ELEVENTY_ENV;

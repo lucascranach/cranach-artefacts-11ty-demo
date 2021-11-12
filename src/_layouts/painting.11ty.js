@@ -554,11 +554,15 @@ const getAdditionalTextInformation = ({ content }) => {
   const uniqueAdditionalInfoTypes = additionalInfoTypes.filter((item, index) => additionalInfoTypes.indexOf(item) === index);
   const getTypeContent = (type) => {
     const typeContent = additionalInfos.filter(item => item.type === type);
-    return typeContent.length === 0 ? '' : typeContent.map(item => `
-      <div class="block has-padding">
-        ${this.markdownify(item.text)}
-      </div>
-    `);
+    return typeContent.length === 0 ? '' : typeContent.map(item => {
+      const formatedText = this.getFormatedText(item.text);
+      return `
+        <div class="block has-padding">
+          ${formatedText}
+        </div>
+      `
+    });
+
   }
   return uniqueAdditionalInfoTypes.length === 0 ? '' : uniqueAdditionalInfoTypes.map(type => {
     return `
