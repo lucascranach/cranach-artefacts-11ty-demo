@@ -24,12 +24,10 @@ const getMedium = (content) => {
   medium.match(/(.*?)\n|;/);
   const visibleContent = RegExp.$1;
   const mediumTable = this.getRemarkDataTable("Medium", structuredMediumData, "subtitle");
-  
   return `
     <p id="subtitle" class="subtitle">${visibleContent}</p>
     ${mediumTable}
   `;
-
 }
 
 const getImage = ({ content }) => {
@@ -318,8 +316,8 @@ const getSources = ({ content }) => {
   const publicationListDataByDate = publicationListData.sort((a, b) => {
     if (!a.referenceData) return 0;
     if (!b.referenceData) return 0;
-    const dateA = a.referenceData.date ? a.referenceData.date : a.referenceData.publishDate;
-    const dateB = b.referenceData.date ? b.referenceData.date : b.referenceData.publishDate;
+    const dateA = a.referenceData.publishDate ? a.referenceData.publishDate : a.referenceData.date;
+    const dateB = b.referenceData.publishDate ? b.referenceData.publishDate : b.referenceData.date;
     return dateB - dateA;
   });
   const publicationList = publicationListDataByDate.map(
@@ -333,7 +331,7 @@ const getSources = ({ content }) => {
           id="litRef${item.referenceId}-${index}">
 
           <td class="cell has-interaction"><a href="#" data-js-toggle-literature="${item.referenceId}-${index}">${item.title}</a></td>
-          <td class="cell">${item.pageNumber}</td>
+          <td class="cell">${item.pageNumber} </td>
           <td class="cell">${literatureReferenceTableData.catalogNumber}</td>
           <td class="cell">${literatureReferenceTableData.figureNumber}</td>
         </tr>
