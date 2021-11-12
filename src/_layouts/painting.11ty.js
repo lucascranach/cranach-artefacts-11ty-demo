@@ -588,7 +588,7 @@ const getReference = ({ content }, type, isOpen = false) => {
     const typeContentItems = references.filter(item => item.kind === type);
     const typeContentItemList = typeContentItems.map(item => {
       const refObjectMeta = this.getReferenceObjectMeta(content.currentCollection, item.inventoryNumber);
-      const refObjectLink = `/${langCode}/${this.page.fileSlug}/${refObjectMeta.id}/`;
+      const refObjectLink = `/${langCode}/${content.entityType}/${refObjectMeta.id}/`;
       return `
         <div class="related-item-wrap">
           <a href="${refObjectLink}">
@@ -598,9 +598,11 @@ const getReference = ({ content }, type, isOpen = false) => {
             </div>
             <figcaption class="related-item__caption">
               <ul>
-                <li class="related-item__title">${refObjectMeta.title}</li>
+                <li class="related-item__title">${refObjectMeta.title}, ${refObjectMeta.date}</li>
                 <li class="related-item__id">${refObjectMeta.id}</li>
-                <li class="related-item__text">${refObjectMeta.owner}</li></ul>
+                <li class="related-item__text">${refObjectMeta.classification}</li>
+                <li class="related-item__text">${refObjectMeta.owner}</li>
+              </ul>
             </figcaption>
           </figure>
           </a>
@@ -628,6 +630,7 @@ exports.render = function (data) {
   langCode = getLangCode(data);
   config = this.getConfig();
   data.content.currentCollection = data.collections[data.collectionID];
+  data.content.entityType = data.entityType;
   data.content.url = `${this.getBaseUrl()}${data.page.url}`;
 
   this.log(data);

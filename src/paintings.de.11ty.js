@@ -2,6 +2,7 @@ exports.data = {
   layout: "painting.11ty.js",
   lang: "de",
   collectionID: "paintingsDE",
+  entityType: "paintings",
   pagination: {
     data: "collections.paintingsDE",
     size: 1,
