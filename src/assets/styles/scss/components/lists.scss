@@ -22,46 +22,28 @@ ul {
 
 .definition-list {
   width: 100%;
-  margin-top: -$xs;
+  margin-top: 0;
   margin-bottom: $xs;
   font-weight: $fw-light;
 
   $self: &;
 
-  &.is-compact{
-    display: flex;
-    gap: $xs;
-    align-items: flex-start;
-
-    #{$self}__definition{
-      &::before {
-        display: block;
-        height: $xs;
-        content: "";
-      }
-    }
-  }
-
   &__term {
-    display: inline;
-    padding-bottom: $xxs;
     font-weight: $fw-semibold;
     line-height: $lh-normal;
+    padding-right: $quad;
 
-    &::before {
-      display: block;
-      height: $xs;
-      content: "";
-    }
+    float: left;
+    clear: left;
 
-    &::after {
+    &::after{
       content: ":";
     }
   }
 
   &__definition {
-    display: inline;
     margin: 0;
+
     line-height: $lh-normal;
 
     &:last-child {
@@ -78,10 +60,13 @@ ul {
     }
   }
 
-  &.is-tight {
-    .definition-list__term,
-    .definition-list__definition {
+  &__term,
+  &__definition{
+    padding-bottom: $xxs;
+
+    &:last-child{
       padding-bottom: 0;
     }
   }
+
 }
