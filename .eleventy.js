@@ -79,7 +79,14 @@ const markdownItRenderer = new markdownIt('commonmark', {
   breaks: true,
   linkify: true,
   typographer: true
-});
+}).disable(['list']);
+
+const simpleMarkdownItRenderer = new markdownIt('commonmark', {
+  html: true,
+  breaks: true,
+  linkify: true,
+  typographer: true
+}).disable([ 'list' ]);
 
 const pathPrefix = (process.env.ELEVENTY_ENV === 'production') ? "paintings" : "";
 
@@ -94,7 +101,7 @@ const markRemarks = str => {
   return str;
 }
 
-const markdownify = str => {
+const markdownify = (str, mode = 'full') => {
 
   function replacePre(match, str) {
     const items = str.split("\n\n").map(line => {
@@ -104,7 +111,7 @@ const markdownify = str => {
     return `<ul class="is-block">${items.join("")}</ul>`;
   }
 
-  let renderedText = markdownItRenderer.render(str);
+  let renderedText = mode === 'full' ? markdownItRenderer.render(str) : simpleMarkdownItRenderer.render(str);
   renderedText = renderedText.replace(/<pre><code>(.*?)<\/code><\/pre>/sg, replacePre);
 
   return `<div class="markdown-it">${renderedText}</div>`;
@@ -247,9 +254,11 @@ module.exports = function (eleventyConfig) {
     return structuredData;
   });
 
-  eleventyConfig.addJavaScriptFunction("getFormatedText", (str) => {
-    const formatedText = markdownify(str);
-    return formatedText;
+  eleventyConfig.addJavaScriptFunction("getFormatedText", (str, option = false) => {
+    str = str.replace(/\n/g, "\n\n");
+    str = str.replace(/\n\n\n/g, "\n\n");
+    const renderMode = option && option === "no-lists" ? 'simple' : 'full';
+    return markdownify(str, renderMode);
   });
 
   eleventyConfig.addJavaScriptFunction("getENV", () => {
@@ -298,7 +307,7 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   eleventyConfig.addCollection("paintingsDE", () => {
-    const testObjects = ["AT_KHM_GG6905"];
+    const testObjects = ["AT_KHM_GG6905", "DE_StMT"];
     // "DE_smbGG_1907", "DE_WSCH_NONE-WSCH001A", "DE_KBG-Lost_NONE-KBG001a", "DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
     const paintings = paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
     // const paintings = paintingsDataDE.items;

@@ -108,6 +108,10 @@
     font-size: $l;
     font-weight: $fw-light;
   }
+
+  &.has-padding{
+    padding-bottom: $m;
+  }
 }
 
 /* Artfact Header

@@ -22,11 +22,24 @@
   }
 
   ol {
-    padding-left: 0;
     margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: listCounter;
 
     li {
-      margin-left: $m;
+      counter-increment: listCounter;
+      padding-left: $l;
+      padding-bottom: $half;
+
+      &::before{
+        margin-left: -$l;
+        content: counter(listCounter) ". ";
+      }
+
+      p{
+        display: inline;
+      }
     }
   }
 }

@@ -4,6 +4,2437 @@
       "metadata": {
         "entityType": "PAINTING",
         "langCode": "de",
+        "id": "DE_StMT",
+        "title": "Die vierzehn Nothelfer (recto), Christus als Schmerzensmann zwischen zwei Engeln (verso)",
+        "subtitle": "",
+        "date": "um 1505 - 1508",
+        "additionalInfos": [
+          "Malerei",
+          "Maße Bildträger: 84,3 x 117,8 x 0,8- 0,9 cm (original)\nMaße mit Rahmen: 96,2 x 129,8 x 5,2 cm\n[Heydenreich, cda 2011]"
+        ],
+        "classification": "Malerei",
+        "imgSrc": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_1994_Overall-s.jpg"
+      },
+      "involvedPersons": [
+        {
+          "displayOrder": 1,
+          "id": "attribution.lucas_cranach_the_elder",
+          "role": "Künstler*in",
+          "name": "Lucas Cranach der Ältere",
+          "prefix": "",
+          "suffix": "",
+          "nameType": "Primärer Name",
+          "alternativeName": "Lucas Cranach der Ältere",
+          "remarks": "Verso mit \"?\" [Exhib. Cat. Chemnitz 2005, 363][Sandner 1998 B, 103] [Friedländer, Rosenberg 1978, 69, No. 16]",
+          "date": "",
+          "isUnknown": false
+        }
+      ],
+      "involvedPersonsNames": [
+        {
+          "constituentId": "32400",
+          "details": [
+            {
+              "name": "Lucas Cranach der Ältere",
+              "nameType": "Primärer Name"
+            },
+            {
+              "name": "Lucas Cranach the Elder",
+              "nameType": "Andere Suchform"
+            },
+            {
+              "name": "Lucas Sunders",
+              "nameType": "Falsche Namensform"
+            },
+            {
+              "name": "Lukas Kranach",
+              "nameType": ""
+            }
+          ]
+        }
+      ],
+      "titles": [
+        {
+          "type": "Titel",
+          "title": "Die vierzehn Nothelfer (recto), Christus als Schmerzensmann zwischen zwei Engeln (verso)",
+          "remarks": "[cda 2011]"
+        }
+      ],
+      "classification": {
+        "classification": "Malerei"
+      },
+      "objectName": "FR016",
+      "inventoryNumber": "DE_StMT",
+      "objectId": 422287,
+      "dimensions": "Maße Bildträger: 84,3 x 117,8 x 0,8- 0,9 cm (original)\nMaße mit Rahmen: 96,2 x 129,8 x 5,2 cm\n[Heydenreich, cda 2011]",
+      "dating": {
+        "dated": "um 1505 - 1508",
+        "begin": 1500,
+        "end": 1513,
+        "remarks": "[Heydenreich, cda, 2011]\n[Ritschel 1995, 53]",
+        "historicEventInformations": [
+          {
+            "eventType": "DATING",
+            "text": "um 1505",
+            "begin": 1500,
+            "end": 1510,
+            "remarks": "[Sandner 1998 B, 103][Grimm 1998, 70][Schade, Exhib. Cat. Dresden 1971, 100]"
+          },
+          {
+            "eventType": "DATING",
+            "text": "1505",
+            "begin": 1505,
+            "end": 0,
+            "remarks": "[Michaelson 1902, 24]\n[Flechsig 1900 A, 82]\n[Woltmann, Woermann 1882, 419]"
+          },
+          {
+            "eventType": "DATING",
+            "text": "um 1505-1507",
+            "begin": 1500,
+            "end": 1512,
+            "remarks": "[Heydenreich 2007 A, 60] [Exhib. Cat. Chemnitz 2005, 363]"
+          },
+          {
+            "eventType": "DATING",
+            "text": "1505-1506",
+            "begin": 1505,
+            "end": 1506,
+            "remarks": "[Vogel 1832, 82]"
+          },
+          {
+            "eventType": "DATING",
+            "text": "um 1506",
+            "begin": 1501,
+            "end": 1511,
+            "remarks": "[Harksen, Magirius 1993, 12f.]"
+          },
+          {
+            "eventType": "DATING",
+            "text": "1506",
+            "begin": 1506,
+            "end": 0,
+            "remarks": "Mit Fragezeichen [Gronau 1972, Bd. 2, 82-106]\n[Mielsch 1924] \n[Glaser 1921, 47]"
+          },
+          {
+            "eventType": "DATING",
+            "text": "um 1507",
+            "begin": 1502,
+            "end": 1512,
+            "remarks": "[Friedländer, Rosenberg 1978, 69, No. 16]\n[Harksen, Magirius 1962, 26]\n[Exhib. Cat. Weimar, Wittenberg  1953, 20]\n[Exhib. Cat. Berlin 1937, 16]\n[Friedländer, Rosenberg 1932, 30, No. 15]\n[Friedländer 1899, 244] [Woermann, Exhib. Cat. Dresden 1899, 31]"
+          },
+          {
+            "eventType": "DATING",
+            "text": "um 1506-1508",
+            "begin": 1501,
+            "end": 1513,
+            "remarks": "[Swarzenski 1907, 61]"
+          },
+          {
+            "eventType": "DATING",
+            "text": "1507",
+            "begin": 1507,
+            "end": 0,
+            "remarks": "[Barbe 1939, 11]\n[Mielsch 1936, 20]\n[Tucholski 1930, 8] \n[Mielsch 1923, 20]"
+          },
+          {
+            "eventType": "DATING",
+            "text": "1509",
+            "begin": 1509,
+            "end": 0,
+            "remarks": "[Harksen 1958, 38][Schuchardt 1998 B, 13]"
+          }
+        ],
+        "isDated": false
+      },
+      "description": "Vorderseite:\n\"In der Mitte Christophorus (das Christkind auf den Schultern), links Mauritius mit Harnisch und Fahne, Pantaleon, beide Hände auf den Kopf genagelt, Blasius mit der brennenden Kerze, Georg mit dem Drachen, Achatius mit der Dornenrute und Eustachius mit dem Hirsch; rechts Barbara, Katharina, Vitus mit dem Hahn, Erasmus mit der Haspel und den darauf gewickelten Gedärmen, Cyprianus mit dem gefesselten Drachen, Ägidius mit der Hündin und Dyonisius mit beiden Händen den abgeschlagenen Kopf haltend.\"\n\nRückseite:\n\"Auf der Rückseite die teilweise zerstörte Kniefigur des Schmerzensmannes zwischen zwei Engeln.\"\n\n[Friedländer, Rosenberg 1979, 69-70, No. 16]",
+      "provenance": "\"Vermutlich das Staffelgemälde des großen Altarwerks, welches auf dem der 'hl. Anna und den vierzehn Nothelfern' gewidmeten Altare am Eingang des Chores der Marienkirche in Torgau stand und eine Stiftung Friedrichs des Weisen und seines Bruders Johann des Beständigen zum Andenken an dessen erste Gemahlin Sophie von Mecklenburg (gest. 12. Juli 1503) war. Der Altar wurde am 19. Juli 1505 geweiht.\"\n\n[Friedländer, Rosenberg 1979, 70, No. 16]",
+      "medium": "Malerei auf Lindenholz (Tilia sp.)\n[Heydenreich, cda 2011]",
+      "signature": "Keine",
+      "inscription": "",
+      "markings": "- Verschiedene Jahreszahlen, Initialen, Inschriften auf der Rückseite aus dem 16. Jahrhundert und jüngerer Zeit\n\n[Heydenreich, CDA 2011]",
+      "relatedWorks": "",
+      "exhibitionHistory": "Dresden 1899\nBerlin 1937\nWeimar 1972\nKronach 1994, Nr. 199",
+      "bibliography": "",
+      "references": [
+      ],
+      "secondaryReferences": [
+      ],
+      "additionalTextInformation": [
+        {
+          "type": "Beschreibung/ Interpretation/ Kommentare",
+          "text": "Jüngste ausführliche Darstellung der Geschichte, Datierung und Zuschreibung:  siehe [Ritschel 1995, 38-62]",
+          "date": "",
+          "year": 1995,
+          "author": "Iris Ritschel"
+        },
+        {
+          "type": "Beschreibung/ Interpretation/ Kommentare",
+          "text": "Gedruckte Beschreibung des Nothelfer- und Annenaltars der Torgauer Marienkirche 1671: \n\n \n\n\"Dieser Altar/ daran der 14. Nothelffer/ ingleichen St. Annae und anderer Heiligen Bildnisse sehr schön und künstlich gemahlet zu sehen/ stehet noch/ iedoch zu einem anderen und bessern Brauch ausgesetzet/ und wird alle Sonn- und Fest-Tage des H. Abendmahl/ nach Christi Einsetzung/ darauf gespendet…\"\n\n \n\nHofmann, Paul: \"Christliches und Torgauisches Jubilate oder Predigt in der Churfürstl. Sächs. Schloß-Capelle zu Torgau\", Torgau 1671. Zitiert nach [Ritschel 1996, 13]",
+          "date": "",
+          "year": 1996,
+          "author": "Iris Ritschel"
+        },
+        {
+          "type": "Beschreibung/ Interpretation/ Kommentare",
+          "text": "Gotteskastenrechnung 1697/1698 (Abbruch des zum Sophiengrab gehörigen Altars):\n\n\"…den alten vörderen Altar helfen abreißen, das Steinwerk auf den Kirchhof bringen, die Bilder auf das Gewölbe über der Sakristey geschafft,…\"\n\n\"Rechnung … des Gemeinen Gotteskastens zu Torgau … Trinitatis 1697 – Trinitatis 1698, 71, Stadtarchiv Torgau, Nr. 2851\"; zitiert nach [Ritschel 1996, 13]",
+          "date": "",
+          "year": 1996,
+          "author": "Iris Ritschel"
+        }
+      ],
+      "publications": [
+        {
+          "title": "Barbe 1939",
+          "pageNumber": "5-11",
+          "referenceId": "1491"
+        },
+        {
+          "title": "Bürger, Grulich 1855",
+          "pageNumber": "",
+          "referenceId": "1529"
+        },
+        {
+          "title": "Cat. Coburg 2018",
+          "pageNumber": "78, fn. 4",
+          "referenceId": "30042"
+        },
+        {
+          "title": "Cat. Frankfurt 2005",
+          "pageNumber": "214, 218, 219",
+          "referenceId": "289"
+        },
+        {
+          "title": "Exhib. Cat. Basel 1974",
+          "pageNumber": "255, 450",
+          "referenceId": "160"
+        },
+        {
+          "title": "Exhib. Cat. Berlin 1937",
+          "pageNumber": "15, 16",
+          "referenceId": "407"
+        },
+        {
+          "title": "Exhib. Cat. Chemnitz 2005",
+          "pageNumber": "362, 363, 391",
+          "referenceId": "571"
+        },
+        {
+          "title": "Exhib. Cat. Dresden 1899",
+          "pageNumber": "66",
+          "referenceId": "395"
+        },
+        {
+          "title": "Exhib. Cat. Dresden 1971",
+          "pageNumber": "102",
+          "referenceId": "490"
+        },
+        {
+          "title": "Exhib. Cat. Eisenach 1998",
+          "pageNumber": "103-105, 107",
+          "referenceId": "1024"
+        },
+        {
+          "title": "Exhib. Cat. Kronach 1994",
+          "pageNumber": "369, 371",
+          "referenceId": "153"
+        },
+        {
+          "title": "Exhib. Cat. Mühlhausen et al. 2014/2015",
+          "pageNumber": "101-103",
+          "referenceId": "1553"
+        },
+        {
+          "title": "Exhib. Cat. Weimar 1972 B",
+          "pageNumber": "169",
+          "referenceId": "456"
+        },
+        {
+          "title": "Flechsig 1900 A",
+          "pageNumber": "82",
+          "referenceId": "398"
+        },
+        {
+          "title": "Flechsig 1900 B",
+          "pageNumber": "10",
+          "referenceId": "396"
+        },
+        {
+          "title": "Friedländer 1899",
+          "pageNumber": "244",
+          "referenceId": "552"
+        },
+        {
+          "title": "Friedländer, Rosenberg 1932",
+          "pageNumber": "",
+          "referenceId": "152"
+        },
+        {
+          "title": "Glaser 1923",
+          "pageNumber": "47",
+          "referenceId": "402"
+        },
+        {
+          "title": "Grimm 1998",
+          "pageNumber": "69, 70",
+          "referenceId": "637"
+        },
+        {
+          "title": "Gronau 1972",
+          "pageNumber": "24-27 (Bd. 1)",
+          "referenceId": "648"
+        },
+        {
+          "title": "Harksen 1958",
+          "pageNumber": "",
+          "referenceId": "1492"
+        },
+        {
+          "title": "Harksen, Magirius 1962",
+          "pageNumber": "26",
+          "referenceId": "1493"
+        },
+        {
+          "title": "Harksen, Magirius 1993",
+          "pageNumber": "12f.",
+          "referenceId": "1494"
+        },
+        {
+          "title": "Heydenreich 1998 A",
+          "pageNumber": "186, 195",
+          "referenceId": "688"
+        },
+        {
+          "title": "Heydenreich 2007 A",
+          "pageNumber": "8, 9, 32, 57, 60, 61, 94, 100, 102, 107, 108, 111, 112, 116, 118-120, 149, 150, 163, 184-187, 193, 199, 208, 210, 215, 220, 222,",
+          "referenceId": "425"
+        },
+        {
+          "title": "Heydenreich 2007 B",
+          "pageNumber": "37-38, 44",
+          "referenceId": "1316"
+        },
+        {
+          "title": "Michaelson 1902",
+          "pageNumber": "24",
+          "referenceId": "399"
+        },
+        {
+          "title": "Mielsch 1923",
+          "pageNumber": "20-23",
+          "referenceId": "1487"
+        },
+        {
+          "title": "Mielsch 1924",
+          "pageNumber": "",
+          "referenceId": "1488"
+        },
+        {
+          "title": "Mielsch 1936",
+          "pageNumber": "20",
+          "referenceId": "1490"
+        },
+        {
+          "title": "Neelmeijer et al. 1995",
+          "pageNumber": "326-329",
+          "referenceId": "932"
+        },
+        {
+          "title": "Riemann 1972 A",
+          "pageNumber": "",
+          "referenceId": "981"
+        },
+        {
+          "title": "Riemann 1980",
+          "pageNumber": "115-118, 151-152",
+          "referenceId": "983"
+        },
+        {
+          "title": "Ritschel 1995",
+          "pageNumber": "38-62",
+          "referenceId": "985"
+        },
+        {
+          "title": "Ritschel 1996",
+          "pageNumber": "7-26",
+          "referenceId": "986"
+        },
+        {
+          "title": "Sandner 1998 B",
+          "pageNumber": "87, 89",
+          "referenceId": "1023"
+        },
+        {
+          "title": "Sandner, Ritschel 1994",
+          "pageNumber": "190, 191",
+          "referenceId": "1025"
+        },
+        {
+          "title": "Schade 1974",
+          "pageNumber": "",
+          "referenceId": "416"
+        },
+        {
+          "title": "Schölzel 2005",
+          "pageNumber": "183",
+          "referenceId": "1185"
+        },
+        {
+          "title": "Schuchardt 1998 B",
+          "pageNumber": "13",
+          "referenceId": "29739"
+        },
+        {
+          "title": "Swarzenski 1907",
+          "pageNumber": "49-65",
+          "referenceId": "1298"
+        },
+        {
+          "title": "Thümmel 1994",
+          "pageNumber": "167",
+          "referenceId": "2226"
+        },
+        {
+          "title": "Tucholski 1930",
+          "pageNumber": "8",
+          "referenceId": "1489"
+        },
+        {
+          "title": "Vogel 1832",
+          "pageNumber": "81-84",
+          "referenceId": "1485"
+        },
+        {
+          "title": "Woltmann, Woermann 1882",
+          "pageNumber": "419",
+          "referenceId": "1162"
+        }
+      ],
+      "keywords": [
+        {
+          "type": "Schlagwort",
+          "term": "010305",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Bestandteile > Predella",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "0104030504",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Christus > Der Schmerzensmann",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030101",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Männliche Heilige > Hl. Achatius",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030103",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Männliche Heilige > Hl. Ägidius",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030109",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Männliche Heilige > Hl. Blasius",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030110",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Männliche Heilige > Hl. Christophorus",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030112",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Männliche Heilige > Hl. Cyriakus",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030113",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Männliche Heilige > Hl. Dionysius",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030114",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Männliche Heilige > Hl. Erasmus",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030115",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Männliche Heilige > Hl. Eustachius",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030117",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Männliche Heilige > Hl. Georg",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030133",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Männliche Heilige > Hl. Mauritius",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030137",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Männliche Heilige > Hl. Pantaleon",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030151",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Männliche Heilige > Hl. Vitus",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030204",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Weibliche Heilige > Hl. Barbara",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "010403030212",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Weibliche Heilige > Hl. Katharina",
+          "url": ""
+        },
+        {
+          "type": "Schlagwort",
+          "term": "0104030303",
+          "path": "Authorities > Attributes > Objekte > Cranach-Archiv > Inhalt > Christliche Religion / Bibel > Heilige, Aposteln, Propheten > Die Vierzehn Nothelfer",
+          "url": ""
+        }
+      ],
+      "locations": [
+        {
+          "type": "Standort Cranach Objekt",
+          "term": "Torgau",
+          "path": "Deutschland > states > Sachsen > districts (national) > Leipzig > inhabited places > Torgau",
+          "url": "http://vocab.getty.edu/page/tgn/7012881"
+        },
+        {
+          "type": "Standort Cranach Objekt",
+          "term": "Torgau",
+          "path": "Deutschland > states > Sachsen > districts (national) > Leipzig > inhabited places > Torgau",
+          "url": "http://vocab.getty.edu/page/tgn/7012881"
+        }
+      ],
+      "repository": "Ev. Kirchgemeinde St. Marien, Torgau",
+      "owner": "Ev. Kirchgemeinde St. Marien, Torgau",
+      "collectionRepositoryId": "collection_repository.country.germany.torgau.torgau_1",
+      "sortingNumber": "1507-001",
+      "catalogWorkReferences": [
+      ],
+      "structuredDimension": {
+        "element": "Maßstab CDA",
+        "width": "0.00",
+        "height": "84.30"
+      },
+      "isBestOf": false,
+      "restorationSurveys": [
+        {
+          "type": "ArtTechExamination",
+          "project": "",
+          "overallAnalysis": "",
+          "remarks": "",
+          "tests": [
+            {
+              "order": 703,
+              "kind": "Unterzeichnung",
+              "text": "BESCHREIBUNG (Vorderseite)\n\nZeichengeräte/Material: \n- flüssiges schwarzes Zeichenmedium, Pinsel \n\nTyp/Duktus: \n- freie Unterzeichnung\n- dünne bis relativ breite Linien\n- Lavuren; gelegentliche Schraffuren\n\nFunktion: \n- verbindliche Vorgabe für die Malerei; Hauptkonturen, Binnenformen und Gesichtszüge angegeben; plastische Wiedergabe durch Schraffuren und Lavuren \n\nAbweichungen: \n- kleine Präzisierungen der Form während des Malprozesses\n\nINTERPRETATION\n\nZuschreibung: \nLucas Cranach d. Ä. und Werkstatt ?\n\n\nBESCHREIBUNG (Rückseite)\n\nZeichengeräte/Material: \n- flüssiges schwarzes Zeichenmedium, Pinseln unterschiedliche Breite\n\nTyp/Duktus: \n- freie Unterzeichnung\n- dünne bis relativ breite Linien\n- Lavuren; gelegentliche Schraffuren\n\nFunktion: \n- relativ verbindliche Vorgabe für die Malerei; Hauptkonturen, Binnenformen und Gesichtszüge angegeben; plastische Wiedergabe durch Schraffuren und Lavuren \n\nAbweichungen: \n- kleine Präzisierungen der Form während des Malprozesses\n\nINTERPRETATION\n\nZuschreibung: \n- Lucas Cranach d. Ä.  und Werkstatt?\n\n[Smith, Sandner, Heydenreich, cda 2012]",
+              "purpose": "Technologische Untersuchung / Naturwissenschaftliche Materialanalyse",
+              "keywords": [
+                {
+                  "id": "examination_analysis.infrared_reflectography",
+                  "name": "Infrarot-Reflektografie",
+                  "additional": ""
+                }
+              ]
+            },
+            {
+              "order": 703,
+              "kind": "Unterzeichnung",
+              "text": "“Im Vergleich zur Unterzeichnung vorangegangener Malereien wie der ‘Ruhe auf der Flucht nach Ägypten’ (um 1504, Berlin Gemäldegalerie) oder zur ‘Kreuzigung’ von 1503 (München, Pinakothek) ist die großförmige, das Detail stark vernachlässigende Unterzeichnung auf der Nothelfertafel überraschend und markiert einen Umbruch. Die Unterzeichnung enthält ihre eigentliche Funktion, orientierende Hilfe für die Malerei zu sein. Die Nähe zum Dresdner Katherinenaltar (1506, Galerie Alte Meister Dresden) mit einer ganz ähnlich linearen Zeichnung auf dem Malgrund ordnet diese Veränderung aber in einen insgesamt feststellbaren Wandel ein. Eine Besonderheit, die bei Unterzeichnungen auf Gemälden Cranachs bisher noch nicht wieder beobachtet werden konnte, sind die Lasuren zur Modellierung des Lichts. Es scheint auch, daß einige zeichnerische Überarbeitungen des Erstentwurfes vorliegen.\nDie Details verdeutlichen, daß der Erstentwurf in einer zweiten Arbeitsphase verdichtet wurde und bereits die Malerei vorbereitet wird. Diese ‚Überarbeitung‘ betrifft besonders die zentralen Bildbereiche mit dem Christopherus und die benachbarten Köpfe. Kaum davon erfaßt sind zum Beispiel die weiblichen Köpfe am rechten Bildrand“\n[Sandner 1998, 103]",
+              "purpose": "",
+              "keywords": [
+              ]
+            }
+          ],
+          "involvedPersons": [
+            {
+              "role": "Bearbeiter/in",
+              "name": "Ingo Sandner"
+            }
+          ],
+          "processingDates": {
+            "beginDate": "1994",
+            "beginYear": null,
+            "endDate": "1994",
+            "endYear": null
+          },
+          "signature": {
+            "date": "17. Juni 2011",
+            "name": "Helen Smith"
+          },
+          "fileReferences": [
+            {
+              "type": "irr",
+              "id": "DE_StMT_FR016_1994_IRR"
+            },
+            {
+              "type": "irr",
+              "id": "DE_StMT_FR016_1994_IRR_Detail-001"
+            },
+            {
+              "type": "irr",
+              "id": "DE_StMT_FR016_1994_IRR_Detail-002"
+            },
+            {
+              "type": "irr",
+              "id": "DE_StMT_FR016_1994_IRR_Detail-003"
+            }
+          ]
+        },
+        {
+          "type": "ArtTechExamination",
+          "project": "",
+          "overallAnalysis": "",
+          "remarks": "",
+          "tests": [
+            {
+              "order": 707,
+              "kind": "",
+              "text": "",
+              "purpose": "Technologische Untersuchung / Naturwissenschaftliche Materialanalyse",
+              "keywords": [
+                {
+                  "id": "examination_analysis.x_radiography",
+                  "name": "Röntgengrobstrukturanalyse",
+                  "additional": ""
+                }
+              ]
+            }
+          ],
+          "involvedPersons": [
+            {
+              "role": "Bearbeiter/in",
+              "name": "Asmus Steuerlein"
+            },
+            {
+              "role": "Bearbeiter/in",
+              "name": "Ingo Sandner"
+            }
+          ],
+          "processingDates": {
+            "beginDate": "1994",
+            "beginYear": null,
+            "endDate": "1994",
+            "endYear": null
+          },
+          "signature": {
+            "date": "17. Juni 2011",
+            "name": "Helen Smith"
+          },
+          "fileReferences": [
+            {
+              "type": "x_radiograph",
+              "id": "DE_StMT_FR016_1994_X-radiograph_Detail-001"
+            },
+            {
+              "type": "x_radiograph",
+              "id": "DE_StMT_FR016_1994_X-radiograph_Detail-002"
+            },
+            {
+              "type": "x_radiograph",
+              "id": "DE_StMT_FR016_1994_X-radiograph_Detail-003"
+            },
+            {
+              "type": "x_radiograph",
+              "id": "DE_StMT_FR016_1994_X-radiograph_Detail-004"
+            }
+          ]
+        },
+        {
+          "type": "ArtTechExamination",
+          "project": "",
+          "overallAnalysis": "",
+          "remarks": "",
+          "tests": [
+            {
+              "order": 707,
+              "kind": "",
+              "text": "PIXE- Analyse",
+              "purpose": "Naturwissenschaftliche Materialanalyse",
+              "keywords": [
+                {
+                  "id": "examination_analysis.instrumental_material_analysis",
+                  "name": "Instrumentelle Materialanalyse",
+                  "additional": ""
+                }
+              ]
+            }
+          ],
+          "involvedPersons": [
+            {
+              "role": "untersucht von",
+              "name": "Christian Neelmeijer"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Hans-Peter Schramm"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Wolfgang Wagner"
+            }
+          ],
+          "processingDates": {
+            "beginDate": "1995",
+            "beginYear": null,
+            "endDate": "1995",
+            "endYear": null
+          },
+          "signature": {
+            "date": "17. Juni 2011",
+            "name": "Helen Smith"
+          },
+          "fileReferences": [
+          ]
+        },
+        {
+          "type": "ArtTechExamination",
+          "project": "",
+          "overallAnalysis": "",
+          "remarks": "",
+          "tests": [
+            {
+              "order": 707,
+              "kind": "",
+              "text": "Analyse von Farbquerschliffen; Auflichtmikroskop; UV Fluoreszenz; Anfärbung; REM/EDX:\n\nProbenliste Heydenreich [50]\nObjekt Nr.: FR 016\nQuerschliff Nr.: EP 081\nFarbkurzbeschreibung: grünes Gewand Blasius\nEntnahmeort: Vorderseite, grünes Gewand des Blasius, Fehlstellenrand an der Brettfuge\nEntnahme Nr.: 143\nAuflichtmikroskop: ja\nAuflichtmikroskop Foto: ja \nUV Fluoreszenz: ja\nUV Fluoreszenz Foto: ja \nBeobachtungsergebnisse:\n8. braune transparente Schicht ‑ gelbliche Fl. ‑ Lasur, Firnis\n7. braune pigmentierte Schicht ‑ keine Fl. ‑ Lasur?, Retusche?\n6. braune transparente Schicht ‑ gelbe Fl. ‑ Lasur?, Firnis?\n5. grüne Schicht ‑ kaum Fl. ‑ Modellierung, drei Grünschichten nach oben in der Intensität zunehmend\n4. grüne Schicht ‑ kaum Fl. ‑ Modellierung\n3.grüne Schicht ‑ grüne transparente Brocken mit unscharfer Kontur, weißliche Brocken ‑ wohl Bleiweiß, nur ein kleines rötliches Teilchen, vielleicht auch Gelb?, kaum Fl. ein Einschluss etwas heller, Untermalung\n2. weiße Schicht ‑ weiß, etwas glasig, wohl Bleiweiß, gelbe Fl. – Imprimitur\n1.schwarze Schicht ‑ sehr feines Schwarzpigment ‑ keine Fl. ‑ Unterzeichnung\n0. weiße Schicht ‑ gelbe Fl. ‑ Grundierung\nKommentar:\nüber der UZ und der weißen Imprimitur eine dreischichtige Modellierung mit grüner pigmentierter Farbe und darüber vielleicht noch Lasuren oder alter Firnis\n[vgl. Heydenreich 2007, 149]\n \n\nAuf der Torgauer Nothelfertafel nachgewiesene Pigmente:\n- Bleiweiß\n- Bleizinngelb\n- Zinnober\n- Kohlenstoffschwarz (Rußschwarz?)\n- roter Farblack (Al, mit oranger Fluoreszenz im UV)\n- roter Farblack (Ca, ohne oranger Fluoreszenz im UV)\n- Kupfergrün\n- grüner Farblack auf Basis von Kupfergrün\n- Eisenoxidrot\n- Mennige\n- brauner Farblack\n- Azurit\n- Kreide\n \n[Heydenreich 1995, unveröffentlichte Untersuchungsberichte]",
+              "purpose": "Technologische Untersuchung / Naturwissenschaftliche Materialanalyse",
+              "keywords": [
+                {
+                  "id": "examination_analysis.micro_sampling_cross_sections",
+                  "name": "Probenentnahme / Querschliff(e)",
+                  "additional": ""
+                },
+                {
+                  "id": "examination_analysis.instrumental_material_analysis",
+                  "name": "Instrumentelle Materialanalyse",
+                  "additional": ""
+                }
+              ]
+            }
+          ],
+          "involvedPersons": [
+            {
+              "role": "untersucht von",
+              "name": "Gunnar Heydenreich"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Christalle"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Hans-Peter Schramm"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Wolfgang Wagner"
+            },
+            {
+              "role": "verfasst von",
+              "name": "Gunnar Heydenreich"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Christian Neelmeijer"
+            }
+          ],
+          "processingDates": {
+            "beginDate": "1995",
+            "beginYear": null,
+            "endDate": "1995",
+            "endYear": null
+          },
+          "signature": {
+            "date": "16. Juni 2011",
+            "name": "Helen Smith"
+          },
+          "fileReferences": [
+            {
+              "type": "analysis",
+              "id": "DE_StMT_FR016_1994_Cross-section_EP081"
+            }
+          ]
+        },
+        {
+          "type": "ArtTechExamination",
+          "project": "",
+          "overallAnalysis": "",
+          "remarks": "",
+          "tests": [
+            {
+              "order": 705,
+              "kind": "Rahmung",
+              "text": "- neuer Zierrahmen - mit der Restaurierung 1969-1971 angefertigt \n[Ritschel 1995, 53]",
+              "purpose": "Technologische Untersuchung",
+              "keywords": [
+              ]
+            }
+          ],
+          "involvedPersons": [
+          ],
+          "processingDates": {
+            "beginDate": "1995",
+            "beginYear": null,
+            "endDate": "1995",
+            "endYear": null
+          },
+          "signature": {
+            "date": "16. Juni 2011",
+            "name": "Helen Smith"
+          },
+          "fileReferences": [
+          ]
+        },
+        {
+          "type": "ArtTechExamination",
+          "project": "",
+          "overallAnalysis": "",
+          "remarks": "",
+          "tests": [
+            {
+              "order": 707,
+              "kind": "",
+              "text": "Analyse von Farbquerschliffen; Auflichtmikroskop; UV Fluoreszenz; Anfäbung; REM/EDX:\n\n \n\nProbenliste Heydenreich [49]\n\nObjekt Nr.: FR 016\n\nQuerschliff Nr.: EP 080\n\nFarbkurzbeschreibung: roter Umhang Christophorus\n\nEntnahmeort: Vorderseite, roter Umhang des Christophorus, unterer Bildrand\n\nEntnahme Nr.: 142\n\nAuflichtmikroskop: ja\n\nAuflichtmikroskop Foto: ja\n\nUV Fluoreszenz: ja\n\nUV Fluoreszenz Foto: ja\n\nREM/EDX: ja\n\nBeobachtungsergebnisse:\n\n5. rote transparente Schicht - [Al!, Ca!, C, S, (K)] - rote Lasur mit einem roten Farblack, dessen Substrat einen hohen Anteil von Aluminium enthält\n\n4. rote Schicht - [Hg!!, Fe, Ca] - Zinnober, Eisenoxidrot - Untermalung\n\n3. rote Schicht - [Fe!!, Pb!, Hg!, Al, Si] - Eisenoxidrot, Mennige, Zinnober (vielleicht Bergzinnober, da sehr scharfe Ecken - Untermalung\n\n2. weiße Schicht - [Pb!] - Bleiweißimprimitur\n\n1. schwarze Schicht - [Ca!, Pb!, C] kein Phosphor, kein Kupfer - Unterzeichnung mit reinem Kohlenstoffschwarz\n\n0. weiße Grundierung, nach oben glasig, Calziumcarbonat\n\nKommentar:\n\nWelche färbende Komponente in dem roten Lack auf Al-Substrat? \n\nHier wurde auch mit PIXE gemessen : Hg!, Ca!, Pb, K, (Fe), (Zn), Tiefenverteilungsfrage ließ sich nicht beantworten\n\n[Vgl. Heydenreich 2007, 100]\n\n \n\n \n\n \n\nAuf der Torgauer Nothelfertafel nachgewiesene Pigmente:\n\n- Bleiweiß\n\n- Bleizinngelb\n\n- Zinnober\n\n- Kohlenstoffschwarz (Rußschwarz?)\n\n- roter Farblack (Al, mit oranger Fluoreszenz im UV)\n\n- roter Farblack (Ca, ohne oranger Fluoreszenz im UV)\n\n- Kupfergrün\n\n- grüner Farblack auf Basis von Kupfergrün\n\n- Eisenoxidrot\n\n- Mennige\n\n- brauner Farblack\n\n- Azurit\n\n- Kreide\n\n \n[Heydenreich 1995, unveröffentlichte Untersuchungsberichte]",
+              "purpose": "Technologische Untersuchung / Naturwissenschaftliche Materialanalyse",
+              "keywords": [
+                {
+                  "id": "examination_analysis.micro_sampling_cross_sections",
+                  "name": "Probenentnahme / Querschliff(e)",
+                  "additional": ""
+                },
+                {
+                  "id": "examination_analysis.instrumental_material_analysis",
+                  "name": "Instrumentelle Materialanalyse",
+                  "additional": ""
+                }
+              ]
+            }
+          ],
+          "involvedPersons": [
+            {
+              "role": "untersucht von",
+              "name": "Gunnar Heydenreich"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Christalle"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Wolfgang Wagner"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Hans-Peter Schramm"
+            },
+            {
+              "role": "verfasst von",
+              "name": "Gunnar Heydenreich"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Christian Neelmeijer"
+            }
+          ],
+          "processingDates": {
+            "beginDate": "1995",
+            "beginYear": null,
+            "endDate": "1995",
+            "endYear": null
+          },
+          "signature": {
+            "date": "18. Juli 2016",
+            "name": "Helen Smith,"
+          },
+          "fileReferences": [
+            {
+              "type": "analysis",
+              "id": "DE_StMT_FR016_1994_Cross-section_EP080"
+            }
+          ]
+        },
+        {
+          "type": "ArtTechExamination",
+          "project": "",
+          "overallAnalysis": "",
+          "remarks": "",
+          "tests": [
+            {
+              "order": 707,
+              "kind": "",
+              "text": "Analyse von Farbquerschliffen; Auflichtmikroskop; UV Fluoreszenz; Anfärbung; REM/EDX:\n\n \n\nProbenliste Heydenreich [60]\n\nObjekt Nr.: FR 016\n\nQuerschliff Nr: EP 087\n\nFarbkurzbeschreibung: grünes Gewand Eustachius\n\nEntnahmeort: Vorderseite, Eustachius, grünes Gewand, links am Bildrand, Höhe des Hirschauges\n\nEntnahme Nr.: 153\n\nUntersuchungsmethoden: z.Z. bedampft\n\nREM/EDX: ja (Rossendorf)\n\nREM/EDX Foto: ja\n\nBeobachtungsergebnisse:\n\n6. dunkle bräunliche Schicht mit roten Einschlüssen, rel. deutliche UV-Fluoreszenz, d.h. vermutlich Naturharz, Firnis? im Raster wieder heller, [Si!!, Al!, Ca!, Pb, Cu, O, C, Fe] wie der braune Lack im Inkarnat, d.h. es dürfte sich doch um eine originale Lasur handeln, Korrektur von Cranach?\n\n5. glasig bräunliche Schicht, ohne sichtbare Pigmentierung, Firnis? im Raster ganz dunkel, starkere Fluoreszenz als andere Schichten, [C!!, O!!, Ca!, Al, Pb, Cl?, Si], eventuell harzhaltige Schicht, entweder orig. Firnis oder Planzengrünlack auf Ca, Al, wenig Kupferionen\n\n4. giftig grüne Schicht, ohne Fluoreszenz, im Raster dunkler als 3, dunkel: [Cu!!, Pb, C, O, Ca, Al]; hell: [Cu!!, C, O, Al], Bleisikkativ wie der grüne Lack am Hals des Christopherus - grüner Farblack auf der Basis von Kupfergrün?\n\n3. grüne Schicht, darin Lackpartikel mit oranger Fluoreszenz und eines ohne Fluoreszenz, ansonsten wie Schicht 2\n\n2. grüne Schicht, dicke, körnig gelb, grüne Schicht mit gelben, braunen, grünen und weißen Einschlüssen, gehört mit Schicht 3 zusammen, im Raster dunkler als 3, grünes Korn [Cu!, Pb!, O, C] Kupfergrün, z.T. mit auffälliger Schichtstruktur (Grünspan?); glasiges Korn [Pb!!, Sn!, Cu!, Al] Bleizinngelb; blauweißes Korn [Cu!!, Pb!!] Bleiweiß, gelbes Korn [Pb, Sn] Bleizinngelb, braunes Korn [Ca!!, C!, S, O] roter Lack auf Ca? - grüne Untermalung als Ausmischung aus Kupfergrün, Bleiweiß, Bleizinngelb und rotbrauner Lack\n\n1. weiße Imprimitur\n\n0. weiße Schicht - Grundierung\n\nKommentar: Grünaufbau in relativ vielen Schichten, weitere Untersuchung sinnvoll\n\n \n\nAuf der Torgauer Nothelfertafel nachgewiesene Pigmente:\n\n- Bleiweiß\n\n- Bleizinngelb\n\n- Zinnober\n\n- Kohlenstoffschwarz (Rußschwarz?)\n\n- roter Farblack (Al, mit oranger Fluoreszenz im UV)\n\n- roter Farblack (Ca, ohne oranger Fluoreszenz im UV)\n\n- Kupfergrün\n\n- grüner Farblack auf Basis von Kupfergrün\n\n- Eisenoxidrot\n\n- Mennige\n\n- brauner Farblack\n\n- Azurit\n\n- Kreide\n\n \n[Heydenreich 1995, unveröffentlichte Untersuchungsberichte]",
+              "purpose": "Technologische Untersuchung / Naturwissenschaftliche Materialanalyse",
+              "keywords": [
+                {
+                  "id": "examination_analysis.micro_sampling_cross_sections",
+                  "name": "Probenentnahme / Querschliff(e)",
+                  "additional": ""
+                },
+                {
+                  "id": "examination_analysis.instrumental_material_analysis",
+                  "name": "Instrumentelle Materialanalyse",
+                  "additional": ""
+                }
+              ]
+            }
+          ],
+          "involvedPersons": [
+            {
+              "role": "untersucht von",
+              "name": "Gunnar Heydenreich"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Christalle"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Wolfgang Wagner"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Hans-Peter Schramm"
+            },
+            {
+              "role": "verfasst von",
+              "name": "Gunnar Heydenreich"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Christian Neelmeijer"
+            }
+          ],
+          "processingDates": {
+            "beginDate": "1995",
+            "beginYear": null,
+            "endDate": "1995",
+            "endYear": null
+          },
+          "signature": {
+            "date": "18. Juli 2016",
+            "name": "Helen Smith,"
+          },
+          "fileReferences": [
+            {
+              "type": "analysis",
+              "id": "DE_StMT_FR016_1994_Cross-section_EP087"
+            }
+          ]
+        },
+        {
+          "type": "ArtTechExamination",
+          "project": "",
+          "overallAnalysis": "",
+          "remarks": "",
+          "tests": [
+            {
+              "order": 707,
+              "kind": "",
+              "text": "Analyse von Farbquerschliffen; Auflichtmikroskop; UV Fluoreszenz; Anfärbung; REM/EDX:\n\n \n\nProbenliste Heydenreich [38]\n\nObjekt Nr.: FR 016\n\nQuerschliff Nr.: EP 001\n\nFarbkurzbeschreibung: Inkarnat, Christusarm\n\nEntnahmeort: Rückseite, Christusinkarnat, rechter Arm, Unterkante der gr. Fehlstelle, mittig\n\nEntnahme Nr.: 001\n\nAuflichtmikroskop: ja\n\nAuflichtmikroskop Foto: 2 Dias\n\nUV Fluoreszenz:\n\nUV Fluoreszenz Foto:\n\nAnfärbung Proteine:\n\nAnfärbung Proteine Foto:\n\nAnfärbung Öle:\n\nAnfärbung Öle Foto:\n\nREM/EDX: ja\n\nREM/EDX Foto:\n\nBeobachtungsergebnisse:\n\n    2. bräunlich transparente Schicht  [Ca!! O- Pb- C- Al- Mg-] sehr indifferent, unklare Schichtstärke\n\n    1. Inkarnatfarbe fast weiß [Pb!! Ca  C- O- A-] mit glasig transparenten und glasig gelblichen Einschlüssen Korn: [Si!! Ca! C! Pb O] eventuell auch ein blaues und ein rotes Pigmentkorn mittig\n\n    0. Grundierung fehlt\n\nKommentar: Die Inkarnatfarbe erscheint homogen und als eine Schicht, sehr hell und nur mit geringen Buntpigmentzusätzen (Blau, Rot). Anteile an glasigen z.T. mehr gelblich-bräunlichen Einschlüssen enthalten viel Silizium, Calzium und auffällig mehr Kohlenstoff (weist darauf hin, dass es sich nicht um ein Schleifkorn handelt) als andere Bereiche. Da diese Einschlüsse nur geringe Calziumanteile beinhalten, ist es wenig wahrscheinlich, dass es sich hier um den an anderen Stellen leicht bräunlich verfärbten Farblack mit größeren Anteilen von Kreide (Substrat?) handelt. Silizium ist auch Hauptbestandteil der braunen Inkarnatlasur am Fürstenaltar. \n\nDurchführung: EDX Frau Chistalle, Forschungszentrum Rossendorf, Heydenreich\n\n \n\n \n\nProbenliste Heydenreich [39]\n\nObjekt Nr.: FR 016\n\nQuerschliff Nr.: EP 002\n\nFarbkurzbeschreibung: grünes Engelsgewand, heller Faltensteg\n\nEntnahmeort: Rückseite, Gewand des rechten Engels, am unteren Bildrand\n\nEntnahme Nr.: 002\n\nAuflichtmikroskop: ja\n\nAuflichtmikroskop Foto: ja\n\nUV Fluoreszenz:\n\nUV Fluoreszenz Foto:\n\nAnfärbung Proteine:\n\nAnfärbung Proteine Foto:\n\nAnfärbung Öle:\n\nAnfärbung Öle Foto:\n\nREM/EDX:\n\nREM/EDX Foto:\n\nBeobachtungsergebnisse:\n\n4. dunkel bräunlich transparente Schicht; Firnis?\n\n3. grüne Schichten mit grünen, gelben, weißen und bräunlich glasigen Pigmenten (Auftrag in mindestens drei Schichten von relativ ähnlicher Erscheinung); grüne Gewandfarbe; Gesamtstärke ca. 0,047 mm\n\n2. dünne weiße Schicht mit einem Schwarzpigmentkorn; Imprimitur; Schichtdicke ca. 0,008 mm\n\n1. sehr dünne partiell sichtbare schwarze Schicht; Unterzeichnung\n\n0. weiße Schicht; Grundierung mit zunehmender Transparenz und gelblicher Verfärbung zur Oberfläche\n\nKommentar: Auf dem Kreidegrund liegt eventuell eine Isolierschicht, dann die schwarze Unterzeichnung und eine sehr dünne weiße Imprimitur. Der Grünaufbau erfolgte mindestens in drei Schichten in Ausmischung von grünen, gelben, weißen und bräunlich glasigen Pigmenten. \n\n \n\nProbenliste Heydenreich [40]\n\nObjekt Nr.: FR 016\n\nQuerschliff Nr.: EP 003\n\nFarbkurzbeschreibung: grünes Engelsgewand, dunkle Falte\n\nEntnahmeort: Rückseite, rechter Engel, grünes Gewand, dunkle Falte, am unteren Bildrand\n\nEntnahme Nr.: 003\n\nAuflichtmikroskop: ja \n\nAuflichtmikroskop Foto: ja, Schramm\n\nUV Fluoreszenz: ja\n\nUV Fluoreszenz Foto: ja, kein Dia\n\nAnfärbung Proteine:\n\nAnfärbung Proteine Foto:\n\nAnfärbung Öle:\n\nAnfärbung Öle Foto:\n\nREM/EDX: grün geeignet für weitere Untersuchung\n\nREM/EDX Foto:\n\nBeobachtungsergebnisse:\n\n7. darüber schwarzbräunliche Schicht (mit leichter Fluoreszenz) nicht mehr deutlich zu unterscheiden, auch Firnis\n\n6. eine weitere intensiv grüne Schicht\n\n5. sehr dünne dunkelgrüngraue Zwischenschicht mit viel mehr Schwarzpigmenten, weniger Grün; Abschattierung \n\n4. körnig dunkelgrüne Schicht (ein bis zwei?) mit grünen, weißen, einzelnen rötlichbraunen und schwarzen Pigmenten, keine Fluoreszenz, einzelne Pigmente grünblau \n\n3. grün-weiße Schicht mit blaugrünen und weißen Pigmenten; hellgrüne Untermalung\n\n2. sehr dünne weiße Schicht, z. T. weiß-grün ohne klare Trennung zu Schicht 3, sehr geringe Fluoreszenz, vermutlich Imprimitur\n\n1. sehr dünne schwarze Schicht, nicht durchgehend; Unterzeichnung\n\n0. weiße Schicht mit wenig glasiger Oberfläche; Grundierung; nach oben zunehmende Fluoreszenz\n\nKommentar: Über der Unterzeichnung und der nur partiell als Schicht wahrnehmbaren Imprimitur wird das Gewand hier hellgrün untermalt, obwohl es sich um eine Probe aus einer Schattenfalte handelt. Der Aufbau des grünen Gewandes ist mehrschichtig (insgesamt mindestens 5 Schichten) dunkelgrün mit Anteilen von grünen, schwarzen und weißen Pigmenten. An der Oberfläche gibt es eine dünne fluoreszierende Trennschicht und eine dickere Überzugsschicht.\n\n    \n\n \n\nProbenliste Heydenreich [42]\n\nObjekt Nr.: FR 016\n\nQuerschliff Nr.: EP 005\n\nFarbkurzbeschreibung: weißes Schnupftuch\n\nEntnahmeort: Rückseite, linker Engel, weißes Schnupftuch, helle Seite, Unterkante der Fehlstelle\n\nEntnahme Nr.: 005\n\nAuflichtmikroskop: ja (Schramm)\n\nAuflichtmikroskop Foto: ja (Schramm), Dia \n\nUV Fluoreszenz: ja\n\nUV Fluoreszenz Foto: ja (Schramm)\n\nBeobachtungsergebnisse:\n\n1. hellgraue Schicht (weiße, schwarze und blaue Pigmente)\n\n0. weiße Grundierung\n\nKommentar: keine graue Untermalung, in diesem Bereich erfolgte eine PIXE-Untersuchung [Pb!, Cu!, C!, Ca, K, Fe, Mn, Ti, Sr], Interpretation: \"Bleiweiß auf (Elfenbein)schwarz [?] welches Azurit enthält\" erscheint fraglich\n\n \n\n \n\nProbenliste Heydenreich [43]\n\nObjekt Nr.: FR 016\n\nQuerschliff Nr.: EP 006\n\nFarbkurzbeschreibung: rotes Engelsgewand\n\nEntnahmeort: Rückseite, linker Engel, rotes Gewand, Unterkante der gr. Fehlstelle\n\nEntnahme Nr.: 006\n\nAuflichtmikroskop: ja\n\nAuflichtmikroskop Foto: ja\n\nUV Fluoreszenz: ja\n\nUV Fluoreszenz Foto: ja \n\nBeobachtungsergebnisse:\n\n    3. Firnis\n\n    2. hellrote Schicht, weiße und intensiv rote, lackartige Pigmente, rote Teile erscheinen im UV auch rot bis orangerot\n\n    1. weiße Imprimitur\n\n    0. weiße Grundierung\n\nKommentar: ggf. Untersuchung des roten Lackes\n\n \n\n \n\nProbenliste Heydenreich [47]\n\nObjekt Nr.: FR 016\n\nQuerschliff Nr.: EP 010\n\nFarbkurzbeschreibung: Inkarnat Christus mit roter Blutspur\n\nEntnahmeort: Rückseite, Inkarnat Christus am Bauch mit Blutspur, Unterkante der Fehlstelle\n\nEntnahme Nr.: 010\n\nAuflichtmikroskop: ja\n\nAuflichtmikroskop Foto.: ja (Schramm), kein Dia, da z.Z. beschichtet\n\nUV Fluoreszenz: ja\n\nUV_Fluoreszenz Foto: ja (Schramm)\n\nREM/EDX: ja, Rossendorf, Fr. Chistalle, DSM 962 (Zeiss)\n\nBeobachtungsergebnisse:\n\n3. indifferente Firnisschicht\n\n2. rote Schicht [Al, S, Ca, Pb] im roten Korn [Al!, Pb!?, (S)] - Blutspur\n\n1. weiße Schicht - Bleiweiß [Pb!, Al, Ca] mit glasigen Einschlüssen, die im Raster als weniger schwere Bestandteile erscheinen [Pb (auch S mögl.)!!, Al!, K!,] - Inkarnatfarbe, die glasigen Einschlüsse unterscheiden sich lediglich durch einen etwas höheren Anteil Al und sind damit nicht identisch mit denen in EP 001\n\n0. weiße Grundierung [Ca!, (Pb), weiter unten nur Ca!] - eventuell Hinweis auf sikkativiertes Öl?\n\n \n\nKommentar:\n\n- glasige Einschlüsse in der Inkarnatfarbe noch nicht geklärt - weitere Untersuchung sinnvoll\n\n- die Bestandteile des roten Lackes sind noch nicht eindeutig: Im Raster erscheinen die Körner eher dunkel, als weniger schwere Materie, um die Körner herum ist es wieder heller, d.h. schwerere Elemente, Man könnte hier auf ein bleihaltiges (sikkativiertes?) Medium schließen. In einem Korn erscheint ein relativ hoher Schwefelanteil? - Überlagerung mit Blei? ansonsten sind Blei, Aluminium und Calzium in den Körnern stark vertreten (Substrat?). Im Vergleich erscheint in der Probe vom Christopherusgewand deutlich mehr Aluminium.\n\n- bei PIXE erschien auch Sn, also vermutlich Bleizinngelb partiell mit verwendet?\n\n \n\n \n\nProbenliste Heydenreich [48]\n\nObjekt Nr.: FR 016\n\nQuerschliff Nr.: EP 011\n\nFarbkurzbeschreibung: Inkarnat Christus Oberschenkel\n\nEntnahmeort: Rückseite, Inkarnat Christus, rechter Oberschenkel mittig, unterer Tafelrand\n\nEntnahme Nr.: 011\n\nAuflichtmikroskop: ja\n\nAuflichtmikroskop Foto: ja, \n\nUV Fluoreszenz: ja\n\nUV Fluoreszenz Foto: nein\n\nBeobachtungsergebnisse:\n\n1. helle Inkarnatfarbe, weiß und sehr feines Rotpigment (Zinnober?), vereinzelt schwarz\n\n0. weiße Grundierung\n\n \n\nKommentar: \n\neinschichtig helle Inkarnatfarbe ohne weitere Differenzierung\n\n \n\n \n\nProbenliste Heydenreich [54]\n\nObjekt Nr.: FR 016\n\nQuerschliff Nr.: EP 083\n\nFarbkurzbeschreibung: rotes Engelsgewand\n\nEntnahmeort: Rückseite, rotes Engelsgewand, Unterkante der Fehlstelle, rechts neben dem Tuch\n\nEntnahme Nr.: 147\n\nAuflichtmikroskop Foto: ja \n\nREM/EDX: ja (Rossendorf)\n\nBeobachtungsergebnisse:\n\n4. rote Schicht [Ca!, C, Mg, Pb] hier wohl anderer roter Lack als unten, warmtonig\n\n3. rote Schicht [Al!, Pb!, Ca] roter Lack (orange Fluoreszenz) mit Bleiweiß - Modellierung\n\n2. rosa Schicht [Pb!, Al!, Ca, Si] Bleiweiß mit rotem Farblack - Untermalung\n\n1. schwarze Unterzeichnung\n\n0. weiße Grundierung\n\nKommentar:\n\n- weiterführende Untersuchung der zwei roten Lacke wünschenswert\n\n \n\nProbenliste Heydenreich [55]\n\nObjekt Nr.: FR 016\n\nQuerschliff Nr.: EP 084\n\nFarbkurzbeschreibung: schwarzer Hintergrund\n\nEntnahmeort: Rückseite, schwarzer Hintergrund zwischen Christus und linkem Engel, am Buchstaben \"K\"\n\nEntnahme Nr.: 148\n\nUntersuchungsmethoden: z.Z. bedampft\n\nREM/EDX: ja (Rossendorf)\n\nREM/EDX Foto: nein\n\nBeobachtungsergebnisse:\n\n4. Firnis\n\n3. schwarze Schicht (nur im REM von Schicht 2 zu trennen) Spot [C!!, Ca!, S], Fläche [C!, Ca, Pb, Si, (Cu)]\n\n2. schwarze Schicht [C!!, Pb, Ca, Cu]\n\n1. dünne weiße Schicht - Imprimitur\n\n0. weiße Grundierung\n\nKommentar:\n\n- Phosphor ist nicht nachgewiesen, d.h. es handelt sich wohl nicht um Knochenschwarz, im REM-Bild wirkt die Fläche auch sehr homogen, wohl zu homogen für Knochenschwarz, Kreidebrocken werden aber im Schliff/Raster auch nicht sichtbar (vgl. mit Oberflächenuntersuchung), Woher kommt das Calzium? Möglicherweise handelt es sich um Rußschwarz mit Kalk oder Kreidezusatz und Bleisikkativ. denkbar auch roter Lack auf Ca-Substrat?\n\n- das Kupfer stammt wohl eher von Kupfergrün als von Azurit\n\n \n\n \n\nProbenliste Heydenreich [58]\n\nObjekt Nr.: FR 016\n\nQuerschliff Nr.: EP 085\n\nFarbkurzbeschreibung: Vergoldung mit rotem Lack\n\nEntnahmeort: Rückseite, linker oberer Zwickel, Oberkante, Vergoldung mit rotem Lackstreifen\n\nEntnahme Nr.: 151\n\nUntersuchungsmethoden: z.Z. bedampft\n\nAuflichtmikroskop Foto: ja Ob 16\n\nREM/EDX: ja (Rossendorf)\n\nBeobachtungsergebnisse:\n\n4. transparente rotbraune, relativ dunkle Schicht [Ca!, Pb, Si, Ca, Cu, Al], Calzium im Überzug auch bei PIXE - Kreide in Öl als Überzug, oder war das der warme rote Lack?, Ca erscheint hier nicht mit Kornstruktur\n\n3. Goldblatt [Au, (Ag), (Cu)], Stärke 500nm (gemessen bei 10000facher Vergrößerung)\n\n2. gelbliche Schicht, mit einzelnen roten Pigmenten (bei PIXE auch Zinnober), Weiß und Schwarz, EDX: [Pb!!, Ca, Sn, Cu, Fe] - Anlegemittel mit Bleizinngelb, wohl auch Bleiweiß \n\nund andere Pigmente, z.B. Zinnober\n\n1. dünne weiße Schicht - Bleiweißimprimitur\n\n0. weiße Grundierung\n\nKommentar:\n\n- wenn der Überzug mit dem warmen roten Lack mit Ca-Substrat/Ca-Anteil erfolgte, hat sich hier das farbliche Gleichgewicht vermutlich entscheidend verändert\n\n \n\n \n\nProbenliste Heydenreich [59]\n\nObjekt Nr.: FR 016\n\nQuerschliff Nr.: EP 086\n\nFarbkurzbeschreibung.: gelb-oranges Gewandinnenfutter\n\nEntnahmeort: Rückseite, linker Engel, oranges Gewandinnenfutter, Unterkante der Fehlstelle\n\nEntnahme Nr.: 152\n\nUntersuchungsmethoden: z.Z. bedampft\n\nREM/EDX: ja (Rossendorf)\n\nBeobachtungsergebnisse:\n\n1. rote Schicht [Pb!, Ca, Sn, Fe, (Al)] - Eisenoxidrot und Mennige?, Bleizinngelb\n\n0. weiße Schicht [Ca]\n\nKommentar:\n\n- Vergleichsmessung mit PIXE ergab Fe und Sn (Eisenoxidrot und Bleizinngelb)\n\n \n\n \n\nAuf der Torgauer Nothelfertafel nachgewiesene Pigmente:\n\n- Bleiweiß\n\n- Bleizinngelb\n\n- Zinnober\n\n- Kohlenstoffschwarz (Rußschwarz?)\n\n- roter Farblack (Al, mit oranger Fluoreszenz im UV)\n\n- roter Farblack (Ca, ohne oranger Fluoreszenz im UV)\n\n- Kupfergrün\n\n- grüner Farblack auf Basis von Kupfergrün\n\n- Eisenoxidrot\n\n- Mennige\n\n- brauner Farblack\n\n- Azurit\n\n- Kreide\n\n \n[Heydenreich 1995, unveröffentlichte Untersuchungsberichte]",
+              "purpose": "Technologische Untersuchung / Naturwissenschaftliche Materialanalyse",
+              "keywords": [
+                {
+                  "id": "examination_analysis.micro_sampling_cross_sections",
+                  "name": "Probenentnahme / Querschliff(e)",
+                  "additional": ""
+                },
+                {
+                  "id": "examination_analysis.instrumental_material_analysis",
+                  "name": "Instrumentelle Materialanalyse",
+                  "additional": ""
+                }
+              ]
+            }
+          ],
+          "involvedPersons": [
+            {
+              "role": "untersucht von",
+              "name": "Gunnar Heydenreich"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Christalle"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Wolfgang Wagner"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Hans-Peter Schramm"
+            },
+            {
+              "role": "verfasst von",
+              "name": "Gunnar Heydenreich"
+            },
+            {
+              "role": "untersucht von",
+              "name": "Christian Neelmeijer"
+            }
+          ],
+          "processingDates": {
+            "beginDate": "1995",
+            "beginYear": null,
+            "endDate": "1995",
+            "endYear": null
+          },
+          "signature": {
+            "date": "18. Juli 2016",
+            "name": "Helen Smith,"
+          },
+          "fileReferences": [
+          ]
+        },
+        {
+          "type": "ArtTechExamination",
+          "project": "",
+          "overallAnalysis": "",
+          "remarks": "",
+          "tests": [
+            {
+              "order": 701,
+              "kind": "Bildträger",
+              "text": "“In 1507 a Michel Tischer made the panels for an altarpiece of St Anne to be painted by Cranach (app. II, 18). This particular task can possibly be linked with the preserved predella The Fourteen Helpers in Need (c.1505/07) at Torgau.3 As with almost all panels produced between 1505 and 1510, this predella follows a characteristic production method (see p. 60, fi gs 34, 35), suggesting that Michel Tischer prepared the majority of panels used by the court painter during these years. If this is the same person as the Meister Michel Tischer who, among other things, produced doors, windows, shutters and panelling at Schloss Hartenfels between 1514 and 1517 (app. II, 63),4 then we have here some explanation as to why he always glued the planks of the early panels with the grain oriented parallel to the shorter dimension of the panel. For centuries this practice has remained in continuous use for the production of shutters, door panels and wainscoting.”\n[Heydenreich 2007 A, 275]",
+              "purpose": "Technologische Untersuchung / Naturwissenschaftliche Materialanalyse",
+              "keywords": [
+              ]
+            },
+            {
+              "order": 702,
+              "kind": "Grundierung und Imprimitur",
+              "text": "“Only a few years later, an extensive modelling of the volumes with greyish washes preceded the ‘working up’ of the Fourteen Helpers in Need (1505/07, fig. p. 8, figs 90, 91). Compared to others, this picture is characterised by a particularly fast application of paint. The underdrawing obviously served to shorten the painting process. The white imprimatura on top of the drawing smoothes out washes, some strokes of hatching, and the outlines, resulting in a grisaille -like undermodelling.22”\n[Heydenreich 2007 A, 107-108]",
+              "purpose": "Technologische Untersuchung / Naturwissenschaftliche Materialanalyse",
+              "keywords": [
+              ]
+            },
+            {
+              "order": 704,
+              "kind": "Farbschichten und Metallauflagen",
+              "text": "\"On the Fourteen Helpers in Need , Cranach underpainted the cloak of St Christopher with red iron oxide , red lead and vermilion (fig. 84), and the folds are defi ned with red iron oxide, vermilion and black paint. Shadows are deepened in black and illuminated edges are indicated with vermilion. Finally, luminosity was heightened by a red glaze applied over large passages (D, fig. 134). In contrast the robes of St Panthaleon, the infant Christ and the angel on the verso are given shape with lead white mixed with red lake pigments (B, figs 95, 187). The underlying paint is an opaque pink, layered over with semi-transparent shades and, fi nally, translucent red glazes . A higher content of white emphasises the folds and rich red glazes accentuate the shadows. Here the specifi c red lake pigment used for fi nal glazing differs from that used in the underpainting (see p. 139). St Erasmus’ mitre and St Dionysius’ robe are again worked up in a different technique (figs 34, 95).\nHere the painter achieved the velvety effect simply with red glazes over black washes of the underdrawing (A). On the reverse of the same panel, the inner lining of the robe of the angel on the left, painted with red iron oxide and lead tin yellow in yellow-red tone, demonstrates Cranach’s extensive repertoire (P).\"\n[Heydenreich 2007 A, 185]\n \n“Because of the high calcium content in the black background paint of the Fourteen Helpers in Need , Neelmeijer, Wagner and Schramm concluded that ivory black had been used.260 However, EDX examination of cross-sections showed that, although the black paint contains traces of white calcium salt, there is no phosphorus to indicate the presence of bone black or ivory black. There are various reasons why calcium carbonate would be present as a component of paint containing soot: it could be a residue from combustion, vestiges of calcium from the preparation process,261 or a mixture with an organic lake pigment containing chalk as an extender or substrate.262 It is also conceivable that chalk was added to the soot black , which is of small particle size, in order to improve its handling properties and/or to reduce the amount of binding medium. The addition of chalk would also improve the drying properties (see p. 133).”\n[Heydenreich 2007 A, 163]\n \n“On various works such as the Crucifixion (1503), the panel with the Fourteen Helpers in Need (c.1505/07) and the Altarpiece of the Holy Kinship (1509), hands are used to finely disperse glazes.”\n[Heydenreich 2007 A, 193]\n \n“On the panel with the Fourteen Helpers in Need (c.1505/07), the washes with a black drawing medium that model shadows create a close link between the underdrawing and the painting process (figs 90, 91). Black ink, the white imprimatura and thin, slightly translucent fl esh tones were used to create grey half shadows. No similar modelling has been observed on any other of the works examined. On this panel the light modelling was achieved either by a stippling application of paint or with softly fl owing strokes of the brush without necessarily being related to the anatomical form. The paint was subtly worked up into bright pink fl esh tints or shaded to pale tones, in the latter case using azurite . On the X-radiographs it becomes particularly evident that the smooth shapes of womens’ faces were highlighted by stippling the paint with a blunt bristle brush. The intended effect was achieved with a few brown and pink glazes either spread on or hatched. Last, reflections of light, very deep shadow folds and contour lines were emphasised with a pointed brush.”\n[Heydenreich 2007 A, 199-200]\n \n“As already pointed out, the first layer of the flesh was carried out in a very early stage; but the final graduation of tonal values was one of the last measures in the entire painting process (fig. 174).102 To illustrate this point, the panel with the Fourteen Helpers in Need (c.1505/07) has pink-coloured highlights that have been applied on previously painted drapery in the areas of the necks of St Cyprian and St Giles (fig. 177), while flesh tints on St Giles at the end have again been trimmed by the borderline of the paint modeling the black robe.”\n[Heydenreich 2007 A, 210]\n \nGilding\n“The gold on several panels such as the Portrait of the Wife of a Viennese Scholar (1503), the Fourteen Helpers in Need (c.1505/07) and the Holy Trinity (c.1515) was beaten to a thickness of approximately 500 nanometres (that is, 0.0005\nmillimetres).17“\n[Heydenreich 2007 A, 116]\n \n„On the Fourteen Helpers in Need (1505/07), the adhesive is a drying oil containing lead white , lead-tin yellow, chalk , ochre , copper green and vermilion .”\n[Heydenreich 2007 A, 119-20]\n \n“The practices varied in the case of matt gilding . On the panel depicting the Fourteen Helpers in Need (c.1505/07, fifig. 34), the areas that were to be mordant gilded were outlined with a stylus before the white imprimatura was applied. Several details of drapery are also marked under the gold (figg. 94). However, when applying red-brown glazes on the gilding to model the shadows, Cranach largely ignored the incisions. It was not even necessary to mark the outline for this gilding technique, since the mordant could be applied exactly to the designated areas and thus adhesion could be restricted to these surfaces.\nThus, the spandrels on the verso of the panel with the Fourteen Helpers in Need are no longer delineated with incisions…”\n[Heydenreich 2007 A, 112]\n \n“On the Fourteen Helpers in Need (c.1505/07), he gave spatial effect to the metal leaf by extensive red-brown glazing (ifi gs 34, 187).”\n[Heydenreich 2007 A, 120]",
+              "purpose": "Technologische Untersuchung / Naturwissenschaftliche Materialanalyse",
+              "keywords": [
+              ]
+            }
+          ],
+          "involvedPersons": [
+          ],
+          "processingDates": {
+            "beginDate": "2007",
+            "beginYear": null,
+            "endDate": "2007",
+            "endYear": null
+          },
+          "signature": {
+            "date": "16. Juni 2011",
+            "name": "Helen Smith"
+          },
+          "fileReferences": [
+          ]
+        },
+        {
+          "type": "ArtTechExamination",
+          "project": "",
+          "overallAnalysis": "",
+          "remarks": "",
+          "tests": [
+            {
+              "order": 701,
+              "kind": "Bildträger",
+              "text": "- Lindenholz (Tilia Sp.)\n- 13 vertikal verlaufende Bretter stumpf verleimt (rückseitig von links oben nach rechts oben: 11/9,4/11/8,1/9,7/13,7/4,5/10,4/6/8,4/9,6/8,8/7,2 cm; \nVon links unten nach rechts unten:\n10,3/8,6/12,1/7,5/11,2/12,8/3,9/10,4/5,4/8,5/8,9/9,6/7,8 cm\n- Tafelrand gerade, originale Maße (nicht beschnitten)\n- im Bereich des Kopfes des hl. Erasmus eine Schadstelle im Holz mit einem ca. 2 x 2 cm großen Holzstück ausgesetzt\n- keine sichtbaren Fugenbeklebungen\n- auf der Rückseite parallel zur Oberkante mindestens sieben Holzdübel; alle Dübel in Höhe der Tafeloberfläche abgeschnitten und teilweise von Grundierung und Malschicht bedeckt; Funktion unbekannt",
+              "purpose": "Technologische Untersuchung",
+              "keywords": [
+              ]
+            },
+            {
+              "order": 702,
+              "kind": "Grundierung und Imprimitur",
+              "text": "- beidseitig dünne weiße Kreidegrundierung\n- beidseitig Grundierrand umlaufend erhalten; bis ca. 1 cm vom Tafelrand entfernt\n- parallel zum Grundiergrat Ritzungen in der Grundierung; Vergoldung teilweise außerhalb des Grundiergrates, d.h. Tafel während des Malprozesses nicht in Nutrahmen\n- Bleiweißimprimitur",
+              "purpose": "Technologische Untersuchung",
+              "keywords": [
+              ]
+            }
+          ],
+          "involvedPersons": [
+            {
+              "role": "verfasst von",
+              "name": "Gunnar Heydenreich"
+            }
+          ],
+          "processingDates": {
+            "beginDate": "2011",
+            "beginYear": null,
+            "endDate": "2011",
+            "endYear": null
+          },
+          "signature": {
+            "date": "16. Juni 2011",
+            "name": "Helen Smith"
+          },
+          "fileReferences": [
+          ]
+        },
+        {
+          "type": "ConservationReport",
+          "project": "",
+          "overallAnalysis": "",
+          "remarks": "Restoration 1969-71 (Konrad Riemann, Institut für Denkmalpflege Halle): \n- cross battens replaced with acrylic plates, new frame  [Ritschel 1995, 53]\n[Heydenreich, CDA 2011]",
+          "tests": [
+          ],
+          "involvedPersons": [
+            {
+              "role": "restauriert von",
+              "name": "Konrad Riemann"
+            }
+          ],
+          "processingDates": {
+            "beginDate": "1969",
+            "beginYear": null,
+            "endDate": "1971",
+            "endYear": null
+          },
+          "signature": {
+            "date": "17. Juni 2011",
+            "name": "Helen Smith"
+          },
+          "fileReferences": [
+          ]
+        },
+        {
+          "type": "ConservationReport",
+          "project": "",
+          "overallAnalysis": "",
+          "remarks": "Restoration 19th or early 20th century: \n- application of two horizontal cross-battens on the reverse - therefore paint layer partially removed\n[Heydenreich, CDA 2011]",
+          "tests": [
+          ],
+          "involvedPersons": [
+          ],
+          "processingDates": {
+            "beginDate": "2011",
+            "beginYear": null,
+            "endDate": "2011",
+            "endYear": null
+          },
+          "signature": {
+            "date": "17. Juni 2011",
+            "name": "Helen Smith"
+          },
+          "fileReferences": [
+          ]
+        },
+        {
+          "type": "ConditionReport",
+          "project": "",
+          "overallAnalysis": "Titel: Torgauer Nothelfertafel\nMaße: 84,3 x 117,8 x 0,9 cm\nStandort: Landesamt für Denkmalpflege Dresden\n\nVor allem durch Anobienfraß wurde der sehr dünne Lindenholzbildträger in der Vergangenheit stark geschwächt, so daß verschiedene Versuche zur Stabilisierung unternommen werden mußten. Rückseitig aufgeleimte Hölzer wurden bei der letzten Restaurierung mit Plexiglasstreifen ersetzt, Fehlstellen im Holz z.T. mit einem Holzkitt ausgefüllt, mit einem Leim-Kreide Gemisch geglättet und retuschiert. Der Zierrahmen verleiht der Tafel heute ausreichende Stabilität.\nDennoch unterliegt die Tafel der Gefahr, daß bei klimatischen Schwankungen die entsprechenden Dimensionsänderungen zu neuen Schäden an Bildträger und Farbschicht führen. Die Gefahr dieser Schädigung wird u.a. sichtbar an einem neuen Farbverlust im Gewand des Blasius, links oberhalb der Hand. Die Tafel sollte aus diesem Grunde möglichst geringen Temperatur- und Luftfeuchteschwankungen ausgesetzt werden.\n\nSchäden:\nRückseite, Schmerzensmann\n- oben und unten je ca. 3-4 cm, mittig ca. 12 cm Farb- und Grundierungsschicht mit Zahnhobel abgearbeitet\n- über die gesamte Tafel verteilt eine Vielzahl von eingekratzten und aufgeschriebenen Buchstaben und Zahlen, \nneuere Kratzer im Haar von Christus (links oben nach rechts unten), im Inkarnat von Christus unterhalb des Plexiglases, im Flügel des rechten Engels (von links oben nach rechts unten), auffällige Fehlstelle im rechten oberen vergoldeten Zwickel (ca. 4 mm²)\n- Brett 2 (von links) starker Anobienbefall (alt), Holz- und Farbschichtverluste über die ganze Brettlänge, gekittet und retuschiert, stabil\n- Brettfuge 3/4 z.T. offen, neu verleimt?, mit Plexiglas gesichert\n- Brettfuge 4/5 obere Hälfte z.T. offen\n- Brett 6 Riß (mit Plexiglas gesichert) und jüngere Farbverluste in der Mitte, wo auf der Farbschicht liegende Leimreste Schichtentrennungen bewirken.\n- Brettfuge 7/8 unteres Drittel geöffnet (?), keine neuen Farbverluste\n- Brett 8 Riß in der unteren Bildhälfte\n- Brett 9 durchgehender Riß, mit Plexiglas gesichert, Schichtentrennungen und Farbverluste im Grünbereich durch Dimensionsänderungen des Bildträgers\n\nVorderseite, Nothelfer\n- Brett 8 (von rechts) Riß in Bewegung, neuer Farbverlust im Gewand des Blasius oberhalb der Hand\n- neuere Haarrißbildung im Brettfugenbereich 1/2 (von rechts)\n- im Rißbereich, Kopf des Christopherus wohl ältere aber nicht retuschierte Farbverluste\n- Grünes Gewand des Eustachius mit verschiedenen sehr kleinen Farbverlusten, z.T. wohl auch jüngeren Datums\n\n[Heydenreich, 20.07.1994, unveröffentlicht]",
+          "remarks": "",
+          "tests": [
+          ],
+          "involvedPersons": [
+            {
+              "role": "verfasst von",
+              "name": "Gunnar Heydenreich"
+            }
+          ],
+          "processingDates": {
+            "beginDate": "20.07.1994",
+            "beginYear": null,
+            "endDate": "20.07.1994",
+            "endYear": null
+          },
+          "signature": {
+            "date": "16. Juni 2011",
+            "name": "Helen Smith"
+          },
+          "fileReferences": [
+          ]
+        }
+      ],
+      "images": {
+        "overall": {
+          "infos": {
+            "maxDimensions": {
+              "width": 7018,
+              "height": 5067
+            }
+          },
+          "images": [
+            {
+              "id": "DE_StMT_FR016_1994_Overall",
+              "metadata": {
+                "fileType": "Scan eines Diapositivs",
+                "description": "Gesamtaufnahme, Vorderseite",
+                "created": "Asmus Steuerlein, Dresden",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 425
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_1994_Overall-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 6979,
+                    "height": 4943
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_1994_Overall-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 283
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_1994_Overall-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_1994_Overall.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 142
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_1994_Overall-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_1994_Overall-001",
+              "metadata": {
+                "fileType": "Scan eines Farbdias",
+                "description": "Gesamtaufnahme, Vorderseite",
+                "created": "Asmus Steuerlein, Dresden",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 428
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_1994_Overall-001-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 8303,
+                    "height": 5925
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_1994_Overall-001-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 285
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_1994_Overall-001-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_1994_Overall-001.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 143
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_1994_Overall-001-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_Image-date-unknown_Overall-001",
+              "metadata": {
+                "fileType": "scan einer schwarz-weiß Fotografie",
+                "description": "Gesamtaufnahme",
+                "created": "Netherlands Institute for Art History (RKD), The Hague; Max J. Friedländer Archive",
+                "date": "vor 1958",
+                "source": "Netherlands Institute for Art History (RKD), The Hague; Max J. Friedländer Archive"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 433
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_Image-date-unknown_Overall-001-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 7018,
+                    "height": 5067
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_Image-date-unknown_Overall-001-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 289
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_Image-date-unknown_Overall-001-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_Image-date-unknown_Overall-001.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 144
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/01_Overall/DE_StMT_FR016_Image-date-unknown_Overall-001-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            }
+          ]
+        },
+        "reverse": {
+          "infos": {
+            "maxDimensions": {
+              "width": 4984,
+              "height": 3743
+            }
+          },
+          "images": [
+            {
+              "id": "DE_StMT_FR016_1994_Reverse",
+              "metadata": {
+                "fileType": "Scan eines Diapositivs",
+                "description": "Gesamtaufnahme, Rückseite",
+                "created": "Asmus Steuerlein, Dresden",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 410
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/02_Reverse/DE_StMT_FR016_1994_Reverse-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 2616,
+                    "height": 1788
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/02_Reverse/DE_StMT_FR016_1994_Reverse-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 273
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/02_Reverse/DE_StMT_FR016_1994_Reverse-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/02_Reverse/DE_StMT_FR016_1994_Reverse.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 137
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/02_Reverse/DE_StMT_FR016_1994_Reverse-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_c1969_Reverse-001",
+              "metadata": {
+                "fileType": "",
+                "description": "Gesamtaufnahme, Rückseite",
+                "created": "",
+                "date": "ca. 1969",
+                "source": ""
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 451
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/02_Reverse/DE_StMT_FR016_c1969_Reverse-001-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 4984,
+                    "height": 3743
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/02_Reverse/DE_StMT_FR016_c1969_Reverse-001-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 300
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/02_Reverse/DE_StMT_FR016_c1969_Reverse-001-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/02_Reverse/DE_StMT_FR016_c1969_Reverse-001.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 150
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/02_Reverse/DE_StMT_FR016_c1969_Reverse-001-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            }
+          ]
+        },
+        "irr": {
+          "infos": {
+            "maxDimensions": {
+              "width": 4544,
+              "height": 6016
+            }
+          },
+          "images": [
+            {
+              "id": "DE_StMT_FR016_1994_IRR",
+              "metadata": {
+                "fileType": "Digitale Montage einer analogen IR-Reflektografie",
+                "description": "Infrarot Reflektografie Montage (Hamamatsu vidicon), Gesamtaufnahme, Vorderseite",
+                "created": "Ingo Sandner",
+                "date": "1994",
+                "source": "Ingo Sandner Archiv"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 321
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 5194,
+                    "height": 2782
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 214
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 107
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_1994_IRR_Detail-001",
+              "metadata": {
+                "fileType": "scan einer analogen IR-Fotografie",
+                "description": "Infrarot Reflektografie (Hamamatsu vidicon), Detail, Rückseite",
+                "created": "Ingo Sandner, cda",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 327
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-001-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 1864,
+                    "height": 1016
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-001-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 218
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-001-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-001.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 109
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-001-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_1994_IRR_Detail-002",
+              "metadata": {
+                "fileType": "scan einer analogen IR-Fotografie",
+                "description": "Infrarot Reflektografie (Hamamatsu vidicon), Detail, Rückseite: Jesus",
+                "created": "Ingo Sandner, cda",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 408
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-002-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 3068,
+                    "height": 2084
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-002-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 272
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-002-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-002.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 136
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-002-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_1994_IRR_Detail-003",
+              "metadata": {
+                "fileType": "scan einer analogen IR-Fotografie",
+                "description": "Infrarot Reflektografie (Hamamatsu vidicon), Detail, Rückseite: Engel",
+                "created": "Ingo Sandner, cda",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 794
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-003-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 4544,
+                    "height": 6016
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-003-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 530
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-003-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-003.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 265
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/03_IRR/DE_StMT_FR016_1994_IRR_Detail-003-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            }
+          ]
+        },
+        "x_radiograph": {
+          "infos": {
+            "maxDimensions": {
+              "width": 9378,
+              "height": 12499
+            }
+          },
+          "images": [
+            {
+              "id": "DE_StMT_FR016_1994_X-radiograph_Detail-001",
+              "metadata": {
+                "fileType": "",
+                "description": "Röntgenaufnahme, Detail",
+                "created": "Asmus Steuerlein, Dresden",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 788
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-001-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 9323,
+                    "height": 12246
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-001-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 525
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-001-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-001.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 263
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-001-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_1994_X-radiograph_Detail-002",
+              "metadata": {
+                "fileType": "",
+                "description": "Röntgenaufnahme, Detail",
+                "created": "Asmus Steuerlein, Dresden",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 456
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-002-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 12272,
+                    "height": 9334
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-002-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 304
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-002-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-002.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 152
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-002-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_1994_X-radiograph_Detail-003",
+              "metadata": {
+                "fileType": "",
+                "description": "Röntgenaufnahme, Detail",
+                "created": "Asmus Steuerlein, Dresden",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 447
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-003-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 12363,
+                    "height": 9214
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-003-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 298
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-003-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-003.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 149
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-003-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_1994_X-radiograph_Detail-004",
+              "metadata": {
+                "fileType": "",
+                "description": "Röntgenaufnahme, Detail",
+                "created": "Asmus Steuerlein, Dresden",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 800
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-004-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 9378,
+                    "height": 12499
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-004-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 533
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-004-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-004.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 267
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/04_X-radiograph/DE_StMT_FR016_1994_X-radiograph_Detail-004-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            }
+          ]
+        },
+        "detail": {
+          "infos": {
+            "maxDimensions": {
+              "width": 3871,
+              "height": 5438
+            }
+          },
+          "images": [
+            {
+              "id": "DE_StMT_FR016_1994_Detail-001",
+              "metadata": {
+                "fileType": "",
+                "description": "Detail, Vorderseite",
+                "created": "Gunnar Heydenreich, cda",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 424
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-001-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 3961,
+                    "height": 2801
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-001-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 283
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-001-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-001.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 141
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-001-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_1994_Detail-002",
+              "metadata": {
+                "fileType": "",
+                "description": "Detail, Vorderseite: Hl. Christopherus",
+                "created": "Gunnar Heydenreich, cda",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 852
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-002-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 2824,
+                    "height": 4012
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-002-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 568
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-002-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-002.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 284
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-002-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_1994_Detail-003",
+              "metadata": {
+                "fileType": "",
+                "description": "Detail, Vorderseite",
+                "created": "Gunnar Heydenreich, cda",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 917
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-003-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 2502,
+                    "height": 3825
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-003-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 612
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-003-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-003.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 306
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-003-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_1994_Detail-004",
+              "metadata": {
+                "fileType": "",
+                "description": "Detail, Vorderseite",
+                "created": "Gunnar Heydenreich, cda",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 392
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-004-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 2734,
+                    "height": 1784
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-004-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 261
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-004-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-004.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 131
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Detail-004-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_1994_Reverse_Detail-001",
+              "metadata": {
+                "fileType": "",
+                "description": "Detail, Rückseite: Jesus",
+                "created": "Gunnar Heydenreich, cda",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 823
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Reverse_Detail-001-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 2853,
+                    "height": 3915
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Reverse_Detail-001-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 549
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Reverse_Detail-001-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Reverse_Detail-001.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 274
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Reverse_Detail-001-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_1994_Reverse_Detail-002",
+              "metadata": {
+                "fileType": "",
+                "description": "Detail, Rückseite",
+                "created": "Gunnar Heydenreich, cda",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 394
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Reverse_Detail-002-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 3883,
+                    "height": 2550
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Reverse_Detail-002-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 263
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Reverse_Detail-002-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Reverse_Detail-002.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 131
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_1994_Reverse_Detail-002-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_Image-date-unknown_Reverse_Detail-003",
+              "metadata": {
+                "fileType": "",
+                "description": "Detail, Rückseite: Engel",
+                "created": "Gunnar Heydenreich, cda",
+                "date": "unbekannt",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 843
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_Image-date-unknown_Reverse_Detail-003-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 3871,
+                    "height": 5438
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_Image-date-unknown_Reverse_Detail-003-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 562
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_Image-date-unknown_Reverse_Detail-003-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_Image-date-unknown_Reverse_Detail-003.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 281
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/06_Detail/DE_StMT_FR016_Image-date-unknown_Reverse_Detail-003-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            }
+          ]
+        },
+        "analysis": {
+          "infos": {
+            "maxDimensions": {
+              "width": 2740,
+              "height": 1796
+            }
+          },
+          "images": [
+            {
+              "id": "DE_StMT_FR016_1994_Cross-section_EP080",
+              "metadata": {
+                "fileType": "",
+                "description": "Querschliff",
+                "created": "Gunnar Heydenreich, cda",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 386
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP080-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 3134,
+                    "height": 2018
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP080-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 258
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP080-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP080.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 129
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP080-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_1994_Cross-section_EP081",
+              "metadata": {
+                "fileType": "",
+                "description": "Querschliff",
+                "created": "Gunnar Heydenreich, cda",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 385
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP081-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 2226,
+                    "height": 1428
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP081-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 257
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP081-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP081.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 128
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP081-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            },
+            {
+              "id": "DE_StMT_FR016_1994_Cross-section_EP087",
+              "metadata": {
+                "fileType": "",
+                "description": "Querschliff",
+                "created": "Gunnar Heydenreich, cda",
+                "date": "1994",
+                "source": "cda"
+              },
+              "sizes": {
+                "medium": {
+                  "dimensions": {
+                    "width": 600,
+                    "height": 393
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP087-m.jpg",
+                  "type": "plain"
+                },
+                "origin": {
+                  "dimensions": {
+                    "width": 2740,
+                    "height": 1796
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP087-origin.jpg",
+                  "type": "plain"
+                },
+                "small": {
+                  "dimensions": {
+                    "width": 400,
+                    "height": 262
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP087-s.jpg",
+                  "type": "plain"
+                },
+                "tiles": {
+                  "dimensions": {
+                    "width": 0,
+                    "height": 0
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP087.dzi",
+                  "type": "dzi"
+                },
+                "xsmall": {
+                  "dimensions": {
+                    "width": 200,
+                    "height": 131
+                  },
+                  "src": "https://lucascranach.org/imageserver-2021/DE_StMT_FR016/10_Analysis/DE_StMT_FR016_1994_Cross-section_EP087-xs.jpg",
+                  "type": "plain"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "documents": {
+      }
+    },
+    {
+      "metadata": {
+        "entityType": "PAINTING",
+        "langCode": "de",
         "id": "DE_StSKA_002A",
         "title": "Anna-Selbdritt-Altar mit Darstellung der vierzehn Nothelfer [Mitteltafel]",
         "subtitle": "Werkstatt Lucas Cranach der Ältere",

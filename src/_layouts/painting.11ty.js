@@ -494,7 +494,7 @@ const getReports = ({ content }, type) => {
     const surveyKeywords = surveyKeywordList.length > 0 ? `<ul class="survey-keywords">${surveyKeywordList.join("")}</ul>` : '';
     const surveyContent = report.tests.sort((a, b) => { return a.order - b.order }).map(test => {
       const order = `${test.order.toString().substr(0, 1)}.${test.order.toString().substr(1, 3)}`;
-      const text = this.markdownify(test.text.replace(/\n/g, "\n"));
+      const text = this.getFormatedText(test.text.replace(/\n/g, "\n\n"), 'no-lists');
       return `
         <h4 class="survey-kind">${order} ${test.kind}</h4>
         ${text}
