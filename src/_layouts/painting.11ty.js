@@ -19,14 +19,17 @@ const getTitle = (content) => {
 }
 
 const getMedium = (content) => {
-  const [text, remark] = content.medium.split(/\n/);
-  const medium = [{"text": text, "remark": remark}];
-  const mediumTable = this.getRemarkDataTable("Medium", medium, "subtitle");
+  const medium = content.medium;
+  const structuredMediumData = this.getStructuredDataFromString(medium);
+  medium.match(/(.*?)\n|;/);
+  const visibleContent = RegExp.$1;
+  const mediumTable = this.getRemarkDataTable("Medium", structuredMediumData, "subtitle");
   
-  return !content.medium ? '' : `
-    <p id="subtitle" class="subtitle">${medium[0].text}</p>
+  return `
+    <p id="subtitle" class="subtitle">${visibleContent}</p>
     ${mediumTable}
   `;
+
 }
 
 const getImage = ({ content }) => {
@@ -177,9 +180,6 @@ const getDimensions = ({ content }) => {
   const structuredDimensions = getStructuredDimensions(content.dimensions);
   content.dimensions.match(/(.*?)\n|;/);
   const visibleContent = RegExp.$1.replace(/Maße/, "");
-
-  const [text, remark] = content.dimensions.split(/\[/);
-  const dimensions = [{ "text": text, "remark": `[${remark}` }];
   const dimensionsTable = this.getRemarkDataTable("Dimensions", structuredDimensions, "dimensions");
   
   return `
