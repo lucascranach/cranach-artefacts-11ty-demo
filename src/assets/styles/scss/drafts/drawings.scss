@@ -55,7 +55,7 @@
   &.is-secondary{
     
     @media only screen and (max-width: $vp-xxlarge) {
-      @include small-seperator;
+      @include small-separator;
     }
 
     .image-description-title, .definition-list__term {

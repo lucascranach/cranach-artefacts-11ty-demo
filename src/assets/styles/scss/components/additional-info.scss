@@ -78,6 +78,9 @@
 
 .has-additional-content {
 
+  display: flex;
+  align-items: flex-start;
+
   & > .preview-text {
     transition: opacity $tr-fast;
     opacity: 1;

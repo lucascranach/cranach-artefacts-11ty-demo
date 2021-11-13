@@ -45,17 +45,6 @@ a {
   font-weight: $fw-semibold;
 }
 
-.subtitle {
-  &::before {
-    display: block;
-    width: $xl;
-    border-top: solid $border-stroke-weight $accent-dark;
-    margin-top: $xs;
-    margin-bottom: $xs;
-    content: " ";
-  }
-}
-
 .title + .subtitle {
   margin-top: -$l + $xs;
 }
@@ -71,8 +60,11 @@ a {
 
 p,
 th,
-td {
+td,
+dt,
+dd {
   line-height: $lh-normal;
+  hyphens: auto;
 }
 
 /* Headline

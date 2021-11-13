@@ -86,6 +86,7 @@ class ImageViewer {
   }
 
   addClipboardInteraction(id) {
+    if (!globals.clipableElements) return;
     const element = document.getElementById(id);
     globals.clipableElements[id] = new ClipableElement(element);
   }
@@ -315,6 +316,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   if (navigator.clipboard) {
     const clipableElementList = document.querySelectorAll("[data-clipable-content]");
     globals.clipableElements = [];
+    console.log(clipableElementList);
     clipableElementList.forEach((element, index) => {
       const id = element.id ? element.id : `genId-${Date.now()}-${index}`;
       if (!element.id) element.id = id;

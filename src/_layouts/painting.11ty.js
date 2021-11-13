@@ -24,9 +24,11 @@ const getMedium = (content) => {
   medium.match(/(.*?)\n|;/);
   const visibleContent = RegExp.$1;
   const mediumTable = this.getRemarkDataTable("Medium", structuredMediumData, "subtitle");
-  return `
+  return !content.medium ? '' : `
+    <div class="has-separator">
     <p id="subtitle" class="subtitle">${visibleContent}</p>
     ${mediumTable}
+    </div>
   `;
 }
 
@@ -66,7 +68,7 @@ const getAttribution = ({ content }) => {
   });
   const allAttributions = this.getRemarkDataTable("Attributions", attributionFullList, "attributionData");
   const label = content.involvedPersons.length > 1 ? this.translate("attributions", langCode) : this.translate("attribution", langCode)
-  return `
+  return content.involvedPersons.length === 0 ? '' : `
     <dl class="definition-list">
       <dt class="definition-list__term">${label}</dt>
       <dd id="attributionData" class="definition-list__definition">
@@ -93,7 +95,7 @@ const getDating= ({ content }) => {
   const allDates = this.getRemarkDataTable("Dates", datesFullList, "dataList");
   const label = datesFullList.length > 1 ? this.translate("productionDates", langCode) : this.translate("productionDate", langCode);
   
-  return `
+  return datesShortListItems.length === 0 ? '' : `
     <dl class="definition-list">
       <dt class="definition-list__term">${label}</dt>
       <dd id="dataList" class="definition-list__definition">${datesShortList.join("<br>")}</dd>
@@ -105,8 +107,8 @@ const getDating= ({ content }) => {
 
 const getSignature = ({ content }) => {
   const signatureItems = content.signature.split(/\]\n\n/).map(item => {
-    const seperator = item.match(/\n\n/) ? '\n\n' : '\n';
-    const elements = item.split(seperator);
+    const separator = item.match(/\n\n/) ? '\n\n' : '\n';
+    const elements = item.split(separator);
     return {"text": elements.shift(), "remark": elements.join("\n")}
   });
   const signatureTable = signatureItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Signature", signatureItems, "signature");
@@ -124,8 +126,8 @@ const getInscriptions = ({ content }) => {
   inscriptionsRaw = inscriptionsRaw.replace(/\n *?\n/sg, "\n\n");
 
   const inscriptionItems = inscriptionsRaw.split(/\]\n\n/).map(item => {
-    const seperator = item.match(/\n\n/) ? '\n\n' : '\n';
-    const elements = item.split(seperator);
+    const separator = item.match(/\n\n/) ? '\n\n' : '\n';
+    const elements = item.split(separator);
     return {"text": elements.shift(), "remark": elements.join("\n")}
   });
   
@@ -180,7 +182,7 @@ const getDimensions = ({ content }) => {
   const visibleContent = RegExp.$1.replace(/Maße/, "");
   const dimensionsTable = this.getRemarkDataTable("Dimensions", structuredDimensions, "dimensions");
   
-  return `
+  return !content.dimensions ? '' : `
     <dl class="definition-list">
       <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
       <dd id="dimensions" class="definition-list__definition">${visibleContent}</dd>
@@ -204,7 +206,7 @@ const getCopyText = ({ content }) => {
     `: `
       ${this.markdownify(fulltext)}
     `;
-  return text;
+  return !content.description ? '' : text;
 }
 
 const getLocation = ({ content }) => {
@@ -224,7 +226,7 @@ const getLocation = ({ content }) => {
 const getImageDescriptionObjectInfo = ({ content }) => {
 
   const date = content.metadata.date ? `, ${content.metadata.date}` : '';
-  const attribution = !content.metadata.subtitle ? '' : `<li class="image-description-text has-small-seperator">${content.metadata.subtitle}</li>`;
+  const attribution = !content.metadata.subtitle ? '' : `<li class="image-description-text has-small-separator">${content.metadata.subtitle}</li>`;
   return `
     <ul class="image-description">
       <li class="image-description-title">${content.metadata.title}${date}</li>
@@ -364,7 +366,7 @@ const getSources = ({ content }) => {
       </div>
     </div>` : '';
 
-  return publications;
+  return content.publications.length === 0 ? '' : publications;
 }
 
 const getImageStack = ({ content }) => {
@@ -664,7 +666,7 @@ exports.render = function (data) {
   const imageDescriptionObjectInfo = getImageDescriptionObjectInfo(data);
 
   return `<!doctype html>
-  <html lang="de">
+  <html lang="${langCode}">
     <head>
       <title>cda // ${this.translate("paintings", langCode)} // ${documentTitle}</title>
       ${this.meta()}

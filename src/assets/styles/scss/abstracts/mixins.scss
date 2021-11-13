@@ -49,7 +49,7 @@
   }
 }
 
-@mixin small-seperator() {
+@mixin small-separator() {
   &::before {
     display: block;
     width: 1.3rem;

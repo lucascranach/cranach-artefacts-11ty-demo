@@ -28,7 +28,18 @@
   opacity: $op-medium;
 }
 
-.has-small-seperator {
+.has-separator{
+  &::before {
+    display: block;
+    width: $xl;
+    border-top: solid $border-stroke-weight $accent-dark;
+    margin-top: $xs;
+    margin-bottom: $xs;
+    content: " ";
+  }
+}
+
+.has-small-separator {
   &::before {
     display: block;
     width: $xl;
