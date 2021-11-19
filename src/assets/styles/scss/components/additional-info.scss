@@ -110,8 +110,8 @@
     content: "expand_more";
     font-family: $font-icons;
     color: $accent-dark;
-    vertical-align: bottom;
     display: inline-block;
+    hyphens: none;
     padding-left: $quad;
     padding-right: $quad;
     opacity: $op-medium;
@@ -122,6 +122,10 @@
 
 
 .is-additional-content{
+  margin-top: -$s;
   opacity: 1;
   transition: all $tr-medium;
+  border-left: solid $border-stroke-weight-s $light;
+  background-color: $darken;
+  padding-left: $m;
 }

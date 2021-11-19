@@ -21,9 +21,9 @@ const getTitle = (content) => {
 const getMedium = (content) => {
   const medium = content.medium;
   const structuredMediumData = this.getStructuredDataFromString(medium);
-  medium.match(/(.*?)\n|;/);
-  const visibleContent = RegExp.$1;
-  const mediumTable = this.getRemarkDataTable("Medium", structuredMediumData, "subtitle");
+  const visibleContent = structuredMediumData[0].text;
+  const hasAdditionalContent = structuredMediumData.length === 1 && structuredMediumData[0].remark.match(/a-z/) ? true : false;
+  const mediumTable = hasAdditionalContent ? this.getRemarkDataTable("Medium", structuredMediumData, "subtitle") : '';
   return !content.medium ? '' : `
     <div class="has-separator">
     <p id="subtitle" class="subtitle">${visibleContent}</p>
@@ -69,7 +69,7 @@ const getAttribution = ({ content }) => {
   const allAttributions = this.getRemarkDataTable("Attributions", attributionFullList, "attributionData");
   const label = content.involvedPersons.length > 1 ? this.translate("attributions", langCode) : this.translate("attribution", langCode)
   return content.involvedPersons.length === 0 ? '' : `
-    <dl class="definition-list">
+    <dl class="definition-list is-flex">
       <dt class="definition-list__term">${label}</dt>
       <dd id="attributionData" class="definition-list__definition">
         ${attributionShortList.join("<br>")}
@@ -96,7 +96,7 @@ const getDating= ({ content }) => {
   const label = datesFullList.length > 1 ? this.translate("productionDates", langCode) : this.translate("productionDate", langCode);
   
   return datesShortListItems.length === 0 ? '' : `
-    <dl class="definition-list">
+    <dl class="definition-list is-flex">
       <dt class="definition-list__term">${label}</dt>
       <dd id="dataList" class="definition-list__definition">${datesShortList.join("<br>")}</dd>
     </dl>
@@ -113,7 +113,7 @@ const getSignature = ({ content }) => {
   });
   const signatureTable = signatureItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Signature", signatureItems, "signature");
   return !content.signature ? '' : `
-    <dl class="definition-list">
+    <dl class="definition-list is-flex">
       <dt class="definition-list__term">${this.translate("signature", langCode)}</dt>
       <dd id="signature" class="definition-list__definition">${signatureItems[0].text}</dd>
     </dl>
@@ -130,10 +130,11 @@ const getInscriptions = ({ content }) => {
     const elements = item.split(separator);
     return {"text": elements.shift(), "remark": elements.join("\n")}
   });
+
   
   const inscriptionTable = inscriptionItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Inscriptions", inscriptionItems, "inscriptions");
   return !inscriptionsRaw ? '' : `
-    <dl class="definition-list">
+    <dl class="definition-list is-flex">
       <dt class="definition-list__term">${this.translate("inscriptions", langCode)}</dt>
       <dd id="inscriptions" class="definition-list__definition">${inscriptionItems[0].text}</dd>
     </dl>
@@ -178,12 +179,12 @@ const getStructuredDimensions = (dimensions) => {
 const getDimensions = ({ content }) => {
   
   const structuredDimensions = getStructuredDimensions(content.dimensions);
-  content.dimensions.match(/(.*?)\n|;/);
-  const visibleContent = RegExp.$1.replace(/Maße/, "");
-  const dimensionsTable = this.getRemarkDataTable("Dimensions", structuredDimensions, "dimensions");
+  const visibleContent = structuredDimensions[0].text.replace(/Maße/, "");
+  const hasAdditionalContent = structuredDimensions.length === 1 && structuredDimensions[0].remark.match(/a-z/) ? true : false;
+  const dimensionsTable = hasAdditionalContent ? this.getRemarkDataTable("Dimensions", structuredDimensions, "dimensions") : '';
   
   return !content.dimensions ? '' : `
-    <dl class="definition-list">
+    <dl class="definition-list is-flex">
       <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
       <dd id="dimensions" class="definition-list__definition">${visibleContent}</dd>
     </dl>
