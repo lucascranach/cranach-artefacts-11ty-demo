@@ -499,7 +499,7 @@ const getReports = ({ content }, type) => {
       const order = `${test.order.toString().substr(0, 1)}.${test.order.toString().substr(1, 3)}`;
       const text = this.getFormatedText(test.text.replace(/\n/g, "\n\n"), 'no-lists');
       return `
-        <h4 class="survey-kind">${order} ${test.kind}</h4>
+        <h4 class="survey-kind">${test.kind}</h4>
         ${text}
       `;
     });
