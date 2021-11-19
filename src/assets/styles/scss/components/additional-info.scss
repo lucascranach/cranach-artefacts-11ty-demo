@@ -122,10 +122,9 @@
 
 
 .is-additional-content{
-  margin-top: -$s;
   opacity: 1;
   transition: all $tr-medium;
   border-left: solid $border-stroke-weight-s $light;
-  background-color: $darken;
+  background-color: $lighter;
   padding-left: $m;
 }

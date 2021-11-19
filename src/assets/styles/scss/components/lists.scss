@@ -28,19 +28,12 @@ ul {
 
   $self: &;
 
-  &.is-flex{
-    display: flex;
-    #{$self}__definition{
-      flex-grow: 1;
-    }
-
-    #{$self}__term{
-      flex: none;
-    }
-
+  &.is-grid{
+    display: grid;
+    grid-template-columns: $term-width 1fr;
   }
 
-  &:not(.is-flex){
+  &:not(.is-grid){
     #{$self}__term{
       float: left;
       clear: left;
@@ -48,12 +41,12 @@ ul {
   }
 
   &__term {
-    font-weight: $fw-semibold;
+    font-weight: $fw-regular;
     line-height: $lh-normal;
     padding-right: $quad;
 
     &::after{
-      content: ":";
+      content: ":"
     }
   }
 

@@ -69,7 +69,7 @@ const getAttribution = ({ content }) => {
   const allAttributions = this.getRemarkDataTable("Attributions", attributionFullList, "attributionData");
   const label = content.involvedPersons.length > 1 ? this.translate("attributions", langCode) : this.translate("attribution", langCode)
   return content.involvedPersons.length === 0 ? '' : `
-    <dl class="definition-list is-flex">
+    <dl class="definition-list is-grid">
       <dt class="definition-list__term">${label}</dt>
       <dd id="attributionData" class="definition-list__definition">
         ${attributionShortList.join("<br>")}
@@ -96,7 +96,7 @@ const getDating= ({ content }) => {
   const label = datesFullList.length > 1 ? this.translate("productionDates", langCode) : this.translate("productionDate", langCode);
   
   return datesShortListItems.length === 0 ? '' : `
-    <dl class="definition-list is-flex">
+    <dl class="definition-list is-grid">
       <dt class="definition-list__term">${label}</dt>
       <dd id="dataList" class="definition-list__definition">${datesShortList.join("<br>")}</dd>
     </dl>
@@ -113,7 +113,7 @@ const getSignature = ({ content }) => {
   });
   const signatureTable = signatureItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Signature", signatureItems, "signature");
   return !content.signature ? '' : `
-    <dl class="definition-list is-flex">
+    <dl class="definition-list is-grid">
       <dt class="definition-list__term">${this.translate("signature", langCode)}</dt>
       <dd id="signature" class="definition-list__definition">${signatureItems[0].text}</dd>
     </dl>
@@ -138,7 +138,7 @@ const getInscriptions = ({ content }) => {
   
   const inscriptionTable = inscriptionItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Inscriptions", inscriptionItems, "inscriptions");
   return !inscriptionsRaw ? '' : `
-    <dl class="definition-list is-flex">
+    <dl class="definition-list is-grid">
       <dt class="definition-list__term">${this.translate("inscriptions", langCode)}</dt>
       <dd id="inscriptions" class="definition-list__definition">${preview}</dd>
     </dl>
@@ -188,7 +188,7 @@ const getDimensions = ({ content }) => {
   const dimensionsTable = hasAdditionalContent ? this.getRemarkDataTable("Dimensions", structuredDimensions, "dimensions") : '';
   
   return !content.dimensions ? '' : `
-    <dl class="definition-list is-flex">
+    <dl class="definition-list is-grid">
       <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
       <dd id="dimensions" class="definition-list__definition">${visibleContent}</dd>
     </dl>
@@ -215,7 +215,7 @@ const getCopyText = ({ content }) => {
 const getLocation = ({ content }) => {
 
   return `
-    <dl class="definition-list">
+    <dl class="definition-list is-grid">
       <dt class="definition-list__term">${this.translate("owner", langCode)}</dt>
       <dd class="definition-list__definition">${content.owner}</dd>
       <dt class="definition-list__term">${this.translate("repository", langCode)}</dt>
@@ -240,7 +240,7 @@ const getImageDescriptionObjectInfo = ({ content }) => {
 
 const getIds = ({ content }) => {
   return `
-    <dl class="definition-list">
+    <dl class="definition-list is-grid">
       <dt class="definition-list__term">CDA ID</dt>
       <dd class="definition-list__definition" data-clipable-content="${content.metadata.id}">${content.metadata.id}</dd>
       <dt class="definition-list__term">${this.translate("objectName", langCode)}</dt>
