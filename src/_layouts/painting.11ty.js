@@ -424,7 +424,7 @@ const getImageStripe = ({ content }) => {
   `;
 
   return `
-    <div class="foldable-block is-sticky">
+    <div class="foldable-block">
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="true" data-js-expandable="image-stripe">${this.translate("illustrations", langCode)}</h2>
       <div id="image-stripe" class="expandable-content image-stripe">
         ${imageTypeselector}
