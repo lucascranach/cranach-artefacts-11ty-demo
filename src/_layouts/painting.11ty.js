@@ -131,12 +131,16 @@ const getInscriptions = ({ content }) => {
     return {"text": elements.shift(), "remark": elements.join("\n")}
   });
 
+  const numberOfWords = 20;
+  const fullText = inscriptionItems[0].text;
+  const words = fullText.split(/ /);
+  const preview = words.length > numberOfWords ? `${words.slice(0, numberOfWords).join(" ")} …`: fullText;
   
   const inscriptionTable = inscriptionItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Inscriptions", inscriptionItems, "inscriptions");
   return !inscriptionsRaw ? '' : `
     <dl class="definition-list is-flex">
       <dt class="definition-list__term">${this.translate("inscriptions", langCode)}</dt>
-      <dd id="inscriptions" class="definition-list__definition">${inscriptionItems[0].text}</dd>
+      <dd id="inscriptions" class="definition-list__definition">${preview}</dd>
     </dl>
     ${inscriptionTable}
   `;
@@ -193,19 +197,17 @@ const getDimensions = ({ content }) => {
 }
 
 const getCopyText = ({ content }) => {
-
   const numberOfWords = 50;
-  const [fulltext, author] = content.description.match(/\[/) ? content.description.split(/\[/) : [content.description, false];
-  const words = fulltext.split(/ /);
+  const fullText = content.description;
+  const words = fullText.split(/ /);
   const preview = words.slice(0, numberOfWords).join(" ");
-  const authorHTML = author ? `<p class="remark">[${author}</p>` : '';
   const text = words.length > numberOfWords ? `
     <div id="switchableCopyText" data-js-switchable-content='["previewText","fullText"]'>
-      <div id="previewText" class="preview-text">${this.markdownify(preview)}</div>
-      <div class="is-cut full-text" id="fullText">${this.markdownify(fulltext)}${authorHTML}</div>
+      <div id="previewText" class="preview-text">${this.getFormatedText(preview)}</div>
+      <div class="is-cut full-text" id="fullText">${this.getFormatedText(fullText)}</div>
     </div>
     `: `
-      ${this.markdownify(fulltext)}
+      ${this.getFormatedText(fullText)}
     `;
   return !content.description ? '' : text;
 }
