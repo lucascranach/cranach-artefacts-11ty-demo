@@ -11,8 +11,9 @@
   }
 
   @media only screen and (min-width: $vp-xlarge) {
-    gap: $m;
-    grid-template-columns: 1fr max($column-medium);
+    display: grid;
+    gap: $l;
+    grid-template-columns: 1fr $column-medium;
   }
 
   @media only screen and (min-width: $vp-xxlarge) {
