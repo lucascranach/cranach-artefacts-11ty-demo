@@ -234,37 +234,64 @@ class AdditionalContent {
   constructor(ele) {
     this.element = ele;
     this.id = ele.id; 
-    this.relatedPreviewElement = document.getElementById(this.element.dataset.isAdditionalContentTo);
-    this.wrapText();
+    this.relatedElement = document.getElementById(this.element.dataset.isAdditionalContentTo);
+    this.handlerElement = this.relatedElement.lastElementChild ? this.relatedElement.lastElementChild : this.relatedElement;
     this.hideAdditionalContent();
     this.addHandle();
-    this.state = "is-hidden";
+    this.state = "is-cut";
   }
 
   hideAdditionalContent() {
-    this.element.classList.add("is-hidden");
+    this.element.classList.add("is-cut");
   }
 
-  wrapText() {
-    this.relatedPreviewElement.innerHTML = `<span class="preview-text">${this.relatedPreviewElement.innerHTML}</span>`;
+  collapseElement(element) {
+    const sectionHeight = element.scrollHeight;
+    const elementTransition = element.style.transition;
+    element.style.transition = '';
+
+    requestAnimationFrame(function() {
+      element.style.height = sectionHeight + 'px';
+      element.style.transition = elementTransition;
+    
+      requestAnimationFrame(function() {
+        element.style.height = 0 + 'px';
+      });
+    });
   }
+
+  expandElement(element) {
+    const sectionHeight = element.scrollHeight;
+    element.style.height = sectionHeight + 'px';
+  }
+
+
 
   toggleContent() {
-    if (this.state === "is-hidden") {
-      this.element.classList.remove("is-hidden");
-      this.relatedPreviewElement.dataset.additionalContentState = "is-visible";
-      this.state = "is-visible";
+    if (this.state === "is-cut") {
+      
+      this.expandElement(this.element);
+      this.collapseElement(this.relatedElement);
+      
+      /*this.relatedElement.dataset.additionalContentState = "is-visible";*/
+      this.state = "is-expanded";
     } else {
-      this.element.classList.add("is-hidden");
-      this.relatedPreviewElement.dataset.additionalContentState = "is-hidden";
-      this.state = "is-hidden";
+
+      this.expandElement(this.relatedElement);
+      this.collapseElement(this.element);
+      /*this.element.classList.add("is-hidden");
+      this.relatedElement.dataset.additionalContentState = "is-hidden";*/
+      this.state = "is-cut";
     }
   }
 
+
+
   addHandle() {
-    this.relatedPreviewElement.classList.add("has-additional-content", "js-toggle-additional-content");
-    this.relatedPreviewElement.dataset.additionalContentState = "is-hidden";
-    this.relatedPreviewElement.dataset.fullDataElement= this.id;
+    this.handlerElement.classList.add("has-additional-content-handler");
+    this.relatedElement.classList.add("has-additional-content", "js-expand-additional-content");
+    this.relatedElement.dataset.additionalContentState = "is-cut";
+    this.relatedElement.dataset.fullDataElement= this.id;
   }
 }
 
@@ -310,13 +337,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
   additionalContentList.forEach(element => {
     globals.additionalContentElements[element.id] = new AdditionalContent(element);
   });
+
   
   /* Clipboard 
   --------------------------------------------------------------------------  */
   if (navigator.clipboard) {
     const clipableElementList = document.querySelectorAll("[data-clipable-content]");
     globals.clipableElements = [];
-    console.log(clipableElementList);
+    
     clipableElementList.forEach((element, index) => {
       const id = element.id ? element.id : `genId-${Date.now()}-${index}`;
       if (!element.id) element.id = id;
@@ -369,9 +397,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
       switchableContentElements[id].switchContent();
     }
 
-    if (target.closest('.js-toggle-additional-content')) {
-      const element = target.closest('.js-toggle-additional-content');
+    if (target.closest('.js-expand-additional-content')) {
+      const element = target.closest('.js-expand-additional-content');
       const id = element.dataset.fullDataElement;
+      console.log(id);
+      globals.additionalContentElements[id].toggleContent();
+    }
+
+    if (target.closest('.js-collapse-additional-content')) {
+      const element = target.closest('.js-collapse-additional-content');
+      const id = element.parentNode.id;
+      console.log(id);
+      
       globals.additionalContentElements[id].toggleContent();
     }
 

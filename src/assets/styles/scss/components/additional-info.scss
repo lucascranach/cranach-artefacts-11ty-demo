@@ -78,8 +78,10 @@
 
 .has-additional-content {
 
-  display: flex;
-  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+
+  $self: &;
 
   & > .preview-text {
     transition: opacity $tr-fast;
@@ -91,40 +93,64 @@
     & > .preview-text {
       opacity: $op-low;
     }
-    &::after {
-      transform: rotate(180deg);
+    #{$self}-handler{
+      &::after {
+        transform: rotate(180deg);
+      }
     }
   }
 
   &:hover {
     cursor: pointer;
 
-    &::after {
-      opacity: 1;
-      background-color: $darken;
-      margin-left: $quad;
+    #{$self}-handler{
+      &::after {
+        opacity: 1;
+        background-color: $darken;
+        margin-left: $quad;
+      }
     }
   }
 
-  &::after {
-    content: "expand_more";
-    font-family: $font-icons;
-    color: $accent-dark;
-    display: inline-block;
-    hyphens: none;
-    padding-left: $quad;
-    padding-right: $quad;
-    opacity: $op-medium;
-    transition: all $tr-fast;
-    transform-origin: center;
+  &-handler{
+    &::after {
+      content: "expand_more";
+      font-family: $font-icons;
+      color: $accent-dark;
+      display: inline-block;
+      hyphens: none;
+      padding-left: $quad;
+      padding-right: $quad;
+      transition: all $tr-fast;
+      transform-origin: center;
+      vertical-align: bottom;
+    }
   }
 }
 
+/* Additional Content
+---------------------------------------------------------------------------- */
+.additional-content{
 
-.is-additional-content{
-  opacity: 1;
-  transition: all $tr-medium;
-  border-left: solid $border-stroke-weight-s $light;
-  background-color: $lighter;
-  padding-left: $m;
+  &__title{
+    font-size: $m;
+    font-weight: $fw-semibold;
+    margin-top: 0;
+    
+    &::after{
+      content: "expand_less";
+      font-family: $font-icons;
+      color: $accent-dark;
+      display: inline-block;
+      hyphens: none;
+      padding-left: $quad;
+      padding-right: $quad;
+      transition: all $tr-fast;
+      transform-origin: center;
+      vertical-align: bottom;
+    }
+  }
+
+  &__table{
+  }
 }

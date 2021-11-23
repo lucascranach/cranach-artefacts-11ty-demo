@@ -8,6 +8,7 @@ body {
   color: $darkest;
   font-family: $font-sans-serif;
   font-weight: $fw-light;
+  font-size: $m;
 }
 
 a {
@@ -38,6 +39,7 @@ a {
 .subtitle,
 .chapter {
   font-weight: $fw-regular;
+  margin-top: 0;
 }
 
 .title {
@@ -45,9 +47,6 @@ a {
   font-weight: $fw-semibold;
 }
 
-.title + .subtitle {
-  margin-top: -$l + $xs;
-}
 
 .headline {
   margin-bottom: $m;

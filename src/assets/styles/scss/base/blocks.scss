@@ -102,13 +102,6 @@
     border-top: solid $border-stroke-weight-s $darken-medium;
   }
 
-  h2 {
-    margin-top: 0;
-    margin-bottom: $s;
-    font-size: $l;
-    font-weight: $fw-light;
-  }
-
   &.has-padding{
     padding-bottom: $m;
   }
@@ -118,8 +111,7 @@
 ---------------------------------------------------------------------------- */
 
 .artefact-header {
-  max-width: $column-large;
-  margin-bottom: $xxxxl;
+  margin-bottom: $m;
 }
 
 /* Copy Text

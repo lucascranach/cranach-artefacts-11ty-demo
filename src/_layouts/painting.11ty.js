@@ -10,8 +10,10 @@ const getDocumentTitle = ({ content }) => {
 }
 
 const getTitle = (content) => {
-  const titleList = content.titles.map(item => { return {"text": item.title, "remark": item.remarks }});
-  const allTitles = this.getRemarkDataTable("Titles", titleList, "mainTitle");
+  const titleList = content.titles.map(item => { return { "text": item.title, "remark": item.remarks } });
+
+  const label = titleList.length > 1 ? this.translate("titles", langCode) : this.translate("title", langCode);
+  const allTitles = this.getRemarkDataTable("Titles", titleList, "mainTitle", label);
   return `
     <h1 id="mainTitle" class="title">${content.metadata.title}</h1>
     ${allTitles}
@@ -22,12 +24,15 @@ const getMedium = (content) => {
   const medium = content.medium;
   const structuredMediumData = this.getStructuredDataFromString(medium);
   const visibleContent = structuredMediumData[0].text;
-  const hasAdditionalContent = structuredMediumData.length === 1 && structuredMediumData[0].remark.match(/a-z/) ? true : false;
-  const mediumTable = hasAdditionalContent ? this.getRemarkDataTable("Medium", structuredMediumData, "subtitle") : '';
-  return !content.medium ? '' : `
-    <div class="has-separator">
-    <p id="subtitle" class="subtitle">${visibleContent}</p>
-    ${mediumTable}
+  const hasAdditionalContent = structuredMediumData.length >= 1 && structuredMediumData[0].remark.match(/[a-z]/) ? true : false;
+  const label = this.translate("medium", langCode);
+  const mediumTable = hasAdditionalContent ? this.getRemarkDataTable("Medium", structuredMediumData, "subtitle", label) : '';
+  return !medium ? '' : `
+    <div class="has-tight-separator">
+      <div id="subtitle">
+        <p class="subtitle">${visibleContent}</p>
+      </div>
+      ${mediumTable}
     </div>
   `;
 }
@@ -66,12 +71,13 @@ const getAttribution = ({ content }) => {
   const attributionFullList = content.involvedPersons.map(item => {
     return { "text": `${getAttributer(item)}`, "remark": item.remarks }
   });
-  const allAttributions = this.getRemarkDataTable("Attributions", attributionFullList, "attributionData");
-  const label = content.involvedPersons.length > 1 ? this.translate("attributions", langCode) : this.translate("attribution", langCode)
+  const label = content.involvedPersons.length > 1 ? this.translate("attributions", langCode) : this.translate("attribution", langCode);
+  const allAttributions = this.getRemarkDataTable("Attributions", attributionFullList, "attributionData", label);
+
   return content.involvedPersons.length === 0 ? '' : `
-    <dl class="definition-list is-grid">
+    <dl id="attributionData" class="definition-list is-grid">
       <dt class="definition-list__term">${label}</dt>
-      <dd id="attributionData" class="definition-list__definition">
+      <dd class="definition-list__definition">
         ${attributionShortList.join("<br>")}
       </dd>
     </dl>
@@ -92,13 +98,13 @@ const getDating= ({ content }) => {
   const datesFullList = combinedDates.map(item => {
     return { "text": `${item.text}`, "remark": item.remarks }
   });
-  const allDates = this.getRemarkDataTable("Dates", datesFullList, "dataList");
   const label = datesFullList.length > 1 ? this.translate("productionDates", langCode) : this.translate("productionDate", langCode);
+  const allDates = this.getRemarkDataTable("Dates", datesFullList, "dataList", label);
   
   return datesShortListItems.length === 0 ? '' : `
-    <dl class="definition-list is-grid">
+    <dl id="dataList" class="definition-list is-grid">
       <dt class="definition-list__term">${label}</dt>
-      <dd id="dataList" class="definition-list__definition">${datesShortList.join("<br>")}</dd>
+      <dd class="definition-list__definition">${datesShortList.join("<br>")}</dd>
     </dl>
 
     ${allDates}
@@ -111,11 +117,12 @@ const getSignature = ({ content }) => {
     const elements = item.split(separator);
     return {"text": elements.shift(), "remark": elements.join("\n")}
   });
-  const signatureTable = signatureItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Signature", signatureItems, "signature");
+  const label = this.translate("signature", langCode);
+  const signatureTable = signatureItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Signature", signatureItems, "signature", label);
   return !content.signature ? '' : `
-    <dl class="definition-list is-grid">
-      <dt class="definition-list__term">${this.translate("signature", langCode)}</dt>
-      <dd id="signature" class="definition-list__definition">${signatureItems[0].text}</dd>
+    <dl id="signature" class="definition-list is-grid">
+      <dt class="definition-list__term">${label}</dt>
+      <dd class="definition-list__definition">${signatureItems[0].text}</dd>
     </dl>
     ${signatureTable}
   `;
@@ -135,12 +142,12 @@ const getInscriptions = ({ content }) => {
   const fullText = inscriptionItems[0].text;
   const words = fullText.split(/ /);
   const preview = words.length > numberOfWords ? `${words.slice(0, numberOfWords).join(" ")} …`: fullText;
-  
-  const inscriptionTable = inscriptionItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Inscriptions", inscriptionItems, "inscriptions");
+  const label = this.translate("inscriptions", langCode);
+  const inscriptionTable = inscriptionItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable("Inscriptions", inscriptionItems, "inscriptions", label);
   return !inscriptionsRaw ? '' : `
-    <dl class="definition-list is-grid">
-      <dt class="definition-list__term">${this.translate("inscriptions", langCode)}</dt>
-      <dd id="inscriptions" class="definition-list__definition">${preview}</dd>
+    <dl id="inscriptions" class="definition-list is-grid">
+      <dt class="definition-list__term">${label}</dt>
+      <dd class="definition-list__definition">${preview}</dd>
     </dl>
     ${inscriptionTable}
   `;
@@ -184,13 +191,14 @@ const getDimensions = ({ content }) => {
   
   const structuredDimensions = getStructuredDimensions(content.dimensions);
   const visibleContent = structuredDimensions[0].text.replace(/Maße/, "");
-  const hasAdditionalContent = structuredDimensions.length === 1 && structuredDimensions[0].remark.match(/a-z/) ? true : false;
-  const dimensionsTable = hasAdditionalContent ? this.getRemarkDataTable("Dimensions", structuredDimensions, "dimensions") : '';
+  const hasAdditionalContent = structuredDimensions.length >= 1 && structuredDimensions[0].remark.match(/[a-z]/) ? true : false;
+  const label = this.translate("dimensions", langCode);
+  const dimensionsTable = hasAdditionalContent ? this.getRemarkDataTable("Dimensions", structuredDimensions, "dimensions", label) : '';
   
   return !content.dimensions ? '' : `
-    <dl class="definition-list is-grid">
-      <dt class="definition-list__term">${this.translate("dimensions", langCode)}</dt>
-      <dd id="dimensions" class="definition-list__definition">${visibleContent}</dd>
+    <dl id="dimensions" class="definition-list is-grid">
+      <dt class="definition-list__term">${label}</dt>
+      <dd class="definition-list__definition">${visibleContent}</dd>
     </dl>
     ${dimensionsTable}
   `;
@@ -671,7 +679,7 @@ exports.render = function (data) {
   return `<!doctype html>
   <html lang="${langCode}">
     <head>
-      <title>cda // ${this.translate("paintings", langCode)} // ${documentTitle}</title>
+      <title>cda :: ${this.translate("paintings", langCode)} :: ${documentTitle}</title>
       ${this.meta()}
       <link href="${this.url('/assets/main.css')}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
@@ -689,7 +697,9 @@ exports.render = function (data) {
       <section class="leporello-recog">
         ${image}
         <div class="leporello-recog__text">
-          ${header}
+          <div class="grid-wrapper">
+            ${header}
+          </div>
 
           <div class="grid-wrapper">
             <div class="main-column">

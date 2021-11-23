@@ -141,8 +141,12 @@
     "en": "Figure/Plate"
   },
   "title": {
-    "de": "Title",
+    "de": "Titel",
     "en": "Title"
+  },
+  "titles": {
+    "de": "Titel",
+    "en": "Titles"
   },
   "subTitle": {
     "de": "Untertitel",

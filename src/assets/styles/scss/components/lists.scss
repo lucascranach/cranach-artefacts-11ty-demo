@@ -25,6 +25,7 @@ ul {
   margin-top: 0;
   margin-bottom: $xs;
   font-weight: $fw-light;
+  overflow: hidden;
 
   $self: &;
 
