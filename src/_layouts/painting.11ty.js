@@ -5,6 +5,23 @@ const getLangCode = ({ content }) => {
   return content.metadata.langCode;
 }
 
+const getCiteCDA = ({ content }) => {
+  const headline = this.translate("citeCdaHeadline", langCode);
+  const citeWithAutor = this.translate("citeWithAutor", langCode);
+  const citeWithAutorText = this.convertTagsInText(this.translate("citeWithAutorText", langCode));
+  const citeWithoutAutor = this.translate("citeWithoutAutor", langCode);
+  const citeWithoutAutorText = this.convertTagsInText(this.translate("citeWithoutAutorText", langCode));
+  return `
+    <h2>${headline}</h2>
+      <dl class="definition-list is-stacked">
+      <dt class="definition-list__term">${citeWithAutor}</dt>
+      <dd class="definition-list__definition">${citeWithAutorText}</dd>
+      <dt class="definition-list__term">${citeWithoutAutor}</dt>
+      <dd class="definition-list__definition">${citeWithoutAutorText}</dd>
+    </dl>
+  `;
+}
+
 const getDocumentTitle = ({ content }) => {
   return content.metadata.title;
 }
@@ -675,6 +692,7 @@ exports.render = function (data) {
   const graphic = getReference(data, GRAPHIC);
   const partOfWork = getReference(data, PART_OF_WORK, true);
   const imageDescriptionObjectInfo = getImageDescriptionObjectInfo(data);
+  const citeCda = getCiteCDA(data);
 
   return `<!doctype html>
   <html lang="${langCode}">
@@ -755,7 +773,17 @@ exports.render = function (data) {
           ${graphic}
         </div>
       </section>
+      
+      <section class="final-words">
+        <div class="text-block">
+          ${citeCda}
+        </div>
+      </section>
 
+      <footer class="main-footer">
+        <p>© Stiftung Museum Kunstpalast, Düsseldorf / Technische Hochschule Köln, 2021</p>
+      </footer>
+      
       <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4.2/build/openseadragon/openseadragon.min.js"></script>
       <script src="${this.url('/assets/scripts/main.js')}"></script>
     </body>

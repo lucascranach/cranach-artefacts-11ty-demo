@@ -280,6 +280,11 @@ module.exports = function (eleventyConfig) {
     console.log(`\nWorking on ${content.inventoryNumber}`);
   });
 
+  eleventyConfig.addJavaScriptFunction("convertTagsInText", (str) => {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  });
+
+
   /* Filter
   ########################################################################## */
 

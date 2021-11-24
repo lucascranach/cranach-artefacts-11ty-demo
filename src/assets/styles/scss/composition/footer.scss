@@ -1,0 +1,13 @@
+  // Main Footer
+  // --------------------------------------------------------------------------
+
+  .main-footer{
+    background-color: $dark;
+    color: $lighter;
+    padding: $m $l;
+
+    & > p{
+      margin: 0;
+    }
+  }
+

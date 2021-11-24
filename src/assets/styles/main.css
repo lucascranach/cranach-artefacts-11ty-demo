@@ -494,13 +494,6 @@ a {
   text-decoration: none;
 }
 
-/* Templates
----------------------------------------------------------------------------- */
-.template {
-  background-color: #000;
-  color: #000;
-}
-
 /* Title & Subtitle
 ---------------------------------------------------------------------------- */
 .title,
@@ -523,12 +516,6 @@ a {
   font-weight: 400;
 }
 
-.headline {
-  margin-bottom: 0.9rem;
-  font-size: 0.9rem;
-  font-weight: 400;
-}
-
 /* Text
 ---------------------------------------------------------------------------- */
 p,
@@ -542,6 +529,11 @@ dd {
 
 /* Headline
 ---------------------------------------------------------------------------- */
+h2 {
+  font-size: 1.08rem;
+  font-weight: 300;
+}
+
 h3 {
   font-size: 0.9rem;
   font-weight: 600;
@@ -553,9 +545,6 @@ h3 {
   color: rgba(0, 0, 0, 0.6);
 }
 
-/* According to CUBE
-    https://cube.fyi/composition.html#why-macro-level-thinking
-############################################################################ */
 /* According to CUBE
     https://cube.fyi/composition.html#why-macro-level-thinking
 ############################################################################ */
@@ -583,11 +572,6 @@ h3 {
   margin: 0;
   font-size: 1.08rem;
   font-weight: 200;
-}
-.foldable-block.is-sticky {
-  position: sticky;
-  z-index: 0;
-  top: 0.9rem;
 }
 .foldable-block .is-expand-trigger {
   position: relative;
@@ -648,6 +632,39 @@ h3 {
 ---------------------------------------------------------------------------- */
 .copytext {
   margin-bottom: 1.62rem;
+}
+
+.markdown-it p {
+  margin-top: 0;
+}
+.markdown-it > *:last-child {
+  margin-bottom: 0;
+}
+.markdown-it ul li {
+  margin-left: 0.72rem;
+  list-style-type: square;
+}
+.markdown-it ul.is-block li {
+  display: block;
+  margin-left: 0;
+}
+.markdown-it ol {
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: listCounter;
+}
+.markdown-it ol li {
+  counter-increment: listCounter;
+  padding-left: 1.08rem;
+  padding-bottom: 0.45rem;
+}
+.markdown-it ol li::before {
+  margin-left: -1.08rem;
+  content: counter(listCounter) ". ";
+}
+.markdown-it ol li p {
+  display: inline;
 }
 
 ul {
@@ -745,7 +762,7 @@ ul.simple li {
 }
 .table > .body > .is-active > .cell {
   padding-top: 1.08rem;
-  border-top: solid 2px #b4b4b4;
+  border-top: solid 2px #c4c4c4;
   font-weight: 400;
 }
 
@@ -1108,13 +1125,13 @@ ul.simple li {
   opacity: 0;
 }
 
-.image-description-wrap {
+.image-caption-wrap {
   margin-left: 0.9rem;
   margin-bottom: 1.08rem;
   padding-top: 0.9rem;
 }
 @media only screen and (min-width: 1800px) {
-  .image-description-wrap {
+  .image-caption-wrap {
     margin-left: 1.35rem;
     display: grid;
     gap: 0.9rem;
@@ -1122,38 +1139,39 @@ ul.simple li {
   }
 }
 
-.image-description {
+.image-caption {
   display: block;
   padding-right: 0.9rem;
 }
-.image-description-text {
+.image-caption-text {
   display: block;
   color: #444;
 }
-.image-description-title {
+.image-caption__title {
   display: inline-block;
   color: #000;
   font-weight: 400;
+  padding-right: 1.89rem;
 }
-.image-description-title + .image-description-title::before {
-  display: inline-block;
-  margin-right: 0.45rem;
-  margin-left: 0.45rem;
-  color: #444;
-  content: "//";
-  font-weight: 200;
+.image-caption__title::after {
+  top: -0.225rem !important;
+  right: -0.225rem !important;
+  background-color: transparent !important;
 }
-.image-description .definition-list {
+.image-caption__title:hover::after {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+.image-caption .definition-list {
   margin-top: 0;
   list-style: none;
 }
-.image-description .flat-text {
+.image-caption .flat-text {
   margin-top: 0;
   margin-bottom: 0;
   display: inline;
 }
 @media only screen and (max-width: 1800px) {
-  .image-description.is-secondary::before {
+  .image-caption.is-secondary::before {
     display: block;
     width: 1.3rem;
     border-top: solid 2px rgba(0, 0, 0, 0.2);
@@ -1162,11 +1180,14 @@ ul.simple li {
     content: " ";
   }
 }
-.image-description.is-secondary .image-description-title, .image-description.is-secondary .definition-list__term {
+.image-caption.is-secondary .image-caption__title {
+  margin-top: 0;
+}
+.image-caption.is-secondary .image-caption__title, .image-caption.is-secondary .definition-list__term {
   font-weight: 300;
   color: #000;
 }
-.image-description.is-secondary .image-description-text {
+.image-caption.is-secondary .image-caption__text {
   margin-top: 0.225rem;
 }
 
@@ -1222,7 +1243,7 @@ ul.simple li {
 }
 
 .leporello-explore {
-  border-top: solid 1px #b4b4b4;
+  border-top: solid 1px #c4c4c4;
   background-color: #f2f2f2;
 }
 @media only screen and (min-width: 768px) {
@@ -1354,37 +1375,9 @@ ul.simple li {
   font-size: 0.9rem;
 }
 
-.markdown-it p {
-  margin-top: 0;
-}
-.markdown-it > *:last-child {
-  margin-bottom: 0;
-}
-.markdown-it ul li {
-  margin-left: 0.72rem;
-  list-style-type: square;
-}
-.markdown-it ul.is-block li {
-  display: block;
-  margin-left: 0;
-}
-.markdown-it ol {
-  margin-left: 0;
-  padding-left: 0;
-  list-style: none;
-  counter-reset: listCounter;
-}
-.markdown-it ol li {
-  counter-increment: listCounter;
-  padding-left: 1.08rem;
-  padding-bottom: 0.45rem;
-}
-.markdown-it ol li::before {
-  margin-left: -1.08rem;
-  content: counter(listCounter) ". ";
-}
-.markdown-it ol li p {
-  display: inline;
+.final-words {
+  background-color: #c4c4c4;
+  padding: 0.9rem;
 }
 
 .has-interaction:hover {

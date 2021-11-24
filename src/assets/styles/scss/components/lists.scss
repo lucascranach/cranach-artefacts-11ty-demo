@@ -34,7 +34,7 @@ ul {
     grid-template-columns: $term-width 1fr;
   }
 
-  &:not(.is-grid){
+  &:not(.is-grid):not(.is-stacked){
     #{$self}__term{
       float: left;
       clear: left;
@@ -76,6 +76,12 @@ ul {
 
     &:last-child{
       padding-bottom: 0;
+    }
+  }
+
+  &.is-stacked{
+    #{$self}__definition + #{$self}__term{
+      margin-top: $m;
     }
   }
 

@@ -359,5 +359,30 @@
   "kindOfImage":{
     "de": "Art der Abbildung",
     "en": "File type / description"
+  },
+  "citeCdaHeadline":{
+    "de":"Zitieren aus dem Cranach Digital Archive",
+    "en":"Citing from the Cranach Digital Archive"
+  },
+  "citeWithAutor":{
+    "de":"Eintrag mit Autor",
+    "en":"Entry with author"
+  },
+  "citeWithAutorText":{
+    "de":"<Autorenname> <Titel des Objekts, cda-Inventarnummer, Titel des Dokuments oder der Abbildung>. <Name der Datenbank> <<URL>> <Datum des Dokuments oder der Abbildung> (Zuletzt aufgerufen <Datum des letzten Zugriffs>) ",
+    "en":"<author's name> <title of object, Inventory number, title of document or image>. <Name of Database> <<URL>> <date of document> (Accessed <date accessed>)"
+  },
+  "citeWithoutAutor":{
+    "de":"Eintrag ohne Autor",
+    "en":"Entry with no author"
+  },
+  "citeWithoutAutorText":{
+    "de":"<Titel des Objekts, cda-Inventarnummer, Titel des Dokuments oder der Abbildung>. <Name der Datenbank> <<UR>> <Datum des Dokuments oder der Abbildung> (Zuletzt aufgerufen <Datum des letzten Zugriffs>)",
+    "en":"<title of object, Inventory number, title of document or image>. <Name of Database> <<UR>> <date of document> (Accessed <date accessed>) "
+  },
+  "example":{
+    "de":"Beispiel",
+    "en": "Example"
   }
+
 }

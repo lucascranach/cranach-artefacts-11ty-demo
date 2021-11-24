@@ -55,6 +55,11 @@ dd {
 /* Headline
 ---------------------------------------------------------------------------- */
 
+h2 {
+  font-size: $l;
+  font-weight: $fw-regular;
+}
+
 h3 {
   font-size: $m;
   font-weight: $fw-bold;
