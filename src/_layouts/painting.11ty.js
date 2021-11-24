@@ -5,7 +5,12 @@ const getLangCode = ({ content }) => {
   return content.metadata.langCode;
 }
 
-const getCiteCDA = ({ content }) => {
+const getCopyright = () => {
+  const currentYear = new Date().getFullYear();
+  return `<p>© Stiftung Museum Kunstpalast, Düsseldorf / Technische Hochschule Köln, ${currentYear}</p>`;
+}
+
+const getCiteCDA = () => {
   const headline = this.translate("citeCdaHeadline", langCode);
   const citeWithAutor = this.translate("citeWithAutor", langCode);
   const citeWithAutorText = this.convertTagsInText(this.translate("citeWithAutorText", langCode));
@@ -693,6 +698,7 @@ exports.render = function (data) {
   const partOfWork = getReference(data, PART_OF_WORK, true);
   const imageDescriptionObjectInfo = getImageDescriptionObjectInfo(data);
   const citeCda = getCiteCDA(data);
+  const copyright = getCopyright();
 
   return `<!doctype html>
   <html lang="${langCode}">
@@ -781,7 +787,7 @@ exports.render = function (data) {
       </section>
 
       <footer class="main-footer">
-        <p>© Stiftung Museum Kunstpalast, Düsseldorf / Technische Hochschule Köln, 2021</p>
+        ${copyright}
       </footer>
       
       <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4.2/build/openseadragon/openseadragon.min.js"></script>
