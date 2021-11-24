@@ -95,7 +95,7 @@ class ImageViewer {
     if (!img.metadata) return;
     const metadata = img.metadata;
     const captionId = "ImageDescTitle";
-    const description = !metadata.description ? '' : `<li id="${captionId}" class="image-description-title">${metadata.description}</li>`;
+    const description = !metadata.description ? '' : `<h3 id="${captionId}" class="image-caption__title is-expand-trigger" data-js-expanded="false"  data-js-expandable="completeImageData">${metadata.description}</h3>`;
 
     const getCompleteImageData = (id, data) => {
       const rows = data.map(item => {
@@ -105,9 +105,11 @@ class ImageViewer {
       });
   
       return rows.length === 0 ? '' : `
-        <table id="completeData${id}" class="info-table is-additional-content js-additional-content is-two-third is-tight" data-is-additional-content-to="${id}">
-          ${rows.join("")}
-        </table>
+        <div id="completeImageData" class="expandable-content">
+          <table class="info-table is-two-third is-tight">
+            ${rows.join("")}
+          </table>
+        </div>
       `;
     }
     
@@ -124,14 +126,11 @@ class ImageViewer {
     const completeData = getCompleteImageData(captionId, data);
 
     const caption = `
-      <ul class="image-description is-secondary">
-        ${description}
-        ${completeData}
-      </ul>
+      ${description}
+      ${completeData}
     `;
     
     this.caption.innerHTML = caption;
-    this.addAdditionalContentInteraction(`completeData${captionId}`);
     this.addClipboardInteraction(img.id);
   }
 
@@ -400,15 +399,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     if (target.closest('.js-expand-additional-content')) {
       const element = target.closest('.js-expand-additional-content');
       const id = element.dataset.fullDataElement;
-      console.log(id);
       globals.additionalContentElements[id].toggleContent();
     }
 
     if (target.closest('.js-collapse-additional-content')) {
       const element = target.closest('.js-collapse-additional-content');
       const id = element.parentNode.id;
-      console.log(id);
-      
       globals.additionalContentElements[id].toggleContent();
     }
 

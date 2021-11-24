@@ -1,7 +1,7 @@
 // Image Description (Wrap)
 // --------------------------------------------------------------------------
 
-.image-description-wrap{
+.image-caption-wrap{
   margin-left: $m;
   margin-bottom: $l;
   padding-top: $m;
@@ -17,27 +17,36 @@
 // Image Description
 // --------------------------------------------------------------------------
 
-.image-description {
+.image-caption {
   display: block;
   padding-right: $m;
+
+  $self: &;
 
   &-text {
     display: block;
     color: $dark;
   }
 
-  &-title {
+  &__title {
     display: inline-block;
     color: $darkest;
     font-weight: $fw-semibold;
+    padding-right: $xxxxl;
 
-    & + .image-description-title::before {
-      display: inline-block;
-      margin-right: $xxs;
-      margin-left: $xxs;
-      color: $dark;
-      content: "//";
-      font-weight: $fw-light;
+    $title: &;
+
+    &::after{
+      top: -$quad !important;
+      right: -$quad !important;
+      background-color: transparent !important;
+
+    }
+
+    &:hover{
+      &::after{
+        background-color: $darken !important;
+      }
     }
   }
 
@@ -58,12 +67,16 @@
       @include small-separator;
     }
 
-    .image-description-title, .definition-list__term {
+    .image-caption__title{
+      margin-top: 0;
+    }
+
+    .image-caption__title, .definition-list__term {
       font-weight: $fw-regular;
       color: $darkest;
     }
 
-    .image-description-text{
+    .image-caption__text{
       margin-top: $quad;
     }
   }

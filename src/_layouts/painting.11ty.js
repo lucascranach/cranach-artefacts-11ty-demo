@@ -239,8 +239,8 @@ const getImageDescriptionObjectInfo = ({ content }) => {
   const date = content.metadata.date ? `, ${content.metadata.date}` : '';
   const attribution = !content.metadata.subtitle ? '' : `<li class="image-description-text has-small-separator">${content.metadata.subtitle}</li>`;
   return `
-    <ul class="image-description">
-      <li class="image-description-title">${content.metadata.title}${date}</li>
+    <ul class="image-caption">
+      <li class="image-caption__title">${content.metadata.title}${date}</li>
       ${attribution}
     </ul>
   `;
@@ -738,9 +738,9 @@ exports.render = function (data) {
             <div class="image-viewer">
               <div id="viewer-content" class="image-viewer__content"></div>
             </div>
-            <figcaption class="image-description-wrap">
+            <figcaption class="image-caption-wrap">
               ${imageDescriptionObjectInfo}
-              <div id="image-caption"></div>
+              <div id="image-caption" class="image-caption is-secondary has-seperator foldable-block"></div>
             </figcaption>
           </figure>
         </div>
