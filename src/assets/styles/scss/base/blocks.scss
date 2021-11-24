@@ -38,12 +38,6 @@
     font-weight: $fw-light;
   }
 
-  &.is-sticky {
-    position: sticky;
-    z-index: $level-background;
-    top: $m;
-  }
-
   .is-expand-trigger {
     position: relative;
 
