@@ -545,95 +545,6 @@ h3 {
   color: rgba(0, 0, 0, 0.6);
 }
 
-/* According to CUBE
-    https://cube.fyi/composition.html#why-macro-level-thinking
-############################################################################ */
-.info-block__title {
-  margin-top: 0;
-  font-size: 0.9rem;
-  font-weight: 400;
-}
-
-.foldable-block {
-  position: relative;
-  z-index: 10;
-  background-color: #fff;
-}
-.foldable-block.has-separator {
-  padding-top: 0.72rem;
-  border-top: solid 1px rgba(0, 0, 0, 0.1);
-}
-.foldable-block.has-strong-separator {
-  padding-top: 0.72rem;
-  border-top: solid 1px rgba(0, 0, 0, 0.1);
-}
-.foldable-block__headline {
-  padding-bottom: 0.9rem;
-  margin: 0;
-  font-size: 1.08rem;
-  font-weight: 200;
-}
-.foldable-block .is-expand-trigger {
-  position: relative;
-}
-.foldable-block .is-expand-trigger:hover {
-  cursor: pointer;
-}
-.foldable-block .is-expand-trigger:hover::after {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-.foldable-block .is-expand-trigger::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.27rem 0.405rem;
-  background-color: rgba(0, 0, 0, 0.06);
-  color: #e8a60c;
-  content: "expand_more";
-  font-family: "MaterialIcons";
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: transform 0.3s, background-color 0.3s;
-}
-.foldable-block .is-expand-trigger.is-expanded::after {
-  background-color: transparent;
-  transform: rotate(180deg);
-}
-.foldable-block .expandable-content {
-  overflow: hidden;
-  height: 0;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.foldable-block .expandable-content.is-visible {
-  height: auto;
-  padding-bottom: 1.17rem;
-  opacity: 1;
-}
-
-.block {
-  padding-bottom: 0.27rem;
-}
-.block + .block {
-  padding-top: 0.72rem;
-  border-top: solid 1px rgba(0, 0, 0, 0.1);
-}
-.block.has-padding {
-  padding-bottom: 0.9rem;
-}
-
-/* Artfact Header
----------------------------------------------------------------------------- */
-.artefact-header {
-  margin-bottom: 0.9rem;
-}
-
-/* Copy Text
----------------------------------------------------------------------------- */
-.copytext {
-  margin-bottom: 1.62rem;
-}
-
 .markdown-it p {
   margin-top: 0;
 }
@@ -693,7 +604,7 @@ ul.simple li {
   display: grid;
   grid-template-columns: 8.1rem 1fr;
 }
-.definition-list:not(.is-grid) .definition-list__term {
+.definition-list:not(.is-grid):not(.is-stacked) .definition-list__term {
   float: left;
   clear: left;
 }
@@ -724,6 +635,9 @@ ul.simple li {
 }
 .definition-list__term:last-child, .definition-list__definition:last-child {
   padding-bottom: 0;
+}
+.definition-list.is-stacked .definition-list__definition + .definition-list__term {
+  margin-top: 0.9rem;
 }
 
 .table {
@@ -1375,9 +1289,130 @@ ul.simple li {
   font-size: 0.9rem;
 }
 
+/* According to CUBE
+    https://cube.fyi/composition.html#why-macro-level-thinking
+############################################################################ */
+.info-block__title {
+  margin-top: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.text-block {
+  max-width: 45rem;
+}
+
+.foldable-block {
+  position: relative;
+  z-index: 10;
+  background-color: #fff;
+}
+.foldable-block.has-separator {
+  padding-top: 0.72rem;
+  border-top: solid 1px rgba(0, 0, 0, 0.1);
+}
+.foldable-block.has-strong-separator {
+  padding-top: 0.72rem;
+  border-top: solid 1px rgba(0, 0, 0, 0.1);
+}
+.foldable-block__headline {
+  padding-bottom: 0.9rem;
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 200;
+}
+.foldable-block .is-expand-trigger {
+  position: relative;
+}
+.foldable-block .is-expand-trigger:hover {
+  cursor: pointer;
+}
+.foldable-block .is-expand-trigger:hover::after {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.foldable-block .is-expand-trigger::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.27rem 0.405rem;
+  background-color: rgba(0, 0, 0, 0.06);
+  color: #e8a60c;
+  content: "expand_more";
+  font-family: "MaterialIcons";
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: transform 0.3s, background-color 0.3s;
+}
+.foldable-block .is-expand-trigger.is-expanded::after {
+  background-color: transparent;
+  transform: rotate(180deg);
+}
+.foldable-block .expandable-content {
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.foldable-block .expandable-content.is-visible {
+  height: auto;
+  padding-bottom: 1.17rem;
+  opacity: 1;
+}
+
+.block {
+  padding-bottom: 0.27rem;
+}
+.block + .block {
+  padding-top: 0.72rem;
+  border-top: solid 1px rgba(0, 0, 0, 0.1);
+}
+.block.has-padding {
+  padding-bottom: 0.9rem;
+}
+
+/* Artfact Header
+---------------------------------------------------------------------------- */
+.artefact-header {
+  margin-bottom: 0.9rem;
+}
+
+/* Copy Text
+---------------------------------------------------------------------------- */
+.copytext {
+  margin-bottom: 1.62rem;
+}
+
 .final-words {
   background-color: #c4c4c4;
-  padding: 0.9rem;
+  padding: 1.08rem 1.08rem 1.35rem 1.08rem;
+}
+@media only screen and (min-width: 768px) {
+  .final-words {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .final-words {
+    display: grid;
+    gap: 1.08rem;
+    grid-template-columns: 1fr 36rem;
+  }
+}
+@media only screen and (min-width: 1800px) {
+  .final-words {
+    gap: 1.35rem;
+    grid-template-columns: 1fr 45rem;
+  }
+}
+
+.main-footer {
+  background-color: #444;
+  color: #f2f2f2;
+  padding: 0.9rem 1.08rem;
+}
+.main-footer > p {
+  margin: 0;
 }
 
 .has-interaction:hover {

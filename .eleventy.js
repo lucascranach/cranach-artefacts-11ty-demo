@@ -184,12 +184,12 @@ module.exports = function (eleventyConfig) {
   });
   
 
-  eleventyConfig.addJavaScriptFunction("getLiteratureReference", (ref, lang) => {
+  eleventyConfig.addJavaScriptFunction("getLitRef", (ref, lang) => {
     const literatureReference = literatureData[lang].items.filter(item => item.referenceId === ref);
     return literatureReference.shift();
   });
 
-  eleventyConfig.addJavaScriptFunction("getReferenceObjectMeta", (collection, id) => {
+  eleventyConfig.addJavaScriptFunction("getRefObjectMeta", (collection, id) => {
     const reference = collection.filter(item => item.inventoryNumber === id);
 
     if (!reference[0]) return false;
@@ -199,7 +199,7 @@ module.exports = function (eleventyConfig) {
     return metadata;
   });
 
-  eleventyConfig.addJavaScriptFunction("getLiteratureReferenceTableData", (ref, id) => {
+  eleventyConfig.addJavaScriptFunction("getLitRefTableData", (ref, id) => {
     if (!ref || !ref.connectedObjects) return '';
     const connectedObjects = ref.connectedObjects.filter(item => item.inventoryNumber === id);
     return connectedObjects.shift();
