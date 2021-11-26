@@ -4,16 +4,11 @@
   .main-footer{
     background-color: $dark;
     color: $lighter;
-
-    padding: $m;
-
-    @media only screen and (min-width: $vp-xlarge) {
-      $padding: $xl;
-    }
-  
-    @media only screen and (min-width: $vp-xxlarge) {
-      padding: $xxxxl $xxxxl;
-    }
+    padding: 
+      var(--responsive-padding-top-inner) 
+      var(--responsive-padding-right-left) 
+      var(--responsive-padding-bottom-inner) 
+      var(--responsive-padding-right-left);
 
     & > p{
       margin: 0;

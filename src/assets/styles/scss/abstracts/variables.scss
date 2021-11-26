@@ -133,3 +133,31 @@ $border-stroke-weight-s: 1px;
 $inner-shadow: inset 0 0 $s rgba(0, 0, 0, 10);
 $radius-s: 2px;
 $radius-m: 5px;
+
+/* Adaptive Values
+---------------------------------------------------------------------------- */
+
+:root{
+  --responsive-padding-top: #{$m};
+  --responsive-padding-top-inner: #{$s};
+  --responsive-padding-right-left: #{$m};
+  --responsive-padding-bottom: #{$l};
+  --responsive-padding-bottom-inner: #{$m};
+
+  @media only screen and (min-width: $vp-xlarge) {
+    --responsive-padding-top: #{$xxl};
+    --responsive-padding-top-inner: #{$xl};
+    --responsive-padding-right-left: #{$xxl};
+    --responsive-padding-bottom: #{$xxxl};
+    --responsive-padding-bottom-inner: #{$xl};
+  }
+
+  @media only screen and (min-width: $vp-xxlarge) {
+    --responsive-padding-top: #{$xxxxl};
+    --responsive-padding-top-inner: #{$xxl};
+    --responsive-padding-right-left: #{$xxxxl};
+    --responsive-padding-bottom: #{$xxxxl};
+    --responsive-padding-bottom-inner: #{$xxl};
+  }
+
+}

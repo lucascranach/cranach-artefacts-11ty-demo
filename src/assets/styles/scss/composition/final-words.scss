@@ -3,17 +3,19 @@
 
   .final-words{
     background-color: $light;
-    padding: $l $m $xxl $m;
+    padding: 
+      var(--responsive-padding-top) 
+      var(--responsive-padding-right-left) 
+      var(--responsive-padding-bottom) 
+      var(--responsive-padding-right-left);
 
     @media only screen and (min-width: $vp-xlarge) {
-      padding: $xl $xl $xxl $xl;
       display: grid;
       gap: $l;
       grid-template-columns: 1fr $column-medium;
     }
   
     @media only screen and (min-width: $vp-xxlarge) {
-      padding: $xxl $xxxxl $xxxxl $xxxxl;
       gap: $xxl;
       grid-template-columns: 1fr $column-large;
     }

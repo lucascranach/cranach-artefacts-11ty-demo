@@ -2,14 +2,13 @@
 // --------------------------------------------------------------------------
 
 .image-caption-wrap{
-  padding: $m 0 $m $m;
-
-  @media only screen and (min-width: $vp-xlarge) {
-    padding: $l 0 $xl $xl;
-  }
+  padding: 
+  var(--responsive-padding-top-inner) 
+  0 
+  var(--responsive-padding-bottom-inner) 
+  var(--responsive-padding-right-left);
 
   @media only screen and (min-width: $vp-xxlarge) {
-    padding: $xxl 0 $xxxxl $xxxxl;
     display: grid;
     gap: $m;
     grid-template-columns: $column-small 1fr;
@@ -36,6 +35,7 @@
     color: $darkest;
     font-weight: $fw-semibold;
     padding-right: $xxxxl;
+    line-height: $lh-headlines;
 
     $title: &;
 
@@ -82,5 +82,9 @@
     .image-caption__text{
       margin-top: $quad;
     }
+  }
+
+  .expandable-content{
+    padding-bottom: 0 !important;
   }
 }
