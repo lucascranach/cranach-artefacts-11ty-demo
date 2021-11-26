@@ -373,6 +373,34 @@ h1 {
 ---------------------------------------------------------------------------- */
 /* Misc
 ---------------------------------------------------------------------------- */
+/* Adaptive Values
+---------------------------------------------------------------------------- */
+:root {
+  --responsive-padding-top: 0.9rem;
+  --responsive-padding-top-inner: 0.72rem;
+  --responsive-padding-right-left: 0.9rem;
+  --responsive-padding-bottom: 1.08rem;
+  --responsive-padding-bottom-inner: 0.9rem;
+}
+@media only screen and (min-width: 1440px) {
+  :root {
+    --responsive-padding-top: 1.35rem;
+    --responsive-padding-top-inner: 1.17rem;
+    --responsive-padding-right-left: 1.35rem;
+    --responsive-padding-bottom: 1.62rem;
+    --responsive-padding-bottom-inner: 1.17rem;
+  }
+}
+@media only screen and (min-width: 1800px) {
+  :root {
+    --responsive-padding-top: 1.89rem;
+    --responsive-padding-top-inner: 1.35rem;
+    --responsive-padding-right-left: 1.89rem;
+    --responsive-padding-bottom: 1.89rem;
+    --responsive-padding-bottom-inner: 1.35rem;
+  }
+}
+
 i.icon {
   display: inline-block;
   width: auto;
@@ -1041,13 +1069,10 @@ ul.simple li {
 }
 
 .image-caption-wrap {
-  margin-left: 0.9rem;
-  margin-bottom: 1.08rem;
-  padding-top: 0.9rem;
+  padding: var(--responsive-padding-top-inner) 0 var(--responsive-padding-bottom-inner) var(--responsive-padding-right-left);
 }
 @media only screen and (min-width: 1800px) {
   .image-caption-wrap {
-    margin-left: 1.35rem;
     display: grid;
     gap: 0.9rem;
     grid-template-columns: 27rem 1fr;
@@ -1068,6 +1093,7 @@ ul.simple li {
   color: #000;
   font-weight: 400;
   padding-right: 1.89rem;
+  line-height: 120%;
 }
 .image-caption__title::after {
   top: -0.225rem !important;
@@ -1105,6 +1131,9 @@ ul.simple li {
 }
 .image-caption.is-secondary .image-caption__text {
   margin-top: 0.225rem;
+}
+.image-caption .expandable-content {
+  padding-bottom: 0 !important;
 }
 
 .leporello-recog {
@@ -1205,7 +1234,6 @@ ul.simple li {
   position: relative;
   width: 100%;
   min-height: 80vh;
-  background-color: rgba(0, 0, 0, 0.06);
 }
 .main-image .image-viewer__content {
   position: absolute;
@@ -1238,15 +1266,14 @@ ul.simple li {
   padding: 0;
   margin-bottom: 0.45rem;
   background-color: transparent;
-  grid-auto-rows: 1fr;
-  grid-column-gap: 0.225rem;
-  grid-row-gap: 0.225rem;
+  grid-auto-rows: 6.3rem;
+  gap: 0.9rem;
   grid-template-columns: repeat(auto-fill, minmax(6.3rem, 1fr));
   list-style: none;
 }
 .image-stripe-list__item {
-  width: 6.3rem;
-  height: 6.3rem;
+  width: 100%;
+  height: 100%;
   aspect-ratio: 1/1;
   background-color: rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
@@ -1399,13 +1426,7 @@ ul.simple li {
 
 .final-words {
   background-color: #c4c4c4;
-  padding: 1.08rem 1.08rem 1.35rem 1.08rem;
-}
-@media only screen and (min-width: 768px) {
-  .final-words {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
+  padding: var(--responsive-padding-top) var(--responsive-padding-right-left) var(--responsive-padding-bottom) var(--responsive-padding-right-left);
 }
 @media only screen and (min-width: 1440px) {
   .final-words {
@@ -1424,7 +1445,7 @@ ul.simple li {
 .main-footer {
   background-color: #444;
   color: #f2f2f2;
-  padding: 0.9rem 1.08rem;
+  padding: var(--responsive-padding-top-inner) var(--responsive-padding-right-left) var(--responsive-padding-bottom-inner) var(--responsive-padding-right-left);
 }
 .main-footer > p {
   margin: 0;

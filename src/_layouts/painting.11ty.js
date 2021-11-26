@@ -496,10 +496,12 @@ const getReports = ({ content }, type) => {
     const surveyTitle = firstItem.purpose;
     const surveyKeywordList = !firstItem ? [] : firstItem.keywords.map((keyword) => `<li>${keyword.name}</li>`);
     const surveyKeywords = surveyKeywordList.length > 0 ? `<ul class="survey-keywords">${surveyKeywordList.join('')}</ul>` : '';
+    
     const surveyContent = report.tests.sort((a, b) => a.order - b.order).map((test) => {
       const text = this.getFormatedText(test.text.replace(/\n/g, '\n\n'), 'no-lists');
+      const surveyKind = test.kind ? `<h4 class="survey-kind">${test.kind}</h4>` : '';
       return `
-        <h4 class="survey-kind">${test.kind}</h4>
+        ${surveyKind}
         ${text}
       `;
     });
