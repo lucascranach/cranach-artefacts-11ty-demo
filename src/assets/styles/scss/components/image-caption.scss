@@ -2,17 +2,13 @@
 // --------------------------------------------------------------------------
 
 .image-caption-wrap{
-  padding: 
-  var(--responsive-padding-top-inner) 
-  0 
-  var(--responsive-padding-bottom-inner) 
-  var(--responsive-padding-right-left);
+  padding-top: var(--responsive-padding-top-inner);
+  padding-left: var(--responsive-padding-right-left);
 
   @media only screen and (min-width: $vp-xxlarge) {
     display: grid;
     gap: var(--responsive-gap);
     grid-template-columns: $column-small 1fr;
-    padding-bottom: $xl;
   }
 }
 
@@ -23,7 +19,7 @@
   display: block;
   padding-right: $m;
   max-width: $column-medium;
-  
+
   $self: &;
 
   &-text {

@@ -381,6 +381,7 @@ h1 {
   --responsive-padding-right-left: 0.9rem;
   --responsive-padding-bottom: 1.08rem;
   --responsive-padding-bottom-inner: 0.9rem;
+  --responsive-gap: 0.9rem;
 }
 @media only screen and (min-width: 1440px) {
   :root {
@@ -389,6 +390,7 @@ h1 {
     --responsive-padding-right-left: 1.35rem;
     --responsive-padding-bottom: 1.62rem;
     --responsive-padding-bottom-inner: 1.17rem;
+    --responsive-gap: 1.17rem;
   }
 }
 @media only screen and (min-width: 1800px) {
@@ -398,6 +400,7 @@ h1 {
     --responsive-padding-right-left: 1.89rem;
     --responsive-padding-bottom: 1.89rem;
     --responsive-padding-bottom-inner: 1.35rem;
+    --responsive-gap: 1.35rem;
   }
 }
 
@@ -884,7 +887,7 @@ ul.simple li {
 .related-item {
   display: flex;
   margin: 0;
-  gap: 0.9rem;
+  gap: var(--responsive-gap);
   transition: background-color 0.3s;
 }
 .related-item:hover {
@@ -1070,12 +1073,12 @@ ul.simple li {
 }
 
 .image-caption-wrap {
-  padding: var(--responsive-padding-top-inner) 0 var(--responsive-padding-bottom-inner) var(--responsive-padding-right-left);
+  padding: var(--responsive-padding-top-inner) 0 0 var(--responsive-padding-right-left);
 }
 @media only screen and (min-width: 1800px) {
   .image-caption-wrap {
     display: grid;
-    gap: 0.9rem;
+    gap: var(--responsive-gap);
     grid-template-columns: 27rem 1fr;
     padding-bottom: 1.17rem;
   }
@@ -1084,6 +1087,7 @@ ul.simple li {
 .image-caption {
   display: block;
   padding-right: 0.9rem;
+  max-width: 36rem;
 }
 .image-caption-text {
   display: block;
@@ -1138,35 +1142,20 @@ ul.simple li {
 }
 
 .leporello-recog {
-  padding: 1.08rem;
+  padding: 0 var(--responsive-padding-right-left) var(--responsive-padding-bottom) var(--responsive-padding-right-left);
   background-color: #fff;
 }
 @media only screen and (min-width: 768px) {
   .leporello-recog {
     display: grid;
-    gap: 1.35rem;
+    gap: var(--responsive-gap);
     grid-template-columns: 13.5rem 1fr;
-  }
-}
-@media only screen and (min-width: 1440px) {
-  .leporello-recog {
-    padding: 1.35rem 0;
   }
 }
 .leporello-recog__image {
   padding: 0;
   margin: 0;
   margin-bottom: 1.08rem;
-}
-@media only screen and (min-width: 1440px) {
-  .leporello-recog__image {
-    margin-left: 1.35rem;
-  }
-}
-@media only screen and (min-width: 1800px) {
-  .leporello-recog__image {
-    margin-left: 1.89rem;
-  }
 }
 .leporello-recog__image > img {
   width: 100%;
@@ -1176,29 +1165,25 @@ ul.simple li {
 }
 .leporello-recog .grid-wrapper .marginal-content {
   max-width: 45rem;
-  padding-right: 1.35rem;
 }
 @media only screen and (min-width: 1440px) {
   .leporello-recog .grid-wrapper {
     display: grid;
-    gap: 0.9rem;
+    gap: var(--responsive-gap);
     grid-template-columns: 1fr 36rem;
   }
 }
 @media only screen and (min-width: 1800px) {
   .leporello-recog .grid-wrapper {
     display: grid;
-    gap: 1.35rem;
     grid-template-columns: 1fr 45rem;
-  }
-  .leporello-recog .grid-wrapper .marginal-content {
-    padding-right: 1.89rem;
   }
 }
 
 .leporello-explore {
   border-top: solid 1px #c4c4c4;
   background-color: #f2f2f2;
+  padding: 0 var(--responsive-padding-right-left) var(--responsive-padding-bottom) 0;
 }
 @media only screen and (min-width: 768px) {
   .leporello-explore {
@@ -1209,13 +1194,12 @@ ul.simple li {
 @media only screen and (min-width: 1440px) {
   .leporello-explore {
     display: grid;
-    gap: 1.08rem;
+    gap: var(--responsive-gap);
     grid-template-columns: 1fr 36rem;
   }
 }
 @media only screen and (min-width: 1800px) {
   .leporello-explore {
-    gap: 1.35rem;
     grid-template-columns: 1fr 45rem;
   }
 }
@@ -1249,17 +1233,7 @@ ul.simple li {
 }
 
 .explore-content {
-  padding: 0.9rem 1.17rem 1.08rem 0.9rem;
-}
-@media only screen and (min-width: 1440px) {
-  .explore-content {
-    padding: 0.9rem 1.62rem 1.17rem 0;
-  }
-}
-@media only screen and (min-width: 1800px) {
-  .explore-content {
-    padding-right: 1.89rem;
-  }
+  padding-top: var(--responsive-padding-top);
 }
 
 .image-stripe-list {
@@ -1268,7 +1242,7 @@ ul.simple li {
   margin-bottom: 0.45rem;
   background-color: transparent;
   grid-auto-rows: 6.3rem;
-  gap: 0.9rem;
+  gap: 0.225rem;
   grid-template-columns: repeat(auto-fill, minmax(6.3rem, 1fr));
   list-style: none;
 }
@@ -1432,13 +1406,12 @@ ul.simple li {
 @media only screen and (min-width: 1440px) {
   .final-words {
     display: grid;
-    gap: 1.08rem;
+    gap: var(--responsive-gap);
     grid-template-columns: 1fr 36rem;
   }
 }
 @media only screen and (min-width: 1800px) {
   .final-words {
-    gap: 1.35rem;
     grid-template-columns: 1fr 45rem;
   }
 }
@@ -1450,6 +1423,44 @@ ul.simple li {
 }
 .main-footer > p {
   margin: 0;
+}
+
+.main-navigation {
+  padding: var(--responsive-padding-top-inner) var(--responsive-padding-right-left) var(--responsive-padding-bottom-inner) var(--responsive-padding-right-left);
+}
+
+.back {
+  display: inline-block;
+  font-size: 1.08rem;
+  background-color: rgba(0, 0, 0, 0.06);
+  color: #e8a60c;
+  width: 1.89rem;
+  height: 1.89rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-left: -100px;
+  transition-timing-function: ease-out;
+  transition: margin 0.5s 0.8s, background-color 0.5s, color 0.5s;
+}
+.back:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fc0;
+}
+.back.is-active {
+  margin-left: 0;
+}
+
+#page {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  transition: margin 0.8s, opacity 0.5s 0.5s;
+}
+#page.is-fading {
+  margin-left: 100vw;
+  opacity: 0;
 }
 
 .has-interaction:hover {

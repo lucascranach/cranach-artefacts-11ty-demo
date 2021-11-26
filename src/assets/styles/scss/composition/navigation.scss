@@ -2,6 +2,7 @@
 // --------------------------------------------------------------------------
 
 .main-navigation{
+  background-color: $lightest;
   padding: 
     var(--responsive-padding-top-inner) 
     var(--responsive-padding-right-left) 
@@ -25,7 +26,7 @@
   border-radius: 50%;
   margin-left: -100px;
   transition-timing-function: ease-out;
-  transition: margin $tr-medium $tr-slow;
+  transition: margin $tr-medium $tr-slow, background-color $tr-medium, color $tr-medium;
 
   &:hover{
     background-color: $darken-strong;
