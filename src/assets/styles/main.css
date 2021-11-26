@@ -641,6 +641,7 @@ ul.simple li {
   font-weight: 300;
   line-height: 140%;
   padding-right: 0.225rem;
+  hyphens: none;
 }
 .definition-list__term::after {
   content: ":";

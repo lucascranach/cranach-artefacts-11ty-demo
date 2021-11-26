@@ -140,7 +140,11 @@ const getSignature = ({ content }) => {
   `;
 };
 
-const getInscriptions = ({ content }) => {
+const getInscriptionsOld = ({ content }) => {
+  const inscriptionsHeadline = `<span class="term">${this.translate('inscriptionsInnerHeadline', langCode)}</span>`;
+  const inscriptions = content.inscription ? `${inscriptionsHeadline}${content.inscription}` : false;
+  const stampsHeadline = `<span class="term">${this.translate('stampsInnerHeadline', langCode)}</span>`;
+  const stamps = content.markings ? `${stampsHeadline}${content.markings}` : false;
   let inscriptionsRaw = `${content.inscription}${content.markings}`.replace(/:\n/, ': ');
   inscriptionsRaw = inscriptionsRaw.replace(/\n *?\n/sg, '\n\n');
 
@@ -163,6 +167,58 @@ const getInscriptions = ({ content }) => {
       <dd class="definition-list__definition">${preview}</dd>
     </dl>
     ${inscriptionTable}
+  `;
+};
+
+const getInscriptions = ({ content }) => {
+  let inscriptionsRaw = `${content.inscription}`.replace(/:\n/, ': ');
+  inscriptionsRaw = inscriptionsRaw.replace(/\n *?\n/sg, '\n\n');
+
+  const inscriptionItems = inscriptionsRaw.split(/\]\n\n/).map((item) => {
+    const separator = item.match(/\n\n/) ? '\n\n' : '\n';
+    const elements = item.split(separator);
+    return { text: elements.shift(), remark: elements.join('\n') };
+  });
+
+  const numberOfWords = 20;
+  const fullText = inscriptionItems[0].text;
+  const words = fullText.split(/ /);
+  const preview = words.length > numberOfWords ? `${words.slice(0, numberOfWords).join(' ')} …` : fullText;
+  const label = this.translate('inscriptionsInnerHeadline', langCode);
+  const inscriptionTable = inscriptionItems[0].text.match(/^keine$/i) ? ''
+    : this.getRemarkDataTable('Inscriptions', inscriptionItems, 'inscriptions', label);
+  return !inscriptionsRaw ? '' : `
+    <dl id="inscriptions" class="definition-list is-grid">
+      <dt class="definition-list__term">${label}</dt>
+      <dd class="definition-list__definition">${preview}</dd>
+    </dl>
+    ${inscriptionTable}
+  `;
+};
+
+const getStamps= ({ content }) => {
+  let stampsRaw = `${content.markings}`.replace(/:\n/, ': ');
+  stampsRaw = stampsRaw.replace(/\n *?\n/sg, '\n\n');
+
+  const stampItems = stampsRaw.split(/\]\n\n/).map((item) => {
+    const separator = item.match(/\n\n/) ? '\n\n' : '\n';
+    const elements = item.split(separator);
+    return { text: elements.shift(), remark: elements.join('\n') };
+  });
+
+  const numberOfWords = 20;
+  const fullText = stampItems[0].text;
+  const words = fullText.split(/ /);
+  const preview = words.length > numberOfWords ? `${words.slice(0, numberOfWords).join(' ')} …` : fullText;
+  const label = this.translate('stampsInnerHeadline', langCode);
+  const stampTable = stampItems[0].text.match(/^keine$/i) ? ''
+    : this.getRemarkDataTable('Stamps', stampItems, 'stamps', label);
+  return !stampsRaw ? '' : `
+    <dl id="stamps" class="definition-list is-grid">
+      <dt class="definition-list__term">${label}</dt>
+      <dd class="definition-list__definition">${preview}</dd>
+    </dl>
+    ${stampTable}
   `;
 };
 
@@ -652,6 +708,7 @@ exports.render = function (pageData) {
   const location = getLocation(data);
   const signature = getSignature(data);
   const inscription = getInscriptions(data);
+  const stamps = getStamps(data);
   const ids = getIds(data);
   const exhibitions = getExhibitions(data);
   const provenance = getProvenance(data);
@@ -709,6 +766,7 @@ exports.render = function (pageData) {
                 ${dimensions}
                 ${signature}
                 ${inscription}
+                ${stamps}
               </div>
               <div class="block">
                 ${location}

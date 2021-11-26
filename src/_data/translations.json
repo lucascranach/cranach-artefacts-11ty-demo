@@ -67,7 +67,15 @@
     "de": "Inschriften",
     "en": "Inscriptions"
   },
+  "inscriptionsInnerHeadline": {
+    "de": "Inschriften, Wappen",
+    "en": "Inscriptions, Badges"
+  },
   "stamps": {
+    "de": "Stempel, Siegel, Beschriftungen",
+    "en": "Stamps, Seals, Labels"
+  },
+  "stampsInnerHeadline": {
     "de": "Stempel, Siegel, Beschriftungen",
     "en": "Stamps, Seals, Labels"
   },

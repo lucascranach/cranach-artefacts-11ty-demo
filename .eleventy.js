@@ -318,7 +318,7 @@ module.exports = function (eleventyConfig) {
     const testObjects = ["CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d"];
     // "DE_smbGG_1907", "DE_WSCH_NONE-WSCH001A", "DE_KBG-Lost_NONE-KBG001a", "DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
     const paintings = paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
-    // const paintings = paintingsDataDE.items;
+    //const paintings = paintingsDataDE.items;
 
     let sortedPaintings = paintings.sort((a, b)=>{
       if (a.sortingNumber < b.sortingNumber) return -1;

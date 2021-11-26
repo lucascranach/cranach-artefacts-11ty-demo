@@ -45,6 +45,7 @@ ul {
     font-weight: $fw-regular;
     line-height: $lh-normal;
     padding-right: $quad;
+    hyphens: none;
 
     &::after{
       content: ":"
