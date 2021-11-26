@@ -3,20 +3,17 @@
 
   .final-words{
     background-color: $light;
-    padding: $l $l $xxl $l;
+    padding: $l $m $xxl $m;
 
-    @media only screen and (min-width: $vp-medium) {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-  
     @media only screen and (min-width: $vp-xlarge) {
+      padding: $xl $xl $xxl $xl;
       display: grid;
       gap: $l;
       grid-template-columns: 1fr $column-medium;
     }
   
     @media only screen and (min-width: $vp-xxlarge) {
+      padding: $xxl $xxxxl $xxxxl $xxxxl;
       gap: $xxl;
       grid-template-columns: 1fr $column-large;
     }

@@ -26,6 +26,10 @@
       margin-left: $xxl;
     }
 
+    @media only screen and (min-width: $vp-xxlarge) {
+      margin-left: $xxxxl;
+    }
+
     & > img {
       width: 100%;
     }
@@ -51,6 +55,10 @@
       display: grid;
       gap: $xxl;
       grid-template-columns: 1fr $column-large;
+
+      .marginal-content {
+        padding-right: $xxxxl;
+      }
     }
   }
 }

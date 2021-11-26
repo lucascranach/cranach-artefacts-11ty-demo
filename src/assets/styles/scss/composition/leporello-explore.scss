@@ -42,7 +42,6 @@
     position: relative;
     width: 100%;
     min-height: 80vh;
-    background-color: $darken;
 
     &__content {
       position: absolute;
@@ -67,6 +66,10 @@
   @media only screen and (min-width: $vp-xlarge) {
     padding: $m $xxxl $xl 0;
   }
+
+  @media only screen and (min-width: $vp-xxlarge) {
+    padding-right: $xxxxl;
+  }
 }
 
 // Image Stripe
@@ -78,15 +81,14 @@
     padding: 0;
     margin-bottom: $xxs;
     background-color: transparent;
-    grid-auto-rows: 1fr;
-    grid-column-gap: $quad;
-    grid-row-gap: $quad;
+    grid-auto-rows: $tile-xxxs;
+    gap: $m;
     grid-template-columns: repeat(auto-fill, minmax($tile-xxxs, 1fr));
     list-style: none;
 
     &__item {
-      width: $tile-xxxs;
-      height: $tile-xxxs;
+      width: 100%;
+      height: 100%;
       aspect-ratio: 1/1;
       background-color: $darken-medium;
       transition: transform $tr-fast;

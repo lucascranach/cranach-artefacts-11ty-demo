@@ -2,15 +2,18 @@
 // --------------------------------------------------------------------------
 
 .image-caption-wrap{
-  margin-left: $m;
-  margin-bottom: $l;
-  padding-top: $m;
+  padding: $m 0 $m $m;
+
+  @media only screen and (min-width: $vp-xlarge) {
+    padding: $l 0 $xl $xl;
+  }
 
   @media only screen and (min-width: $vp-xxlarge) {
-    margin-left: $xxl;
+    padding: $xxl 0 $xxxxl $xxxxl;
     display: grid;
     gap: $m;
     grid-template-columns: $column-small 1fr;
+    padding-bottom: $xl;
   }
 }
 

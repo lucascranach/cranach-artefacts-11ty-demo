@@ -4,7 +4,16 @@
   .main-footer{
     background-color: $dark;
     color: $lighter;
-    padding: $m $l;
+
+    padding: $m;
+
+    @media only screen and (min-width: $vp-xlarge) {
+      $padding: $xl;
+    }
+  
+    @media only screen and (min-width: $vp-xxlarge) {
+      padding: $xxxxl $xxxxl;
+    }
 
     & > p{
       margin: 0;

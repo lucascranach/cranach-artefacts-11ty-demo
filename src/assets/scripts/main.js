@@ -42,7 +42,7 @@ class Notification {
   }
 
   setNotificationKiller() {
-    this.timeout = window.setTimeout(this.removeNotification, 2000, this.id);
+    this.timeout = window.setTimeout(this.removeNotification, 4000, this.id);
   }
 }
 

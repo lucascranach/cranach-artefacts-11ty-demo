@@ -532,6 +532,7 @@ dd {
 h2 {
   font-size: 1.08rem;
   font-weight: 300;
+  margin-top: 0;
 }
 
 h3 {
@@ -1032,8 +1033,8 @@ ul.simple li {
   background-color: #fc0;
   color: #000;
   text-align: center;
-  padding: 0.27rem 0.27rem;
-  font-size: 0.72rem;
+  padding: 0.72rem 0.72rem;
+  font-size: 0.9rem;
   z-index: 100;
   transition: opacity 0.5s 0.5s;
   opacity: 0;
@@ -1050,6 +1051,7 @@ ul.simple li {
     display: grid;
     gap: 0.9rem;
     grid-template-columns: 27rem 1fr;
+    padding-bottom: 1.17rem;
   }
 }
 
@@ -1131,6 +1133,11 @@ ul.simple li {
     margin-left: 1.35rem;
   }
 }
+@media only screen and (min-width: 1800px) {
+  .leporello-recog__image {
+    margin-left: 1.89rem;
+  }
+}
 .leporello-recog__image > img {
   width: 100%;
 }
@@ -1153,6 +1160,9 @@ ul.simple li {
     display: grid;
     gap: 1.35rem;
     grid-template-columns: 1fr 45rem;
+  }
+  .leporello-recog .grid-wrapper .marginal-content {
+    padding-right: 1.89rem;
   }
 }
 
@@ -1215,6 +1225,11 @@ ul.simple li {
 @media only screen and (min-width: 1440px) {
   .explore-content {
     padding: 0.9rem 1.62rem 1.17rem 0;
+  }
+}
+@media only screen and (min-width: 1800px) {
+  .explore-content {
+    padding-right: 1.89rem;
   }
 }
 
