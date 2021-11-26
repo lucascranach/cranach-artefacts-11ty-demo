@@ -12,9 +12,9 @@
 
 @mixin base-grid {
   display: grid;
-  column-gap: $m;
+  column-gap: var(--responsive-gap);
   grid-auto-rows: 1fr;
-  row-gap: $m;
+  row-gap: var(--responsive-gap);
 }
 
 @mixin grid-even-2-columns($viewport) {

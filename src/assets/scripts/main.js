@@ -2,6 +2,16 @@
 window.globals = {};
 window.globalFunctions = {};
 
+
+/* Go Back
+============================================================================ */
+
+const goBack = () => {
+  const page = document.getElementById("page");
+  page.classList.add("is-fading");
+  setTimeout(function(){ history.back(); }, 300);
+}
+
 /* Global Notification
 ============================================================================ */
 class Notification {
@@ -353,6 +363,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     expandReduce(block, block.dataset.jsExpandable);
   });
 
+  /* Back Button
+  --------------------------------------------------------------------------  */
+  const backButton = document.querySelector('.js-back');
+  if (history.length > 1) {
+    backButton.classList.add("is-active");
+  }
+  
+
   /* Events
   --------------------------------------------------------------------------  */
   document.addEventListener('click', (event) => {
@@ -400,6 +418,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
       const element = target.closest('.js-copy-to-clipboard');
       const { id } = element;
       globals.clipableElements[id].copyToClipBoard();
+    }
+
+    if (target.closest('.js-back')) {
+      goBack();
     }
   }, true);
 

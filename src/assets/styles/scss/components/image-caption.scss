@@ -10,7 +10,7 @@
 
   @media only screen and (min-width: $vp-xxlarge) {
     display: grid;
-    gap: $m;
+    gap: var(--responsive-gap);
     grid-template-columns: $column-small 1fr;
     padding-bottom: $xl;
   }
@@ -22,7 +22,8 @@
 .image-caption {
   display: block;
   padding-right: $m;
-
+  max-width: $column-medium;
+  
   $self: &;
 
   &-text {

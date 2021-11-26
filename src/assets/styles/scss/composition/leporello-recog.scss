@@ -1,18 +1,18 @@
 .leporello-recog {
-  // overflow: hidden;
-  // max-height: 80vh;
-  padding: $l;
+  padding: 
+    0
+    var(--responsive-padding-right-left) 
+    var(--responsive-padding-bottom) 
+    var(--responsive-padding-right-left);
+
   background-color: $lightest;
 
   @media only screen and (min-width: $vp-medium) {
     display: grid;
-    gap: $xxl;
+    gap: var(--responsive-gap);
     grid-template-columns: max($tile-xs) 1fr;
   }
 
-  @media only screen and (min-width: $vp-xlarge) {
-    padding: $xxl 0;
-  }
 
   // Image
   // --------------------------------------------------------------------------
@@ -21,14 +21,6 @@
     padding: 0;
     margin: 0;
     margin-bottom: $l;
-
-    @media only screen and (min-width: $vp-xlarge) {
-      margin-left: $xxl;
-    }
-
-    @media only screen and (min-width: $vp-xxlarge) {
-      margin-left: $xxxxl;
-    }
 
     & > img {
       width: 100%;
@@ -42,23 +34,17 @@
 
     .marginal-content {
       max-width: $column-large;
-      padding-right: $xxl;
     }
 
     @media only screen and (min-width: $vp-xlarge) {
       display: grid;
-      gap: $m;
+      gap: var(--responsive-gap);
       grid-template-columns: 1fr $column-medium;
     }
 
     @media only screen and (min-width: $vp-xxlarge) {
       display: grid;
-      gap: $xxl;
       grid-template-columns: 1fr $column-large;
-
-      .marginal-content {
-        padding-right: $xxxxl;
-      }
     }
   }
 }

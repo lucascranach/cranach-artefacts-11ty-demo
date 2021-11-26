@@ -196,7 +196,7 @@ const getInscriptions = ({ content }) => {
   `;
 };
 
-const getStamps= ({ content }) => {
+const getStamps = ({ content }) => {
   let stampsRaw = `${content.markings}`.replace(/:\n/, ': ');
   stampsRaw = stampsRaw.replace(/\n *?\n/sg, '\n\n');
 
@@ -445,6 +445,14 @@ const getImageBasePath = () => JSON.stringify(config.imageTiles);
 
 const getClientTranslations = () => JSON.stringify(this.getClientTranslations());
 
+const getNavigation = () => {
+  return `
+    <nav class="main-navigation">
+      <a class="back icon has-interaction js-back">arrow_back</a>
+    </nav>
+  `;
+}
+
 const getImageStripe = ({ content }) => {
   const imageStack = content.images;
   const { contentTypes } = config;
@@ -552,7 +560,7 @@ const getReports = ({ content }, type) => {
     const surveyTitle = firstItem.purpose;
     const surveyKeywordList = !firstItem ? [] : firstItem.keywords.map((keyword) => `<li>${keyword.name}</li>`);
     const surveyKeywords = surveyKeywordList.length > 0 ? `<ul class="survey-keywords">${surveyKeywordList.join('')}</ul>` : '';
-    
+
     const surveyContent = report.tests.sort((a, b) => a.order - b.order).map((test) => {
       const text = this.getFormatedText(test.text.replace(/\n/g, '\n\n'), 'no-lists');
       const surveyKind = test.kind ? `<h4 class="survey-kind">${test.kind}</h4>` : '';
@@ -729,6 +737,7 @@ exports.render = function (pageData) {
   const imageDescriptionObjectInfo = getImageDescriptionObjectInfo(data);
   const citeCda = getCiteCDA(data);
   const copyright = getCopyright();
+  const navigation = getNavigation();
 
   return `<!doctype html>
   <html lang="${langCode}">
@@ -747,80 +756,80 @@ exports.render = function (pageData) {
       </script>
     </head>
     <body>
-    
-      <section class="leporello-recog">
-        ${image}
-        <div class="leporello-recog__text">
-          <div class="grid-wrapper">
-            ${header}
+      <div id="page">
+        ${navigation}
+          <section class="leporello-recog">
+          ${image}
+          <div class="leporello-recog__text">
+            <div class="grid-wrapper">
+              ${header}
+            </div>
+
+            <div class="grid-wrapper">
+              <div class="main-column">
+                <div class="copytext">
+                  ${copy}
+                </div>
+                <div class="block">
+                  ${attribution}
+                  ${dating}
+                  ${dimensions}
+                  ${signature}
+                  ${inscription}
+                  ${stamps}
+                </div>
+                <div class="block">
+                  ${location}
+                </div>
+                <div class="block">
+                  ${ids}
+                </div>
+              </div>
+
+              <div class="marginal-content">
+                ${provenance}
+                ${exhibitions}
+                ${sources}
+                ${additionalTextInformation}
+                ${partOfWork}
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div class="grid-wrapper">
-            <div class="main-column">
-              <div class="copytext">
-                ${copy}
+        <section class="leporello-explore">
+          <div class="main-image-wrap">
+            <figure class="main-image">
+              <div class="image-viewer">
+                <div id="viewer-content" class="image-viewer__content"></div>
               </div>
-              <div class="block">
-                ${attribution}
-                ${dating}
-                ${dimensions}
-                ${signature}
-                ${inscription}
-                ${stamps}
-              </div>
-              <div class="block">
-                ${location}
-              </div>
-              <div class="block">
-                ${ids}
-              </div>
-            </div>
-
-            <div class="marginal-content">
-              ${provenance}
-              ${exhibitions}
-              ${sources}
-              ${additionalTextInformation}
-              ${partOfWork}
-            </div>
+              <figcaption class="image-caption-wrap">
+                ${imageDescriptionObjectInfo}
+                <div id="image-caption" class="image-caption is-secondary has-seperator foldable-block"></div>
+              </figcaption>
+            </figure>
           </div>
-        </div>
-      </section>
-
-      <section class="leporello-explore">
-        <div class="main-image-wrap">
-          <figure class="main-image">
-            <div class="image-viewer">
-              <div id="viewer-content" class="image-viewer__content"></div>
-            </div>
-            <figcaption class="image-caption-wrap">
-              ${imageDescriptionObjectInfo}
-              <div id="image-caption" class="image-caption is-secondary has-seperator foldable-block"></div>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="explore-content">
-          ${imageStripe}
-          ${artTechExaminations}
-          ${conditionReport}
-          ${conservationReport}
-          ${relatedInContentTo}
-          ${similarTo}
-          ${belongsTo}
-          ${graphic}
-        </div>
-      </section>
-      
-      <section class="final-words">
-        <div class="text-block">
-          ${citeCda}
-        </div>
-      </section>
-
-      <footer class="main-footer">
-        ${copyright}
-      </footer>
-      
+          <div class="explore-content">
+            ${imageStripe}
+            ${artTechExaminations}
+            ${conditionReport}
+            ${conservationReport}
+            ${relatedInContentTo}
+            ${similarTo}
+            ${belongsTo}
+            ${graphic}
+          </div>
+        </section>
+          <section class="final-words">
+          <div class="text-block">
+            ${citeCda}
+          </div>
+        </section>
+          <footer class="main-footer">
+          ${copyright}
+        </footer>
+        
+      </div>
       <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4.2/build/openseadragon/openseadragon.min.js"></script>
       <script src="${this.url('/assets/scripts/main.js')}"></script>
     </body>

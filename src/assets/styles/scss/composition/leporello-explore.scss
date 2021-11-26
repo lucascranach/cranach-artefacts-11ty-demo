@@ -5,6 +5,12 @@
   border-top: solid $border-stroke-weight-s $light;
   background-color: $lighter;
 
+  padding: 
+    0 
+    var(--responsive-padding-right-left) 
+    var(--responsive-padding-bottom) 
+    0;
+
   @media only screen and (min-width: $vp-medium) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -12,12 +18,11 @@
 
   @media only screen and (min-width: $vp-xlarge) {
     display: grid;
-    gap: $l;
+    gap: var(--responsive-gap);
     grid-template-columns: 1fr $column-medium;
   }
 
   @media only screen and (min-width: $vp-xxlarge) {
-    gap: $xxl;
     grid-template-columns: 1fr $column-large;
   }
 
@@ -61,15 +66,7 @@
 // Explore Content
 // --------------------------------------------------------------------------
 .explore-content {
-  padding: $m $xl $l $m;
-
-  @media only screen and (min-width: $vp-xlarge) {
-    padding: $m $xxxl $xl 0;
-  }
-
-  @media only screen and (min-width: $vp-xxlarge) {
-    padding-right: $xxxxl;
-  }
+  padding-top: var(--responsive-padding-top);
 }
 
 // Image Stripe
@@ -82,7 +79,7 @@
     margin-bottom: $xxs;
     background-color: transparent;
     grid-auto-rows: $tile-xxxs;
-    gap: $m;
+    gap: $quad;
     grid-template-columns: repeat(auto-fill, minmax($tile-xxxs, 1fr));
     list-style: none;
 

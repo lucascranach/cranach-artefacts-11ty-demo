@@ -144,12 +144,15 @@ $radius-m: 5px;
   --responsive-padding-bottom: #{$l};
   --responsive-padding-bottom-inner: #{$m};
 
+  --responsive-gap: #{$m};
+
   @media only screen and (min-width: $vp-xlarge) {
     --responsive-padding-top: #{$xxl};
     --responsive-padding-top-inner: #{$xl};
     --responsive-padding-right-left: #{$xxl};
     --responsive-padding-bottom: #{$xxxl};
     --responsive-padding-bottom-inner: #{$xl};
+    --responsive-gap: #{$xl};
   }
 
   @media only screen and (min-width: $vp-xxlarge) {
@@ -158,6 +161,7 @@ $radius-m: 5px;
     --responsive-padding-right-left: #{$xxxxl};
     --responsive-padding-bottom: #{$xxxxl};
     --responsive-padding-bottom-inner: #{$xxl};
+    --responsive-gap: #{$xxl};
   }
 
 }

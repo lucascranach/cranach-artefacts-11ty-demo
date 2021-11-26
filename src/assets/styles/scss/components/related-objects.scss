@@ -8,7 +8,7 @@
 .related-item {
   display: flex;
   margin: 0;
-  gap: $m;
+  gap: var(--responsive-gap);
   transition: background-color $tr-fast;
 
   &:hover {
