@@ -453,8 +453,11 @@ const getImageBasePath = () => JSON.stringify(config.imageTiles);
 const getClientTranslations = () => JSON.stringify(this.getClientTranslations());
 
 const getNavigation = () => {
+  const cranachSearchURL = `${config.cranachSearchURL}/${langCode}`;
+
   return `
-    <nav class="main-navigation">
+    <nav class="main-navigation js-navigation">
+      <a class="logo js-home" href="${cranachSearchURL}">cda_</a>
       <a class="back icon has-interaction js-back">arrow_back</a>
     </nav>
   `;

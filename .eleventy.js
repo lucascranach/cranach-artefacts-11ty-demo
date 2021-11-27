@@ -7,6 +7,7 @@ const devConfig = {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2021"
   },
+  "cranachSearchURL": "https://lucascranach.org/search",
   "documentsBasePath": "https://lucascranach.org/documents",
   "contentTypes": {
     "overall": {

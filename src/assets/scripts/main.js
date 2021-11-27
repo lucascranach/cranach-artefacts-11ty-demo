@@ -363,11 +363,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     expandReduce(block, block.dataset.jsExpandable);
   });
 
-  /* Back Button
+  /* Back Button & Logo
   --------------------------------------------------------------------------  */
   const backButton = document.querySelector('.js-back');
+  const homeButton = document.querySelector('.js-home');
+  const navigation = document.querySelector('.js-navigation');
   if (history.length > 1) {
     backButton.classList.add("is-active");
+  } else {
+    homeButton.classList.add("is-active");
+    navigation.classList.add("is-loose");
   }
   
 
