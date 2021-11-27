@@ -1,27 +1,25 @@
-  // Main Footer
-  // --------------------------------------------------------------------------
+// Main Footer
+// --------------------------------------------------------------------------
 
-  .main-footer{
-    background-color: $dark;
-    color: $lighter;
-    padding: 
-      var(--responsive-padding-top-inner) 
-      var(--responsive-padding-right-left) 
-      var(--responsive-padding-bottom-inner) 
-      var(--responsive-padding-right-left);
+.main-footer {
+  display: grid;
+  padding:
+    var(--responsive-padding-top-inner)
+    var(--responsive-padding-right-left)
+    var(--responsive-padding-bottom-inner)
+    var(--responsive-padding-right-left);
+  background-color: $dark;
+  color: $lighter;
+  grid-template-columns: 1fr 1fr;
 
-    & > p{
-      margin: 0;
-    }
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  & > p {
+    margin: 0;
   }
+}
 
-  // Date
-  // --------------------------------------------------------------------------
+// Date
+// --------------------------------------------------------------------------
 
-  .date{
-    text-align: right;
-  }
-
+.date {
+  text-align: right;
+}

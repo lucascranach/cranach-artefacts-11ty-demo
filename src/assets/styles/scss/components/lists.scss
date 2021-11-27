@@ -21,40 +21,39 @@ ul {
 //-----------------------------------------------------------------------------
 
 .definition-list {
+  overflow: hidden;
   width: 100%;
   margin-top: 0;
   margin-bottom: $xs;
   font-weight: $fw-light;
-  overflow: hidden;
 
   $self: &;
 
-  &.is-grid{
+  &.is-grid {
     display: grid;
     grid-template-columns: $term-width 1fr;
   }
 
-  &:not(.is-grid):not(.is-stacked){
-    #{$self}__term{
-      float: left;
+  &:not(.is-grid):not(.is-stacked) {
+    #{$self}__term {
       clear: left;
+      float: left;
     }
   }
 
   &__term {
-    font-weight: $fw-regular;
-    line-height: $lh-normal;
     padding-right: $quad;
+    font-weight: $fw-regular;
     hyphens: none;
+    line-height: $lh-normal;
 
-    &::after{
-      content: ":"
+    &::after {
+      content: ":";
     }
   }
 
   &__definition {
     margin: 0;
-
     line-height: $lh-normal;
 
     &:last-child {
@@ -72,18 +71,17 @@ ul {
   }
 
   &__term,
-  &__definition{
+  &__definition {
     padding-bottom: $xxs;
 
-    &:last-child{
+    &:last-child {
       padding-bottom: 0;
     }
   }
 
-  &.is-stacked{
-    #{$self}__definition + #{$self}__term{
+  &.is-stacked {
+    #{$self}__definition + #{$self}__term {
       margin-top: $m;
     }
   }
-
 }

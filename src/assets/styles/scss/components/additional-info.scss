@@ -2,14 +2,14 @@
 ---------------------------------------------------------------------------- */
 
 .switchable-content-handle {
-  // background-color: $darken;
-  font-weight: $fw-bold;
-  color: $accent-dark;
   // padding: 2px $xxxs;
   display: inline-block;
   margin-left: $quad;
-  transition: background-color $tr-fast;
+  color: $accent-dark;
+  // background-color: $darken;
+  font-weight: $fw-bold;
   opacity: $op-medium;
+  transition: background-color $tr-fast;
 
   &:hover {
     // background-color: $darken-medium;
@@ -21,19 +21,19 @@
 ---------------------------------------------------------------------------- */
 
 .preview-text {
+  height: auto;
   opacity: 1;
   transition: opacity $tr-fast;
-  height: auto;
 }
 
 /* Full Text
 ---------------------------------------------------------------------------- */
 
 .full-text {
+  height: auto;
   padding-bottom: $xl;
   opacity: 1;
   transition: opacity $tr-medium, padding $tr-medium $tr-fast;
-  height: auto;
 
   &.is-cut {
     padding: 0;
@@ -77,23 +77,21 @@
 ---------------------------------------------------------------------------- */
 
 .has-additional-content {
-
   position: relative;
   overflow: hidden;
 
   $self: &;
 
   & > .preview-text {
-    transition: opacity $tr-fast;
     opacity: 1;
+    transition: opacity $tr-fast;
   }
 
   &[data-additional-content-state="is-visible"] {
-
     & > .preview-text {
       opacity: $op-low;
     }
-    #{$self}-handler{
+    #{$self}-handler {
       &::after {
         transform: rotate(180deg);
       }
@@ -103,26 +101,26 @@
   &:hover {
     cursor: pointer;
 
-    #{$self}-handler{
+    #{$self}-handler {
       &::after {
-        opacity: 1;
-        background-color: $darken;
         margin-left: $quad;
+        background-color: $darken;
+        opacity: 1;
       }
     }
   }
 
-  &-handler{
+  &-handler {
     &::after {
+      display: inline-block;
+      padding-right: $quad;
+      padding-left: $quad;
+      color: $accent-dark;
       content: "expand_more";
       font-family: $font-icons;
-      color: $accent-dark;
-      display: inline-block;
       hyphens: none;
-      padding-left: $quad;
-      padding-right: $quad;
-      transition: all $tr-fast;
       transform-origin: center;
+      transition: all $tr-fast;
       vertical-align: bottom;
     }
   }
@@ -130,23 +128,22 @@
 
 /* Additional Content
 ---------------------------------------------------------------------------- */
-.additional-content{
-
-  &__title{
+.additional-content {
+  &__title {
+    margin-top: 0;
     font-size: $m;
     font-weight: $fw-semibold;
-    margin-top: 0;
-    
-    &::after{
+
+    &::after {
+      display: inline-block;
+      padding-right: $quad;
+      padding-left: $quad;
+      color: $accent-dark;
       content: "expand_less";
       font-family: $font-icons;
-      color: $accent-dark;
-      display: inline-block;
       hyphens: none;
-      padding-left: $quad;
-      padding-right: $quad;
-      transition: all $tr-fast;
       transform-origin: center;
+      transition: all $tr-fast;
       vertical-align: bottom;
     }
   }

@@ -97,19 +97,19 @@
 // ----------------------------------------------------------------------------
 
 .info-table {
-  box-sizing: border-box;
+  position: relative;
   width: 100%;
   max-width: $column-large;
+  box-sizing: border-box;
   padding: 0;
   border: none;
   margin-bottom: $l;
   border-image-width: 0 !important;
   border-spacing: 0;
-  position: relative;
 
   $self: &;
 
-  &__title{
+  &__title {
     font-weight: $fw-regular;
   }
 
@@ -121,7 +121,7 @@
     vertical-align: top;
   }
 
-  &__data{
+  &__data {
     padding-right: $half;
   }
 
@@ -134,14 +134,14 @@
     border-top: solid $border-stroke-weight-s $darken-medium;
   }
 
-  &.is-two-third{
-    #{$self}__title{
+  &.is-two-third {
+    #{$self}__title {
       width: 33%;
       padding-left: $s;
     }
   }
 
-  &.is-tight{
+  &.is-tight {
     #{$self}__data,
     #{$self}__title,
     #{$self}__remark {

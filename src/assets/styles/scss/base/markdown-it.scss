@@ -3,8 +3,30 @@
     margin-top: 0;
   }
 
-  > *:last-child{
+  > *:last-child {
     margin-bottom: 0;
+  }
+
+  ol {
+    padding-left: 0;
+    margin-left: 0;
+    counter-reset: listCounter;
+    list-style: none;
+
+    li {
+      padding-bottom: $half;
+      padding-left: $l;
+      counter-increment: listCounter;
+
+      &::before {
+        margin-left: -$l;
+        content: counter(listCounter) ". ";
+      }
+
+      p {
+        display: inline;
+      }
+    }
   }
 
   ul {
@@ -17,28 +39,6 @@
       li {
         display: block;
         margin-left: 0;
-      }
-    }
-  }
-
-  ol {
-    margin-left: 0;
-    padding-left: 0;
-    list-style: none;
-    counter-reset: listCounter;
-
-    li {
-      counter-increment: listCounter;
-      padding-left: $l;
-      padding-bottom: $half;
-
-      &::before{
-        margin-left: -$l;
-        content: counter(listCounter) ". ";
-      }
-
-      p{
-        display: inline;
       }
     }
   }

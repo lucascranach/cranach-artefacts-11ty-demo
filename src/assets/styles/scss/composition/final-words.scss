@@ -1,22 +1,21 @@
-  // Finale Words
-  // --------------------------------------------------------------------------
+// Finale Words
+// --------------------------------------------------------------------------
 
-  .final-words{
-    background-color: $light;
-    padding: 
-      var(--responsive-padding-top) 
-      var(--responsive-padding-right-left) 
-      var(--responsive-padding-bottom) 
-      var(--responsive-padding-right-left);
+.final-words {
+  padding:
+    var(--responsive-padding-top)
+    var(--responsive-padding-right-left)
+    var(--responsive-padding-bottom)
+    var(--responsive-padding-right-left);
+  background-color: $light;
 
-    @media only screen and (min-width: $vp-xlarge) {
-      display: grid;
-      gap: var(--responsive-gap);
-      grid-template-columns: 1fr $column-medium;
-    }
-  
-    @media only screen and (min-width: $vp-xxlarge) {
-      grid-template-columns: 1fr $column-large;
-    }
+  @media only screen and (min-width: $vp-xlarge) {
+    display: grid;
+    gap: var(--responsive-gap);
+    grid-template-columns: 1fr $column-medium;
   }
 
+  @media only screen and (min-width: $vp-xxlarge) {
+    grid-template-columns: 1fr $column-large;
+  }
+}

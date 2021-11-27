@@ -1,10 +1,10 @@
-#page{
+#page {
+  overflow: auto;
   width: 100vw;
   height: 100vh;
-  overflow: auto;
   transition: margin $tr-slow, opacity $tr-medium $tr-medium;
 
-  &.is-fading{
+  &.is-fading {
     margin-left: 100vw;
     opacity: 0;
   }

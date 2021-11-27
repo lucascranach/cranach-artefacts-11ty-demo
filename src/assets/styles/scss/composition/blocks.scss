@@ -13,14 +13,12 @@
   }
 }
 
-
 // Text Block
 // --------------------------------------------------------------------------
 
-.text-block{
+.text-block {
   max-width: $column-large;
 }
-
 
 // Foldable Block
 // --------------------------------------------------------------------------
@@ -54,10 +52,10 @@
       cursor: pointer;
     }
 
-    &:hover::after{
+    &:hover::after {
       background-color: $darken-medium;
     }
-    
+
     &::after {
       position: absolute;
       top: 0;
@@ -105,7 +103,7 @@
     border-top: solid $border-stroke-weight-s $darken-medium;
   }
 
-  &.has-padding{
+  &.has-padding {
     padding-bottom: $m;
   }
 }

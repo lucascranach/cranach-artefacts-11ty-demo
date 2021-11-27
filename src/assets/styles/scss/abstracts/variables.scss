@@ -137,13 +137,12 @@ $radius-m: 5px;
 /* Adaptive Values
 ---------------------------------------------------------------------------- */
 
-:root{
+:root {
   --responsive-padding-top: #{$m};
   --responsive-padding-top-inner: #{$s};
   --responsive-padding-right-left: #{$m};
   --responsive-padding-bottom: #{$l};
   --responsive-padding-bottom-inner: #{$m};
-
   --responsive-gap: #{$m};
 
   @media only screen and (min-width: $vp-xlarge) {
@@ -163,5 +162,4 @@ $radius-m: 5px;
     --responsive-padding-bottom-inner: #{$xxl};
     --responsive-gap: #{$xxl};
   }
-
 }

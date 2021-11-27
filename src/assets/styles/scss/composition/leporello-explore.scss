@@ -2,14 +2,13 @@
 // --------------------------------------------------------------------------
 
 .leporello-explore {
+  padding:
+    0
+    var(--responsive-padding-right-left)
+    var(--responsive-padding-bottom)
+    0;
   border-top: solid $border-stroke-weight-s $light;
   background-color: $lighter;
-
-  padding: 
-    0 
-    var(--responsive-padding-right-left) 
-    var(--responsive-padding-bottom) 
-    0;
 
   @media only screen and (min-width: $vp-medium) {
     display: grid;
@@ -31,7 +30,6 @@
     background-color: $lighter;
   }
 }
-
 
 // Main Image
 // --------------------------------------------------------------------------
@@ -78,8 +76,8 @@
     padding: 0;
     margin-bottom: $xxs;
     background-color: transparent;
-    grid-auto-rows: $tile-xxxs;
     gap: $quad;
+    grid-auto-rows: $tile-xxxs;
     grid-template-columns: repeat(auto-fill, minmax($tile-xxxs, 1fr));
     list-style: none;
 

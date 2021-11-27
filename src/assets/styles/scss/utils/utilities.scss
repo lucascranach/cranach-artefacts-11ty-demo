@@ -1,5 +1,4 @@
-.has-interaction{
-
+.has-interaction {
   &:hover {
     cursor: pointer;
   }
@@ -9,13 +8,13 @@
   display: none;
 }
 
-.is-remark{
+.is-remark {
   color: $darken-strong;
 }
 
-.is-cut{
-  height: 0;
+.is-cut {
   overflow: hidden;
+  height: 0;
 }
 
 .is-visible {
@@ -27,7 +26,7 @@
   opacity: $op-medium;
 }
 
-.has-separator{
+.has-separator {
   &::before {
     display: block;
     width: $xl;
@@ -38,13 +37,13 @@
   }
 }
 
-.has-tight-separator{
+.has-tight-separator {
   &::before {
     display: block;
     width: $xl;
     border-top: solid $border-stroke-weight $accent-dark;
-    content: " ";
     margin-bottom: $s;
+    content: " ";
   }
 }
 
@@ -70,7 +69,7 @@
   }
 }
 
-.is-clipable-content{
+.is-clipable-content {
   &:hover {
     cursor: pointer;
 
@@ -81,16 +80,16 @@
   }
 
   &::after {
+    display: inline-block;
+    padding-right: $quad;
+    padding-left: $quad;
     margin-left: $quad;
+    color: $accent-dark;
     content: "content_paste";
     font-family: $font-icons;
-    color: $accent-dark;
-    vertical-align: bottom;
-    display: inline-block;
-    padding-left: $quad;
-    padding-right: $quad;
     opacity: $op-medium;
-    transition: all $tr-fast;
     transform-origin: center;
+    transition: all $tr-fast;
+    vertical-align: bottom;
   }
 }

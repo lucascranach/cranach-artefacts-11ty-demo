@@ -7,8 +7,8 @@ body {
   background-color: $darker;
   color: $darkest;
   font-family: $font-sans-serif;
-  font-weight: $fw-light;
   font-size: $m;
+  font-weight: $fw-light;
 }
 
 a {
@@ -30,15 +30,14 @@ a {
 
 .subtitle,
 .chapter {
-  font-weight: $fw-regular;
   margin-top: 0;
+  font-weight: $fw-regular;
 }
 
 .title {
   font-size: $xl;
   font-weight: $fw-semibold;
 }
-
 
 /* Text
 ---------------------------------------------------------------------------- */
@@ -48,17 +47,17 @@ th,
 td,
 dt,
 dd {
-  line-height: $lh-normal;
   hyphens: auto;
+  line-height: $lh-normal;
 }
 
 /* Headline
 ---------------------------------------------------------------------------- */
 
 h2 {
+  margin-top: 0;
   font-size: $l;
   font-weight: $fw-regular;
-  margin-top: 0;
 }
 
 h3 {
@@ -66,10 +65,9 @@ h3 {
   font-weight: $fw-bold;
 }
 
-
 /* Remarks
 ---------------------------------------------------------------------------- */
 
-.remark{
+.remark {
   color: $darken-strong;
 }

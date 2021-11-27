@@ -1,14 +1,14 @@
-.notification{
+.notification {
   position: fixed;
-  top:0;
-  left: 0;
+  z-index: $level-overlay;
+  top: 0;
   right: 0;
+  left: 0;
+  padding: $s $s;
   background-color: $accent;
   color: $darkest;
-  text-align: center;
-  padding: $s $s;
   font-size: $m;
-  z-index: $level-overlay;
-  transition: opacity $tr-medium $tr-medium;
   opacity: 0;
+  text-align: center;
+  transition: opacity $tr-medium $tr-medium;
 }
