@@ -201,6 +201,8 @@ $RECYCLE.BIN/
 
 cda-paintings-v2.de.json
 cda-paintings-v2.en.json
+cda-literaturereferences-v2.de.json
+cda-literaturereferences-v2.en.json
 compiled-assets/
 docs/
 rsync.sh

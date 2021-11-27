@@ -137,7 +137,7 @@ const getSignature = ({ content }) => {
     return { text: elements.shift(), remark: elements.join('\n') };
   });
   const label = this.translate('signature', langCode);
-  const signatureTable = signatureItems[0].text.match(/^keine$/i) ? '' : this.getRemarkDataTable('Signature', signatureItems, 'signature', label);
+  const signatureTable = signatureItems[0].text.match(/^keine$|none$/i) ? '' : this.getRemarkDataTable('Signature', signatureItems, 'signature', label);
   return !content.signature ? '' : `
     <dl id="signature" class="definition-list is-grid">
       <dt class="definition-list__term">${label}</dt>

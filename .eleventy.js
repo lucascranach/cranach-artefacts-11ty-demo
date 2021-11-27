@@ -7,6 +7,7 @@ const devConfig = {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2021"
   },
+  "cranachBaseUrl": "https://lucascranach.org",
   "cranachSearchURL": "https://lucascranach.org/search",
   "documentsBasePath": "https://lucascranach.org/documents",
   "contentTypes": {
@@ -65,11 +66,14 @@ const devConfig = {
   }
 }
 
-const paintingsDataDE = require("./src/_data/cda-paintings-v2.de.json");
-const paintingsDataEN = require("./src/_data/cda-paintings-v2.en.json");
+const paintingsData = {
+  "de": require("./src/_data/cda-paintings-v2.de.json"),
+  "en": require("./src/_data/cda-paintings-v2.en.json")
+}
 
 const literatureData = {
-  "de": require("./src/_data/cda-literaturereferences-v2.de")
+  "de": require("./src/_data/cda-literaturereferences-v2.de"),
+  "en": require("./src/_data/cda-literaturereferences-v2.en")
 };
 const translations = require("./src/_data/translations.json");
 const translationsClient = require("./src/_data/translations-client.json");
@@ -90,15 +94,29 @@ const simpleMarkdownItRenderer = new markdownIt('commonmark', {
 
 const pathPrefix = (process.env.ELEVENTY_ENV === 'production') ? "paintings" : "";
 
-const cdaBaseUrl = "https://lucascranach.org";
-
-
 const markRemarks = str => {
   const mark = (match, str) => {
     return `<span class="is-remark">[${str}]</span>`;
   }
   str = str.replace(/\[(.*)]/g, mark);
   return str;
+}
+
+const getPaintingsCollection = (lang) => {
+  const paintingsForLang = paintingsData[lang];
+  const devObjects = ["CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d"];
+  // "DE_smbGG_1907", "DE_WSCH_NONE-WSCH001A", "DE_KBG-Lost_NONE-KBG001a", "DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
+  const paintings = process.env.ELEVENTY_ENV === 'production'
+    ? paintingsForLang.items
+    : paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber));
+  
+  let sortedPaintings = paintings.sort((a, b)=>{
+    if (a.sortingNumber < b.sortingNumber) return -1;
+    if (a.sortingNumber > b.sortingNumber) return 1;
+    return 0;
+  });
+
+  return sortedPaintings;
 }
 
 const markdownify = (str, mode = 'full') => {
@@ -122,16 +140,6 @@ const appendToFile = (path, str) => {
   fs.appendFileSync(filepath, str);
 }
 
-const evaluateData = (data) => {
-  data.forEach(item => {
-    item.dimensions = item.dimensions.replace(/\n\n/g, "\n");
-    const logStr = `${item.metadata.id}:\n${item.dimensions}\n-----\n`;
-    const filename = "dimensions.txt";
-    appendToFile(filename, logStr);
-  });
-
-  return;
-}
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false);
@@ -174,7 +182,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addJavaScriptFunction("getBaseUrl", () => {
-    return cdaBaseUrl;
+    return devConfig.cranachBaseUrl;
   });
 
   eleventyConfig.addJavaScriptFunction("getConfig", () => {
@@ -313,24 +321,11 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   eleventyConfig.addCollection("paintingsDE", () => {
-    const testObjects = ["CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d"];
-    // "DE_smbGG_1907", "DE_WSCH_NONE-WSCH001A", "DE_KBG-Lost_NONE-KBG001a", "DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
-    const paintings = process.env.ELEVENTY_ENV === 'production'
-      ? paintingsDataDE.items
-      : paintingsDataDE.items.filter(item => testObjects.includes(item.inventoryNumber));
-    
-    let sortedPaintings = paintings.sort((a, b)=>{
-      if (a.sortingNumber < b.sortingNumber) return -1;
-      if (a.sortingNumber > b.sortingNumber) return 1;
-      return 0;
-    });
-
-    // evaluateData(sortedPaintings, 'dimensions');
-    return sortedPaintings;
+    return getPaintingsCollection('de');
   });
 
   eleventyConfig.addCollection("paintingsEN", () => {
-    return paintingsDataEN.items;
+    return getPaintingsCollection('en');
   });
 
 
