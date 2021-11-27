@@ -3,6 +3,13 @@ let config;
 
 const getLangCode = ({ content }) => content.metadata.langCode;
 
+const getPageDate = () => {
+  const currentDay= new Date().getDate();
+  const currentMonth = new Date().getMonth() +1;
+  const currentYear = new Date().getFullYear();
+  return `<p class="date">${this.translate('pageGenerated', langCode)} ${currentDay}.${currentMonth}.${currentYear}</p>`;
+}
+
 const getCopyright = () => {
   const currentYear = new Date().getFullYear();
   return `<p>© Stiftung Museum Kunstpalast, Düsseldorf / Technische Hochschule Köln, ${currentYear}</p>`;
@@ -737,6 +744,7 @@ exports.render = function (pageData) {
   const imageDescriptionObjectInfo = getImageDescriptionObjectInfo(data);
   const citeCda = getCiteCDA(data);
   const copyright = getCopyright();
+  const pageDate = getPageDate();
   const navigation = getNavigation();
 
   return `<!doctype html>
@@ -827,8 +835,9 @@ exports.render = function (pageData) {
         </section>
           <footer class="main-footer">
           ${copyright}
+          ${pageDate}
         </footer>
-        
+
       </div>
       <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4.2/build/openseadragon/openseadragon.min.js"></script>
       <script src="${this.url('/assets/scripts/main.js')}"></script>

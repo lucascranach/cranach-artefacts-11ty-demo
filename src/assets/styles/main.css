@@ -513,7 +513,7 @@ i.icon.red {
 }
 
 body {
-  background-color: #fff;
+  background-color: #222;
   color: #000;
   font-family: "IBMPlexSans", sans-serif;
   font-weight: 200;
@@ -1073,14 +1073,14 @@ ul.simple li {
 }
 
 .image-caption-wrap {
-  padding: var(--responsive-padding-top-inner) 0 0 var(--responsive-padding-right-left);
+  padding-top: var(--responsive-padding-top-inner);
+  padding-left: var(--responsive-padding-right-left);
 }
 @media only screen and (min-width: 1800px) {
   .image-caption-wrap {
     display: grid;
     gap: var(--responsive-gap);
     grid-template-columns: 27rem 1fr;
-    padding-bottom: 1.17rem;
   }
 }
 
@@ -1426,6 +1426,7 @@ ul.simple li {
 }
 
 .main-navigation {
+  background-color: #fff;
   padding: var(--responsive-padding-top-inner) var(--responsive-padding-right-left) var(--responsive-padding-bottom-inner) var(--responsive-padding-right-left);
 }
 

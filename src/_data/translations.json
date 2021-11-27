@@ -391,6 +391,9 @@
   "example":{
     "de":"Beispiel",
     "en": "Example"
+  },
+  "pageGenerated": {
+    "de": "Erzeugt am",
+    "en": "created on"
   }
-
 }

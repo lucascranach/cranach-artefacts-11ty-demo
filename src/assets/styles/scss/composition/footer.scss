@@ -13,5 +13,15 @@
     & > p{
       margin: 0;
     }
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  // Date
+  // --------------------------------------------------------------------------
+
+  .date{
+    text-align: right;
   }
 
