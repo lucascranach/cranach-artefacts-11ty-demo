@@ -3,6 +3,24 @@ let config;
 
 const getLangCode = ({ content }) => content.metadata.langCode;
 
+const getMetaDataHead = ({content}) => {
+  const descLength = 150;
+  const title = content.metadata.title.replace(/"/g, '\'');
+  const url = content.url;
+  const image = content.metadata.imgSrc;
+  const desc = content.description.length > descLength
+    ? `${content.description.substr(0, descLength)} … `
+    : content.description;
+  
+  return `
+    <meta property="og:title" content="${title}" />
+    <meta property="og:description" content="${desc}" />
+    <meta property="og:url" content="${url}" />
+    <meta property="og:image" content="${image}" />
+    <meta name="description" content="${desc}">
+  `;
+}
+
 const getPageDate = () => {
   const currentDay= new Date().getDate();
   const currentMonth = new Date().getMonth() +1;
@@ -278,6 +296,7 @@ const getDimensions = ({ content }) => {
     ${dimensionsTable}
   `;
 };
+
 
 const getCopyText = ({ content }) => {
   const numberOfWords = 50;
@@ -749,13 +768,15 @@ exports.render = function (pageData) {
   const copyright = getCopyright();
   const pageDate = getPageDate();
   const navigation = getNavigation();
+  const metaDataHead = getMetaDataHead(data);
 
-  return `<!doctype html>
+  return `<!doctype html> 
   <html lang="${langCode}">
     <head>
       <title>cda :: ${this.translate('paintings', langCode)} :: ${documentTitle}</title>
-      ${this.meta()}
-      <link href="${this.url('/assets/main.css')}" rel="stylesheet">
+      ${metaDataHead}
+      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
+      <link href="${this.url('/compiled-assets/main.css')}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
       <script>
         const langCode = "${langCode}";

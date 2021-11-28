@@ -150,7 +150,7 @@ class ImageViewer {
   showImage(type, id, trigger) {
     const img = imageStack[type].images.filter((image) => image.id === id).shift();
     const initialUrl = img.sizes.tiles.src;
-    const url = env === 'development' ? this.adaptUrl(initialUrl) : initialUrl;
+    const url = env.match(/development/) ? this.adaptUrl(initialUrl) : initialUrl;
 
     if (trigger) this.handleTrigger(trigger);
     this.setCaption(img);

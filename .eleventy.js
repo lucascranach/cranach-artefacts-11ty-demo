@@ -149,7 +149,8 @@ module.exports = function (eleventyConfig) {
     ########################################################################## */
 
   // Watch our compiled assets for changes
-  eleventyConfig.addWatchTarget('./src/compiled-assets/main.css');
+  // eleventyConfig.addWatchTarget('./src/styles/scss');
+  // eleventyConfig.addWatchTarget('./src/compiled-assets/main.css');
   eleventyConfig.addWatchTarget('./src/assets/scripts/main.js');
 
   // Copy _data
@@ -157,7 +158,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./src/_data");
 
   // Copy src/compiled-assets to /assets
-  eleventyConfig.addPassthroughCopy({ 'src/compiled-assets': 'assets' });
+  // eleventyConfig.addPassthroughCopy({ 'src/compiled-assets/main.css': 'assets' });
+  eleventyConfig.addPassthroughCopy('src/compiled-assets');
+  // eleventyConfig.addWatchTarget('./src/compiled-assets');
 
   // Copy all fonts
   eleventyConfig.addPassthroughCopy({ 'src/assets/fonts': 'assets/fonts' });
@@ -325,21 +328,14 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("paintingsEN", () => {
-    return getPaintingsCollection('en');
+    return process.env.ELEVENTY_ENV === 'developmentDE' ? [] : getPaintingsCollection('en');
   });
 
 
   /* Shortcodes
   ########################################################################## */
 
-  eleventyConfig.addShortcode('meta', () => {
-    return `<meta name="robots" content="noindex">
-    <meta name="googlebot" content="noindex">
-    <meta name="googlebot-news" content="noindex">
-    <meta charset="utf-8">
-`});
-
-
+  
   /* Environment
   ########################################################################## */
 
