@@ -1,25 +1,10 @@
 let langCode;
 let config;
 
+const metaDataHeader = require("./components/meta-data-head");
+
 const getLangCode = ({ content }) => content.metadata.langCode;
 
-const getMetaDataHead = ({content}) => {
-  const descLength = 150;
-  const title = content.metadata.title.replace(/"/g, '\'');
-  const url = content.url;
-  const image = content.metadata.imgSrc;
-  const desc = content.description.length > descLength
-    ? `${content.description.substr(0, descLength)} … `
-    : content.description;
-  
-  return `
-    <meta property="og:title" content="${title}" />
-    <meta property="og:description" content="${desc}" />
-    <meta property="og:url" content="${url}" />
-    <meta property="og:image" content="${image}" />
-    <meta name="description" content="${desc}">
-  `;
-}
 
 const getPageDate = () => {
   const currentDay= new Date().getDate();
@@ -47,6 +32,18 @@ const getCiteCDA = () => {
       <dt class="definition-list__term">${citeWithoutAutor}</dt>
       <dd class="definition-list__definition">${citeWithoutAutorText}</dd>
     </dl>
+  `;
+};
+
+const getImproveCDA = () => {
+  const issueUrls = config.issueReportUrl;
+  const improveCdaHeadline = this.translate('improveCdaHeadline', langCode);
+  const contactUs = this.translate('contactUs', langCode);
+  const youHaveAdditionalInformation = this.translate('youHaveAdditionalInformation', langCode);
+  const foundABug = this.translate('foundABug', langCode);
+  return `
+    <h2>${improveCdaHeadline}</h2>
+    <p>${contactUs} <a href="${issueUrls.functionalBug}" target="_blank">${foundABug}</a> <a href="${issueUrls.contentBug}" target="_blank">${youHaveAdditionalInformation}</a></p>
   `;
 };
 
@@ -314,16 +311,25 @@ const getCopyText = ({ content }) => {
   return !content.description ? '' : text;
 };
 
-const getLocation = ({ content }) => `
+const getLocation = ({ content }) => {
+  
+  const location = !content.locations[0].term
+    ? ''
+    : `
+      <dt class="definition-list__term">${this.translate('location', langCode)}</dt>
+      <dd class="definition-list__definition">${content.locations[0].term}</dd>
+    `;
+  return `
     <dl class="definition-list is-grid">
       <dt class="definition-list__term">${this.translate('owner', langCode)}</dt>
       <dd class="definition-list__definition">${content.owner}</dd>
       <dt class="definition-list__term">${this.translate('repository', langCode)}</dt>
       <dd class="definition-list__definition">${content.repository}</dd>
-      <dt class="definition-list__term">${this.translate('location', langCode)}</dt>
-      <dd class="definition-list__definition">${content.locations[0].term}</dd>
+      ${location}
+
     </dl>
   `;
+}
 
 const getImageDescriptionObjectInfo = ({ content }) => {
   const date = content.metadata.date ? `, ${content.metadata.date}` : '';
@@ -765,10 +771,12 @@ exports.render = function (pageData) {
   const partOfWork = getReference(data, PART_OF_WORK, true);
   const imageDescriptionObjectInfo = getImageDescriptionObjectInfo(data);
   const citeCda = getCiteCDA(data);
+  const improveCda = getImproveCDA(data);
   const copyright = getCopyright();
   const pageDate = getPageDate();
   const navigation = getNavigation();
-  const metaDataHead = getMetaDataHead(data);
+  const metaDataHead = metaDataHeader.getHeader(data);
+
 
   return `<!doctype html> 
   <html lang="${langCode}">
@@ -855,6 +863,9 @@ exports.render = function (pageData) {
           <section class="final-words">
           <div class="text-block">
             ${citeCda}
+          </div>
+          <div class="text-block">
+            ${improveCda}
           </div>
         </section>
           <footer class="main-footer">

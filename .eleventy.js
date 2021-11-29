@@ -7,6 +7,10 @@ const devConfig = {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2021"
   },
+  "issueReportUrl": {
+    "functionalBug": "https://github.com/lucascranach/cda-orga/issues/new?assignees=cnoss&labels=bug&template=functional-bug.yml&title=%5BFunctional+Bug%5D%3A+",
+    "contentBug": "https://github.com/lucascranach/cda-orga/issues/new?assignees=cnoss&labels=Content&template=extra-information.yml&title=%5BIMPROVEMENT%5D%3A+",
+  },
   "cranachBaseUrl": "https://lucascranach.org",
   "cranachSearchURL": "https://lucascranach.org/search",
   "documentsBasePath": "https://lucascranach.org/documents",
@@ -83,7 +87,7 @@ const markdownItRenderer = new markdownIt('commonmark', {
   breaks: true,
   linkify: true,
   typographer: true
-}).disable(['list']);
+});
 
 const simpleMarkdownItRenderer = new markdownIt('commonmark', {
   html: true,
@@ -104,7 +108,7 @@ const markRemarks = str => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d"];
+  const devObjects = ["AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d"];
   // "DE_smbGG_1907", "DE_WSCH_NONE-WSCH001A", "DE_KBG-Lost_NONE-KBG001a", "DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
   const paintings = process.env.ELEVENTY_ENV === 'production'
     ? paintingsForLang.items
@@ -148,17 +152,15 @@ module.exports = function (eleventyConfig) {
   /* Compilation
     ########################################################################## */
 
-  // Watch our compiled assets for changes
-  // eleventyConfig.addWatchTarget('./src/styles/scss');
-  // eleventyConfig.addWatchTarget('./src/compiled-assets/main.css');
+  // Watch our js for changes
   eleventyConfig.addWatchTarget('./src/assets/scripts/main.js');
+  eleventyConfig.addWatchTarget('./src/_layouts/components/');
 
   // Copy _data
   eleventyConfig.addPassthroughCopy({ 'src/_data': 'assets/data' });
   eleventyConfig.addWatchTarget("./src/_data");
 
-  // Copy src/compiled-assets to /assets
-  // eleventyConfig.addPassthroughCopy({ 'src/compiled-assets/main.css': 'assets' });
+  // Watch our compiled assets for changes
   eleventyConfig.addPassthroughCopy('src/compiled-assets');
   // eleventyConfig.addWatchTarget('./src/compiled-assets');
 
@@ -191,7 +193,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addJavaScriptFunction("getConfig", () => {
     return devConfig;
   });
-  
 
   eleventyConfig.addJavaScriptFunction("getLitRef", (ref, lang) => {
     const literatureReference = literatureData[lang].items.filter(item => item.referenceId === ref);
@@ -298,8 +299,8 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   eleventyConfig.addFilter("markdownify", (str) => {
-    str = markRemarks(str);
-    return markdownify(str);
+    str =  markdownify(str);
+    return markRemarks(str);
   });
 
   eleventyConfig.addFilter("altText", (str) => {
@@ -335,7 +336,7 @@ module.exports = function (eleventyConfig) {
   /* Shortcodes
   ########################################################################## */
 
-  
+
   /* Environment
   ########################################################################## */
 

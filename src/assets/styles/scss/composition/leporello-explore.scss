@@ -12,12 +12,11 @@
 
   @media only screen and (min-width: $vp-medium) {
     display: grid;
+    gap: var(--responsive-gap);
     grid-template-columns: 1fr 1fr;
   }
 
   @media only screen and (min-width: $vp-xlarge) {
-    display: grid;
-    gap: var(--responsive-gap);
     grid-template-columns: 1fr $column-medium;
   }
 
@@ -65,6 +64,10 @@
 // --------------------------------------------------------------------------
 .explore-content {
   padding-top: var(--responsive-padding-top);
+
+  @media only screen and (max-width: $vp-medium) {
+    margin-left: $m;
+  }
 }
 
 // Image Stripe

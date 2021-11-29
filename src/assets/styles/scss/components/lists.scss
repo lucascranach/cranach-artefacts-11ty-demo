@@ -24,7 +24,7 @@ ul {
   overflow: hidden;
   width: 100%;
   margin-top: 0;
-  margin-bottom: $xs;
+  margin-bottom: 0;
   font-weight: $fw-light;
 
   $self: &;
@@ -35,6 +35,8 @@ ul {
   }
 
   &:not(.is-grid):not(.is-stacked) {
+    margin-bottom: $xs;
+
     #{$self}__term {
       clear: left;
       float: left;
