@@ -1,7 +1,7 @@
 let langCode;
 let config;
 
-const metaDataHeader = require("./components/meta-data-head");
+const metaDataHeader = require("./components/meta-data-head.11ty");
 
 const getLangCode = ({ content }) => content.metadata.langCode;
 

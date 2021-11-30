@@ -106,6 +106,15 @@ const markRemarks = str => {
   return str;
 }
 
+const clearRequireCache = () => {
+  
+  Object.keys(require.cache).forEach(function (key) {
+    if (require.cache[key].filename.match(/11ty\.js/)) {
+      delete require.cache[key];
+    }
+  });  
+}
+
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
   const devObjects = ["AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d"];
@@ -146,15 +155,18 @@ const appendToFile = (path, str) => {
 
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.setWatchThrottleWaitTime(100);
   eleventyConfig.setUseGitIgnore(false);
   eleventyConfig.setWatchJavaScriptDependencies(true);
-
+  eleventyConfig.setBrowserSyncConfig({
+    snippet: true,
+  });
   /* Compilation
     ########################################################################## */
 
   // Watch our js for changes
   eleventyConfig.addWatchTarget('./src/assets/scripts/main.js');
-  eleventyConfig.addWatchTarget('./src/_layouts/components/');
+  // eleventyConfig.addWatchTarget('./src/_layouts/components/');
 
   // Copy _data
   eleventyConfig.addPassthroughCopy({ 'src/_data': 'assets/data' });
@@ -325,6 +337,7 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   eleventyConfig.addCollection("paintingsDE", () => {
+    clearRequireCache();
     return getPaintingsCollection('de');
   });
 

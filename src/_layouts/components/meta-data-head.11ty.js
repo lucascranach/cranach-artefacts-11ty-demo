@@ -9,7 +9,7 @@ exports.getHeader = ({ content }) => {
     : content.description;
 
   return `
-    <meta property="og:title" content="DD${title}" />
+    <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${desc}" />
     <meta property="og:url" content="${url}" />
     <meta property="og:image" content="${image}" />
