@@ -401,8 +401,8 @@
     "en": "have some extra information about this object."
   },
   "foundABug":{
-    "de": "Sie einen Fehler bemerkt oder",
-    "en": "you have noticed a mistake or"
+    "de": "Sie einen Fehler bemerkt",
+    "en": "you have noticed a mistake"
   },
   "contactUs":{
     "de": "Bitte kontaktieren Sie uns, wenn",
@@ -411,5 +411,13 @@
   "improveCdaHeadline":{
     "de": "Helfen Sie uns das Cranach Digital Archive zu verbessern.",
     "en": "Help us to improve the Cranach Digital Archive."
+  },
+  "or":{
+    "de": "oder",
+    "en": "or"
+  },
+  "physicalDescription":{
+    "de": "Buchformat",
+    "en": "Book format"
   }
 }

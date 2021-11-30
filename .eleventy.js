@@ -3,14 +3,15 @@ const markdownIt = require('markdown-it');
 const fs = require('fs');
 
 const config = {
-  "generatePaintings": false,
+  "generatePaintings": true,
+  "generateGraphicsRealObjects": true,
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2021"
   },
   "issueReportUrl": {
-    "functionalBug": "https://github.com/lucascranach/cda-orga/issues/new?assignees=cnoss&labels=bug&template=functional-bug.yml&title=%5BFunctional+Bug%5D%3A+",
-    "contentBug": "https://github.com/lucascranach/cda-orga/issues/new?assignees=cnoss&labels=Content&template=extra-information.yml&title=%5BIMPROVEMENT%5D%3A+",
+    "functionalBug": "https://github.com/lucascranach/cda-orga/issues/new?assignees=cnoss&labels=bug&template=functional-bug.yml&title={url}&body:ssue_form_url={url}",
+    "contentBug": "https://github.com/lucascranach/cda-orga/issues/new?assignees=cnoss&labels=Content&template=extra-information.yml&title={url}&body:issue_form_url={url}",
   },
   "cranachBaseUrl": "https://lucascranach.org",
   "cranachSearchURL": "https://lucascranach.org/search",
@@ -76,6 +77,11 @@ const paintingsData = {
   "en": require("./src/_data/cda-paintings-v2.en.json")
 }
 
+const graphicsRealObjectData = {
+  "de": require("./src/_data/cda-graphics-v2.real.de.json"),
+  "en": require("./src/_data/cda-graphics-v2.real.en.json")
+}
+
 const literatureData = {
   "de": require("./src/_data/cda-literaturereferences-v2.de"),
   "en": require("./src/_data/cda-literaturereferences-v2.en")
@@ -131,6 +137,23 @@ const getPaintingsCollection = (lang) => {
   });
 
   return sortedPaintings;
+}
+
+const getGraphicsRealObjectsCollection = (lang) => {
+  const graphicsRealObjectsForLang = graphicsRealObjectData[lang];
+  const devObjects = ["DE_SMBKSK_66-1898"];
+
+  const graphicsRealObjects = process.env.ELEVENTY_ENV === 'production'
+    ? graphicsRealObjectsForLang.items
+    : graphicsRealObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber));
+  
+  let sortedGraphicsRealObjects = graphicsRealObjects.sort((a, b)=>{
+    if (a.sortingNumber < b.sortingNumber) return -1;
+    if (a.sortingNumber > b.sortingNumber) return 1;
+    return 0;
+  });
+
+  return sortedGraphicsRealObjects;
 }
 
 const markdownify = (str, mode = 'full') => {
@@ -340,8 +363,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("paintingsDE", () => {
     clearRequireCache();
     const paintingsCollectionDE = !config.generatePaintings
-    ? []
-    : getPaintingsCollection('de')
+      ? []
+      : getPaintingsCollection('de');
     return paintingsCollectionDE;
   });
 
@@ -351,6 +374,15 @@ module.exports = function (eleventyConfig) {
       : process.env.ELEVENTY_ENV === 'developmentDE' ? [] : getPaintingsCollection('en');
     return paintingsCollectionEN;
   });
+
+
+  eleventyConfig.addCollection("graphicsRealObjectsDE", () => {
+    const graphicsRealObjectsDE = !config.generateGraphicsRealObjects
+      ? []
+      : getGraphicsRealObjectsCollection('de');
+    return graphicsRealObjectsDE;
+  });
+  
 
 
   /* Shortcodes

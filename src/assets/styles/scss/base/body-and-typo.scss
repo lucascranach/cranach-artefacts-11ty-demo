@@ -16,6 +16,19 @@ a {
   text-decoration: none;
 }
 
+a[target=_blank] {
+  display: inline-block;
+  border-bottom: dotted $border-stroke-weight-s $accent;
+  font-weight: $fw-semibold;
+  transition: background $tr-fast, padding $tr-fast;
+
+  &:hover {
+    padding-right: $quad;
+    padding-left: $quad;
+    background-color: $accent;
+  }
+}
+
 /* Title & Subtitle
 ---------------------------------------------------------------------------- */
 

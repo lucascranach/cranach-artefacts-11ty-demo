@@ -36,6 +36,8 @@ const getCiteCDA = () => {
   `;
 };
 
+
+
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
 const getTitle = (content) => {
@@ -753,11 +755,11 @@ exports.render = function (pageData) {
   const conditionReport = getReports(data, CONDITION_REPORT);
   const conservationReport = getReports(data, CONSERVATION_REPORT);
   const additionalTextInformation = getAdditionalTextInformation(data);
-  const relatedInContentTo = getReference(data, RELATED_IN_CONTENT_TO);
-  const similarTo = getReference(data, SIMILAR_TO);
-  const belongsTo = getReference(data, BELONGS_TO);
-  const graphic = getReference(data, GRAPHIC);
-  const partOfWork = getReference(data, PART_OF_WORK, true);
+  const relatedInContentTo = ""; // getReference(data, RELATED_IN_CONTENT_TO);
+  const similarTo = ""; // getReference(data, SIMILAR_TO);
+  const belongsTo = ""; // getReference(data, BELONGS_TO);
+  const graphic = ""; // getReference(data, GRAPHIC);
+  const partOfWork = ""; // getReference(data, PART_OF_WORK, true);
   const imageDescriptionObjectInfo = getImageDescriptionObjectInfo(data);
   const citeCda = getCiteCDA(data);
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
@@ -770,7 +772,7 @@ exports.render = function (pageData) {
   return `<!doctype html> 
   <html lang="${langCode}">
     <head>
-      <title>cda :: ${this.translate('paintings', langCode)} :: ${documentTitle}</title>
+      <title>cda :: ${this.translate('prints', langCode)} :: ${documentTitle}</title>
       ${metaDataHead}
       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
       <link href="${this.url('/compiled-assets/main.css')}" rel="stylesheet">

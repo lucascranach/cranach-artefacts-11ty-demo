@@ -59,3 +59,12 @@
     content: " ";
   }
 }
+
+@mixin external-link() {
+  display: inline-block;
+  margin-left: $quad;
+  color: $accent-dark;
+  content: "link";
+  font-family: $font-icons;
+  vertical-align: bottom;
+}
