@@ -2,7 +2,8 @@ const htmlmin = require('html-minifier');
 const markdownIt = require('markdown-it');
 const fs = require('fs');
 
-const devConfig = {
+const config = {
+  "generatePaintings": false,
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2021"
@@ -199,11 +200,11 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addJavaScriptFunction("getBaseUrl", () => {
-    return devConfig.cranachBaseUrl;
+    return config.cranachBaseUrl;
   });
 
   eleventyConfig.addJavaScriptFunction("getConfig", () => {
-    return devConfig;
+    return config;
   });
 
   eleventyConfig.addJavaScriptFunction("getLitRef", (ref, lang) => {
@@ -338,11 +339,17 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("paintingsDE", () => {
     clearRequireCache();
-    return getPaintingsCollection('de');
+    const paintingsCollectionDE = !config.generatePaintings
+    ? []
+    : getPaintingsCollection('de')
+    return paintingsCollectionDE;
   });
 
   eleventyConfig.addCollection("paintingsEN", () => {
-    return process.env.ELEVENTY_ENV === 'developmentDE' ? [] : getPaintingsCollection('en');
+    const paintingsCollectionEN = !config.generatePaintings
+      ? []
+      : process.env.ELEVENTY_ENV === 'developmentDE' ? [] : getPaintingsCollection('en');
+    return paintingsCollectionEN;
   });
 
 
