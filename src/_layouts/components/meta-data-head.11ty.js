@@ -9,6 +9,7 @@ exports.getHeader = ({ content }) => {
     : content.description;
 
   return `
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${desc}" />
     <meta property="og:url" content="${url}" />

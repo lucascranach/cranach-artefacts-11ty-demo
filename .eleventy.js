@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const config = {
   "generatePaintings": true,
-  "generateGraphicsRealObjects": true,
+  "generateGraphicsRealObjects": false,
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2021"
@@ -362,16 +362,16 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("paintingsDE", () => {
     clearRequireCache();
-    const paintingsCollectionDE = !config.generatePaintings
+    const paintingsCollectionDE = config.generatePaintings === false
       ? []
       : getPaintingsCollection('de');
     return paintingsCollectionDE;
   });
 
   eleventyConfig.addCollection("paintingsEN", () => {
-    const paintingsCollectionEN = !config.generatePaintings
+    const paintingsCollectionEN = config.generatePaintings === false || process.env.ELEVENTY_ENV === 'developmentDE'
       ? []
-      : process.env.ELEVENTY_ENV === 'developmentDE' ? [] : getPaintingsCollection('en');
+      : getPaintingsCollection('en');
     return paintingsCollectionEN;
   });
 
