@@ -55,11 +55,12 @@ ul {
   }
 
   &__definition {
+    padding-bottom: $half;
     margin: 0;
     line-height: $lh-normal;
 
     &:last-child {
-      border-bottom: none;
+      // border-bottom: none;
     }
 
     &.is-block {
@@ -75,10 +76,6 @@ ul {
   &__term,
   &__definition {
     padding-bottom: $xxs;
-
-    &:last-child {
-      padding-bottom: 0;
-    }
   }
 
   &.is-stacked {

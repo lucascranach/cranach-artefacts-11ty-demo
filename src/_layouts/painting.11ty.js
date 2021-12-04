@@ -3,28 +3,27 @@ let config;
 
 const metaDataHeader = require("./components/meta-data-head.11ty");
 const improveCda = require("./components/improve-cda.11ty");
-const pageDateSnippet = require("./components/pageDate.11ty");
+const pageDateSnippet = require("./components/page-date.11ty");
 const copyrightSnippet = require("./components/copyright.11ty");
-const citeCdaSnippet = require("./components/citeCda.11ty");
+const citeCdaSnippet = require("./components/cite-cda.11ty");
 const titleSnippet = require("./components/title.11ty");
 const mediumSnippet = require("./components/medium.11ty");
-const representantImageSnippet = require("./components/representantImage.11ty");
+const representantImageSnippet = require("./components/representant-image.11ty");
 const attributionSnippet = require("./components/attribution.11ty");
 const datingSnippet = require("./components/dating.11ty");
 const signatureSnippet = require("./components/signature.11ty");
-const inscriptionsSnippet = require("./components/inscriptions.11ty");
-const stampsSnippet = require("./components/stamps.11ty");
+const inscriptionsAndLabelsSnippet = require("./components/inscriptions-and-labels.11ty");
 const dimensionsSnippet = require("./components/dimensions.11ty");
 const descriptionSnippet = require("./components/description.11ty");
 const locationSnippet = require("./components/location.11ty");
-const imageDescriptionSnippet = require("./components/imageDescription.11ty");
+const imageDescriptionSnippet = require("./components/image-description.11ty");
 const exhibitonsSnippet = require("./components/exhibitons.11ty");
 const identificationSnippet = require("./components/identification.11ty");
 const provenanceSnippet = require("./components/provenance.11ty");
 const sourcesSnippet = require("./components/sources.11ty");
-const imageStripeSnippet = require("./components/imageStripe.11ty");
+const imageStripeSnippet = require("./components/image-stripe.11ty");
 const reportsSnippet = require("./components/reports.11ty");
-const additionalTextInformationSnippet = require("./components/additionalTextInformation.11ty");
+const additionalTextInformationSnippet = require("./components/additional-text-information.11ty");
 const referencesSnippet = require("./components/references.11ty");
 
 const ART_TECH_EXAMINATION = 'ArtTechExamination';
@@ -103,8 +102,15 @@ exports.render = function (pageData) {
   data.content.url = `${this.getBaseUrl()}${data.page.url}`;
 
   this.log(data);
+  
   const documentTitle = getDocumentTitle(data);
   const header = getHeader(data);
+  const navigation = getNavigation();
+  const imageStack = getImageStack(data);
+  const imageBasePath = getImageBasePath(data);
+  const translationsClient = getClientTranslations(data);
+
+  const metaDataHead = metaDataHeader.getHeader(data);
   const image = representantImageSnippet.getRepresentant(this, data);
   const copy = descriptionSnippet.getCopyText(this, data, langCode);
   const dating = datingSnippet.getDating(this, data, langCode);
@@ -112,15 +118,11 @@ exports.render = function (pageData) {
   const attribution = attributionSnippet.getAttribution(this, data, langCode);
   const location = locationSnippet.getLocation(this, data, langCode);
   const signature = signatureSnippet.getSignature(this, data, langCode);
-  const inscription = inscriptionsSnippet.getInscriptions(this, data, langCode);
-  const stamps = stampsSnippet.getStamps(this, data, langCode);
+  const inscriptionsAndLabels = inscriptionsAndLabelsSnippet.getInscriptionsAndLabels(this, data, langCode);
   const ids = identificationSnippet.getIds(this, data, langCode);
   const exhibitions = exhibitonsSnippet.getExhibitions(this, data, langCode);
   const provenance = provenanceSnippet.getProvenance(this, data, langCode);
   const sources = sourcesSnippet.getSources(this, data, langCode);
-  const imageStack = getImageStack(data);
-  const imageBasePath = getImageBasePath(data);
-  const translationsClient = getClientTranslations(data);
   const imageStripe = imageStripeSnippet.getImageStripe(this, data, langCode, config);
   const artTechExaminations = reportsSnippet.getReports(this, data, langCode, config, ART_TECH_EXAMINATION);
   const conditionReport = reportsSnippet.getReports(this, data, langCode, config, CONDITION_REPORT);
@@ -136,8 +138,7 @@ exports.render = function (pageData) {
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
   const copyright = copyrightSnippet.getCopyright();
   const pageDate = pageDateSnippet.getPageDate(this, langCode);
-  const navigation = getNavigation();
-  const metaDataHead = metaDataHeader.getHeader(data);
+
 
 
   return `<!doctype html> 
@@ -177,8 +178,7 @@ exports.render = function (pageData) {
                   ${dating}
                   ${dimensions}
                   ${signature}
-                  ${inscription}
-                  ${stamps}
+                  ${inscriptionsAndLabels}
                 </div>
                 <div class="block">
                   ${location}

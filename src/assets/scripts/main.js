@@ -273,16 +273,16 @@ class AdditionalContent {
   toggleContent() {
     if (this.state === 'is-cut') {
       this.expandElement(this.element);
-      this.collapseElement(this.relatedElement);
-
-      /* this.relatedElement.dataset.additionalContentState = "is-visible"; */
+      this.relatedElement.classList.add("is-hidden");
       this.state = 'is-expanded';
+      this.relatedElement.dataset.additionalContentState = this.state;
+      this.element.classList.remove("is-cut");
     } else {
-      this.expandElement(this.relatedElement);
       this.collapseElement(this.element);
-      /* this.element.classList.add("is-hidden");
-      this.relatedElement.dataset.additionalContentState = "is-hidden"; */
+      this.relatedElement.classList.remove("is-hidden");
       this.state = 'is-cut';
+      this.relatedElement.dataset.additionalContentState = this.state;
+      this.element.classList.add("is-cut");
     }
   }
 

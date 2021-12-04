@@ -71,11 +71,15 @@
     "de": "Inschriften, Wappen",
     "en": "Inscriptions, Badges"
   },
+  "inscriptionsOuterHeadline": {
+    "de": "Inschriften und Beschriftungen",
+    "en": "Inscriptions and Labels"
+  },
   "stamps": {
     "de": "Stempel, Siegel, Beschriftungen",
     "en": "Stamps, Seals, Labels"
   },
-  "stampsInnerHeadline": {
+  "labelsInnerHeadline": {
     "de": "Stempel, Siegel, Beschriftungen",
     "en": "Stamps, Seals, Labels"
   },

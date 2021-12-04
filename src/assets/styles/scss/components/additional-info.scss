@@ -129,6 +129,8 @@
 /* Additional Content
 ---------------------------------------------------------------------------- */
 .additional-content {
+  transition: padding $tr-fast;
+
   &__title {
     margin-top: 0;
     font-size: $m;
@@ -148,6 +150,8 @@
     }
   }
 
-  &__table{
+  &:not(.is-cut) {
+    padding-top: $l;
+    padding-bottom: $xl;
   }
 }

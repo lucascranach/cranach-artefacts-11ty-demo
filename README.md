@@ -32,3 +32,5 @@ presentations       Content, und zwar pro Slidedeck ein Ordner
 `npm run build` 
 `npm run dev` 
 
+
+Inschriften und Beschriftungen

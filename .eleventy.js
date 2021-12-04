@@ -269,6 +269,21 @@ module.exports = function (eleventyConfig) {
     `;
   });
 
+  eleventyConfig.addJavaScriptFunction("getDataList", (id, data, hideElement, title) => {
+    const items = data.map(item => {
+      return `<li class="info-list__item">${markdownify(item)}</li>`;
+    });
+
+    return items.length === 0 ? '' : `
+      <div id="completeData${id}" class="additional-content js-additional-content" data-is-additional-content-to="${hideElement}">
+        <h2 class="additional-content__title js-collapse-additional-content has-interaction">${title}</h2>
+        <ul class="info-list additional-content__list">
+          ${items.join("")}
+        </ul>
+      </div>
+    `;
+  });
+
   eleventyConfig.addJavaScriptFunction("getStructuredDataFromString", (str) => {
     const lines = str.split(/\n/s);
     const structuredData = [];
@@ -374,7 +389,6 @@ module.exports = function (eleventyConfig) {
       : getPaintingsCollection('en');
     return paintingsCollectionEN;
   });
-
 
   eleventyConfig.addCollection("graphicsRealObjectsDE", () => {
     const graphicsRealObjectsDE = !config.generateGraphicsRealObjects
