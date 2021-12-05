@@ -2,6 +2,8 @@ const htmlmin = require('html-minifier');
 const markdownIt = require('markdown-it');
 const fs = require('fs');
 
+const partOfWorkPendants = {};
+
 const config = {
   "generatePaintings": true,
   "generateGraphicsRealObjects": false,
@@ -221,6 +223,16 @@ module.exports = function (eleventyConfig) {
     }
     return translations[term][lang];
   });
+
+  eleventyConfig.addJavaScriptFunction("addToPartOfWorkPendant", (id, refId) => {
+    if (!partOfWorkPendants[refId]) { partOfWorkPendants[refId] = []; }
+    partOfWorkPendants[refId].push({ "inventoryNumber": id, "kind": "PART_OF_WORK" });
+  });
+
+  eleventyConfig.addJavaScriptFunction("getPartOfWorkPendants", (id) => {
+    return partOfWorkPendants[id] ? partOfWorkPendants[id] : [];
+  });
+  
 
   eleventyConfig.addJavaScriptFunction("getBaseUrl", () => {
     return config.cranachBaseUrl;
