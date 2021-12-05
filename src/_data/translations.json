@@ -364,6 +364,14 @@
     "de": "Grafik",
     "en": "Graphic Art"
   },
+  "masterData":{
+    "de":"Werkdaten",
+    "en": "Master Data"
+  },
+  "classification":{
+    "de":"Klassifikation",
+    "en":"Classification"
+  },
   "PART_OF_WORK":{
     "de": "Zugehörige Werke",
     "en": "Connected Works"
@@ -423,5 +431,17 @@
   "physicalDescription":{
     "de": "Buchformat",
     "en": "Book format"
+  },
+  "hollstein":{
+    "de": "Hollstein-Nr.",
+    "en": "Hollstein-No"
+  },
+  "kkl":{
+    "de": "KKL-Ordnungsnummer-Nr.",
+    "en": "KKL-Ordnungsnummer-No"
+  },  
+  "bartsch":{
+    "de": "Bartsch-Nr.",
+    "en": "Bartsch-No"
   }
 }

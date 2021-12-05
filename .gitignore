@@ -205,6 +205,8 @@ cda-literaturereferences-v2.de.json
 cda-literaturereferences-v2.en.json
 cda-graphics-v2.real.de.json
 cda-graphics-v2.real.en.json
+cda-graphics-v2.virtual.de.json
+cda-graphics-v2.virtual.en.json
 compiled-assets/
 docs/
 rsync.sh

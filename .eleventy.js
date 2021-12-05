@@ -5,8 +5,11 @@ const fs = require('fs');
 const partOfWorkPendants = {};
 
 const config = {
-  "generatePaintings": true,
+  "dist": "docs",
+  "graphicPrefix": "GWN_",
+  "generatePaintings": false,
   "generateGraphicsRealObjects": true,
+  "generateGraphicsVirtualObjects": true,
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2021"
@@ -84,6 +87,11 @@ const graphicsRealObjectData = {
   "en": require("./src/_data/cda-graphics-v2.real.en.json")
 }
 
+const graphicsVirtualObjectData = {
+  "de": require("./src/_data/cda-graphics-v2.virtual.de.json"),
+  "en": require("./src/_data/cda-graphics-v2.virtual.en.json")
+}
+
 const literatureData = {
   "de": require("./src/_data/cda-literaturereferences-v2.de"),
   "en": require("./src/_data/cda-literaturereferences-v2.en")
@@ -143,11 +151,11 @@ const getPaintingsCollection = (lang) => {
 
 const getGraphicsRealObjectsCollection = (lang) => {
   const graphicsRealObjectsForLang = graphicsRealObjectData[lang];
-  const devObjects = ["DE_SMBKSK_66-1898"];
+  const devObjects = ["DE_EKW_EKW001","DE_SMBKSK_66-1898","DE_SMBKSK_86-10"];
 
   const graphicsRealObjects = process.env.ELEVENTY_ENV === 'production'
     ? graphicsRealObjectsForLang.items
-    : graphicsRealObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber));
+    : graphicsRealObjectsForLang.items; //.filter(item => devObjects.includes(item.inventoryNumber));
   
   let sortedGraphicsRealObjects = graphicsRealObjects.sort((a, b)=>{
     if (a.sortingNumber < b.sortingNumber) return -1;
@@ -156,6 +164,23 @@ const getGraphicsRealObjectsCollection = (lang) => {
   });
 
   return sortedGraphicsRealObjects;
+}
+
+const getGraphicsVirtualObjectsCollection = (lang) => {
+  const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
+  const devObjects = ["LC_HVI-107_132"];
+  
+  const graphicsVirtualObjects = process.env.ELEVENTY_ENV === 'production'
+    ? graphicsVirtualObjectsForLang.items
+    : graphicsVirtualObjectsForLang.items; //.filter(item => devObjects.includes(item.inventoryNumber));
+
+  let sortedGraphicsVirtualObjects = graphicsVirtualObjects.sort((a, b)=>{
+    if (a.sortingNumber < b.sortingNumber) return -1;
+    if (a.sortingNumber > b.sortingNumber) return 1;
+    return 0;
+  });
+
+  return sortedGraphicsVirtualObjects;
 }
 
 const markdownify = (str, mode = 'full') => {
@@ -229,6 +254,17 @@ module.exports = function (eleventyConfig) {
     partOfWorkPendants[refId].push({ "inventoryNumber": id, "kind": "PART_OF_WORK" });
   });
 
+  eleventyConfig.addJavaScriptFunction("readDocument", (path) => {
+    const basePath = `./${config.dist}`;
+    const filePath = `${basePath}/${path}`;
+    try {
+      const data = fs.readFileSync(filePath, 'utf8')
+      return data;
+    } catch (err) {
+      console.error(err)
+    }
+  });
+
   eleventyConfig.addJavaScriptFunction("getPartOfWorkPendants", (id) => {
     return partOfWorkPendants[id] ? partOfWorkPendants[id] : [];
   });
@@ -282,7 +318,11 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addJavaScriptFunction("getDataList", (id, data, hideElement, title) => {
-    const items = data.map(item => {
+    
+    const dataArray = [];
+    dataArray.push(data);
+    
+    const items = dataArray.map(item => {
       return `<li class="info-list__item">${markdownify(item)}</li>`;
     });
 
@@ -408,6 +448,13 @@ module.exports = function (eleventyConfig) {
       : getGraphicsRealObjectsCollection('de');
     return graphicsRealObjectsDE;
   });
+
+  eleventyConfig.addCollection("graphicsVirtualObjectsDE", () => {
+    const graphicsVirtualObjectsDE = !config.generateGraphicsVirtualObjects
+      ? []
+      : getGraphicsVirtualObjectsCollection('de');
+    return graphicsVirtualObjectsDE;
+  });
   
 
 
@@ -440,7 +487,7 @@ module.exports = function (eleventyConfig) {
       includes: '_components',
       input: 'src',
       layouts: '_layouts',
-      output: 'docs',
+      output: config.dist,
     },
     pathPrefix,
     markdownTemplateEngine: 'njk',

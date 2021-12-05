@@ -2,17 +2,28 @@
 // --------------------------------------------------------------------------
 
 .main-navigation {
+  display: grid;
+  align-items: center;
   padding:
     var(--responsive-padding-top-inner)
     var(--responsive-padding-right-left)
     var(--responsive-padding-bottom-inner)
     var(--responsive-padding-right-left);
   background-color: $lightest;
+  gap: $m;
+  grid-template-columns: max($tile-xs) 1fr;
   transition: padding $tr-medium;
 
   &.is-loose {
     padding-top: var(--responsive-padding-top);
     padding-bottom: var(--responsive-padding-top);
+  }
+
+  & > h2 {
+    margin: 0;
+    color: $darken-strong;
+    font-size: $xl;
+    font-weight: $fw-light;
   }
 }
 

@@ -60,3 +60,18 @@ figcaption{
   </li>
 {%- endfor -%}
 </ul>
+
+<ul class="overview">
+{%- for item in collections.graphicsVirtualObjectsDE -%}
+  <li class="overview-item">
+  <a href="../../de/graphics-master-data-snippets/{{item.metadata.id}}">
+    <figure>
+      <div class="img-wrap">
+        <img src="{{item.metadata.imgSrc}}">
+      </div>
+      <figcaption>{{item.metadata.title}}<br>{{item.metadata.id}}<br>{{item.sortingNumber}}</figcaption>
+    </figure>
+  </a>
+  </li>
+{%- endfor -%}
+</ul>

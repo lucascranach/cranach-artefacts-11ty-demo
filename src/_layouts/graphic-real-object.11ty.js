@@ -6,11 +6,7 @@ const improveCda = require("./components/improve-cda.11ty");
 const pageDateSnippet = require("./components/page-date.11ty");
 const copyrightSnippet = require("./components/copyright.11ty");
 const citeCdaSnippet = require("./components/cite-cda.11ty");
-const titleSnippet = require("./components/title.11ty");
 const mediumSnippet = require("./components/medium.11ty");
-const representantImageSnippet = require("./components/representant-image.11ty");
-const attributionSnippet = require("./components/attribution.11ty");
-const datingSnippet = require("./components/dating.11ty");
 const signatureSnippet = require("./components/signature.11ty");
 const inscriptionsAndLabelsSnippet = require("./components/inscriptions-and-labels.11ty");
 const dimensionsSnippet = require("./components/dimensions.11ty");
@@ -25,7 +21,7 @@ const imageStripeSnippet = require("./components/image-stripe.11ty");
 const reportsSnippet = require("./components/reports.11ty");
 const additionalTextInformationSnippet = require("./components/additional-text-information.11ty");
 const referencesSnippet = require("./components/references.11ty");
-const conditionSnippet = require("./components/condition.11ty")
+const conditionSnippet = require("./components/condition.11ty");
 
 const ART_TECH_EXAMINATION = 'ArtTechExamination';
 const CONDITION_REPORT = 'ConditionReport';
@@ -41,16 +37,14 @@ const getImageBasePath = () => JSON.stringify(config.imageTiles);
 const getClientTranslations = () => JSON.stringify(this.getClientTranslations());
 const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
+const getMasterData = ({ content }, langCode) => {
+  const parentData = content.references.reprints.filter(item => item.kind === "REPRINT_OF");
+  const parentObjectId = parentData[0] ? parentData[0].inventoryNumber.replace(config.graphicPrefix, '') : false;
+  if (!parentObjectId) return;
 
-const getHeader = (data) => {
-  const title = titleSnippet.getTitle(this, data, langCode);
-  const subtitle = 'TBD';
-  return `
-  <header class="artefact-header">
-    ${title}
-    ${subtitle}
-  </header>`;
-};
+  //const masterDataPath = `${langCode}/graphics-master-data-snippets/${parentObjectId}/index.html`;
+  //return this.readDocument(masterDataPath);
+}
 
 const getNavigation = () => {
   const cranachSearchURL = `${config.cranachSearchURL}/${langCode}`;
@@ -58,6 +52,7 @@ const getNavigation = () => {
     <nav class="main-navigation js-navigation">
       <a class="logo js-home" href="${cranachSearchURL}">cda_</a>
       <a class="back icon has-interaction js-back">arrow_back</a>
+      <h2>${this.translate('masterData', langCode)}</h2>
     </nav>
   `;
 }
@@ -75,19 +70,12 @@ exports.render = function (pageData) {
   this.log(data);
   
   const documentTitle = getDocumentTitle(data);
-  const header = getHeader(data);
   const navigation = getNavigation();
   const imageStack = getImageStack(data);
   const imageBasePath = getImageBasePath(data);
   const translationsClient = getClientTranslations(data);
 
-  const attribution = attributionSnippet.getAttribution(this, data, langCode);
-  const dating = datingSnippet.getDating(this, data, langCode);
-  const copy = descriptionSnippet.getCopyText(this, data, langCode);
-  const ids = identificationSnippet.getIds(this, data, langCode);
-
   const metaDataHead = metaDataHeader.getHeader(data);
-  const image = representantImageSnippet.getRepresentant(this, data);
   const dimensions = dimensionsSnippet.getDimensions(this, data, langCode);
   const location = locationSnippet.getLocation(this, data, langCode);
   const signature = signatureSnippet.getSignature(this, data, langCode);
@@ -114,6 +102,7 @@ exports.render = function (pageData) {
   const condition = conditionSnippet.getCondition(this, data, langCode);
   const medium = mediumSnippet.getMediumOfGraphic(this, data, langCode);
   const shortDescription = descriptionSnippet.getShortDescription(this, data, langCode);
+  const masterData = getMasterData(data, langCode);
 
   return `<!doctype html> 
   <html lang="${langCode}">
@@ -135,28 +124,7 @@ exports.render = function (pageData) {
     <body>
       <div id="page">
         ${navigation}
-          <section class="leporello-recog">
-          ${image}
-          <div class="leporello-recog__text">
-            <div class="grid-wrapper">
-              ${header}
-            </div>
-
-            <div class="grid-wrapper">
-              <div class="main-column">
-                <div class="copytext">
-                  ${copy}
-                </div>
-
-              </div>
-
-              <div class="marginal-content">
-
-              </div>
-            </div>
-          </div>
-        </section>
-
+        ${masterData}
         <section class="leporello-explore">
           <div class="main-image-wrap">
             <figure class="main-image">

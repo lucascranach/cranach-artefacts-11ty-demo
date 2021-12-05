@@ -351,10 +351,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   /* Image viewer
   --------------------------------------------------------------------------  */
-  const imageViewer = new ImageViewer('viewer-content', 'image-caption');
-  const firstImageInStripe = document.querySelector('[data-js-change-image]');
-  const firstImageData = JSON.parse(firstImageInStripe.dataset.jsChangeImage);
-  imageViewer.showImage(firstImageData.key, firstImageData.id, firstImageInStripe);
+  let imageViewer;
+  if (document.querySelector(".main-image-wrap") !== null) {
+    imageViewer = new ImageViewer('viewer-content', 'image-caption');
+    const firstImageInStripe = document.querySelector('[data-js-change-image]');
+    const firstImageData = JSON.parse(firstImageInStripe.dataset.jsChangeImage);
+    imageViewer.showImage(firstImageData.key, firstImageData.id, firstImageInStripe);
+  }
+
 
   /* Expand blocks
   --------------------------------------------------------------------------  */
