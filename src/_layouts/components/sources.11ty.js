@@ -1,4 +1,6 @@
-exports.getSources = (eleventy, { content }, langCode) => {
+exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false) => {
+
+  const additionalCss = hasGrayBackground ? 'with-gray-background' : '';
   const getLiteraturDetails = (item) => {
     const author = item && item.persons ? item.persons.filter((person) => person.role === 'AUTHOR').map((person) => person.name) : [];
     const publisher = item && item.persons
@@ -79,7 +81,7 @@ exports.getSources = (eleventy, { content }, langCode) => {
         ${eleventy.translate('literature', langCode)}</h2>
       <div id="literature-list" class="expandable-content">
         <table class="table literature">
-          <thead class="head">
+          <thead class="head ${additionalCss}">
             <tr class="row">
               <td class="cell" style="width: 40%"></td>
               <td class="cell" style="width: 20%">${eleventy.translate('referenceOnPage', langCode)}</td>

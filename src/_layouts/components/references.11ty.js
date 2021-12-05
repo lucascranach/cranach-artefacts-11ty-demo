@@ -1,13 +1,23 @@
+const getReferencesForPaintings = (eleventy, content) => {
+  const partOfWorkPendants = eleventy.getPartOfWorkPendants(content.metadata.id);
+  return content.references.concat(content.secondaryReferences, partOfWorkPendants);
+}
+
+const getReferencesForGraphics = (content) => {
+  return content.references.relatedWorks;
+}
+
 exports.getReference = (eleventy, { content }, langCode, type, isOpen = false) => {
 
-  const id = content.metadata.id;
-  const partOfWorkPendants = eleventy.getPartOfWorkPendants(id);
-  const references = content.references.concat(content.secondaryReferences, partOfWorkPendants);
+  const entityType = content.entityType;
+  const references = entityType === "paintings"
+    ? getReferencesForPaintings(eleventy, content)
+    : getReferencesForGraphics(content);
   const getTypeContent = (refType) => {
     const typeContentItems = references.filter((item) => item.kind === refType);
     const typeContentItemList = typeContentItems.map((item) => {
       const refObjectMeta = eleventy.getRefObjectMeta(content.currentCollection, item.inventoryNumber);
-      if (refType === 'PART_OF_WORK') { eleventy.addToPartOfWorkPendant(id, refObjectMeta.id); }
+      if (refType === 'PART_OF_WORK') { eleventy.addToPartOfWorkPendant(content.metadata.id, refObjectMeta.id); }
       const refObjectLink = `/${langCode}/${content.entityType}/${refObjectMeta.id}/`;
       return `
         <div class="related-item-wrap">

@@ -1,8 +1,8 @@
 exports.data = {
-  layout: "graphicRealObject.11ty.js",
+  layout: "graphic-real-object.11ty.js",
   lang: "de",
   collectionID: "graphicsRealObjectsDE",
-  entityType: "graphics",
+  entityType: "graphicsRealObject",
   pagination: {
     data: "collections.graphicsRealObjectsDE",
     size: 1,

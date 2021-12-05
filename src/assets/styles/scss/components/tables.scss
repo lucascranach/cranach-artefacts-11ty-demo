@@ -7,6 +7,10 @@
     top: 0;
     background-color: $lightest;
 
+    &.with-gray-background {
+      background-color: $lighter;
+    }
+
     & > .row {
       & > .cell {
         width: 50%;
@@ -22,6 +26,7 @@
     & > .row {
       & > .cell {
         padding: $xxxs;
+        background-color: $lightest;
 
         &.-center {
           text-align: center;

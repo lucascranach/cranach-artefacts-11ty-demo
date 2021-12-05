@@ -6,7 +6,7 @@ const partOfWorkPendants = {};
 
 const config = {
   "generatePaintings": true,
-  "generateGraphicsRealObjects": false,
+  "generateGraphicsRealObjects": true,
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2021"

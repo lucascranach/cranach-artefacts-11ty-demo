@@ -25,6 +25,7 @@ const imageStripeSnippet = require("./components/image-stripe.11ty");
 const reportsSnippet = require("./components/reports.11ty");
 const additionalTextInformationSnippet = require("./components/additional-text-information.11ty");
 const referencesSnippet = require("./components/references.11ty");
+const conditionSnippet = require("./components/condition.11ty")
 
 const ART_TECH_EXAMINATION = 'ArtTechExamination';
 const CONDITION_REPORT = 'ConditionReport';
@@ -43,7 +44,7 @@ const getDocumentTitle = ({ content }) => content.metadata.title;
 
 const getHeader = (data) => {
   const title = titleSnippet.getTitle(this, data, langCode);
-  const subtitle = mediumSnippet.getMediumOfPainting(this, data, langCode);
+  const subtitle = 'TBD';
   return `
   <header class="artefact-header">
     ${title}
@@ -80,20 +81,22 @@ exports.render = function (pageData) {
   const imageBasePath = getImageBasePath(data);
   const translationsClient = getClientTranslations(data);
 
+  const attribution = attributionSnippet.getAttribution(this, data, langCode);
+  const dating = datingSnippet.getDating(this, data, langCode);
+  const copy = descriptionSnippet.getCopyText(this, data, langCode);
+  const ids = identificationSnippet.getIds(this, data, langCode);
+
   const metaDataHead = metaDataHeader.getHeader(data);
   const image = representantImageSnippet.getRepresentant(this, data);
-  const copy = descriptionSnippet.getCopyText(this, data, langCode);
-  const dating = datingSnippet.getDating(this, data, langCode);
   const dimensions = dimensionsSnippet.getDimensions(this, data, langCode);
-  const attribution = attributionSnippet.getAttribution(this, data, langCode);
   const location = locationSnippet.getLocation(this, data, langCode);
   const signature = signatureSnippet.getSignature(this, data, langCode);
   const inscriptionsAndLabels = inscriptionsAndLabelsSnippet.getInscriptionsAndLabels(this, data, langCode);
-  const ids = identificationSnippet.getIds(this, data, langCode);
+  const cdaId = identificationSnippet.getCdaId(this, data, langCode);
   const exhibitions = exhibitonsSnippet.getExhibitions(this, data, langCode);
   const provenance = provenanceSnippet.getProvenance(this, data, langCode);
-  const sources = sourcesSnippet.getSources(this, data, langCode);
-  const imageStripe = imageStripeSnippet.getImageStripe(this, data, langCode, config);
+  const sources = sourcesSnippet.getSources(this, data, langCode, true);
+  const imageStripe = imageStripeSnippet.getImageStripe(this, data, langCode, config, true, false);
   const artTechExaminations = reportsSnippet.getReports(this, data, langCode, config, ART_TECH_EXAMINATION);
   const conditionReport = reportsSnippet.getReports(this, data, langCode, config, CONDITION_REPORT);
   const conservationReport = reportsSnippet.getReports(this, data, langCode, config, CONSERVATION_REPORT);
@@ -108,13 +111,14 @@ exports.render = function (pageData) {
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
   const copyright = copyrightSnippet.getCopyright();
   const pageDate = pageDateSnippet.getPageDate(this, langCode);
-
-
+  const condition = conditionSnippet.getCondition(this, data, langCode);
+  const medium = mediumSnippet.getMediumOfGraphic(this, data, langCode);
+  const shortDescription = descriptionSnippet.getShortDescription(this, data, langCode);
 
   return `<!doctype html> 
   <html lang="${langCode}">
     <head>
-      <title>cda :: ${this.translate('paintings', langCode)} :: ${documentTitle}</title>
+      <title>cda :: ${this.translate('prints', langCode)} :: ${documentTitle}</title>
       ${metaDataHead}
       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
       <link href="${this.url('/compiled-assets/main.css')}" rel="stylesheet">
@@ -143,27 +147,11 @@ exports.render = function (pageData) {
                 <div class="copytext">
                   ${copy}
                 </div>
-                <div class="block">
-                  ${attribution}
-                  ${dating}
-                  ${dimensions}
-                  ${signature}
-                  ${inscriptionsAndLabels}
-                </div>
-                <div class="block">
-                  ${location}
-                </div>
-                <div class="block">
-                  ${ids}
-                </div>
+
               </div>
 
               <div class="marginal-content">
-                ${provenance}
-                ${exhibitions}
-                ${sources}
-                ${additionalTextInformation}
-                ${partOfWork}
+
               </div>
             </div>
           </div>
@@ -182,6 +170,24 @@ exports.render = function (pageData) {
             </figure>
           </div>
           <div class="explore-content">
+            <div class="block">
+              ${condition}
+              ${medium}
+              ${shortDescription}
+              ${dimensions}
+              ${signature}
+              ${inscriptionsAndLabels}
+              ${cdaId}
+            </div>
+            <div class="block">
+              ${location}
+            </div>
+            ${provenance}
+            ${exhibitions}
+            ${sources}
+            ${additionalTextInformation}
+            ${partOfWork}
+
             ${imageStripe}
             ${artTechExaminations}
             ${conditionReport}
