@@ -7,11 +7,22 @@ const pageDateSnippet = require("./components/page-date.11ty");
 const copyrightSnippet = require("./components/copyright.11ty");
 const citeCdaSnippet = require("./components/cite-cda.11ty");
 const masterDataSnippet = require("./components/graphic-virtual-object-master-data.11ty");
+const graphicsRealObject = require("./components/graphic-real-object.11ty");
 
 const getImageBasePath = () => JSON.stringify(config.imageTiles);
 const getClientTranslations = () => JSON.stringify(this.getClientTranslations());
 const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
+
+const generateReprint = (eleventy, id, langCode) => { 
+  const data = {
+    content: eleventy.getReprintData(id, langCode)
+  };
+  const path = `${config.dist}/${langCode}/${config.graphicFolder}/${id}`;
+  const filename = "index.html";
+  const reprint = graphicsRealObject.getRealObject(eleventy, data, langCode);
+  eleventy.writeDocument(path, filename, reprint);
+}
 
 const getReprints = (eleventy, { content }, langCode, conditionLevel, secondConditionLevel = false) => {
   if (!content.references.reprints) return '';
@@ -36,18 +47,22 @@ const getReprints = (eleventy, { content }, langCode, conditionLevel, secondCond
 
   const reprintsList = reprints.map(
     (item) => {
+      generateReprint(eleventy, item.id, langCode);
+      const url = `../${item.id}/`;
       const title = eleventy.altText(item.title);
       const cardText = [];
       if (item.date) cardText.push(item.date);
       if (item.repository) cardText.push(item.repository);
       return `
         <figure class="artefact-card">
-          <div class="artefact-card__image-holder">
-            <img src="${item.imgSrc}" alt="${title}" loading="lazy">
-          </div>
-          <figcaption class="artefact-card__content">
-            <p class="artefact-card__text">${cardText.join(", ", cardText)}</p>
-          </figcaption>
+          <a href="${url}">
+            <div class="artefact-card__image-holder">
+              <img src="${item.imgSrc}" alt="${title}" loading="lazy">
+            </div>
+            <figcaption class="artefact-card__content">
+              <p class="artefact-card__text">${cardText.join(", ", cardText)}</p>
+            </figcaption>
+          </a>
         </figure>
       `;
     }
@@ -65,9 +80,6 @@ const getReprints = (eleventy, { content }, langCode, conditionLevel, secondCond
 
 const getMasterData = (data) => {
   const masterData = masterDataSnippet.getMasterData(this, data, langCode);
-  const id = data.content.metadata.id;
-  // const masterDataFilename = `${langCode}-${id}-index.html`;
-  // this.writeDocument(masterDataFilename, masterData);
   return masterData;
 }
 

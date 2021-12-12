@@ -8,6 +8,7 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
+  "graphicFolder": "graphics",
   "generatePaintings": false,
   "generateGraphicsRealObjects": true,
   "generateGraphicsVirtualObjects": true,
@@ -254,9 +255,16 @@ module.exports = function (eleventyConfig) {
     partOfWorkPendants[refId].push({ "inventoryNumber": id, "kind": "PART_OF_WORK" });
   });
 
-  eleventyConfig.addJavaScriptFunction("writeDocument", (filename, content) => {
-    const basePath = `${config.compiledContent}`;
-    const path = `${basePath}/${filename}`;
+  eleventyConfig.addJavaScriptFunction("writeDocument", (dir, filename, content) => {
+  
+    
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, {
+        recursive: true
+      });
+    }
+
+    const path = `${dir}/${filename}`;
 
     try {
       fs.writeFileSync(path, content);
@@ -278,7 +286,7 @@ module.exports = function (eleventyConfig) {
     return config;
   });
 
-  eleventyConfig.addJavaScriptFunction("getLitRef", (ref, lang) => {
+  eleventyConfig.addJavaScriptFunction("getLitRef", (ref, lang = 'en') => {
     const literatureReference = literatureData[lang].items.filter(item => item.referenceId === ref);
     return literatureReference.shift();
   });
@@ -298,6 +306,15 @@ module.exports = function (eleventyConfig) {
       'sortingNumber': reprintRefItem.sortingNumber,
       'imgSrc': reprintRefItem.metadata.imgSrc,
     };
+  });
+
+  eleventyConfig.addJavaScriptFunction("getReprintData", (ref, lang) => {
+
+    const reprintRefItemData = graphicsRealObjectData[lang].items.filter(item => item.metadata.id === ref);
+    if (reprintRefItemData.length === 0) return;
+
+    return reprintRefItemData.shift();
+
   });
 
   eleventyConfig.addJavaScriptFunction("getRefObjectMeta", (collection, id) => {
@@ -414,6 +431,9 @@ module.exports = function (eleventyConfig) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   });
 
+  eleventyConfig.addJavaScriptFunction("getReprintUrl", (id, langCode) => {
+    return `${langCode}/${config.graphicFolder}/${id}/`;
+  });
 
   /* Filter
   ########################################################################## */
