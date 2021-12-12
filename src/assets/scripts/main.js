@@ -8,8 +8,20 @@ window.globalFunctions = {};
 
 const goBack = () => {
   const page = document.getElementById("page");
-  page.classList.add("is-fading");
-  setTimeout(function(){ history.back(); }, 300);
+  // page.classList.add("is-fading");
+  setTimeout(function(){ page.classList.remove("is-fading"); history.back(); }, 300);
+}
+
+/* Go to Reprint
+============================================================================ */
+
+const goToReprint = (event, element) => {
+  return;
+  event.preventDefault();
+  const reprints = document.getElementById("reprints");
+  const url = element.href;
+  reprints.classList.add("go-deeper");
+  setTimeout(function(){ reprints.classList.remove("go-deeper"); location.href=url; }, 300);
 }
 
 /* Global Notification
@@ -432,6 +444,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (target.closest('.js-back')) {
       goBack();
     }
+
+    if (target.closest('.js-go-to-reprint')) {
+      const element = target.closest('.js-go-to-reprint');
+      goToReprint(event, element);
+    }
+
   }, true);
 
   document.addEventListener('change', (ev) => {

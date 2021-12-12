@@ -2,15 +2,12 @@ const htmlmin = require('html-minifier');
 const markdownIt = require('markdown-it');
 const fs = require('fs');
 
-const partOfWorkPendants = {};
-
 const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
   "graphicFolder": "graphics",
-  "generatePaintings": false,
-  "generateGraphicsRealObjects": true,
+  "generatePaintings": true,
   "generateGraphicsVirtualObjects": true,
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
@@ -153,13 +150,7 @@ const getPaintingsCollection = (lang) => {
 
 const getGraphicsRealObjectsCollection = (lang) => {
   const graphicsRealObjectsForLang = graphicsRealObjectData[lang];
-  const devObjects = ["DE_EKW_EKW001","DE_SMBKSK_66-1898","DE_SMBKSK_86-10"];
-
-  const graphicsRealObjects = process.env.ELEVENTY_ENV === 'production'
-    ? graphicsRealObjectsForLang.items
-    : graphicsRealObjectsForLang.items; //.filter(item => devObjects.includes(item.inventoryNumber));
-  
-  let sortedGraphicsRealObjects = graphicsRealObjects.sort((a, b)=>{
+  const sortedGraphicsRealObjects = graphicsRealObjectsForLang.items.sort((a, b)=>{
     if (a.sortingNumber < b.sortingNumber) return -1;
     if (a.sortingNumber > b.sortingNumber) return 1;
     return 0;
@@ -250,11 +241,6 @@ module.exports = function (eleventyConfig) {
     return translations[term][lang];
   });
 
-  eleventyConfig.addJavaScriptFunction("addToPartOfWorkPendant", (id, refId) => {
-    if (!partOfWorkPendants[refId]) { partOfWorkPendants[refId] = []; }
-    partOfWorkPendants[refId].push({ "inventoryNumber": id, "kind": "PART_OF_WORK" });
-  });
-
   eleventyConfig.addJavaScriptFunction("writeDocument", (dir, filename, content) => {
   
     
@@ -272,10 +258,6 @@ module.exports = function (eleventyConfig) {
     } catch (err) {
       console.error(err)
     }
-  });
-
-  eleventyConfig.addJavaScriptFunction("getPartOfWorkPendants", (id) => {
-    return partOfWorkPendants[id] ? partOfWorkPendants[id] : [];
   });
   
   eleventyConfig.addJavaScriptFunction("getBaseUrl", () => {

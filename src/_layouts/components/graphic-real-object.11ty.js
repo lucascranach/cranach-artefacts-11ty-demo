@@ -22,7 +22,6 @@ const reportsSnippet = require("./reports.11ty");
 const additionalTextInformationSnippet = require("./additional-text-information.11ty");
 const referencesSnippet = require("./references.11ty");
 const conditionSnippet = require("./condition.11ty");
-const masterDataSnippet = require("./graphic-virtual-object-master-data.11ty");
 
 const ART_TECH_EXAMINATION = 'ArtTechExamination';
 const CONDITION_REPORT = 'ConditionReport';
@@ -37,17 +36,8 @@ const getImageStack = ({ content }) => JSON.stringify(content.images);
 const getImageBasePath = () => JSON.stringify(config.imageTiles);
 const getClientTranslations = (eleventy) => JSON.stringify(eleventy.getClientTranslations());
 const getDocumentTitle = ({ content }) => content.metadata.title;
-const getMasterData = ({ content }, langCode) => {
-  const parentData = content.references.reprints.filter(item => item.kind === "REPRINT_OF");
-  const parentObjectId = parentData[0] ? parentData[0].inventoryNumber.replace(config.graphicPrefix, '') : false;
-  if (!parentObjectId) return;
 
-  // return masterDataSnippet.getMasterData(eleventy, parentData, langCode); 
-  // const masterDataPath = `${langCode}/graphics-master-data-snippets/${parentObjectId}/index.html`;
-  // return eleventy.readDocument(masterDataPath);
-}
-
-const getNavigation = (eleventy) => {
+const getNavigation = (eleventy, langCode) => {
   const cranachSearchURL = `${config.cranachSearchURL}/${langCode}`;
   return `
     <nav class="main-navigation js-navigation">
@@ -59,13 +49,14 @@ const getNavigation = (eleventy) => {
 }
 
 // eslint-disable-next-line func-names
-exports.getRealObject = function (eleventy, pageData, langCode) {
+exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
   const data = pageData;
   config = eleventy.getConfig();
+
   eleventy.log(data);
   
   const documentTitle = getDocumentTitle(data);
-  const navigation = getNavigation(eleventy);
+  const navigation = getNavigation(eleventy, langCode);
   const imageStack = getImageStack(data);
   const imageBasePath = getImageBasePath(data);
   const translationsClient = getClientTranslations(eleventy);
@@ -97,7 +88,6 @@ exports.getRealObject = function (eleventy, pageData, langCode) {
   const condition = conditionSnippet.getCondition(eleventy, data, langCode);
   const medium = mediumSnippet.getMediumOfGraphic(eleventy, data, langCode);
   const shortDescription = descriptionSnippet.getShortDescription(eleventy, data, langCode);
-  const masterData = getMasterData(data, langCode);
 
   return `<!doctype html> 
   <html lang="${langCode}">
@@ -120,7 +110,7 @@ exports.getRealObject = function (eleventy, pageData, langCode) {
       <div id="page">
         ${navigation}
         ${masterData}
-        <section class="leporello-explore">
+        <section class="leporello-explore" id="explore">
           <div class="main-image-wrap">
             <figure class="main-image">
               <div class="image-viewer">

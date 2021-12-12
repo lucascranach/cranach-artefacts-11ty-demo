@@ -10,7 +10,7 @@
     var(--responsive-padding-bottom-inner)
     var(--responsive-padding-right-left);
   background-color: $lightest;
-  gap: $m;
+  gap: var(--responsive-gap);
   grid-template-columns: max($tile-xs) 1fr;
   transition: padding $tr-medium;
 
@@ -60,7 +60,7 @@
 
 .logo {
   position: absolute;
-  top: calc(var(--responsive-padding-top)/2);
+  top: calc(var(--responsive-padding-top) / 2);
   left: -200px;
   display: flex;
   width: fit-content;

@@ -14,13 +14,13 @@ const getClientTranslations = () => JSON.stringify(this.getClientTranslations())
 const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
-const generateReprint = (eleventy, id, langCode) => { 
+const generateReprint = (eleventy, id, langCode, masterData) => { 
   const data = {
     content: eleventy.getReprintData(id, langCode)
   };
   const path = `${config.dist}/${langCode}/${config.graphicFolder}/${id}`;
   const filename = "index.html";
-  const reprint = graphicsRealObject.getRealObject(eleventy, data, langCode);
+  const reprint = graphicsRealObject.getRealObject(eleventy, data, langCode, masterData);
   eleventy.writeDocument(path, filename, reprint);
 }
 
@@ -44,18 +44,19 @@ const getReprints = (eleventy, { content }, langCode, conditionLevel, secondCond
     
   const reprints = reprintsListRefData.filter(checkConditionLevel);
   const state = eleventy.translate(`${conditionLevel}-state`, langCode);
+  const masterData = content.masterData;
 
   const reprintsList = reprints.map(
     (item) => {
-      generateReprint(eleventy, item.id, langCode);
-      const url = `../${item.id}/`;
+      generateReprint(eleventy, item.id, langCode, masterData);
+      const url = `../${item.id}/index.html`;
       const title = eleventy.altText(item.title);
       const cardText = [];
       if (item.date) cardText.push(item.date);
       if (item.repository) cardText.push(item.repository);
       return `
         <figure class="artefact-card">
-          <a href="${url}">
+          <a href="${url}" class="js-go-to-reprint">
             <div class="artefact-card__image-holder">
               <img src="${item.imgSrc}" alt="${title}" loading="lazy">
             </div>
@@ -87,8 +88,11 @@ const getNavigation = () => {
   const cranachSearchURL = `${config.cranachSearchURL}/${langCode}`;
   return `
     <nav class="main-navigation js-navigation">
-      <a class="logo js-home" href="${cranachSearchURL}">cda_</a>
-      <a class="back icon has-interaction js-back">arrow_back</a>
+      <div>
+        <a class="logo js-home" href="${cranachSearchURL}">cda_</a>
+        <a class="back icon has-interaction js-back">arrow_back</a>
+      </div>
+      <h2>${this.translate('masterData', langCode)}</h2>
     </nav>
   `;
 }
@@ -102,11 +106,11 @@ exports.render = function (pageData) {
   data.content.currentCollection = data.collections[data.collectionID];
   data.content.entityType = data.entityType;
   data.content.url = `${this.getBaseUrl()}${data.page.url}`;
-
+  data.content.masterData = getMasterData(data, langCode);
   this.log(data);
   
   const navigation = getNavigation();
-  const masterData = getMasterData(data, langCode);
+  const masterData = data.content.masterData;
   const documentTitle = getDocumentTitle(data);
   const imageBasePath = getImageBasePath(data);
   const metaDataHead = metaDataHeader.getHeader(data);
@@ -142,8 +146,8 @@ exports.render = function (pageData) {
       <div id="page">
         ${navigation}
         ${masterData}
-        <section class="leporello-reprints">
-          <h2>${this.translate('impressions', langCode)}</h2>
+        <section id="reprints" class="leporello-reprints">
+          <h2 class="leporello-reprints__headline">${this.translate('impressions', langCode)}</h2>
           ${reprintsLevel1}
           ${reprintsLevel2}
           ${reprintsLevel3}
