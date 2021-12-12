@@ -443,5 +443,50 @@
   "bartsch":{
     "de": "Bartsch-Nr.",
     "en": "Bartsch-No"
+  },
+  "impressions":{
+    "de": "Abzüge",
+    "en": "Impressions"
+  },
+  "1-state":{
+    "de": "1. Zustand",
+    "en": "1. State"
+  },
+  "2-state":{
+    "de": "2. Zustand",
+    "en": "2. State"
+  },
+  "3-state":{
+    "de": "3. Zustand",
+    "en": "3. State"
+  },
+  "4-state":{
+    "de": "4. Zustand",
+    "en": "4th State"
+  },
+  "5-state":{
+    "de": "5. Zustand",
+    "en": "5th State"
+  },
+  "6-state":{
+    "de": "6. Zustand",
+    "en": "6th State"
+  },
+  "7-state":{
+    "de": "7. Zustand",
+    "en": "7th State"
+  },
+  "8-state":{
+    "de": "8. Zustand",
+    "en": "8th State"
+  },
+  "9-state":{
+    "de": "9. Zustand",
+    "en": "9th State"
+  },
+  "10-state":{
+    "de": "10. Zustand",
+    "en": "10th State"
   }
+  
 }

@@ -22,6 +22,7 @@ const reportsSnippet = require("./components/reports.11ty");
 const additionalTextInformationSnippet = require("./components/additional-text-information.11ty");
 const referencesSnippet = require("./components/references.11ty");
 const conditionSnippet = require("./components/condition.11ty");
+const masterDataSnippet = require("./components/graphic-virtual-object-master-data.11ty");
 
 const ART_TECH_EXAMINATION = 'ArtTechExamination';
 const CONDITION_REPORT = 'ConditionReport';
@@ -42,8 +43,9 @@ const getMasterData = ({ content }, langCode) => {
   const parentObjectId = parentData[0] ? parentData[0].inventoryNumber.replace(config.graphicPrefix, '') : false;
   if (!parentObjectId) return;
 
-  const masterDataPath = `${langCode}/graphics-master-data-snippets/${parentObjectId}/index.html`;
-  return this.readDocument(masterDataPath);
+  // return masterDataSnippet.getMasterData(this, parentData, langCode); 
+  // const masterDataPath = `${langCode}/graphics-master-data-snippets/${parentObjectId}/index.html`;
+  // return this.readDocument(masterDataPath);
 }
 
 const getNavigation = () => {

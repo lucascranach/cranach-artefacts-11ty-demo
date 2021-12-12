@@ -6,8 +6,6 @@ const improveCda = require("./components/improve-cda.11ty");
 const pageDateSnippet = require("./components/page-date.11ty");
 const copyrightSnippet = require("./components/copyright.11ty");
 const citeCdaSnippet = require("./components/cite-cda.11ty");
-const classificationSnippet = require("./components/classification.11ty");
-const titleSnippet = require("./components/title.11ty");
 const masterDataSnippet = require("./components/graphic-virtual-object-master-data.11ty");
 
 const getImageBasePath = () => JSON.stringify(config.imageTiles);
@@ -15,21 +13,61 @@ const getClientTranslations = () => JSON.stringify(this.getClientTranslations())
 const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
-const getHeader = (data) => {
-  const title = titleSnippet.getTitle(this, data, langCode);
-  const subtitle = classificationSnippet.getClassification(this, data, langCode);
-  return `
-  <header class="artefact-header">
-    ${title}
-    ${subtitle}
-  </header>`;
-};
+const getReprints = (eleventy, { content }, langCode, conditionLevel, secondConditionLevel = false) => {
+  if (!content.references.reprints) return '';
+  
+  const reprintsListData = [...content.references.reprints];
+  const reprintsListRefData = reprintsListData.map(item => {
+    return eleventy.getReprintRefItem(item.inventoryNumber, langCode, conditionLevel);
+  });
+
+  const checkConditionLevel = (item) => {
+    if (!item || !item.conditionLevel) return false;
+    
+    const conditionLevelCheck = secondConditionLevel
+      ? item.conditionLevel === conditionLevel || item.conditionLevel === secondConditionLevel
+      : item.conditionLevel === conditionLevel;
+    
+    return conditionLevelCheck;
+  }
+    
+  const reprints = reprintsListRefData.filter(checkConditionLevel);
+  const state = eleventy.translate(`${conditionLevel}-state`, langCode);
+
+  const reprintsList = reprints.map(
+    (item) => {
+      const title = eleventy.altText(item.title);
+      const cardText = [];
+      if (item.date) cardText.push(item.date);
+      if (item.repository) cardText.push(item.repository);
+      return `
+        <figure class="artefact-card">
+          <div class="artefact-card__image-holder">
+            <img src="${item.imgSrc}" alt="${title}" loading="lazy">
+          </div>
+          <figcaption class="artefact-card__content">
+            <p class="artefact-card__text">${cardText.join(", ", cardText)}</p>
+          </figcaption>
+        </figure>
+      `;
+    }
+  );
+
+  return reprints.length === 0 ? '' : `
+    <div class="reprints-block block">
+      <h3 class="reprints-state">${state}</h3>
+      <div class="artefact-overview">
+        ${reprintsList.join("")}
+      </div>
+    </div>
+  `;
+}
 
 const getMasterData = (data) => {
   const masterData = masterDataSnippet.getMasterData(this, data, langCode);
   const id = data.content.metadata.id;
-  const masterDataFilename = `${langCode}-${id}-index.html`;
-  this.writeDocument(masterDataFilename, masterData);
+  // const masterDataFilename = `${langCode}-${id}-index.html`;
+  // this.writeDocument(masterDataFilename, masterData);
   return masterData;
 }
 
@@ -65,6 +103,11 @@ exports.render = function (pageData) {
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
   const copyright = copyrightSnippet.getCopyright();
   const pageDate = pageDateSnippet.getPageDate(this, langCode);
+  const reprintsLevel1 = getReprints(this, data, langCode, 1, 0);
+  const reprintsLevel2 = getReprints(this, data, langCode, 2);
+  const reprintsLevel3 = getReprints(this, data, langCode, 3);
+  const reprintsLevel4 = getReprints(this, data, langCode, 4);
+  const reprintsLevel5 = getReprints(this, data, langCode, 5);
 
   return `<!doctype html> 
   <html lang="${langCode}">
@@ -87,8 +130,13 @@ exports.render = function (pageData) {
       <div id="page">
         ${navigation}
         ${masterData}
-        <section class="leporello-explore">
-
+        <section class="leporello-reprints">
+          <h2>${this.translate('impressions', langCode)}</h2>
+          ${reprintsLevel1}
+          ${reprintsLevel2}
+          ${reprintsLevel3}
+          ${reprintsLevel4}
+          ${reprintsLevel5}
         </section>
           <section class="final-words">
           <div class="text-block">

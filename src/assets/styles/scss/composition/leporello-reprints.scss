@@ -1,0 +1,13 @@
+// Leporello Reprints
+// --------------------------------------------------------------------------
+
+.leporello-reprints {
+  padding:
+    var(--responsive-padding-top)
+    var(--responsive-padding-right-left)
+    var(--responsive-padding-bottom)
+    var(--responsive-padding-right-left);
+  border-top: solid $border-stroke-weight-s $light;
+  background-color: $lighter;
+
+}

@@ -9,7 +9,7 @@ const config = {
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
   "generatePaintings": false,
-  "generateGraphicsRealObjects": false,
+  "generateGraphicsRealObjects": true,
   "generateGraphicsVirtualObjects": true,
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
@@ -205,7 +205,6 @@ const appendToFile = (path, str) => {
   fs.appendFileSync(filepath, str);
 }
 
-
 module.exports = function (eleventyConfig) {
   eleventyConfig.setWatchThrottleWaitTime(100);
   eleventyConfig.setUseGitIgnore(false);
@@ -271,7 +270,6 @@ module.exports = function (eleventyConfig) {
     return partOfWorkPendants[id] ? partOfWorkPendants[id] : [];
   });
   
-
   eleventyConfig.addJavaScriptFunction("getBaseUrl", () => {
     return config.cranachBaseUrl;
   });
@@ -283,6 +281,23 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addJavaScriptFunction("getLitRef", (ref, lang) => {
     const literatureReference = literatureData[lang].items.filter(item => item.referenceId === ref);
     return literatureReference.shift();
+  });
+
+  eleventyConfig.addJavaScriptFunction("getReprintRefItem", (ref, lang) => {
+
+    const reprintRefItemData = graphicsRealObjectData[lang].items.filter(item => item.metadata.id === ref);
+    if (reprintRefItemData.length === 0) return;
+
+    const reprintRefItem = reprintRefItemData.shift();
+    return {
+      'id': reprintRefItem.metadata.id,
+      'title': reprintRefItem.metadata.title,
+      'date': reprintRefItem.metadata.date,
+      'conditionLevel': reprintRefItem.conditionLevel,
+      'repository': reprintRefItem.repository,
+      'sortingNumber': reprintRefItem.sortingNumber,
+      'imgSrc': reprintRefItem.metadata.imgSrc,
+    };
   });
 
   eleventyConfig.addJavaScriptFunction("getRefObjectMeta", (collection, id) => {
