@@ -5,10 +5,11 @@ const fs = require('fs');
 const partOfWorkPendants = {};
 
 const config = {
-  "dist": "docs",
+  "dist": "./docs",
+  "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
   "generatePaintings": false,
-  "generateGraphicsRealObjects": true,
+  "generateGraphicsRealObjects": false,
   "generateGraphicsVirtualObjects": true,
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
@@ -174,13 +175,13 @@ const getGraphicsVirtualObjectsCollection = (lang) => {
     ? graphicsVirtualObjectsForLang.items
     : graphicsVirtualObjectsForLang.items; //.filter(item => devObjects.includes(item.inventoryNumber));
 
-  let sortedGraphicsVirtualObjects = graphicsVirtualObjects.sort((a, b)=>{
+  const sortedGraphicsVirtualObjects = graphicsVirtualObjects.sort((a, b)=>{
     if (a.sortingNumber < b.sortingNumber) return -1;
     if (a.sortingNumber > b.sortingNumber) return 1;
     return 0;
   });
-
-  return sortedGraphicsVirtualObjects;
+  
+  return sortedGraphicsVirtualObjects.filter(item => item.metadata.imgSrc.match(/[a-z]/));
 }
 
 const markdownify = (str, mode = 'full') => {
@@ -225,7 +226,7 @@ module.exports = function (eleventyConfig) {
 
   // Watch our compiled assets for changes
   eleventyConfig.addPassthroughCopy('src/compiled-assets');
-  // eleventyConfig.addWatchTarget('./src/compiled-assets');
+  eleventyConfig.addPassthroughCopy('./compiled-content');
 
   // Copy all fonts
   eleventyConfig.addPassthroughCopy({ 'src/assets/fonts': 'assets/fonts' });
@@ -254,12 +255,13 @@ module.exports = function (eleventyConfig) {
     partOfWorkPendants[refId].push({ "inventoryNumber": id, "kind": "PART_OF_WORK" });
   });
 
-  eleventyConfig.addJavaScriptFunction("readDocument", (path) => {
-    const basePath = `./${config.dist}`;
-    const filePath = `${basePath}/${path}`;
+  eleventyConfig.addJavaScriptFunction("writeDocument", (filename, content) => {
+    const basePath = `${config.compiledContent}`;
+    const path = `${basePath}/${filename}`;
+
     try {
-      const data = fs.readFileSync(filePath, 'utf8')
-      return data;
+      fs.writeFileSync(path, content);
+      return true;
     } catch (err) {
       console.error(err)
     }
@@ -390,7 +392,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addJavaScriptFunction("log", ({ content }) => {
-    console.log(`\nWorking on ${content.inventoryNumber}`);
+    // console.log(`\nWorking on ${content.inventoryNumber}`);
   });
 
   eleventyConfig.addJavaScriptFunction("convertTagsInText", (str) => {

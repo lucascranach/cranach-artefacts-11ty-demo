@@ -42,8 +42,8 @@ const getMasterData = ({ content }, langCode) => {
   const parentObjectId = parentData[0] ? parentData[0].inventoryNumber.replace(config.graphicPrefix, '') : false;
   if (!parentObjectId) return;
 
-  //const masterDataPath = `${langCode}/graphics-master-data-snippets/${parentObjectId}/index.html`;
-  //return this.readDocument(masterDataPath);
+  const masterDataPath = `${langCode}/graphics-master-data-snippets/${parentObjectId}/index.html`;
+  return this.readDocument(masterDataPath);
 }
 
 const getNavigation = () => {

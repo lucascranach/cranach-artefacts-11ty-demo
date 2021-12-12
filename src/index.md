@@ -64,7 +64,7 @@ figcaption{
 <ul class="overview">
 {%- for item in collections.graphicsVirtualObjectsDE -%}
   <li class="overview-item">
-  <a href="../../de/graphics-master-data-snippets/{{item.metadata.id}}">
+  <a href="../../de/graphics/{{item.metadata.id}}">
     <figure>
       <div class="img-wrap">
         <img src="{{item.metadata.imgSrc}}">

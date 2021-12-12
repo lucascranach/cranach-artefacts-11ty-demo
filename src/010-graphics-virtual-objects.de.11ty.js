@@ -1,5 +1,5 @@
 exports.data = {
-  layout: "graphic-virtual-object-master-data.11ty.js",
+  layout: "graphic-virtual-object.11ty.js",
   lang: "de",
   collectionID: "graphicsVirtualObjectsDE",
   entityType: "graphicsVirualObject",
@@ -11,7 +11,7 @@ exports.data = {
   },
   permalink: function (data) {
     const item = data.pagination.items[0];
-    return `/${data.lang}/graphics-master-data-snippets/${item.metadata.id}/`;
+    return `/${data.lang}/graphics/${item.metadata.id}/`;
   }
 };
 
