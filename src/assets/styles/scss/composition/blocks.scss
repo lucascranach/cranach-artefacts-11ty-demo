@@ -61,6 +61,11 @@
       position: absolute;
       top: 0;
       right: 0;
+      display: flex;
+      width: $xl;
+      height: $xl;
+      align-items: center;
+      justify-content: center;
       padding: $xxs $xxs * 0.9;
       background-color: $darken;
       color: $accent-dark;
@@ -101,7 +106,7 @@
 
   & + & {
     padding-top: $s;
-    border-top: solid $border-stroke-weight-s $darken-medium;
+    
   }
 
   &.has-padding {

@@ -336,8 +336,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addJavaScriptFunction("getDataList", (id, data, hideElement, title, prefix = '') => {
     
     const dataArray = [...data];
-  
-  
     const items = dataArray.map(item => {
       return `<li class="info-list__item">${markdownify(item)}</li>`;
     });
