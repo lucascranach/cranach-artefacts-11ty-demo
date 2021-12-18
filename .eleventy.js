@@ -7,8 +7,8 @@ const config = {
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
   "graphicFolder": "graphics",
-  "generatePaintings": true,
-  "generateGraphicsVirtualObjects": false,
+  "generatePaintings": false,
+  "generateGraphicsVirtualObjects": true,
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2021"

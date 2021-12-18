@@ -117,11 +117,11 @@ exports.render = function (pageData) {
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
   const copyright = copyrightSnippet.getCopyright();
   const pageDate = pageDateSnippet.getPageDate(this, langCode);
-  const reprintsLevel1 = getReprints(this, data, langCode, 1, 0);
-  const reprintsLevel2 = getReprints(this, data, langCode, 2);
-  const reprintsLevel3 = getReprints(this, data, langCode, 3);
-  const reprintsLevel4 = getReprints(this, data, langCode, 4);
-  const reprintsLevel5 = getReprints(this, data, langCode, 5);
+  const reprintsLevel1 = getReprints(this, data, 1, 0);
+  const reprintsLevel2 = getReprints(this, data, 2);
+  const reprintsLevel3 = getReprints(this, data, 3);
+  const reprintsLevel4 = getReprints(this, data, 4);
+  const reprintsLevel5 = getReprints(this, data, 5);
 
   return `<!doctype html> 
   <html lang="${langCode}">

@@ -1,27 +1,26 @@
-let langCode;
 let config;
 
-const metaDataHeader = require("./meta-data-head.11ty");
-const improveCda = require("./improve-cda.11ty");
-const pageDateSnippet = require("./page-date.11ty");
-const copyrightSnippet = require("./copyright.11ty");
-const citeCdaSnippet = require("./cite-cda.11ty");
-const mediumSnippet = require("./medium.11ty");
-const signatureSnippet = require("./signature.11ty");
-const inscriptionsAndLabelsSnippet = require("./inscriptions-and-labels.11ty");
-const dimensionsSnippet = require("./dimensions.11ty");
-const descriptionSnippet = require("./description.11ty");
-const locationSnippet = require("./location.11ty");
-const imageDescriptionSnippet = require("./image-description.11ty");
-const exhibitonsSnippet = require("./exhibitons.11ty");
-const identificationSnippet = require("./identification.11ty");
-const provenanceSnippet = require("./provenance.11ty");
-const sourcesSnippet = require("./sources.11ty");
-const imageStripeSnippet = require("./image-stripe.11ty");
-const reportsSnippet = require("./reports.11ty");
-const additionalTextInformationSnippet = require("./additional-text-information.11ty");
-const referencesSnippet = require("./references.11ty");
-const conditionSnippet = require("./condition.11ty");
+const metaDataHeader = require('./meta-data-head.11ty');
+const improveCda = require('./improve-cda.11ty');
+const pageDateSnippet = require('./page-date.11ty');
+const copyrightSnippet = require('./copyright.11ty');
+const citeCdaSnippet = require('./cite-cda.11ty');
+const mediumSnippet = require('./medium.11ty');
+const signatureSnippet = require('./signature.11ty');
+const inscriptionsAndLabelsSnippet = require('./inscriptions-and-labels.11ty');
+const dimensionsSnippet = require('./dimensions.11ty');
+const descriptionSnippet = require('./description.11ty');
+const locationSnippet = require('./location.11ty');
+const imageDescriptionSnippet = require('./image-description.11ty');
+const exhibitonsSnippet = require('./exhibitons.11ty');
+const identificationSnippet = require('./identification.11ty');
+const provenanceSnippet = require('./provenance.11ty');
+const sourcesSnippet = require('./sources.11ty');
+const imageStripeSnippet = require('./image-stripe.11ty');
+const reportsSnippet = require('./reports.11ty');
+const additionalTextInformationSnippet = require('./additional-text-information.11ty');
+const referencesSnippet = require('./references.11ty');
+const conditionSnippet = require('./condition.11ty');
 
 const ART_TECH_EXAMINATION = 'ArtTechExamination';
 const CONDITION_REPORT = 'ConditionReport';
@@ -46,7 +45,7 @@ const getNavigation = (eleventy, langCode) => {
       <h2>${eleventy.translate('masterData', langCode)}</h2>
     </nav>
   `;
-}
+};
 
 // eslint-disable-next-line func-names
 exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
@@ -54,7 +53,7 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
   config = eleventy.getConfig();
 
   eleventy.log(data);
-  
+
   const documentTitle = getDocumentTitle(data);
   const navigation = getNavigation(eleventy, langCode);
   const imageStack = getImageStack(data);

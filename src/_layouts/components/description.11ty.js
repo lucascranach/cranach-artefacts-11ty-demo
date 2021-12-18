@@ -23,10 +23,11 @@ exports.getShortDescription = (eleventy, { content }, langCode) => {
   const hasAdditionalContent = words.length > numberOfWords;
   const dataListData = {
     id: 'Description',
-    content: descriptionRaw,
+    content: descriptionRaw.split('\n'),
     isAdditionalContentTo: 'description',
     title: label,
   };
+
   const descriptionFulltext = hasAdditionalContent ? eleventy.getDataList(dataListData) : '';
   return !content.description ? ''
     : `

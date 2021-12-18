@@ -1,11 +1,10 @@
 exports.getHeader = ({ content }) => {
-
   const descLength = 150;
   const title = content.metadata.title.replace(/"/g, '\'');
-  const url = content.url;
+  const { url } = content;
   const image = content.metadata.imgSrc;
   const desc = content.description.length > descLength
-    ? `${content.description.substr(0, descLength)} … `
+    ? `${content.description.substr(0, descLength)} …`
     : content.description;
 
   return `
@@ -16,4 +15,4 @@ exports.getHeader = ({ content }) => {
     <meta property="og:image" content="${image}" />
     <meta name="description" content="${desc}">
   `;
-}
+};
