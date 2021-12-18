@@ -148,10 +148,14 @@
       transition: all $tr-fast;
       vertical-align: bottom;
     }
+
+    & + .inner-title{
+      margin-top: $xxxxl;
+    }
   }
 
   &:not(.is-cut) {
-    padding-top: $l;
-    padding-bottom: $xl;
+    padding-top: $xxxl;
+    padding-bottom: $xxxl;
   }
 }
