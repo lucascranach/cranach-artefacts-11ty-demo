@@ -9,7 +9,14 @@ exports.getDating = (eleventy, { content }, langCode) => {
   const datesShortList = datesShortListItems.map((item) => item.text);
   const datesFullList = combinedDates.map((item) => ({ text: `${item.text}`, remark: item.remarks }));
   const label = datesFullList.length > 1 ? eleventy.translate('productionDates', langCode) : eleventy.translate('productionDate', langCode);
-  const allDates = eleventy.getRemarkDataTable('Dates', datesFullList, `${prefix}-dataList`, label, prefix);
+  const remarkDataTableData = {
+    'id': 'Dates',
+    'content': datesFullList,
+    'isAdditionalContentTo': `${prefix}-dataList`,
+    'title': label,
+    'context': prefix
+  };
+  const allDates = eleventy.getRemarkDataTable(remarkDataTableData);
 
   return datesShortListItems.length === 0 ? '' : `
     <dl id="${prefix}-dataList" class="definition-list is-grid">

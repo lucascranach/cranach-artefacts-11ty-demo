@@ -12,7 +12,14 @@ exports.getAttribution = (eleventy, { content }, langCode) => {
   const attributionShortList = attributionShortListItems.map((item) => getAttributer(item));
   const attributionFullList = content.involvedPersons.map((item) => ({ text: `${getAttributer(item)}`, remark: item.remarks }));
   const label = content.involvedPersons.length > 1 ? eleventy.translate('attributions', langCode) : eleventy.translate('attribution', langCode);
-  const allAttributions = eleventy.getRemarkDataTable('Attributions', attributionFullList, `${prefix}-attributionData`, label, prefix);
+  const remarkDataTableData = {
+    'id': 'Attributions',
+    'content': attributionFullList,
+    'isAdditionalContentTo': `${prefix}-attributionData`,
+    'title': label,
+    'context': prefix
+  };
+  const allAttributions = eleventy.getRemarkDataTable(remarkDataTableData);
 
   return content.involvedPersons.length === 0 ? '' : `
     <dl id="${prefix}-attributionData" class="definition-list is-grid">

@@ -21,7 +21,13 @@ exports.getShortDescription = (eleventy, { content }, langCode) => {
   const preview = words.slice(0, numberOfWords).join(' ');
   const label = eleventy.translate('shortDescription', langCode);
   const hasAdditionalContent = words.length > numberOfWords;
-  const descriptionFulltext = hasAdditionalContent ? eleventy.getDataList('Description', descriptionRaw, 'description', label) : '';
+  const dataListData = {
+    'id': 'Description',
+    'content': descriptionRaw,
+    'isAdditionalContentTo': 'description',
+    'title': label
+  };
+  const descriptionFulltext = hasAdditionalContent ? eleventy.getDataList(dataListData) : '';
   return !content.description ? '' :
     `
     <dl id="description" class="definition-list is-grid">

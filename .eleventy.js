@@ -315,8 +315,15 @@ module.exports = function (eleventyConfig) {
     return connectedObjects.shift();
   });
 
-  eleventyConfig.addJavaScriptFunction("getRemarkDataTable", (id, data, hideElement, title, prefix = '') => {
-    const rows = data.map(item => {
+  eleventyConfig.addJavaScriptFunction("getRemarkDataTable", (objectData) => {
+
+    const content = objectData.content;
+    const title = objectData.title;
+    const context = objectData.context;
+    const isAdditionalContentTo = objectData.isAdditionalContentTo;
+    const id = objectData.id;
+
+    const rows = content.map(item => {
       const remark = item.remark ? `<td class="info-table__remark">${markdownify(item.remark)}</td>` : '<td class="info-table__remark">-</td>';
       return `
           <tr><td class="info-table__data">${markdownify(item.text)}</td>${remark}</tr>
@@ -324,7 +331,9 @@ module.exports = function (eleventyConfig) {
     });
 
     return rows.length === 0 ? '' : `
-      <div id="${prefix}-completeData${id}" class="additional-content js-additional-content" data-is-additional-content-to="${hideElement}">
+      <div id="${context}-completeData${id}" 
+        class="additional-content js-additional-content"
+        data-is-additional-content-to="${isAdditionalContentTo}">
         <h2 class="additional-content__title js-collapse-additional-content has-interaction">${title}</h2>
         <table class="info-table additional-content__table">
           ${rows.join("")}
@@ -333,15 +342,22 @@ module.exports = function (eleventyConfig) {
     `;
   });
 
-  eleventyConfig.addJavaScriptFunction("getDataList", (id, data, hideElement, title, prefix = '') => {
+  eleventyConfig.addJavaScriptFunction("getDataList", (objectData) => {
+
+    const content = objectData.content;
+    const title = objectData.title;
+    const context = objectData.context;
+    const isAdditionalContentTo = objectData.isAdditionalContentTo;
+    const id = objectData.id;
     
-    const dataArray = [...data];
-    const items = dataArray.map(item => {
+    const items = content.map(item => {
       return `<li class="info-list__item">${markdownify(item)}</li>`;
     });
 
     return items.length === 0 ? '' : `
-      <div id="${prefix}-completeData${id}" class="additional-content js-additional-content" data-is-additional-content-to="${hideElement}">
+      <div id="${context}-completeData${id}" 
+        class="additional-content js-additional-content"
+        data-is-additional-content-to="${isAdditionalContentTo}">
         <h2 class="additional-content__title js-collapse-additional-content has-interaction">${title}</h2>
         <ul class="info-list additional-content__list">
           ${items.join("")}

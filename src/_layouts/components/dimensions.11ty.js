@@ -43,7 +43,14 @@ exports.getDimensions = (eleventy, { content }, langCode) => {
   const structuredDimensions = getStructuredDimensions(content.dimensions);
   const visibleContent = structuredDimensions[0];
   const label = eleventy.translate('dimensions', langCode);
-  const dimensionsTable = structuredDimensions.length >= 0 ? eleventy.getDataList('Dimensions', structuredDimensions, `${prefix}-dimensions`, label, prefix) : '';
+  const dataListData = {
+    'id': 'Dimensions',
+    'content': structuredDimensions,
+    'isAdditionalContentTo': `${prefix}-dimensions`,
+    'title': label,
+    'context': prefix
+  };
+  const dimensionsTable = structuredDimensions.length >= 0 ? eleventy.getDataList(dataListData) : '';
 
   return !content.dimensions ? '' : `
     <dl id="${prefix}-dimensions" class="definition-list is-grid">
