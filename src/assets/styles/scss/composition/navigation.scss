@@ -33,8 +33,8 @@
 .back {
   display: inline-block;
   display: flex;
-  width: $xxxxl;
-  height: $xxxxl;
+  width: $m * 3;
+  height: $m * 3;
   align-items: center;
   justify-content: center;
   margin-left: -100px;

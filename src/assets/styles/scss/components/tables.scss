@@ -14,7 +14,7 @@
     & > .row {
       & > .cell {
         width: 50%;
-        padding: $xxxs;
+        padding: $xxs;
         font-weight: $fw-regular;
         text-align: left;
         vertical-align: top;
@@ -25,7 +25,7 @@
   & > .body {
     & > .row {
       & > .cell {
-        padding: $xxxs;
+        padding: $xxs;
         background-color: $lightest;
 
         &.-center {
@@ -150,7 +150,7 @@
     #{$self}__data,
     #{$self}__title,
     #{$self}__remark {
-      padding: $xxxs 0 $xxs 0;
+      padding: $xxs 0 $xxs 0;
     }
   }
 }

@@ -2,17 +2,14 @@
 ---------------------------------------------------------------------------- */
 
 .switchable-content-handle {
-  // padding: 2px $xxxs;
   display: inline-block;
   margin-left: $quad;
   color: $accent-dark;
-  // background-color: $darken;
   font-weight: $fw-bold;
   opacity: $op-medium;
   transition: background-color $tr-fast;
 
   &:hover {
-    // background-color: $darken-medium;
     opacity: 1;
   }
 }
@@ -150,7 +147,7 @@
     }
 
     & + .inner-title{
-      margin-top: $xxxxl;
+      margin-top: $xxxl;
     }
   }
 

@@ -61,7 +61,7 @@
       position: absolute;
       top: 0;
       right: 0;
-      padding: $xxxs $xxs * 0.9;
+      padding: $xxs $xxs * 0.9;
       background-color: $darken;
       color: $accent-dark;
       content: "expand_more";
@@ -97,7 +97,7 @@
 // --------------------------------------------------------------------------
 
 .block {
-  padding-bottom: $xxxs;
+  padding-bottom: $xxs;
 
   & + & {
     padding-top: $s;

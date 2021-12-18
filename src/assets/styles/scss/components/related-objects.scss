@@ -22,8 +22,8 @@
   }
 
   &__image {
-    width: $tile-xxxs;
-    height: $tile-xxxs;
+    width: $tile-xxs;
+    height: $tile-xxs;
     aspect-ratio: 1/1;
     background-color: $darken-medium;
     transition: transform $tr-fast;

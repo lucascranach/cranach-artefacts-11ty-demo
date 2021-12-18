@@ -80,8 +80,8 @@
     margin-bottom: $xxs;
     background-color: transparent;
     gap: $quad;
-    grid-auto-rows: $tile-xxxs;
-    grid-template-columns: repeat(auto-fill, minmax($tile-xxxs, 1fr));
+    grid-auto-rows: $tile-xxs;
+    grid-template-columns: repeat(auto-fill, minmax($tile-xxs, 1fr));
     list-style: none;
 
     &__item {
@@ -126,7 +126,7 @@
   }
 
   select {
-    padding: $xxxs $xxs;
+    padding: $half $xxs;
     padding-right: $m;
     border: none;
     -moz-appearance: none;
