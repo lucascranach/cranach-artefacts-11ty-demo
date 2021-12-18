@@ -6,11 +6,11 @@ exports.getMediumOfPainting = (eleventy, { content }, langCode) => {
   const hasAdditionalContent = !!(structuredMediumData.length >= 1 && structuredMediumData[0].remark.match(/[a-z]/));
   const label = eleventy.translate('medium', langCode);
   const remarkDataTableData = {
-    'id': 'Medium',
-    'content': structuredMediumData,
-    'isAdditionalContentTo': `${prefix}-subtitle`,
-    'title': label,
-    'context': prefix
+    id: 'Medium',
+    content: structuredMediumData,
+    isAdditionalContentTo: `${prefix}-subtitle`,
+    title: label,
+    context: prefix,
   };
   const mediumTable = hasAdditionalContent ? eleventy.getRemarkDataTable(remarkDataTableData) : '';
   return !medium ? '' : `
@@ -31,11 +31,11 @@ exports.getMediumOfGraphic = (eleventy, { content }, langCode) => {
   const hasAdditionalContent = !!(structuredMediumData.length >= 1 && structuredMediumData[0].remark.match(/[a-z]/));
   const label = eleventy.translate('medium', langCode);
   const remarkDataTableData = {
-    'id': 'Medium',
-    'content': structuredMediumData,
-    'isAdditionalContentTo': `${prefix}-mediumData`,
-    'title': label,
-    'context': prefix
+    id: 'Medium',
+    content: structuredMediumData,
+    isAdditionalContentTo: `${prefix}-mediumData`,
+    title: label,
+    context: prefix,
   };
   const mediumTable = hasAdditionalContent ? eleventy.getRemarkDataTable(remarkDataTableData) : '';
   return !medium ? '' : `

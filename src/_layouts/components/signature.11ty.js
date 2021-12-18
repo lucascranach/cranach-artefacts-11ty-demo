@@ -3,11 +3,11 @@ exports.getSignature = (eleventy, { content }, langCode) => {
   const signatureItems = content.signature.split(/\n/);
   const label = eleventy.translate('signature', langCode);
   const dataListData = {
-    'id': 'Signature',
-    'content': signatureItems,
-    'isAdditionalContentTo': `${prefix}-signature`,
-    'title': label,
-    'context': prefix
+    id: 'Signature',
+    content: signatureItems,
+    isAdditionalContentTo: `${prefix}-signature`,
+    title: label,
+    context: prefix,
   };
   const signatureTable = signatureItems[0].match(/^keine$|none$/i) ? '' : eleventy.getDataList(dataListData);
   return !content.signature ? '' : `

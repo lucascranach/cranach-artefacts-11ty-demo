@@ -13,11 +13,11 @@ exports.getAttribution = (eleventy, { content }, langCode) => {
   const attributionFullList = content.involvedPersons.map((item) => ({ text: `${getAttributer(item)}`, remark: item.remarks }));
   const label = content.involvedPersons.length > 1 ? eleventy.translate('attributions', langCode) : eleventy.translate('attribution', langCode);
   const remarkDataTableData = {
-    'id': 'Attributions',
-    'content': attributionFullList,
-    'isAdditionalContentTo': `${prefix}-attributionData`,
-    'title': label,
-    'context': prefix
+    id: 'Attributions',
+    content: attributionFullList,
+    isAdditionalContentTo: `${prefix}-attributionData`,
+    title: label,
+    context: prefix,
   };
   const allAttributions = eleventy.getRemarkDataTable(remarkDataTableData);
 

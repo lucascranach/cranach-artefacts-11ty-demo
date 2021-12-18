@@ -1,4 +1,16 @@
-const getInscriptions = (eleventy, content , langCode) => {
+const getDataList = (data, title) => {
+  const items = data.map((item) => `<li class="info-list__item">${item}</li>`);
+
+  return items.length === 0 ? ''
+    : `
+    <h3 class="inner-title">${title}:</h3>
+    <ul class="info-list additional-content__list">
+      ${items.join('')}
+    </ul>
+  `;
+};
+
+const getInscriptions = (eleventy, content, langCode) => {
   let inscriptionsRaw = `${content.inscription}`.replace(/:\n/, ': ');
   inscriptionsRaw = inscriptionsRaw.replace(/\n *?\n/sg, '\n\n');
   const inscriptionsData = inscriptionsRaw.split(/\n/);
@@ -6,7 +18,7 @@ const getInscriptions = (eleventy, content , langCode) => {
   return inscriptionsRaw ? getDataList(inscriptionsData, inscriptionsTitle) : '';
 };
 
-const getLabels = (eleventy, content , langCode) => {
+const getLabels = (eleventy, content, langCode) => {
   let labelsRaw = `${content.markings}`.replace(/:\n/, ': ');
   labelsRaw = labelsRaw.replace(/\n *?\n/sg, '\n\n');
   const labelsData = labelsRaw.split(/\n/);
@@ -14,23 +26,9 @@ const getLabels = (eleventy, content , langCode) => {
   return labelsRaw ? getDataList(labelsData, titleTitle) : '';
 };
 
-
-const getDataList = (data, title) => {
-  const items = data.map(item => {
-    return `<li class="info-list__item">${item}</li>`;
-  });
-
-  return items.length === 0 ? '' : `
-    <h3 class="inner-title">${title}:</h3>
-    <ul class="info-list additional-content__list">
-      ${items.join("")}
-    </ul>
-  `;
-}
-
 exports.getInscriptionsAndLabels = (eleventy, { content }, langCode) => {
   const numberOfWords = 20;
-  const inscriptionsAndLabels = content.inscription || content.markings;
+  const inscriptionsAndLabels = content.inscription || content.markings;
   let inscriptionsAndLabelsRaw = content.inscription ? `${content.inscription} ${content.markings}` : content.markings;
   inscriptionsAndLabelsRaw = inscriptionsAndLabelsRaw.replace(/\[.*?]/g, '');
   const inscriptions = getInscriptions(eleventy, content, langCode);
@@ -40,7 +38,7 @@ exports.getInscriptionsAndLabels = (eleventy, { content }, langCode) => {
   const preview = words.length > numberOfWords ? `${words.slice(0, numberOfWords).join(' ')} …` : inscriptionsAndLabelsRaw;
   const label = eleventy.translate('inscriptionsOuterHeadline', langCode);
   const id = 'InscriptionsAndLabels';
-  
+
   return !inscriptionsAndLabels ? '' : `
     <dl id="${id}" class="definition-list is-grid">
       <dt class="definition-list__term">${label}</dt>
@@ -52,4 +50,4 @@ exports.getInscriptionsAndLabels = (eleventy, { content }, langCode) => {
       ${labels}
     </div>
   `;
-}
+};

@@ -3,11 +3,11 @@ exports.getTitle = (eleventy, { content }, langCode) => {
   const titleList = content.titles.map((item) => ({ text: item.title, remark: item.remarks }));
   const label = titleList.length > 1 ? eleventy.translate('titles', langCode) : eleventy.translate('title', langCode);
   const remarkDataTableData = {
-    'id': 'Titles',
-    'content': titleList,
-    'isAdditionalContentTo': `${prefix}-mainTitle`,
-    'title': label,
-    'context': prefix
+    id: 'Titles',
+    content: titleList,
+    isAdditionalContentTo: `${prefix}-mainTitle`,
+    title: label,
+    context: prefix,
   };
   const allTitles = eleventy.getRemarkDataTable(remarkDataTableData);
   return `

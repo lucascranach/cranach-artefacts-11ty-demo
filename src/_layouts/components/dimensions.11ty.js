@@ -34,9 +34,9 @@
 // };
 
 const getStructuredDimensions = (dimensions) => {
-  const strippedDimensions = dimensions.replace(/\n\n/g, "\n");
-  return strippedDimensions.split("\n");
-}
+  const strippedDimensions = dimensions.replace(/\n\n/g, '\n');
+  return strippedDimensions.split('\n');
+};
 
 exports.getDimensions = (eleventy, { content }, langCode) => {
   const prefix = content.metadata.id;
@@ -44,11 +44,11 @@ exports.getDimensions = (eleventy, { content }, langCode) => {
   const visibleContent = structuredDimensions[0];
   const label = eleventy.translate('dimensions', langCode);
   const dataListData = {
-    'id': 'Dimensions',
-    'content': structuredDimensions,
-    'isAdditionalContentTo': `${prefix}-dimensions`,
-    'title': label,
-    'context': prefix
+    id: 'Dimensions',
+    content: structuredDimensions,
+    isAdditionalContentTo: `${prefix}-dimensions`,
+    title: label,
+    context: prefix,
   };
   const dimensionsTable = structuredDimensions.length >= 0 ? eleventy.getDataList(dataListData) : '';
 

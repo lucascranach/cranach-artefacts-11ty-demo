@@ -1,4 +1,4 @@
-exports.getCopyText = (eleventy, { content }, langCode) => {
+exports.getCopyText = (eleventy, { content }) => {
   const numberOfWords = 50;
   const fullText = content.description;
   const words = fullText.split(/ /);
@@ -22,14 +22,14 @@ exports.getShortDescription = (eleventy, { content }, langCode) => {
   const label = eleventy.translate('shortDescription', langCode);
   const hasAdditionalContent = words.length > numberOfWords;
   const dataListData = {
-    'id': 'Description',
-    'content': descriptionRaw,
-    'isAdditionalContentTo': 'description',
-    'title': label
+    id: 'Description',
+    content: descriptionRaw,
+    isAdditionalContentTo: 'description',
+    title: label,
   };
   const descriptionFulltext = hasAdditionalContent ? eleventy.getDataList(dataListData) : '';
-  return !content.description ? '' :
-    `
+  return !content.description ? ''
+    : `
     <dl id="description" class="definition-list is-grid">
       <dt class="definition-list__term">${label}</dt>
       <dd class="definition-list__definition">${preview}</dd>
@@ -37,4 +37,3 @@ exports.getShortDescription = (eleventy, { content }, langCode) => {
     ${descriptionFulltext}
     `;
 };
-
