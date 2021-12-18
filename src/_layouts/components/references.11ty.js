@@ -1,16 +1,11 @@
-const getReferencesForPaintings = (eleventy, content) => {
-  return content.references.concat(content.references, content.secondaryReferences);
-}
-
-const getReferencesForGraphics = (content) => {
-  return content.references.relatedWorks;
-}
+const getReferencesForPaintings = (content) => content.references;
+const getReferencesForGraphics = (content) => content.references.relatedWorks;
 
 exports.getReference = (eleventy, { content }, langCode, type, isOpen = false) => {
 
   const entityType = content.entityType;
   const references = entityType === "paintings"
-    ? getReferencesForPaintings(eleventy, content)
+    ? getReferencesForPaintings(content)
     : getReferencesForGraphics(content);
   const getTypeContent = (refType) => {
     const typeContentItems = references.filter((item) => item.kind === refType);

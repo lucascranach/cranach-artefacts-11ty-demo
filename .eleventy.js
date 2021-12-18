@@ -172,7 +172,7 @@ const getGraphicsVirtualObjectsCollection = (lang) => {
     if (a.sortingNumber > b.sortingNumber) return 1;
     return 0;
   });
-  
+
   return sortedGraphicsVirtualObjects.filter(item => item.metadata.imgSrc.match(/[a-z]/));
 }
 
@@ -315,7 +315,7 @@ module.exports = function (eleventyConfig) {
     return connectedObjects.shift();
   });
 
-  eleventyConfig.addJavaScriptFunction("getRemarkDataTable", (id, data, hideElement, title) => {
+  eleventyConfig.addJavaScriptFunction("getRemarkDataTable", (id, data, hideElement, title, prefix = '') => {
     const rows = data.map(item => {
       const remark = item.remark ? `<td class="info-table__remark">${markdownify(item.remark)}</td>` : '<td class="info-table__remark">-</td>';
       return `
@@ -324,7 +324,7 @@ module.exports = function (eleventyConfig) {
     });
 
     return rows.length === 0 ? '' : `
-      <div id="completeData${id}" class="additional-content js-additional-content" data-is-additional-content-to="${hideElement}">
+      <div id="${prefix}-completeData${id}" class="additional-content js-additional-content" data-is-additional-content-to="${hideElement}">
         <h2 class="additional-content__title js-collapse-additional-content has-interaction">${title}</h2>
         <table class="info-table additional-content__table">
           ${rows.join("")}

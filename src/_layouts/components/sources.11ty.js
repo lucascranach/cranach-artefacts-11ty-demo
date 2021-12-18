@@ -1,5 +1,6 @@
 exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false) => {
 
+  const prefix = content.metadata.id;
   const additionalCss = hasGrayBackground ? 'with-gray-background' : '';
   const getLiteraturDetails = (item) => {
     const author = item && item.persons ? item.persons.filter((person) => person.role === 'AUTHOR').map((person) => person.name) : [];
@@ -77,9 +78,9 @@ exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false
 
   const publications = content.publications ? `
     <div class="foldable-block has-strong-separator"> 
-      <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="literature-list">
+      <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="${prefix}-literature-list">
         ${eleventy.translate('literature', langCode)}</h2>
-      <div id="literature-list" class="expandable-content">
+      <div id="${prefix}-literature-list" class="expandable-content">
         <table class="table literature">
           <thead class="head ${additionalCss}">
             <tr class="row">

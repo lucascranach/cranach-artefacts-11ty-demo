@@ -33,14 +33,15 @@ const getStructuredDimensions = (dimensions) => {
 };
 
 exports.getDimensions = (eleventy, { content }, langCode) => {
+  const prefix = content.metadata.id;
   const structuredDimensions = getStructuredDimensions(content.dimensions);
   const visibleContent = structuredDimensions[0].text.replace(/Maße/, '');
   const hasAdditionalContent = !!(structuredDimensions.length >= 1 && structuredDimensions[0].remark.match(/[a-z]/));
   const label = eleventy.translate('dimensions', langCode);
-  const dimensionsTable = hasAdditionalContent ? eleventy.getRemarkDataTable('Dimensions', structuredDimensions, 'dimensions', label) : '';
+  const dimensionsTable = hasAdditionalContent ? eleventy.getRemarkDataTable('Dimensions', structuredDimensions, `${prefix}-dimensions`, label, prefix) : '';
 
   return !content.dimensions ? '' : `
-    <dl id="dimensions" class="definition-list is-grid">
+    <dl id="${prefix}-dimensions" class="definition-list is-grid">
       <dt class="definition-list__term">${label}</dt>
       <dd class="definition-list__definition">${visibleContent}</dd>
     </dl>
