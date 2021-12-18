@@ -1,50 +1,48 @@
 let langCode;
 let config;
 
-const metaDataHeader = require("./components/meta-data-head.11ty");
-const improveCda = require("./components/improve-cda.11ty");
-const pageDateSnippet = require("./components/page-date.11ty");
-const copyrightSnippet = require("./components/copyright.11ty");
-const citeCdaSnippet = require("./components/cite-cda.11ty");
-const masterDataSnippet = require("./components/graphic-virtual-object-master-data.11ty");
-const graphicsRealObject = require("./components/graphic-real-object.11ty");
+const metaDataHeader = require('./components/meta-data-head.11ty');
+const improveCda = require('./components/improve-cda.11ty');
+const pageDateSnippet = require('./components/page-date.11ty');
+const copyrightSnippet = require('./components/copyright.11ty');
+const citeCdaSnippet = require('./components/cite-cda.11ty');
+const masterDataSnippet = require('./components/graphic-virtual-object-master-data.11ty');
+const graphicsRealObject = require('./components/graphic-real-object.11ty');
 
 const getImageBasePath = () => JSON.stringify(config.imageTiles);
 const getClientTranslations = () => JSON.stringify(this.getClientTranslations());
 const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
-const generateReprint = (eleventy, id, langCode, masterData) => { 
+const generateReprint = (eleventy, id, masterData) => {
   const data = {
-    content: eleventy.getReprintData(id, langCode)
+    content: eleventy.getReprintData(id, langCode),
   };
   const path = `${config.dist}/${langCode}/${config.graphicFolder}/${id}`;
-  const filename = "index.html";
+  const filename = 'index.html';
   const reprint = graphicsRealObject.getRealObject(eleventy, data, langCode, masterData);
   eleventy.writeDocument(path, filename, reprint);
-}
+};
 
-const getReprints = (eleventy, { content }, langCode, conditionLevel, secondConditionLevel = false) => {
+const getReprints = (eleventy, { content }, conditionLevel, secondConditionLevel = false) => {
   if (!content.references.reprints) return '';
-  
+
   const reprintsListData = [...content.references.reprints];
-  const reprintsListRefData = reprintsListData.map(item => {
-    return eleventy.getReprintRefItem(item.inventoryNumber, langCode, conditionLevel);
-  });
+  const reprintsListRefData = reprintsListData.map((item) => eleventy.getReprintRefItem(item.inventoryNumber, langCode, conditionLevel));
 
   const checkConditionLevel = (item) => {
     if (!item || !item.conditionLevel) return false;
-    
+
     const conditionLevelCheck = secondConditionLevel
       ? item.conditionLevel === conditionLevel || item.conditionLevel === secondConditionLevel
       : item.conditionLevel === conditionLevel;
-    
+
     return conditionLevelCheck;
-  }
-    
+  };
+
   const reprints = reprintsListRefData.filter(checkConditionLevel);
   const state = eleventy.translate(`${conditionLevel}-state`, langCode);
-  const masterData = content.masterData;
+  const { masterData } = content;
 
   const reprintsList = reprints.map(
     (item) => {
@@ -61,28 +59,28 @@ const getReprints = (eleventy, { content }, langCode, conditionLevel, secondCond
               <img src="${item.imgSrc}" alt="${title}" loading="lazy">
             </div>
             <figcaption class="artefact-card__content">
-              <p class="artefact-card__text">${cardText.join(", ", cardText)}</p>
+              <p class="artefact-card__text">${cardText.join(', ', cardText)}</p>
             </figcaption>
           </a>
         </figure>
       `;
-    }
+    },
   );
 
   return reprints.length === 0 ? '' : `
     <div class="reprints-block block">
       <h3 class="reprints-state">${state}</h3>
       <div class="artefact-overview">
-        ${reprintsList.join("")}
+        ${reprintsList.join('')}
       </div>
     </div>
   `;
-}
+};
 
 const getMasterData = (data) => {
   const masterData = masterDataSnippet.getMasterData(this, data, langCode);
   return masterData;
-}
+};
 
 const getNavigation = () => {
   const cranachSearchURL = `${config.cranachSearchURL}/${langCode}`;
@@ -95,7 +93,7 @@ const getNavigation = () => {
       <h2>${this.translate('masterData', langCode)}</h2>
     </nav>
   `;
-}
+};
 
 // eslint-disable-next-line func-names
 exports.render = function (pageData) {
@@ -108,9 +106,9 @@ exports.render = function (pageData) {
   data.content.url = `${this.getBaseUrl()}${data.page.url}`;
   data.content.masterData = getMasterData(data, langCode);
   this.log(data);
-  
+
   const navigation = getNavigation();
-  const masterData = data.content.masterData;
+  const { masterData } = data.content;
   const documentTitle = getDocumentTitle(data);
   const imageBasePath = getImageBasePath(data);
   const metaDataHead = metaDataHeader.getHeader(data);
