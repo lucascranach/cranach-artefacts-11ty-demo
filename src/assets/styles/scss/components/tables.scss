@@ -115,22 +115,24 @@
   $self: &;
 
   &__title {
+    width: $term-width;
     font-weight: $fw-regular;
   }
 
   &__title,
   &__data,
   &__remark {
-    width: 50%;
     padding: $xs 0 $s 0;
     vertical-align: top;
   }
 
   &__data {
+    width: $term-width;
     padding-right: $half;
   }
 
   &__remark {
+    width: auto;
     padding-left: $half;
     color: $darken-strong;
   }

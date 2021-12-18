@@ -8,7 +8,7 @@ const config = {
   "graphicPrefix": "GWN_",
   "graphicFolder": "graphics",
   "generatePaintings": true,
-  "generateGraphicsVirtualObjects": true,
+  "generateGraphicsVirtualObjects": false,
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2021"
@@ -133,7 +133,7 @@ const clearRequireCache = () => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d"];
+  const devObjects = ["AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d"];
   // "DE_smbGG_1907", "DE_WSCH_NONE-WSCH001A", "DE_KBG-Lost_NONE-KBG001a", "DE_BStGS_1416", "DE_StSKA_002B", "DE_SKD_GG1906A", "DE_StMT", "AT_KHM_GG6905", "DE_SKD_GG1906A", "FIN_FNG_S-1994-224"
   const paintings = process.env.ELEVENTY_ENV === 'production'
     ? paintingsForLang.items
@@ -333,17 +333,17 @@ module.exports = function (eleventyConfig) {
     `;
   });
 
-  eleventyConfig.addJavaScriptFunction("getDataList", (id, data, hideElement, title) => {
+  eleventyConfig.addJavaScriptFunction("getDataList", (id, data, hideElement, title, prefix = '') => {
     
-    const dataArray = [];
-    dataArray.push(data);
-    
+    const dataArray = [...data];
+  
+  
     const items = dataArray.map(item => {
       return `<li class="info-list__item">${markdownify(item)}</li>`;
     });
 
     return items.length === 0 ? '' : `
-      <div id="completeData${id}" class="additional-content js-additional-content" data-is-additional-content-to="${hideElement}">
+      <div id="${prefix}-completeData${id}" class="additional-content js-additional-content" data-is-additional-content-to="${hideElement}">
         <h2 class="additional-content__title js-collapse-additional-content has-interaction">${title}</h2>
         <ul class="info-list additional-content__list">
           ${items.join("")}

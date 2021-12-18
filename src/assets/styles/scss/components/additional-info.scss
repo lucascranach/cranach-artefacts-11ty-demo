@@ -100,7 +100,7 @@
 
     #{$self}-handler {
       &::after {
-        margin-left: $quad;
+        
         background-color: $darken;
         opacity: 1;
       }
@@ -108,10 +108,15 @@
   }
 
   &-handler {
+
+    display: flex;
+
     &::after {
       display: inline-block;
+      height: $xl;
       padding-right: $quad;
       padding-left: $quad;
+      margin-left: $quad;
       color: $accent-dark;
       content: "expand_more";
       font-family: $font-icons;
@@ -154,5 +159,9 @@
   &:not(.is-cut) {
     padding-top: $xxxl;
     padding-bottom: $xxxl;
+  }
+
+  &__table{
+    margin-bottom: 0;
   }
 }
