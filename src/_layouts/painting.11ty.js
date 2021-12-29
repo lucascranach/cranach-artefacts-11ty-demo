@@ -190,8 +190,8 @@ exports.render = function (pageData) {
             ${graphic}
           </div>
         </section>
-          <section class="final-words">
-          <div class="text-block">
+        <section class="final-words">
+          <div class="foldable-block text-block">
             ${citeCda}
           </div>
           <div class="text-block">

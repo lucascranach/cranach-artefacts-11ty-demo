@@ -1,16 +1,15 @@
 /* eslint-disable max-classes-per-file */
 window.globals = {};
-window.globalFunctions = {};
-
+// window.globalFunctions = {};
 
 /* Go Back
 ============================================================================ */
 
 const goBack = () => {
-  const page = document.getElementById("page");
+  const page = document.getElementById('page');
   // page.classList.add("is-fading");
-  setTimeout(function(){ page.classList.remove("is-fading"); history.back(); }, 300);
-}
+  setTimeout(() => { page.classList.remove('is-fading'); history.back(); }, 300);
+};
 
 /* Go to Reprint
 ============================================================================ */
@@ -18,11 +17,11 @@ const goBack = () => {
 const goToReprint = (event, element) => {
   return;
   event.preventDefault();
-  const reprints = document.getElementById("reprints");
+  const reprints = document.getElementById('reprints');
   const url = element.href;
-  reprints.classList.add("go-deeper");
-  setTimeout(function(){ reprints.classList.remove("go-deeper"); location.href=url; }, 300);
-}
+  reprints.classList.add('go-deeper');
+  setTimeout(function () { reprints.classList.remove('go-deeper'); location.href = url; }, 300);
+};
 
 /* Global Notification
 ============================================================================ */
@@ -116,7 +115,7 @@ class ImageViewer {
     if (!img.metadata) return;
     const { metadata } = img;
     const captionId = 'ImageDescTitle';
-    const description = !metadata.description ? '' : `<h3 id="${captionId}" class="image-caption__title is-expand-trigger" data-js-expanded="false"  data-js-expandable="completeImageData">${metadata.description}</h3>`;
+    const description = !metadata.description ? '' : `<h3 id="${captionId}" class="image-caption__title is-expand-trigger" data-js-expanded="true"  data-js-expandable="completeImageData">${metadata.description}</h3>`;
 
     const getCompleteImageData = (id, data) => {
       const rows = data.map((item) => `

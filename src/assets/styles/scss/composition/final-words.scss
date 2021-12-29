@@ -9,6 +9,18 @@
     var(--responsive-padding-right-left);
   background-color: $light;
 
+  .block,
+  .foldable-block {
+    background-color: $light;
+
+    .is-expand-trigger::after{
+      position: relative;
+      display: inline-flex;
+      margin-left: $m;
+      background-color: $lighten-strong;
+    }
+  }
+
   @media only screen and (min-width: $vp-xlarge) {
     display: grid;
     gap: var(--responsive-gap);
