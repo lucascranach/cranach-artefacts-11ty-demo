@@ -118,12 +118,13 @@ exports.render = function (pageData) {
       <link href="${this.url('/compiled-assets/main.css')}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
       <script>
-        const langCode = "${langCode}";
-        const imageStack = ${imageStack};
-        const imageBasePath = ${imageBasePath};
-        const env = "${this.getENV()}";
-        const translations = ${translationsClient};
-        const asseturl = "${this.url('/assets')}";
+        const objectData = {};
+        objectData.langCode = "${langCode}";
+        objectData.imageStack = ${imageStack};
+        objectData.imageBasePath = ${imageBasePath};
+        objectData.env = "${this.getENV()}";
+        objectData.translations = ${translationsClient};
+        objectData.asseturl = "${this.url('/assets')}";
       </script>
     </head>
     <body>

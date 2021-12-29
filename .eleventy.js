@@ -145,6 +145,11 @@ const getPaintingsCollection = (lang) => {
     return 0;
   });
 
+  const ids = sortedPaintings.map(item => { 
+    
+    appendToFile("ids.txt", `${item.inventoryNumber}\n`)
+  });
+
   return sortedPaintings;
 }
 

@@ -153,7 +153,7 @@ exports.render = function (pageData) {
           ${reprintsLevel5}
         </section>
           <section class="final-words">
-          <div class="text-block">
+          <div class="foldable-block text-block">
             ${citeCda}
           </div>
           <div class="text-block">

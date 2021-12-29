@@ -1,26 +1,14 @@
 /* eslint-disable max-classes-per-file */
-window.globals = {};
-// window.globalFunctions = {};
+// eslint-disable-next-line no-undef
+const globalData = objectData;
 
 /* Go Back
 ============================================================================ */
 
 const goBack = () => {
   const page = document.getElementById('page');
-  // page.classList.add("is-fading");
-  setTimeout(() => { page.classList.remove('is-fading'); history.back(); }, 300);
-};
-
-/* Go to Reprint
-============================================================================ */
-
-const goToReprint = (event, element) => {
-  return;
-  event.preventDefault();
-  const reprints = document.getElementById('reprints');
-  const url = element.href;
-  reprints.classList.add('go-deeper');
-  setTimeout(function () { reprints.classList.remove('go-deeper'); location.href = url; }, 300);
+  // page.classList.add('is-fading');
+  setTimeout(() => { page.classList.remove('is-fading'); window.history.back(); }, 300);
 };
 
 /* Global Notification
@@ -35,7 +23,8 @@ class Notification {
   }
 
   show(element) {
-    element.classList.add('is-visible');
+    this.element = element;
+    this.element.classList.add('is-visible');
   }
 
   showNotification() {
@@ -67,117 +56,6 @@ class Notification {
   }
 }
 
-/* Toggle Literature Details
-============================================================================ */
-const toggleLiteratureDetails = (referenceId) => {
-  const headId = `litRef${referenceId}`;
-  const dataId = `litRefData${referenceId}`;
-  document.getElementById(headId).classList.toggle('is-active');
-  document.getElementById(dataId).classList.toggle('is-visible');
-};
-
-/* ImageViewer
-============================================================================ */
-class ImageViewer {
-  constructor(id, captionId) {
-    this.viewer = OpenSeadragon({
-      id,
-      prefixUrl: `${asseturl}/images/icons/`,
-      tileSources: {
-        type: 'image',
-        url: `${asseturl}/images/no-image-l.svg`,
-      },
-    });
-
-    this.activeTrigger = false;
-    this.caption = document.getElementById(captionId);
-    this.imageStripeItems = document.querySelectorAll('[data-js-change-image]');
-  }
-
-  adaptUrl(url) {
-    const prodPath = imageBasePath.production;
-    const devPath = imageBasePath.development;
-    return url.replace(prodPath, devPath, url);
-  }
-
-  addAdditionalContentInteraction(captionId) {
-    const caption = document.getElementById(captionId);
-    globals.additionalContentElements[captionId] = new AdditionalContent(caption);
-  }
-
-  addClipboardInteraction(id) {
-    if (!globals.clipableElements) return;
-    const element = document.getElementById(id);
-    globals.clipableElements[id] = new ClipableElement(element);
-  }
-
-  setCaption(img) {
-    if (!img.metadata) return;
-    const { metadata } = img;
-    const captionId = 'ImageDescTitle';
-    const description = !metadata.description ? '' : `<h3 id="${captionId}" class="image-caption__title is-expand-trigger" data-js-expanded="true"  data-js-expandable="completeImageData">${metadata.description}</h3>`;
-
-    const getCompleteImageData = (id, data) => {
-      const rows = data.map((item) => `
-            <tr><td class="info-table__title">${item.name}:</td><td class="info-table__data">${item.content}</td></tr>
-          `);
-
-      return rows.length === 0 ? '' : `
-        <div id="completeImageData" class="expandable-content">
-          <table class="info-table is-two-third is-tight">
-            ${rows.join('')}
-          </table>
-        </div>
-      `;
-    };
-
-    const fileName = `
-      <span id="${img.id}" data-clipable-content="${img.id}">${img.id}</span>
-    `;
-    const data = [];
-    data.push({ name: translations.fileName[langCode], content: fileName });
-    if (metadata.fileType) data.push({ name: translations.kindOfImage[langCode], content: metadata.fileType });
-    if (metadata.date) data.push({ name: translations.date[langCode], content: metadata.date });
-    if (metadata.created) data.push({ name: translations.authorAndRights[langCode], content: metadata.created });
-    if (metadata.source) data.push({ name: translations.source[langCode], content: metadata.source });
-
-    const completeData = getCompleteImageData(captionId, data);
-
-    const caption = `
-      ${description}
-      ${completeData}
-    `;
-
-    this.caption.innerHTML = caption;
-    this.addClipboardInteraction(img.id);
-  }
-
-  handleTrigger(trigger) {
-    if (this.activeTrigger) { this.activeTrigger.classList.remove('is-active'); }
-    trigger.classList.add('is-active');
-    this.activeTrigger = trigger;
-  }
-
-  showImage(type, id, trigger) {
-    const img = imageStack[type].images.filter((image) => image.id === id).shift();
-    const initialUrl = img.sizes.tiles.src;
-    const url = env.match(/development/) ? this.adaptUrl(initialUrl) : initialUrl;
-
-    if (trigger) this.handleTrigger(trigger);
-    this.setCaption(img);
-    this.viewer.open(url);
-  }
-
-  filterImageStripe(element) {
-    const imageType = element.value;
-    this.imageStripeItems.forEach((item) => {
-      const type = item.dataset.imageType;
-      item.classList.remove('is-hidden');
-      if (type !== imageType && imageType !== 'all') item.classList.add('is-hidden');
-    });
-  }
-}
-
 /* Clipable Element
 ============================================================================ */
 class ClipableElement {
@@ -193,12 +71,17 @@ class ClipableElement {
   }
 
   copyToClipBoard() {
+    const { translations } = globalData;
+    const { langCode } = globalData;
+
     navigator.clipboard.writeText(this.content)
       .then(() => {
-        new Notification(translations.copiedToClipboard[langCode]);
+        const copiedToClipboard = new Notification(translations.copiedToClipboard[langCode]);
+        return copiedToClipboard;
       })
       .catch((err) => {
-        new Notification(translations.somethingWentWrong[langCode]);
+        const errorMessage = new Notification(`${translations.somethingWentWrong[langCode]} ${err}`);
+        return errorMessage;
       });
   }
 }
@@ -261,7 +144,8 @@ class AdditionalContent {
   }
 
   collapseElement(ele) {
-    const element = ele;
+    this.ele = ele;
+    const element = this.ele;
     const sectionHeight = element.scrollHeight;
     const elementTransition = element.style.transition;
     element.style.transition = '';
@@ -276,24 +160,25 @@ class AdditionalContent {
     });
   }
 
-  expandElement(element) {
-    const sectionHeight = element.scrollHeight;
-    element.style.height = `${sectionHeight}px`;
+  expandElement(ele) {
+    this.ele = ele;
+    const sectionHeight = this.ele.scrollHeight;
+    this.ele.style.height = `${sectionHeight}px`;
   }
 
   toggleContent() {
     if (this.state === 'is-cut') {
       this.expandElement(this.element);
-      this.relatedElement.classList.add("is-hidden");
+      this.relatedElement.classList.add('is-hidden');
       this.state = 'is-expanded';
       this.relatedElement.dataset.additionalContentState = this.state;
-      this.element.classList.remove("is-cut");
+      this.element.classList.remove('is-cut');
     } else {
       this.collapseElement(this.element);
-      this.relatedElement.classList.remove("is-hidden");
+      this.relatedElement.classList.remove('is-hidden');
       this.state = 'is-cut';
       this.relatedElement.dataset.additionalContentState = this.state;
-      this.element.classList.add("is-cut");
+      this.element.classList.add('is-cut');
     }
   }
 
@@ -302,6 +187,143 @@ class AdditionalContent {
     this.relatedElement.classList.add('has-additional-content', 'js-expand-additional-content');
     this.relatedElement.dataset.additionalContentState = 'is-cut';
     this.relatedElement.dataset.fullDataElement = this.id;
+  }
+}
+
+/* Go to Reprint
+============================================================================ */
+
+const goToReprint = (event, element) => {
+  event.preventDefault();
+  const reprints = document.getElementById('reprints');
+  const url = element.href;
+  reprints.classList.add('go-deeper');
+  setTimeout(() => { reprints.classList.remove('go-deeper'); window.location.href = url; }, 300);
+};
+
+/* Toggle Literature Details
+============================================================================ */
+const toggleLiteratureDetails = (referenceId) => {
+  const headId = `litRef${referenceId}`;
+  const dataId = `litRefData${referenceId}`;
+  document.getElementById(headId).classList.toggle('is-active');
+  document.getElementById(dataId).classList.toggle('is-visible');
+};
+
+/* ImageViewer
+============================================================================ */
+class ImageViewer {
+  constructor(id, captionId) {
+    // eslint-disable-next-line no-undef
+    this.viewer = OpenSeadragon({
+      id,
+      // eslint-disable-next-line no-undef
+      prefixUrl: `${globalData.asseturl}/images/icons/`,
+      tileSources: {
+        type: 'image',
+        // eslint-disable-next-line no-undef
+        url: `${globalData.asseturl}/images/no-image-l.svg`,
+      },
+    });
+
+    this.activeTrigger = false;
+    this.caption = document.getElementById(captionId);
+    this.imageStripeItems = document.querySelectorAll('[data-js-change-image]');
+  }
+
+  adaptUrl(url) {
+    this.url = url;
+    const prodPath = globalData.imageBasePath.production;
+    const devPath = globalData.imageBasePath.development;
+    return url.replace(prodPath, devPath, this.url);
+  }
+
+  addAdditionalContentInteraction(captionId) {
+    this.captionId = captionId;
+    const caption = document.getElementById(this.captionId);
+    globalData.additionalContentElements[captionId] = new AdditionalContent(caption);
+  }
+
+  addClipboardInteraction(id) {
+    this.id = id;
+    if (!globalData.clipableElements) return;
+    const element = document.getElementById(this.id);
+    globalData.clipableElements[id] = new ClipableElement(element);
+  }
+
+  setCaption(img) {
+    if (!img.metadata) return;
+    const { metadata } = img;
+    const captionId = 'ImageDescTitle';
+    const description = !metadata.description
+      ? ''
+      : `<h3 id="${captionId}" 
+          class="image-caption__title is-expand-trigger" data-js-expanded="true"
+          data-js-expandable="completeImageData">
+          ${metadata.description}</h3>`;
+
+    const getCompleteImageData = (id, data) => {
+      const rows = data.map((item) => `
+            <tr><td class="info-table__title">${item.name}:</td><td class="info-table__data">${item.content}</td></tr>
+          `);
+
+      return rows.length === 0 ? '' : `
+        <div id="completeImageData" class="expandable-content">
+          <table class="info-table is-two-third is-tight">
+            ${rows.join('')}
+          </table>
+        </div>
+      `;
+    };
+
+    const fileName = `
+      <span id="${img.id}" data-clipable-content="${img.id}">${img.id}</span>
+    `;
+    const data = [];
+    const { translations } = globalData;
+    const { langCode } = globalData;
+    data.push({ name: translations.fileName[langCode], content: fileName });
+    if (metadata.fileType) data.push({ name: translations.kindOfImage[langCode], content: metadata.fileType });
+    if (metadata.date) data.push({ name: translations.date[langCode], content: metadata.date });
+    if (metadata.created) data.push({ name: translations.authorAndRights[langCode], content: metadata.created });
+    if (metadata.source) data.push({ name: translations.source[langCode], content: metadata.source });
+
+    const completeData = getCompleteImageData(captionId, data);
+
+    const caption = `
+      ${description}
+      ${completeData}
+    `;
+
+    this.caption.innerHTML = caption;
+    this.addClipboardInteraction(img.id);
+  }
+
+  handleTrigger(trigger) {
+    if (this.activeTrigger) { this.activeTrigger.classList.remove('is-active'); }
+    trigger.classList.add('is-active');
+    this.activeTrigger = trigger;
+  }
+
+  showImage(type, id, trigger) {
+    const { imageStack } = globalData;
+    const { env } = globalData;
+    const img = imageStack[type].images.filter((image) => image.id === id).shift();
+    const initialUrl = img.sizes.tiles.src;
+    const url = env.match(/development/) ? this.adaptUrl(initialUrl) : initialUrl;
+
+    if (trigger) this.handleTrigger(trigger);
+    this.setCaption(img);
+    this.viewer.open(url);
+  }
+
+  filterImageStripe(element) {
+    const imageType = element.value;
+    this.imageStripeItems.forEach((item) => {
+      const type = item.dataset.imageType;
+      item.classList.remove('is-hidden');
+      if (type !== imageType && imageType !== 'all') item.classList.add('is-hidden');
+    });
   }
 }
 
@@ -342,34 +364,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
   /* Additional Content
   --------------------------------------------------------------------------  */
   const additionalContentList = document.querySelectorAll('.js-additional-content');
-  globals.additionalContentElements = [];
+  globalData.additionalContentElements = [];
   additionalContentList.forEach((element) => {
-    globals.additionalContentElements[element.id] = new AdditionalContent(element);
+    globalData.additionalContentElements[element.id] = new AdditionalContent(element);
   });
 
   /* Clipboard
   --------------------------------------------------------------------------  */
   if (navigator.clipboard) {
     const clipableElementList = document.querySelectorAll('[data-clipable-content]');
-    globals.clipableElements = [];
+    globalData.clipableElements = [];
 
-    clipableElementList.forEach((element, index) => {
+    clipableElementList.forEach((ele, index) => {
+      const element = ele;
       const id = element.id ? element.id : `genId-${Date.now()}-${index}`;
-      if (!element.id) element.id = id;
-      globals.clipableElements[id] = new ClipableElement(element);
+      if (!element.id) { element.id = id; }
+      globalData.clipableElements[id] = new ClipableElement(element);
     });
   }
 
   /* Image viewer
   --------------------------------------------------------------------------  */
   let imageViewer;
-  if (document.querySelector(".main-image-wrap") !== null) {
+  if (document.querySelector('.main-image-wrap') !== null) {
     imageViewer = new ImageViewer('viewer-content', 'image-caption');
     const firstImageInStripe = document.querySelector('[data-js-change-image]');
     const firstImageData = JSON.parse(firstImageInStripe.dataset.jsChangeImage);
     imageViewer.showImage(firstImageData.key, firstImageData.id, firstImageInStripe);
   }
-
 
   /* Expand blocks
   --------------------------------------------------------------------------  */
@@ -383,18 +405,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const backButton = document.querySelector('.js-back');
   const homeButton = document.querySelector('.js-home');
   const navigation = document.querySelector('.js-navigation');
-  if (history.length > 1) {
-    backButton.classList.add("is-active");
+  if (window.history.length > 1) {
+    backButton.classList.add('is-active');
   } else {
-    homeButton.classList.add("is-active");
-    navigation.classList.add("is-loose");
+    homeButton.classList.add('is-active');
+    navigation.classList.add('is-loose');
   }
-  
 
   /* Events
   --------------------------------------------------------------------------  */
-  document.addEventListener('click', (event) => {
-    const { target } = event;
+  document.addEventListener('click', (ev) => {
+    const { target } = ev;
 
     if (target.dataset.jsToggleLiterature) {
       event.preventDefault();
@@ -425,19 +446,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (target.closest('.js-expand-additional-content')) {
       const element = target.closest('.js-expand-additional-content');
       const id = element.dataset.fullDataElement;
-      globals.additionalContentElements[id].toggleContent();
+      globalData.additionalContentElements[id].toggleContent();
     }
 
     if (target.closest('.js-collapse-additional-content')) {
       const element = target.closest('.js-collapse-additional-content');
       const { id } = element.parentNode;
-      globals.additionalContentElements[id].toggleContent();
+      globalData.additionalContentElements[id].toggleContent();
     }
 
     if (target.closest('.js-copy-to-clipboard')) {
       const element = target.closest('.js-copy-to-clipboard');
       const { id } = element;
-      globals.clipableElements[id].copyToClipBoard();
+      globalData.clipableElements[id].copyToClipBoard();
     }
 
     if (target.closest('.js-back')) {
@@ -445,10 +466,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     if (target.closest('.js-go-to-reprint')) {
-      const element = target.closest('.js-go-to-reprint');
-      goToReprint(event, element);
+      // const element = target.closest('.js-go-to-reprint');
+      // goToReprint(event, element);
     }
-
   }, true);
 
   document.addEventListener('change', (ev) => {
