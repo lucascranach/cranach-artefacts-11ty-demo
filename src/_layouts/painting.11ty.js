@@ -73,6 +73,7 @@ exports.render = function (pageData) {
 
   this.log(data);
 
+  const { id } = data.content.metadata;
   const documentTitle = getDocumentTitle(data);
   const header = getHeader(data);
   const navigation = getNavigation();
@@ -125,6 +126,7 @@ exports.render = function (pageData) {
         objectData.env = "${this.getENV()}";
         objectData.translations = ${translationsClient};
         objectData.asseturl = "${this.url('/assets')}";
+        objectData.inventoryNumber = "${id}";
       </script>
     </head>
     <body>

@@ -334,6 +334,32 @@ const expandReduce = (trigger, targetId) => {
   trigger.classList.toggle('is-expanded');
 };
 
+/* Handle Arrow Keys
+============================================================================ */
+const handleArrowAction = (key) => {
+
+  const searchResult = localStorage.getItem('searchResult');
+  if (!searchResult) return;
+  const searchResultArray = searchResult.split(/,/);
+  
+  if (!globalData.inventoryNumber) return;
+  const { inventoryNumber } = globalData;
+  const indexInSearchResults = searchResultArray.indexOf(inventoryNumber);
+
+  if (indexInSearchResults === -1) return;
+
+  if (key === 'ArrowLeft' && indexInSearchResults === 0) return;
+
+  const targetId = key === 'ArrowLeft'
+    ? searchResultArray[indexInSearchResults - 1]
+    : searchResultArray[indexInSearchResults + 1];
+
+  const pattern = `/${inventoryNumber}/`;
+  const targetUrl = window.location.href.replace(inventoryNumber, targetId);
+  
+  window.location.href = targetUrl;
+};
+
 /* Expand & Reduce Text
 ============================================================================ */
 const expandReduceText = (trigger, state) => {
@@ -470,6 +496,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
       // goToReprint(event, element);
     }
   }, true);
+
+  document.addEventListener('keydown', (ev) => {
+    const keyEvent = ev;
+
+    if (keyEvent.key && (keyEvent.key === 'ArrowLeft' || keyEvent.key === 'ArrowRight')) { 
+      handleArrowAction(keyEvent.key);
+    }
+  });
 
   document.addEventListener('change', (ev) => {
     const { target } = ev;

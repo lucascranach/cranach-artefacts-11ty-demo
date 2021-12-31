@@ -46,7 +46,7 @@ const getReprints = (eleventy, { content }, conditionLevel, secondConditionLevel
 
   const reprintsList = reprints.map(
     (item) => {
-      generateReprint(eleventy, item.id, langCode, masterData);
+      generateReprint(eleventy, item.id, masterData);
       const url = `../${item.id}/index.html`;
       const title = eleventy.altText(item.title);
       const cardText = [];
@@ -107,6 +107,7 @@ exports.render = function (pageData) {
   data.content.masterData = getMasterData(data, langCode);
   this.log(data);
 
+  const { id } = data.content.metadata;
   const navigation = getNavigation();
   const { masterData } = data.content;
   const documentTitle = getDocumentTitle(data);
@@ -132,12 +133,13 @@ exports.render = function (pageData) {
       <link href="${this.url('/compiled-assets/main.css')}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
       <script>
-        const langCode = "${langCode}";
-        const imageStack = false;
-        const imageBasePath = ${imageBasePath};
-        const env = "${this.getENV()}";
-        const translations = ${translationsClient};
-        const asseturl = "${this.url('/assets')}";
+        const objectData = {};
+        objectData.langCode = "${langCode}";
+        objectData.imageBasePath = ${imageBasePath};
+        objectData.env = "${this.getENV()}";
+        objectData.translations = ${translationsClient};
+        objectData.asseturl = "${this.url('/assets')}";
+        objectData.inventoryNumber = "${id}";
       </script>
     </head>
     <body>

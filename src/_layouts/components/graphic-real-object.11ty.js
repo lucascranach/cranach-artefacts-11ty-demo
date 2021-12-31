@@ -51,7 +51,7 @@ const getNavigation = (eleventy, langCode) => {
 exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
   const data = pageData;
   config = eleventy.getConfig();
-
+  
   eleventy.log(data);
 
   const documentTitle = getDocumentTitle(data);
@@ -60,6 +60,7 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
   const imageBasePath = getImageBasePath(data);
   const translationsClient = getClientTranslations(eleventy);
 
+  const { id } = data.content.metadata;
   const metaDataHead = metaDataHeader.getHeader(data);
   const dimensions = dimensionsSnippet.getDimensions(eleventy, data, langCode);
   const location = locationSnippet.getLocation(eleventy, data, langCode);
@@ -97,12 +98,14 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
       <link href="${eleventy.url('/compiled-assets/main.css')}" rel="stylesheet">
       <link href="${eleventy.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
       <script>
-        const langCode = "${langCode}";
-        const imageStack = ${imageStack};
-        const imageBasePath = ${imageBasePath};
-        const env = "${eleventy.getENV()}";
-        const translations = ${translationsClient};
-        const asseturl = "${eleventy.url('/assets')}";
+        const objectData = {};
+        objectData.langCode = "${langCode}";
+        objectData.imageStack = ${imageStack};
+        objectData.imageBasePath = ${imageBasePath};
+        objectData.env = "${eleventy.getENV()}";
+        objectData.translations = ${translationsClient};
+        objectData.asseturl = "${eleventy.url('/assets')}";
+        objectData.inventoryNumber = "${id}";
       </script>
     </head>
     <body>
