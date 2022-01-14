@@ -36,6 +36,7 @@ exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false
         ${item && item.link ? getRow(item.link, 'permalink') : ''}
         ${item && item.pageNumbers ? getRow(item.pageNumbers, 'pages') : ''}
         ${getRow(alternateNumbers.join(', '), 'alternativeNumbers')}
+        ${item && item.copyright ? getRow(item.copyright, 'link') : ''}
       </table>
     `;
   };

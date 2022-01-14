@@ -140,6 +140,10 @@
     "de": "Permalink",
     "en": "Persistent Link"
   },
+  "link": {
+    "de": "Link",
+    "en": "Link"
+  },
   "objectName": {
     "de": "FR (1978) Nr.",
     "en": "FR (1978) Nr."
