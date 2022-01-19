@@ -8,7 +8,7 @@ const config = {
   "graphicPrefix": "GWN_",
   "graphicFolder": "graphics",
   "generatePaintings": true,
-  "generateGraphicsVirtualObjects": true,
+  "generateGraphicsVirtualObjects": false,
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2021"
@@ -144,11 +144,14 @@ const getPaintingsCollection = (lang) => {
     if (a.sortingNumber > b.sortingNumber) return 1;
     return 0;
   });
+  if (lang === "de") { 
+    const ids = sortedPaintings.map(item => { 
+      if (item.sortingNumber.match(/\-/)) { 
+        appendToFile("ids.txt", `${item.inventoryNumber}\t${item.sortingNumber}\n`)
+      }
+    });
+  }
 
-  const ids = sortedPaintings.map(item => { 
-    
-    appendToFile("ids.txt", `${item.inventoryNumber}\n`)
-  });
 
   return sortedPaintings;
 }
