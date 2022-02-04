@@ -45,7 +45,7 @@ exports.getMasterData = (eleventy, pageData) => {
   const image = representantImageSnippet.getRepresentant(eleventy, data);
   const dimensions = dimensionsSnippet.getDimensions(eleventy, data, langCode);
   const signature = signatureSnippet.getSignature(eleventy, data, langCode);
-  const ids = identificationSnippet.getIdsGraphics(eleventy, data, langCode);
+  const ids = identificationSnippet.getIds(eleventy, data, langCode);
   const exhibitions = exhibitonsSnippet.getExhibitions(eleventy, data, langCode);
   const additionalTextInformation = additionalTextInformationSnippet.getAdditionalTextInformation(eleventy, data, langCode);
   const sources = sourcesSnippet.getSources(eleventy, data, langCode, true);

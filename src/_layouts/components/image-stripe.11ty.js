@@ -14,7 +14,7 @@ exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator 
           data-image-type="${key}" 
           data-image-id="${image.id}"
           data-js-change-image='{"key":"${key}","id":"${image.id}"}'>
-          <img loading="lazy" src="${image.sizes.xsmall.src}" alt="${title}">
+          <img loading="lazy" src="${image.sizes.small.src}" alt="${title}">
         </li>
       `;
     });
@@ -38,7 +38,7 @@ exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator 
   `;
 
   const seperator = hasSeperator ? 'has-strong-separator' : '';
-  const expanded = isExpanded ? true : false;
+  const expanded = !!isExpanded;
 
   return `
     <div class="foldable-block ${seperator}">

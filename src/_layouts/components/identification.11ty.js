@@ -1,22 +1,11 @@
-exports.getIds = (eleventy, { content }, langCode) => `
-<dl class="definition-list is-grid">
-  <dt class="definition-list__term">CDA ID</dt>
-  <dd class="definition-list__definition" data-clipable-content="${content.metadata.id}">${content.metadata.id}</dd>
-  <dt class="definition-list__term">${eleventy.translate('objectName', langCode)}</dt>
-  <dd class="definition-list__definition" data-clipable-content="${content.objectName}">${content.objectName}</dd>
-  <dt class="definition-list__term">${eleventy.translate('permalink', langCode)}</dt>
-  <dd class="definition-list__definition" data-clipable-content="${content.url}">${content.url}</dd>
-</dl>
-`;
-
-exports.getCdaId = (eleventy, { content }, langCode) => `
+exports.getCdaId = (eleventy, { content }) => `
 <dl class="definition-list is-grid">
   <dt class="definition-list__term">CDA ID</dt>
   <dd class="definition-list__definition" data-clipable-content="${content.metadata.id}">${content.metadata.id}</dd>
 </dl>
 `;
 
-exports.getIdsGraphics = (eleventy, { content }, langCode) => {
+exports.getIds = (eleventy, { content }, langCode) => {
   const hollsteinData = content.catalogWorkReferences.filter(item => item.description === 'Hollstein');
   const hollsteinNr = hollsteinData[0] ? hollsteinData[0].referenceNumber : false;
   const hollsteinNrSnippet = !hollsteinNr ? '' :
@@ -39,13 +28,24 @@ exports.getIdsGraphics = (eleventy, { content }, langCode) => {
     <dd class="definition-list__definition" data-clipable-content="${bartschNr}">${bartschNr}</dd>
   `;
 
+  const frNr = content.objectName ? content.objectName : false;
+  const frNrSnippet = !frNr ? '' :
+  `
+    <dt class="definition-list__term">${eleventy.translate('objectName', langCode)}</dt>
+    <dd class="definition-list__definition" data-clipable-content="${frNr}">${frNr}</dd>
+  `;
+
   return `
     <dl class="definition-list is-grid">
+    <dt class="definition-list__term">CDA ID</dt>
+    <dd class="definition-list__definition" data-clipable-content="${content.metadata.id}">${content.metadata.id}</dd>
+    ${frNrSnippet}
     ${kklNrSnippet}
     ${hollsteinNrSnippet}
     ${bartschNrSnippet}
-    <dt class="definition-list__term">CDA ID</dt>
-    <dd class="definition-list__definition" data-clipable-content="${content.metadata.id}">${content.metadata.id}</dd>
+
+    <dt class="definition-list__term">${eleventy.translate('permalink', langCode)}</dt>
+    <dd class="definition-list__definition" data-clipable-content="${content.url}">${content.url}</dd>
   </dl>
   `;
 };
