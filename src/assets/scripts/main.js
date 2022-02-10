@@ -252,10 +252,10 @@ class ImageViewer {
   }
 
   setCaption(img) {
-    if (!img.metadata) return;
+    // if (!img.metadata) return '';
     const { metadata } = img;
     const captionId = 'ImageDescTitle';
-    const description = !metadata.description
+    const description = !metadata || !metadata.description
       ? ''
       : `<h3 id="${captionId}" 
           class="image-caption__title is-expand-trigger" data-js-expanded="true"
@@ -283,10 +283,10 @@ class ImageViewer {
     const { translations } = globalData;
     const { langCode } = globalData;
     data.push({ name: translations.fileName[langCode], content: fileName });
-    if (metadata.fileType) data.push({ name: translations.kindOfImage[langCode], content: metadata.fileType });
-    if (metadata.date) data.push({ name: translations.date[langCode], content: metadata.date });
-    if (metadata.created) data.push({ name: translations.authorAndRights[langCode], content: metadata.created });
-    if (metadata.source) data.push({ name: translations.source[langCode], content: metadata.source });
+    if (metadata && metadata.fileType) data.push({ name: translations.kindOfImage[langCode], content: metadata.fileType });
+    if (metadata && metadata.date) data.push({ name: translations.date[langCode], content: metadata.date });
+    if (metadata && metadata.created) data.push({ name: translations.authorAndRights[langCode], content: metadata.created });
+    if (metadata && metadata.source) data.push({ name: translations.source[langCode], content: metadata.source });
 
     const completeData = getCompleteImageData(captionId, data);
 
