@@ -14,8 +14,7 @@ const config = {
     "production": "https://lucascranach.org/imageserver-2021"
   },
   "issueReportUrl": {
-    "functionalBug": "https://github.com/lucascranach/cda-orga/issues/new?assignees=cnoss&labels=bug&template=functional-bug.yml&title={url}&body:ssue_form_url={url}",
-    "contentBug": "https://github.com/lucascranach/cda-orga/issues/new?assignees=cnoss&labels=Content&template=extra-information.yml&title={url}&body:issue_form_url={url}",
+    "bug": "https://docs.google.com/forms/d/e/1FAIpQLSdtb8vAaRUZAZZUijLP099GFMm279HpbZBdVA5KZf5tnLZVCw/viewform?usp=pp_url&entry.810636170=artefactTitle&entry.1357028798=artefactUrl",
   },
   "cranachBaseUrl": "https://lucascranach.org",
   "cranachSearchURL": "https://lucascranach.org/search",
