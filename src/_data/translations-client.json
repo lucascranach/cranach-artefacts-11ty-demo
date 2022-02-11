@@ -95,5 +95,13 @@
   "somethingWentWrong":{
     "de": "Irgendetwas ist schief gelaufen :(",
     "en": "Something went wrong :("
+  },
+  "prevWork":{
+    "de": "vorheriges Werk",
+    "en": "previous Piece"
+  },
+  "nextWork":{
+    "de": "nächstes Werk",
+    "en": "next Piece"
   }
 }

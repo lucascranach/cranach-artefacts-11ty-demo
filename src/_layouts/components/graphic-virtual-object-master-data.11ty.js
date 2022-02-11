@@ -51,7 +51,7 @@ exports.getMasterData = (eleventy, pageData) => {
   const sources = sourcesSnippet.getSources(eleventy, data, langCode, true);
 
   return `
-    <section class="leporello-recog">
+    <section class="leporello-recog js-main-content">
       ${image}
       <div class="leporello-recog__text">
         <div class="grid-wrapper">

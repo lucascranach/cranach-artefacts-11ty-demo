@@ -487,6 +487,10 @@
   "10-state":{
     "de": "10. Zustand",
     "en": "10th State"
+  },
+  "zur-suche":{
+    "de": "zur Suche",
+    "en": "go to Search"
   }
   
 }

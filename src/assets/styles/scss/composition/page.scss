@@ -2,7 +2,6 @@
   overflow: auto;
   width: 100vw;
   height: 100vh;
-  transition: margin $tr-slow, opacity $tr-medium $tr-medium;
 
   &.is-fading {
     margin-left: 100vw;

@@ -2,15 +2,6 @@
 // eslint-disable-next-line no-undef
 const globalData = objectData;
 
-/* Go Back
-============================================================================ */
-
-const goBack = () => {
-  const page = document.getElementById('page');
-  // page.classList.add('is-fading');
-  setTimeout(() => { page.classList.remove('is-fading'); window.history.back(); }, 300);
-};
-
 /* Global Notification
 ============================================================================ */
 class Notification {
@@ -190,17 +181,6 @@ class AdditionalContent {
   }
 }
 
-/* Go to Reprint
-============================================================================ */
-
-const goToReprint = (event, element) => {
-  event.preventDefault();
-  const reprints = document.getElementById('reprints');
-  const url = element.href;
-  reprints.classList.add('go-deeper');
-  setTimeout(() => { reprints.classList.remove('go-deeper'); window.location.href = url; }, 300);
-};
-
 /* Toggle Literature Details
 ============================================================================ */
 const toggleLiteratureDetails = (referenceId) => {
@@ -255,7 +235,7 @@ class ImageViewer {
     // if (!img.metadata) return '';
     const { metadata } = img;
     const captionId = 'ImageDescTitle';
-    const description = !metadata || !metadata.description
+    const description = !metadata || !metadata.description
       ? ''
       : `<h3 id="${captionId}" 
           class="image-caption__title is-expand-trigger" data-js-expanded="true"
@@ -334,29 +314,31 @@ const expandReduce = (trigger, targetId) => {
   trigger.classList.toggle('is-expanded');
 };
 
+/* Search Results in Local Storage
+============================================================================ */
+const getSearchResults = () => {
+  const searchResult = localStorage.getItem('searchResult');
+  if (!searchResult) return false;
+  return JSON.parse(searchResult);
+};
+
 /* Handle Arrow Keys
 ============================================================================ */
-const handleArrowAction = (key) => {
+const handleArrowAction = (key, searchResults) => {
+  const searchResultIds = searchResults.map((entry) => (entry.id));
 
-  const searchResult = localStorage.getItem('searchResult');
-  if (!searchResult) return;
-  const searchResultArray = searchResult.split(/,/);
-  
   if (!globalData.inventoryNumber) return;
   const { inventoryNumber } = globalData;
-  const indexInSearchResults = searchResultArray.indexOf(inventoryNumber);
+  const indexInSearchResults = searchResultIds.indexOf(inventoryNumber);
 
   if (indexInSearchResults === -1) return;
-
   if (key === 'ArrowLeft' && indexInSearchResults === 0) return;
 
   const targetId = key === 'ArrowLeft'
-    ? searchResultArray[indexInSearchResults - 1]
-    : searchResultArray[indexInSearchResults + 1];
+    ? searchResultIds[indexInSearchResults - 1]
+    : searchResultIds[indexInSearchResults + 1];
 
-  const pattern = `/${inventoryNumber}/`;
   const targetUrl = window.location.href.replace(inventoryNumber, targetId);
-  
   window.location.href = targetUrl;
 };
 
@@ -375,10 +357,74 @@ const expandReduceText = (trigger, state) => {
   }
 };
 
+/* Search Result Navigation
+============================================================================ */
+const setSearchResultNavigation = (element, searchResults) => {
+  const target = element;
+
+  if (!globalData.inventoryNumber) return;
+  const { inventoryNumber } = globalData;
+
+  const searchResult = localStorage.getItem('searchResult');
+  if (!searchResult) return;
+
+  const { translations } = globalData;
+  const { langCode } = globalData;
+
+  const searchResultIds = searchResults.map((entry) => (entry.id));
+  const pos = searchResultIds.findIndex((id) => id === inventoryNumber);
+
+  const prev = pos > 0 ? searchResults[pos - 1] : false;
+  const next = pos < searchResults.length ? searchResults[pos + 1] : false;
+
+  const entityTypePath = JSON.parse(globalData.entityTypePath);
+  const prevPathPrefix = prev ? entityTypePath[prev.entityType] : false;
+  const nextPathPrefix = next ? entityTypePath[next.entityType] : false;
+
+  const prevArtefactHtml = !prev ? ''
+  // eslint-disable-next-line max-len
+    : `<a class="nav-item" href="../../${prevPathPrefix}/${prev.id}">
+    <span class="nav-item__icon" style="background-image: url(${prev.imgSrc})">&lt;</span>
+    <span class="nav-item__text">${translations.prevWork[langCode]}</span>
+    </a>`;
+
+  const nextArtefactHtml = !next ? ''
+  // eslint-disable-next-line max-len
+    : `<a class="nav-item" href="../../${nextPathPrefix}/${next.id}">
+    <span class="nav-item__text">${translations.nextWork[langCode]}</span>
+    <span class="nav-item__icon" style="background-image: url(${next.imgSrc})">&gt;</span>
+    </a>`;
+
+  target.innerHTML = `<div class="nav">${prevArtefactHtml}${nextArtefactHtml}</div>`;
+};
+
+/* Reduce Navigation on Scroll
+============================================================================ */
+const reduceNavigation = () => {
+  const navigation = document.querySelector('.js-navigation');
+  navigation.classList.add('is-sticky');
+
+  const leporello = document.querySelector('.js-main-content');
+  if (!leporello) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        navigation.classList.add('is-reduced');
+      } else {
+        navigation.classList.remove('is-reduced');
+      }
+    });
+  }, { threshold: 1 });
+  observer.observe(leporello);
+};
+
 /* Main
 ============================================================================ */
 
 document.addEventListener('DOMContentLoaded', (event) => {
+  const searchResults = getSearchResults();
+
   /* Switchable Content
   --------------------------------------------------------------------------  */
   const switchableContentList = document.querySelectorAll('[data-js-switchable-content]');
@@ -419,6 +465,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     imageViewer.showImage(firstImageData.key, firstImageData.id, firstImageInStripe);
   }
 
+  /* Search Result Navigation
+  --------------------------------------------------------------------------  */
+  if (document.querySelector('.search-result-navigation') !== null) {
+    const element = document.querySelector('.search-result-navigation');
+    setSearchResultNavigation(element, searchResults);
+  }
+
   /* Expand blocks
   --------------------------------------------------------------------------  */
   const expandableBlocks = document.querySelectorAll('[data-js-expanded=true]');
@@ -426,16 +479,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
     expandReduce(block, block.dataset.jsExpandable);
   });
 
-  /* Back Button & Logo
+  /* Intersections
   --------------------------------------------------------------------------  */
-  const backButton = document.querySelector('.js-back');
-  const homeButton = document.querySelector('.js-home');
-  const navigation = document.querySelector('.js-navigation');
-  if (window.history.length > 1) {
-    backButton.classList.add('is-active');
-  } else {
-    homeButton.classList.add('is-active');
-    navigation.classList.add('is-loose');
+  if (window.IntersectionObserver) {
+    reduceNavigation();
+  }
+
+  /* Go to Search Button
+  --------------------------------------------------------------------------  */
+  if (document.querySelector('.js-go-to-search') !== null) {
+    const element = document.querySelector('.js-go-to-search');
+    const { href } = element;
+
+    const searchQueryParams = localStorage.getItem('searchQueryParams');
+    if (!href || !searchQueryParams) return;
+
+    element.href = `${href}?${searchQueryParams}`;
   }
 
   /* Events
@@ -486,22 +545,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
       const { id } = element;
       globalData.clipableElements[id].copyToClipBoard();
     }
-
-    if (target.closest('.js-back')) {
-      goBack();
-    }
-
-    if (target.closest('.js-go-to-reprint')) {
-      // const element = target.closest('.js-go-to-reprint');
-      // goToReprint(event, element);
-    }
   }, true);
 
   document.addEventListener('keydown', (ev) => {
     const keyEvent = ev;
 
-    if (keyEvent.key && (keyEvent.key === 'ArrowLeft' || keyEvent.key === 'ArrowRight')) { 
-      handleArrowAction(keyEvent.key);
+    if (keyEvent.key && (keyEvent.key === 'ArrowLeft' || keyEvent.key === 'ArrowRight')) {
+      handleArrowAction(keyEvent.key, searchResults);
     }
   });
 

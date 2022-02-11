@@ -9,6 +9,10 @@ const config = {
   "graphicFolder": "graphics",
   "generatePaintings": true,
   "generateGraphicsVirtualObjects": true,
+  "entityTypePath": {
+    "PAINTING": "paintings",
+    "GRAPHIC": "graphics",
+  },
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2021"
@@ -17,7 +21,7 @@ const config = {
     "bug": "https://docs.google.com/forms/d/e/1FAIpQLSdtb8vAaRUZAZZUijLP099GFMm279HpbZBdVA5KZf5tnLZVCw/viewform?usp=pp_url&entry.810636170=artefactTitle&entry.1357028798=artefactUrl",
   },
   "cranachBaseUrl": "https://lucascranach.org",
-  "cranachSearchURL": "https://lucascranach.org/search",
+  "cranachSearchURL": "https://lucascranach.org/langCode/search",
   "documentsBasePath": "https://lucascranach.org/documents",
   "contentTypes": {
     "overall": {
@@ -111,7 +115,7 @@ const simpleMarkdownItRenderer = new markdownIt('commonmark', {
   typographer: true
 }).disable([ 'list' ]);
 
-const pathPrefix = (process.env.ELEVENTY_ENV === 'production') ? "paintings" : "";
+const pathPrefix = (process.env.ELEVENTY_ENV === 'production') ? "artefacts" : "";
 
 const markRemarks = str => {
   const mark = (match, str) => {
@@ -321,6 +325,11 @@ module.exports = function (eleventyConfig) {
     const connectedObjects = ref.connectedObjects.filter(item => item.inventoryNumber === id);
     return connectedObjects.shift();
   });
+
+  eleventyConfig.addJavaScriptFunction("getEntityTypePath", () => {
+    return config.entityTypePath;
+  });
+  
 
   eleventyConfig.addJavaScriptFunction("getRemarkDataTable", (objectData) => {
 

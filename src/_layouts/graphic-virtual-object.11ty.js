@@ -8,6 +8,7 @@ const copyrightSnippet = require('./components/copyright.11ty');
 const citeCdaSnippet = require('./components/cite-cda.11ty');
 const masterDataSnippet = require('./components/graphic-virtual-object-master-data.11ty');
 const graphicsRealObject = require('./components/graphic-real-object.11ty');
+const navigationSnippet = require('./components/navigation.11ty');
 
 const getImageBasePath = () => JSON.stringify(config.imageTiles);
 const getClientTranslations = () => JSON.stringify(this.getClientTranslations());
@@ -82,19 +83,6 @@ const getMasterData = (data) => {
   return masterData;
 };
 
-const getNavigation = () => {
-  const cranachSearchURL = `${config.cranachSearchURL}/${langCode}`;
-  return `
-    <nav class="main-navigation js-navigation">
-      <div>
-        <a class="logo js-home" href="${cranachSearchURL}">cda_</a>
-        <a class="back icon has-interaction js-back">arrow_back</a>
-      </div>
-      <h2>${this.translate('masterData', langCode)}</h2>
-    </nav>
-  `;
-};
-
 // eslint-disable-next-line func-names
 exports.render = function (pageData) {
   const data = pageData;
@@ -108,7 +96,6 @@ exports.render = function (pageData) {
   this.log(data);
 
   const { id } = data.content.metadata;
-  const navigation = getNavigation();
   const { masterData } = data.content;
   const documentTitle = getDocumentTitle(data);
   const imageBasePath = getImageBasePath(data);
@@ -123,6 +110,8 @@ exports.render = function (pageData) {
   const reprintsLevel3 = getReprints(this, data, 3);
   const reprintsLevel4 = getReprints(this, data, 4);
   const reprintsLevel5 = getReprints(this, data, 5);
+  const entityTypePath = JSON.stringify(this.getEntityTypePath());
+  const navigation = navigationSnippet.getNavigation(this, langCode);
 
   return `<!doctype html> 
   <html lang="${langCode}">
@@ -140,13 +129,14 @@ exports.render = function (pageData) {
         objectData.translations = ${translationsClient};
         objectData.asseturl = "${this.url('/assets')}";
         objectData.inventoryNumber = "${id}";
+        objectData.entityTypePath = '${entityTypePath}';
       </script>
     </head>
     <body>
       <div id="page">
         ${navigation}
         ${masterData}
-        <section id="reprints" class="leporello-reprints">
+        <section id="reprints" class="leporello-reprints js-main-content">
           <h2 class="leporello-reprints__headline">${this.translate('impressions', langCode)}</h2>
           ${reprintsLevel1}
           ${reprintsLevel2}

@@ -2,8 +2,10 @@
 // --------------------------------------------------------------------------
 
 .main-navigation {
+  position: relative;
+  z-index: $level-overall-nav;
+  top: 0;
   display: grid;
-  align-items: center;
   padding:
     var(--responsive-padding-top-inner)
     var(--responsive-padding-right-left)
@@ -12,11 +14,21 @@
   background-color: $lightest;
   gap: var(--responsive-gap);
   grid-template-columns: max($tile-xs) 1fr;
-  transition: padding $tr-medium;
+  transition: padding $tr-fast;
 
   &.is-loose {
     padding-top: var(--responsive-padding-top);
     padding-bottom: var(--responsive-padding-top);
+  }
+
+  &.is-sticky{
+    position: sticky;
+  }
+
+  &.is-reduced{
+    padding-top: 0;
+    padding-bottom: 0;
+    box-shadow: $shadow-xs;
   }
 
   & > h2 {
@@ -27,63 +39,93 @@
   }
 }
 
-// Back Button
-// --------------------------------------------------------------------------
-
-.back {
-  display: inline-block;
-  display: flex;
-  width: $m * 3;
-  height: $m * 3;
-  align-items: center;
-  justify-content: center;
-  margin-left: -100px;
-  background-color: $darken;
-  border-radius: 50%;
-  color: $accent-dark;
-  font-size: $l;
-  transition: margin $tr-medium $tr-slow, background-color $tr-medium, color $tr-medium;
-  transition-timing-function: ease-out;
-
-  &:hover {
-    background-color: $darken-strong;
-    color: $accent;
-  }
-
-  &.is-active {
-    margin-left: 0;
-  }
-}
 
 // Logo
 // --------------------------------------------------------------------------
 
-.logo {
-  position: absolute;
-  top: calc(var(--responsive-padding-top) / 2);
-  left: -200px;
+// .logo {
+//   position: absolute;
+//   top: calc(var(--responsive-padding-top) / 2);
+//   left: -200px;
+//   display: flex;
+//   width: fit-content;
+//   align-items: center;
+//   justify-content: center;
+//   padding: $xxs;
+//   aspect-ratio: 1/1;
+//   background-color: $darken;
+//   border-radius: 50%;
+//   color: $accent-dark;
+//   font-size: $l;
+//   opacity: 0;
+//   transition: left $tr-medium $tr-medium, background-color $tr-fast, color $tr-fast, opacity $tr-slow $tr-medium;
+//   transition-timing-function: ease-out;
+//   vertical-align: center;
+// 
+//   &:hover {
+//     background-color: $darken-strong;
+//     color: $accent;
+//   }
+// 
+//   &.is-active {
+//     left: var(--responsive-padding-right-left);
+//     opacity: 1;
+//   }
+// }
+
+
+// Search Navigation
+// --------------------------------------------------------------------------
+
+.search-result-navigation{
+  position: relative;
   display: flex;
-  width: fit-content;
+  flex-direction: row-reverse;
   align-items: center;
-  justify-content: center;
-  padding: $xxs;
-  aspect-ratio: 1/1;
-  background-color: $darken;
-  border-radius: 50%;
-  color: $accent-dark;
-  font-size: $l;
-  opacity: 0;
-  transition: left $tr-medium $tr-medium, background-color $tr-fast, color $tr-fast, opacity $tr-slow $tr-slow;
-  transition-timing-function: ease-out;
-  vertical-align: center;
+}
 
-  &:hover {
-    background-color: $darken-strong;
-    color: $accent;
-  }
+.nav{
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  border-radius: $radius-s;
+  gap: $xxs;
 
-  &.is-active {
-    left: var(--responsive-padding-right-left);
+  &:hover{
     opacity: 1;
+  }
+  
+  &-item{
+    $self: &;
+    display: flex;
+    align-items: center;
+    border-bottom: solid $border-stroke-weight $lightest;
+    background-color: $lighter;
+
+    &__icon{
+      display: flex;
+      width: $xxxl;
+      height: $xxxl;
+      align-items: center;
+      justify-content: center;
+      background-color: $darken;
+      background-position: $xxxl center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    &__text{
+      padding-right: $s;
+      padding-left: $s;
+    }
+
+    &:hover{
+      border-bottom-color: $accent;
+
+      #{ $self }__icon{
+        background-position: center center;
+        color: transparent;
+      }
+    }
   }
 }

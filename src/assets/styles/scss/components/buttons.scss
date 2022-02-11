@@ -3,64 +3,46 @@
   align-items: center;
   padding: $quad $half;
   border: none;
-  border: solid $border-stroke-weight-s $darken-medium;
+  border-bottom: solid $border-stroke-weight transparent;
   margin: $quad 0;
   border-radius: $radius-s;
   font-weight: $fw-light;
 
+  $self: &;
+
+  &--is-transparent {
+    margin-left: -$xs;
+
+    &:hover{
+      margin-left: 0;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    margin-right: $xs;
+    color: $darker;
+
+    &--is-large{
+      font-size: $xxl;
+    }
+  }
+
+  &__text{
+    &--is-important{
+      font-weight: $fw-semibold;
+    }
+  }
+
   &:hover {
+    border-bottom-color: $accent;
+    background-color: $darken;
     cursor: pointer;
-  }
 
-  &.unfold-more {
-    margin-left: -$m;
-    opacity: $op-medium;
-
-    &:hover {
-      opacity: 1;
-    }
-
-    &::before {
-      display: inline-block;
-      padding-right: $quad;
-      margin-left: -$quad;
-      color: $accent-dark;
-      content: "unfold_more";
-      font-family: $font-icons;
+    #{ $self }__icon{
+      transform: rotate(180deg);
+      transform-origin: center center;
     }
   }
 
-  &.unfold-more::after {
-    content: attr(data-text-more);
-  }
-
-  &.is-expanded.unfold-more::before {
-    content: "unfold_less";
-  }
-
-  &.is-expanded.unfold-more::after {
-    content: attr(data-text-less);
-  }
-
-  .icon {
-    display: inline-block;
-    padding-right: $quad;
-    margin-left: -$quad;
-  }
-
-  &.is-transparent {
-    padding-left: 0;
-    border: none;
-    background-color: transparent;
-  }
-
-  &.is-small {
-    font-size: $s;
-  }
-
-  &.has-accent {
-    .icon {
-      color: $accent-dark;
-    }
-  }
 }

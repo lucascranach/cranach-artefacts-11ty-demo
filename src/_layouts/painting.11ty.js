@@ -25,6 +25,7 @@ const imageStripeSnippet = require('./components/image-stripe.11ty');
 const reportsSnippet = require('./components/reports.11ty');
 const additionalTextInformationSnippet = require('./components/additional-text-information.11ty');
 const referencesSnippet = require('./components/references.11ty');
+const navigationSnippet = require('./components/navigation.11ty');
 
 const ART_TECH_EXAMINATION = 'ArtTechExamination';
 const CONDITION_REPORT = 'ConditionReport';
@@ -51,15 +52,6 @@ const getHeader = (data) => {
   </header>`;
 };
 
-const getNavigation = () => {
-  const cranachSearchURL = `${config.cranachSearchURL}/${langCode}`;
-  return `
-    <nav class="main-navigation js-navigation">
-      <a class="logo js-home" href="${cranachSearchURL}">cda_</a>
-      <a class="back icon has-interaction js-back">arrow_back</a>
-    </nav>
-  `;
-};
 
 // eslint-disable-next-line func-names
 exports.render = function (pageData) {
@@ -76,7 +68,6 @@ exports.render = function (pageData) {
   const { id } = data.content.metadata;
   const documentTitle = getDocumentTitle(data);
   const header = getHeader(data);
-  const navigation = getNavigation();
   const imageStack = getImageStack(data);
   const imageBasePath = getImageBasePath(data);
   const translationsClient = getClientTranslations(data);
@@ -109,6 +100,8 @@ exports.render = function (pageData) {
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
   const copyright = copyrightSnippet.getCopyright();
   const pageDate = pageDateSnippet.getPageDate(this, langCode);
+  const entityTypePath = JSON.stringify(this.getEntityTypePath());
+  const navigation = navigationSnippet.getNavigation(this, langCode);
 
   return `<!doctype html> 
   <html lang="${langCode}">
@@ -127,12 +120,13 @@ exports.render = function (pageData) {
         objectData.translations = ${translationsClient};
         objectData.asseturl = "${this.url('/assets')}";
         objectData.inventoryNumber = "${id}";
+        objectData.entityTypePath = '${entityTypePath}';
       </script>
     </head>
     <body>
       <div id="page">
         ${navigation}
-          <section class="leporello-recog">
+          <section class="leporello-recog js-main-content">
           ${image}
           <div class="leporello-recog__text">
             <div class="grid-wrapper">
