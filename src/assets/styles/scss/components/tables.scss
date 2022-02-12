@@ -27,6 +27,7 @@
       & > .cell {
         padding: $xxs;
         background-color: $lightest;
+        vertical-align: top;
 
         &.-center {
           text-align: center;
@@ -57,6 +58,8 @@
     & > .is-active {
       & > .cell {
         padding-top: $l;
+        padding-right: $s;
+        padding-left: $s;
         border-top: solid $border-stroke-weight $light;
         font-weight: $fw-semibold;
       }

@@ -2,6 +2,16 @@
 // eslint-disable-next-line no-undef
 const globalData = objectData;
 
+/* Parse JSON
+============================================================================ */
+const parseJson = (jsonString) => {
+  try {
+    return JSON.parse(jsonString);
+  } catch (e) {
+    return false;
+  }
+};
+
 /* Global Notification
 ============================================================================ */
 class Notification {
@@ -83,7 +93,7 @@ class SwitchableContent {
   constructor(ele) {
     this.element = ele;
     this.id = ele.id;
-    this.data = JSON.parse(ele.dataset.jsSwitchableContent);
+    this.data = parseJson(ele.dataset.jsSwitchableContent);
     this.firstItem = document.getElementById(this.data[0]);
     this.secondItem = document.getElementById(this.data[1]);
     this.addHandle();
@@ -319,7 +329,7 @@ const expandReduce = (trigger, targetId) => {
 const getSearchResults = () => {
   const searchResult = localStorage.getItem('searchResult');
   if (!searchResult) return false;
-  return JSON.parse(searchResult);
+  return parseJson(searchResult);
 };
 
 /* Handle Arrow Keys
@@ -366,7 +376,7 @@ const setSearchResultNavigation = (element, searchResults) => {
   const { inventoryNumber } = globalData;
 
   const searchResult = localStorage.getItem('searchResult');
-  if (!searchResult) return;
+  if (!searchResult || !Array.isArray(searchResult)) return;
 
   const { translations } = globalData;
   const { langCode } = globalData;
@@ -377,7 +387,7 @@ const setSearchResultNavigation = (element, searchResults) => {
   const prev = pos > 0 ? searchResults[pos - 1] : false;
   const next = pos < searchResults.length ? searchResults[pos + 1] : false;
 
-  const entityTypePath = JSON.parse(globalData.entityTypePath);
+  const entityTypePath = parseJson(globalData.entityTypePath);
   const prevPathPrefix = prev ? entityTypePath[prev.entityType] : false;
   const nextPathPrefix = next ? entityTypePath[next.entityType] : false;
 
@@ -461,7 +471,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   if (document.querySelector('.main-image-wrap') !== null) {
     imageViewer = new ImageViewer('viewer-content', 'image-caption');
     const firstImageInStripe = document.querySelector('[data-js-change-image]');
-    const firstImageData = JSON.parse(firstImageInStripe.dataset.jsChangeImage);
+    const firstImageData = parseJson(firstImageInStripe.dataset.jsChangeImage);
     imageViewer.showImage(firstImageData.key, firstImageData.id, firstImageInStripe);
   }
 
@@ -492,16 +502,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const { href } = element;
 
     const searchQueryParams = localStorage.getItem('searchQueryParams');
-    if (!href || !searchQueryParams) return;
-
-    element.href = `${href}?${searchQueryParams}`;
+    if (href && searchQueryParams) { 
+      element.href = `${href}?${searchQueryParams}`;
+    }
   }
 
   /* Events
   --------------------------------------------------------------------------  */
   document.addEventListener('click', (ev) => {
     const { target } = ev;
-
+    
     if (target.dataset.jsToggleLiterature) {
       event.preventDefault();
       toggleLiteratureDetails(target.dataset.jsToggleLiterature);
@@ -518,7 +528,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     if (target.dataset.jsChangeImage) {
-      const data = JSON.parse(target.dataset.jsChangeImage);
+      const data = parseJson(target.dataset.jsChangeImage);
       imageViewer.showImage(data.key, data.id, target);
     }
 

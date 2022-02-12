@@ -1,5 +1,4 @@
 exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false) => {
-
   const prefix = content.metadata.id;
   const additionalCss = hasGrayBackground ? 'with-gray-background' : '';
   const getLiteraturDetails = (item) => {
@@ -34,6 +33,7 @@ exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false
         ${item && item.physicalDescription ? getRow(item.physicalDescription, 'physicalDescription') : ''}
         ${item && item.mention ? getRow(item.mention, 'mention') : ''}
         ${item && item.link ? getRow(item.link, 'permalink') : ''}
+        ${item && item.copyright ? getRow(item.copyright, 'link') : ''}
         ${item && item.pageNumbers ? getRow(item.pageNumbers, 'pages') : ''}
         ${getRow(alternateNumbers.join(', '), 'alternativeNumbers')}
       </table>
