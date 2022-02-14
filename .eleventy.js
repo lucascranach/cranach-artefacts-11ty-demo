@@ -15,7 +15,7 @@ const config = {
   },
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
-    "production": "https://lucascranach.org/imageserver-2021"
+    "production": "https://lucascranach.org/imageserver-2022-kkl"
   },
   "issueReportUrl": {
     "bug": "https://docs.google.com/forms/d/e/1FAIpQLSdtb8vAaRUZAZZUijLP099GFMm279HpbZBdVA5KZf5tnLZVCw/viewform?usp=pp_url&entry.810636170=artefactTitle&entry.1357028798=artefactUrl",
@@ -36,11 +36,11 @@ const config = {
       "fragment": "IRR",
       "sort": "03"
     },
-    "xRadiograph": {
+    "x_radiograph": {
       "fragment": "X-radiograph",
       "sort": "04"
     },
-    "uvLight": {
+    "uv_light": {
       "fragment": "UV-light",
       "sort": "05"
     },
@@ -72,7 +72,7 @@ const config = {
       "fragment": "KOE",
       "sort": "12"
     },
-    "transmittedLight": {
+    "transmitted_light": {
       "fragment": "Transmitted-light",
       "sort": "13"
     }
@@ -136,7 +136,7 @@ const clearRequireCache = () => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["AT_KHM_GG6905"]; //; ["DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739"];
+  const devObjects = ["DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739"];
 
   const paintings = process.env.ELEVENTY_ENV === 'production'
     ? paintingsForLang.items
@@ -172,11 +172,11 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["LC_HVI-107_132"];
+  const devObjects = ["ANO_HVI-7-6"];
   
   const graphicsVirtualObjects = process.env.ELEVENTY_ENV === 'production'
     ? graphicsVirtualObjectsForLang.items
-    : graphicsVirtualObjectsForLang.items; //.filter(item => devObjects.includes(item.inventoryNumber));
+    : graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber));
 
   const sortedGraphicsVirtualObjects = graphicsVirtualObjects.sort((a, b)=>{
     if (a.sortingNumber < b.sortingNumber) return -1;
@@ -285,16 +285,15 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addJavaScriptFunction("getReprintRefItem", (ref, lang) => {
-
     const reprintRefItemData = graphicsRealObjectData[lang].items.filter(item => item.metadata.id === ref);
     if (reprintRefItemData.length === 0) return;
-
+    
     const reprintRefItem = reprintRefItemData.shift();
     return {
       'id': reprintRefItem.metadata.id,
       'title': reprintRefItem.metadata.title,
       'date': reprintRefItem.metadata.date,
-      'conditionLevel': reprintRefItem.conditionLevel,
+      'conditionLevel': Number(reprintRefItem.conditionLevel),
       'repository': reprintRefItem.repository,
       'sortingNumber': reprintRefItem.sortingNumber,
       'imgSrc': reprintRefItem.metadata.imgSrc,
@@ -311,6 +310,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addJavaScriptFunction("getRefObjectMeta", (collection, id) => {
+    if (!collection) return {};
     const reference = collection.filter(item => item.inventoryNumber === id);
 
     if (!reference[0]) return false;

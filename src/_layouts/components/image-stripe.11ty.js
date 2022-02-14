@@ -3,6 +3,7 @@ exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator 
   const { contentTypes } = config;
 
   const imageStripe = Object.keys(contentTypes).map((key) => {
+
     if (!imageStack || !imageStack[key]) return;
 
     const { images } = imageStack[key];

@@ -375,8 +375,7 @@ const setSearchResultNavigation = (element, searchResults) => {
   if (!globalData.inventoryNumber) return;
   const { inventoryNumber } = globalData;
 
-  const searchResult = localStorage.getItem('searchResult');
-  if (!searchResult || !Array.isArray(searchResult)) return;
+  if (!searchResults || !Array.isArray(searchResults)) return;
 
   const { translations } = globalData;
   const { langCode } = globalData;

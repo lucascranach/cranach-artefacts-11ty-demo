@@ -308,14 +308,18 @@
     "de": "Infrarotaufnahmen",
     "en":"Infrared Images" 
   },
-  "xradiograph": {
+  "x_radiograph": {
     "de": "Röntgenaufnahmen",
     "en": "X-Radiographs"
   },
-  "uvlight":{
+  "uv_light":{
     "de": "UV-Fluoreszenzaufnahmen",
     "en":"UV Images"
     },
+  "transmitted_light":{
+    "de": "Durchlichtaufnahmen",
+    "en":"Transmitted-light"
+  },
   "detail":{
     "de": "Detailaufnahmen",
     "en":"Detail Images"

@@ -25,6 +25,7 @@ const generateReprint = (eleventy, id, masterData) => {
   eleventy.writeDocument(path, filename, reprint);
 };
 
+
 const getReprints = (eleventy, { content }, conditionLevel, secondConditionLevel = false) => {
   if (!content.references.reprints) return '';
 
@@ -32,13 +33,11 @@ const getReprints = (eleventy, { content }, conditionLevel, secondConditionLevel
   const reprintsListRefData = reprintsListData.map((item) => eleventy.getReprintRefItem(item.inventoryNumber, langCode, conditionLevel));
 
   const checkConditionLevel = (item) => {
-    if (!item || !item.conditionLevel) return false;
+    if (!item) return false;
+    if (item.conditionLevel === conditionLevel) return true;
+    if (secondConditionLevel !== false && item.conditionLevel === secondConditionLevel) return true;
 
-    const conditionLevelCheck = secondConditionLevel
-      ? item.conditionLevel === conditionLevel || item.conditionLevel === secondConditionLevel
-      : item.conditionLevel === conditionLevel;
-
-    return conditionLevelCheck;
+    return false;
   };
 
   const reprints = reprintsListRefData.filter(checkConditionLevel);
