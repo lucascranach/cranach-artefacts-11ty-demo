@@ -40,7 +40,7 @@ const getReprints = (eleventy, { content }, conditionLevel, secondConditionLevel
     return false;
   };
 
-  const reprints = reprintsListRefData.filter(checkConditionLevel);
+  const reprints = reprintsListRefData.filter(checkConditionLevel).sort((a, b) => a.sortingNumber.localeCompare(b.sortingNumber));
   const state = eleventy.translate(`${conditionLevel}-state`, langCode);
   const { masterData } = content;
 
@@ -52,6 +52,7 @@ const getReprints = (eleventy, { content }, conditionLevel, secondConditionLevel
       const cardText = [];
       if (item.date) cardText.push(item.date);
       if (item.repository) cardText.push(item.repository);
+
       return `
         <figure class="artefact-card">
           <a href="${url}" class="js-go-to-reprint">

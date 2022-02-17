@@ -369,22 +369,40 @@ const expandReduceText = (trigger, state) => {
 
 /* Search Result Navigation
 ============================================================================ */
+
+const getItemsFromSearchResultObjects = (searchResults, inventoryNumber) => {
+  const searchResultIds = searchResults.map((entry) => (entry.id));
+  const pos = searchResultIds.findIndex((id) => id === inventoryNumber);
+
+  const prev = pos > 0 ? searchResults[pos - 1] : false;
+  const next = pos < searchResults.length ? searchResults[pos + 1] : false;
+
+  return { prev, next };
+};
+
+const getDefaultNavigationItems = () => {
+  const { navigationObjects } = globalData;
+  if (!navigationObjects) return [];
+  return JSON.parse(navigationObjects);
+};
+
 const setSearchResultNavigation = (element, searchResults) => {
   const target = element;
 
   if (!globalData.inventoryNumber) return;
   const { inventoryNumber } = globalData;
 
-  if (!searchResults || !Array.isArray(searchResults)) return;
+  const navigationItems = (searchResults && Array.isArray(searchResults))
+    ? getItemsFromSearchResultObjects(searchResults, inventoryNumber)
+    : getDefaultNavigationItems();
+  
+  if (navigationItems.length === 0) return;
 
   const { translations } = globalData;
   const { langCode } = globalData;
 
-  const searchResultIds = searchResults.map((entry) => (entry.id));
-  const pos = searchResultIds.findIndex((id) => id === inventoryNumber);
-
-  const prev = pos > 0 ? searchResults[pos - 1] : false;
-  const next = pos < searchResults.length ? searchResults[pos + 1] : false;
+  const prev = navigationItems.prev;
+  const next = navigationItems.next;
 
   const entityTypePath = parseJson(globalData.entityTypePath);
   const prevPathPrefix = prev ? entityTypePath[prev.entityType] : false;
@@ -410,22 +428,20 @@ const setSearchResultNavigation = (element, searchResults) => {
 /* Reduce Navigation on Scroll
 ============================================================================ */
 const reduceNavigation = () => {
-  const navigation = document.querySelector('.js-navigation');
-  navigation.classList.add('is-sticky');
-
-  const leporello = document.querySelector('.js-main-content');
-  if (!leporello) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) {
-        navigation.classList.add('is-reduced');
-      } else {
-        navigation.classList.remove('is-reduced');
-      }
-    });
-  }, { threshold: 1 });
-  observer.observe(leporello);
+  // const navigation = document.querySelector('.js-navigation');
+  // navigation.classList.add('is-sticky');
+  // const leporello = document.querySelector('.js-main-content');
+  // if (!leporello) return;
+  // const observer = new IntersectionObserver((entries) => {
+  //   entries.forEach((entry) => {
+  //     if (!entry.isIntersecting) {
+  //       navigation.classList.add('is-reduced');
+  //     } else {
+  //       navigation.classList.remove('is-reduced');
+  //     }
+  //   });
+  // });
+  // observer.observe(leporello);
 };
 
 /* Main

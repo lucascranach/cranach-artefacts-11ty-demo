@@ -203,6 +203,32 @@ const markdownify = (str, mode = 'full') => {
   return `<div class="markdown-it">${renderedText}</div>`;
 }
 
+const objectsForNavigation = (() => {
+  const paintings = getPaintingsCollection("de");
+  const graphics = getGraphicsVirtualObjectsCollection("de");
+  const allArtefacts = { ...paintings, ...graphics }
+  const allArtefactsArray = [];
+
+  for (const [key, value] of Object.entries(allArtefacts)) {
+    allArtefactsArray.push(value);
+  }
+  
+  const sortedArtefactsArray = allArtefactsArray.sort((a, b) => a.sortingNumber.localeCompare(b.sortingNumber));
+  const objectsForNavigation = sortedArtefactsArray.map(item => {
+    const { sortingNumber } = item;
+    const { entityType } = item;
+    const id = item.metadata.id;
+    const imgSrc = item.metadata.imgSrc;
+
+    return {
+      id, imgSrc, sortingNumber, entityType
+    };
+  });
+
+  return objectsForNavigation;
+})()
+
+
 const appendToFile = (path, str) => {
   const filepath = `./${path}`;
   fs.appendFileSync(filepath, str);
@@ -448,6 +474,19 @@ module.exports = function (eleventyConfig) {
     return `${langCode}/${config.graphicFolder}/${id}/`;
   });
 
+  eleventyConfig.addJavaScriptFunction("getObjectsForNavigation", (id) => {
+    const objectIds = objectsForNavigation.map((entry) => (entry.id));
+    const pos = objectIds.findIndex((navObjectId) => id === navObjectId);
+  
+    const prev = pos > 0 ? objectsForNavigation[pos - 1] : false;
+    const next = pos < objectIds.length ? objectsForNavigation[pos + 1] : false;
+    
+    return {
+      prev, next
+    }
+  });
+  
+
   /* Filter
   ########################################################################## */
 
@@ -499,13 +538,28 @@ module.exports = function (eleventyConfig) {
     return graphicsRealObjectsDE;
   });
 
+  eleventyConfig.addCollection("graphicsRealObjectsEN", () => {
+    const graphicsRealObjectsEN = !config.generateGraphicsRealObjects
+      ? []
+      : getGraphicsRealObjectsCollection('en');
+    return graphicsRealObjectsEN;
+  });
+
   eleventyConfig.addCollection("graphicsVirtualObjectsDE", () => {
     const graphicsVirtualObjectsDE = !config.generateGraphicsVirtualObjects
       ? []
       : getGraphicsVirtualObjectsCollection('de');
     return graphicsVirtualObjectsDE;
   });
-  
+
+  eleventyConfig.addCollection("graphicsVirtualObjectsEN", () => {
+    const graphicsVirtualObjectsEN = !config.generateGraphicsVirtualObjects
+      ? []
+      : getGraphicsVirtualObjectsCollection('en');
+    return graphicsVirtualObjectsEN;
+  });
+
+
 
 
   /* Shortcodes

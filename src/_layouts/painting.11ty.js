@@ -102,6 +102,7 @@ exports.render = function (pageData) {
   const pageDate = pageDateSnippet.getPageDate(this, langCode);
   const entityTypePath = JSON.stringify(this.getEntityTypePath());
   const navigation = navigationSnippet.getNavigation(this, langCode);
+  const navigationObjects = JSON.stringify(this.getObjectsForNavigation(data.content.metadata.id));
 
   return `<!doctype html> 
   <html lang="${langCode}">
@@ -121,6 +122,7 @@ exports.render = function (pageData) {
         objectData.asseturl = "${this.url('/assets')}";
         objectData.inventoryNumber = "${id}";
         objectData.entityTypePath = '${entityTypePath}';
+        objectData.navigationObjects = '${navigationObjects}';
       </script>
     </head>
     <body>

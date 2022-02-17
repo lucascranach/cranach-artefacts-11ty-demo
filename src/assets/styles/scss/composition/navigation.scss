@@ -2,15 +2,20 @@
 // --------------------------------------------------------------------------
 
 .main-navigation {
-  position: relative;
+  position: sticky;
   z-index: $level-overall-nav;
   top: 0;
   display: grid;
   padding:
-    var(--responsive-padding-top-inner)
+    0
     var(--responsive-padding-right-left)
-    var(--responsive-padding-bottom-inner)
+    0
     var(--responsive-padding-right-left);
+  margin:
+    var(--responsive-padding-top-inner)
+    0
+    var(--responsive-padding-bottom-inner)
+    0;
   background-color: $lightest;
   gap: var(--responsive-gap);
   grid-template-columns: max($tile-xs) 1fr;
