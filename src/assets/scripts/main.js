@@ -395,14 +395,14 @@ const setSearchResultNavigation = (element, searchResults) => {
   const navigationItems = (searchResults && Array.isArray(searchResults))
     ? getItemsFromSearchResultObjects(searchResults, inventoryNumber)
     : getDefaultNavigationItems();
-  
+
   if (navigationItems.length === 0) return;
 
   const { translations } = globalData;
   const { langCode } = globalData;
 
-  const prev = navigationItems.prev;
-  const next = navigationItems.next;
+  const prev = { navigationItems };
+  const next = { navigationItems };
 
   const entityTypePath = parseJson(globalData.entityTypePath);
   const prevPathPrefix = prev ? entityTypePath[prev.entityType] : false;
@@ -517,7 +517,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const { href } = element;
 
     const searchQueryParams = localStorage.getItem('searchQueryParams');
-    if (href && searchQueryParams) { 
+    if (href && searchQueryParams) {
       element.href = `${href}?${searchQueryParams}`;
     }
   }
@@ -526,7 +526,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   --------------------------------------------------------------------------  */
   document.addEventListener('click', (ev) => {
     const { target } = ev;
-    
+
     if (target.dataset.jsToggleLiterature) {
       event.preventDefault();
       toggleLiteratureDetails(target.dataset.jsToggleLiterature);

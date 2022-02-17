@@ -52,7 +52,6 @@ const getHeader = (data) => {
   </header>`;
 };
 
-
 // eslint-disable-next-line func-names
 exports.render = function (pageData) {
   const data = pageData;
