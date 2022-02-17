@@ -1,4 +1,4 @@
-exports.getAdditionalTextInformation = (eleventy, { content }, langCode) => {
+exports.getAdditionalTextInformation = (eleventy, { content }) => {
   const additionalInfos = content.additionalTextInformation;
   const additionalInfoTypes = additionalInfos.map((item) => item.type);
   // eslint-disable-next-line max-len

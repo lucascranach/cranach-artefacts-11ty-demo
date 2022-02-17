@@ -45,6 +45,7 @@ exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false
     itemWithReferenceData.referenceData = eleventy.getLitRef(item.referenceId, langCode);
     return itemWithReferenceData;
   });
+
   const publicationListDataByDate = publicationListData.sort((a, b) => {
     if (!a.referenceData) return 0;
     if (!b.referenceData) return 0;
@@ -52,6 +53,7 @@ exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false
     const dateB = b.referenceData.publishDate ? b.referenceData.publishDate : b.referenceData.date;
     return dateB - dateA;
   });
+
   const publicationList = publicationListDataByDate.map(
     (item, index) => {
       const litRef = eleventy.getLitRef(item.referenceId, langCode);
@@ -64,8 +66,8 @@ exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false
 
           <td class="cell has-interaction"><a href="#" data-js-toggle-literature="${item.referenceId}-${index}">${item.title}</a></td>
           <td class="cell">${item.pageNumber} </td>
-          <td class="cell">${litRefTableData.catalogNumber}</td>
-          <td class="cell">${litRefTableData.figureNumber}</td>
+          <td class="cell">${litRefTableData ? litRefTableData.catalogNumber : ''}</td>
+          <td class="cell">${litRefTableData ? litRefTableData.figureNumber : '' }</td>
         </tr>
         <tr class="row ${hasBackground} is-detail" id="litRefData${item.referenceId}-${index}">
           <td class="cell" colspan="4">

@@ -6,21 +6,27 @@ exports.getCdaId = (eleventy, { content }) => `
 `;
 
 exports.getIds = (eleventy, { content }, langCode) => {
-  const hollsteinData = content.catalogWorkReferences.filter((item) => item.description === 'Hollstein');
+  const hollsteinData = content.catalogWorkReferences
+    ? content.catalogWorkReferences.filter((item) => item.description === 'Hollstein')
+    : false;
   const hollsteinNr = hollsteinData[0] ? hollsteinData[0].referenceNumber : false;
   const hollsteinNrSnippet = !hollsteinNr ? ''
     : `
     <dt class="definition-list__term">${eleventy.translate('hollstein', langCode)}</dt>
     <dd class="definition-list__definition" data-clipable-content="${hollsteinNr}">${hollsteinNr}</dd>
   `;
-  const kklData = content.catalogWorkReferences.filter((item) => item.description === 'KKL-Ordnungsnummer');
+  const kklData = content.catalogWorkReferences
+    ? content.catalogWorkReferences.filter((item) => item.description === 'KKL-Ordnungsnummer')
+    : false;
   const kklNr = kklData[0] ? kklData[0].referenceNumber : false;
   const kklNrSnippet = !kklNr ? ''
     : `
     <dt class="definition-list__term">${eleventy.translate('kkl', langCode)}</dt>
     <dd class="definition-list__definition" data-clipable-content="${kklNr}">${kklNr}</dd>
   `;
-  const bartschData = content.catalogWorkReferences.filter((item) => item.description === 'Bartsch');
+  const bartschData = content.catalogWorkReferences
+    ? content.catalogWorkReferences.filter((item) => item.description === 'Bartsch')
+    : false;
   const bartschNr = bartschData[0] ? bartschData[0].referenceNumber : false;
   const bartschNrSnippet = !bartschNr ? ''
     : `

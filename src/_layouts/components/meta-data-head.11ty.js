@@ -3,7 +3,7 @@ exports.getHeader = ({ content }) => {
   const title = content.metadata.title.replace(/"/g, '\'');
   const { url } = content;
   const image = content.metadata.imgSrc;
-  const desc = content.description.length > descLength
+  const desc = content.description && content.description.length > descLength
     ? `${content.description.substr(0, descLength)} …`
     : content.description;
 

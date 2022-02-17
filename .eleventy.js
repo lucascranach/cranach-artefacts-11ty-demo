@@ -7,8 +7,9 @@ const config = {
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
   "graphicFolder": "graphics",
-  "generatePaintings": true,
-  "generateGraphicsVirtualObjects": true,
+  "generatePaintings": false,
+  "generateArchivals": true,
+  "generateGraphicsVirtualObjects": false,
   "entityTypePath": {
     "PAINTING": "paintings",
     "GRAPHIC": "graphics",
@@ -84,6 +85,11 @@ const paintingsData = {
   "en": require("./src/_data/cda-paintings-v2.en.json")
 }
 
+const archivalsData = {
+  "de": require("./src/_data/cda-archivals-v2.de.json"),
+  "en": require("./src/_data/cda-archivals-v2.en.json")
+}
+
 const graphicsRealObjectData = {
   "de": require("./src/_data/cda-graphics-v2.real.de.json"),
   "en": require("./src/_data/cda-graphics-v2.real.en.json")
@@ -157,6 +163,23 @@ const getPaintingsCollection = (lang) => {
 
 
   return sortedPaintings;
+}
+
+const getArchivalsCollection = (lang) => {
+  const archivalsForLang = archivalsData[lang];
+  const devObjects = ["DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739"];
+
+  const archivals = process.env.ELEVENTY_ENV === 'production'
+    ? archivalsForLang.items
+    : archivalsForLang.items; // .filter(item => devObjects.includes(item.inventoryNumber));
+  
+  let sortedArchivals = archivals.sort((a, b)=>{
+    if (a.sortingNumber < b.sortingNumber) return -1;
+    if (a.sortingNumber > b.sortingNumber) return 1;
+    return 0;
+  });
+  
+  return sortedArchivals;
 }
 
 const getGraphicsRealObjectsCollection = (lang) => {
@@ -559,6 +582,19 @@ module.exports = function (eleventyConfig) {
     return graphicsVirtualObjectsEN;
   });
 
+  eleventyConfig.addCollection("archivalsDE", () => {
+    const archivalsDE = !config.generateArchivals
+      ? []
+      : getArchivalsCollection('de');
+    return archivalsDE;
+  });
+
+  eleventyConfig.addCollection("archivalsEN", () => {
+    const archivalsEN = !config.generateArchivals
+      ? []
+      : getArchivalsCollection('en');
+    return archivalsEN;
+  });
 
 
 

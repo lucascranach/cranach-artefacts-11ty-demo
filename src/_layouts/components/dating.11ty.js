@@ -1,10 +1,9 @@
 exports.getDating = (eleventy, { content }, langCode) => {
   const prefix = content.metadata.id;
   const numberOfItems = 2;
-  const combinedDates = [
-    { text: content.dating.dated, remarks: content.dating.remarks },
-    ...content.dating.historicEventInformations,
-  ];
+  const combinedDates = content.dating.historicEventInformations
+    ? [{ text: content.dating.dated, remarks: content.dating.remarks }, ...content.dating.historicEventInformations]
+    : [{ text: content.dating.dated, remarks: content.dating.remarks }];
   const datesShortListItems = combinedDates.slice(0, numberOfItems);
   const datesShortList = datesShortListItems.map((item) => item.text);
   const datesFullList = combinedDates.map((item) => ({ text: `${item.text}`, remark: item.remarks }));
