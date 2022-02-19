@@ -179,6 +179,15 @@ const getArchivalsCollection = (lang) => {
     return 0;
   });
   
+
+  if (lang === "de") { 
+    sortedArchivals.forEach(item => {
+      console.log(item.inventoryNumber);
+      appendToFile("archivals.txt", `$data["${item.inventoryNumber}"] = "${item.scanNames}";`);
+    });
+  }
+
+
   return sortedArchivals;
 }
 
