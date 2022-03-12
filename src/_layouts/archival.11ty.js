@@ -17,6 +17,9 @@ const provenanceSnippet = require('./components/provenance.11ty');
 const sourcesSnippet = require('./components/sources.11ty');
 const imageStripeSnippet = require('./components/image-stripe.11ty');
 const navigationSnippet = require('./components/navigation.11ty');
+const locationSnippet = require('./components/location.11ty');
+const transcriptionSnippet = require('./components/transcription.11ty');
+const commentsSnippet = require('./components/comments.11ty');
 
 const getImageStack = ({ content }) => JSON.stringify(content.images);
 const getImageBasePath = () => JSON.stringify(config.imageTiles);
@@ -51,7 +54,7 @@ exports.render = function (pageData) {
   const imageBasePath = getImageBasePath(data);
   const translationsClient = getClientTranslations(data);
 
-  const location = "TBD";
+  const location = locationSnippet.getArchivalLocation(this, data, langCode);
   const metaDataHead = metaDataHeader.getHeader(data);
   const image = representantImageSnippet.getRepresentant(this, data);
   const dating = datingSnippet.getDating(this, data, langCode);
@@ -69,6 +72,9 @@ exports.render = function (pageData) {
   const entityTypePath = JSON.stringify(this.getEntityTypePath());
   const navigation = navigationSnippet.getNavigation(this, langCode);
   const navigationObjects = JSON.stringify(this.getObjectsForNavigation(data.content.metadata.id));
+  const transcription = transcriptionSnippet.getTranscription(this, data, langCode);
+  const transcriptionMetaData = transcriptionSnippet.getTranscriptionMetaData(this, data, langCode);
+  const comments = commentsSnippet.getComments(this, data, langCode);
 
   return `<!doctype html> 
   <html lang="${langCode}">
@@ -115,6 +121,14 @@ exports.render = function (pageData) {
                 </div>
                 <div class="block">
                   ${ids}
+                </div>
+
+                <div class="block">
+                  ${comments}
+                </div>
+                <div class="block">
+                  ${transcription}
+                  ${transcriptionMetaData}
                 </div>
               </div>
 

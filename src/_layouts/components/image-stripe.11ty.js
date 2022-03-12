@@ -3,7 +3,6 @@ exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator 
   const { contentTypes } = config;
 
   const imageStripe = Object.keys(contentTypes).map((key) => {
-
     if (!imageStack || !imageStack[key]) return;
 
     const { images } = imageStack[key];
@@ -12,10 +11,11 @@ exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator 
       return `
         <li
           class="image-stripe-list__item has-interaction"
+          title="${image.id}" 
           data-image-type="${key}" 
           data-image-id="${image.id}"
           data-js-change-image='{"key":"${key}","id":"${image.id}"}'>
-          <img loading="lazy" src="${image.sizes.small.src}" alt="${title}">
+          <img loading="lazy" src="${image.sizes.small.src}" alt="${title}" >
         </li>
       `;
     });

@@ -1,5 +1,5 @@
 {
-  "date":{
+  "date": {
     "de": "Datum",
     "en": "Date"
   },
@@ -55,9 +55,17 @@
     "de": "Besitzer",
     "en": "Repository"
   },
+  "repositoryAndLocation": {
+    "de": "Besitzer/ Standort",
+    "en": "Repository"
+  },
   "location": {
     "de": "Standort",
     "en": "Location"
+  },
+  "locationAndDate": {
+    "de": "Ort und Datum",
+    "en": "Location and Date"
   },
   "signature": {
     "de": "Signatur / Datierung",
@@ -111,7 +119,6 @@
     "de": "Erhaltungszustand",
     "en": "Condition"
   },
-
   "ConditionReport": {
     "de": "Erhaltungszustand",
     "en": "Condition Reports"
@@ -123,7 +130,7 @@
   "attribution": {
     "de": "Zuschreibung",
     "en": "Attribution"
-  },  
+  },
   "attributions": {
     "de": "Zuschreibungen",
     "en": "Attributions"
@@ -240,6 +247,10 @@
     "de": "Übersetzung",
     "en": "Translation"
   },
+  "transcription": {
+    "de": "Transkription",
+    "en": "Transcription"
+  },
   "print": {
     "de": "Druck",
     "en": "Print"
@@ -298,207 +309,222 @@
   },
   "overall": {
     "de": "Gesamtaufnahmen",
-    "en":"Overall"
+    "en": "Overall"
   },
-  "reverse":{
+  "reverse": {
     "de": "Rückseitenaufnahmen",
-    "en":"Reverse"
+    "en": "Reverse"
   },
-  "irr":{
+  "irr": {
     "de": "Infrarotaufnahmen",
-    "en":"Infrared Images" 
+    "en": "Infrared Images"
   },
   "x_radiograph": {
     "de": "Röntgenaufnahmen",
     "en": "X-Radiographs"
   },
-  "uv_light":{
+  "uv_light": {
     "de": "UV-Fluoreszenzaufnahmen",
-    "en":"UV Images"
-    },
-  "transmitted_light":{
+    "en": "UV Images"
+  },
+  "transmitted_light": {
     "de": "Durchlichtaufnahmen",
-    "en":"Transmitted-light"
+    "en": "Transmitted-light"
   },
-  "detail":{
+  "detail": {
     "de": "Detailaufnahmen",
-    "en":"Detail Images"
+    "en": "Detail Images"
   },
-  "photomicrograph":{
+  "photomicrograph": {
     "de": "Mikroskopaufnahmen",
     "en": "Photomicrographs"
   },
-  "koe":{
+  "koe": {
     "de": "KOE",
     "en": "KOE"
   },
-  "conservation":{
+  "conservation": {
     "de": "Restaurierung",
-    "en":"Conservation"
+    "en": "Conservation"
   },
   "other": {
     "de": "Andere",
     "en": "Other"
   },
-  "analysis":{
+  "analysis": {
     "de": "Untersuchungsergebnisse",
-    "en":"Analysis"
+    "en": "Analysis"
   },
-  "rkd": { 
+  "rkd": {
     "de": "Max J. Friedländer-Archiv",
-    "en":"Max J. Friedländer Archive"
+    "en": "Max J. Friedländer Archive"
   },
-  "showMore":{
+  "showMore": {
     "de": "mehr Inhalte zeigen",
     "en": "show more content"
   },
-  "showLess":{
+  "showLess": {
     "de": "weniger Inhalte zeigen",
     "en": "hide content"
   },
-  "RELATED_IN_CONTENT_TO":{
+  "RELATED_IN_CONTENT_TO": {
     "de": "Versionen",
     "en": "Versions"
   },
-  "SIMILAR_TO":{
+  "SIMILAR_TO": {
     "de": "Vergleichbare Motive",
     "en": "Similar Motifs"
   },
-  "BELONGS_TO":{
+  "BELONGS_TO": {
     "de": "Bildträger aus dem selben Baum gefertigt",
     "en": "Support made from the same tree"
   },
-  "GRAPHIC":{
+  "GRAPHIC": {
     "de": "Grafik",
     "en": "Graphic Art"
   },
-  "masterData":{
-    "de":"Werkdaten",
+  "masterData": {
+    "de": "Werkdaten",
     "en": "Master Data"
   },
-  "classification":{
-    "de":"Klassifikation",
-    "en":"Classification"
+  "classification": {
+    "de": "Klassifikation",
+    "en": "Classification"
   },
-  "PART_OF_WORK":{
+  "PART_OF_WORK": {
     "de": "Zugehörige Werke",
     "en": "Connected Works"
   },
-  "kindOfImage":{
+  "kindOfImage": {
     "de": "Art der Abbildung",
     "en": "File type / description"
   },
-  "citeCdaHeadline":{
-    "de":"Zitieren aus dem Cranach Digital Archive",
-    "en":"Citing from the Cranach Digital Archive"
+  "citeCdaHeadline": {
+    "de": "Zitieren aus dem Cranach Digital Archive",
+    "en": "Citing from the Cranach Digital Archive"
   },
-  "citeWithAutor":{
-    "de":"Eintrag mit Autor",
-    "en":"Entry with author"
+  "citeWithAutor": {
+    "de": "Eintrag mit Autor",
+    "en": "Entry with author"
   },
-  "citeWithAutorText":{
-    "de":"<Autorenname> <Titel des Objekts, cda-Inventarnummer, Titel des Dokuments oder der Abbildung>. <Name der Datenbank> <<URL>> <Datum des Dokuments oder der Abbildung> (Zuletzt aufgerufen <Datum des letzten Zugriffs>) ",
-    "en":"<author's name> <title of object, Inventory number, title of document or image>. <Name of Database> <<URL>> <date of document> (Accessed <date accessed>)"
+  "citeWithAutorText": {
+    "de": "<Autorenname> <Titel des Objekts, cda-Inventarnummer, Titel des Dokuments oder der Abbildung>. <Name der Datenbank> <<URL>> <Datum des Dokuments oder der Abbildung> (Zuletzt aufgerufen <Datum des letzten Zugriffs>) ",
+    "en": "<author's name> <title of object, Inventory number, title of document or image>. <Name of Database> <<URL>> <date of document> (Accessed <date accessed>)"
   },
-  "citeWithoutAutor":{
-    "de":"Eintrag ohne Autor",
-    "en":"Entry with no author"
+  "citeWithoutAutor": {
+    "de": "Eintrag ohne Autor",
+    "en": "Entry with no author"
   },
-  "citeWithoutAutorText":{
-    "de":"<Titel des Objekts, cda-Inventarnummer, Titel des Dokuments oder der Abbildung>. <Name der Datenbank> <<UR>> <Datum des Dokuments oder der Abbildung> (Zuletzt aufgerufen <Datum des letzten Zugriffs>)",
-    "en":"<title of object, Inventory number, title of document or image>. <Name of Database> <<UR>> <date of document> (Accessed <date accessed>) "
+  "citeWithoutAutorText": {
+    "de": "<Titel des Objekts, cda-Inventarnummer, Titel des Dokuments oder der Abbildung>. <Name der Datenbank> <<UR>> <Datum des Dokuments oder der Abbildung> (Zuletzt aufgerufen <Datum des letzten Zugriffs>)",
+    "en": "<title of object, Inventory number, title of document or image>. <Name of Database> <<UR>> <date of document> (Accessed <date accessed>) "
   },
-  "example":{
-    "de":"Beispiel",
+  "example": {
+    "de": "Beispiel",
     "en": "Example"
   },
   "pageGenerated": {
     "de": "Erzeugt am",
     "en": "created on"
   },
-  "youHaveAdditionalInformation":{
+  "youHaveAdditionalInformation": {
     "de": "ergänzende Informationen haben.",
     "en": "have some extra information about this object."
   },
-  "foundABug":{
+  "foundABug": {
     "de": "Sie einen Fehler bemerkt haben.",
     "en": "you have noticed a mistake."
   },
-  "contactUs":{
+  "contactUs": {
     "de": "Bitte kontaktieren Sie uns, wenn",
     "en": "Please contact us, if"
   },
-  "improveCdaHeadline":{
+  "improveCdaHeadline": {
     "de": "Helfen Sie uns das Cranach Digital Archive zu verbessern.",
     "en": "Help us to improve the Cranach Digital Archive."
   },
-  "or":{
+  "or": {
     "de": "oder",
     "en": "or"
   },
-  "physicalDescription":{
+  "physicalDescription": {
     "de": "Buchformat",
     "en": "Book format"
   },
-  "hollstein":{
+  "hollstein": {
     "de": "Hollstein-Nr.",
     "en": "Hollstein-No"
   },
-  "kkl":{
+  "kkl": {
     "de": "KKL-Nr.",
     "en": "KKL-No"
-  },  
-  "bartsch":{
+  },
+  "bartsch": {
     "de": "Bartsch-Nr.",
     "en": "Bartsch-No"
   },
-  "impressions":{
+  "impressions": {
     "de": "Abzüge",
     "en": "Impressions"
   },
-  "1-state":{
+  "1-state": {
     "de": "1. Zustand",
     "en": "1. State"
   },
-  "2-state":{
+  "2-state": {
     "de": "2. Zustand",
     "en": "2. State"
   },
-  "3-state":{
+  "3-state": {
     "de": "3. Zustand",
     "en": "3. State"
   },
-  "4-state":{
+  "4-state": {
     "de": "4. Zustand",
     "en": "4th State"
   },
-  "5-state":{
+  "5-state": {
     "de": "5. Zustand",
     "en": "5th State"
   },
-  "6-state":{
+  "6-state": {
     "de": "6. Zustand",
     "en": "6th State"
   },
-  "7-state":{
+  "7-state": {
     "de": "7. Zustand",
     "en": "7th State"
   },
-  "8-state":{
+  "8-state": {
     "de": "8. Zustand",
     "en": "8th State"
   },
-  "9-state":{
+  "9-state": {
     "de": "9. Zustand",
     "en": "9th State"
   },
-  "10-state":{
+  "10-state": {
     "de": "10. Zustand",
     "en": "10th State"
   },
-  "zur-suche":{
+  "zur-suche": {
     "de": "zur Suche",
     "en": "go to Search"
+  },
+  "trans-to": {
+    "de": "Transkription nach",
+    "en": "Transcription according to"
+  },
+  "trans-date": {
+    "de": "Transkription Datum",
+    "en": "Transcription Date"
+  },
+  "trans-by": {
+    "de": "Transkription durch",
+    "en": "Transcription by"
+  },
+  "comments": {
+    "de": "Kommentare",
+    "en": "Comments"
   }
-  
 }
