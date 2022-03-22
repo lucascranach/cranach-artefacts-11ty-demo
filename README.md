@@ -1,4 +1,4 @@
-# Cranach 11ty Demo
+# Cranach 11ty
 
 ## Ordnerstruktur
 

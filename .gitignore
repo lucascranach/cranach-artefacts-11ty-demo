@@ -199,6 +199,8 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/sass,windows,macos,node,visualstudiocode
 
+cda-archivals-v2.de.json
+cda-archivals-v2.en.json
 cda-paintings-v2.de.json
 cda-paintings-v2.en.json
 cda-literaturereferences-v2.de.json
