@@ -397,17 +397,17 @@ const setSearchResultNavigation = (element, searchResults) => {
     : getDefaultNavigationItems();
 
   if (navigationItems.length === 0) return;
-
+  
   const { translations } = globalData;
   const { langCode } = globalData;
 
-  const prev = { navigationItems };
-  const next = { navigationItems };
+  const { prev } = navigationItems;
+  const { next } = navigationItems;
 
   const entityTypePath = parseJson(globalData.entityTypePath);
   const prevPathPrefix = prev ? entityTypePath[prev.entityType] : false;
   const nextPathPrefix = next ? entityTypePath[next.entityType] : false;
-
+  
   const prevArtefactHtml = !prev ? ''
   // eslint-disable-next-line max-len
     : `<a class="nav-item" href="../../${prevPathPrefix}/${prev.id}">
