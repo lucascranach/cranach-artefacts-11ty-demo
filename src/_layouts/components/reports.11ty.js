@@ -26,7 +26,7 @@ exports.getReports = (eleventy, { content }, langCode, config, type) => {
         data-image-type="${item.type}" 
         data-image-id="${item.id}"
         data-js-change-image='{"key":"${item.type}","id":"${item.id}"}'>
-        <img loading="lazy" src="${item.image.sizes.small.src}" alt="${item.type}">
+        <img loading="lazy" src="${item.image.sizes.small.src}" alt="${item.type}" title="${item.id}">
       </li>
       `);
     const documentStripeItems = otherItems.map((item) => {
