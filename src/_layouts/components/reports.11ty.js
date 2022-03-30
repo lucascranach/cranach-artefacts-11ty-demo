@@ -23,6 +23,7 @@ exports.getReports = (eleventy, { content }, langCode, config, type) => {
     const imageStripeItems = imageItems.map((item) => `
       <li
         class="image-stripe-list__item has-interaction"
+        title="${item.id}" 
         data-image-type="${item.type}" 
         data-image-id="${item.id}"
         data-js-change-image='{"key":"${item.type}","id":"${item.id}"}'>
