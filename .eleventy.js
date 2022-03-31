@@ -9,7 +9,7 @@ const config = {
   "graphicFolder": "graphics",
   "generatePaintings": true,
   "generateArchivals": true,
-  "generateGraphicsVirtualObjects": false,
+  "generateGraphicsVirtualObjects": true,
   "entityTypePath": {
     "PAINTING": "paintings",
     "GRAPHIC": "graphics",

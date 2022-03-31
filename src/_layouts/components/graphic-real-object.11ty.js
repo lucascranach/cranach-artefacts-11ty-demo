@@ -21,6 +21,7 @@ const reportsSnippet = require('./reports.11ty');
 const additionalTextInformationSnippet = require('./additional-text-information.11ty');
 const referencesSnippet = require('./references.11ty');
 const conditionSnippet = require('./condition.11ty');
+const navigationSnippet = require('./navigation.11ty');
 
 const ART_TECH_EXAMINATION = 'ArtTechExamination';
 const CONDITION_REPORT = 'ConditionReport';
@@ -36,16 +37,7 @@ const getImageBasePath = () => JSON.stringify(config.imageTiles);
 const getClientTranslations = (eleventy) => JSON.stringify(eleventy.getClientTranslations());
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
-const getNavigation = (eleventy, langCode) => {
-  const cranachSearchURL = `${config.cranachSearchURL}/${langCode}`;
-  return `
-    <nav class="main-navigation js-navigation">
-      <a class="logo js-home" href="${cranachSearchURL}">cda_</a>
-      <a class="back icon has-interaction js-back">arrow_back</a>
-      <h2>${eleventy.translate('masterData', langCode)}</h2>
-    </nav>
-  `;
-};
+
 
 // eslint-disable-next-line func-names
 exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
@@ -55,7 +47,7 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
   eleventy.log(data);
 
   const documentTitle = getDocumentTitle(data);
-  const navigation = getNavigation(eleventy, langCode);
+  const navigation = navigationSnippet.getNavigation(eleventy, langCode);
   const imageStack = getImageStack(data);
   const imageBasePath = getImageBasePath(data);
   const translationsClient = getClientTranslations(eleventy);
