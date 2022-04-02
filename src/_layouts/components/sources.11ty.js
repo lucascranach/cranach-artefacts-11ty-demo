@@ -14,6 +14,12 @@ exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false
     const getRow = (rowContent, translationID) => (!rowContent ? ''
       : `<tr><th>${eleventy.translate(translationID, langCode)}</th><td>${eleventy.stripTags(rowContent)}</td></tr>`);
 
+    const getLink = (rowContent, translationID) => (!rowContent ? ''
+      : `<tr>
+          <th>${eleventy.translate(translationID, langCode)}</th>
+          <td><a class="has-interaction" href="${eleventy.stripTags(rowContent)}" target="_blank">${eleventy.stripTags(rowContent)}</a></td>
+        </tr>`);
+
     return `
       <table class="literature-item-details-table">
         ${getRow(author.join(', '), 'author')}
@@ -32,8 +38,8 @@ exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false
         ${item && item.periodOfOrigin ? getRow(item.periodOfOrigin, 'periodOfOrigin') : ''}
         ${item && item.physicalDescription ? getRow(item.physicalDescription, 'physicalDescription') : ''}
         ${item && item.mention ? getRow(item.mention, 'mention') : ''}
-        ${item && item.link ? getRow(item.link, 'permalink') : ''}
-        ${item && item.copyright ? getRow(item.copyright, 'link') : ''}
+        ${item && item.link ? getLink(item.link, 'permalink') : ''}
+        ${item && item.copyright ? getLink(item.copyright, 'link') : ''}
         ${item && item.pageNumbers ? getRow(item.pageNumbers, 'pages') : ''}
         ${getRow(alternateNumbers.join(', '), 'alternativeNumbers')}
       </table>
@@ -67,7 +73,7 @@ exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false
           <td class="cell has-interaction"><a href="#" data-js-toggle-literature="${item.referenceId}-${index}">${item.title}</a></td>
           <td class="cell">${item.pageNumber} </td>
           <td class="cell">${litRefTableData ? litRefTableData.catalogNumber : ''}</td>
-          <td class="cell">${litRefTableData ? litRefTableData.figureNumber : '' }</td>
+          <td class="cell">${litRefTableData ? litRefTableData.figureNumber : ''}</td>
         </tr>
         <tr class="row ${hasBackground} is-detail" id="litRefData${item.referenceId}-${index}">
           <td class="cell" colspan="4">

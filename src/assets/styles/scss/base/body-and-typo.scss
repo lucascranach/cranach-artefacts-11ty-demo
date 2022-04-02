@@ -19,7 +19,6 @@ a {
 a[target=_blank] {
   display: inline-block;
   border-bottom: dotted $border-stroke-weight-s $accent;
-  font-weight: $fw-semibold;
   transition: background $tr-fast, padding $tr-fast;
 
   &:hover {

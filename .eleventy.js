@@ -8,7 +8,7 @@ const config = {
   "graphicPrefix": "GWN_",
   "graphicFolder": "graphics",
   "generatePaintings": true,
-  "generateArchivals": true,
+  "generateArchivals": false,
   "generateGraphicsVirtualObjects": true,
   "entityTypePath": {
     "PAINTING": "paintings",
