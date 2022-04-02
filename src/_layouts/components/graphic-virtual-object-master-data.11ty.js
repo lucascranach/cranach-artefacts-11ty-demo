@@ -48,7 +48,8 @@ exports.getMasterData = (eleventy, pageData) => {
   const ids = identificationSnippet.getIds(eleventy, data, langCode);
   const exhibitions = exhibitonsSnippet.getExhibitions(eleventy, data, langCode);
   const additionalTextInformation = additionalTextInformationSnippet.getAdditionalTextInformation(eleventy, data, langCode);
-  const sources = sourcesSnippet.getSources(eleventy, data, langCode, true);
+  const primarySources = sourcesSnippet.getPrimarySources(eleventy, data, langCode, true);
+  const nonPrimarySources = sourcesSnippet.getNonPrimarySources(eleventy, data, langCode, true);
 
   return `
     <section class="leporello-recog js-main-content">
@@ -74,7 +75,8 @@ exports.getMasterData = (eleventy, pageData) => {
           </div>
           <div class="marginal-content">
             ${exhibitions}
-            ${sources}
+            ${primarySources}
+            ${nonPrimarySources}
             ${additionalTextInformation}
           </div>
         </div>

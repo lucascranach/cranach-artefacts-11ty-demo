@@ -1,4 +1,12 @@
-exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false) => {
+const getSources = (params) => {
+  const { eleventy } = params;
+  const { content } = params;
+  const { langCode } = params;
+  const { hasGrayBackground } = params;
+  const { title } = params;
+  const { type } = params;
+  const { publicationListData } = params;
+
   const prefix = content.metadata.id;
   const additionalCss = hasGrayBackground ? 'with-gray-background' : '';
   const getLiteraturDetails = (item) => {
@@ -46,12 +54,6 @@ exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false
     `;
   };
 
-  const publicationListData = content.publications.map((item) => {
-    const itemWithReferenceData = item;
-    itemWithReferenceData.referenceData = eleventy.getLitRef(item.referenceId, langCode);
-    return itemWithReferenceData;
-  });
-
   const publicationListDataByDate = publicationListData.sort((a, b) => {
     if (!a.referenceData) return 0;
     if (!b.referenceData) return 0;
@@ -86,9 +88,9 @@ exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false
 
   const publications = content.publications ? `
     <div class="foldable-block has-strong-separator"> 
-      <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="${prefix}-literature-list">
-        ${eleventy.translate('literature', langCode)}</h2>
-      <div id="${prefix}-literature-list" class="expandable-content">
+      <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="${prefix}-${type}-list">
+        ${title}</h2>
+      <div id="${prefix}-${type}-list" class="expandable-content">
         <table class="table literature">
           <thead class="head ${additionalCss}">
             <tr class="row">
@@ -106,4 +108,49 @@ exports.getSources = (eleventy, { content }, langCode, hasGrayBackground = false
     </div>` : '';
 
   return content.publications.length === 0 ? '' : publications;
+};
+
+const getPublicationListData = (eleventy, publications, langCode) => {
+  const publicationListData = publications.map((item) => {
+    const itemWithReferenceData = item;
+    itemWithReferenceData.referenceData = eleventy.getLitRef(item.referenceId, langCode);
+    return itemWithReferenceData;
+  });
+
+  return publicationListData;
+};
+
+exports.getCombinedSources = (eleventy, { content }, langCode, hasGrayBackground = false) => {
+  const title = eleventy.translate('literature', langCode);
+  const type = 'combined-literature';
+  const publicationListData = getPublicationListData(eleventy, content.publications, langCode);
+
+  const params = {
+    eleventy, content, langCode, hasGrayBackground, title, type, publicationListData,
+  };
+  return getSources(params);
+};
+
+exports.getPrimarySources = (eleventy, { content }, langCode, hasGrayBackground = false) => {
+  const title = eleventy.translate('literature', langCode);
+  const type = 'primary-literature';
+  const allPublications = getPublicationListData(eleventy, content.publications, langCode);
+  const publicationListData = allPublications.filter((item) => item.referenceData.isPrimarySource === true);
+
+  const params = {
+    eleventy, content, langCode, hasGrayBackground, title, type, publicationListData,
+  };
+  return getSources(params);
+};
+
+exports.getNonPrimarySources = (eleventy, { content }, langCode, hasGrayBackground = false) => {
+  const title = eleventy.translate('literature', langCode);
+  const type = 'non-primary-literature';
+  const allPublications = getPublicationListData(eleventy, content.publications, langCode);
+  const publicationListData = allPublications.filter((item) => item.referenceData.isPrimarySource === false);
+
+  const params = {
+    eleventy, content, langCode, hasGrayBackground, title, type, publicationListData,
+  };
+  return getSources(params);
 };

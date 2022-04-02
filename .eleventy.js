@@ -7,7 +7,7 @@ const config = {
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
   "graphicFolder": "graphics",
-  "generatePaintings": true,
+  "generatePaintings": false,
   "generateArchivals": false,
   "generateGraphicsVirtualObjects": true,
   "entityTypePath": {
@@ -202,7 +202,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["ANO_HVI-7-6"];
+  const devObjects = ["ANO_HVI-7-6", "HBG_HVI-8_7-4"];
   
   const graphicsVirtualObjects = process.env.ELEVENTY_ENV === 'production'
     ? graphicsVirtualObjectsForLang.items

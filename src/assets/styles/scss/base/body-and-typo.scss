@@ -21,6 +21,10 @@ a[target=_blank] {
   border-bottom: dotted $border-stroke-weight-s $accent;
   transition: background $tr-fast, padding $tr-fast;
 
+  &::after {
+    @include external-link;
+  }
+
   &:hover {
     padding-right: $quad;
     padding-left: $quad;
