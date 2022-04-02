@@ -1,4 +1,4 @@
-exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator = false, isExpanded = true) => {
+exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator = false, isExpanded = false) => {
   const imageStack = content.images;
   const { contentTypes } = config;
 
