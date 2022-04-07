@@ -85,8 +85,8 @@ const getSources = (params) => {
         `;
     },
   );
-
-  const publications = content.publications ? `
+  
+  const publications = publicationListData.length > 0 ? `
     <div class="foldable-block has-strong-separator"> 
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="${prefix}-${type}-list">
         ${title}</h2>

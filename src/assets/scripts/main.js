@@ -317,11 +317,30 @@ class ImageViewer {
   }
 }
 
+/* Stores Interaction (Foldable Items)
+============================================================================ */
+const storeInteraction = (element) => {
+
+  const trigger = element;
+  const id = trigger.id ? trigger.id : trigger.dataset.jsExpandable;
+  const state = trigger.dataset.jsExpanded ? trigger.dataset.jsExpanded : false;
+
+  const storedInteractions = localStorage.getItem('interactions')
+    ? JSON.parse(localStorage.getItem('interactions'))
+    : {};
+
+  storedInteractions[id] = state;
+  localStorage.setItem('interactions', JSON.stringify(storedInteractions));
+
+  // return true;
+};
+
 /* Expand & Reduce Blocks
 ============================================================================ */
 const expandReduce = (trigger, targetId) => {
   document.getElementById(targetId).classList.toggle('is-visible');
   trigger.classList.toggle('is-expanded');
+  storeInteraction(trigger);
 };
 
 /* Search Results in Local Storage
