@@ -1,10 +1,17 @@
 exports.getAttribution = (eleventy, { content }, langCode) => {
   const prefix = content.metadata.id;
   const numberOfItems = 2;
+  let additionalCellClass = '';
   const getAttributer = (item) => {
     const fragments = [];
+    const nameAndRole = [];
+    if (item.name) nameAndRole.push(item.name);
+    if (item.role) nameAndRole.push(item.role);
     if (item.prefix) fragments.push(item.prefix);
-    if (item.name) fragments.push(item.name);
+    if (nameAndRole.length > 0) {
+      fragments.push(nameAndRole.join(', '));
+      additionalCellClass = "is-wide";
+    }
     if (item.suffix) fragments.push(item.suffix);
     return fragments.join(' ');
   };
@@ -18,6 +25,7 @@ exports.getAttribution = (eleventy, { content }, langCode) => {
     isAdditionalContentTo: `${prefix}-attributionData`,
     title: label,
     context: prefix,
+    additionalCellClass,
   };
   const allAttributions = eleventy.getRemarkDataTable(remarkDataTableData);
 

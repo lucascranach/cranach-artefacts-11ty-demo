@@ -390,16 +390,17 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addJavaScriptFunction("getRemarkDataTable", (objectData) => {
 
-    const content = objectData.content;
-    const title = objectData.title;
-    const context = objectData.context;
-    const isAdditionalContentTo = objectData.isAdditionalContentTo;
-    const id = objectData.id;
+    const { content } = objectData;
+    const { title } = objectData;
+    const { context } = objectData;
+    const { isAdditionalContentTo }  = objectData;
+    const { id } = objectData;
+    const { additionalCellClass } = objectData;
 
     const rows = content.map(item => {
       const remark = item.remark ? `<td class="info-table__remark">${markdownify(item.remark)}</td>` : '<td class="info-table__remark">-</td>';
       return `
-          <tr><td class="info-table__data">${markdownify(item.text)}</td>${remark}</tr>
+          <tr><td class="info-table__data ${additionalCellClass}">${markdownify(item.text)}</td>${remark}</tr>
         `;
     });
 

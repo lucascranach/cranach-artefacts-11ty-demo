@@ -132,6 +132,10 @@
   &__data {
     width: $term-width;
     padding-right: $half;
+
+    &.is-wide{
+      width: $term-width-large;
+    }
   }
 
   &__remark {
