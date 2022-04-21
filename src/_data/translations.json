@@ -534,5 +534,9 @@
   "comments": {
     "de": "Kommentare",
     "en": "Comments"
+  },
+  "partOfImageGroup": {
+    "de": "Teil der Bildnisgruppe",
+    "en": "Part of Image Group"
   }
 }

@@ -2270,6 +2270,7 @@
                                         {
                                             "term": "Ulrich, Herzog von W\u00fcrttemberg",
                                             "alt": {
+                                                "alternateTerm": "Ulrich, Duke of W\u00fcrttemberg",
                                                 "dkultTermIdentifier": "010402010245"
                                             },
                                             "subTerms": []
@@ -2277,6 +2278,7 @@
                                         {
                                             "term": "Wolfgang der Standhafte, F\u00fcrst von Anhalt-K\u00f6then",
                                             "alt": {
+                                                "alternateTerm": "Wolfgang the Steadfast, Duke of Anhalt-K\u00f6then",
                                                 "dkultTermIdentifier": "010402010246"
                                             },
                                             "subTerms": []
@@ -2284,6 +2286,7 @@
                                         {
                                             "term": "Johann Friedrich II., Herzog von Sachsen",
                                             "alt": {
+                                                "alternateTerm": "Johann Friedrich II, Duke of Saxony",
                                                 "dkultTermIdentifier": "010402010226"
                                             },
                                             "subTerms": []
@@ -2291,6 +2294,7 @@
                                         {
                                             "term": "Heinrich II., Kaiser",
                                             "alt": {
+                                                "alternateTerm": "Heinrich II, Emperor",
                                                 "dkultTermIdentifier": "010402010218"
                                             },
                                             "subTerms": []
@@ -2298,6 +2302,7 @@
                                         {
                                             "term": "Johann Georg, Kurf\u00fcrst von Brandenburg",
                                             "alt": {
+                                                "alternateTerm": "Johann Georg, Elector of Brandenburg",
                                                 "dkultTermIdentifier": "010402010230"
                                             },
                                             "subTerms": []
@@ -2305,6 +2310,7 @@
                                         {
                                             "term": "Alexander, Kurprinz von Sachsen",
                                             "alt": {
+                                                "alternateTerm": "Alexander, Prince of Saxony",
                                                 "dkultTermIdentifier": "010402010203"
                                             },
                                             "subTerms": []
@@ -2312,6 +2318,7 @@
                                         {
                                             "term": "Johann Ernst von Sachsen",
                                             "alt": {
+                                                "alternateTerm": "Johann Ernst of Saxony",
                                                 "dkultTermIdentifier": "010402010224"
                                             },
                                             "subTerms": []
@@ -2319,6 +2326,7 @@
                                         {
                                             "term": "Maximilian I., Kaiser",
                                             "alt": {
+                                                "alternateTerm": "Maximilian I, Emperor",
                                                 "dkultTermIdentifier": "010402010237"
                                             },
                                             "subTerms": []
@@ -2326,6 +2334,7 @@
                                         {
                                             "term": "Ferdinand I., Kaiser",
                                             "alt": {
+                                                "alternateTerm": "Ferdinand I, Holy Roman Emporer",
                                                 "dkultTermIdentifier": "010402010209"
                                             },
                                             "subTerms": []
@@ -2333,6 +2342,7 @@
                                         {
                                             "term": "Joachim Ernst, F\u00fcrst von Anhalt",
                                             "alt": {
+                                                "alternateTerm": "Joachim Ernst, Prince of  Anhalt",
                                                 "dkultTermIdentifier": "010402010219"
                                             },
                                             "subTerms": []
@@ -2340,6 +2350,7 @@
                                         {
                                             "term": "Joachim I., F\u00fcrst von Anhalt",
                                             "alt": {
+                                                "alternateTerm": "Joachim I, Prince of Anhalt",
                                                 "dkultTermIdentifier": "010402010220"
                                             },
                                             "subTerms": []
@@ -2347,6 +2358,7 @@
                                         {
                                             "term": "Georg III., F\u00fcrst von Anhalt",
                                             "alt": {
+                                                "alternateTerm": "Georg III, Prince of Anhalt",
                                                 "dkultTermIdentifier": "010402010215"
                                             },
                                             "subTerms": []
@@ -2354,6 +2366,7 @@
                                         {
                                             "term": "Johann Georg I., F\u00fcrst von Anhalt",
                                             "alt": {
+                                                "alternateTerm": "Johann Georg I, Prince of Anhalt",
                                                 "dkultTermIdentifier": "010402010228"
                                             },
                                             "subTerms": []
@@ -2361,6 +2374,7 @@
                                         {
                                             "term": "Johann II., F\u00fcrst von Anhalt",
                                             "alt": {
+                                                "alternateTerm": "Johann II, Prince of Anhalt",
                                                 "dkultTermIdentifier": "010402010231"
                                             },
                                             "subTerms": []
@@ -2368,6 +2382,7 @@
                                         {
                                             "term": "Georg Friedrich, Markgraf von Brandenburg-Ansbach-Bayreuth",
                                             "alt": {
+                                                "alternateTerm": "Georg Friedrich, Margrave of Brandenburg-Ansbach-Bayreuth",
                                                 "dkultTermIdentifier": "010402010214"
                                             },
                                             "subTerms": []
@@ -2375,6 +2390,7 @@
                                         {
                                             "term": "Ernst, Herzog von Braunschweig-Grubenhagen",
                                             "alt": {
+                                                "alternateTerm": "Ernst, Duke of Braunschweig-Grubenhagen",
                                                 "dkultTermIdentifier": "010402010208"
                                             },
                                             "subTerms": []
@@ -2382,6 +2398,7 @@
                                         {
                                             "term": "Ernst der Bekenner, Herzog von Braunschweig-L\u00fcneburg-Celle",
                                             "alt": {
+                                                "alternateTerm": "Ernst the Confessor, Duke of Braunschweig-L\u00fcneburg-Celle",
                                                 "dkultTermIdentifier": "010402010207"
                                             },
                                             "subTerms": []
@@ -2389,6 +2406,7 @@
                                         {
                                             "term": "Philipp I., Herzog von Pommern-Wolgast",
                                             "alt": {
+                                                "alternateTerm": "Philipp I, Duke of Pommeriania-Wolgast",
                                                 "dkultTermIdentifier": "010402010240"
                                             },
                                             "subTerms": []
@@ -2396,6 +2414,7 @@
                                         {
                                             "term": "Philipp, Graf von Solms-Lich",
                                             "alt": {
+                                                "alternateTerm": "Philipp, Count of Solms-Lich",
                                                 "dkultTermIdentifier": "010402010242"
                                             },
                                             "subTerms": []
@@ -2403,6 +2422,7 @@
                                         {
                                             "term": "Johann Georg I., Graf von Mansfeld-Vorderort",
                                             "alt": {
+                                                "alternateTerm": "Johannn Georg I, Count of Mansfeld-Vorderort",
                                                 "dkultTermIdentifier": "010402010229"
                                             },
                                             "subTerms": []

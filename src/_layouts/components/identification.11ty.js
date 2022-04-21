@@ -1,3 +1,12 @@
+const kklGroupLink = (eleventy, kklNr, langCode) => {
+  if (!kklNr) return '';
+  const kklGroupLinkData = eleventy.getKklGroupLinkData(kklNr, langCode);
+  const { kklGroupId } = kklGroupLinkData;
+  const { url } = kklGroupLinkData;
+
+  return `<span>, <a href="${url}" class="is-link">${eleventy.translate('partOfImageGroup', langCode)} ${kklGroupId}</a></span>`;
+};
+
 exports.getCdaId = (eleventy, { content }) => `
 <dl class="definition-list is-grid">
   <dt class="definition-list__term">CDA ID</dt>
@@ -19,10 +28,11 @@ exports.getIds = (eleventy, { content }, langCode) => {
     ? content.catalogWorkReferences.filter((item) => item.description === 'KKL-Ordnungsnummer')
     : false;
   const kklNr = kklData[0] ? kklData[0].referenceNumber : false;
+  const linkToKklGroup = kklGroupLink(eleventy, kklNr, langCode);
   const kklNrSnippet = !kklNr ? ''
     : `
     <dt class="definition-list__term">${eleventy.translate('kkl', langCode)}</dt>
-    <dd class="definition-list__definition" data-clipable-content="${kklNr}">${kklNr}</dd>
+    <dd class="definition-list__definition">${kklNr}${linkToKklGroup}</dd>
   `;
   const bartschData = content.catalogWorkReferences
     ? content.catalogWorkReferences.filter((item) => item.description === 'Bartsch')

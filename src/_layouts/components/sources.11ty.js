@@ -133,7 +133,8 @@ exports.getPrimarySources = (eleventy, { content }, langCode, hasGrayBackground 
   const title = eleventy.translate('primarySources', langCode);
   const type = 'primary-literature';
   const allPublications = getPublicationListData(eleventy, content.publications, langCode);
-  const publicationListData = allPublications.filter((item) => item.referenceData.isPrimarySource === true);
+  
+  const publicationListData = allPublications.filter((item) => item.referenceData && item.referenceData.isPrimarySource === true);
 
   const params = {
     eleventy, content, langCode, hasGrayBackground, title, type, publicationListData,
@@ -145,7 +146,7 @@ exports.getNonPrimarySources = (eleventy, { content }, langCode, hasGrayBackgrou
   const title = eleventy.translate('references', langCode);
   const type = 'non-primary-literature';
   const allPublications = getPublicationListData(eleventy, content.publications, langCode);
-  const publicationListData = allPublications.filter((item) => item.referenceData.isPrimarySource === false);
+  const publicationListData = allPublications.filter((item) => item.referenceData && item.referenceData.isPrimarySource === false);
 
   const params = {
     eleventy, content, langCode, hasGrayBackground, title, type, publicationListData,

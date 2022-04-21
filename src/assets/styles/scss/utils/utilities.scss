@@ -8,6 +8,10 @@
   display: none !important;
 }
 
+.is-link::after{
+  @include external-link;
+}
+
 .is-remark {
   color: $darken-strong;
 }

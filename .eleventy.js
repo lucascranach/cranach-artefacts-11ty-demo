@@ -80,6 +80,14 @@ const config = {
   }
 }
 
+const kklGroupShortcuts = {
+  "I": "filters=catalog:catalog.KKL.I&page=1",
+  "II": "filters=catalog:catalog.KKL.II&page=1",
+  "III": "filters=catalog:catalog.KKL.III&page=1",
+  "IV": "filters=catalog:catalog.KKL.IV&page=1",
+  "V": "filters=catalog:catalog.KKL.V&page=1"
+};
+
 const paintingsData = {
   "de": require("./src/_data/cda-paintings-v2.de.json"),
   "en": require("./src/_data/cda-paintings-v2.en.json")
@@ -188,6 +196,8 @@ const getArchivalsCollection = (lang) => {
 
   return sortedArchivals;
 }
+
+
 
 const getGraphicsRealObjectsCollection = (lang) => {
   const graphicsRealObjectsForLang = graphicsRealObjectData[lang];
@@ -308,9 +318,19 @@ module.exports = function (eleventyConfig) {
     return translations[term][lang];
   });
 
+  eleventyConfig.addJavaScriptFunction("getKklGroupLinkData", (kklNr, lang) => {
+    if (!kklNr) return;
+    const searchUrl = config.cranachSearchURL.replace(/langCode/, lang);
+    const kklGroupId = kklNr.replace(/\..*/, "");
+    const searchParam = kklGroupShortcuts[kklGroupId];
+    return {
+      "url": `${searchUrl}?${searchParam}`,
+      kklGroupId
+    };
+  });
+
   eleventyConfig.addJavaScriptFunction("writeDocument", (dir, filename, content) => {
   
-    
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, {
         recursive: true
@@ -614,7 +634,6 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   if (process.env.ELEVENTY_ENV === 'production') {
-    console.log(config);
     eleventyConfig.addTransform('htmlmin', (content, outputPath) => {
       if (outputPath.endsWith('.html')) {
         return content;
