@@ -98,11 +98,11 @@
   },
   "prevWork":{
     "de": "vorheriges Werk",
-    "en": "previous Piece"
+    "en": "previous object"
   },
   "nextWork":{
     "de": "nächstes Werk",
-    "en": "next Piece"
+    "en": "next object"
   },
   "imageInformation":{
     "de": "Bildinformationen",
