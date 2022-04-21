@@ -14,10 +14,8 @@ const getSources = (params) => {
     const publisher = item && item.persons
       ? item.persons.filter((person) => person.role === 'PUBLISHER' || person.role === 'UNKNOWN').map((person) => person.name) : [];
     const editing = item && item.persons ? item.persons.filter((person) => person.role === 'EDITORIAL_STAFF').map((person) => person.name) : [];
-    const alternateNumbers = (!item || !item.alternateNumbers) ? [] : item.alternateNumbers.map((alternateNumber) => `
-        ${alternateNumber.description}
-        ${alternateNumber.number}
-      `);
+    const alternateNumbers = (!item || !item.alternateNumbers) ? []
+      : item.alternateNumbers.map((alternateNumber) => `${alternateNumber.description} ${alternateNumber.number}`);
 
     const getRow = (rowContent, translationID) => (!rowContent ? ''
       : `<tr><th>${eleventy.translate(translationID, langCode)}</th><td>${eleventy.stripTags(rowContent)}</td></tr>`);
@@ -132,7 +130,7 @@ exports.getCombinedSources = (eleventy, { content }, langCode, hasGrayBackground
 };
 
 exports.getPrimarySources = (eleventy, { content }, langCode, hasGrayBackground = false) => {
-  const title = eleventy.translate('literature', langCode);
+  const title = eleventy.translate('primarySources', langCode);
   const type = 'primary-literature';
   const allPublications = getPublicationListData(eleventy, content.publications, langCode);
   const publicationListData = allPublications.filter((item) => item.referenceData.isPrimarySource === true);
@@ -144,7 +142,7 @@ exports.getPrimarySources = (eleventy, { content }, langCode, hasGrayBackground 
 };
 
 exports.getNonPrimarySources = (eleventy, { content }, langCode, hasGrayBackground = false) => {
-  const title = eleventy.translate('literature', langCode);
+  const title = eleventy.translate('references', langCode);
   const type = 'non-primary-literature';
   const allPublications = getPublicationListData(eleventy, content.publications, langCode);
   const publicationListData = allPublications.filter((item) => item.referenceData.isPrimarySource === false);

@@ -244,15 +244,19 @@ class ImageViewer {
   setCaption(img) {
     // if (!img.metadata) return '';
     const { metadata } = img;
+    const { translations } = globalData;
+    const { langCode } = globalData;
     const captionId = 'ImageDescTitle';
     const description = !metadata || !metadata.description
-      ? ''
+      ? `<h3 id="${captionId}" class="image-caption__title is-expand-trigger" data-js-expanded="true"
+        data-js-expandable="completeImageData">
+        ${translations.imageInformation[langCode]}</h3>`
       : `<h3 id="${captionId}" 
           class="image-caption__title is-expand-trigger" data-js-expanded="true"
           data-js-expandable="completeImageData">
           ${metadata.description}</h3>`;
 
-    const getCompleteImageData = (id, data) => {
+    const getCompleteImageData = (data) => {
       const rows = data.map((item) => `
             <tr><td class="info-table__title">${item.name}:</td><td class="info-table__data">${item.content}</td></tr>
           `);
@@ -270,16 +274,15 @@ class ImageViewer {
       <span id="${img.id}" data-clipable-content="${img.id}">${img.id}</span>
     `;
     const data = [];
-    const { translations } = globalData;
-    const { langCode } = globalData;
+    
     data.push({ name: translations.fileName[langCode], content: fileName });
     if (metadata && metadata.fileType) data.push({ name: translations.kindOfImage[langCode], content: metadata.fileType });
     if (metadata && metadata.date) data.push({ name: translations.date[langCode], content: metadata.date });
     if (metadata && metadata.created) data.push({ name: translations.authorAndRights[langCode], content: metadata.created });
     if (metadata && metadata.source) data.push({ name: translations.source[langCode], content: metadata.source });
 
-    const completeData = getCompleteImageData(captionId, data);
-
+    const completeData = getCompleteImageData(data);
+    
     const caption = `
       ${description}
       ${completeData}
@@ -301,7 +304,7 @@ class ImageViewer {
     const img = imageStack[type].images.filter((image) => image.id === id).shift();
     const initialUrl = img.sizes.tiles.src;
     const url = env.match(/development/) ? this.adaptUrl(initialUrl) : initialUrl;
-
+    
     if (trigger) this.handleTrigger(trigger);
     this.setCaption(img);
     this.viewer.open(url);

@@ -61,7 +61,8 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
   const cdaId = identificationSnippet.getCdaId(eleventy, data, langCode);
   const exhibitions = exhibitonsSnippet.getExhibitions(eleventy, data, langCode);
   const provenance = provenanceSnippet.getProvenance(eleventy, data, langCode);
-  const sources = sourcesSnippet.getCombinedSources(eleventy, data, langCode, true);
+  const primarySources = sourcesSnippet.getPrimarySources(eleventy, data, langCode, true);
+  const nonPrimarySources = sourcesSnippet.getNonPrimarySources(eleventy, data, langCode, true);
   const imageStripe = imageStripeSnippet.getImageStripe(eleventy, data, langCode, config, true, false);
   const artTechExaminations = reportsSnippet.getReports(eleventy, data, langCode, config, ART_TECH_EXAMINATION);
   const conditionReport = reportsSnippet.getReports(eleventy, data, langCode, config, CONDITION_REPORT);
@@ -131,7 +132,8 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
             </div>
             ${provenance}
             ${exhibitions}
-            ${sources}
+            ${primarySources}
+            ${nonPrimarySources}
             ${additionalTextInformation}
             ${partOfWork}
 

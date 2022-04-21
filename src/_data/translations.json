@@ -103,6 +103,14 @@
     "de": "Quellen / Publikationen",
     "en": "Literature"
   },
+  "primarySources": {
+    "de": "Quellen",
+    "en": "Primary Sources"
+  },
+  "references": {
+    "de": "Forschungsliteratur",
+    "en": "References"
+  },
   "exhibitions": {
     "de": "Ausstellungen",
     "en": "Exhibitions"
@@ -292,8 +300,8 @@
     "en": "Author"
   },
   "alternativeNumbers": {
-    "de": "weitere Nummern",
-    "en": "Alternative Numbers"
+    "de": "Referenzen",
+    "en": "References"
   },
   "authorAndRights": {
     "de": "Autor und Rechte",

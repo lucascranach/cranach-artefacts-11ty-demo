@@ -103,5 +103,9 @@
   "nextWork":{
     "de": "nächstes Werk",
     "en": "next Piece"
+  },
+  "imageInformation":{
+    "de": "Bildinformationen",
+    "en": "Image Information"
   }
 }

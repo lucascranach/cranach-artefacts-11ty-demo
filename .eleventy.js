@@ -7,7 +7,7 @@ const config = {
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
   "graphicFolder": "graphics",
-  "generatePaintings": false,
+  "generatePaintings": true,
   "generateArchivals": false,
   "generateGraphicsVirtualObjects": true,
   "entityTypePath": {
@@ -16,7 +16,7 @@ const config = {
   },
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
-    "production": "https://lucascranach.org/imageserver-2022-kkl"
+    "production": "https://lucascranach.org/imageserver-2022"
   },
   "issueReportUrl": {
     "bug": "https://docs.google.com/forms/d/e/1FAIpQLSdtb8vAaRUZAZZUijLP099GFMm279HpbZBdVA5KZf5tnLZVCw/viewform?usp=pp_url&entry.810636170=artefactTitle&entry.1357028798=artefactUrl",
@@ -202,7 +202,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["ANO_HVI-7-6", "HBG_HVI-8_7-4", "HB_HIV-259-595"];
+  const devObjects = ["ANO_H-NONE-017","ANO_HVI-7-6", "HBG_HVI-8_7-4", "HB_HIV-259-595"];
   
   const graphicsVirtualObjects = process.env.ELEVENTY_ENV === 'production'
     ? graphicsVirtualObjectsForLang.items
@@ -614,6 +614,7 @@ module.exports = function (eleventyConfig) {
   ########################################################################## */
 
   if (process.env.ELEVENTY_ENV === 'production') {
+    console.log(config);
     eleventyConfig.addTransform('htmlmin', (content, outputPath) => {
       if (outputPath.endsWith('.html')) {
         return content;
