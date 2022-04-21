@@ -6,7 +6,13 @@ exports.getDating = (eleventy, { content }, langCode) => {
     : [{ text: content.dating.dated, remarks: content.dating.remarks }];
   const datesShortListItems = combinedDates.slice(0, numberOfItems);
   const datesShortList = datesShortListItems.map((item) => item.text);
-  const datesFullList = combinedDates.map((item) => ({ text: `${item.text}`, remark: item.remarks }));
+
+  const sortedCombinedDates = combinedDates.sort((a, b) => {
+    if (a.begin < b.begin) return -1;
+    if (a.begin > b.begin) return 1;
+    return 0;
+  });
+  const datesFullList = sortedCombinedDates.map((item) => ({ text: `${item.text}`, remark: item.remarks }));
   const label = datesFullList.length > 1 ? eleventy.translate('productionDates', langCode) : eleventy.translate('productionDate', langCode);
   const remarkDataTableData = {
     id: 'Dates',
