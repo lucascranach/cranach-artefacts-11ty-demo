@@ -25,7 +25,6 @@ const generateReprint = (eleventy, id, masterData) => {
   eleventy.writeDocument(path, filename, reprint);
 };
 
-
 const getReprints = (eleventy, { content }, conditionLevel, secondConditionLevel = false) => {
   if (!content.references.reprints) return '';
 
@@ -101,7 +100,7 @@ exports.render = function (pageData) {
   const imageBasePath = getImageBasePath(data);
   const metaDataHead = metaDataHeader.getHeader(data);
   const translationsClient = getClientTranslations(data);
-  const citeCda = citeCdaSnippet.getCiteCDA(this, langCode);
+  const citeCda = citeCdaSnippet.getCiteCDA(this, data, langCode);
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
   const copyright = copyrightSnippet.getCopyright();
   const pageDate = pageDateSnippet.getPageDate(this, langCode);

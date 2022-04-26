@@ -7,7 +7,7 @@ const config = {
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
   "graphicFolder": "graphics",
-  "generatePaintings": true,
+  "generatePaintings": false,
   "generateArchivals": false,
   "generateGraphicsVirtualObjects": true,
   "entityTypePath": {
@@ -150,7 +150,7 @@ const clearRequireCache = () => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["DK_SMK_KMS3674", "US_CMA_1953-143", "DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739", "PRIVATE_NONE-P409"];
+  const devObjects = ["UK_BMAG_K1650","DK_SMK_KMS3674", "US_CMA_1953-143", "DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739", "PRIVATE_NONE-P409"];
 
   const paintings = process.env.ELEVENTY_ENV === 'production'
     ? paintingsForLang.items

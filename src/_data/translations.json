@@ -416,16 +416,16 @@
     "en": "Entry with author"
   },
   "citeWithAutorText": {
-    "de": "<Autorenname> <Titel des Objekts, cda-Inventarnummer, Titel des Dokuments oder der Abbildung>. <Name der Datenbank> <<URL>> <Datum des Dokuments oder der Abbildung> (Zuletzt aufgerufen <Datum des letzten Zugriffs>) ",
-    "en": "<author's name> <title of object, Inventory number, title of document or image>. <Name of Database> <<URL>> <date of document> (Accessed <date accessed>)"
+    "de": "<Autorenname>, '{{objectTitle}}', <Titel des Dokuments, Feldeintrags oder der Abbildung>, [<Datum des Dokuments oder der Abbildung>], in: Cranach Digital Archive, {{objectUrl}} (zuletzt aufgerufen am {{dateAccessed}})",
+    "en": "<author's name>, '{{objectTitle}}', <title of document, data entry or image>. [<Date of document or image>], in: Cranach Digital Archive, {{objectUrl}} (Accessed {{dateAccessed}})"
   },
   "citeWithoutAutor": {
     "de": "Eintrag ohne Autor",
     "en": "Entry with no author"
   },
   "citeWithoutAutorText": {
-    "de": "<Titel des Objekts, cda-Inventarnummer, Titel des Dokuments oder der Abbildung>. <Name der Datenbank> <<UR>> <Datum des Dokuments oder der Abbildung> (Zuletzt aufgerufen <Datum des letzten Zugriffs>)",
-    "en": "<title of object, Inventory number, title of document or image>. <Name of Database> <<UR>> <date of document> (Accessed <date accessed>) "
+    "de": "'{{objectTitle}}', <Titel des Dokuments, Feldeintrags oder der Abbildung>, [<Datum des Dokuments oder der Abbildung>], in: Cranach Digital Archive, {{objectUrl}} (zuletzt aufgerufen am {{dateAccessed}})",
+    "en": "'{{objectTitle}}', <title of document, data entry or image>. [<Date of document, entry or image>], in: Cranach Digital Archive, {{objectUrl}} (Accessed {{dateAccessed}})"
   },
   "example": {
     "de": "Beispiel",

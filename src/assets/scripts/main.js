@@ -274,7 +274,7 @@ class ImageViewer {
       <span id="${img.id}" data-clipable-content="${img.id}">${img.id}</span>
     `;
     const data = [];
-    
+
     data.push({ name: translations.fileName[langCode], content: fileName });
     if (metadata && metadata.fileType) data.push({ name: translations.kindOfImage[langCode], content: metadata.fileType });
     if (metadata && metadata.date) data.push({ name: translations.date[langCode], content: metadata.date });
@@ -304,7 +304,7 @@ class ImageViewer {
     const img = imageStack[type].images.filter((image) => image.id === id).shift();
     const initialUrl = img.sizes.tiles.src;
     const url = env.match(/development/) ? this.adaptUrl(initialUrl) : initialUrl;
-    
+
     if (trigger) this.handleTrigger(trigger);
     this.setCaption(img);
     this.viewer.open(url);
@@ -323,7 +323,6 @@ class ImageViewer {
 /* Stores Interaction (Foldable Items)
 ============================================================================ */
 const storeInteraction = (element) => {
-
   const trigger = element;
   const id = trigger.id ? trigger.id : trigger.dataset.jsExpandable;
   const state = trigger.dataset.jsExpanded ? trigger.dataset.jsExpanded : false;
@@ -419,7 +418,7 @@ const setSearchResultNavigation = (element, searchResults) => {
     : getDefaultNavigationItems();
 
   if (navigationItems.length === 0) return;
-  
+
   const { translations } = globalData;
   const { langCode } = globalData;
 
@@ -429,7 +428,7 @@ const setSearchResultNavigation = (element, searchResults) => {
   const entityTypePath = parseJson(globalData.entityTypePath);
   const prevPathPrefix = prev ? entityTypePath[prev.entityType] : false;
   const nextPathPrefix = next ? entityTypePath[next.entityType] : false;
-  
+
   const prevArtefactHtml = !prev ? ''
   // eslint-disable-next-line max-len
     : `<a class="nav-item" href="../../${prevPathPrefix}/${prev.id}">
@@ -530,6 +529,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
   --------------------------------------------------------------------------  */
   if (window.IntersectionObserver) {
     reduceNavigation();
+  }
+
+  /* Set Last Accessed Date
+  --------------------------------------------------------------------------  */
+  if (document.querySelector('.js-date-accessed') !== null) {
+    const elements = document.querySelectorAll('.js-date-accessed');
+    const date = new Date();
+    const formatedDate = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
+    elements.forEach((element) => {
+      element.innerHTML = element.innerHTML.replace(/{{dateAccessed}}/, formatedDate);
+    });
   }
 
   /* Go to Search Button

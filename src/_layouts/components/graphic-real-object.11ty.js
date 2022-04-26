@@ -37,13 +37,11 @@ const getImageBasePath = () => JSON.stringify(config.imageTiles);
 const getClientTranslations = (eleventy) => JSON.stringify(eleventy.getClientTranslations());
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
-
-
 // eslint-disable-next-line func-names
 exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
   const data = pageData;
   config = eleventy.getConfig();
-  
+
   eleventy.log(data);
 
   const documentTitle = getDocumentTitle(data);
@@ -74,7 +72,7 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
   const graphic = referencesSnippet.getReference(eleventy, data, langCode, GRAPHIC);
   const partOfWork = referencesSnippet.getReference(eleventy, data, langCode, PART_OF_WORK, true);
   const imageDescriptionObjectInfo = imageDescriptionSnippet.getImageDescriptionObjectInfo(data);
-  const citeCda = citeCdaSnippet.getCiteCDA(eleventy, langCode);
+  const citeCda = citeCdaSnippet.getCiteCDA(eleventy, data, langCode);
   const improveCdaSnippet = improveCda.getImproveCDA(eleventy, data, config, langCode);
   const copyright = copyrightSnippet.getCopyright();
   const pageDate = pageDateSnippet.getPageDate(eleventy, langCode);
@@ -148,7 +146,7 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
           </div>
         </section>
           <section class="final-words">
-          <div class="text-block">
+          <div class="foldable-block text-block">
             ${citeCda}
           </div>
           <div class="text-block">
