@@ -425,20 +425,16 @@ const setSearchResultNavigation = (element, searchResults) => {
   const { prev } = navigationItems;
   const { next } = navigationItems;
 
-  const entityTypePath = parseJson(globalData.entityTypePath);
-  const prevPathPrefix = prev ? entityTypePath[prev.entityType] : false;
-  const nextPathPrefix = next ? entityTypePath[next.entityType] : false;
-
   const prevArtefactHtml = !prev ? ''
   // eslint-disable-next-line max-len
-    : `<a class="nav-item" href="../../${prevPathPrefix}/${prev.id}">
+    : `<a class="nav-item" href="../${prev.id}">
     <span class="nav-item__icon" style="background-image: url(${prev.imgSrc})">&lt;</span>
     <span class="nav-item__text">${translations.prevWork[langCode]}</span>
     </a>`;
 
   const nextArtefactHtml = !next ? ''
   // eslint-disable-next-line max-len
-    : `<a class="nav-item" href="../../${nextPathPrefix}/${next.id}">
+    : `<a class="nav-item" href="../${next.id}">
     <span class="nav-item__text">${translations.nextWork[langCode]}</span>
     <span class="nav-item__icon" style="background-image: url(${next.imgSrc})">&gt;</span>
     </a>`;

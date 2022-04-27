@@ -11,7 +11,7 @@ exports.data = {
   },
   permalink: function(data){
     const item = data.pagination.items[0];
-    return `/${data.lang}/paintings/${item.metadata.id}/`;
+    return `/${data.lang}/${item.metadata.id}/`;
   }
 };
 

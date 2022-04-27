@@ -69,7 +69,6 @@ exports.render = function (pageData) {
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
   const copyright = copyrightSnippet.getCopyright();
   const pageDate = pageDateSnippet.getPageDate(this, langCode);
-  const entityTypePath = JSON.stringify(this.getEntityTypePath());
   const navigation = navigationSnippet.getNavigation(this, langCode);
   const navigationObjects = JSON.stringify(this.getObjectsForNavigation(data.content.metadata.id));
   const transcription = transcriptionSnippet.getTranscription(this, data, langCode);
@@ -93,7 +92,6 @@ exports.render = function (pageData) {
         objectData.translations = ${translationsClient};
         objectData.asseturl = "${this.url('/assets')}";
         objectData.inventoryNumber = "${id}";
-        objectData.entityTypePath = '${entityTypePath}';
         objectData.navigationObjects = '${navigationObjects}';
       </script>
     </head>

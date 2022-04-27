@@ -6,14 +6,10 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "graphicFolder": "graphics",
-  "generatePaintings": false,
+  "generatePaintings": true,
   "generateArchivals": false,
   "generateGraphicsVirtualObjects": true,
-  "entityTypePath": {
-    "PAINTING": "paintings",
-    "GRAPHIC": "graphics",
-  },
+
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2022"
@@ -401,12 +397,7 @@ module.exports = function (eleventyConfig) {
     
     const connectedObjects = ref.connectedObjects.filter(item => item.inventoryNumber === id);
     return connectedObjects.shift();
-  });
-
-  eleventyConfig.addJavaScriptFunction("getEntityTypePath", () => {
-    return config.entityTypePath;
-  });
-  
+  });  
 
   eleventyConfig.addJavaScriptFunction("getRemarkDataTable", (objectData) => {
 
@@ -522,7 +513,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addJavaScriptFunction("getReprintUrl", (id, langCode) => {
-    return `${langCode}/${config.graphicFolder}/${id}/`;
+    return `${langCode}/${id}/`;
   });
 
   eleventyConfig.addJavaScriptFunction("getObjectsForNavigation", (id) => {

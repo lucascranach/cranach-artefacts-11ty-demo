@@ -19,7 +19,7 @@ const generateReprint = (eleventy, id, masterData) => {
   const data = {
     content: eleventy.getReprintData(id, langCode),
   };
-  const path = `${config.dist}/${langCode}/${config.graphicFolder}/${id}`;
+  const path = `${config.dist}/${langCode}/${id}`;
   const filename = 'index.html';
   const reprint = graphicsRealObject.getRealObject(eleventy, data, langCode, masterData);
   eleventy.writeDocument(path, filename, reprint);
@@ -109,7 +109,6 @@ exports.render = function (pageData) {
   const reprintsLevel3 = getReprints(this, data, 3);
   const reprintsLevel4 = getReprints(this, data, 4);
   const reprintsLevel5 = getReprints(this, data, 5);
-  const entityTypePath = JSON.stringify(this.getEntityTypePath());
   const navigation = navigationSnippet.getNavigation(this, langCode);
 
   return `<!doctype html> 
@@ -128,7 +127,6 @@ exports.render = function (pageData) {
         objectData.translations = ${translationsClient};
         objectData.asseturl = "${this.url('/assets')}";
         objectData.inventoryNumber = "${id}";
-        objectData.entityTypePath = '${entityTypePath}';
       </script>
     </head>
     <body>
