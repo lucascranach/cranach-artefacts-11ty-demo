@@ -1,8 +1,8 @@
 exports.getNavigation = (eleventy, langCode, objectId) => {
   const config = eleventy.getConfig();
   const cranachSearchURL = config.cranachSearchURL.replace(/langCode/, langCode);
-  const urlDe = `${eleventy.getBaseUrl()}/de/${objectId}`;
-  const urlEn = `${eleventy.getBaseUrl()}/en/${objectId}`;
+  const urlDe = `${eleventy.getBaseUrl()}/de/${objectId}/`;
+  const urlEn = `${eleventy.getBaseUrl()}/en/${objectId}/`;
   const isActiveDe = langCode === 'de' ? 'lang-selector__item--is-active' : '';
   const isActiveEn = langCode === 'en' ? 'lang-selector__item--is-active' : '';
 
