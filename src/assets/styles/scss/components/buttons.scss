@@ -11,11 +11,7 @@
   $self: &;
 
   &--is-transparent {
-    margin-left: -$xs;
-
-    &:hover{
-      margin-left: 0;
-    }
+    background-color: transparent;
   }
 
   &__icon {
@@ -35,8 +31,6 @@
   }
 
   &:hover {
-    border-bottom-color: $accent;
-    background-color: $darken;
     cursor: pointer;
 
     #{ $self }__icon{

@@ -44,14 +44,14 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
 
   eleventy.log(data);
 
+  const { id } = data.content.metadata;
   const documentTitle = getDocumentTitle(data);
-  const navigation = navigationSnippet.getNavigation(eleventy, langCode);
+  const navigation = navigationSnippet.getNavigation(eleventy, langCode, id);
   const imageStack = getImageStack(data);
   const baseUrl = eleventy.getBaseUrl();
   const imageBaseUrl = getimageBaseUrl(data);
   const translationsClient = getClientTranslations(eleventy);
 
-  const { id } = data.content.metadata;
   const metaDataHead = metaDataHeader.getHeader(data);
   const dimensions = dimensionsSnippet.getDimensions(eleventy, data, langCode);
   const location = locationSnippet.getLocation(eleventy, data, langCode);

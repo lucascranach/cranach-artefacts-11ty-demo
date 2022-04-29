@@ -282,7 +282,6 @@ class ImageViewer {
     if (metadata && metadata.source) data.push({ name: translations.source[langCode], content: metadata.source });
 
     const completeData = getCompleteImageData(data);
-    
     const caption = `
       ${description}
       ${completeData}
@@ -371,6 +370,18 @@ const handleArrowAction = (key, searchResults) => {
 
   const targetUrl = window.location.href.replace(inventoryNumber, targetId);
   window.location.href = targetUrl;
+};
+
+/* Toggle Options
+============================================================================ */
+const toggleOptions = (container) => {
+  const elements = container.querySelectorAll('[data-state]');
+  [...elements].forEach((item) => {
+    const target = item;
+    const { state } = target.dataset;
+    const newState = state === 'inactive' ? 'active' : 'inactive';
+    target.dataset.state = newState;
+  });
 };
 
 /* Expand & Reduce Text
@@ -597,6 +608,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
       const element = target.closest('.js-copy-to-clipboard');
       const { id } = element;
       globalData.clipableElements[id].copyToClipBoard();
+    }
+
+    if (target.closest('.js-options')) {
+      const element = target.closest('.js-options');
+      toggleOptions(element);
     }
   }, true);
 

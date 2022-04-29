@@ -97,6 +97,7 @@ exports.render = function (pageData) {
   const { id } = data.content.metadata;
   const { masterData } = data.content;
   const documentTitle = getDocumentTitle(data);
+  const baseUrl = this.getBaseUrl();
   const imageBaseUrl = getimageBaseUrl(data);
   const metaDataHead = metaDataHeader.getHeader(data);
   const translationsClient = getClientTranslations(data);
@@ -109,7 +110,7 @@ exports.render = function (pageData) {
   const reprintsLevel3 = getReprints(this, data, 3);
   const reprintsLevel4 = getReprints(this, data, 4);
   const reprintsLevel5 = getReprints(this, data, 5);
-  const navigation = navigationSnippet.getNavigation(this, langCode);
+  const navigation = navigationSnippet.getNavigation(this, langCode, id);
 
   return `<!doctype html> 
   <html lang="${langCode}">
