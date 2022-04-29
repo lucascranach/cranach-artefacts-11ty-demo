@@ -2,16 +2,16 @@ const getReferencesForPaintings = (content) => content.references;
 const getReferencesForGraphics = (content) => content.references.relatedWorks;
 
 exports.getReference = (eleventy, { content }, langCode, type, isOpen = false) => {
-
-  const entityType = content.entityType;
-  const references = entityType === "paintings"
+  const { entityType } = content;
+  const references = entityType === 'paintings'
     ? getReferencesForPaintings(content)
     : getReferencesForGraphics(content);
   const getTypeContent = (refType) => {
+    const baseUrl = eleventy.getBaseUrl();
     const typeContentItems = references.filter((item) => item.kind === refType);
     const typeContentItemList = typeContentItems.map((item) => {
       const refObjectMeta = eleventy.getRefObjectMeta(content.currentCollection, item.inventoryNumber);
-      const refObjectLink = `/${langCode}/${content.entityType}/${refObjectMeta.id}/`;
+      const refObjectLink = `${baseUrl}/${langCode}/${refObjectMeta.id}/`;
       return `
         <div class="related-item-wrap">
           <a href="${refObjectLink}">

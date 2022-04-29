@@ -22,7 +22,7 @@ const transcriptionSnippet = require('./components/transcription.11ty');
 const commentsSnippet = require('./components/comments.11ty');
 
 const getImageStack = ({ content }) => JSON.stringify(content.images);
-const getImageBasePath = () => JSON.stringify(config.imageTiles);
+const getimageBaseUrl = () => JSON.stringify(config.imageTiles);
 const getClientTranslations = () => JSON.stringify(this.getClientTranslations());
 const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
@@ -51,7 +51,8 @@ exports.render = function (pageData) {
   const documentTitle = getDocumentTitle(data);
   const header = getHeader(data);
   const imageStack = getImageStack(data);
-  const imageBasePath = getImageBasePath(data);
+  const baseUrl = this.getBaseUrl();
+  const imageBaseUrl = getimageBaseUrl(data);
   const translationsClient = getClientTranslations(data);
 
   const location = locationSnippet.getArchivalLocation(this, data, langCode);
@@ -87,7 +88,8 @@ exports.render = function (pageData) {
         const objectData = {};
         objectData.langCode = "${langCode}";
         objectData.imageStack = ${imageStack};
-        objectData.imageBasePath = ${imageBasePath};
+        objectData.baseUrl = "${baseUrl}/${langCode}";
+        objectData.imageBaseUrl = ${imageBaseUrl};
         objectData.env = "${this.getENV()}";
         objectData.translations = ${translationsClient};
         objectData.asseturl = "${this.url('/assets')}";

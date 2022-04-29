@@ -10,7 +10,7 @@ const masterDataSnippet = require('./components/graphic-virtual-object-master-da
 const graphicsRealObject = require('./components/graphic-real-object.11ty');
 const navigationSnippet = require('./components/navigation.11ty');
 
-const getImageBasePath = () => JSON.stringify(config.imageTiles);
+const getimageBaseUrl = () => JSON.stringify(config.imageTiles);
 const getClientTranslations = () => JSON.stringify(this.getClientTranslations());
 const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
@@ -97,7 +97,7 @@ exports.render = function (pageData) {
   const { id } = data.content.metadata;
   const { masterData } = data.content;
   const documentTitle = getDocumentTitle(data);
-  const imageBasePath = getImageBasePath(data);
+  const imageBaseUrl = getimageBaseUrl(data);
   const metaDataHead = metaDataHeader.getHeader(data);
   const translationsClient = getClientTranslations(data);
   const citeCda = citeCdaSnippet.getCiteCDA(this, data, langCode);
@@ -122,7 +122,8 @@ exports.render = function (pageData) {
       <script>
         const objectData = {};
         objectData.langCode = "${langCode}";
-        objectData.imageBasePath = ${imageBasePath};
+        objectData.baseUrl = "${baseUrl}/${langCode}";
+        objectData.imageBaseUrl = ${imageBaseUrl};
         objectData.env = "${this.getENV()}";
         objectData.translations = ${translationsClient};
         objectData.asseturl = "${this.url('/assets')}";

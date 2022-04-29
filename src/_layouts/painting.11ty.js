@@ -37,7 +37,7 @@ const GRAPHIC = 'GRAPHIC';
 const PART_OF_WORK = 'PART_OF_WORK';
 
 const getImageStack = ({ content }) => JSON.stringify(content.images);
-const getImageBasePath = () => JSON.stringify(config.imageTiles);
+const getimageBaseUrl = () => JSON.stringify(config.imageTiles);
 const getClientTranslations = () => JSON.stringify(this.getClientTranslations());
 const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
@@ -68,7 +68,8 @@ exports.render = function (pageData) {
   const documentTitle = getDocumentTitle(data);
   const header = getHeader(data);
   const imageStack = getImageStack(data);
-  const imageBasePath = getImageBasePath(data);
+  const baseUrl = this.getBaseUrl();
+  const imageBaseUrl = getimageBaseUrl(data);
   const translationsClient = getClientTranslations(data);
 
   const metaDataHead = metaDataHeader.getHeader(data);
@@ -114,7 +115,8 @@ exports.render = function (pageData) {
         const objectData = {};
         objectData.langCode = "${langCode}";
         objectData.imageStack = ${imageStack};
-        objectData.imageBasePath = ${imageBasePath};
+        objectData.baseUrl = "${baseUrl}/${langCode}";
+        objectData.imageBaseUrl = ${imageBaseUrl};
         objectData.env = "${this.getENV()}";
         objectData.translations = ${translationsClient};
         objectData.asseturl = "${this.url('/assets')}";

@@ -33,7 +33,7 @@ const GRAPHIC = 'GRAPHIC';
 const PART_OF_WORK = 'PART_OF_WORK';
 
 const getImageStack = ({ content }) => JSON.stringify(content.images);
-const getImageBasePath = () => JSON.stringify(config.imageTiles);
+const getimageBaseUrl = () => JSON.stringify(config.imageTiles);
 const getClientTranslations = (eleventy) => JSON.stringify(eleventy.getClientTranslations());
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
@@ -47,7 +47,8 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
   const documentTitle = getDocumentTitle(data);
   const navigation = navigationSnippet.getNavigation(eleventy, langCode);
   const imageStack = getImageStack(data);
-  const imageBasePath = getImageBasePath(data);
+  const baseUrl = eleventy.getBaseUrl();
+  const imageBaseUrl = getimageBaseUrl(data);
   const translationsClient = getClientTranslations(eleventy);
 
   const { id } = data.content.metadata;
@@ -92,7 +93,8 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
         const objectData = {};
         objectData.langCode = "${langCode}";
         objectData.imageStack = ${imageStack};
-        objectData.imageBasePath = ${imageBasePath};
+        objectData.baseUrl = "${baseUrl}/${langCode}";
+        objectData.imageBaseUrl = ${imageBaseUrl};
         objectData.env = "${eleventy.getENV()}";
         objectData.translations = ${translationsClient};
         objectData.asseturl = "${eleventy.url('/assets')}";

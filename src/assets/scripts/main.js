@@ -223,8 +223,8 @@ class ImageViewer {
 
   adaptUrl(url) {
     this.url = url;
-    const prodPath = globalData.imageBasePath.production;
-    const devPath = globalData.imageBasePath.development;
+    const prodPath = globalData.imageBaseUrl.production;
+    const devPath = globalData.imageBaseUrl.development;
     return url.replace(prodPath, devPath, this.url);
   }
 
@@ -427,14 +427,14 @@ const setSearchResultNavigation = (element, searchResults) => {
 
   const prevArtefactHtml = !prev ? ''
   // eslint-disable-next-line max-len
-    : `<a class="nav-item" href="../${prev.id}">
+    : `<a class="nav-item" href="${globalData.baseUrl}/${prev.id}/">
     <span class="nav-item__icon" style="background-image: url(${prev.imgSrc})">&lt;</span>
     <span class="nav-item__text">${translations.prevWork[langCode]}</span>
     </a>`;
 
   const nextArtefactHtml = !next ? ''
   // eslint-disable-next-line max-len
-    : `<a class="nav-item" href="../${next.id}">
+    : `<a class="nav-item" href="${globalData.baseUrl}/${next.id}/">
     <span class="nav-item__text">${translations.nextWork[langCode]}</span>
     <span class="nav-item__icon" style="background-image: url(${next.imgSrc})">&gt;</span>
     </a>`;
