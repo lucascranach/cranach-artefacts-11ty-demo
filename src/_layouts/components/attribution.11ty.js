@@ -4,17 +4,24 @@ exports.getAttribution = (eleventy, { content }, langCode) => {
   let additionalCellClass = '';
   const getAttributer = (item) => {
     const fragments = [];
-    const nameAndRole = [];
-    if (item.name) nameAndRole.push(item.name);
-    if (item.role) nameAndRole.push(item.role);
+    const { entityType } = content;
+
     if (item.prefix) fragments.push(item.prefix);
-    if (nameAndRole.length > 0) {
-      fragments.push(nameAndRole.join(', '));
-      additionalCellClass = "is-wide";
-    }
+    if (item.name) fragments.push(item.name);
     if (item.suffix) fragments.push(item.suffix);
-    return fragments.join(' ');
+
+    const fullName = fragments.join(' ');
+
+    if (!entityType.match(/graphics/)) return fullName;
+
+    const nameAndRole = [];
+    nameAndRole.push(fullName);
+    if (item.role) nameAndRole.push(item.role);
+    if (nameAndRole.length > 0) additionalCellClass = 'is-wide';
+
+    return nameAndRole.join(', ');
   };
+
   const attributionShortListItems = content.involvedPersons.slice(0, numberOfItems);
   const attributionShortList = attributionShortListItems.map((item) => getAttributer(item));
   const attributionFullList = content.involvedPersons.map((item) => ({ text: `${getAttributer(item)}`, remark: item.remarks }));

@@ -16,11 +16,16 @@ const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
 const generateReprint = (eleventy, id, masterData) => {
+  c
   const data = {
     content: eleventy.getReprintData(id, langCode),
   };
   const path = `${config.dist}/${langCode}/${id}`;
   const filename = 'index.html';
+
+  const baseUrl = eleventy.getBaseUrl();
+  data.content.url = `${baseUrl}/${langCode}/${id}`;
+
   const reprint = graphicsRealObject.getRealObject(eleventy, data, langCode, masterData);
   eleventy.writeDocument(path, filename, reprint);
 };
@@ -41,12 +46,13 @@ const getReprints = (eleventy, { content }, conditionLevel, secondConditionLevel
 
   const reprints = reprintsListRefData.filter(checkConditionLevel).sort((a, b) => a.sortingNumber.localeCompare(b.sortingNumber));
   const state = eleventy.translate(`${conditionLevel}-state`, langCode);
+  const baseUrl = eleventy.getBaseUrl();
   const { masterData } = content;
 
   const reprintsList = reprints.map(
     (item) => {
       generateReprint(eleventy, item.id, masterData);
-      const url = `../${item.id}/index.html`;
+      const url = `${baseUrl}/${langCode}/${item.id}/`;
       const title = eleventy.altText(item.title);
       const cardText = [];
       if (item.date) cardText.push(item.date);

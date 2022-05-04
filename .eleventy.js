@@ -17,7 +17,10 @@ const config = {
   "issueReportUrl": {
     "bug": "https://docs.google.com/forms/d/e/1FAIpQLSdtb8vAaRUZAZZUijLP099GFMm279HpbZBdVA5KZf5tnLZVCw/viewform?usp=pp_url&entry.810636170=artefactTitle&entry.1357028798=artefactUrl",
   },
-  "cranachBaseUrl": "https://lucascranach.org",
+  "cranachBaseUrl": {
+    "production": "https://lucascranach.org",
+    "development": "http://localhost:8080",
+  },
   "cranachSearchURL": "https://lucascranach.org/langCode/search",
   "documentsBasePath": "https://lucascranach.org/documents",
   "contentTypes": {
@@ -208,7 +211,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["ANO_H-NONE-017","ANO_HVI-7-6", "HBG_HVI-8_7-4", "HB_HIV-259-595"];
+  const devObjects = ["ANO_H-NONE-002", "ANO_H-NONE-017","ANO_HVI-7-6", "HBG_HVI-8_7-4", "HB_HIV-259-595"];
   
   const graphicsVirtualObjects = process.env.ELEVENTY_ENV === 'production'
     ? graphicsVirtualObjectsForLang.items
@@ -344,7 +347,9 @@ module.exports = function (eleventyConfig) {
   });
   
   eleventyConfig.addJavaScriptFunction("getBaseUrl", () => {
-    return config.cranachBaseUrl;
+    return process.env.ELEVENTY_ENV === 'production'
+      ? config.cranachBaseUrl.production
+      : config.cranachBaseUrl.development;
   });
 
   eleventyConfig.addJavaScriptFunction("getConfig", () => {

@@ -58,6 +58,7 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
   const signature = signatureSnippet.getSignature(eleventy, data, langCode);
   const inscriptionsAndLabels = inscriptionsAndLabelsSnippet.getInscriptionsAndLabels(eleventy, data, langCode);
   const cdaId = identificationSnippet.getCdaId(eleventy, data, langCode);
+  const permalink = identificationSnippet.getPermalink(eleventy, data, langCode);
   const exhibitions = exhibitonsSnippet.getExhibitions(eleventy, data, langCode);
   const provenance = provenanceSnippet.getProvenance(eleventy, data, langCode);
   const primarySources = sourcesSnippet.getPrimarySources(eleventy, data, langCode, true);
@@ -126,6 +127,7 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
               ${signature}
               ${inscriptionsAndLabels}
               ${cdaId}
+              ${permalink}
             </div>
             <div class="block">
               ${location}
