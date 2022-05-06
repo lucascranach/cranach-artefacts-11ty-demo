@@ -32,9 +32,13 @@ exports.getReports = (eleventy, { content }, langCode, config, type) => {
       `);
     const documentStripeItems = otherItems.map((item) => {
       const typeData = contentTypes[item.type];
-      return !typeData ? '' : `
+      if (!typeData) return '';
+
+      const url = `${documentsPath}/${typeData.sort}_${typeData.fragment}/${item.id}.pdf`;
+      eleventy.checkRessource(url);
+      return `
       <li>
-        <a href="${documentsPath}/${typeData.sort}_${typeData.fragment}/${item.id}.pdf" class="has-interaction is-download-link">
+        <a href="${url}" class="has-interaction is-download-link">
           <span data-filetype="pdf"></span>${item.id}.pdf</a>
       </li>
       `;

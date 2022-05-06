@@ -1,6 +1,14 @@
 const htmlmin = require('html-minifier');
 const markdownIt = require('markdown-it');
 const fs = require('fs');
+const eleventyFetch = require("@11ty/eleventy-fetch");
+
+// fs.unlinkSync('missing-files.txt');
+
+const logMissedLinks = 'missing-files.txt';
+if (fs.existsSync(logMissedLinks)) {
+  fs.unlinkSync(logMissedLinks);
+}
 
 const config = {
   "dist": "./docs",
@@ -267,7 +275,6 @@ const objectsForNavigation = (() => {
   return objectsForNavigation;
 })()
 
-
 const appendToFile = (path, str) => {
   const filepath = `./${path}`;
   fs.appendFileSync(filepath, str);
@@ -326,6 +333,19 @@ module.exports = function (eleventyConfig) {
       "url": `${searchUrl}?${searchParam}`,
       kklGroupId
     };
+  });
+
+  eleventyConfig.addJavaScriptFunction("checkRessource", async (url) => {
+    try { 
+      await eleventyFetch(url, {
+        duration: "1d",
+        type: "buffer"
+      });
+    } catch (error) {
+      appendToFile(logMissedLinks, `${url}\n`)
+    }
+
+
   });
 
   eleventyConfig.addJavaScriptFunction("writeDocument", (dir, filename, content) => {
