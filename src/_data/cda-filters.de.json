@@ -2974,82 +2974,82 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010127",
+                                        "id": "010402010128",
                                         "text": "Leon Braunsberg",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010128",
+                                        "id": "010402010129",
                                         "text": "Leonhard Badehorn",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010129",
+                                        "id": "010402010130",
                                         "text": "Lucas Cranach der \u00c4ltere",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010130",
+                                        "id": "010402010131",
                                         "text": "Martin Luther",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010131",
+                                        "id": "010402010132",
                                         "text": "Michael Meyenburg",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010132",
+                                        "id": "010402010133",
                                         "text": "Moritz Buchner",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010133",
+                                        "id": "010402010134",
                                         "text": "Nicholas de Backer",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010134",
+                                        "id": "010402010135",
                                         "text": "Nikolaus Seidel",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010135",
+                                        "id": "010402010136",
                                         "text": "Otto Brunfels",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010136",
+                                        "id": "010402010137",
                                         "text": "Paulus von Berge",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010137",
+                                        "id": "010402010138",
                                         "text": "Philipp Melanchthon",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010138",
+                                        "id": "010402010139",
                                         "text": "Philipp von Wittelsbach, Bischof",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010139",
+                                        "id": "010402010140",
                                         "text": "Pietro Bembo",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010140",
+                                        "id": "010402010141",
                                         "text": "Rudolph Agricola",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010141",
+                                        "id": "010402010142",
                                         "text": "Sigmunt Kingsfeld, Ritter",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010142",
+                                        "id": "010402010143",
                                         "text": "Veit Dietrich",
                                         "children": []
                                     }
@@ -3909,6 +3909,11 @@
                                         "children": []
                                     },
                                     {
+                                        "id": "010403030127",
+                                        "text": "Hl. Laurentius",
+                                        "children": []
+                                    },
+                                    {
                                         "id": "010403030146",
                                         "text": "Hl. Simon",
                                         "children": []
@@ -4404,27 +4409,27 @@
         "text": "Bestandteile",
         "children": [
             {
-                "id": "010301",
+                "id": "010302",
                 "text": "Fl\u00fcgel",
                 "children": []
             },
             {
-                "id": "010304",
+                "id": "010301",
                 "text": "Mitteltafel",
                 "children": []
             },
             {
-                "id": "010305",
+                "id": "010303",
                 "text": "Predella",
                 "children": []
             },
             {
-                "id": "010302",
+                "id": "010305",
                 "text": "Fragment",
                 "children": []
             },
             {
-                "id": "010303",
+                "id": "010304",
                 "text": "Retabelauszug",
                 "children": []
             },

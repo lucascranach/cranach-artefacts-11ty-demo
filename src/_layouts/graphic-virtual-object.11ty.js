@@ -16,7 +16,7 @@ const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
 const generateReprint = (eleventy, id, masterData) => {
-  c
+
   const data = {
     content: eleventy.getReprintData(id, langCode),
   };

@@ -30,6 +30,18 @@
   opacity: $op-medium;
 }
 
+.is-download-link {
+  display: inline-block;
+  border-bottom: dotted $border-stroke-weight-s $accent;
+  transition: background $tr-fast, padding $tr-fast;
+
+  &:hover {
+    padding-right: $quad;
+    padding-left: $quad;
+    background-color: $accent;
+  }
+}
+
 .has-separator {
   &::before {
     display: block;

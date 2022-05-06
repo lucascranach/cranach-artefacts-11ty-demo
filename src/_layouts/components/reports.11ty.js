@@ -34,7 +34,8 @@ exports.getReports = (eleventy, { content }, langCode, config, type) => {
       const typeData = contentTypes[item.type];
       return !typeData ? '' : `
       <li>
-        <a href="${documentsPath}/${typeData.sort}_${typeData.fragment}/${item.id}.pdf" data-filetype="pdf"></a>
+        <a href="${documentsPath}/${typeData.sort}_${typeData.fragment}/${item.id}.pdf" class="has-interaction is-download-link">
+          <span data-filetype="pdf"></span>${item.id}.pdf</a>
       </li>
       `;
     });
