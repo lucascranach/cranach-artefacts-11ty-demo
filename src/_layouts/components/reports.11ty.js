@@ -33,7 +33,6 @@ exports.getReports = (eleventy, { content }, langCode, config, type) => {
     const documentStripeItems = otherItems.map((item) => {
       const typeData = contentTypes[item.type];
       if (!typeData) return '';
-
       const url = `${documentsPath}/${typeData.sort}_${typeData.fragment}/${item.id}.pdf`;
       eleventy.checkRessource(url);
       return `

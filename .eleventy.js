@@ -157,7 +157,7 @@ const clearRequireCache = () => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["DE_MKKM_1232BRD","PRIVATE_NONE-P411","UK_BMAG_K1650","DK_SMK_KMS3674", "US_CMA_1953-143", "DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739", "PRIVATE_NONE-P409","CH_SORW_1925-1a"];
+  const devObjects = ["PRIVATE_NONE-P201", "US_MMANY_55-220-2", "UK_RCL_RCIN402656","DE_MdbKL_946","DE_SKD_RKH97", "PRIVATE_NONE-P201", "DE_MKKM_1232BRD","PRIVATE_NONE-P411","UK_BMAG_K1650","DK_SMK_KMS3674", "US_CMA_1953-143", "DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739", "PRIVATE_NONE-P409","CH_SORW_1925-1a"];
 
   const paintings = process.env.ELEVENTY_ENV === 'production'
     ? paintingsForLang.items
@@ -336,16 +336,15 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addJavaScriptFunction("checkRessource", async (url) => {
+    if (process.env.ELEVENTY_ENV === 'development') return;
     try { 
       await eleventyFetch(url, {
-        duration: "1d",
+        duration: "2m",
         type: "buffer"
       });
     } catch (error) {
       appendToFile(logMissedLinks, `${url}\n`)
     }
-
-
   });
 
   eleventyConfig.addJavaScriptFunction("writeDocument", (dir, filename, content) => {

@@ -6,6 +6,7 @@ const getSources = (params) => {
   const { title } = params;
   const { type } = params;
   const { publicationListData } = params;
+  const { tableStructure } = params;
 
   const prefix = content.metadata.id;
   const additionalCss = hasGrayBackground ? 'with-gray-background' : '';
@@ -52,6 +53,23 @@ const getSources = (params) => {
     `;
   };
 
+  const getTableData = (tableDataFields) => {
+    const pageNumberCell = `<td class="cell">${tableDataFields.pageNumber}</td>`;
+    const catalogNumberCell = `<td class="cell">${tableDataFields.catalogNumber}</td>`;
+    const figureNumberCell = `<td class="cell">${tableDataFields.figureNumber}</td>`;
+    const empty = `<td class="cell"></td>`;
+    const data = {
+      pageNumberCell, catalogNumberCell, figureNumberCell,
+    };
+
+    const outputData = tableStructure.map((entry) => {
+      const { field } = entry;
+      return data[field] ? ;
+    });
+
+    return outputData.join('\n');
+  };
+
   const publicationListDataByDate = publicationListData.sort((a, b) => {
     if (!a.referenceData) return 0;
     if (!b.referenceData) return 0;
@@ -64,6 +82,12 @@ const getSources = (params) => {
     (item, index) => {
       const litRef = eleventy.getLitRef(item.referenceId, langCode);
       const litRefTableData = eleventy.getLitRefTableData(item.referenceData, content.metadata.id);
+      const { pageNumber } = item;
+      const catalogNumber = litRefTableData ? litRefTableData.catalogNumber : '';
+      const figureNumber = litRefTableData ? litRefTableData.figureNumber : '';
+      const tableDataFields = {
+        pageNumber, catalogNumber, figureNumber,
+      };
       const hasBackground = index % 2 ? 'has-bg' : '';
       return `
         <tr
@@ -71,9 +95,7 @@ const getSources = (params) => {
           id="litRef${item.referenceId}-${index}">
 
           <td class="cell has-interaction"><a href="#" data-js-toggle-literature="${item.referenceId}-${index}">${item.title}</a></td>
-          <td class="cell">${item.pageNumber} </td>
-          <td class="cell">${litRefTableData ? litRefTableData.catalogNumber : ''}</td>
-          <td class="cell">${litRefTableData ? litRefTableData.figureNumber : ''}</td>
+          ${getTableData(tableDataFields, tableStructure)}
         </tr>
         <tr class="row ${hasBackground} is-detail" id="litRefData${item.referenceId}-${index}">
           <td class="cell" colspan="4">
@@ -83,7 +105,12 @@ const getSources = (params) => {
         `;
     },
   );
-  
+
+  const tableHead = tableStructure.map((entry) => {
+    const { headline } = entry;
+    return `<td class="cell" style="width: 20%">${headline}</td>`;
+  });
+
   const publications = publicationListData.length > 0 ? `
     <div class="foldable-block has-strong-separator"> 
       <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="${prefix}-${type}-list">
@@ -93,9 +120,7 @@ const getSources = (params) => {
           <thead class="head ${additionalCss}">
             <tr class="row">
               <td class="cell" style="width: 40%"></td>
-              <td class="cell" style="width: 20%">${eleventy.translate('referenceOnPage', langCode)}</td>
-              <td class="cell" style="width: 20%">${eleventy.translate('catalogueNumber', langCode)}</td>
-              <td class="cell" style="width: 20%">${eleventy.translate('plate', langCode)}</td>
+              ${tableHead.join('\n')}
             </tr>
           </thead>
           <tbody class="body">
@@ -121,10 +146,24 @@ const getPublicationListData = (eleventy, publications, langCode) => {
 exports.getCombinedSources = (eleventy, { content }, langCode, hasGrayBackground = false) => {
   const title = eleventy.translate('literature', langCode);
   const type = 'combined-literature';
+  const tableStructure = [
+    {
+      headline: eleventy.translate('referenceOnPage', langCode),
+      field: 'pageNumberCell',
+    },
+    {
+      headline: eleventy.translate('catalogueNumber', langCode),
+      field: 'catalogNumberCell',
+    },
+    {
+      headline: eleventy.translate('plate', langCode),
+      field: 'figureNumberCell',
+    },
+  ];
   const publicationListData = getPublicationListData(eleventy, content.publications, langCode);
 
   const params = {
-    eleventy, content, langCode, hasGrayBackground, title, type, publicationListData,
+    eleventy, content, langCode, hasGrayBackground, title, type, publicationListData, tableStructure,
   };
   return getSources(params);
 };
@@ -132,12 +171,24 @@ exports.getCombinedSources = (eleventy, { content }, langCode, hasGrayBackground
 exports.getPrimarySources = (eleventy, { content }, langCode, hasGrayBackground = false) => {
   const title = eleventy.translate('primarySources', langCode);
   const type = 'primary-literature';
+  const tableStructure = [
+    {
+      headline: eleventy.translate('referenceOnPage', langCode),
+      field: 'pageNumberCell',
+    },
+    {
+      headline: '',
+      field: 'empty',
+    },
+    {
+      headline: '',
+      field: 'empty',
+    },
+  ];
   const allPublications = getPublicationListData(eleventy, content.publications, langCode);
-  
   const publicationListData = allPublications.filter((item) => item.referenceData && item.referenceData.isPrimarySource === true);
-
   const params = {
-    eleventy, content, langCode, hasGrayBackground, title, type, publicationListData,
+    eleventy, content, langCode, hasGrayBackground, title, type, publicationListData, tableStructure,
   };
   return getSources(params);
 };
@@ -145,11 +196,25 @@ exports.getPrimarySources = (eleventy, { content }, langCode, hasGrayBackground 
 exports.getNonPrimarySources = (eleventy, { content }, langCode, hasGrayBackground = false) => {
   const title = eleventy.translate('references', langCode);
   const type = 'non-primary-literature';
+  const tableStructure = [
+    {
+      headline: eleventy.translate('referenceOnPage', langCode),
+      field: 'pageNumberCell',
+    },
+    {
+      headline: '',
+      field: 'empty',
+    },
+    {
+      headline: '',
+      field: 'empty',
+    },
+  ];
   const allPublications = getPublicationListData(eleventy, content.publications, langCode);
   const publicationListData = allPublications.filter((item) => item.referenceData && item.referenceData.isPrimarySource === false);
 
   const params = {
-    eleventy, content, langCode, hasGrayBackground, title, type, publicationListData,
+    eleventy, content, langCode, hasGrayBackground, title, type, publicationListData, tableStructure, 
   };
   return getSources(params);
 };

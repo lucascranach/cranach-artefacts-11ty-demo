@@ -3217,7 +3217,7 @@
                                     },
                                     {
                                         "id": "010403030122",
-                                        "text": "St James the Great",
+                                        "text": "St James the Greater",
                                         "children": []
                                     },
                                     {
@@ -3324,11 +3324,6 @@
                                     {
                                         "id": "010403030107",
                                         "text": "St Augustine",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030127",
-                                        "text": "St Lawrence",
                                         "children": []
                                     },
                                     {
@@ -4107,12 +4102,12 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010128",
+                                        "id": "010402010127",
                                         "text": "Leon Braunsberg",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010129",
+                                        "id": "010402010128",
                                         "text": "Leonhard Badehorn",
                                         "children": []
                                     },
@@ -4127,22 +4122,22 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010130",
+                                        "id": "010402010129",
                                         "text": "Lucas Cranach the Elder",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010131",
+                                        "id": "010402010130",
                                         "text": "Martin Luther",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010132",
+                                        "id": "010402010131",
                                         "text": "Michael Meyenburg",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010133",
+                                        "id": "010402010132",
                                         "text": "Moritz Buchner",
                                         "children": []
                                     },
@@ -4152,52 +4147,52 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010134",
+                                        "id": "010402010133",
                                         "text": "Nicholas de Backer",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010135",
+                                        "id": "010402010134",
                                         "text": "Nikolaus Seidel",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010136",
+                                        "id": "010402010135",
                                         "text": "Otto Brunfels",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010137",
+                                        "id": "010402010136",
                                         "text": "Paulus of Berge",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010138",
+                                        "id": "010402010137",
                                         "text": "Philipp Melanchthon",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010139",
+                                        "id": "010402010138",
                                         "text": "Philipp von Wittelsbach, Bishop",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010140",
+                                        "id": "010402010139",
                                         "text": "Pietro Bembo",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010141",
+                                        "id": "010402010140",
                                         "text": "Rudolph Agricola",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010142",
+                                        "id": "010402010141",
                                         "text": "Sigmunt Kingsfeld, Knight",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010143",
+                                        "id": "010402010142",
                                         "text": "Veit Dietrich",
                                         "children": []
                                     }
@@ -4409,27 +4404,27 @@
         "text": "Component parts",
         "children": [
             {
-                "id": "010302",
+                "id": "010301",
                 "text": "Wing panel",
                 "children": []
             },
             {
-                "id": "010301",
+                "id": "010304",
                 "text": "Central panel",
                 "children": []
             },
             {
-                "id": "010303",
+                "id": "010305",
                 "text": "Predella",
                 "children": []
             },
             {
-                "id": "010305",
+                "id": "010302",
                 "text": "Fragment",
                 "children": []
             },
             {
-                "id": "010304",
+                "id": "010303",
                 "text": "Superstructure",
                 "children": []
             },
