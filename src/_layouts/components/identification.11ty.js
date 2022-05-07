@@ -7,7 +7,7 @@ const kklGroupLink = (eleventy, kklNr, langCode) => {
   return `<span>, <a href="${url}" class="is-link">${eleventy.translate('partOfImageGroup', langCode)} ${kklGroupId}</a></span>`;
 };
 
-const getPermalink = (eleventy, url, langCode) => `
+exports.getPermalink = (eleventy, url, langCode) => `
     <dl class="definition-list is-grid">
       <dt class="definition-list__term">${eleventy.translate('permalink', langCode)}</dt>
       <dd class="definition-list__definition" data-clipable-content="${url}">${url}</dd>
@@ -18,13 +18,6 @@ exports.getCdaId = (eleventy, { content }) => `
 <dl class="definition-list is-grid">
   <dt class="definition-list__term">CDA ID</dt>
   <dd class="definition-list__definition" data-clipable-content="${content.metadata.id}">${content.metadata.id}</dd>
-</dl>
-`;
-
-exports.getPermalink = (eleventy, { content }, langCode) => `
-<dl class="definition-list is-grid">
-  <dt class="definition-list__term">${eleventy.translate('permalink', langCode)}</dt>
-  <dd class="definition-list__definition" data-clipable-content="${content.url}">${content.url}</dd>
 </dl>
 `;
 
@@ -65,8 +58,6 @@ exports.getIds = (eleventy, { content }, langCode) => {
     <dd class="definition-list__definition" data-clipable-content="${frNr}">${frNr}</dd>
   `;
 
-  const permalink = getPermalink(eleventy, content.url, langCode);
-
   return `
     <dl class="definition-list is-grid">
     <dt class="definition-list__term">CDA ID</dt>
@@ -75,7 +66,8 @@ exports.getIds = (eleventy, { content }, langCode) => {
     ${kklNrSnippet}
     ${hollsteinNrSnippet}
     ${bartschNrSnippet}
-    ${permalink}
+    <dt class="definition-list__term">${eleventy.translate('permalink', langCode)}</dt>
+    <dd class="definition-list__definition" data-clipable-content="${content.url}">${content.url}</dd>
   </dl>
   `;
 };
