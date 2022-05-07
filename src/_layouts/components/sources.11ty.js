@@ -57,14 +57,14 @@ const getSources = (params) => {
     const pageNumberCell = `<td class="cell">${tableDataFields.pageNumber}</td>`;
     const catalogNumberCell = `<td class="cell">${tableDataFields.catalogNumber}</td>`;
     const figureNumberCell = `<td class="cell">${tableDataFields.figureNumber}</td>`;
-    const empty = `<td class="cell"></td>`;
+    const empty = '<td class="cell"></td>';
     const data = {
-      pageNumberCell, catalogNumberCell, figureNumberCell,
+      pageNumberCell, catalogNumberCell, figureNumberCell, empty,
     };
 
     const outputData = tableStructure.map((entry) => {
       const { field } = entry;
-      return data[field] ? ;
+      return data[field];
     });
 
     return outputData.join('\n');
@@ -173,7 +173,7 @@ exports.getPrimarySources = (eleventy, { content }, langCode, hasGrayBackground 
   const type = 'primary-literature';
   const tableStructure = [
     {
-      headline: eleventy.translate('referenceOnPage', langCode),
+      headline: eleventy.translate('positionInVolume', langCode),
       field: 'pageNumberCell',
     },
     {
@@ -214,7 +214,7 @@ exports.getNonPrimarySources = (eleventy, { content }, langCode, hasGrayBackgrou
   const publicationListData = allPublications.filter((item) => item.referenceData && item.referenceData.isPrimarySource === false);
 
   const params = {
-    eleventy, content, langCode, hasGrayBackground, title, type, publicationListData, tableStructure, 
+    eleventy, content, langCode, hasGrayBackground, title, type, publicationListData, tableStructure,
   };
   return getSources(params);
 };

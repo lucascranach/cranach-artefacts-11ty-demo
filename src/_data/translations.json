@@ -538,5 +538,9 @@
   "partOfImageGroup": {
     "de": "Teil der Bildnisgruppe",
     "en": "Part of Image Group"
+  },
+  "positionInVolume": {
+    "de": "Position im Band",
+    "en": "Position in volume"
   }
 }
