@@ -43,7 +43,7 @@ exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator 
 
   return `
     <div class="foldable-block ${seperator}">
-      <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="${expanded}" data-js-expandable="image-stripe">
+      <h2 class="foldable-block__headline is-expand-trigger js-expand-trigger" data-js-expanded="${expanded}" data-js-expandable="image-stripe">
         ${eleventy.translate('illustrations', langCode)}</h2>
       <div id="image-stripe" class="expandable-content image-stripe">
         ${imageTypeselector}

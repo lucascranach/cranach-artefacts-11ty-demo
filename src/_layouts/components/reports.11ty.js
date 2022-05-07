@@ -82,7 +82,7 @@ exports.getReports = (eleventy, { content }, langCode, config, type) => {
 
     return `
     <div class="survey foldable-block has-separator">
-      <header class="survey-header is-expand-trigger" data-js-expanded="false" data-js-expandable="${surveySlug}">
+      <header class="survey-header is-expand-trigger js-expand-trigger is-expanded" data-js-expanded="true" data-js-expandable="${surveySlug}">
         ${title}
         ${surveyKeywords}
         ${documentStripeReport}
@@ -103,7 +103,8 @@ exports.getReports = (eleventy, { content }, langCode, config, type) => {
   return (reports && reports.length > 0)
     ? `
     <div class="foldable-block has-strong-separator">
-      <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="report-${type}">
+      <h2 class="foldable-block__headline is-expand-trigger js-expand-trigger"
+        data-js-expanded="false" data-js-expandable="report-${type}">
         ${eleventy.translate(type, langCode)}</h2>
       <div id="report-${type}" class="expandable-content">
         ${reportList.join('')}

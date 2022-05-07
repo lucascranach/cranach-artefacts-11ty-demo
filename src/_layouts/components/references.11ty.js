@@ -37,7 +37,7 @@ exports.getReference = (eleventy, { content }, langCode, type, isOpen = false) =
 
     return typeContentItems.length === 0 ? '' : `
       <div class="foldable-block has-strong-separator">
-        <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="${state}" data-js-expandable="${eleventy.slugify(type)}">
+        <h2 class="foldable-block__headline is-expand-trigger js-expand-trigger" data-js-expanded="${state}" data-js-expandable="${eleventy.slugify(type)}">
           ${eleventy.translate(type, langCode)}</h2>
         <div class="expandable-content" id="${eleventy.slugify(type)}">
         ${typeContentItemList.join('')}

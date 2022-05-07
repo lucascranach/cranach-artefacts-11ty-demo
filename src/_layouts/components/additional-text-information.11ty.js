@@ -16,7 +16,7 @@ exports.getAdditionalTextInformation = (eleventy, { content }) => {
   };
   return uniqueAdditionalInfoTypes.length === 0 ? '' : uniqueAdditionalInfoTypes.map((type) => `
     <div class="foldable-block has-strong-separator">
-        <h2 class="foldable-block__headline is-expand-trigger" data-js-expanded="false" data-js-expandable="${eleventy.slugify(type)}">${type}</h2>
+        <h2 class="foldable-block__headline is-expand-trigger js-expand-trigger" data-js-expanded="false" data-js-expandable="${eleventy.slugify(type)}">${type}</h2>
         <div class="expandable-content" id="${eleventy.slugify(type)}">
           ${getTypeContent(type).join('')}
         </div>

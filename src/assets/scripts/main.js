@@ -248,11 +248,11 @@ class ImageViewer {
     const { langCode } = globalData;
     const captionId = 'ImageDescTitle';
     const description = !metadata || !metadata.description
-      ? `<h3 id="${captionId}" class="image-caption__title is-expand-trigger" data-js-expanded="true"
+      ? `<h3 id="${captionId}" class="image-caption__title is-expand-trigger js-expand-trigger" data-js-expanded="true"
         data-js-expandable="completeImageData">
         ${translations.imageInformation[langCode]}</h3>`
       : `<h3 id="${captionId}" 
-          class="image-caption__title is-expand-trigger" data-js-expanded="true"
+          class="image-caption__title is-expand-trigger js-expand-trigger" data-js-expanded="true"
           data-js-expandable="completeImageData">
           ${metadata.description}</h3>`;
 
@@ -339,6 +339,9 @@ const storeInteraction = (element) => {
 /* Expand & Reduce Blocks
 ============================================================================ */
 const expandReduce = (trigger, targetId) => {
+  console.log(targetId);
+  if (!targetId) return;
+
   document.getElementById(targetId).classList.toggle('is-visible');
   trigger.classList.toggle('is-expanded');
   storeInteraction(trigger);
@@ -545,7 +548,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const date = new Date();
     const formatedDate = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
     elements.forEach((element) => {
-      element.innerHTML = element.innerHTML.replace(/{{dateAccessed}}/, formatedDate);
+      const ele = element;
+      ele.innerHTML = element.innerHTML.replace(/{{dateAccessed}}/, formatedDate);
     });
   }
 
@@ -571,9 +575,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
       toggleLiteratureDetails(target.dataset.jsToggleLiterature);
     }
 
-    if (target.dataset.jsExpandable) {
-      event.preventDefault();
-      expandReduce(target, target.dataset.jsExpandable);
+    if (target.closest('.is-expand-trigger')) {
+      const element = target.closest('.js-expand-trigger');
+      expandReduce(element, element.dataset.jsExpandable);
     }
 
     if (target.dataset.jsFoldableText) {

@@ -5,7 +5,7 @@ exports.getCiteCDA = (eleventy, data, langCode) => {
   const citeWithoutAutor = eleventy.translate('citeWithoutAutor', langCode);
   const citeWithoutAutorText = eleventy.convertTagsInText(eleventy.translate('citeWithoutAutorText', langCode));
   let citeTemplate = `
-    <h2 class="is-expand-trigger" data-js-expanded="false" data-js-expandable="citing-hints">${headline}</h2>
+    <h2 class="is-expand-trigger js-expand-trigger" data-js-expanded="false" data-js-expandable="citing-hints">${headline}</h2>
     <dl id="citing-hints" class="expandable-content definition-list is-stacked">
       <dt class="definition-list__term">${citeWithAutor}</dt>
       <dd class="definition-list__definition js-date-accessed">${citeWithAutorText}</dd>
