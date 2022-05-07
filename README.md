@@ -14,7 +14,6 @@ _data               Zusätzliche Daten oder Hilffunktionen
 _layouts            Templates
 assets              SCSS, Skripts, Fonts, etc … alles was kein Content ist
 compiled-assets     Kompilierte Dateien, z.B. CSS
-presentations       Content, und zwar pro Slidedeck ein Ordner
 ```
 
 ### Weitere Dateien
@@ -31,6 +30,3 @@ presentations       Content, und zwar pro Slidedeck ein Ordner
 `npm install`
 `npm run build` 
 `npm run dev` 
-
-
-Inschriften und Beschriftungen
