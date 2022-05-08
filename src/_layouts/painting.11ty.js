@@ -103,6 +103,10 @@ exports.render = function (pageData) {
   const navigation = navigationSnippet.getNavigation(this, langCode, id);
   const navigationObjects = JSON.stringify(this.getObjectsForNavigation(data.content.metadata.id));
 
+  const cranachCollectBaseUrl = this.getCranachCollectBaseUrl();
+  const cranachCollectScript = config.cranachCollect.script;
+  const cranachCollectStyle = config.cranachCollect.style;
+
   return `<!doctype html> 
   <html lang="${langCode}">
     <head>
@@ -110,6 +114,7 @@ exports.render = function (pageData) {
       ${metaDataHead}
       <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
       <link href="${this.url('/compiled-assets/main.css')}" rel="stylesheet">
+      <link href="${cranachCollectBaseUrl}/${cranachCollectStyle}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
       <script>
         const objectData = {};
@@ -204,6 +209,7 @@ exports.render = function (pageData) {
       </div>
       <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4.2/build/openseadragon/openseadragon.min.js"></script>
       <script src="${this.url('/assets/scripts/main.js')}"></script>
+      <script src="${cranachCollectBaseUrl}/${cranachCollectScript}"></script>
     </body>
   </html>`;
 };

@@ -68,3 +68,18 @@
   font-family: $font-icons;
   vertical-align: bottom;
 }
+
+@mixin compare-collection() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  padding: $xxs $xs;
+  background-color: $darken-strong;
+  border-radius: $radius-s;
+  color: $accent;
+  font-family: $font-icons;
+  font-size: $l;
+  vertical-align: bottom;
+}
+

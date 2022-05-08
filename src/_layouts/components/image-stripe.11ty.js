@@ -1,6 +1,8 @@
 exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator = false, isExpanded = false) => {
   const imageStack = content.images;
   const { contentTypes } = config;
+  const cdaId = content.metadata.id;
+  const objectTitle = eleventy.altText(content.metadata.title);
 
   const imageStripe = Object.keys(contentTypes).map((key) => {
     if (!imageStack || !imageStack[key]) return;
@@ -10,8 +12,11 @@ exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator 
       const title = image.metadata && image.metadata[langCode] ? eleventy.altText(image.metadata[langCode].description) : `${key}`;
       return `
         <li
-          class="image-stripe-list__item has-interaction"
-          title="${image.id}" 
+          class="image-stripe-list__item has-interaction js-is-collectable"
+          title="${image.id}"
+          data-collected="false" 
+          data-cda-id="${cdaId}"
+          data-object-title="${objectTitle}"
           data-image-type="${key}" 
           data-image-id="${image.id}"
           data-js-change-image='{"key":"${key}","id":"${image.id}"}'>
