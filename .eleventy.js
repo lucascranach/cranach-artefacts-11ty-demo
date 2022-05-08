@@ -19,7 +19,7 @@ const config = {
   "generateGraphicsVirtualObjects": true,
   "cranachCollect": {
     "baseUrl": {
-      "development": "http://127.0.0.1:8182",
+      "development": "http://localhost:8182",
       "production": "https://lucascranach.org/imageserver-2022",
     },
     "script": "/scripts/cranach-collect.js",

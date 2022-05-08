@@ -19,6 +19,8 @@ exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator 
           data-object-title="${objectTitle}"
           data-image-type="${key}" 
           data-image-id="${image.id}"
+          data-image-preview-url="${image.sizes.small.src}"
+          data-image-tiles-url="${image.sizes.tiles.src}"
           data-js-change-image='{"key":"${key}","id":"${image.id}"}'>
           <img loading="lazy" src="${image.sizes.small.src}" alt="${title}" >
         </li>
