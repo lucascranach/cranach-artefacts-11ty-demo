@@ -45,6 +45,17 @@ exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator 
     </div>
   `;
 
+  const cranachCollectBaseUrl = eleventy.getCranachCollectBaseUrl();
+  const cranachCollectFrondend= config.cranachCollect.frontend;
+  const cranachCompare = `
+    <a class="cranach-compare-launcher js-cranach-compare-launcher"
+      href="${cranachCollectBaseUrl}${cranachCollectFrondend}"
+      data-visible="false" 
+      target="_blank">
+      ${eleventy.translate('compareImages', langCode)}
+    </a>
+  `;
+
   const seperator = hasSeperator ? 'has-strong-separator' : '';
   const expanded = !!isExpanded;
 
@@ -53,7 +64,10 @@ exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator 
       <h2 class="foldable-block__headline is-expand-trigger js-expand-trigger" data-js-expanded="${expanded}" data-js-expandable="image-stripe">
         ${eleventy.translate('illustrations', langCode)}</h2>
       <div id="image-stripe" class="expandable-content image-stripe">
-        ${imageTypeselector}
+        <div class="image-stripe-navigation">
+          ${imageTypeselector}
+          ${cranachCompare}
+        </div>
         <ul class="image-stripe-list">
           ${imageStripe.join('')}
         </ul>

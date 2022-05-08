@@ -83,3 +83,12 @@
   vertical-align: bottom;
 }
 
+@mixin compare-launcher() {
+  display: block;
+  padding-right: $xs;
+  color: $darkest;
+  content: "compare";
+  font-family: $font-icons;
+  font-size: $l;
+}
+

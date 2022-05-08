@@ -20,10 +20,10 @@ const config = {
   "cranachCollect": {
     "baseUrl": {
       "development": "http://localhost:8182",
-      "production": "https://lucascranach.org/imageserver-2022",
+      "production": "https://lucascranach.org/cranach-compare",
     },
     "script": "/scripts/cranach-collect.js",
-    "style": "/styles/cranach-collect.css",
+    "frontend": "/index.html",
   },
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",

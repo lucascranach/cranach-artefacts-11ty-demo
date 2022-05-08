@@ -74,6 +74,11 @@
 // --------------------------------------------------------------------------
 
 .image-stripe {
+
+  &-navigation{
+    display: flex;
+  }
+
   &-list {
     display: grid;
     padding: 0;
@@ -134,6 +139,35 @@
         }
       }
     }
+  }
+}
+
+// Cranach compare
+// --------------------------------------------------------------------------
+a.cranach-compare-launcher{
+
+  display: flex;
+  align-items: center;
+  padding: $xxs $s;
+  margin-bottom: $s;
+  margin-left: auto;
+  opacity: 1;
+  transition: opacity $tr-medium;
+
+  &[data-visible=false]{
+    opacity: 0;
+  }
+
+  &:hover{
+    padding: $xxs $s;
+  }
+
+  &::before{
+    @include compare-launcher;
+  }
+
+  &::after{
+    content: none !important;
   }
 }
 
