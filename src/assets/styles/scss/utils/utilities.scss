@@ -32,7 +32,6 @@
 
 .is-download-link {
   display: inline-block;
-  border-bottom: dotted $border-stroke-weight-s $accent;
   transition: background $tr-fast, padding $tr-fast;
 
   &:hover {
