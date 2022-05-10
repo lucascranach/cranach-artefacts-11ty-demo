@@ -17,7 +17,14 @@ const config = {
   "generatePaintings": true,
   "generateArchivals": false,
   "generateGraphicsVirtualObjects": true,
-
+  "cranachCollect": {
+    "baseUrl": {
+      "development": "https://lucascranach.org/cranach-compare",
+      "production": "https://lucascranach.org/cranach-compare",
+    },
+    "script": "/scripts/cranach-collect.js",
+    "frontend": "/index.html",
+  },
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
     "production": "https://lucascranach.org/imageserver-2022"
@@ -369,6 +376,12 @@ module.exports = function (eleventyConfig) {
     return process.env.ELEVENTY_ENV === 'production'
       ? config.cranachBaseUrl.production
       : config.cranachBaseUrl.development;
+  });
+
+  eleventyConfig.addJavaScriptFunction("getCranachCollectBaseUrl", () => {
+    return process.env.ELEVENTY_ENV === 'production'
+      ? config.cranachCollect.baseUrl.production
+      : config.cranachCollect.baseUrl.development;
   });
 
   eleventyConfig.addJavaScriptFunction("getConfig", () => {

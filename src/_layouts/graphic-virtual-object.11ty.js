@@ -16,7 +16,6 @@ const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
 const generateReprint = (eleventy, id, masterData) => {
-
   const data = {
     content: eleventy.getReprintData(id, langCode),
   };
@@ -118,6 +117,10 @@ exports.render = function (pageData) {
   const reprintsLevel5 = getReprints(this, data, 5);
   const navigation = navigationSnippet.getNavigation(this, langCode, id);
 
+  const cranachCollectBaseUrl = this.getCranachCollectBaseUrl();
+  const cranachCollectScript = config.cranachCollect.script;
+
+
   return `<!doctype html> 
   <html lang="${langCode}">
     <head>
@@ -164,6 +167,7 @@ exports.render = function (pageData) {
 
       </div>
       <script src="${this.url('/assets/scripts/main.js')}"></script>
+      <script src="${cranachCollectBaseUrl}/${cranachCollectScript}"></script>
     </body>
   </html>`;
 };

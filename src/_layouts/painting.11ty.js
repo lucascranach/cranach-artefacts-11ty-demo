@@ -103,6 +103,9 @@ exports.render = function (pageData) {
   const navigation = navigationSnippet.getNavigation(this, langCode, id);
   const navigationObjects = JSON.stringify(this.getObjectsForNavigation(data.content.metadata.id));
 
+  const cranachCollectBaseUrl = this.getCranachCollectBaseUrl();
+  const cranachCollectScript = config.cranachCollect.script;
+
   return `<!doctype html> 
   <html lang="${langCode}">
     <head>
@@ -204,6 +207,7 @@ exports.render = function (pageData) {
       </div>
       <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4.2/build/openseadragon/openseadragon.min.js"></script>
       <script src="${this.url('/assets/scripts/main.js')}"></script>
+      <script src="${cranachCollectBaseUrl}/${cranachCollectScript}"></script>
     </body>
   </html>`;
 };

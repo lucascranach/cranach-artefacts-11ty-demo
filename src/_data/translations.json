@@ -542,5 +542,9 @@
   "positionInVolume": {
     "de": "Position im Band",
     "en": "Position in volume"
+  },
+  "compareImages": {
+    "de": "Abbildungen vergleichen",
+    "en": "Compare images"
   }
 }

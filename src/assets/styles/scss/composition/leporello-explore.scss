@@ -74,6 +74,11 @@
 // --------------------------------------------------------------------------
 
 .image-stripe {
+
+  &-navigation{
+    display: flex;
+  }
+
   &-list {
     display: grid;
     padding: 0;
@@ -85,6 +90,8 @@
     list-style: none;
 
     &__item {
+      position: relative;
+      overflow: hidden;
       width: 100%;
       height: 100%;
       aspect-ratio: 1/1;
@@ -106,7 +113,61 @@
       &.is-hidden {
         display: none;
       }
+
+      &[data-collected=false] .collect-interaction{
+        position: absolute;
+        top: -50px;
+        display: block;
+        transition: top $tr-fast;
+
+        &::after{
+          @include compare-collection;
+          background-color: $accent;
+          color: $darkest;
+          content: "playlist_add";
+        }
+      }
+
+      &[data-collected=false]:hover .collect-interaction{
+        top: 0;
+      }
+
+      &[data-collected=true] .collect-interaction{
+        &::after{
+          @include compare-collection;
+          content: "playlist_remove";
+        }
+      }
     }
+  }
+}
+
+// Cranach compare
+// --------------------------------------------------------------------------
+a.cranach-compare-launcher{
+
+  display: flex;
+  align-items: center;
+  padding: $xxs $s;
+  margin-bottom: $s;
+  margin-left: auto;
+  opacity: 1;
+  transition: opacity $tr-medium;
+
+  &[data-visible=false]{
+    opacity: 0;
+  }
+
+  &:hover{
+    padding: $xxs $s;
+  }
+
+  &::before{
+    @include compare-launcher;
+  }
+
+  &::after{
+    content: none !important;
   }
 }
 

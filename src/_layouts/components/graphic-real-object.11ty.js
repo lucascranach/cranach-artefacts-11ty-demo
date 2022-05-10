@@ -82,6 +82,9 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
   const medium = mediumSnippet.getMediumOfGraphic(eleventy, data, langCode);
   const shortDescription = descriptionSnippet.getShortDescription(eleventy, data, langCode);
 
+  const cranachCollectBaseUrl = eleventy.getCranachCollectBaseUrl();
+  const cranachCollectScript = config.cranachCollect.script;
+
   return `<!doctype html> 
   <html lang="${langCode}">
     <head>
@@ -165,6 +168,7 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
       </div>
       <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4.2/build/openseadragon/openseadragon.min.js"></script>
       <script src="${eleventy.url('/assets/scripts/main.js')}"></script>
+      <script src="${cranachCollectBaseUrl}/${cranachCollectScript}"></script>
     </body>
   </html>`;
 };
