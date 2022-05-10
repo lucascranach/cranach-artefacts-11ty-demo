@@ -339,7 +339,6 @@ const storeInteraction = (element) => {
 /* Expand & Reduce Blocks
 ============================================================================ */
 const expandReduce = (trigger, targetId) => {
-  console.log(targetId);
   if (!targetId) return;
 
   document.getElementById(targetId).classList.toggle('is-visible');

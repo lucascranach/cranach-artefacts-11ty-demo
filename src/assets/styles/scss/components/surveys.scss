@@ -2,7 +2,7 @@
   padding-bottom: $m;
 
   &-title {
-    padding-right: $l;
+    padding-right: $xl;
     margin-top: 0;
     margin-bottom: $quad;
     font-weight: $fw-semibold;
@@ -10,6 +10,7 @@
   }
 
   &-keywords {
+    padding-right: $xl;
     margin-bottom: $l;
     color: $dark;
     font-weight: $fw-regular;
@@ -28,6 +29,7 @@
   &-persons {
     position: relative;
     padding-top: $xs;
+    padding-right: $xl;
     border-top: dotted $border-stroke-weight $darken-medium;
     margin-top: $m;
     color: $darken-strong;
@@ -55,5 +57,9 @@
 
   &-kind {
     font-weight: $fw-regular;
+  }
+
+  &-content{
+    padding-right: $xl;
   }
 }

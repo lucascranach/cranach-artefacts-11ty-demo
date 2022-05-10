@@ -82,12 +82,13 @@ exports.getReports = (eleventy, { content }, langCode, config, type) => {
 
     return `
     <div class="survey foldable-block has-separator">
-      <header class="survey-header is-expand-trigger js-expand-trigger is-expanded" data-js-expanded="true" data-js-expandable="${surveySlug}">
+      <header class="survey-header is-expand-trigger js-expand-trigger" data-js-expanded="true" data-js-expandable="${surveySlug}">
         ${title}
+      </header>
         ${surveyKeywords}
         ${documentStripeReport}
         ${imageStripeReport}
-      </header>
+
 
       <div class="survey-content expandable-content" id="${surveySlug}">
         ${surveyContent.join('')}
