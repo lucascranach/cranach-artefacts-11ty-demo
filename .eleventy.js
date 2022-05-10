@@ -19,7 +19,7 @@ const config = {
   "generateGraphicsVirtualObjects": true,
   "cranachCollect": {
     "baseUrl": {
-      "development": "http://localhost:8182",
+      "development": "https://lucascranach.org/cranach-compare",
       "production": "https://lucascranach.org/cranach-compare",
     },
     "script": "/scripts/cranach-collect.js",
