@@ -1324,7 +1324,7 @@
                                         {
                                             "term": "Hl. Jakobus der \u00c4ltere",
                                             "alt": {
-                                                "britishEquivalent": "St James the Greater",
+                                                "britishEquivalent": "St James the Great",
                                                 "dkultTermIdentifier": "010403030122"
                                             },
                                             "subTerms": []
@@ -2480,7 +2480,7 @@
                                             "term": "Otto Brunfels",
                                             "alt": {
                                                 "britishEquivalent": "Otto Brunfels",
-                                                "dkultTermIdentifier": "010402010135"
+                                                "dkultTermIdentifier": "010402010136"
                                             },
                                             "subTerms": []
                                         },
@@ -2488,7 +2488,7 @@
                                             "term": "Moritz Buchner",
                                             "alt": {
                                                 "britishEquivalent": "Moritz Buchner",
-                                                "dkultTermIdentifier": "010402010132"
+                                                "dkultTermIdentifier": "010402010133"
                                             },
                                             "subTerms": []
                                         },
@@ -2512,7 +2512,7 @@
                                             "term": "Lucas Cranach der \u00c4ltere",
                                             "alt": {
                                                 "britishEquivalent": "Lucas Cranach the Elder",
-                                                "dkultTermIdentifier": "010402010129"
+                                                "dkultTermIdentifier": "010402010130"
                                             },
                                             "subTerms": []
                                         },
@@ -2536,7 +2536,7 @@
                                             "term": "Sigmunt Kingsfeld, Ritter",
                                             "alt": {
                                                 "britishEquivalent": "Sigmunt Kingsfeld, Knight",
-                                                "dkultTermIdentifier": "010402010141"
+                                                "dkultTermIdentifier": "010402010142"
                                             },
                                             "subTerms": []
                                         },
@@ -2624,7 +2624,7 @@
                                             "term": "Philipp Melanchthon",
                                             "alt": {
                                                 "britishEquivalent": "Philipp Melanchthon",
-                                                "dkultTermIdentifier": "010402010137"
+                                                "dkultTermIdentifier": "010402010138"
                                             },
                                             "subTerms": []
                                         },
@@ -2632,7 +2632,7 @@
                                             "term": "Martin Luther",
                                             "alt": {
                                                 "britishEquivalent": "Martin Luther",
-                                                "dkultTermIdentifier": "010402010130"
+                                                "dkultTermIdentifier": "010402010131"
                                             },
                                             "subTerms": []
                                         },
@@ -2656,7 +2656,7 @@
                                             "term": "Nikolaus Seidel",
                                             "alt": {
                                                 "britishEquivalent": "Nikolaus Seidel",
-                                                "dkultTermIdentifier": "010402010134"
+                                                "dkultTermIdentifier": "010402010135"
                                             },
                                             "subTerms": []
                                         },
@@ -2664,7 +2664,7 @@
                                             "term": "Veit Dietrich",
                                             "alt": {
                                                 "britishEquivalent": "Veit Dietrich",
-                                                "dkultTermIdentifier": "010402010142"
+                                                "dkultTermIdentifier": "010402010143"
                                             },
                                             "subTerms": []
                                         },
@@ -2680,7 +2680,7 @@
                                             "term": "Leonhard Badehorn",
                                             "alt": {
                                                 "britishEquivalent": "Leonhard Badehorn",
-                                                "dkultTermIdentifier": "010402010128"
+                                                "dkultTermIdentifier": "010402010129"
                                             },
                                             "subTerms": []
                                         },
@@ -2696,7 +2696,7 @@
                                             "term": "Leon Braunsberg",
                                             "alt": {
                                                 "britishEquivalent": "Leon Braunsberg",
-                                                "dkultTermIdentifier": "010402010127"
+                                                "dkultTermIdentifier": "010402010128"
                                             },
                                             "subTerms": []
                                         },
@@ -2704,7 +2704,7 @@
                                             "term": "Paulus von Berge",
                                             "alt": {
                                                 "britishEquivalent": "Paulus of Berge",
-                                                "dkultTermIdentifier": "010402010136"
+                                                "dkultTermIdentifier": "010402010137"
                                             },
                                             "subTerms": []
                                         },
@@ -2712,7 +2712,7 @@
                                             "term": "Rudolph Agricola",
                                             "alt": {
                                                 "britishEquivalent": "Rudolph Agricola",
-                                                "dkultTermIdentifier": "010402010140"
+                                                "dkultTermIdentifier": "010402010141"
                                             },
                                             "subTerms": []
                                         },
@@ -2720,7 +2720,7 @@
                                             "term": "Nicholas de Backer",
                                             "alt": {
                                                 "britishEquivalent": "Nicholas de Backer",
-                                                "dkultTermIdentifier": "010402010133"
+                                                "dkultTermIdentifier": "010402010134"
                                             },
                                             "subTerms": []
                                         },
@@ -2736,7 +2736,7 @@
                                             "term": "Michael Meyenburg",
                                             "alt": {
                                                 "britishEquivalent": "Michael Meyenburg",
-                                                "dkultTermIdentifier": "010402010131"
+                                                "dkultTermIdentifier": "010402010132"
                                             },
                                             "subTerms": []
                                         },
@@ -2776,7 +2776,7 @@
                                             "term": "Philipp von Wittelsbach, Bischof",
                                             "alt": {
                                                 "britishEquivalent": "Philipp von Wittelsbach, Bishop",
-                                                "dkultTermIdentifier": "010402010138"
+                                                "dkultTermIdentifier": "010402010139"
                                             },
                                             "subTerms": []
                                         },
@@ -2792,7 +2792,7 @@
                                             "term": "Pietro Bembo",
                                             "alt": {
                                                 "britishEquivalent": "Pietro Bembo",
-                                                "dkultTermIdentifier": "010402010139"
+                                                "dkultTermIdentifier": "010402010140"
                                             },
                                             "subTerms": []
                                         },
@@ -2809,6 +2809,14 @@
                                             "alt": {
                                                 "britishEquivalent": "Caspar Cruciger",
                                                 "dkultTermIdentifier": "010402010101"
+                                            },
+                                            "subTerms": []
+                                        },
+                                        {
+                                            "term": "Kaspar Eberhard",
+                                            "alt": {
+                                                "britishEquivalent": "Kaspar Eberhard",
+                                                "dkultTermIdentifier": "010402010127"
                                             },
                                             "subTerms": []
                                         }
@@ -3415,7 +3423,7 @@
                     "term": "Fl\u00fcgel",
                     "alt": {
                         "britishEquivalent": "Wing panel",
-                        "dkultTermIdentifier": "010301"
+                        "dkultTermIdentifier": "010302"
                     },
                     "subTerms": []
                 },
@@ -3423,7 +3431,7 @@
                     "term": "Mitteltafel",
                     "alt": {
                         "britishEquivalent": "Central panel",
-                        "dkultTermIdentifier": "010304"
+                        "dkultTermIdentifier": "010301"
                     },
                     "subTerms": []
                 },
@@ -3431,7 +3439,7 @@
                     "term": "Predella",
                     "alt": {
                         "britishEquivalent": "Predella",
-                        "dkultTermIdentifier": "010305"
+                        "dkultTermIdentifier": "010303"
                     },
                     "subTerms": []
                 },
@@ -3439,7 +3447,7 @@
                     "term": "Fragment",
                     "alt": {
                         "britishEquivalent": "Fragment",
-                        "dkultTermIdentifier": "010302"
+                        "dkultTermIdentifier": "010305"
                     },
                     "subTerms": []
                 },
@@ -3447,7 +3455,7 @@
                     "term": "Retabelauszug",
                     "alt": {
                         "britishEquivalent": "Superstructure",
-                        "dkultTermIdentifier": "010303"
+                        "dkultTermIdentifier": "010304"
                     },
                     "subTerms": []
                 },
