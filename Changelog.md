@@ -1,5 +1,20 @@
 # Changelog Cranach Artefacts
 
+
+## v0.5.0
+
+Mit dieser Version werden folgende Fehler behoben/ Funktionen/ Inhalte bereit gestellt:
+- Pfeil bei den Untersuchungen verhält sich nun erwartungskonform. Gleiches gilt für die dahinter liegenden Inhalte.
+- Artfakte können jetzt auf den «Bild vergleichen» Stapel gelegt werden.
+- «Bild vergleichen» Funktion kann jetzt gestartet werden.
+- korrigierte Version der Bildunterschriften (via Exif) ist enthalten. Dies wurde anhand folgender Objekte verifiziert:
+  - https://lucascranach.org/de/PRIVATE_NONE-P201/
+  - https://lucascranach.org/de/CH_KMB_177
+
+- kleinere Layoutoptimierungen
+
+https://lucascranach.org/de/DE_MdbKL_946/
+
 ## v0.4.0
 Mit dieser Version werden folgende Fehler behoben/ Funktionen/ Inhalte bereit gestellt:
 - Sprachwähler erlaubt das wechseln zwischen den Sprachen (WIP)
