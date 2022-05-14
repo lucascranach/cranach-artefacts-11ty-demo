@@ -537,7 +537,11 @@
   },
   "partOfImageGroup": {
     "de": "Teil der Bildnisgruppe",
-    "en": "Part of Image Group"
+    "en": "Part of portait group"
+  },
+  "partOfAppendix":{
+    "de": "Teil des KKL-Anhangs",
+    "en": "Part of KKL appendix"
   },
   "positionInVolume": {
     "de": "Position im Band",

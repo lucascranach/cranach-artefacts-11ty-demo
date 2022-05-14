@@ -4,7 +4,9 @@ const kklGroupLink = (eleventy, kklNr, langCode) => {
   const { kklGroupId } = kklGroupLinkData;
   const { url } = kklGroupLinkData;
 
-  return `<span>, <a href="${url}" class="is-link">${eleventy.translate('partOfImageGroup', langCode)} ${kklGroupId}</a></span>`;
+  return kklGroupId === 'partOfAppendix'
+    ? `<span>, ${eleventy.translate('partOfAppendix', langCode)}</span>`
+    : `<span>, <a href="${url}" class="is-link">${eleventy.translate('partOfImageGroup', langCode)} ${kklGroupId}</a></span>`;
 };
 
 exports.getPermalink = (eleventy, url, langCode) => `
