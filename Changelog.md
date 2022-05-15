@@ -1,5 +1,32 @@
 # Changelog Cranach Artefacts
 
+## v0.5.2
+Mit dieser Version werden folgende Fehler behoben/ Funktionen/ Inhalte bereit gestellt:
+- Sprachwähler Icon wird jetzt auf allen Systemen korrekt angezeigt.
+- Werke des KKL Anhangs werden jetzt als solche ausgezeichnet.
+- Falsche Overalls gefixt, geprüft für:
+  - https://lucascranach.org/de/DE_LHW_G163/
+  - https://lucascranach.org/de/PRIVATE_NONE-P409/
+  - https://lucascranach.org/de/I_MPP_1036/
+  - https://lucascranach.org/de/I_MPP_1035/
+  - https://lucascranach.org/de/CH_MAS_A1950/
+  - https://lucascranach.org/de/DE_AGGD_440/
+- Folgende Datensätze sind wieder da, aber noch nicht über die Suche erreichbar:
+  - https://lucascranach.org/de/DE_GNMN_Gm1570/
+  - https://lucascranach.org/de/DE_MdbKL_946/
+  - https://lucascranach.org/de/DE_KSW_G9/
+  - https://lucascranach.org/de/DE_smbGG_637/
+  - https://lucascranach.org/de/DE_LHW-Lost_NONE-002/
+  - https://lucascranach.org/de/PRIVATE_NONE-P404/
+  - https://lucascranach.org/de/DE_KSW_G560/
+  - https://lucascranach.org/de/DE_NLMH_PAM973/
+  - https://lucascranach.org/de/DE_NLMH_PAM974/
+- BUs aus Exif Import verbessert. Getest entlang der Tabelle "Zuordnung Exif" (https://www.icloud.com/numbers/0ZnUgCwR_ajwPvn4lz5J39oUA#editlist-update)
+
+## v0.5.1
+Mit dieser Version werden folgende Fehler behoben/ Funktionen/ Inhalte bereit gestellt:
+- TMS Update vom 12.05.2022 wurde integriert
+
 
 ## v0.5.0
 

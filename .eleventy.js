@@ -162,9 +162,17 @@ const clearRequireCache = () => {
   });  
 }
 
+const appendToFile = (path, str) => {
+  const filepath = `./${path}`;
+  fs.appendFileSync(filepath, str);
+}
+
+
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["PRIVATE_NONE-P201", "US_MMANY_55-220-2", "UK_RCL_RCIN402656","DE_MdbKL_946","DE_SKD_RKH97", "PRIVATE_NONE-P201", "DE_MKKM_1232BRD","PRIVATE_NONE-P411","UK_BMAG_K1650","DK_SMK_KMS3674", "US_CMA_1953-143", "DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739", "PRIVATE_NONE-P409","CH_SORW_1925-1a"];
+  const devObjects = ["DE_HSBBW_Ia20","DE_SAOH_2000-3a","DE_SAA_NONE-SAA002","DE_SAA_NONE-SAA002","DE_HABW_B94","DE_HABW_B94","DE_LHW_G163","DE_smbGG_637","PRIVATE_NONE-P475","DE_KSVC_M417","DE_SAOH_2000-3a","PRIVATE_NONE-P276","DE_LHW_G11"];
+    
+    /*["PRIVATE_NONE-P201", "US_MMANY_55-220-2", "UK_RCL_RCIN402656", "DE_MdbKL_946", "DE_SKD_RKH97", "PRIVATE_NONE-P201", "DE_MKKM_1232BRD", "PRIVATE_NONE-P411", "UK_BMAG_K1650", "DK_SMK_KMS3674", "US_CMA_1953-143", "DE_LHW_G25", "ANO_H-NONE-019", "DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a", "AT_KHM_GG861", "AT_KHM_GG886", "AT_KHM_GG856", "AT_KHM_GG858", "PRIVATE_NONE-P449", "AR_MNdBABA_8632", "AT_KHM_GG860", "AT_KHM_GG885", "AT_KHM_GG3523", "PRIVATE_NONE-P443", "PRIVATE_NONE-P450", "AT_SZ_SZ25-416-129", "CZ_NGP_O9619", "CH_PTSS-MAS_A653", "CH_SORW_1925-1b", "DE_AGGD_15", "DE_StMB_NONE-001c", "AT_KHM_GG6905", "DE_StMT", "DE_StMB_NONE-001d", "AT_KHM_GG6739", "PRIVATE_NONE-P409", "CH_SORW_1925-1a"];*/
 
   const paintings = process.env.ELEVENTY_ENV === 'production'
     ? paintingsForLang.items
@@ -182,14 +190,6 @@ const getPaintingsCollection = (lang) => {
     if (a.sortValue > b.sortValue) return 1;
     return 0;
   });
-  if (lang === "de") { 
-    const ids = sortedPaintings.map(item => { 
-      if (item.sortingNumber.match(/\-/)) { 
-        // appendToFile("ids.txt", `${item.inventoryNumber}\t${item.sortingNumber}\n`)
-      }
-    });
-  }
-
 
   return sortedPaintings;
 }
@@ -226,7 +226,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["ANO_H-NONE-002", "ANO_H-NONE-017","ANO_HVI-7-6", "HBG_HVI-8_7-4", "HB_HIV-259-595"];
+  const devObjects = ["ANO_H-NONE-001", "DE_SAOH_2000-3a", "ANO_H-NONE-002", "ANO_H-NONE-017","ANO_HVI-7-6", "HBG_HVI-8_7-4", "HB_HIV-259-595"];
   
   const graphicsVirtualObjects = process.env.ELEVENTY_ENV === 'production'
     ? graphicsVirtualObjectsForLang.items
@@ -282,11 +282,6 @@ const objectsForNavigation = (() => {
   return objectsForNavigation;
 })()
 
-const appendToFile = (path, str) => {
-  const filepath = `./${path}`;
-  fs.appendFileSync(filepath, str);
-}
-
 module.exports = function (eleventyConfig) {
   eleventyConfig.setWatchThrottleWaitTime(100);
   eleventyConfig.setUseGitIgnore(false);
@@ -333,6 +328,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addJavaScriptFunction("getKklGroupLinkData", (kklNr, lang) => {
     if (!kklNr) return;
+    if (kklNr.match(/Sup/)) return { url: '', kklGroupId: 'partOfAppendix' };
     const searchUrl = config.cranachSearchURL.replace(/langCode/, lang);
     const kklGroupId = kklNr.replace(/\..*/, "");
     const searchParam = kklGroupShortcuts[kklGroupId];
