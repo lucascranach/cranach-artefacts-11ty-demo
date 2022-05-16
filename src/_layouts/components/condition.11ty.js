@@ -1,5 +1,5 @@
 exports.getCondition = (eleventy, { content }, langCode) => {
-  const condition = content.classification.condition.replace(/\n|\r/, ", ");
+  const condition = content.classification.condition.replace(/\n|\r/, ', ');
   const conditionData = `${condition}`;
   const label = eleventy.translate('stateAndEdition', langCode);
   return !content.classification.classification ? '' : `
