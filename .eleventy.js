@@ -226,7 +226,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["ANO_H-NONE-001", "DE_SAOH_2000-3a", "ANO_H-NONE-002", "ANO_H-NONE-017","ANO_HVI-7-6", "HBG_HVI-8_7-4", "HB_HIV-259-595"];
+  const devObjects = ["ANO_HVI-7-6","ANO_H-NONE-001", "DE_SAOH_2000-3a", "ANO_H-NONE-002", "ANO_H-NONE-017","ANO_HVI-7-6", "HBG_HVI-8_7-4", "HB_HIV-259-595"];
   
   const graphicsVirtualObjects = process.env.ELEVENTY_ENV === 'production'
     ? graphicsVirtualObjectsForLang.items
