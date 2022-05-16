@@ -35,6 +35,10 @@
     "de": "Druckzustand, Version",
     "en": "Condition"
   },
+  "stateAndEdition": {
+    "de": "Zustand / Auflage",
+    "en": "State / Edition"
+  },
   "dating": {
     "de": "Datierung",
     "en": "Dating"
