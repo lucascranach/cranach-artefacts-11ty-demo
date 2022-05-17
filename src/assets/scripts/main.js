@@ -357,8 +357,14 @@ const restoreUserInteraction = () => {
   Object.keys(storedInteractions).forEach((key) => {
     const targetId = key;
     const isExpanded = storedInteractions[key];
+
+    if (!targetId.match(/^[a-zA-Z0-9]/)) return;
+
     const selector = `[data-js-expandable=${targetId}]`;
     const trigger = document.querySelector(selector);
+
+    if (!document.getElementById(targetId)
+      || !trigger) return;
 
     if (isExpanded) {
       document.getElementById(targetId).classList.remove('is-visible');
