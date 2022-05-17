@@ -1,5 +1,23 @@
 # Changelog Cranach Artefacts
 
+## v0.5.3
+Mit dieser Version werden folgende Fehler behoben/ Funktionen/ Inhalte bereit gestellt:
+- Permalinks sind jetzt klickbar
+- "Erhaltungszustand" umbenannt in "Zustand / Auflage“ (State/ Edition) 
+- Information "Druckgrafik" wurde entfernt und die restliche Informationen wird nun mit Komma getrennt angezeigt
+- neues Feld "Datierung" wurde integriert
+- Nutzerinteraktionen werden gespeichert und beim Reload wieder hergestellt.
+- Folgende Abbildungen/ Metadaten wurden aktualisiert:
+  - CH_MAS_A1950_FR-none
+  - DE_HSBBW_Ia20_FR-none
+  - DE_LHW_G163_FR-none
+  - DE_LHW_G16_FR-none
+  - DE_SAOH_2000-3a_FR-none
+  - DE_WSE_M0065
+  - DE_smbGG_637_FR190A
+  - PRIVATE_NONE-P411_FR-none
+  - SE_NMS_5016_FR189-190B
+  - US_MMANY_55-220-2_FR314F
 ## v0.5.2
 Mit dieser Version werden folgende Fehler behoben/ Funktionen/ Inhalte bereit gestellt:
 - Sprachwähler Icon wird jetzt auf allen Systemen korrekt angezeigt.
