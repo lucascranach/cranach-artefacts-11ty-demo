@@ -248,7 +248,7 @@ class ImageViewer {
     const { langCode } = globalData;
     const captionId = 'ImageDescTitle';
     const description = !metadata || !metadata.description
-      ? `<h3 id="${captionId}" class="image-caption__title is-expand-trigger js-expand-trigger" data-js-expanded="true"
+      ? `<h3 id="${captionId}" class="image-caption__title is-expand-trigger js-expand-trigger" data-js-expanded="false"
         data-js-expandable="completeImageData">
         ${translations.imageInformation[langCode]}</h3>`
       : `<h3 id="${captionId}" 
@@ -321,19 +321,17 @@ class ImageViewer {
 
 /* Stores Interaction (Foldable Items)
 ============================================================================ */
-const storeInteraction = (element) => {
+const storeUserInteraction = (element, targetId) => {
   const trigger = element;
-  const id = trigger.id ? trigger.id : trigger.dataset.jsExpandable;
-  const state = trigger.dataset.jsExpanded ? trigger.dataset.jsExpanded : false;
+  const id = targetId;
+  const isExpanded = trigger.dataset.jsExpanded !== 'true';
 
   const storedInteractions = localStorage.getItem('interactions')
     ? JSON.parse(localStorage.getItem('interactions'))
     : {};
 
-  storedInteractions[id] = state;
+  storedInteractions[id] = isExpanded;
   localStorage.setItem('interactions', JSON.stringify(storedInteractions));
-
-  // return true;
 };
 
 /* Expand & Reduce Blocks
@@ -341,9 +339,39 @@ const storeInteraction = (element) => {
 const expandReduce = (trigger, targetId) => {
   if (!targetId) return;
 
+  const triggerElement = trigger;
   document.getElementById(targetId).classList.toggle('is-visible');
-  trigger.classList.toggle('is-expanded');
-  storeInteraction(trigger);
+  triggerElement.classList.toggle('is-expanded');
+  triggerElement.dataset.jsExpanded = triggerElement.dataset.jsExpanded !== 'true';
+  storeUserInteraction(triggerElement, targetId);
+};
+
+/* Restore Interaction (Foldable Items)
+============================================================================ */
+const restoreUserInteraction = () => {
+  const storedInteractions = localStorage.getItem('interactions')
+    ? JSON.parse(localStorage.getItem('interactions'))
+    : false;
+  if (!storedInteractions) return;
+
+  Object.keys(storedInteractions).forEach((key) => {
+    const targetId = key;
+    const isExpanded = storedInteractions[key];
+    const selector = `[data-js-expandable=${targetId}]`;
+    const trigger = document.querySelector(selector);
+
+    if (isExpanded) {
+      document.getElementById(targetId).classList.remove('is-visible');
+      trigger.classList.remove('is-expanded');
+      trigger.dataset.jsExpanded = false;
+    } else {
+      document.getElementById(targetId).classList.add('is-visible');
+      trigger.classList.add('is-expanded');
+      trigger.dataset.jsExpanded = true;
+    }
+
+    storeUserInteraction(trigger, targetId);
+  });
 };
 
 /* Search Results in Local Storage
@@ -533,6 +561,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
   expandableBlocks.forEach((block) => {
     expandReduce(block, block.dataset.jsExpandable);
   });
+
+  restoreUserInteraction();
 
   /* Intersections
   --------------------------------------------------------------------------  */

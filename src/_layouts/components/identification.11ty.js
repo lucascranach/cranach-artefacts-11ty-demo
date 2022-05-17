@@ -12,7 +12,7 @@ const kklGroupLink = (eleventy, kklNr, langCode) => {
 exports.getPermalink = (eleventy, url, langCode) => `
     <dl class="definition-list is-grid">
       <dt class="definition-list__term">${eleventy.translate('permalink', langCode)}</dt>
-      <dd class="definition-list__definition" data-clipable-content="${url}">${url}</dd>
+      <dd class="definition-list__definition" data-clipable-content="${url}"><a href="${url}">${url}</a></dd>
     </dl>
   `;
 
@@ -69,7 +69,7 @@ exports.getIds = (eleventy, { content }, langCode) => {
     ${hollsteinNrSnippet}
     ${bartschNrSnippet}
     <dt class="definition-list__term">${eleventy.translate('permalink', langCode)}</dt>
-    <dd class="definition-list__definition" data-clipable-content="${content.url}">${content.url}</dd>
+    <dd class="definition-list__definition" data-clipable-content="${content.url}"><a href="${content.url}">${content.url}</a></dd>
   </dl>
   `;
 };

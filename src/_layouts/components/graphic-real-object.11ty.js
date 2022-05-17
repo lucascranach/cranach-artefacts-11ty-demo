@@ -22,6 +22,7 @@ const additionalTextInformationSnippet = require('./additional-text-information.
 const referencesSnippet = require('./references.11ty');
 const conditionSnippet = require('./condition.11ty');
 const navigationSnippet = require('./navigation.11ty');
+const datingSnippet = require('./dating.11ty');
 
 const ART_TECH_EXAMINATION = 'ArtTechExamination';
 const CONDITION_REPORT = 'ConditionReport';
@@ -81,6 +82,7 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
   const condition = conditionSnippet.getCondition(eleventy, data, langCode);
   const medium = mediumSnippet.getMediumOfGraphic(eleventy, data, langCode);
   const shortDescription = descriptionSnippet.getShortDescription(eleventy, data, langCode);
+  const dating = datingSnippet.getDating(eleventy, data, langCode);
 
   const cranachCollectBaseUrl = eleventy.getCranachCollectBaseUrl();
   const cranachCollectScript = config.cranachCollect.script;
@@ -124,6 +126,7 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
           <div class="explore-content">
             <div class="block">
               ${condition}
+              ${dating}
               ${medium}
               ${shortDescription}
               ${dimensions}
