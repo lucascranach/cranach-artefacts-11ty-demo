@@ -1,6 +1,6 @@
 # Changelog Cranach Artefacts
 
-## v0.5.3
+## v0.6.0
 Mit dieser Version werden folgende Fehler behoben/ Funktionen/ Inhalte bereit gestellt:
 - Permalinks sind jetzt klickbar
 - "Erhaltungszustand" umbenannt in "Zustand / Auflage“ (State/ Edition) 
