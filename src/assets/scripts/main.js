@@ -200,6 +200,21 @@ const toggleLiteratureDetails = (referenceId) => {
   document.getElementById(dataId).classList.toggle('is-visible');
 };
 
+/* Stores Interaction (Foldable Items)
+============================================================================ */
+const storeUserInteraction = (element, targetId) => {
+  const trigger = element;
+  const id = targetId;
+  const isExpanded = trigger.dataset.jsExpanded !== 'true';
+
+  const storedInteractions = localStorage.getItem('interactions')
+    ? JSON.parse(localStorage.getItem('interactions'))
+    : {};
+
+  storedInteractions[id] = isExpanded;
+  localStorage.setItem('interactions', JSON.stringify(storedInteractions));
+};
+
 /* Restore Interaction (Foldable Items)
 ============================================================================ */
 const restoreSingleInteraction = (key, value) => {
@@ -224,7 +239,7 @@ const restoreSingleInteraction = (key, value) => {
     trigger.dataset.jsExpanded = true;
   }
 
-  restoreSingleInteraction(trigger, targetId);
+  storeUserInteraction(trigger, targetId);
 };
 
 const restoreUserInteraction = () => {
@@ -363,21 +378,6 @@ class ImageViewer {
     });
   }
 }
-
-/* Stores Interaction (Foldable Items)
-============================================================================ */
-const storeUserInteraction = (element, targetId) => {
-  const trigger = element;
-  const id = targetId;
-  const isExpanded = trigger.dataset.jsExpanded !== 'true';
-
-  const storedInteractions = localStorage.getItem('interactions')
-    ? JSON.parse(localStorage.getItem('interactions'))
-    : {};
-
-  storedInteractions[id] = isExpanded;
-  localStorage.setItem('interactions', JSON.stringify(storedInteractions));
-};
 
 /* Expand & Reduce Blocks
 ============================================================================ */
