@@ -14,7 +14,7 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "generatePaintings": true,
+  "generatePaintings": false,
   "generateArchivals": false,
   "generateGraphicsVirtualObjects": true,
   "cranachCollect": {
@@ -170,9 +170,7 @@ const appendToFile = (path, str) => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["SE_NMS_5017","DE_HSBBW_Ia20","DE_SAOH_2000-3a","DE_SAA_NONE-SAA002","DE_SAA_NONE-SAA002","DE_HABW_B94","DE_HABW_B94","DE_LHW_G163","DE_smbGG_637","PRIVATE_NONE-P475","DE_KSVC_M417","DE_SAOH_2000-3a","PRIVATE_NONE-P276","DE_LHW_G11"];
-    
-    /*["PRIVATE_NONE-P201", "US_MMANY_55-220-2", "UK_RCL_RCIN402656", "DE_MdbKL_946", "DE_SKD_RKH97", "PRIVATE_NONE-P201", "DE_MKKM_1232BRD", "PRIVATE_NONE-P411", "UK_BMAG_K1650", "DK_SMK_KMS3674", "US_CMA_1953-143", "DE_LHW_G25", "ANO_H-NONE-019", "DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a", "AT_KHM_GG861", "AT_KHM_GG886", "AT_KHM_GG856", "AT_KHM_GG858", "PRIVATE_NONE-P449", "AR_MNdBABA_8632", "AT_KHM_GG860", "AT_KHM_GG885", "AT_KHM_GG3523", "PRIVATE_NONE-P443", "PRIVATE_NONE-P450", "AT_SZ_SZ25-416-129", "CZ_NGP_O9619", "CH_PTSS-MAS_A653", "CH_SORW_1925-1b", "DE_AGGD_15", "DE_StMB_NONE-001c", "AT_KHM_GG6905", "DE_StMT", "DE_StMB_NONE-001d", "AT_KHM_GG6739", "PRIVATE_NONE-P409", "CH_SORW_1925-1a"];*/
+  const devObjects = ["CH_MAS_A1950", "PRIVATE_NONE-P411", "DE_GNMN_Gm1570", "PRIVATE_NONE-P201", "PRIVATE_NONE-P409", "PRIVATE_NONE-P333", "DE_KSVC_M418", "DE_SPSG_GKI50476", "DE_RMK_M6", "DE_MKKM_1233BRD", "DE_HABW_B94_FR189-190C", "DE_HABW_B96_FR189-190C", "DE_smbGG_637_FR190A", "DE_HSBBW_Ia20", "DE_LHW_G16", "DE_MHB_1a", "DE_LHW_G163", "US_MMANY_55-220-2_FR314F", "DE_KSW_G9_FR149", "PRIVATE_NONE-P411", "DE_KSVC_M418", "PRIVATE_NONE-P411"];
 
   const paintings = process.env.ELEVENTY_ENV === 'production'
     ? paintingsForLang.items
@@ -226,7 +224,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["ANO_HVI-7-6","ANO_H-NONE-001", "DE_SAOH_2000-3a", "ANO_H-NONE-002", "ANO_H-NONE-017","ANO_HVI-7-6", "HBG_HVI-8_7-4", "HB_HIV-259-595"];
+  const devObjects = ["ANO_H-NONE-013"];
   
   const graphicsVirtualObjects = process.env.ELEVENTY_ENV === 'production'
     ? graphicsVirtualObjectsForLang.items
@@ -390,7 +388,8 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addJavaScriptFunction("getReprintRefItem", (ref, lang) => {
-    const reprintRefItemData = graphicsRealObjectData[lang].items.filter(item => item.metadata.id === ref);
+    const reprintRefItemData = graphicsRealObjectData[lang].items.filter(item => item.metadata.id === ref && !item.sortingNumber.match(/^20/));
+
     if (reprintRefItemData.length === 0) return;
     
     const reprintRefItem = reprintRefItemData.shift();
@@ -590,6 +589,28 @@ module.exports = function (eleventyConfig) {
 
   /* Collections
   ########################################################################## */
+
+  eleventyConfig.addCollection("allObjectsDE", () => {
+    clearRequireCache();
+    const paintings = getPaintingsCollection('de');
+    const graphicsVirtualObjects = getGraphicsVirtualObjectsCollection('de');
+    const allObjects = [...paintings, ...graphicsVirtualObjects];
+    
+    const sortableObjects = allObjects.map(item => {
+      const itemWithSortValue = item;
+      itemWithSortValue.sortValue = `${item.sortingInfo.year}-${item.sortingInfo.position}`;
+  
+      return itemWithSortValue;
+    });
+    
+    let sortedObjects = sortableObjects.sort((a, b) => {
+      if (a.sortValue < b.sortValue) return -1;
+      if (a.sortValue > b.sortValue) return 1;
+      return 0;
+    });
+  
+    return sortedObjects;
+  });
 
   eleventyConfig.addCollection("paintingsDE", () => {
     clearRequireCache();
