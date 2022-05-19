@@ -39,7 +39,7 @@ figcaption{
       <div class="img-wrap">
         <img src="{{item.metadata.imgSrc}}">
       </div>
-      <figcaption>{{item.metadata.title}}<br>{{item.metadata.id}}<br>{{item.sortingNumber}}</figcaption>
+      <figcaption>{{item.metadata.title}}<br>{{item.metadata.id}}<br>{{item.sortingInfo.year}}-{{item.sortingInfo.position}}</figcaption>
     </figure>
   </a>
   </li>

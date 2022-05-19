@@ -200,6 +200,45 @@ const toggleLiteratureDetails = (referenceId) => {
   document.getElementById(dataId).classList.toggle('is-visible');
 };
 
+/* Restore Interaction (Foldable Items)
+============================================================================ */
+const restoreSingleInteraction = (key, value) => {
+  const targetId = key;
+  const isExpanded = value;
+
+  if (!targetId.match(/^[a-zA-Z0-9]/)) return;
+
+  const selector = `[data-js-expandable=${targetId}]`;
+  const trigger = document.querySelector(selector);
+
+  if (!document.getElementById(targetId)
+    || !trigger) return;
+
+  if (isExpanded) {
+    document.getElementById(targetId).classList.remove('is-visible');
+    trigger.classList.remove('is-expanded');
+    trigger.dataset.jsExpanded = false;
+  } else {
+    document.getElementById(targetId).classList.add('is-visible');
+    trigger.classList.add('is-expanded');
+    trigger.dataset.jsExpanded = true;
+  }
+
+  restoreSingleInteraction(trigger, targetId);
+};
+
+const restoreUserInteraction = () => {
+  const storedInteractions = localStorage.getItem('interactions')
+    ? JSON.parse(localStorage.getItem('interactions'))
+    : false;
+  if (!storedInteractions) return;
+
+  Object.keys(storedInteractions).forEach((key) => {
+    const value = storedInteractions[key];
+    restoreSingleInteraction(key, value);
+  });
+};
+
 /* ImageViewer
 ============================================================================ */
 class ImageViewer {
@@ -289,6 +328,12 @@ class ImageViewer {
 
     this.caption.innerHTML = caption;
     this.addClipboardInteraction(img.id);
+    const storedInteractions = localStorage.getItem('interactions')
+      ? JSON.parse(localStorage.getItem('interactions'))
+      : false;
+    if (!storedInteractions) return;
+    if (!storedInteractions.completeImageData) return;
+    restoreSingleInteraction('completeImageData', storedInteractions.completeImageData);
   }
 
   handleTrigger(trigger) {
@@ -346,39 +391,7 @@ const expandReduce = (trigger, targetId) => {
   storeUserInteraction(triggerElement, targetId);
 };
 
-/* Restore Interaction (Foldable Items)
-============================================================================ */
-const restoreUserInteraction = () => {
-  const storedInteractions = localStorage.getItem('interactions')
-    ? JSON.parse(localStorage.getItem('interactions'))
-    : false;
-  if (!storedInteractions) return;
 
-  Object.keys(storedInteractions).forEach((key) => {
-    const targetId = key;
-    const isExpanded = storedInteractions[key];
-
-    if (!targetId.match(/^[a-zA-Z0-9]/)) return;
-
-    const selector = `[data-js-expandable=${targetId}]`;
-    const trigger = document.querySelector(selector);
-
-    if (!document.getElementById(targetId)
-      || !trigger) return;
-
-    if (isExpanded) {
-      document.getElementById(targetId).classList.remove('is-visible');
-      trigger.classList.remove('is-expanded');
-      trigger.dataset.jsExpanded = false;
-    } else {
-      document.getElementById(targetId).classList.add('is-visible');
-      trigger.classList.add('is-expanded');
-      trigger.dataset.jsExpanded = true;
-    }
-
-    storeUserInteraction(trigger, targetId);
-  });
-};
 
 /* Search Results in Local Storage
 ============================================================================ */
@@ -544,16 +557,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
   }
 
-  /* Image viewer
-  --------------------------------------------------------------------------  */
-  let imageViewer;
-  if (document.querySelector('.main-image-wrap') !== null) {
-    imageViewer = new ImageViewer('viewer-content', 'image-caption');
-    const firstImageInStripe = document.querySelector('[data-js-change-image]');
-    const firstImageData = parseJson(firstImageInStripe.dataset.jsChangeImage);
-    imageViewer.showImage(firstImageData.key, firstImageData.id, firstImageInStripe);
-  }
-
   /* Search Result Navigation
   --------------------------------------------------------------------------  */
   if (document.querySelector('.search-result-navigation') !== null) {
@@ -569,6 +572,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
   });
 
   restoreUserInteraction();
+
+  /* Image viewer
+  --------------------------------------------------------------------------  */
+  let imageViewer;
+  if (document.querySelector('.main-image-wrap') !== null) {
+    imageViewer = new ImageViewer('viewer-content', 'image-caption');
+    const firstImageInStripe = document.querySelector('[data-js-change-image]');
+    const firstImageData = parseJson(firstImageInStripe.dataset.jsChangeImage);
+    imageViewer.showImage(firstImageData.key, firstImageData.id, firstImageInStripe);
+  }
 
   /* Intersections
   --------------------------------------------------------------------------  */
