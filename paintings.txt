@@ -1,0 +1,14 @@
+DE_GNMN_Gm1570	Martin Luther als Augustermönch
+PRIVATE_NONE-P201	Martin Luther als Augustinermönch
+DE_LHW_G163	Martin Luther mit Habit und Doktorhut
+PRIVATE_NONE-P333	Martin Luther als Halbfigur nach rechts
+DE_LHW_G16	Martin Luther als Brustbildnis nach rechts
+PRIVATE_NONE-P409	Martin Luther im Brustbildnis nach rechts
+DE_KSVC_M418	Katharina von Bora als Brustbildbnis nach links
+DE_SPSG_GKI50476	Martin Luther als Brustbildnis nach rechts
+PRIVATE_NONE-P411	Martin Luther als Halbfigur nach rechts
+CH_MAS_A1950	Martin Luther als Brustbildnis nach rechts
+DE_MHB_1a	Martin Luther als Brustbildnis nach rechts
+DE_HSBBW_Ia20	Martin Luther als Brustbildnis nach rechts
+DE_MKKM_1233BRD	Katharina von Bora als Halbfigur nach links
+DE_RMK_M6	Martin Luther als Brustbildnis nach rechts

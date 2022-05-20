@@ -6,6 +6,8 @@ const eleventyFetch = require("@11ty/eleventy-fetch");
 // fs.unlinkSync('missing-files.txt');
 
 const logMissedLinks = 'missing-files.txt';
+const logPaintings = 'paintings.txt';
+
 if (fs.existsSync(logMissedLinks)) {
   fs.unlinkSync(logMissedLinks);
 }
@@ -14,7 +16,7 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "generatePaintings": false,
+  "generatePaintings": true,
   "generateArchivals": false,
   "generateGraphicsVirtualObjects": true,
   "cranachCollect": {
@@ -95,11 +97,26 @@ const config = {
 }
 
 const kklGroupShortcuts = {
-  "I": "filters=catalog:catalog.KKL.I&page=1",
-  "II": "filters=catalog:catalog.KKL.II&page=1",
-  "III": "filters=catalog:catalog.KKL.III&page=1",
-  "IV": "filters=catalog:catalog.KKL.IV&page=1",
-  "V": "filters=catalog:catalog.KKL.V&page=1"
+  "I": {
+    "de": "https://lucascranach.org/index.php/luther/portrait-1",
+    "en": "https://lucascranach.org/index.php/Home/luther/portrait-1"
+  },
+  "II": {
+    "de": "https://lucascranach.org/index.php/luther/portrait-2",
+    "en": "https://lucascranach.org/index.php/Home/luther/portrait-2"
+  },
+  "III": {
+    "de": "https://lucascranach.org/index.php/luther/portrait-3",
+    "en": "https://lucascranach.org/index.php/Home/luther/portrait-3"
+  },
+  "IV": {
+    "de": "https://lucascranach.org/index.php/luther/portrait-4",
+    "en": "https://lucascranach.org/index.php/Home/luther/portrait-4"
+  },
+  "V": {
+    "de": "https://lucascranach.org/index.php/luther/portrait-5",
+    "en": "https://lucascranach.org/index.php/Home/luther/portrait-5"
+  }
 };
 
 const paintingsData = {
@@ -170,7 +187,7 @@ const appendToFile = (path, str) => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["CH_MAS_A1950", "PRIVATE_NONE-P411", "DE_GNMN_Gm1570", "PRIVATE_NONE-P201", "PRIVATE_NONE-P409", "PRIVATE_NONE-P333", "DE_KSVC_M418", "DE_SPSG_GKI50476", "DE_RMK_M6", "DE_MKKM_1233BRD", "DE_HABW_B94_FR189-190C", "DE_HABW_B96_FR189-190C", "DE_smbGG_637_FR190A", "DE_HSBBW_Ia20", "DE_LHW_G16", "DE_MHB_1a", "DE_LHW_G163", "US_MMANY_55-220-2_FR314F", "DE_KSW_G9_FR149", "PRIVATE_NONE-P411", "DE_KSVC_M418", "PRIVATE_NONE-P411"];
+  const devObjects = ["PRIVATE_NONE-P411", "CH_MAS_A1950", "PRIVATE_NONE-P411", "DE_GNMN_Gm1570", "PRIVATE_NONE-P201", "PRIVATE_NONE-P409", "PRIVATE_NONE-P333", "DE_KSVC_M418", "DE_SPSG_GKI50476", "DE_RMK_M6", "DE_MKKM_1233BRD", "DE_HABW_B94_FR189-190C", "DE_HABW_B96_FR189-190C", "DE_smbGG_637_FR190A", "DE_HSBBW_Ia20", "DE_LHW_G16", "DE_MHB_1a", "DE_LHW_G163", "US_MMANY_55-220-2_FR314F", "DE_KSW_G9_FR149", "PRIVATE_NONE-P411", "DE_KSVC_M418", "PRIVATE_NONE-P411"];
 
   const paintings = process.env.ELEVENTY_ENV === 'production'
     ? paintingsForLang.items
@@ -188,6 +205,18 @@ const getPaintingsCollection = (lang) => {
     if (a.sortValue > b.sortValue) return 1;
     return 0;
   });
+
+  const publishedPaintings = sortedPaintings.filter(item => !item.sortingNumber.match(/^20/));
+  
+  if (lang === 'de') {
+
+    if (fs.existsSync(logPaintings)) {
+      fs.unlinkSync(logPaintings);
+    }
+    publishedPaintings.map(item => {
+      appendToFile(logPaintings, `${item.metadata.id}\t${item.metadata.title}\n`)
+    });
+  }
 
   return sortedPaintings;
 }
@@ -327,12 +356,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addJavaScriptFunction("getKklGroupLinkData", (kklNr, lang) => {
     if (!kklNr) return;
     if (kklNr.match(/Sup/)) return { url: '', kklGroupId: 'partOfAppendix' };
-    const searchUrl = config.cranachSearchURL.replace(/langCode/, lang);
     const kklGroupId = kklNr.replace(/\..*/, "");
-    const searchParam = kklGroupShortcuts[kklGroupId];
+    const url = kklGroupShortcuts[kklGroupId][lang];
     return {
-      "url": `${searchUrl}?${searchParam}`,
-      kklGroupId
+      url, kklGroupId
     };
   });
 
@@ -617,6 +644,7 @@ module.exports = function (eleventyConfig) {
     const paintingsCollectionDE = config.generatePaintings === false
       ? []
       : getPaintingsCollection('de');
+  
     return paintingsCollectionDE;
   });
 
