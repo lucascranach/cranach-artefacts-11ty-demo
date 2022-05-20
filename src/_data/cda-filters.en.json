@@ -496,8 +496,19 @@
                         "children": [
                             {
                                 "id": "collection_repository.country.denmark.copenhagen",
-                                "text": "Copenhagen, Statens Museum for Kunst",
-                                "children": []
+                                "text": "Copenhagen",
+                                "children": [
+                                    {
+                                        "id": "collection_repository.country.denmark.copenhagen_2",
+                                        "text": "Royal Library",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "collection_repository.country.denmark.copenhagen_1",
+                                        "text": "Statens Museum for Kunst",
+                                        "children": []
+                                    }
+                                ]
                             },
                             {
                                 "id": "collection_repository.country.denmark.nationalmuseet",

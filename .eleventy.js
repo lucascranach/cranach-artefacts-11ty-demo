@@ -238,8 +238,6 @@ const getArchivalsCollection = (lang) => {
   return sortedArchivals;
 }
 
-
-
 const getGraphicsRealObjectsCollection = (lang) => {
   const graphicsRealObjectsForLang = graphicsRealObjectData[lang];
   const sortedGraphicsRealObjects = graphicsRealObjectsForLang.items.sort((a, b)=>{
@@ -253,7 +251,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["ANO_H-NONE-013"];
+  const devObjects = ["ANO_H-NONE-013", "G_AT_A_DG1931-75", "G_DE_UBR_Ff-1511"];
   
   const graphicsVirtualObjects = process.env.ELEVENTY_ENV === 'production'
     ? graphicsVirtualObjectsForLang.items
@@ -623,10 +621,22 @@ module.exports = function (eleventyConfig) {
     const graphicsVirtualObjects = getGraphicsVirtualObjectsCollection('de');
     const allObjects = [...paintings, ...graphicsVirtualObjects];
     
-    const sortableObjects = allObjects.map(item => {
+    const allPublishedObjects = allObjects.filter(item => !item.sortingNumber.match(/^20/));
+    const sortableObjects = allPublishedObjects.map(item => {
       const itemWithSortValue = item;
-      itemWithSortValue.sortValue = `${item.sortingInfo.year}-${item.sortingInfo.position}`;
-  
+      // itemWithSortValue.sortValue = `${item.sortingInfo.year}-${item.sortingInfo.position}`;
+      const sortNumberFragments = item.sortingNumber.split(/\-/);
+      const year = sortNumberFragments.shift();
+      const pos = sortNumberFragments.shift(); 
+      const mergePos = sortNumberFragments.join("-");
+
+      const posByType = pos && pos.length === 4 ? parseInt(pos) + 1000 : pos;
+      const calculatedPos = sortNumberFragments.length > 0
+        ? `${year}-${posByType}-${mergePos}`
+        : `${year}-${posByType}`
+      //console.log(year, pos, posByType, mergePos, calculatedPos);
+      // itemWithSortValue.sortValue = `${item.sortingNumber}`;
+      itemWithSortValue.sortValue =  calculatedPos;
       return itemWithSortValue;
     });
     
