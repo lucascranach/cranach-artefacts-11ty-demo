@@ -615,37 +615,6 @@ module.exports = function (eleventyConfig) {
   /* Collections
   ########################################################################## */
 
-  eleventyConfig.addCollection("allObjectsDE", () => {
-    clearRequireCache();
-    const paintings = getPaintingsCollection('de');
-    const graphicsVirtualObjects = getGraphicsVirtualObjectsCollection('de');
-    const allObjects = [...paintings, ...graphicsVirtualObjects];
-    
-    const allPublishedObjects = allObjects.filter(item => !item.sortingNumber.match(/^20/));
-    const sortableObjects = allPublishedObjects.map(item => {
-      const itemWithSortValue = item;
-      const sortNumberFragments = item.sortingNumber.split(/\-/);
-      const year = sortNumberFragments.shift();
-      const pos = sortNumberFragments.shift(); 
-      const mergePos = sortNumberFragments.join("-");
-
-      const posByType = pos && pos.length === 4 ? parseInt(pos) + 1000 : pos;
-      const calculatedPos = sortNumberFragments.length > 0
-        ? `${year}-${posByType}-${mergePos}`
-        : `${year}-${posByType}`
-      itemWithSortValue.sortValue =  calculatedPos;
-      return itemWithSortValue;
-    });
-    
-    let sortedObjects = sortableObjects.sort((a, b) => {
-      if (a.sortValue < b.sortValue) return -1;
-      if (a.sortValue > b.sortValue) return 1;
-      return 0;
-    });
-  
-    return sortedObjects;
-  });
-
   eleventyConfig.addCollection("paintingsDE", () => {
     clearRequireCache();
     const paintingsCollectionDE = config.generatePaintings === false
