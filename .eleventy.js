@@ -191,7 +191,7 @@ const getPaintingsCollection = (lang) => {
 
   const paintings = process.env.ELEVENTY_ENV === 'production'
     ? paintingsForLang.items
-    : paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber));
+    : paintingsForLang.items; //.filter(item => devObjects.includes(item.inventoryNumber));
   
   const sortablePaintings = paintings.map(item => {
     const itemWithSortValue = item;
@@ -255,7 +255,7 @@ const getGraphicsVirtualObjectsCollection = (lang) => {
   
   const graphicsVirtualObjects = process.env.ELEVENTY_ENV === 'production'
     ? graphicsVirtualObjectsForLang.items
-    : graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber));
+    : graphicsVirtualObjectsForLang.items;//.filter(item => devObjects.includes(item.inventoryNumber));
 
   const sortedGraphicsVirtualObjects = graphicsVirtualObjects.sort((a, b)=>{
     if (a.sortingNumber < b.sortingNumber) return -1;
@@ -624,7 +624,6 @@ module.exports = function (eleventyConfig) {
     const allPublishedObjects = allObjects.filter(item => !item.sortingNumber.match(/^20/));
     const sortableObjects = allPublishedObjects.map(item => {
       const itemWithSortValue = item;
-      // itemWithSortValue.sortValue = `${item.sortingInfo.year}-${item.sortingInfo.position}`;
       const sortNumberFragments = item.sortingNumber.split(/\-/);
       const year = sortNumberFragments.shift();
       const pos = sortNumberFragments.shift(); 
@@ -634,8 +633,6 @@ module.exports = function (eleventyConfig) {
       const calculatedPos = sortNumberFragments.length > 0
         ? `${year}-${posByType}-${mergePos}`
         : `${year}-${posByType}`
-      //console.log(year, pos, posByType, mergePos, calculatedPos);
-      // itemWithSortValue.sortValue = `${item.sortingNumber}`;
       itemWithSortValue.sortValue =  calculatedPos;
       return itemWithSortValue;
     });
