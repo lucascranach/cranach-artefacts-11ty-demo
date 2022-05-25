@@ -187,22 +187,15 @@ const appendToFile = (path, str) => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["PRIVATE_NONE-P411", "CH_MAS_A1950", "PRIVATE_NONE-P411", "DE_GNMN_Gm1570", "PRIVATE_NONE-P201", "PRIVATE_NONE-P409", "PRIVATE_NONE-P333", "DE_KSVC_M418", "DE_SPSG_GKI50476", "DE_RMK_M6", "DE_MKKM_1233BRD", "DE_HABW_B94_FR189-190C", "DE_HABW_B96_FR189-190C", "DE_smbGG_637_FR190A", "DE_HSBBW_Ia20", "DE_LHW_G16", "DE_MHB_1a", "DE_LHW_G163", "US_MMANY_55-220-2_FR314F", "DE_KSW_G9_FR149", "PRIVATE_NONE-P411", "DE_KSVC_M418", "PRIVATE_NONE-P411"];
+  const devObjects = ["DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51"];
 
   const paintings = process.env.ELEVENTY_ENV === 'production'
     ? paintingsForLang.items
-    : paintingsForLang.items; //.filter(item => devObjects.includes(item.inventoryNumber));
+    : paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber));
   
-  const sortablePaintings = paintings.map(item => {
-    const itemWithSortValue = item;
-    itemWithSortValue.sortValue = `${item.sortingInfo.year}-${item.sortingInfo.position}`;
-
-    return itemWithSortValue;
-  });
-  
-  let sortedPaintings = sortablePaintings.sort((a, b) => {
-    if (a.sortValue < b.sortValue) return -1;
-    if (a.sortValue > b.sortValue) return 1;
+  let sortedPaintings = paintings.sort((a, b) => {
+    if (a.searchSortingNumber < b.searchSortingNumber) return -1;
+    if (a.searchSortingNumber > b.searchSortingNumber) return 1;
     return 0;
   });
 
