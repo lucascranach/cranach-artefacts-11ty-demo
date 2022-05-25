@@ -2,6 +2,7 @@ exports.getReports = (eleventy, { content }, langCode, config, type) => {
   const { contentTypes } = config;
   const documentsPath = `${config.documentsBasePath}/${content.inventoryNumber}_${content.objectName}`;
   const reports = content.restorationSurveys.filter((rs) => rs.type === type);
+
   const getReportImage = (itemId, itemType) => {
     if (!content.images || !content.images[itemType]) return false;
     // eslint-disable-next-line max-len
@@ -9,6 +10,15 @@ exports.getReports = (eleventy, { content }, langCode, config, type) => {
     if (!reportImage) return false;
     return reportImage;
   };
+
+  const getReportDocument = (itemId, itemType) => {
+    if (!content.documents || !content.documents[itemType]) return false;
+    // eslint-disable-next-line max-len
+    const reportDocument = content.documents[itemType].filter((document) => document.id === itemId).shift();
+    if (!reportDocument) return false;
+    return reportDocument;
+  };
+
   const reportList = reports.reverse().map((report, index) => {
     const imageItems = [];
     const otherItems = [];
@@ -18,7 +28,9 @@ exports.getReports = (eleventy, { content }, langCode, config, type) => {
       const { type } = file;
       const image = getReportImage(id, type);
       if (image) imageItems.push({ type, id, image });
-      else otherItems.push({ type, id });
+
+      const document = getReportDocument(id, type);
+      if (document) otherItems.push({ type, id });
     });
     const imageStripeItems = imageItems.map((item) => `
       <li
