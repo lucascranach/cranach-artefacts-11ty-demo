@@ -9,10 +9,12 @@ exports.getHeader = ({ content }) => {
 
   return `
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta property="og:title" content="${title}" />
-    <meta property="og:description" content="${desc}" />
-    <meta property="og:url" content="${url}" />
-    <meta property="og:image" content="${image}" />
+    <meta property="og:title" content="${title}">
+    <meta property="og:description" content="${desc}">
+    <meta property="og:url" content="${url}">
+    <meta property="og:image" content="${image}">
+    <meta property="og:type" content="website">
     <meta name="description" content="${desc}">
+    <meta name="author" content="Christian Noss // TH Köln // Adcanced Media Institute">
   `;
 };
