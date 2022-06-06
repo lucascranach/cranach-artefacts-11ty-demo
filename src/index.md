@@ -34,7 +34,7 @@ figcaption{
 <ul class="overview">
 {%- for item in collections.paintingsDE -%}
   <li class="overview-item">
-  <a href="../../de/{{item.metadata.id}}">
+  <a href="de/{{item.metadata.id}}">
     <figure>
       <div class="img-wrap">
         <img src="{{item.metadata.imgSrc}}">
@@ -49,7 +49,7 @@ figcaption{
 <ul class="overview">
 {%- for item in collections.graphicsVirtualObjectsDE -%}
   <li class="overview-item">
-  <a href="../../de/{{item.metadata.id}}">
+  <a href="de/{{item.metadata.id}}">
     <figure>
       <div class="img-wrap">
         <img src="{{item.metadata.imgSrc}}">
@@ -64,7 +64,7 @@ figcaption{
 <ul class="overview">
 {%- for item in collections.archivalsDE -%}
   <li class="overview-item">
-  <a href="../../de/{{item.metadata.id}}">
+  <a href="de/{{item.metadata.id}}">
     <figure>
       <div class="img-wrap">
         <img src="{{item.metadata.imgSrc}}">

@@ -6,7 +6,6 @@ const eleventyFetch = require("@11ty/eleventy-fetch");
 // fs.unlinkSync('missing-files.txt');
 
 const logMissedLinks = 'missing-files.txt';
-const logPaintings = 'paintings.txt';
 
 if (fs.existsSync(logMissedLinks)) {
   fs.unlinkSync(logMissedLinks);
@@ -19,6 +18,11 @@ const config = {
   "generatePaintings": true,
   "generateArchivals": false,
   "generateGraphicsVirtualObjects": true,
+  "pathPrefix": {
+    "production": "artefacts",
+    "preview": "intern/artefacts",
+    "development": ""
+  },
   "cranachCollect": {
     "baseUrl": {
       "development": "https://lucascranach.org/cranach-compare",
@@ -36,6 +40,7 @@ const config = {
   },
   "cranachBaseUrl": {
     "production": "https://lucascranach.org",
+    "preview": "https://lucascranach.org/intern/artefacts",
     "development": "http://localhost:8080",
   },
   "cranachSearchURL": "https://lucascranach.org/langCode/search",
@@ -160,7 +165,7 @@ const simpleMarkdownItRenderer = new markdownIt('commonmark', {
   typographer: true
 }).disable([ 'list' ]);
 
-const pathPrefix = (process.env.ELEVENTY_ENV === 'production') ? "artefacts" : "";
+const pathPrefix = config.pathPrefix[process.env.ELEVENTY_ENV];
 
 const markRemarks = str => {
   const mark = (match, str) => {
@@ -189,9 +194,9 @@ const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
   const devObjects = ["DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51"];
 
-  const paintings = process.env.ELEVENTY_ENV === 'production'
-    ? paintingsForLang.items
-    : paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber));
+  const paintings = process.env.ELEVENTY_ENV === 'development'
+    ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
+    : paintingsForLang.items;
   
   let sortedPaintings = paintings.sort((a, b) => {
     if (a.searchSortingNumber < b.searchSortingNumber) return -1;
@@ -200,25 +205,14 @@ const getPaintingsCollection = (lang) => {
   });
 
   const publishedPaintings = sortedPaintings.filter(item => !item.sortingNumber.match(/^20/));
-  
-  if (lang === 'de') {
-
-    if (fs.existsSync(logPaintings)) {
-      fs.unlinkSync(logPaintings);
-    }
-    publishedPaintings.map(item => {
-      appendToFile(logPaintings, `${item.metadata.id}\t${item.metadata.title}\n`)
-    });
-  }
-
-  return sortedPaintings;
+  return publishedPaintings;
 }
 
 const getArchivalsCollection = (lang) => {
   const archivalsForLang = archivalsData[lang];
   const devObjects = ["PRIVATE_NONE-P409", "DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739"];
 
-  const archivals = process.env.ELEVENTY_ENV === 'production'
+  const archivals = process.env.ELEVENTY_ENV === 'development'
     ? archivalsForLang.items
     : archivalsForLang.items; // .filter(item => devObjects.includes(item.inventoryNumber));
   
@@ -246,7 +240,7 @@ const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
   const devObjects = ["ANO_H-NONE-013", "G_AT_A_DG1931-75", "G_DE_UBR_Ff-1511"];
   
-  const graphicsVirtualObjects = process.env.ELEVENTY_ENV === 'production'
+  const graphicsVirtualObjects = process.env.ELEVENTY_ENV === 'development'
     ? graphicsVirtualObjectsForLang.items
     : graphicsVirtualObjectsForLang.items;//.filter(item => devObjects.includes(item.inventoryNumber));
 
@@ -385,15 +379,13 @@ module.exports = function (eleventyConfig) {
   });
   
   eleventyConfig.addJavaScriptFunction("getBaseUrl", () => {
-    return process.env.ELEVENTY_ENV === 'production'
-      ? config.cranachBaseUrl.production
-      : config.cranachBaseUrl.development;
+    return config.cranachBaseUrl[process.env.ELEVENTY_ENV];
   });
 
   eleventyConfig.addJavaScriptFunction("getCranachCollectBaseUrl", () => {
-    return process.env.ELEVENTY_ENV === 'production'
-      ? config.cranachCollect.baseUrl.production
-      : config.cranachCollect.baseUrl.development;
+    return process.env.ELEVENTY_ENV === 'developement'
+      ? config.cranachCollect.baseUrl.developement
+      : config.cranachCollect.baseUrl.production;
   });
 
   eleventyConfig.addJavaScriptFunction("getConfig", () => {
