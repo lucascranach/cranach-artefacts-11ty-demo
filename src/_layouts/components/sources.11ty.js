@@ -41,6 +41,7 @@ const getSources = (params) => {
         ${item && item.issue ? getRow(item.issue, 'issue') : ''}
         ${item && item.publication ? getRow(item.publication, 'publication') : ''}
         ${item && item.publishLocation ? getRow(item.publishLocation, 'publishLocation') : ''}
+        ${item && item.edition ? getRow(item.edition, 'publishEdition') : ''}
         ${item && item.publishDate ? getRow(item.publishDate, 'publishDate') : ''}
         ${item && item.periodOfOrigin ? getRow(item.periodOfOrigin, 'periodOfOrigin') : ''}
         ${item && item.physicalDescription ? getRow(item.physicalDescription, 'physicalDescription') : ''}

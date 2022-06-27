@@ -211,6 +211,10 @@
     "de": "Ausgabe",
     "en": "Edition"
   },
+  "publishEdition": {
+    "de": "Jahrgang",
+    "en": "Issue"
+  },
   "publishLocation": {
     "de": "Ort der Veröffentlichung",
     "en": "Place of Publication"
