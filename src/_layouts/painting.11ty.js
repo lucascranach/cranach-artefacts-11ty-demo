@@ -205,7 +205,7 @@ exports.render = function (pageData) {
         </footer>
 
       </div>
-      <script src="https://cdn.jsdelivr.net/npm/openseadragon@2.4.2/build/openseadragon/openseadragon.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/openseadragon@3.1.0/build/openseadragon/openseadragon.min.js"></script>
       <script src="${this.url('/assets/scripts/main.js')}"></script>
       <script src="${cranachCollectBaseUrl}/${cranachCollectScript}"></script>
     </body>

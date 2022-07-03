@@ -1,5 +1,6 @@
+/* global objectData OpenSeadragon */
 /* eslint-disable max-classes-per-file */
-// eslint-disable-next-line no-undef
+
 const globalData = objectData;
 
 /* Parse JSON
@@ -258,14 +259,11 @@ const restoreUserInteraction = () => {
 ============================================================================ */
 class ImageViewer {
   constructor(id, captionId) {
-    // eslint-disable-next-line no-undef
     this.viewer = OpenSeadragon({
       id,
-      // eslint-disable-next-line no-undef
       prefixUrl: `${globalData.asseturl}/images/icons/`,
       tileSources: {
         type: 'image',
-        // eslint-disable-next-line no-undef
         url: `${globalData.asseturl}/images/no-image-l.svg`,
       },
     });
@@ -273,6 +271,45 @@ class ImageViewer {
     this.activeTrigger = false;
     this.caption = document.getElementById(captionId);
     this.imageStripeItems = document.querySelectorAll('[data-js-change-image]');
+
+    this.viewer.addHandler('full-page', (event) => {
+      const isFullPage = event.fullPage;
+      const previousGestureSettingsTouch = this.viewer.gestureSettingsTouch;
+
+      this.setTouchAction(isFullPage ? 'none' : 'auto');
+
+      if (isFullPage) {
+        this.viewer.gestureSettingsTouch = OpenSeadragon.DEFAULT_SETTINGS.gestureSettingsTouch;
+
+        /* triggered on leaving 'full-page' */
+        this.viewer.addOnceHandler('full-page', () => {
+          this.viewer.gestureSettingsTouch = previousGestureSettingsTouch;
+        });
+      }
+    });
+
+    if (window.matchMedia('(pointer: coarse)').matches && !this.viewer.isFullPage()) {
+      this.viewer.gestureSettingsTouch = {
+        ...this.viewer.gestureSettingsTouch,
+        dragToPan: false,
+        scrollToZoom: false,
+        pinchToZoom: false,
+      };
+      this.setTouchAction('auto');
+    }
+  }
+
+  setTouchAction(touchAction) {
+    const { container } = this.viewer;
+    [
+      container,
+      ...['.openseadragon-canvas', 'canvas'].map((selector) => container.querySelector(selector)),
+    ].forEach((el) => {
+      /* eslint-disable-next-line no-param-reassign */
+      el.style.touchAction = touchAction;
+      /* eslint-disable-next-line no-param-reassign */
+      el.style.msTouchAction = touchAction;
+    });
   }
 
   adaptUrl(url) {
