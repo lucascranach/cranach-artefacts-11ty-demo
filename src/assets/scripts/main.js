@@ -276,6 +276,7 @@ class ImageViewer {
       const isFullPage = event.fullPage;
       const previousGestureSettingsTouch = this.viewer.gestureSettingsTouch;
 
+      /* Wee need to reset the initial touch action state on full-page for OpenSeadragon to work correctly */
       this.setTouchAction(isFullPage ? 'none' : 'auto');
 
       if (isFullPage) {
