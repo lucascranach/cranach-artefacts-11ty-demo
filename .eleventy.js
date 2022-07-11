@@ -350,6 +350,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addJavaScriptFunction("checkRessource", async (url) => {
     if (process.env.ELEVENTY_ENV === 'development') return;
+    if (process.env.ELEVENTY_ENV === 'production') return;
     try { 
       await eleventyFetch(url, {
         duration: "2m",
