@@ -272,11 +272,17 @@ class ImageViewer {
     this.caption = document.getElementById(captionId);
     this.imageStripeItems = document.querySelectorAll('[data-js-change-image]');
 
+    this.updateTouchBehaviour();
+  }
+
+  updateTouchBehaviour() {
+    if (!window.matchMedia('(pointer: coarse)').matches) return;
+
     this.viewer.addHandler('full-page', (event) => {
       const isFullPage = event.fullPage;
       const previousGestureSettingsTouch = this.viewer.gestureSettingsTouch;
 
-      /* Wee need to reset the initial touch action state on full-page for OpenSeadragon to work correctly */
+      /* We need to reset the initial touch action state on full-page for OpenSeadragon to work correctly */
       this.setTouchAction(isFullPage ? 'none' : 'auto');
 
       if (isFullPage) {
@@ -289,7 +295,7 @@ class ImageViewer {
       }
     });
 
-    if (window.matchMedia('(pointer: coarse)').matches && !this.viewer.isFullPage()) {
+    if (!this.viewer.isFullPage()) {
       this.viewer.gestureSettingsTouch = {
         ...this.viewer.gestureSettingsTouch,
         dragToPan: false,
