@@ -620,7 +620,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
   /* Image viewer
   --------------------------------------------------------------------------  */
   let imageViewer;
-  if (document.querySelector('.main-image-wrap') !== null) {
+  if (document.querySelector('.main-image-wrap') !== null
+    && document.querySelector('[data-js-change-image]') !== null) {
     imageViewer = new ImageViewer('viewer-content', 'image-caption');
     const firstImageInStripe = document.querySelector('[data-js-change-image]');
     const firstImageData = parseJson(firstImageInStripe.dataset.jsChangeImage);
