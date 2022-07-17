@@ -192,7 +192,7 @@ const appendToFile = (path, str) => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51"];
+  const devObjects = ["DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51"];
 
   const paintings = process.env.ELEVENTY_ENV === 'development'
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -203,6 +203,9 @@ const getPaintingsCollection = (lang) => {
     if (a.searchSortingNumber > b.searchSortingNumber) return 1;
     return 0;
   });
+
+  if (process.env.ELEVENTY_ENV === 'preview'
+    || process.env.ELEVENTY_ENV === 'development') return sortedPaintings;
 
   const publishedPaintings = sortedPaintings.filter(item => !item.sortingNumber.match(/^20/));
   return publishedPaintings;
@@ -350,6 +353,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addJavaScriptFunction("checkRessource", async (url) => {
     if (process.env.ELEVENTY_ENV === 'development') return;
+    if (process.env.ELEVENTY_ENV === 'preview') return;
     if (process.env.ELEVENTY_ENV === 'production') return;
     try { 
       await eleventyFetch(url, {
