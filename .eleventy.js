@@ -193,7 +193,7 @@ const appendToFile = (path, str) => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51"];
+  const devObjects = ["PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51"];
 
   const paintings = config.onlyDevObjects === true
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))

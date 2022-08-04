@@ -22,6 +22,7 @@ const identificationSnippet = require('./components/identification.11ty');
 const provenanceSnippet = require('./components/provenance.11ty');
 const sourcesSnippet = require('./components/sources.11ty');
 const imageStripeSnippet = require('./components/image-stripe.11ty');
+const documentStripeSnippet = require('./components/document-stripe.11ty');
 const reportsSnippet = require('./components/reports.11ty');
 const additionalTextInformationSnippet = require('./components/additional-text-information.11ty');
 const referencesSnippet = require('./components/references.11ty');
@@ -86,6 +87,7 @@ exports.render = function (pageData) {
   const provenance = provenanceSnippet.getProvenance(this, data, langCode);
   const sources = sourcesSnippet.getCombinedSources(this, data, langCode);
   const imageStripe = imageStripeSnippet.getImageStripe(this, data, langCode, config);
+  const documentStripe = documentStripeSnippet.getDocumentStripe(this, data, langCode, config, true);
   const artTechExaminations = reportsSnippet.getReports(this, data, langCode, config, ART_TECH_EXAMINATION);
   const conditionReport = reportsSnippet.getReports(this, data, langCode, config, CONDITION_REPORT);
   const conservationReport = reportsSnippet.getReports(this, data, langCode, config, CONSERVATION_REPORT);
@@ -182,6 +184,7 @@ exports.render = function (pageData) {
           </div>
           <div class="explore-content">
             ${imageStripe}
+            ${documentStripe}
             ${artTechExaminations}
             ${conditionReport}
             ${conservationReport}
