@@ -6,7 +6,6 @@ exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator 
 
   const imageStripe = Object.keys(contentTypes).map((key) => {
     if (!imageStack || !imageStack[key]) return;
-
     const { images } = imageStack[key];
     const html = images.map((image) => {
       const title = image.metadata && image.metadata[langCode] ? eleventy.altText(image.metadata[langCode].description) : `${key}`;
@@ -30,7 +29,7 @@ exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator 
   });
 
   const availablecontentTypes = Object.keys(contentTypes).map((key) => {
-    if (!imageStack || !imageStack[key]) return;
+    if (!imageStack || !imageStack[key]) return false;
     const numberOfImages = imageStack[key].images.length;
     const type = (numberOfImages === 0) ? '' : `<option value="${key}">${eleventy.translate(key, langCode)} (${numberOfImages})</option>`;
     return type;
