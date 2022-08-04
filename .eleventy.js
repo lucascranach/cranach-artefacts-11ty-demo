@@ -15,6 +15,7 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
+  "onlyDevObjects": true,
   "generatePaintings": true,
   "generateArchivals": false,
   "generateGraphicsVirtualObjects": true,
@@ -192,9 +193,9 @@ const appendToFile = (path, str) => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51"];
+  const devObjects = ["CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51"];
 
-  const paintings = process.env.ELEVENTY_ENV === 'development'
+  const paintings = config.onlyDevObjects === true
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
     : paintingsForLang.items;
   
@@ -241,18 +242,16 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["ANO_H-NONE-013", "G_AT_A_DG1931-75", "G_DE_UBR_Ff-1511"];
+  const devObjects = ["MIB_H-NONE-001", "MIB_H-NONE-002"];
   
-  const graphicsVirtualObjects = process.env.ELEVENTY_ENV === 'development'
-    ? graphicsVirtualObjectsForLang.items
-    : graphicsVirtualObjectsForLang.items;//.filter(item => devObjects.includes(item.inventoryNumber));
-
+  const graphicsVirtualObjects = config.onlyDevObjects === true
+    ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
+    : graphicsVirtualObjectsForLang.items;
   const sortedGraphicsVirtualObjects = graphicsVirtualObjects.sort((a, b)=>{
     if (a.sortingNumber < b.sortingNumber) return -1;
     if (a.sortingNumber > b.sortingNumber) return 1;
     return 0;
   });
-
   return sortedGraphicsVirtualObjects.filter(item => item.metadata.imgSrc.match(/[a-z]/));
 }
 
