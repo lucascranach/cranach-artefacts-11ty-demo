@@ -8,8 +8,10 @@ exports.getDocumentStripe = (eleventy, { content }, langCode, config, hasSeperat
     const key = typeData;
     if (!documents || !documents[key]) return null;
     const items = documents[key];
+    const { sort } = contentTypes[typeData];
+    const { fragment } = contentTypes[typeData];
     const html = items.map((item) => {
-      const url = `${documentsPath}/${typeData.sort}_${typeData.fragment}/${item.id}.pdf`;
+      const url = `${documentsPath}/${sort}_${fragment}/${item.id}.pdf`;
       eleventy.checkRessource(url);
       return `
       <li>
