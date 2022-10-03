@@ -455,7 +455,10 @@ module.exports = function (eleventyConfig) {
     const { additionalCellClass } = objectData;
 
     const rows = content.map(item => {
-      const remark = item.remark ? `<td class="info-table__remark">${markdownify(item.remark)}</td>` : '<td class="info-table__remark">-</td>';
+      const remarkData = item.remark.match(/\[(.*?)\]\((.*?)\)/) 
+        ? item.remark.replace(/\[(.*?)\]\((.*?)\)/, '[[$1]]($2)') 
+        : item.remark;
+      const remark = item.remark ? `<td class="info-table__remark">${markdownify(remarkData)}</td>` : '<td class="info-table__remark">-</td>';
       return `
           <tr><td class="info-table__data ${additionalCellClass}">${markdownify(item.text)}</td>${remark}</tr>
         `;
