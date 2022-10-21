@@ -456,7 +456,7 @@ module.exports = function (eleventyConfig) {
 
     const rows = content.map(item => {
       const remarkData = item.remark.match(/\[(.*?)\]\((.*?)\)/) 
-        ? item.remark.replace(/\[(.*?)\]\((.*?)\)/, '[[$1]]($2)') 
+        ? item.remark.replace(/\[(.*?)\]\((.*?)\)/, '<a class="link-to-source" href="$2">[$1]</a>') 
         : item.remark;
       const remark = item.remark ? `<td class="info-table__remark">${markdownify(remarkData)}</td>` : '<td class="info-table__remark">-</td>';
       return `
