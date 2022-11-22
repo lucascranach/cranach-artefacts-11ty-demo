@@ -61,6 +61,14 @@ a[target=_blank] {
   font-weight: $fw-regular;
 }
 
+/* Special for archivals, because the titles are very very long! */
+.title-as-text{
+  max-width: $column-large;
+  font-size: $l;
+  font-weight: $fw-regular;
+  line-height: $lh-normal;
+}
+
 /* Text
 ---------------------------------------------------------------------------- */
 

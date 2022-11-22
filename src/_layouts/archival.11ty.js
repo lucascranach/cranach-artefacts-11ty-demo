@@ -28,7 +28,7 @@ const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
 const getHeader = (data) => {
-  const title = titleSnippet.getTitle(this, data, langCode);
+  const title = titleSnippet.getTitleAsText(this, data, langCode);
   return `
   <header class="artefact-header">
     ${title}
