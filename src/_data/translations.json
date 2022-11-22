@@ -173,7 +173,7 @@
   },
   "plate": {
     "de": "Tafel",
-    "en": "Figure/Plate"
+    "en": "Figure / Plate"
   },
   "title": {
     "de": "Titel",
@@ -564,11 +564,11 @@
     "en": "Compare images"
   },
   "beschreibung-interpretation-kommentare": {
-    "de": "Forschungsgeschichte/ Diskussion",
+    "de": "Forschungsgeschichte / Diskussion",
     "en": "Research History / Discussion"
   },
   "description-interpretation-comments": {
-    "de": "Forschungsgeschichte/ Diskussion",
+    "de": "Forschungsgeschichte / Diskussion",
     "en": "Research History / Discussion"
   }
 }
