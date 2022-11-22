@@ -173,7 +173,7 @@
   },
   "plate": {
     "de": "Tafel",
-    "en": "Figure/Plate"
+    "en": "Figure / Plate"
   },
   "title": {
     "de": "Titel",
@@ -551,7 +551,7 @@
     "de": "Teil der Bildnisgruppe",
     "en": "Part of portait group"
   },
-  "partOfAppendix":{
+  "partOfAppendix": {
     "de": "Teil des KKL-Anhangs",
     "en": "Part of KKL appendix"
   },
@@ -562,5 +562,13 @@
   "compareImages": {
     "de": "Abbildungen vergleichen",
     "en": "Compare images"
+  },
+  "beschreibung-interpretation-kommentare": {
+    "de": "Forschungsgeschichte / Diskussion",
+    "en": "Research History / Discussion"
+  },
+  "description-interpretation-comments": {
+    "de": "Forschungsgeschichte / Diskussion",
+    "en": "Research History / Discussion"
   }
 }

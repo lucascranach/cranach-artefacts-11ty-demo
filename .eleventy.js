@@ -332,7 +332,10 @@ module.exports = function (eleventyConfig) {
   /* Functions
   ########################################################################## */
 
-  eleventyConfig.addJavaScriptFunction("translate", (term, lang) => {
+  eleventyConfig.addJavaScriptFunction("translate", (term, lang, mode) => {
+    if(mode === 'maybe') {
+      return (translations[term]) ? translations[term][lang] : term;
+    }
     if (!translations[term]) {
       console.log(`Translation for ${term} in lang ${lang} is missing.`);
       process.abort();
