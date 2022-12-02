@@ -4,6 +4,7 @@ exports.getRepresentant = (eleventy, { content }) => {
 
   const getImageDimensions = () => {
     if (!content.images) return '';
+    if (!content.images.overall) return '';
     const { width, height } = content.images.overall.images[0].sizes.small.dimensions;
     return `width="${width}" height="${height}"`;
   };
