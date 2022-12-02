@@ -1,6 +1,7 @@
 exports.getComments = (eleventy, { content }, langCode) => {
   const prefix = content.metadata.id;
   const commentsItems = content.comments.split(/\n/);
+  if(commentsItems[0] === '') return '';
   const label = eleventy.translate('comments', langCode);
   const dataListData = {
     id: 'Comments',
