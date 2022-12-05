@@ -18,6 +18,7 @@ exports.getTitle = (eleventy, { content }, langCode) => {
   `;
 };
 
+
 exports.getTitleAsText = (eleventy, { content }, langCode) => {
   const prefix = content.metadata.id;
   const titleList = content.titles
@@ -33,7 +34,9 @@ exports.getTitleAsText = (eleventy, { content }, langCode) => {
   };
   const allTitles = eleventy.getRemarkDataTable(remarkDataTableData);
   return `
-    <h1 id="${prefix}-mainTitle" class="title-as-text has-tight-bottom-separator">${content.metadata.title}</h1>
+    <h1 id="${prefix}-mainTitle" class="title title-as-text">${content.metadata.title}</h1>
     ${allTitles}
   `;
 };
+
+

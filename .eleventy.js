@@ -16,7 +16,7 @@ const config = {
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
   "onlyDevObjects": true,
-  "generatePaintings": false,
+  "generatePaintings": true,
   "generateArchivals": true,
   "generateGraphicsVirtualObjects": false,
   "pathPrefix": {

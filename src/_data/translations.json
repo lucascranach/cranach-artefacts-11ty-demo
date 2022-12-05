@@ -23,6 +23,10 @@
     "de": "Archivalien",
     "en": "Archival Documents"
   },
+  "archival": {
+    "de": "Archivalie",
+    "en": "Archival Document"
+  },
   "literatureDocuments": {
     "de": "Literatur",
     "en": "Literature"
@@ -71,7 +75,15 @@
     "de": "Ort und Datum",
     "en": "Location and Date"
   },
+  "locationDate": {
+    "de": "Ort / Datum",
+    "en": "Location / Date"
+  },
   "signature": {
+    "de": "Signatur",
+    "en": "Signature"
+  },
+  "signatureAndDate": {
     "de": "Signatur / Datierung",
     "en": "Signature / Dating"
   },
@@ -106,6 +118,10 @@
   "literature": {
     "de": "Quellen / Publikationen",
     "en": "Literature"
+  },
+  "publications": {
+    "de": "Publikationen",
+    "en": "Publications"
   },
   "primarySources": {
     "de": "Quellen",

@@ -22,7 +22,7 @@ exports.getArchivalLocation = (eleventy, { content }, langCode) => {
   const location = !content.locationAndDate
     ? ''
     : `
-      <dt class="definition-list__term">${eleventy.translate('locationAndDate', langCode)}</dt>
+      <dt class="definition-list__term">${eleventy.translate('locationDate', langCode)}</dt>
       <dd class="definition-list__definition">${content.locationAndDate}</dd>
     `;
   return `
