@@ -135,7 +135,6 @@ class AdditionalContent {
     this.element = ele;
     this.id = ele.id;
     this.relatedElement = document.getElementById(this.element.dataset.isAdditionalContentTo);
-    console.log(this.element.dataset.isAdditionalContentTo);
     this.handlerElement = this.relatedElement.lastElementChild ? this.relatedElement.lastElementChild : this.relatedElement;
     this.hideAdditionalContent();
     this.addHandle();

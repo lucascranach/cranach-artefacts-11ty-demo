@@ -145,7 +145,6 @@ const getPublicationListData = (eleventy, publications, langCode) => {
 };
 
 exports.getCombinedSources = (eleventy, { content }, langCode, hasGrayBackground = false) => {
-  console.log(content.entityType);
   const title = content.entityType ==='archivals'
     ? eleventy.translate('publications', langCode)
     : eleventy.translate('literature', langCode);
