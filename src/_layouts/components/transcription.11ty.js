@@ -1,26 +1,4 @@
-exports.getTranscription = (eleventy, { content }, langCode) => {
-  const prefix = content.metadata.id;
-  const transcriptionItems = content.transcription.split(/\n/);
-  const label = eleventy.translate('transcription', langCode);
-  const dataListData = {
-    id: 'Transcription',
-    content: transcriptionItems,
-    isAdditionalContentTo: `${prefix}-transcription`,
-    title: label,
-    context: prefix,
-  };
-  const transcriptionTable = eleventy.getDataList(dataListData);
-
-  return !content.transcription ? '' : `
-    <dl id="${prefix}-transcription" class="definition-list is-grid">
-      <dt class="definition-list__term">${label}</dt>
-      <dd class="definition-list__definition">${transcriptionItems[0]}</dd>
-    </dl>
-    ${transcriptionTable}
-  `;
-};
-
-exports.getTranscriptionMetaData = (eleventy, { content }, langCode) => {
+const getTranscriptionMetaData = (eleventy, { content }, langCode) => {
   const transcriptionDate = !content.transcriptionDate
     ? ''
     : `
@@ -50,3 +28,26 @@ exports.getTranscriptionMetaData = (eleventy, { content }, langCode) => {
     </dl>
   `;
 };
+
+exports.getTranscription = (eleventy, { content }, langCode) => {
+  const prefix = content.metadata.id;
+  const transcriptionItems = content.transcription.split(/\n/);
+  const label = eleventy.translate('transcription', langCode);
+  const transciptionMeta = getTranscriptionMetaData(eleventy, { content }, langCode);
+
+  return !content.transcription ? '' : `
+  <div class="foldable-block has-strong-separator">
+    <h2 class="foldable-block__headline is-expand-trigger js-expand-trigger" data-js-expanded="false" data-js-expandable="transcription">
+      ${label}</h2>
+    <div class="expandable-content" id="transcription">
+      <p>
+        ${transcriptionItems.join('<br>')}
+      </p>
+      ${transciptionMeta}
+    </div>
+  </div>
+
+  `;
+};
+
+

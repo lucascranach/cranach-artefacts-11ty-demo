@@ -81,7 +81,6 @@ exports.render = function (pageData) {
   const navigation = navigationSnippet.getNavigation(this, langCode, id);
   const navigationObjects = JSON.stringify(this.getObjectsForNavigation(data.content.metadata.id));
   const transcription = transcriptionSnippet.getTranscription(this, data, langCode);
-  const transcriptionMetaData = transcriptionSnippet.getTranscriptionMetaData(this, data, langCode);
   const comments = commentsSnippet.getComments(this, data, langCode);
 
   return `<!doctype html> 
@@ -125,17 +124,13 @@ exports.render = function (pageData) {
                   ${signature}
                   ${ids}
                 </div>
-                <div class="block">
-                  ${transcription}
-                  ${transcriptionMetaData}
-                </div>
+
               </div>
 
               <div class="marginal-content">
                 ${provenance}
                 ${exhibitions}
                 ${sources}
-                ${comments}
               </div>
             </div>
           </div>
@@ -155,6 +150,8 @@ exports.render = function (pageData) {
           </div>
           <div class="explore-content">
             ${imageStripe}
+            ${transcription}
+            ${comments}
           </div>
         </section>
         <section class="final-words">

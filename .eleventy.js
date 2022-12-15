@@ -18,7 +18,7 @@ const config = {
   "onlyDevObjects": true,
   "generatePaintings": true,
   "generateArchivals": true,
-  "generateGraphicsVirtualObjects": false,
+  "generateGraphicsVirtualObjects": true,
   "pathPrefix": {
     "production": "artefacts",
     "preview": "intern/artefacts",
