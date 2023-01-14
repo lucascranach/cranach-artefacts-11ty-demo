@@ -17,7 +17,7 @@ const config = {
   "graphicPrefix": "GWN_",
   "onlyDevObjects": false,
   "generatePaintings": true,
-  "generateArchivals": false,
+  "generateArchivals": true,
   "generateGraphicsVirtualObjects": true,
   "pathPrefix": {
     "production": "artefacts",
@@ -214,7 +214,7 @@ const getPaintingsCollection = (lang) => {
 
 const getArchivalsCollection = (lang) => {
   const archivalsForLang = archivalsData[lang];
-  const devObjects = ["PRIVATE_NONE-P409", "DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739"];
+  const devObjects = ["PRIVATE_NONE-P409"]; // , "DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739"
 
   const archivals = process.env.ELEVENTY_ENV === 'development'
     ? archivalsForLang.items
@@ -242,7 +242,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["MIB_H-NONE-001", "MIB_H-NONE-002"];
+  const devObjects = ["LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"];
   
   const graphicsVirtualObjects = config.onlyDevObjects === true
     ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -252,6 +252,10 @@ const getGraphicsVirtualObjectsCollection = (lang) => {
     if (a.sortingNumber > b.sortingNumber) return 1;
     return 0;
   });
+
+  if (process.env.ELEVENTY_ENV === 'preview'
+    || process.env.ELEVENTY_ENV === 'development') return sortedGraphicsVirtualObjects;
+
   return sortedGraphicsVirtualObjects.filter(item => item.metadata.imgSrc.match(/[a-z]/));
 }
 
@@ -458,6 +462,7 @@ module.exports = function (eleventyConfig) {
     const { additionalCellClass } = objectData;
 
     const rows = content.map(item => {
+      if(!item.remark) return;
       const remarkData = item.remark.match(/\[(.*?)\]\((.*?)\)/) 
         ? item.remark.replace(/\[(.*?)\]\((.*?)\)/, '<a class="link-to-source" href="$2">[$1]</a>') 
         : item.remark;
@@ -467,7 +472,7 @@ module.exports = function (eleventyConfig) {
         `;
     });
 
-    return rows.length === 0 ? '' : `
+    return rows.length === 0 || rows[0] === undefined ? '' : `
       <div id="${context}-completeData${id}" 
         class="additional-content js-additional-content"
         data-is-additional-content-to="${isAdditionalContentTo}">

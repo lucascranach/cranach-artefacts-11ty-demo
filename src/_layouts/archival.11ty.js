@@ -28,10 +28,18 @@ const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
 const getHeader = (data) => {
-  const title = titleSnippet.getTitle(this, data, langCode);
+  const title = titleSnippet.getTitleAsText(this, data, langCode);
+  const archival = this.translate('archival', langCode);
+  
   return `
   <header class="artefact-header">
     ${title}
+
+    <div class="has-tight-separator">
+      <div id="archival-subtitle">
+        <p class="subtitle">${archival}</p>
+      </div>
+    </div>
   </header>`;
 };
 
@@ -59,7 +67,7 @@ exports.render = function (pageData) {
   const metaDataHead = metaDataHeader.getHeader(data);
   const image = representantImageSnippet.getRepresentant(this, data);
   const dating = datingSnippet.getDating(this, data, langCode);
-  const signature = signatureSnippet.getSignature(this, data, langCode);
+  const signature = signatureSnippet.getSignatureArchivals(this, data, langCode);
   const ids = identificationSnippet.getIds(this, data, langCode);
   const exhibitions = exhibitonsSnippet.getExhibitions(this, data, langCode);
   const provenance = provenanceSnippet.getProvenance(this, data, langCode);
@@ -73,7 +81,6 @@ exports.render = function (pageData) {
   const navigation = navigationSnippet.getNavigation(this, langCode, id);
   const navigationObjects = JSON.stringify(this.getObjectsForNavigation(data.content.metadata.id));
   const transcription = transcriptionSnippet.getTranscription(this, data, langCode);
-  const transcriptionMetaData = transcriptionSnippet.getTranscriptionMetaData(this, data, langCode);
   const comments = commentsSnippet.getComments(this, data, langCode);
 
   return `<!doctype html> 
@@ -109,27 +116,15 @@ exports.render = function (pageData) {
 
             <div class="grid-wrapper">
               <div class="main-column">
-                <div class="copytext">
-                  
-                </div>
                 <div class="block">
                   ${dating}
-                  ${signature}
-                </div>
-                <div class="block">
                   ${location}
                 </div>
                 <div class="block">
+                  ${signature}
                   ${ids}
                 </div>
 
-                <div class="block">
-                  ${comments}
-                </div>
-                <div class="block">
-                  ${transcription}
-                  ${transcriptionMetaData}
-                </div>
               </div>
 
               <div class="marginal-content">
@@ -155,6 +150,8 @@ exports.render = function (pageData) {
           </div>
           <div class="explore-content">
             ${imageStripe}
+            ${transcription}
+            ${comments}
           </div>
         </section>
         <section class="final-words">

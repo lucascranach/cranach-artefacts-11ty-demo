@@ -1,21 +1,10 @@
-exports.getComments = (eleventy, { content }, langCode) => {
-  const prefix = content.metadata.id;
-  const commentsItems = content.comments.split(/\n/);
-  const label = eleventy.translate('comments', langCode);
-  const dataListData = {
-    id: 'Comments',
-    content: commentsItems,
-    isAdditionalContentTo: `${prefix}-comments`,
-    title: label,
-    context: prefix,
-  };
-  const commentsTable = eleventy.getDataList(dataListData);
+exports.getComments = (eleventy, { content }, langCode) => (!content.comments ? '' : `
+<div class="foldable-block has-strong-separator">
+  <h2 class="foldable-block__headline is-expand-trigger js-expand-trigger" data-js-expanded="false" data-js-expandable="provenance">
+    ${eleventy.translate('comments', langCode)}</h2>
+  <div class="expandable-content" id="provenance">
+  ${eleventy.markdownify(content.comments)}
+  </div>
+</div>
+`);
 
-  return !content.transcription ? '' : `
-    <dl id="${prefix}-comments" class="definition-list is-grid">
-      <dt class="definition-list__term">${label}</dt>
-      <dd class="definition-list__definition">${commentsItems[0]}</dd>
-    </dl>
-    ${commentsTable}
-  `;
-};

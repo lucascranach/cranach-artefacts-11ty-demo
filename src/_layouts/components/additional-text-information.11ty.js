@@ -22,7 +22,7 @@ exports.getAdditionalTextInformation = (eleventy, { content }, langCode) => {
     return `
       <div class="foldable-block has-strong-separator">
         <h2 class="foldable-block__headline is-expand-trigger js-expand-trigger" data-js-expanded="false" data-js-expandable="${sluggedType}">${typeHeadline}</h2>
-        <div class="expandable-content" id="${eleventy.slugify(type)}">
+        <div class="expandable-content" id="${sluggedType}">
           ${getTypeContent(type).join('')}
         </div>
       </div>

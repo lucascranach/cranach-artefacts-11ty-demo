@@ -2877,101 +2877,28 @@
                         "text": "The Old Testament",
                         "children": [
                             {
-                                "id": "0104030107",
-                                "text": "Judith",
+                                "id": "0104030101",
+                                "text": "Genesis",
                                 "children": [
                                     {
-                                        "id": "010403010702",
-                                        "text": "Judith with the Head of Holofernes",
-                                        "children": []
+                                        "id": "010403010101",
+                                        "text": "Adam and Eve",
+                                        "children": [
+                                            {
+                                                "id": "01040301010101",
+                                                "text": "Adam",
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "01040301010102",
+                                                "text": "Eve",
+                                                "children": []
+                                            }
+                                        ]
                                     },
                                     {
-                                        "id": "010403010703",
-                                        "text": "The Death of Holofernes",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403010701",
-                                        "text": "Judith Dining with Holoferens",
-                                        "children": []
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "0104030109",
-                                "text": "Moses",
-                                "children": [
-                                    {
-                                        "id": "010403010903",
-                                        "text": "The Ten Commandments",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403010902",
-                                        "text": "Pharaoh's Hosts engulfed in the Red Sea",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403010905",
-                                        "text": "Moses and Aaron",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403010904",
-                                        "text": "The Brazen Serpent",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403010906",
-                                        "text": "Moses on Mount Horeb",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403010901",
-                                        "text": "Moses and the Pillar of Cloud",
-                                        "children": []
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "0104030111",
-                                "text": "Samson",
-                                "children": [
-                                    {
-                                        "id": "010403011102",
-                                        "text": "Samson and Delilah",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403011101",
-                                        "text": "Samson vanquishing the Lion",
-                                        "children": []
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "0104030110",
-                                "text": "Solomon",
-                                "children": [
-                                    {
-                                        "id": "010403011002",
-                                        "text": "The Judgement of Solomon",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403011001",
-                                        "text": "The Idolatry of Solomon",
-                                        "children": []
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "0104030108",
-                                "text": "Lot",
-                                "children": [
-                                    {
-                                        "id": "010403010801",
-                                        "text": "Lot and his Daughters",
+                                        "id": "010403010102",
+                                        "text": "The Deluge",
                                         "children": []
                                     }
                                 ]
@@ -3009,12 +2936,12 @@
                                 ]
                             },
                             {
-                                "id": "0104030106",
-                                "text": "Jonah",
+                                "id": "0104030104",
+                                "text": "Elijah",
                                 "children": [
                                     {
-                                        "id": "010403010601",
-                                        "text": "Jonah and the Whale",
+                                        "id": "010403010401",
+                                        "text": "Elijah and the Priests of Baal",
                                         "children": []
                                     }
                                 ]
@@ -3031,39 +2958,112 @@
                                 ]
                             },
                             {
-                                "id": "0104030104",
-                                "text": "Elijah",
+                                "id": "0104030106",
+                                "text": "Jonah",
                                 "children": [
                                     {
-                                        "id": "010403010401",
-                                        "text": "Elijah and the Priests of Baal",
+                                        "id": "010403010601",
+                                        "text": "Jonah and the Whale",
                                         "children": []
                                     }
                                 ]
                             },
                             {
-                                "id": "0104030101",
-                                "text": "Genesis",
+                                "id": "0104030107",
+                                "text": "Judith",
                                 "children": [
                                     {
-                                        "id": "010403010101",
-                                        "text": "Adam and Eve",
-                                        "children": [
-                                            {
-                                                "id": "01040301010101",
-                                                "text": "Adam",
-                                                "children": []
-                                            },
-                                            {
-                                                "id": "01040301010102",
-                                                "text": "Eve",
-                                                "children": []
-                                            }
-                                        ]
+                                        "id": "010403010701",
+                                        "text": "Judith Dining with Holoferens",
+                                        "children": []
                                     },
                                     {
-                                        "id": "010403010102",
-                                        "text": "The Deluge",
+                                        "id": "010403010702",
+                                        "text": "Judith with the Head of Holofernes",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403010703",
+                                        "text": "The Death of Holofernes",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "0104030108",
+                                "text": "Lot",
+                                "children": [
+                                    {
+                                        "id": "010403010801",
+                                        "text": "Lot and his Daughters",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "0104030109",
+                                "text": "Moses",
+                                "children": [
+                                    {
+                                        "id": "010403010901",
+                                        "text": "Moses and the Pillar of Cloud",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403010902",
+                                        "text": "Pharaoh's Hosts engulfed in the Red Sea",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403010903",
+                                        "text": "The Ten Commandments",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403010904",
+                                        "text": "The Brazen Serpent",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403010905",
+                                        "text": "Moses and Aaron",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403010906",
+                                        "text": "Moses on Mount Horeb",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "0104030110",
+                                "text": "Solomon",
+                                "children": [
+                                    {
+                                        "id": "010403011001",
+                                        "text": "The Idolatry of Solomon",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403011002",
+                                        "text": "The Judgement of Solomon",
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "0104030111",
+                                "text": "Samson",
+                                "children": [
+                                    {
+                                        "id": "010403011101",
+                                        "text": "Samson vanquishing the Lion",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403011102",
+                                        "text": "Samson and Delilah",
                                         "children": []
                                     }
                                 ]
@@ -3084,6 +3084,16 @@
                                 "text": "Before the Birth of Christ",
                                 "children": [
                                     {
+                                        "id": "010403020101",
+                                        "text": "Meeting at the Golden Gate",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403020102",
+                                        "text": "The Annunciation of the Birth of Mary to Joachim",
+                                        "children": []
+                                    },
+                                    {
                                         "id": "010403020103",
                                         "text": "The Birth of the Virgin",
                                         "children": []
@@ -3094,18 +3104,8 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010403020102",
-                                        "text": "The Annunciation of the Birth of Mary to Joachim",
-                                        "children": []
-                                    },
-                                    {
                                         "id": "010403020105",
                                         "text": "The Annunciation",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403020101",
-                                        "text": "Meeting at the Golden Gate",
                                         "children": []
                                     },
                                     {
@@ -3125,8 +3125,13 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010403020206",
-                                        "text": "The Holy Family",
+                                        "id": "010403020202",
+                                        "text": "The Adoration of the Magi",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403020203",
+                                        "text": "The Adoration of the Shepherds",
                                         "children": []
                                     },
                                     {
@@ -3135,8 +3140,13 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010403020202",
-                                        "text": "The Adoration of the Magi",
+                                        "id": "010403020205",
+                                        "text": "Rest on the Flight into Egypt",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403020206",
+                                        "text": "The Holy Family",
                                         "children": []
                                     },
                                     {
@@ -3145,18 +3155,8 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010403020205",
-                                        "text": "Rest on the Flight into Egypt",
-                                        "children": []
-                                    },
-                                    {
                                         "id": "010403020208",
                                         "text": "Christ in the Temple",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403020203",
-                                        "text": "The Adoration of the Shepherds",
                                         "children": []
                                     }
                                 ]
@@ -3165,6 +3165,11 @@
                                 "id": "0104030203",
                                 "text": "Public Ministry\/Life",
                                 "children": [
+                                    {
+                                        "id": "010403020301",
+                                        "text": "The Baptism of Christ",
+                                        "children": []
+                                    },
                                     {
                                         "id": "010403020302",
                                         "text": "Teaching",
@@ -3190,13 +3195,13 @@
                                                 "children": []
                                             },
                                             {
-                                                "id": "01040302030206",
-                                                "text": "Christ driving the Money-changers from the Temple",
+                                                "id": "01040302030205",
+                                                "text": "The Pharisee and the Publican",
                                                 "children": []
                                             },
                                             {
-                                                "id": "01040302030205",
-                                                "text": "The Pharisee and the Publican",
+                                                "id": "01040302030206",
+                                                "text": "Christ driving the Money-changers from the Temple",
                                                 "children": []
                                             },
                                             {
@@ -3226,11 +3231,6 @@
                                                 "children": []
                                             }
                                         ]
-                                    },
-                                    {
-                                        "id": "010403020301",
-                                        "text": "The Baptism of Christ",
-                                        "children": []
                                     }
                                 ]
                             },
@@ -3239,13 +3239,28 @@
                                 "text": "The Passion",
                                 "children": [
                                     {
-                                        "id": "010403020405",
-                                        "text": "Agony in the Garden",
+                                        "id": "010403020401",
+                                        "text": "Christ Taking Leave from the Virgin",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403020402",
+                                        "text": "The Last Supper",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403020403",
+                                        "text": "The Washing of the Feet",
                                         "children": []
                                     },
                                     {
                                         "id": "010403020404",
                                         "text": "Christ Taking Leave from the Apostels",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403020405",
+                                        "text": "Agony in the Garden",
                                         "children": []
                                     },
                                     {
@@ -3259,43 +3274,8 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010403020403",
-                                        "text": "The Washing of the Feet",
-                                        "children": []
-                                    },
-                                    {
                                         "id": "010403020408",
                                         "text": "The Flagellation",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403020412",
-                                        "text": "Christ on the Way to Calvary",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403020414",
-                                        "text": "The Crucifixion",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403020417",
-                                        "text": "The Entombment",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403020415",
-                                        "text": "The Deposition",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403020416",
-                                        "text": "The Lamentation",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403020401",
-                                        "text": "Christ Taking Leave from the Virgin",
                                         "children": []
                                     },
                                     {
@@ -3309,18 +3289,38 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010403020402",
-                                        "text": "The Last Supper",
-                                        "children": []
-                                    },
-                                    {
                                         "id": "010403020411",
                                         "text": "Ecce Homo",
                                         "children": []
                                     },
                                     {
+                                        "id": "010403020412",
+                                        "text": "Christ on the Way to Calvary",
+                                        "children": []
+                                    },
+                                    {
                                         "id": "010403020413",
                                         "text": "Christ is Nailed to the Cross",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403020414",
+                                        "text": "The Crucifixion",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403020415",
+                                        "text": "The Deposition",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403020416",
+                                        "text": "The Lamentation",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403020417",
+                                        "text": "The Entombment",
                                         "children": []
                                     }
                                 ]
@@ -3330,8 +3330,8 @@
                                 "text": "Events from the Resurrection to Pentecost",
                                 "children": [
                                     {
-                                        "id": "010403020604",
-                                        "text": "The Resurrection",
+                                        "id": "010403020601",
+                                        "text": "Christ in Purgatory\/Limbo",
                                         "children": []
                                     },
                                     {
@@ -3340,13 +3340,13 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010403020601",
-                                        "text": "Christ in Purgatory\/Limbo",
+                                        "id": "010403020603",
+                                        "text": "The Holy Women at Christ's Tomb",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403020603",
-                                        "text": "The Holy Women at Christ's Tomb",
+                                        "id": "010403020604",
+                                        "text": "The Resurrection",
                                         "children": []
                                     }
                                 ]
@@ -3381,6 +3381,21 @@
                                 "id": "0104030505",
                                 "text": "The Ascension of Christ",
                                 "children": []
+                            },
+                            {
+                                "id": "0104030506",
+                                "text": "Christ Triumphant",
+                                "children": []
+                            },
+                            {
+                                "id": "0104030507",
+                                "text": "Christ appearing to the Virgin",
+                                "children": []
+                            },
+                            {
+                                "id": "0104030508",
+                                "text": "The Veil of Veronica",
+                                "children": []
                             }
                         ]
                     },
@@ -3398,84 +3413,78 @@
                                 "text": "Male Saints",
                                 "children": [
                                     {
-                                        "id": "010403030153",
-                                        "text": "St Willibald",
+                                        "id": "010403030101",
+                                        "text": "St Achatius",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030150",
-                                        "text": "St Valentine",
+                                        "id": "010403030105",
+                                        "text": "St Andrew",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030148",
-                                        "text": "St Stephen",
+                                        "id": "010403030106",
+                                        "text": "St Anthony",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030144",
-                                        "text": "St Sebastian",
+                                        "id": "010403030107",
+                                        "text": "St Augustine",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030143",
-                                        "text": "St Sebald",
+                                        "id": "010403030108",
+                                        "text": "St Bartholomew",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030141",
-                                        "text": "St Roche",
+                                        "id": "010403030109",
+                                        "text": "St Blaise",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030138",
-                                        "text": "St Paul",
-                                        "children": [
-                                            {
-                                                "id": "01040303013801",
-                                                "text": "The Conversion of Saul",
-                                                "children": []
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "id": "010403030135",
-                                        "text": "St Nicholas",
+                                        "id": "010403030110",
+                                        "text": "St Christopher",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030133",
-                                        "text": "St Maurice",
+                                        "id": "010403030111",
+                                        "text": "St Chrysostom",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030130",
-                                        "text": "St Martin",
+                                        "id": "010403030112",
+                                        "text": "St Cyriacus",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030129",
-                                        "text": "St Leopold",
+                                        "id": "010403030113",
+                                        "text": "St Dionysius",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030128",
-                                        "text": "St Lazarus",
+                                        "id": "010403030114",
+                                        "text": "St Erasmus",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030124",
-                                        "text": "St John",
+                                        "id": "010403030115",
+                                        "text": "St Eustace",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030122",
-                                        "text": "St James the Great",
+                                        "id": "010403030116",
+                                        "text": "St Francis",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030120",
-                                        "text": "St Jerome",
+                                        "id": "010403030117",
+                                        "text": "St George",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030103",
+                                        "text": "St Gilles",
                                         "children": []
                                     },
                                     {
@@ -3490,108 +3499,23 @@
                                         ]
                                     },
                                     {
-                                        "id": "010403030117",
-                                        "text": "St George",
+                                        "id": "010403030122",
+                                        "text": "St James the Great",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030116",
-                                        "text": "St Francis",
+                                        "id": "010403030123",
+                                        "text": "St James the Less",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030114",
-                                        "text": "St Erasmus",
+                                        "id": "010403030120",
+                                        "text": "St Jerome",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030111",
-                                        "text": "St Chrysostom",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030110",
-                                        "text": "St Christopher",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030108",
-                                        "text": "St Bartholomew",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030101",
-                                        "text": "St Achatius",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030139",
-                                        "text": "St Peter",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030105",
-                                        "text": "St Andrew",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030109",
-                                        "text": "St Blaise",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030112",
-                                        "text": "St Cyriacus",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030137",
-                                        "text": "St Pantaleon",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030151",
-                                        "text": "St Vitus",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030115",
-                                        "text": "St Eustace",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030113",
-                                        "text": "St Dionysius",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030103",
-                                        "text": "St Gilles",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030106",
-                                        "text": "St Anthony",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030107",
-                                        "text": "St Augustine",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030127",
-                                        "text": "St Lawrence",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030146",
-                                        "text": "St Simon",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030126",
-                                        "text": "St Judas Thaddaeus",
+                                        "id": "010403030124",
+                                        "text": "St John",
                                         "children": []
                                     },
                                     {
@@ -3631,18 +3555,28 @@
                                         ]
                                     },
                                     {
-                                        "id": "010403030132",
-                                        "text": "St Matthias",
+                                        "id": "010403030126",
+                                        "text": "St Judas Thaddaeus",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030140",
-                                        "text": "St Philip",
+                                        "id": "010403030127",
+                                        "text": "St Lawrence",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030123",
-                                        "text": "St James the Less",
+                                        "id": "010403030128",
+                                        "text": "St Lazarus",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030129",
+                                        "text": "St Leopold",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030130",
+                                        "text": "St Martin",
                                         "children": []
                                     },
                                     {
@@ -3651,13 +3585,94 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030154",
-                                        "text": "St Wolfgang",
+                                        "id": "010403030132",
+                                        "text": "St Matthias",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030133",
+                                        "text": "St Maurice",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030135",
+                                        "text": "St Nicholas",
                                         "children": []
                                     },
                                     {
                                         "id": "010403030136",
                                         "text": "St Olav",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030137",
+                                        "text": "St Pantaleon",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030138",
+                                        "text": "St Paul",
+                                        "children": [
+                                            {
+                                                "id": "01040303013801",
+                                                "text": "The Conversion of Saul",
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "010403030139",
+                                        "text": "St Peter",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030140",
+                                        "text": "St Philip",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030141",
+                                        "text": "St Roche",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030143",
+                                        "text": "St Sebald",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030144",
+                                        "text": "St Sebastian",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030146",
+                                        "text": "St Simon",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030148",
+                                        "text": "St Stephen",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030150",
+                                        "text": "St Valentine",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030151",
+                                        "text": "St Vitus",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030153",
+                                        "text": "St Willibald",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030154",
+                                        "text": "St Wolfgang",
                                         "children": []
                                     }
                                 ]
@@ -3667,38 +3682,28 @@
                                 "text": "Female Saints",
                                 "children": [
                                     {
-                                        "id": "010403030220",
-                                        "text": "St Walpurga",
+                                        "id": "010403030201",
+                                        "text": "St Agnes",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030218",
-                                        "text": "St Ursula",
+                                        "id": "010403030202",
+                                        "text": "St Anna",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030217",
-                                        "text": "St Ottilia",
+                                        "id": "010403030203",
+                                        "text": "St Apollonia",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030216",
-                                        "text": "St Martha",
+                                        "id": "010403030204",
+                                        "text": "St Barbara",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030215",
-                                        "text": "St Margaret",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030214",
-                                        "text": "St Magdalene",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030213",
-                                        "text": "St Kunigunde",
+                                        "id": "010403030205",
+                                        "text": "St Bridget of Sweden",
                                         "children": []
                                     },
                                     {
@@ -3718,13 +3723,8 @@
                                         ]
                                     },
                                     {
-                                        "id": "010403030211",
-                                        "text": "St Helen",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030210",
-                                        "text": "St Genoveva",
+                                        "id": "010403030206",
+                                        "text": "St Christine",
                                         "children": []
                                     },
                                     {
@@ -3733,43 +3733,58 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030206",
-                                        "text": "St Christine",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030204",
-                                        "text": "St Barbara",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030203",
-                                        "text": "St Apollonia",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030202",
-                                        "text": "St Anna",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010403030201",
-                                        "text": "St Agnes",
-                                        "children": []
-                                    },
-                                    {
                                         "id": "010403030208",
                                         "text": "St Elizabeth",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030221",
-                                        "text": "Unknown",
+                                        "id": "010403030210",
+                                        "text": "St Genoveva",
                                         "children": []
                                     },
                                     {
-                                        "id": "010403030205",
-                                        "text": "St Bridget of Sweden",
+                                        "id": "010403030211",
+                                        "text": "St Helen",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030213",
+                                        "text": "St Kunigunde",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030214",
+                                        "text": "St Magdalene",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030215",
+                                        "text": "St Margaret",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030216",
+                                        "text": "St Martha",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030217",
+                                        "text": "St Ottilia",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030218",
+                                        "text": "St Ursula",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030220",
+                                        "text": "St Walpurga",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010403030221",
+                                        "text": "Unknown",
                                         "children": []
                                     }
                                 ]
@@ -3958,8 +3973,18 @@
                         "children": []
                     },
                     {
+                        "id": "01040516",
+                        "text": "The Judgement of Cambyses",
+                        "children": []
+                    },
+                    {
                         "id": "01040503",
                         "text": "The Judgement of Paris",
+                        "children": []
+                    },
+                    {
+                        "id": "01040515",
+                        "text": "The Justice of Trajan",
                         "children": []
                     },
                     {
@@ -4049,7 +4074,7 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010235",
+                                        "id": "010402010238",
                                         "text": "Charles V, Holy Roman Emperor",
                                         "children": []
                                     },
@@ -4065,7 +4090,12 @@
                                     },
                                     {
                                         "id": "010402010207",
-                                        "text": "Ernst the Confessor, Duke of Braunschweig-L\u00fcneburg-Celle",
+                                        "text": "Ernst I, the Confessor, Duke of Braunschweig-L\u00fcneburg (1497 - 1546)",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010208",
+                                        "text": "Ernst III, Duke of Braunschweig-Grubenhagen (1518 - 1567)",
                                         "children": []
                                     },
                                     {
@@ -4075,177 +4105,187 @@
                                     },
                                     {
                                         "id": "010402010210",
-                                        "text": "Friedrich III the Wise, Elector of Saxony",
+                                        "text": "Friedrich III the Wise, Elector of Saxony (1463 - 1525)",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010211",
-                                        "text": "Friedrich, Duke of Saxony (1473 - 1510)",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010214",
-                                        "text": "Georg Friedrich, Margrave of Brandenburg-Ansbach-Bayreuth",
+                                        "text": "Friedrich of Saxony (1504 - 1539)",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010215",
-                                        "text": "Georg III, Prince of Anhalt",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010212",
-                                        "text": "Georg the Bearded, Duke of Saxony",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010213",
-                                        "text": "Georg the Devout, Margrave of Brandenburg-Ansbach",
+                                        "text": "Georg Friedrich, Margrave of Brandenburg-Ansbach-Bayreuth",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010216",
-                                        "text": "Georg, Duke of Anhalt",
+                                        "text": "Georg III, Prince of Anhalt-Pl\u00f6tzkau (1507 - 1553)",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010218",
-                                        "text": "Heinrich II, Emperor",
+                                        "id": "010402010213",
+                                        "text": "George the Bearded, Duke of Saxony (1471 - 1539)",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010217",
-                                        "text": "Heinrich the Devout, Duke of Saxony",
+                                        "id": "010402010214",
+                                        "text": "George the Devout, Margrave of Brandenburg-Ansbach (1484 - 1543)",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010219",
-                                        "text": "Joachim Ernst, Prince of  Anhalt",
+                                        "text": "Heinrich II, Emperor",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010221",
-                                        "text": "Joachim I, Elector of Brandenburg",
+                                        "id": "010402010218",
+                                        "text": "Heinrich the Devout, Duke of Saxony",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010220",
-                                        "text": "Joachim I, Prince of Anhalt",
+                                        "text": "Henry V, Duke of Mecklenburg (1479 - 1552)",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010221",
+                                        "text": "Joachim Ernst, Prince of  Anhalt",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010223",
+                                        "text": "Joachim I, Elector of Brandenburg",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010222",
-                                        "text": "Joachim II, Elector of Brandenburg",
+                                        "text": "Joachim I, Prince of Anhalt",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010224",
-                                        "text": "Johann Ernst of Saxony",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010225",
-                                        "text": "Johann Friedrich I, the Magnanimous, Elector of Saxony",
+                                        "text": "Joachim II, Elector of Brandenburg",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010226",
-                                        "text": "Johann Friedrich II, Duke of Saxony",
+                                        "text": "Johann Ernst I, Duke of Saxe-Coburg (1521 - 1553)",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010227",
+                                        "text": "Johann Friedrich I, the Magnanimous, Elector of Saxony",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010228",
+                                        "text": "Johann Friedrich II, Duke of Saxony",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010229",
                                         "text": "Johann Friedrich III the Younger, Duke of Saxony (1538 - 1565)",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010230",
-                                        "text": "Johann Georg, Elector of Brandenburg",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010231",
-                                        "text": "Johann II, Prince of Anhalt",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010223",
-                                        "text": "Johann the Steadfast, Elector of Saxony",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010233",
-                                        "text": "Johann, Duke of Saxony",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010234",
-                                        "text": "Johann, Margrave of Brandenburg-Ansbach",
+                                        "text": "Johann Georg I, Prince of Anhalt-Dessau (1567 - 1618)",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010232",
-                                        "text": "Johann, Prince of Anhalt",
+                                        "text": "Johann Georg, Elector of Brandenburg",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010229",
-                                        "text": "Johannn Georg I, Count of Mansfeld-Vorderort",
+                                        "id": "010402010233",
+                                        "text": "Johann II, Prince of Anhalt (1504 - 1551)",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010225",
+                                        "text": "Johann the Steadfast, Elector of Saxony",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010234",
+                                        "text": "Johann Wilhelm I, Duke of Saxe-Weimar (1530 - 1573)",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010236",
-                                        "text": "Kasimir, Margrave of Brandenburg-Kulmbach",
+                                        "text": "Johann, Duke of Saxony",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010237",
-                                        "text": "Maximilian I, Emperor",
+                                        "text": "Johann, Margrave of Brandenburg-Ansbach",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010238",
-                                        "text": "Moritz, Elector of Saxony",
+                                        "id": "010402010235",
+                                        "text": "Johann, Prince of Anhalt",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010241",
-                                        "text": "Philip I, Landgrave of Hessen (1504 - 1567)",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010243",
-                                        "text": "Philip, Duke of Braunschweig-Grubenhagen (1476 - 1551)",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010240",
-                                        "text": "Philipp I, Duke of Pommeriania-Wolgast",
+                                        "id": "010402010231",
+                                        "text": "Johannn Georg I, Count of Mansfeld-Vorderort",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010239",
-                                        "text": "Philipp of the Rhein, Count Palatine",
+                                        "text": "Kasimir, Margrave of Brandenburg-Kulmbach",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010242",
-                                        "text": "Philipp, Count of Solms-Lich",
+                                        "id": "010402010240",
+                                        "text": "Maximilian I, Emperor",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010241",
+                                        "text": "Moritz, Elector of Saxony",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010244",
-                                        "text": "Severin, Prince of Saxony",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010245",
-                                        "text": "Ulrich, Duke of W\u00fcrttemberg",
+                                        "text": "Philip I, Landgrave of Hessen (1504 - 1567)",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010246",
-                                        "text": "Wolfgang the Steadfast, Duke of Anhalt-K\u00f6then",
+                                        "text": "Philip, Duke of Braunschweig-Grubenhagen (1476 - 1551)",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010243",
+                                        "text": "Philipp I, Duke of Pommeriania-Wolgast",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010242",
+                                        "text": "Philipp of the Rhein, Count Palatine",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010245",
+                                        "text": "Philipp, Count of Solms-Lich",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010247",
+                                        "text": "Severin, Prince of Saxony",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010248",
+                                        "text": "Ulrich, Duke of W\u00fcrttemberg",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010249",
+                                        "text": "Wolfgang the Steadfast, Prince of Anhalt-K\u00f6then (1492 - 1566)",
                                         "children": []
                                     }
                                 ]
@@ -4261,201 +4301,201 @@
                                     },
                                     {
                                         "id": "010402010102",
-                                        "text": "Christoph Scheurl",
+                                        "text": "Christoph Ering",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010103",
-                                        "text": "Erasmus of Rotterdam",
+                                        "text": "Christoph Scheurl",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010104",
-                                        "text": "Erich Volckmar von Berlepsch",
+                                        "text": "Erasmus of Rotterdam",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010105",
+                                        "text": "Erich Volckmar von Berlepsch",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010106",
                                         "text": "Gabriel von Eyb",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010107",
+                                        "id": "010402010108",
                                         "text": "Georg Cracow",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010109",
+                                        "id": "010402010110",
                                         "text": "Georg of Weidebach",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010108",
+                                        "id": "010402010109",
                                         "text": "Georg Spalatin",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010110",
+                                        "id": "010402010111",
                                         "text": "Gerhart Volk",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010111",
+                                        "id": "010402010112",
                                         "text": "Gregor Br\u00fcck",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010112",
+                                        "id": "010402010113",
                                         "text": "Guilleaume de Croy",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010113",
+                                        "id": "010402010114",
                                         "text": "H. Melber",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010114",
+                                        "id": "010402010115",
                                         "text": "Hans Luther",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010115",
+                                        "id": "010402010116",
                                         "text": "Hans von Lindenau",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010116",
+                                        "id": "010402010117",
                                         "text": "Heinrich Stromer, Dr., called Auerbach",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010120",
+                                        "id": "010402010121",
                                         "text": "Jeronimus Tedenhamer",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010121",
+                                        "id": "010402010122",
                                         "text": "Joachim Morlinus",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010122",
+                                        "id": "010402010123",
                                         "text": "Johann Scheiring",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010124",
+                                        "id": "010402010125",
                                         "text": "Johannes Bugenhagen",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010125",
+                                        "id": "010402010126",
                                         "text": "Johannes Carion",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010126",
+                                        "id": "010402010127",
                                         "text": "Johannes Cuspinian",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010127",
+                                        "id": "010402010128",
                                         "text": "Johannes III von Sch\u00f6nberg, Bishop",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010129",
+                                        "id": "010402010130",
                                         "text": "Leon Braunsberg",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010130",
+                                        "id": "010402010131",
                                         "text": "Leonhard Badehorn",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010118",
+                                        "id": "010402010119",
                                         "text": "Lord Rava",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010119",
+                                        "id": "010402010120",
                                         "text": "Lord Schleinitz",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010131",
+                                        "id": "010402010132",
                                         "text": "Lucas Cranach the Elder",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010132",
+                                        "id": "010402010133",
                                         "text": "Martin Luther",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010133",
+                                        "id": "010402010134",
                                         "text": "Michael Meyenburg",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010134",
+                                        "id": "010402010135",
                                         "text": "Moritz Buchner",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010117",
+                                        "id": "010402010118",
                                         "text": "Mr K\u00f6keritz",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010135",
+                                        "id": "010402010136",
                                         "text": "Nicholas de Backer",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010136",
+                                        "id": "010402010137",
                                         "text": "Nikolaus Seidel",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010137",
+                                        "id": "010402010138",
                                         "text": "Otto Brunfels",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010138",
+                                        "id": "010402010139",
                                         "text": "Paulus of Berge",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010139",
+                                        "id": "010402010140",
                                         "text": "Philipp Melanchthon",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010140",
-                                        "text": "Philipp von Wittelsbach, Bishop",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010141",
+                                        "id": "010402010142",
                                         "text": "Pietro Bembo",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010142",
+                                        "id": "010402010143",
                                         "text": "Rudolph Agricola",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010143",
+                                        "id": "010402010144",
                                         "text": "Sigmunt Kingsfeld, Knight",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010144",
+                                        "id": "010402010145",
                                         "text": "Veit Dietrich",
                                         "children": []
                                     }
@@ -4503,7 +4543,7 @@
                                     },
                                     {
                                         "id": "010402020206",
-                                        "text": "Elizabeth von Hessen, Princess of Saxony (1502 - 1557)",
+                                        "text": "Elisabeth von Hessen, Princess of Saxony (1502 - 1557)",
                                         "children": []
                                     },
                                     {
@@ -4518,7 +4558,7 @@
                                     },
                                     {
                                         "id": "010402020210",
-                                        "text": "Magdalene von Sachsen, Princess of Brandenburg (1507 - 1534)",
+                                        "text": "Magdalena von Sachsen, Princess of Brandenburg (1507 - 1534)",
                                         "children": []
                                     },
                                     {
@@ -4532,17 +4572,27 @@
                                         "children": []
                                     },
                                     {
+                                        "id": "010402020214",
+                                        "text": "Maria, Princess of Saxony (1515 - 1583)",
+                                        "children": []
+                                    },
+                                    {
                                         "id": "010402020215",
-                                        "text": "Sibylla, Princess of Saxony",
+                                        "text": "Marie, Princess of Saxony (1562 - 1566)",
                                         "children": []
                                     },
                                     {
                                         "id": "010402020216",
-                                        "text": "Sibylle of Cleve, Duchess of Saxony",
+                                        "text": "Sibylla, Princess of Saxony",
                                         "children": []
                                     },
                                     {
                                         "id": "010402020217",
+                                        "text": "Sibylle of Cleve, Duchess of Saxony",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402020218",
                                         "text": "Sidonia, Princess of Saxony",
                                         "children": []
                                     }

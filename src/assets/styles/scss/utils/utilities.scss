@@ -62,6 +62,16 @@
   }
 }
 
+.has-tight-bottom-separator {
+  &::after {
+    display: block;
+    width: $xl;
+    border-top: solid $border-stroke-weight $accent-dark;
+    margin-top: $s;
+    content: " ";
+  }
+}
+
 .has-small-separator {
   &::before {
     display: block;
