@@ -15,7 +15,7 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "onlyDevObjects": true,
+  "onlyDevObjects": false,
   "generatePaintings": true,
   "generateArchivals": true,
   "generateGraphicsVirtualObjects": true,
@@ -242,7 +242,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["MIB_H-NONE-001", "MIB_H-NONE-002"];
+  const devObjects = ["LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"];
   
   const graphicsVirtualObjects = config.onlyDevObjects === true
     ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -252,6 +252,10 @@ const getGraphicsVirtualObjectsCollection = (lang) => {
     if (a.sortingNumber > b.sortingNumber) return 1;
     return 0;
   });
+
+  if (process.env.ELEVENTY_ENV === 'preview'
+    || process.env.ELEVENTY_ENV === 'development') return sortedGraphicsVirtualObjects;
+
   return sortedGraphicsVirtualObjects.filter(item => item.metadata.imgSrc.match(/[a-z]/));
 }
 
