@@ -83,7 +83,7 @@ exports.render = function (pageData) {
   const documentTitle = getDocumentTitle(data);
   const header = getHeader(data);
 
-  data.content.description = `${getDocumentTitle(data)}, ${data.content.textCategory}`;
+  data.content.description = `${data.content.textCategory}, ${data.content.shortTitle}, ${data.content.authors}`;
   const metaDataHead = metaDataHeader.getHeader(data);
   const artefacts = getArtefacts(data, langCode, baseUrl);
 

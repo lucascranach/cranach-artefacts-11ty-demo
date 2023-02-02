@@ -15,7 +15,7 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "onlyDevObjects": true,
+  "onlyDevObjects": false,
   "generatePaintings": true,
   "generateArchivals": true,
   "generateGraphicsVirtualObjects": true,
@@ -654,6 +654,15 @@ module.exports = function (eleventyConfig) {
       : getLiteratureCollection('de');
   
     return literatureCollectionDE;
+  });
+
+  eleventyConfig.addCollection("literatureEN", () => {
+    clearRequireCache();
+    const literatureCollectionEN = config.generateLiterature === false
+      ? []
+      : getLiteratureCollection('en');
+  
+    return literatureCollectionEN;
   });
 
   eleventyConfig.addCollection("paintingsEN", () => {
