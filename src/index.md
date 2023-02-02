@@ -28,6 +28,15 @@ figcaption{
   padding-top: 10px;
 }
 
+table th{
+  text-align: left;
+  max-width: 300px;
+}
+
+th, td{
+  border-top: solid 1px #aaa;
+}
+
 </style>
 ## DE
 
@@ -76,3 +85,14 @@ figcaption{
 {%- endfor -%}
 </ul>
 
+<table>
+{%- for item in collections.literatureDE -%}
+  <tr>
+    <td><a href="de/literature-{{item.referenceId}}">{{item.shortTitle}}</a></td>
+    <td>{{item.persons}}</td>
+    <td>{{item.publishLocation}}</td>
+    <td>{{item.date}}</td>
+    <th>{{item.metadata.title}}</th>
+  </tr>
+{%- endfor -%}
+</table>

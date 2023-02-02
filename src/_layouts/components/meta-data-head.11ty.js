@@ -1,6 +1,6 @@
 exports.getHeader = ({ content }) => {
   const descLength = 150;
-  const title = content.metadata.title.replace(/"/g, '\'');
+  const title = content.metadata.title.replace(/"/g, '\'').replace(/<(.*?)>/g, '');
   const { url } = content;
   const image = content.metadata.imgSrc;
   const desc = content.description && content.description.length > descLength
@@ -8,7 +8,7 @@ exports.getHeader = ({ content }) => {
     : content.description;
 
   return `
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta property="og:title" content="${title}">
     <meta property="og:description" content="${desc}">
     <meta property="og:url" content="${url}">

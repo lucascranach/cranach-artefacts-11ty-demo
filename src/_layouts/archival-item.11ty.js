@@ -7,35 +7,19 @@ const pageDateSnippet = require('./components/page-date.11ty');
 const copyrightSnippet = require('./components/copyright.11ty');
 const citeCdaSnippet = require('./components/cite-cda.11ty');
 const titleSnippet = require('./components/title.11ty');
-const mediumSnippet = require('./components/medium.11ty');
 const representantImageSnippet = require('./components/representant-image.11ty');
-const attributionSnippet = require('./components/attribution.11ty');
 const datingSnippet = require('./components/dating.11ty');
 const signatureSnippet = require('./components/signature.11ty');
-const inscriptionsAndLabelsSnippet = require('./components/inscriptions-and-labels.11ty');
-const dimensionsSnippet = require('./components/dimensions.11ty');
-const descriptionSnippet = require('./components/description.11ty');
-const locationSnippet = require('./components/location.11ty');
 const imageDescriptionSnippet = require('./components/image-description.11ty');
 const exhibitonsSnippet = require('./components/exhibitons.11ty');
 const identificationSnippet = require('./components/identification.11ty');
 const provenanceSnippet = require('./components/provenance.11ty');
 const sourcesSnippet = require('./components/sources.11ty');
 const imageStripeSnippet = require('./components/image-stripe.11ty');
-const documentStripeSnippet = require('./components/document-stripe.11ty');
-const reportsSnippet = require('./components/reports.11ty');
-const additionalTextInformationSnippet = require('./components/additional-text-information.11ty');
-const referencesSnippet = require('./components/references.11ty');
 const navigationSnippet = require('./components/navigation.11ty');
-
-const ART_TECH_EXAMINATION = 'ArtTechExamination';
-const CONDITION_REPORT = 'ConditionReport';
-const CONSERVATION_REPORT = 'ConservationReport';
-const RELATED_IN_CONTENT_TO = 'RELATED_IN_CONTENT_TO';
-const SIMILAR_TO = 'SIMILAR_TO';
-const BELONGS_TO = 'BELONGS_TO';
-const GRAPHIC = 'GRAPHIC';
-const PART_OF_WORK = 'PART_OF_WORK';
+const locationSnippet = require('./components/location.11ty');
+const transcriptionSnippet = require('./components/transcription.11ty');
+const commentsSnippet = require('./components/comments.11ty');
 
 const getImageStack = ({ content }) => JSON.stringify(content.images);
 const getimageBaseUrl = () => JSON.stringify(config.imageTiles);
@@ -45,11 +29,17 @@ const getDocumentTitle = ({ content }) => content.metadata.title;
 
 const getHeader = (data) => {
   const title = titleSnippet.getTitle(this, data, langCode);
-  const subtitle = mediumSnippet.getMediumOfPainting(this, data, langCode);
+  const archival = this.translate('archival', langCode);
+  
   return `
   <header class="artefact-header">
     ${title}
-    ${subtitle}
+
+    <div class="has-tight-separator">
+      <div id="archival-subtitle">
+        <p class="subtitle">${archival}</p>
+      </div>
+    </div>
   </header>`;
 };
 
@@ -73,30 +63,19 @@ exports.render = function (pageData) {
   const imageBaseUrl = getimageBaseUrl(data);
   const translationsClient = getClientTranslations(data);
 
+  const location = locationSnippet.getArchivalLocation(this, data, langCode);
+
+  const archival = this.translate('archival', langCode);
+  data.content.description = `${getDocumentTitle(data)}, ${archival}`;
   const metaDataHead = metaDataHeader.getHeader(data);
   const image = representantImageSnippet.getRepresentant(this, data);
-  const copy = descriptionSnippet.getCopyText(this, data);
   const dating = datingSnippet.getDating(this, data, langCode);
-  const dimensions = dimensionsSnippet.getDimensions(this, data, langCode);
-  const attribution = attributionSnippet.getAttribution(this, data, langCode);
-  const location = locationSnippet.getLocation(this, data, langCode);
-  const signature = signatureSnippet.getSignature(this, data, langCode);
-  const inscriptionsAndLabels = inscriptionsAndLabelsSnippet.getInscriptionsAndLabels(this, data, langCode);
+  const signature = signatureSnippet.getSignatureArchivals(this, data, langCode);
   const ids = identificationSnippet.getIds(this, data, langCode);
   const exhibitions = exhibitonsSnippet.getExhibitions(this, data, langCode);
   const provenance = provenanceSnippet.getProvenance(this, data, langCode);
   const sources = sourcesSnippet.getCombinedSources(this, data, langCode);
   const imageStripe = imageStripeSnippet.getImageStripe(this, data, langCode, config);
-  const documentStripe = documentStripeSnippet.getDocumentStripe(this, data, langCode, config, true);
-  const artTechExaminations = reportsSnippet.getReports(this, data, langCode, config, ART_TECH_EXAMINATION);
-  const conditionReport = reportsSnippet.getReports(this, data, langCode, config, CONDITION_REPORT);
-  const conservationReport = reportsSnippet.getReports(this, data, langCode, config, CONSERVATION_REPORT);
-  const additionalTextInformation = additionalTextInformationSnippet.getAdditionalTextInformation(this, data, langCode);
-  const relatedInContentTo = referencesSnippet.getReference(this, data, langCode, RELATED_IN_CONTENT_TO);
-  const similarTo = referencesSnippet.getReference(this, data, langCode, SIMILAR_TO);
-  const belongsTo = referencesSnippet.getReference(this, data, langCode, BELONGS_TO);
-  const graphic = referencesSnippet.getReference(this, data, langCode, GRAPHIC);
-  const partOfWork = referencesSnippet.getReference(this, data, langCode, PART_OF_WORK, true);
   const imageDescriptionObjectInfo = imageDescriptionSnippet.getImageDescriptionObjectInfo(data);
   const citeCda = citeCdaSnippet.getCiteCDA(this, data, langCode);
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
@@ -104,16 +83,14 @@ exports.render = function (pageData) {
   const pageDate = pageDateSnippet.getPageDate(this, langCode);
   const navigation = navigationSnippet.getNavigation(this, langCode, id);
   const navigationObjects = JSON.stringify(this.getObjectsForNavigation(data.content.metadata.id));
-
-  const cranachCollectBaseUrl = this.getCranachCollectBaseUrl();
-  const cranachCollectScript = config.cranachCollect.script;
+  const transcription = transcriptionSnippet.getTranscription(this, data, langCode);
+  const comments = commentsSnippet.getComments(this, data, langCode);
 
   return `<!doctype html> 
   <html lang="${langCode}">
     <head>
       <title>cda :: ${this.translate('paintings', langCode)} :: ${documentTitle}</title>
       ${metaDataHead}
-      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
       <link href="${this.url('/compiled-assets/main.css')}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
       <script>
@@ -141,30 +118,21 @@ exports.render = function (pageData) {
 
             <div class="grid-wrapper">
               <div class="main-column">
-                <div class="copytext">
-                  ${copy}
-                </div>
                 <div class="block">
-                  ${attribution}
                   ${dating}
-                  ${dimensions}
-                  ${signature}
-                  ${inscriptionsAndLabels}
-                </div>
-                <div class="block">
                   ${location}
                 </div>
                 <div class="block">
+                  ${signature}
                   ${ids}
                 </div>
+
               </div>
 
               <div class="marginal-content">
                 ${provenance}
                 ${exhibitions}
                 ${sources}
-                ${additionalTextInformation}
-                ${partOfWork}
               </div>
             </div>
           </div>
@@ -184,14 +152,8 @@ exports.render = function (pageData) {
           </div>
           <div class="explore-content">
             ${imageStripe}
-            ${documentStripe}
-            ${artTechExaminations}
-            ${conditionReport}
-            ${conservationReport}
-            ${relatedInContentTo}
-            ${similarTo}
-            ${belongsTo}
-            ${graphic}
+            ${transcription}
+            ${comments}
           </div>
         </section>
         <section class="final-words">
@@ -210,7 +172,6 @@ exports.render = function (pageData) {
       </div>
       <script src="https://cdn.jsdelivr.net/npm/openseadragon@3.1.0/build/openseadragon/openseadragon.min.js"></script>
       <script src="${this.url('/assets/scripts/main.js')}"></script>
-      <script src="${cranachCollectBaseUrl}/${cranachCollectScript}"></script>
     </body>
   </html>`;
 };

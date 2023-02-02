@@ -126,7 +126,6 @@ exports.render = function (pageData) {
     <head>
       <title>cda :: ${this.translate('prints', langCode)} :: ${documentTitle}</title>
       ${metaDataHead}
-      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
       <link href="${this.url('/compiled-assets/main.css')}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
       <script>

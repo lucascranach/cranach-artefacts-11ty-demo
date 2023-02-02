@@ -15,7 +15,7 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "onlyDevObjects": false,
+  "onlyDevObjects": true,
   "generatePaintings": true,
   "generateArchivals": true,
   "generateGraphicsVirtualObjects": true,
@@ -190,10 +190,9 @@ const appendToFile = (path, str) => {
   fs.appendFileSync(filepath, str);
 }
 
-
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51"];
+  const devObjects = ["PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51", "DE_SMF_1398B"];
 
   const paintings = config.onlyDevObjects === true
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -210,6 +209,26 @@ const getPaintingsCollection = (lang) => {
 
   const publishedPaintings = sortedPaintings.filter(item => !item.sortingNumber.match(/^20/));
   return publishedPaintings;
+}
+
+const getLiteratureCollection = (lang) => {
+  const literatureForLang = literatureData[lang];
+  const devObjects = ["27765", "466"];
+
+  const literature = config.onlyDevObjects === true
+    ? literatureForLang.items.filter(item => devObjects.includes(item.referenceId))
+    : literatureForLang.items; //.filter(item => item.metadata.id == 30838 );
+
+  let sortedLiterature = literature.sort((a, b) => {
+    if (a.searchSortingNumber < b.searchSortingNumber) return -1;
+    if (a.searchSortingNumber > b.searchSortingNumber) return 1;
+    return 0;
+  });
+
+  if (process.env.ELEVENTY_ENV === 'preview'
+    || process.env.ELEVENTY_ENV === 'development') return sortedLiterature;
+
+  return sortedLiterature;
 }
 
 const getArchivalsCollection = (lang) => {
@@ -585,6 +604,10 @@ module.exports = function (eleventyConfig) {
     }
   });
   
+  eleventyConfig.addJavaScriptFunction("getPainting", (inventoryNumber, langCode) => {
+    const paintings = paintingsData[langCode].items;
+    return paintings.find((painting) => painting.inventoryNumber === inventoryNumber);
+  });
 
   /* Filter
   ########################################################################## */
@@ -622,6 +645,15 @@ module.exports = function (eleventyConfig) {
       : getPaintingsCollection('de');
   
     return paintingsCollectionDE;
+  });
+
+  eleventyConfig.addCollection("literatureDE", () => {
+    clearRequireCache();
+    const literatureCollectionDE = config.generateLiterature === false
+      ? []
+      : getLiteratureCollection('de');
+  
+    return literatureCollectionDE;
   });
 
   eleventyConfig.addCollection("paintingsEN", () => {
