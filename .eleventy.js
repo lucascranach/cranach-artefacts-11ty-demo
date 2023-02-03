@@ -17,6 +17,7 @@ const config = {
   "graphicPrefix": "GWN_",
   "onlyDevObjects": false,
   "generateLiterature": true,
+  "generateAuthors": false,
   "generatePaintings": true,
   "generateArchivals": true,
   "generateGraphicsVirtualObjects": true,
@@ -722,7 +723,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("authorsDE", () => {
     clearRequireCache();
-    const authorCollectionDE = config.generateLiterature === false
+    const authorCollectionDE = config.generateAuthors === false
       ? []
       : getAuthorCollection('de');
   
