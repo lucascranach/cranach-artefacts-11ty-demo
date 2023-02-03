@@ -96,3 +96,11 @@ th, td{
   </tr>
 {%- endfor -%}
 </table>
+
+<table>
+{%- for item in collections.authorsDE -%}
+  <tr>
+    <td><a href="de/{{item.id}}">{{item.metadata.title}}</a></td>
+  </tr>
+{%- endfor -%}
+</table>

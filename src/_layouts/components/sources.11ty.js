@@ -90,12 +90,15 @@ const getSources = (params) => {
         pageNumber, catalogNumber, figureNumber,
       };
       const hasBackground = index % 2 ? 'has-bg' : '';
+      const linkToLiteraturePage = `../literature-${item.referenceId}`;
       return `
         <tr
           class="row ${hasBackground} is-head" 
           id="litRef${item.referenceId}-${index}">
 
-          <td class="cell has-interaction"><a href="#" data-js-toggle-literature="${item.referenceId}-${index}">${item.title}</a></td>
+          <td class="cell has-interaction"><a href="#" 
+            data-js-toggle-literature="${item.referenceId}-${index}">${item.title}</a>
+            <a href="${linkToLiteraturePage}">.</a></td>
           ${getTableData(tableDataFields, tableStructure)}
         </tr>
         <tr class="row ${hasBackground} is-detail" id="litRefData${item.referenceId}-${index}">

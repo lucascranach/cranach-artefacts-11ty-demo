@@ -27,17 +27,23 @@
       & > .cell {
         padding: $xxs;
         background-color: $lightest;
+        text-align: left;
         vertical-align: top;
-
+        
         &.-center {
           text-align: center;
         }
 
-        &.has-interaction {
-          & > a {
-            border-bottom: solid $border-stroke-weight-s $accent-dark;
+        &.has-interaction{
+          a{
+            border-bottom: solid $border-stroke-weight-s $accent;
           }
         }
+
+      }
+
+      th.cell{
+        font-weight: $fw-regular;
       }
     }
 
@@ -62,6 +68,17 @@
         padding-left: $s;
         border-top: solid $border-stroke-weight $light;
         font-weight: $fw-semibold;
+      }
+    }
+  }
+
+  &.is-striped{
+    .row{
+      .cell{
+        padding: $xs $m $s $m;
+      }
+      &:nth-child(odd) > *{
+        background-color: $darken;
       }
     }
   }

@@ -14,25 +14,49 @@ const getDocumentTitle = ({ content }) => content.title.replace(/<(.*?)>/g, '');
 
 const getHeader = (data) => {
   const title = titleSnippet.getTitle(this, data, langCode);
-  const subtitle = data.content.textCategory;
   return `
   <header class="artefact-header">
     ${title}
-    <h2 class="subtitle has-tight-separator">${subtitle}</h2>
   </header>`;
 };
 
-const getAuthors = (data, langCode, baseUrl) => {
-  if(!data.content.authors) return '';
-  const authors = data.content.authors.split(", ");
-  if(!authors) return '';
-  const authorList = authors.map((author) => {
-    const id = this.slugify(author);
-    const authorObjectLink = `${baseUrl}/${langCode}/${id}/`;
-    return `<a class="link" href="${authorObjectLink}">${author}</a>`;
+const getLiterature = (data, langCode, baseUrl) => {
+  const author = data.content.title;
+  const literature = this.getLiteratureByAuthor(author, langCode);
+  
+  if(!literature) return '';
+
+  const sortedLiterature = literature.sort((a, b) => {
+    const dateA = a.publishDate ? a.publishDate : a.date;
+    const dateB = b.publishDate ? b.publishDate : b.date;
+    return dateB - dateA;
   });
 
-  return authorList.join(", ");
+  const literatureList = sortedLiterature.map((item) => {
+    const {referenceId} = item;
+    const {referenceNumber} = item;
+    const title = item.title.replace(/<(.*?)>/g, '');
+    const {authors} = item;
+    const {publishLocation} = item;
+    const {publishDate} = item;
+    const literatureObjectLink = `${baseUrl}/${langCode}/literature-${referenceId}/`;
+
+    return `
+      <tr class="row">
+        <th class="cell"><a class="link" href="${literatureObjectLink}">${title}</a></th>
+        <td class="cell">${referenceNumber}</td>
+        <td class="cell">${authors}</td>
+        <td class="cell">${publishLocation}</td>
+        <td class="cell">${publishDate}</td>
+      </tr>
+    `;
+  });
+  return `
+    <table class="table is-striped">
+      <tbody class="body">
+      ${literatureList.join('')}
+      </tbody>
+    </table>`;
 };
 
 const getArtefacts = (data, langCode, baseUrl) => {
@@ -98,8 +122,8 @@ exports.render = function (pageData) {
 
   data.content.description = `${data.content.textCategory}, ${data.content.shortTitle}, ${data.content.authors}`;
   const metaDataHead = metaDataHeader.getHeader(data);
+  const literature = getLiterature(data, langCode, baseUrl);
   const artefacts = getArtefacts(data, langCode, baseUrl);
-  const authors = getAuthors(data, langCode, baseUrl);
 
   // const citeCda = citeCdaSnippet.getCiteCDA(this, data, langCode);
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
@@ -127,23 +151,7 @@ exports.render = function (pageData) {
             ${header}
           </div>
           <div class="grid-wrapper">
-            <div class="main-column">
-                <dl class="definition-list is-grid is-loose">
-                  <dt class="definition-list__term">${this.translate('kuerzel', langCode)}</dt>
-                  <dd class="definition-list__definition">${data.content.shortTitle}</dd>
-                  <dt class="definition-list__term">${this.translate('author', langCode)}, ${this.translate('publisher', langCode)}</dt>
-                  <dd class="definition-list__definition">${authors}</dd>
-                  <dt class="definition-list__term">${this.translate('title', langCode)}</dt>
-                  <dd class="definition-list__definition">${documentTitle}</dd>
-                  <dt class="definition-list__term">${this.translate('publishLocation', langCode)}</dt>
-                  <dd class="definition-list__definition">${data.content.publishLocation}</dd>
-                  <dt class="definition-list__term">${this.translate('publishDate', langCode)}</dt>
-                  <dd class="definition-list__definition">${data.content.publishDate}</dd>
-                </dl>
-            </div>
-            <div class="marginal-content">
-              ${artefacts}
-            </div>
+            ${literature}
           </div>
         </section>
 
