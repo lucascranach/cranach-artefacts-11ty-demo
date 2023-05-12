@@ -164,7 +164,6 @@ exports.render = function (pageData) {
         </section>
           <footer class="main-footer">
           ${copyright}
-          ${pageDate}
         </footer>
 
       </div>
