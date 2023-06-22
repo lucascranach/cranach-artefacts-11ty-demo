@@ -14,7 +14,8 @@ const getDocumentTitle = ({ content }) => content.title.replace(/<(.*?)>/g, '');
 
 const getHeader = (data) => {
   const title = titleSnippet.getTitle(this, data, langCode);
-  const subtitle = data.content.textCategory;
+  console.log(data.content.publications[0].text);
+  const subtitle = data.content.publications[0].text;
   return `
   <header class="artefact-header">
     ${title}
