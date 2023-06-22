@@ -14,7 +14,6 @@ const getDocumentTitle = ({ content }) => content.title.replace(/<(.*?)>/g, '');
 
 const getHeader = (data) => {
   const title = titleSnippet.getTitle(this, data, langCode);
-  console.log(data.content.publications[0].text);
   const subtitle = data.content.publications[0].text;
   return `
   <header class="artefact-header">
@@ -23,61 +22,65 @@ const getHeader = (data) => {
   </header>`;
 };
 
-const getAuthors = (data, langCode, baseUrl) => {
-  if(!data.content.authors) return '';
-  const authors = data.content.authors.split(", ");
-  if(!authors) return '';
-  const authorList = authors.map((author) => {
-    const id = this.slugify(author);
-    const authorObjectLink = `${baseUrl}/${langCode}/${id}/`;
-    return `<a class="link" href="${authorObjectLink}">${author}</a>`;
+const getLiteratureItems = (data, langCode, baseUrl) => {
+  const litItems = data.content.connectedObjects;
+  if(!litItems) return '';
+
+  const sortedItems = litItems.sort((a, b) => {
+    if (a.pageNumber < b.pageNumber) {
+      return -1;
+    }
+    if (a.pageNumber > b.pageNumber) {
+      return 1;
+    }
+    return 0;
   });
 
-  return authorList.join(", ");
-};
-
-const getArtefacts = (data, langCode, baseUrl) => {
-  const artefacts = data.content.connectedObjects;
-  if(!artefacts) return '';
-  const artefactList = artefacts.map((artefact) => {
+  const itemList = sortedItems.map((item) => {
     
-    const {inventoryNumber} = artefact;
-    const artefactData = this.getPainting(inventoryNumber, langCode);
-    if(!artefactData) return '';
+    const {inventoryNumber} = item;
+    const itemData = this.getPainting(inventoryNumber, langCode);
+    if(!itemData) return '';
 
-    const artefactObjectLink = `${baseUrl}/${langCode}/${artefactData.metadata.id}/`;
-    const referenceOnPage =  artefact.pageNumber 
-      ? `<li class="related-item__text">${this.translate('referenceOnPage', langCode)}: ${artefact.pageNumber}</li>`
-      : '';
-    const catalogueNumber =  artefact.catalogNumber 
-      ? `<li class="related-item__text">${this.translate('catalogueNumber', langCode)}: ${artefact.catalogNumber}</li>`
-      : '';
-    const figureNumber =  artefact.figureNumber 
-      ? `<li class="related-item__text">${this.translate('figurePlate', langCode)}: ${artefact.figureNumber}</li>`
-      : '';
+    const itemObjectLink = `${baseUrl}/${langCode}/${itemData.metadata.id}/`;
+    const referenceOnPage =  item.pageNumber ? item.pageNumber : '';
+    const catalogueNumber =  item.catalogNumber ? item.catalogNumber : '';
+    const figureNumber =  item.figureNumber ? item.figureNumber : '';
 
     return `
-    <li class="related-item-wrap">
-      <a href="${artefactObjectLink}">
-        <figure class="related-item">
-          <div class="related-item__image">
-            <img loading="lazy" src="${this.url(artefactData.metadata.imgSrc)}" alt="${artefactData.metadata.title}">
-          </div>
-          <figcaption class="related-item__caption">
-            <ul>
-              <li class="related-item__title">${artefactData.metadata.title}</li>
-              <li class="related-item__text">${artefactData.repository}</li>
-              ${referenceOnPage}
-              ${catalogueNumber}
-              ${figureNumber}
-            </ul>
-          </figcaption>
-        </figure>
-      </a>  
-    </li>
+    <tr class="related-item-row">
+      <td>
+        <a href="${itemObjectLink}">
+          <figure class="related-item">
+            <div class="related-item__image">
+              <img loading="lazy" src="${this.url(itemData.metadata.imgSrc)}" alt="${itemData.metadata.title}">
+            </div>
+          </figure>
+        </a>
+      </td>
+      <td class="related-item__title">${itemData.metadata.title}</td>
+      <td class="related-item__text">${itemData.repository}</td>
+      <td>${referenceOnPage}</td>
+      <td>${catalogueNumber}</td>
+      <td>${figureNumber}</td>
+    </tr>
     `;
   });
-  return `<ul class="artefact-list">${artefactList.join('')}</ul>`;
+  return `<table class="literature-table sortable">
+    <thead>
+      <tr>
+        <th></th>
+        <th>${this.translate('title', langCode)}</th>
+        <th>${this.translate('repository', langCode)}</th>
+        <th class="dir-u">${this.translate('referenceOnPage', langCode)}</th>
+        <th>${this.translate('catalogueNumber', langCode)}</th>
+        <th>${this.translate('figurePlate', langCode)}</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${itemList.join('')}
+    </tbody>
+    </table>`;
 };
 
 // eslint-disable-next-line func-names
@@ -99,9 +102,8 @@ exports.render = function (pageData) {
 
   data.content.description = `${data.content.textCategory}, ${data.content.shortTitle}, ${data.content.authors}`;
   const metaDataHead = metaDataHeader.getHeader(data);
-  const artefacts = getArtefacts(data, langCode, baseUrl);
-  const authors = getAuthors(data, langCode, baseUrl);
-
+  const literatureItems = getLiteratureItems(data, langCode, baseUrl);
+  
   // const citeCda = citeCdaSnippet.getCiteCDA(this, data, langCode);
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
   const copyright = copyrightSnippet.getCopyright();
@@ -118,7 +120,8 @@ exports.render = function (pageData) {
       ${metaDataHead}
       <link href="${this.url('/compiled-assets/main.css')}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
-
+      
+      <script src="https://cdn.jsdelivr.net/gh/tofsjonas/sortable@latest/sortable.min.js"></script>
     </head>
     <body>
       <div id="page">
@@ -143,7 +146,7 @@ exports.render = function (pageData) {
                 </dl>
             </div>
             <div class="marginal-content">
-              ${artefacts}
+              ${literatureItems}
             </div>
           </div>
         </section>

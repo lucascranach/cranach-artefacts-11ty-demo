@@ -11,6 +11,7 @@ const getSources = (params) => {
   const prefix = content.metadata.id;
   const additionalCss = hasGrayBackground ? 'with-gray-background' : '';
   const getLiteraturDetails = (item) => {
+    const linkToLiteraturePage = `../literature-${item.referenceId}`;
     const author = item && item.persons ? item.persons.filter((person) => person.role === 'AUTHOR').map((person) => person.name) : [];
     const publisher = item && item.persons
       ? item.persons.filter((person) => person.role === 'PUBLISHER' || person.role === 'UNKNOWN').map((person) => person.name) : [];
@@ -51,6 +52,10 @@ const getSources = (params) => {
         ${item && item.pageNumbers ? getRow(item.pageNumbers, 'pages') : ''}
         ${getRow(alternateNumbers.join(', '), 'alternativeNumbers')}
       </table>
+
+      <div class="link-to-item-wrap">
+        <a href="${linkToLiteraturePage}" class="link-to-item">${eleventy.translate('showLiterature', langCode)}</a>
+      </div>
     `;
   };
 
@@ -90,15 +95,14 @@ const getSources = (params) => {
         pageNumber, catalogNumber, figureNumber,
       };
       const hasBackground = index % 2 ? 'has-bg' : '';
-      const linkToLiteraturePage = `../literature-${item.referenceId}`;
+
       return `
         <tr
           class="row ${hasBackground} is-head" 
           id="litRef${item.referenceId}-${index}">
 
           <td class="cell has-interaction"><a href="#" 
-            data-js-toggle-literature="${item.referenceId}-${index}">${item.title}</a>
-            <a href="${linkToLiteraturePage}">.</a></td>
+            data-js-toggle-literature="${item.referenceId}-${index}">${item.title}</a></td>
           ${getTableData(tableDataFields, tableStructure)}
         </tr>
         <tr class="row ${hasBackground} is-detail" id="litRefData${item.referenceId}-${index}">

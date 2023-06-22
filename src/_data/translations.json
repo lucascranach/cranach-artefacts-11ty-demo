@@ -598,5 +598,9 @@
   "description-interpretation-comments": {
     "de": "Forschungsgeschichte / Diskussion",
     "en": "Research History / Discussion"
+  },
+  "showLiterature": {
+    "de": "Literatur anzeigen",
+    "en": "Show Literature"
   }
 }

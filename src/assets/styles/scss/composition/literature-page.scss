@@ -14,19 +14,15 @@
       max-width: $column-large;
     }
 
-    .marginal-content {
-      max-width: $column-large;
-    }
-
     @media only screen and (min-width: $vp-xlarge) {
       display: grid;
       gap: var(--responsive-gap);
-      grid-template-columns: 1fr $column-medium;
+      grid-template-columns: 1fr 2fr;
     }
 
     @media only screen and (min-width: $vp-xxlarge) {
       display: grid;
-      grid-template-columns: 1fr $column-large;
+      grid-template-columns: 1fr 2fr;
     }
   }
 }

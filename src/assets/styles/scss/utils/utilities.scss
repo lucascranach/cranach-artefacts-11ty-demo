@@ -41,6 +41,14 @@
   }
 }
 
+.is-link-to-item{
+  display: block;
+  padding-bottom: $s;
+  border-bottom: solid $border-stroke-weight-s $accent;
+  text-align: right;
+}
+
+
 .has-separator {
   &::before {
     display: block;
