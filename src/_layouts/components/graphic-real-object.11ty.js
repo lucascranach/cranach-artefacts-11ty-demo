@@ -165,7 +165,6 @@ exports.getRealObject = function (eleventy, pageData, langCode, masterData) {
         </section>
           <footer class="main-footer">
           ${copyright}
-          ${pageDate}
         </footer>
 
       </div>

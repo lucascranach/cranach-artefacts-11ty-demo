@@ -34,7 +34,7 @@
                     },
                     {
                         "id": "attribution.named_masters_from_the_cranach_workshop.hans_doering",
-                        "text": "Hans D\u00f6ring",
+                        "text": "Hans Döring",
                         "children": []
                     },
                     {
@@ -69,7 +69,7 @@
                     },
                     {
                         "id": "attribution.named_masters_from_the_cranach_workshop.master_of_the_doebeln_altarpiece",
-                        "text": "Master of the D\u00f6beln Altarpiece",
+                        "text": "Master of the Döbeln Altarpiece",
                         "children": []
                     },
                     {
@@ -84,7 +84,7 @@
                     },
                     {
                         "id": "attribution.named_masters_from_the_cranach_workshop.matthias_gruenewald",
-                        "text": "Matthias Gr\u00fcnewald",
+                        "text": "Matthias Grünewald",
                         "children": []
                     },
                     {
@@ -94,7 +94,7 @@
                     },
                     {
                         "id": "attribution.named_masters_from_the_cranach_workshop.pseudo_matthias_gruenewald",
-                        "text": "Pseudo-Matthias Gr\u00fcnewald",
+                        "text": "Pseudo-Matthias Grünewald",
                         "children": []
                     },
                     {
@@ -175,6 +175,11 @@
                         "text": "Australia",
                         "children": [
                             {
+                                "id": "collection_repository.country.australia.brisbane",
+                                "text": "Brisbane, Queensland Art Gallery",
+                                "children": []
+                            },
+                            {
                                 "id": "collection_repository.country.australia.melbourne",
                                 "text": "Melbourne, The National Gallery of Victoria",
                                 "children": []
@@ -242,7 +247,7 @@
                                 "children": [
                                     {
                                         "id": "collection_repository.country.austria.lower_austria.zwettl",
-                                        "text": "Zisterzienserstift Zwettl, Nieder\u00f6sterreich",
+                                        "text": "Zisterzienserstift Zwettl, Niederösterreich",
                                         "children": []
                                     }
                                 ]
@@ -268,7 +273,7 @@
                                     },
                                     {
                                         "id": "collection_repository.country.austria.vienna.vienna_4",
-                                        "text": "Gem\u00e4ldegalerie der Akademie der K\u00fcnste",
+                                        "text": "Gemäldegalerie der Akademie der Künste",
                                         "children": []
                                     },
                                     {
@@ -278,12 +283,12 @@
                                     },
                                     {
                                         "id": "collection_repository.country.austria.vienna.vienna_3",
-                                        "text": "\u00d6sterreichische Galerie Belvedere",
+                                        "text": "Österreichische Galerie Belvedere",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.austria.vienna.vienna_6",
-                                        "text": "\u00d6sterreichische Nationalbibliothek",
+                                        "text": "Österreichische Nationalbibliothek",
                                         "children": []
                                     }
                                 ]
@@ -312,7 +317,7 @@
                             },
                             {
                                 "id": "collection_repository.country.belgium.brussels",
-                                "text": "Brussels, Mus\u00e9es royaux des Beaux-Arts",
+                                "text": "Brussels, Musées royaux des Beaux-Arts",
                                 "children": []
                             },
                             {
@@ -322,7 +327,7 @@
                             },
                             {
                                 "id": "collection_repository.country.belgium.liege",
-                                "text": "Li\u00e9ge, Collections artistiques de l'Universit\u00e9 de Li\u00e8ge - Wittert Gallery",
+                                "text": "Liége, Collections artistiques de l'Université de Liège - Wittert Gallery",
                                 "children": []
                             }
                         ]
@@ -333,7 +338,7 @@
                         "children": [
                             {
                                 "id": "collection_repository.country.brazil.sao_paulo",
-                                "text": "S\u00e3o Paulo, Museu de Arte",
+                                "text": "São Paulo, Museu de Arte",
                                 "children": []
                             }
                         ]
@@ -349,7 +354,7 @@
                             },
                             {
                                 "id": "collection_repository.country.canada.ottawa",
-                                "text": "Ottawa, Mus\u00e9e des beaux-arts du Canada\/National Gallery of Canada",
+                                "text": "Ottawa, Musée des beaux-arts du Canada\/National Gallery of Canada",
                                 "children": []
                             },
                             {
@@ -370,7 +375,7 @@
                         "children": [
                             {
                                 "id": "collection_repository.country.croatia.cakovec",
-                                "text": "\u010cakovec, Franzikanerkirche zum hl. Bischof Nikolaus",
+                                "text": "Čakovec, Franzikanerkirche zum hl. Bischof Nikolaus",
                                 "children": []
                             }
                         ]
@@ -402,7 +407,7 @@
                             },
                             {
                                 "id": "collection_repository.country.czech.jachymov",
-                                "text": "J\u00e1chymov",
+                                "text": "Jáchymov",
                                 "children": [
                                     {
                                         "id": "collection_repository.country.czech.jachymov.jachymov_1",
@@ -423,7 +428,7 @@
                             },
                             {
                                 "id": "collection_repository.country.czech.litomerice",
-                                "text": "Litom\u011b\u0159ice",
+                                "text": "Litoměřice",
                                 "children": [
                                     {
                                         "id": "collection_repository.country.czech.litomerice.litomerice_1",
@@ -485,7 +490,7 @@
                             },
                             {
                                 "id": "collection_repository.country.czech.plzni",
-                                "text": "Z\u00e1padocesk\u00e1 galerie v Plzni",
+                                "text": "Západoceská galerie v Plzni",
                                 "children": []
                             }
                         ]
@@ -517,12 +522,12 @@
                             },
                             {
                                 "id": "collection_repository.country.denmark.niva",
-                                "text": "Niv\u00e5, Nivaagaards Malerisamling",
+                                "text": "Nivå, Nivaagaards Malerisamling",
                                 "children": []
                             },
                             {
                                 "id": "collection_repository.country.denmark.sonderborg",
-                                "text": "S\u00f8nderborg, Schloss",
+                                "text": "Sønderborg, Schloss",
                                 "children": []
                             }
                         ]
@@ -549,7 +554,7 @@
                             },
                             {
                                 "id": "collection_repository.country.finland.vaasa",
-                                "text": "Vaasa, \u00d6sterbottens Museum",
+                                "text": "Vaasa, Österbottens Museum",
                                 "children": []
                             }
                         ]
@@ -560,27 +565,27 @@
                         "children": [
                             {
                                 "id": "collection_repository.country.france.besancon",
-                                "text": "Besan\u00e7on, Mus\u00e9e des Beaux-Arts et d'Arch\u00e9ologie",
+                                "text": "Besançon, Musée des Beaux-Arts et d'Archéologie",
                                 "children": []
                             },
                             {
                                 "id": "collection_repository.country.france.cherbourg",
-                                "text": "Cherbourg, Mus\u00e9e d'Art",
+                                "text": "Cherbourg, Musée d'Art",
                                 "children": []
                             },
                             {
                                 "id": "collection_repository.country.france.colmar",
-                                "text": "Colmar, Mus\u00e9e d'Unterlinden",
+                                "text": "Colmar, Musée d'Unterlinden",
                                 "children": []
                             },
                             {
                                 "id": "collection_repository.country.france.la_rochelle",
-                                "text": "La Rochelle, Mus\u00e9e des Beaux-Arts",
+                                "text": "La Rochelle, Musée des Beaux-Arts",
                                 "children": []
                             },
                             {
                                 "id": "collection_repository.country.france.libourne",
-                                "text": "Libourne, Mus\u00e9e des Beaux-arts et d'Arch\u00e9ologie",
+                                "text": "Libourne, Musée des Beaux-arts et d'Archéologie",
                                 "children": []
                             },
                             {
@@ -590,12 +595,12 @@
                             },
                             {
                                 "id": "collection_repository.country.france.lyon",
-                                "text": "Lyon, Mus\u00e9e des Beaux-Arts",
+                                "text": "Lyon, Musée des Beaux-Arts",
                                 "children": []
                             },
                             {
                                 "id": "collection_repository.country.france.moulins",
-                                "text": "Moulins, Mus\u00e9e Anne-de-Beaujeu et Maison Mantin",
+                                "text": "Moulins, Musée Anne-de-Beaujeu et Maison Mantin",
                                 "children": []
                             },
                             {
@@ -604,17 +609,17 @@
                                 "children": [
                                     {
                                         "id": "collection_repository.country.france.paris.paris_1",
-                                        "text": "Mus\u00e9e de la Chasse et de la Nature",
+                                        "text": "Musée de la Chasse et de la Nature",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.france.paris.paris_2",
-                                        "text": "Mus\u00e9e du Louvre",
+                                        "text": "Musée du Louvre",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.france.paris.paris_3",
-                                        "text": "Petit Palais, Mus\u00e9e des Beaux-Arts de la Ville des Paris",
+                                        "text": "Petit Palais, Musée des Beaux-Arts de la Ville des Paris",
                                         "children": []
                                     }
                                 ]
@@ -625,7 +630,7 @@
                                 "children": [
                                     {
                                         "id": "collection_repository.country.france.strasbourg_2",
-                                        "text": "Biblioth\u00e8que nationale et universitaire",
+                                        "text": "Bibliothèque nationale et universitaire",
                                         "children": []
                                     },
                                     {
@@ -635,7 +640,7 @@
                                     },
                                     {
                                         "id": "collection_repository.country.france.strasbourg_1",
-                                        "text": "Mus\u00e9e des Beaux-Arts",
+                                        "text": "Musée des Beaux-Arts",
                                         "children": []
                                     }
                                 ]
@@ -776,6 +781,11 @@
                                         "children": []
                                     },
                                     {
+                                        "id": "collection_repository.country.germany.bamberg.bamberg_4",
+                                        "text": "Historisches Museum",
+                                        "children": []
+                                    },
+                                    {
                                         "id": "collection_repository.country.germany.bamberg.bamberg_3",
                                         "text": "Staatsbibliothek",
                                         "children": []
@@ -794,7 +804,7 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.berchtesgaden",
-                                "text": "Berchtesgaden, K\u00f6nigliches Schloss",
+                                "text": "Berchtesgaden, Königliches Schloss",
                                 "children": []
                             },
                             {
@@ -813,7 +823,7 @@
                                     },
                                     {
                                         "id": "collection_repository.country.germany.berlin.berlin_3",
-                                        "text": "Gem\u00e4ldegalerie der Staatlichen Museen",
+                                        "text": "Gemäldegalerie der Staatlichen Museen",
                                         "children": []
                                     },
                                     {
@@ -823,12 +833,12 @@
                                     },
                                     {
                                         "id": "collection_repository.country.germany.berlin.berlin_4",
-                                        "text": "Kupferstichkabinett der Staatlichen Museen, Preu\u00dfischer Kulturbesitz",
+                                        "text": "Kupferstichkabinett der Staatlichen Museen, Preußischer Kulturbesitz",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.germany.berlin.berlin_5",
-                                        "text": "Staatsbibliothek - Preu\u00dfischer Kulturbesitz, Abt. Historische Drucke",
+                                        "text": "Staatsbibliothek - Preußischer Kulturbesitz, Abt. Historische Drucke",
                                         "children": []
                                     }
                                 ]
@@ -927,12 +937,12 @@
                                 "children": [
                                     {
                                         "id": "collection_repository.country.germany.dessau.dessau_1",
-                                        "text": "Anhaltische Gem\u00e4lde-Galerie",
+                                        "text": "Anhaltische Gemälde-Galerie",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.germany.dessau.dessau_2",
-                                        "text": "Anhaltische Landesb\u00fccherei",
+                                        "text": "Anhaltische Landesbücherei",
                                         "children": []
                                     },
                                     {
@@ -942,14 +952,14 @@
                                     },
                                     {
                                         "id": "collection_repository.country.germany.dessau.dessau_4",
-                                        "text": "Kulturstiftung Dessau W\u00f6rlitz",
+                                        "text": "Kulturstiftung Dessau Wörlitz",
                                         "children": []
                                     }
                                 ]
                             },
                             {
                                 "id": "collection_repository.country.germany.doebeln",
-                                "text": "D\u00f6beln, Ev.-Luth. Kirchengemeinde",
+                                "text": "Döbeln, Ev.-Luth. Kirchengemeinde",
                                 "children": []
                             },
                             {
@@ -958,17 +968,17 @@
                                 "children": [
                                     {
                                         "id": "collection_repository.country.germany.dresden.dresden_1",
-                                        "text": "Gem\u00e4ldegalerie Alte Meister",
+                                        "text": "Gemäldegalerie Alte Meister",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.germany.dresden.dresden_3",
-                                        "text": "Milit\u00e4rhistorisches Museum der Bundeswehr, Dresden",
+                                        "text": "Militärhistorisches Museum der Bundeswehr, Dresden",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.germany.dresden.dresden_4",
-                                        "text": "S\u00e4chsische Landesbibliothek \u2013 Staats- und Universit\u00e4tsbibliothek",
+                                        "text": "Sächsische Landesbibliothek – Staats- und Universitätsbibliothek",
                                         "children": []
                                     },
                                     {
@@ -980,7 +990,7 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.duesseldorf",
-                                "text": "D\u00fcsseldorf, Stiftung Museum Kunstpalast",
+                                "text": "Düsseldorf, Stiftung Museum Kunstpalast",
                                 "children": []
                             },
                             {
@@ -990,16 +1000,16 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.eichstaett",
-                                "text": "Eichst\u00e4tt",
+                                "text": "Eichstätt",
                                 "children": [
                                     {
                                         "id": "collection_repository.country.germany.eichstaett_1",
-                                        "text": "Bisch\u00f6flicher Stuhl",
+                                        "text": "Bischöflicher Stuhl",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.germany.eichstaett_2",
-                                        "text": "Eichst\u00e4tt, Universit\u00e4tsbibliothek Eichst\u00e4tt-Ingolstadt",
+                                        "text": "Eichstätt, Universitätsbibliothek Eichstätt-Ingolstadt",
                                         "children": []
                                     }
                                 ]
@@ -1030,7 +1040,7 @@
                                     },
                                     {
                                         "id": "collection_repository.country.germany.erfurt.erfurt_3",
-                                        "text": "Forschungsbibliothek der Universit\u00e4t Erfurt",
+                                        "text": "Forschungsbibliothek der Universität Erfurt",
                                         "children": []
                                     }
                                 ]
@@ -1051,7 +1061,7 @@
                                     },
                                     {
                                         "id": "collection_repository.country.germany.frankfurt_1",
-                                        "text": "St\u00e4del Museum",
+                                        "text": "Städel Museum",
                                         "children": []
                                     }
                                 ]
@@ -1068,7 +1078,7 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.freising",
-                                "text": "Freising, Di\u00f6zesanmuseum",
+                                "text": "Freising, Diözesanmuseum",
                                 "children": []
                             },
                             {
@@ -1083,23 +1093,23 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.goerlitz",
-                                "text": "G\u00f6rlitz",
+                                "text": "Görlitz",
                                 "children": [
                                     {
                                         "id": "collection_repository.country.germany.goerlitz_1",
-                                        "text": "Kulturhistorisches Museum G\u00f6rlitzer, Kunstsammlung",
+                                        "text": "Kulturhistorisches Museum Görlitzer, Kunstsammlung",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.germany.goerlitz_2",
-                                        "text": "Oberlausitzische Bibliothek der Wissenschaften bei den St\u00e4dtischen Sammlungen f\u00fcr Geschichte und Kultur",
+                                        "text": "Oberlausitzische Bibliothek der Wissenschaften bei den Städtischen Sammlungen für Geschichte und Kultur",
                                         "children": []
                                     }
                                 ]
                             },
                             {
                                 "id": "collection_repository.country.germany.goettingen",
-                                "text": "G\u00f6ttingen, Nieders\u00e4chsische Staats- und Universit\u00e4tsbibliothek",
+                                "text": "Göttingen, Niedersächsische Staats- und Universitätsbibliothek",
                                 "children": []
                             },
                             {
@@ -1114,7 +1124,7 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.guestrow",
-                                "text": "G\u00fcstrow, Staatliches Museum Schwerin, Museum Schloss G\u00fcstrow",
+                                "text": "Güstrow, Staatliches Museum Schwerin, Museum Schloss Güstrow",
                                 "children": []
                             },
                             {
@@ -1143,7 +1153,7 @@
                                     },
                                     {
                                         "id": "collection_repository.country.germany.halle.halle_4",
-                                        "text": "Universit\u00e4ts- und Landesbibliothek Sachsen-Anhalt",
+                                        "text": "Universitäts- und Landesbibliothek Sachsen-Anhalt",
                                         "children": []
                                     }
                                 ]
@@ -1185,7 +1195,7 @@
                                     },
                                     {
                                         "id": "collection_repository.country.germany.hannover.hannover_2",
-                                        "text": "Nieders\u00e4chsisches Landesmuseum",
+                                        "text": "Niedersächsisches Landesmuseum",
                                         "children": []
                                     }
                                 ]
@@ -1196,24 +1206,29 @@
                                 "children": [
                                     {
                                         "id": "collection_repository.country.germany.heidelberg.heidelberg_1",
-                                        "text": "Kurpf\u00e4lzisches Museum",
+                                        "text": "Kurpfälzisches Museum",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.germany.heidelberg.heidelberg_2",
-                                        "text": "Universit\u00e4tsmuseum",
+                                        "text": "Universitätsmuseum",
                                         "children": []
                                     }
                                 ]
                             },
                             {
                                 "id": "collection_repository.country.germany.jena",
-                                "text": "Jena, Th\u00fcringer Universit\u00e4ts- und Landesbibliothek",
+                                "text": "Jena, Thüringer Universitäts- und Landesbibliothek",
                                 "children": []
                             },
                             {
                                 "id": "collection_repository.country.germany.jueterbog",
-                                "text": "J\u00fcterbog, Ev. St. Nikolaigemeinde",
+                                "text": "Jüterbog, Ev. St. Nikolaigemeinde",
+                                "children": []
+                            },
+                            {
+                                "id": "collection_repository.country.germany.kade",
+                                "text": "Kade, Dorfkirche",
                                 "children": []
                             },
                             {
@@ -1250,7 +1265,7 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.kassel",
-                                "text": "Kassel, Gem\u00e4ldegalerie Alte Meister",
+                                "text": "Kassel, Gemäldegalerie Alte Meister",
                                 "children": []
                             },
                             {
@@ -1290,7 +1305,7 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.koethen",
-                                "text": "K\u00f6then, Ev. Kirche St. Agnus",
+                                "text": "Köthen, Ev. Kirche St. Agnus",
                                 "children": []
                             },
                             {
@@ -1305,7 +1320,7 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.kronach",
-                                "text": "Kronach, Fr\u00e4nkische Galerie",
+                                "text": "Kronach, Fränkische Galerie",
                                 "children": []
                             },
                             {
@@ -1324,12 +1339,12 @@
                                     },
                                     {
                                         "id": "collection_repository.country.germany.leipzig.leipzig_1",
-                                        "text": "Kunstsammlung der Universit\u00e4t",
+                                        "text": "Kunstsammlung der Universität",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.germany.leipzig.leipzig_2",
-                                        "text": "Museum der bildenden K\u00fcnste",
+                                        "text": "Museum der bildenden Künste",
                                         "children": []
                                     },
                                     {
@@ -1339,19 +1354,19 @@
                                     },
                                     {
                                         "id": "collection_repository.country.germany.leipzig.leipzig_5",
-                                        "text": "Universit\u00e4tsbibliothek",
+                                        "text": "Universitätsbibliothek",
                                         "children": []
                                     }
                                 ]
                             },
                             {
                                 "id": "collection_repository.country.germany.luebeck",
-                                "text": "L\u00fcbeck, St. Annen-Museum",
+                                "text": "Lübeck, St. Annen-Museum",
                                 "children": []
                             },
                             {
                                 "id": "collection_repository.country.germany.lueneburg",
-                                "text": "L\u00fcneburg, Ostpreu\u00dfisches Landesmuseum",
+                                "text": "Lüneburg, Ostpreußisches Landesmuseum",
                                 "children": []
                             },
                             {
@@ -1365,7 +1380,7 @@
                                 "children": [
                                     {
                                         "id": "collection_repository.country.germany.mainz.mainz_1",
-                                        "text": "Bisch\u00f6fliches Dom- und Di\u00f6zesanmuseum",
+                                        "text": "Bischöfliches Dom- und Diözesanmuseum",
                                         "children": []
                                     },
                                     {
@@ -1408,12 +1423,12 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.muenster",
-                                "text": "M\u00fcnster, LWL-Museum f\u00fcr Kunst und Kultur",
+                                "text": "Münster, LWL-Museum für Kunst und Kultur",
                                 "children": []
                             },
                             {
                                 "id": "collection_repository.country.germany.muenstermaifeld",
-                                "text": "M\u00fcnstermaifeld, Burg Eltz",
+                                "text": "Münstermaifeld, Burg Eltz",
                                 "children": []
                             },
                             {
@@ -1437,12 +1452,12 @@
                                     },
                                     {
                                         "id": "collection_repository.country.germany.munich.munich_3",
-                                        "text": "Staatliche Graphische Sammlung M\u00fcnchen",
+                                        "text": "Staatliche Graphische Sammlung München",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.germany.munich.munich_5",
-                                        "text": "Universit\u00e4tsbibliothek der LMU",
+                                        "text": "Universitätsbibliothek der LMU",
                                         "children": []
                                     }
                                 ]
@@ -1475,7 +1490,7 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.noerdlingen",
-                                "text": "N\u00f6rdlingen, Stadtmuseum",
+                                "text": "Nördlingen, Stadtmuseum",
                                 "children": []
                             },
                             {
@@ -1490,7 +1505,7 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.oldenburg",
-                                "text": "Oldenburg, Landesmuseum f\u00fcr Kunst und Kulturgeschichte",
+                                "text": "Oldenburg, Landesmuseum für Kunst und Kulturgeschichte",
                                 "children": []
                             },
                             {
@@ -1516,7 +1531,7 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.remagen",
-                                "text": "Remagen, Sammlung Rau f\u00fcr UNICEF (Arp Museum Bahnhof Rolandseck)",
+                                "text": "Remagen, Sammlung Rau für UNICEF (Arp Museum Bahnhof Rolandseck)",
                                 "children": []
                             },
                             {
@@ -1526,7 +1541,7 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.rostock",
-                                "text": "Rostock, Universit\u00e4tsbibliothek",
+                                "text": "Rostock, Universitätsbibliothek",
                                 "children": []
                             },
                             {
@@ -1546,7 +1561,7 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.schwaebisch_hall",
-                                "text": "Schw\u00e4bisch Hall, Johanniterkirche - Sammlung W\u00fcrth",
+                                "text": "Schwäbisch Hall, Johanniterkirche - Sammlung Würth",
                                 "children": []
                             },
                             {
@@ -1575,7 +1590,7 @@
                                     },
                                     {
                                         "id": "collection_repository.country.germany.stuttgart_2",
-                                        "text": "W\u00fcrttembergische Landesbibliothek",
+                                        "text": "Württembergische Landesbibliothek",
                                         "children": []
                                     }
                                 ]
@@ -1629,7 +1644,7 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.weissenfels",
-                                "text": "Wei\u00dfenfels, Museum Wei\u00dfenfels-Schloss Neu-Augustusburg",
+                                "text": "Weißenfels, Museum Weißenfels-Schloss Neu-Augustusburg",
                                 "children": []
                             },
                             {
@@ -1665,7 +1680,7 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.woerlitz",
-                                "text": "W\u00f6rlitz",
+                                "text": "Wörlitz",
                                 "children": [
                                     {
                                         "id": "collection_repository.country.germany.woerlitz.woerlitz_1",
@@ -1681,38 +1696,38 @@
                             },
                             {
                                 "id": "collection_repository.country.germany.wolfegg",
-                                "text": "Wolfegg, Kunstsammlungen der F\u00fcrsten zu Waldburg-Wolfegg",
+                                "text": "Wolfegg, Kunstsammlungen der Fürsten zu Waldburg-Wolfegg",
                                 "children": []
                             },
                             {
                                 "id": "collection_repository.country.germany.wolfenbuettel",
-                                "text": "Wolfenb\u00fcttel, Herzog August Bibliothek",
+                                "text": "Wolfenbüttel, Herzog August Bibliothek",
                                 "children": []
                             },
                             {
                                 "id": "collection_repository.country.germany.wuerzburg",
-                                "text": "W\u00fcrzburg",
+                                "text": "Würzburg",
                                 "children": [
                                     {
                                         "id": "collection_repository.country.germany.wuerzburg.wuerzburg_2",
-                                        "text": "Martin von Wagner Museum der Universit\u00e4t",
+                                        "text": "Martin von Wagner Museum der Universität",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.germany.wuerzburg.wuerzburg_1",
-                                        "text": "Museum f\u00fcr Franken - Staatliches Museum f\u00fcr Kunst- und Kulturgeschichte",
+                                        "text": "Museum für Franken - Staatliches Museum für Kunst- und Kulturgeschichte",
                                         "children": []
                                     }
                                 ]
                             },
                             {
                                 "id": "collection_repository.country.germany.zerbst",
-                                "text": "Zerbst, Ev. Kirchengemeinde St. Bartholom\u00e4i",
+                                "text": "Zerbst, Ev. Kirchengemeinde St. Bartholomäi",
                                 "children": []
                             },
                             {
                                 "id": "collection_repository.country.germany.zittau",
-                                "text": "Zittau, St\u00e4dtische Museen",
+                                "text": "Zittau, Städtische Museen",
                                 "children": []
                             },
                             {
@@ -1758,14 +1773,14 @@
                                     },
                                     {
                                         "id": "collection_repository.country.hungary.budapest.budapest_1",
-                                        "text": "R\u00e1day Library of the Reformed Church",
+                                        "text": "Ráday Library of the Reformed Church",
                                         "children": []
                                     }
                                 ]
                             },
                             {
                                 "id": "collection_repository.country.hungary.esztergom",
-                                "text": "Esztergom, Kereszt\u00e9ny M\u00fazeum",
+                                "text": "Esztergom, Keresztény Múzeum",
                                 "children": []
                             }
                         ]
@@ -1798,7 +1813,7 @@
                         "children": [
                             {
                                 "id": "collection_repository.country.italy.brixen",
-                                "text": "Brixen, Di\u00f6zesanmuseum Hofburg",
+                                "text": "Brixen, Diözesanmuseum Hofburg",
                                 "children": []
                             },
                             {
@@ -1877,7 +1892,7 @@
                         "children": [
                             {
                                 "id": "collection_repository.country.luxembourg.luxembourg_city",
-                                "text": "Luxembourg, Mus\u00e9e National d'Histoire et d'Art",
+                                "text": "Luxembourg, Musée National d'Histoire et d'Art",
                                 "children": []
                             }
                         ]
@@ -1902,7 +1917,7 @@
                                     },
                                     {
                                         "id": "collection_repository.country.mexico.mexico_city.mexico_city_3",
-                                        "text": "P\u00e9rez Sim\u00f3n Collection",
+                                        "text": "Pérez Simón Collection",
                                         "children": []
                                     }
                                 ]
@@ -1946,7 +1961,7 @@
                             },
                             {
                                 "id": "collection_repository.country.netherlands.otterlo",
-                                "text": "Otterlo, Kr\u00f6ller-M\u00fcller Museum",
+                                "text": "Otterlo, Kröller-Müller Museum",
                                 "children": []
                             },
                             {
@@ -1993,12 +2008,12 @@
                         "children": [
                             {
                                 "id": "collection_repository.country.poland.goluchow",
-                                "text": "Go\u0142uch\u00f3w, Palace Museum",
+                                "text": "Gołuchów, Palace Museum",
                                 "children": []
                             },
                             {
                                 "id": "collection_repository.country.poland.krakow",
-                                "text": "Krak\u00f3w",
+                                "text": "Kraków",
                                 "children": [
                                     {
                                         "id": "collection_repository.country.poland.krakow.krakow_1",
@@ -2024,7 +2039,7 @@
                             },
                             {
                                 "id": "collection_repository.country.poland.poznan",
-                                "text": "Pozna\u0144, National Museum",
+                                "text": "Poznań, National Museum",
                                 "children": []
                             },
                             {
@@ -2048,14 +2063,14 @@
                                     },
                                     {
                                         "id": "collection_repository.country.poland.warsaw.warsaw_3",
-                                        "text": "Palace Museum Kr\u00f3la Jana III w Wilanowie",
+                                        "text": "Palace Museum Króla Jana III w Wilanowie",
                                         "children": []
                                     }
                                 ]
                             },
                             {
                                 "id": "collection_repository.country.poland.wroclaw",
-                                "text": "Wroc\u0142aw",
+                                "text": "Wrocław",
                                 "children": [
                                     {
                                         "id": "collection_repository.country.poland.wroclaw.wroclaw_1",
@@ -2098,8 +2113,13 @@
                         "text": "Romania",
                         "children": [
                             {
-                                "id": "collection_repository.country.romania.brukethal",
+                                "id": "collection_repository.country.romania.brukenthal",
                                 "text": "Brukethal, Muzeul National",
+                                "children": []
+                            },
+                            {
+                                "id": "collection_repository.country.romania.bucharest",
+                                "text": "Bucharest, Muzeul Național de Artă al României",
                                 "children": []
                             }
                         ]
@@ -2145,12 +2165,12 @@
                                 "children": [
                                     {
                                         "id": "collection_repository.country.spain.madrid.madrid_1",
-                                        "text": "Fundaci\u00f3n Banco Santander",
+                                        "text": "Fundación Banco Santander",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.spain.madrid.madrid_2",
-                                        "text": "Museo L\u00e1zaro Galdiano",
+                                        "text": "Museo Lázaro Galdiano",
                                         "children": []
                                     },
                                     {
@@ -2178,7 +2198,7 @@
                         "children": [
                             {
                                 "id": "collection_repository.country.sweden.sverige",
-                                "text": "B\u00e4rbo kyrka, Sverige",
+                                "text": "Bärbo kyrka, Sverige",
                                 "children": []
                             },
                             {
@@ -2188,7 +2208,7 @@
                             },
                             {
                                 "id": "collection_repository.country.sweden.linkoeping",
-                                "text": "Link\u00f6ping, \u00d6sterg\u00f6tlands Museum",
+                                "text": "Linköping, Östergötlands Museum",
                                 "children": []
                             },
                             {
@@ -2239,7 +2259,7 @@
                                     },
                                     {
                                         "id": "collection_repository.country.switzerland.bern_2",
-                                        "text": "Universit\u00e4tsbibliothek - Bibliothek M\u00fcnstergasse",
+                                        "text": "Universitätsbibliothek - Bibliothek Münstergasse",
                                         "children": []
                                     }
                                 ]
@@ -2255,12 +2275,12 @@
                                 "children": [
                                     {
                                         "id": "collection_repository.country.switzerland.geneva_1",
-                                        "text": "Mus\u00e9e d'Art et d'Histoire",
+                                        "text": "Musée d'Art et d'Histoire",
                                         "children": []
                                     },
                                     {
                                         "id": "collection_repository.country.switzerland.geneva_2",
-                                        "text": "Mus\u00e9e international de la R\u00e9forme",
+                                        "text": "Musée international de la Réforme",
                                         "children": []
                                     }
                                 ]
@@ -2293,11 +2313,11 @@
                             },
                             {
                                 "id": "collection_repository.country.switzerland.zurich",
-                                "text": "Z\u00fcrich",
+                                "text": "Zürich",
                                 "children": [
                                     {
                                         "id": "collection_repository.country.switzerland.zurich_2",
-                                        "text": "Eidgen\u00f6ssische Technische Hochschule",
+                                        "text": "Eidgenössische Technische Hochschule",
                                         "children": []
                                     },
                                     {
@@ -3833,7 +3853,7 @@
                             },
                             {
                                 "id": "0104030402",
-                                "text": "The Virgin wearing an '\u00c4hrenkleid'",
+                                "text": "The Virgin wearing an 'Ährenkleid'",
                                 "children": []
                             },
                             {
@@ -4074,7 +4094,7 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010238",
+                                        "id": "010402010237",
                                         "text": "Charles V, Holy Roman Emperor",
                                         "children": []
                                     },
@@ -4090,12 +4110,12 @@
                                     },
                                     {
                                         "id": "010402010207",
-                                        "text": "Ernst I, the Confessor, Duke of Braunschweig-L\u00fcneburg (1497 - 1546)",
+                                        "text": "Ernst I, the Confessor, Duke of Braunschweig-Lüneburg-Celle (1497 - 1546)",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010208",
-                                        "text": "Ernst III, Duke of Braunschweig-Grubenhagen (1518 - 1567)",
+                                        "text": "Ernst III (IV), Duke of Braunschweig-Grubenhagen (1518 - 1567)",
                                         "children": []
                                     },
                                     {
@@ -4120,7 +4140,7 @@
                                     },
                                     {
                                         "id": "010402010216",
-                                        "text": "Georg III, Prince of Anhalt-Pl\u00f6tzkau (1507 - 1553)",
+                                        "text": "Georg III, Prince of Anhalt-Plötzkau (1507 - 1553)",
                                         "children": []
                                     },
                                     {
@@ -4200,7 +4220,7 @@
                                     },
                                     {
                                         "id": "010402010233",
-                                        "text": "Johann II, Prince of Anhalt (1504 - 1551)",
+                                        "text": "Johann II [IV], Prince of Anhalt-Zerbst (1504 - 1551)",
                                         "children": []
                                     },
                                     {
@@ -4214,18 +4234,13 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010236",
+                                        "id": "010402010235",
                                         "text": "Johann, Duke of Saxony",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010237",
+                                        "id": "010402010236",
                                         "text": "Johann, Margrave of Brandenburg-Ansbach",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010235",
-                                        "text": "Johann, Prince of Anhalt",
                                         "children": []
                                     },
                                     {
@@ -4234,58 +4249,58 @@
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010239",
+                                        "id": "010402010238",
                                         "text": "Kasimir, Margrave of Brandenburg-Kulmbach",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010240",
+                                        "id": "010402010239",
                                         "text": "Maximilian I, Emperor",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010241",
+                                        "id": "010402010240",
                                         "text": "Moritz, Elector of Saxony",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010244",
+                                        "id": "010402010243",
                                         "text": "Philip I, Landgrave of Hessen (1504 - 1567)",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010246",
+                                        "id": "010402010245",
                                         "text": "Philip, Duke of Braunschweig-Grubenhagen (1476 - 1551)",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010243",
+                                        "id": "010402010242",
                                         "text": "Philipp I, Duke of Pommeriania-Wolgast",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010242",
+                                        "id": "010402010241",
                                         "text": "Philipp of the Rhein, Count Palatine",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010245",
+                                        "id": "010402010244",
                                         "text": "Philipp, Count of Solms-Lich",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010247",
+                                        "id": "010402010246",
                                         "text": "Severin, Prince of Saxony",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010248",
-                                        "text": "Ulrich, Duke of W\u00fcrttemberg",
+                                        "id": "010402010247",
+                                        "text": "Ulrich, Duke of Württemberg",
                                         "children": []
                                     },
                                     {
-                                        "id": "010402010249",
-                                        "text": "Wolfgang the Steadfast, Prince of Anhalt-K\u00f6then (1492 - 1566)",
+                                        "id": "010402010248",
+                                        "text": "Wolfgang the Steadfast, Prince of Anhalt-Köthen (1492 - 1566)",
                                         "children": []
                                     }
                                 ]
@@ -4301,201 +4316,211 @@
                                     },
                                     {
                                         "id": "010402010102",
-                                        "text": "Christoph Ering",
+                                        "text": "Caspar von Köckeritz",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010103",
-                                        "text": "Christoph Scheurl",
+                                        "text": "Christoph Ering",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010104",
-                                        "text": "Erasmus of Rotterdam",
+                                        "text": "Christoph Scheurl",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010105",
-                                        "text": "Erich Volckmar von Berlepsch",
+                                        "text": "Christoph Tiedemann",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010106",
-                                        "text": "Gabriel von Eyb",
+                                        "text": "Erasmus of Rotterdam",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010107",
+                                        "text": "Erich Volckmar von Berlepsch",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010108",
-                                        "text": "Georg Cracow",
+                                        "text": "Gabriel von Eyb",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010110",
-                                        "text": "Georg of Weidebach",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010109",
-                                        "text": "Georg Spalatin",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010111",
-                                        "text": "Gerhart Volk",
+                                        "text": "Georg Cracow",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010112",
-                                        "text": "Gregor Br\u00fcck",
+                                        "text": "Georg of Weidebach",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010111",
+                                        "text": "Georg Spalatin",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010113",
-                                        "text": "Guilleaume de Croy",
+                                        "text": "Gerhart Volk",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010114",
-                                        "text": "H. Melber",
+                                        "text": "Gregor Brück",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010115",
-                                        "text": "Hans Luther",
+                                        "text": "Guilleaume de Croy",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010116",
-                                        "text": "Hans von Lindenau",
+                                        "text": "H. Melber",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010117",
-                                        "text": "Heinrich Stromer, Dr., called Auerbach",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010121",
-                                        "text": "Jeronimus Tedenhamer",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010122",
-                                        "text": "Joachim Morlinus",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010123",
-                                        "text": "Johann Scheiring",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010125",
-                                        "text": "Johannes Bugenhagen",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010126",
-                                        "text": "Johannes Carion",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010127",
-                                        "text": "Johannes Cuspinian",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010128",
-                                        "text": "Johannes III von Sch\u00f6nberg, Bishop",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010130",
-                                        "text": "Leon Braunsberg",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010131",
-                                        "text": "Leonhard Badehorn",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010119",
-                                        "text": "Lord Rava",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010120",
-                                        "text": "Lord Schleinitz",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010132",
-                                        "text": "Lucas Cranach the Elder",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010133",
-                                        "text": "Martin Luther",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010134",
-                                        "text": "Michael Meyenburg",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010135",
-                                        "text": "Moritz Buchner",
+                                        "text": "Hans Luther",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010118",
-                                        "text": "Mr K\u00f6keritz",
+                                        "text": "Hans Sonnenschein",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010119",
+                                        "text": "Hans von Lindenau",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010120",
+                                        "text": "Heinrich Stromer, Dr., called Auerbach",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010123",
+                                        "text": "Jeronimus Tedenhamer",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010124",
+                                        "text": "Joachim Morlinus",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010125",
+                                        "text": "Johann Scheiring",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010127",
+                                        "text": "Johannes Bugenhagen",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010128",
+                                        "text": "Johannes Carion",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010129",
+                                        "text": "Johannes Cuspinian",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010130",
+                                        "text": "Johannes III von Schönberg, Bishop",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010132",
+                                        "text": "Leon Braunsberg",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010133",
+                                        "text": "Leonhard Badehorn",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010121",
+                                        "text": "Lord Rava",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010122",
+                                        "text": "Lord Schleinitz",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010134",
+                                        "text": "Lucas Cranach the Elder",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010135",
+                                        "text": "Martin Luther",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010136",
-                                        "text": "Nicholas de Backer",
+                                        "text": "Michael Meyenburg",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010137",
-                                        "text": "Nikolaus Seidel",
+                                        "text": "Moritz Buchner",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010138",
-                                        "text": "Otto Brunfels",
+                                        "text": "Nicholas de Backer",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010139",
-                                        "text": "Paulus of Berge",
+                                        "text": "Nikolaus Seidel",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010140",
-                                        "text": "Philipp Melanchthon",
+                                        "text": "Otto Brunfels",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010141",
+                                        "text": "Paulus of Berge",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010142",
-                                        "text": "Pietro Bembo",
-                                        "children": []
-                                    },
-                                    {
-                                        "id": "010402010143",
-                                        "text": "Rudolph Agricola",
+                                        "text": "Philipp Melanchthon",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010144",
-                                        "text": "Sigmunt Kingsfeld, Knight",
+                                        "text": "Pietro Bembo",
                                         "children": []
                                     },
                                     {
                                         "id": "010402010145",
+                                        "text": "Rudolph Agricola",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010146",
+                                        "text": "Sigmunt Kingsfeld, Knight",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402010147",
                                         "text": "Veit Dietrich",
                                         "children": []
                                     }
@@ -4518,7 +4543,7 @@
                                 "children": [
                                     {
                                         "id": "010402020201",
-                                        "text": "Agnes von Barby-M\u00fchlingen, Princess of Anhalt",
+                                        "text": "Agnes von Barby-Mühlingen, Princess of Anhalt",
                                         "children": []
                                     },
                                     {
@@ -4558,7 +4583,7 @@
                                     },
                                     {
                                         "id": "010402020210",
-                                        "text": "Magdalena von Sachsen, Princess of Brandenburg (1507 - 1534)",
+                                        "text": "Magdalena of Saxony, Princess of Brandenburg (1507 - 1534)",
                                         "children": []
                                     },
                                     {
@@ -4630,6 +4655,11 @@
                                     {
                                         "id": "010402020106",
                                         "text": "Lady Schleinitz",
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "010402020109",
+                                        "text": "Lucretia von Berlepsch",
                                         "children": []
                                     },
                                     {
