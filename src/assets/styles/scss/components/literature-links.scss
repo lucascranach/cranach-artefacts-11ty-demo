@@ -1,7 +1,7 @@
 .link-to-item-wrap{
   display: flex;
   justify-content: right;
-  padding: $half 0 $s 0;
+  padding: $half $half $s 0;
 }
 
 .link-to-item{
@@ -9,7 +9,6 @@
 
   &:hover{
     padding: $quad $s;
-    background-color: $accent-dark;
-    color: $lightest;
+    background-color: $accent;
   }
 }

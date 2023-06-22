@@ -88,7 +88,7 @@ const getAuthors = (data, searchUrl) => {
   if(!authors) return '';
   const cleanAuthors = authors.replace(/, /g, ',');
   const authorsList = cleanAuthors.split(/,/).map((author) => {
-    return `<a class="has-interaction" href="${searchUrl}?kind=literature_references&search_term=${author.replace(/ /, "+")}">${author}</a>`;
+    return `<a class="has-interaction is-stupid-link" href="${searchUrl}?kind=literature_references&search_term=${author.replace(/ /g, "+")}">${author}</a>`;
   });
   return authorsList.join(', ');
 };
@@ -134,6 +134,19 @@ exports.render = function (pageData) {
       <link href="${this.url('/compiled-assets/main.css')}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
       
+      <script>
+      const objectData = {};
+      objectData.langCode = "${langCode}";
+      objectData.imageStack = false;
+      objectData.baseUrl = "${baseUrl}/${langCode}";
+      objectData.imageBaseUrl = false;
+      objectData.env = "${this.getENV()}";
+      objectData.translations = false;
+      objectData.asseturl = "${this.url('/assets')}";
+      objectData.inventoryNumber = "${id}";
+      objectData.navigationObjects = false;
+    </script>
+
       <script src="https://cdn.jsdelivr.net/gh/tofsjonas/sortable@latest/sortable.min.js"></script>
     </head>
     <body>
