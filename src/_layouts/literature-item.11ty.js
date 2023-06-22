@@ -14,7 +14,7 @@ const getDocumentTitle = ({ content }) => content.title.replace(/<(.*?)>/g, '');
 
 const getHeader = (data) => {
   const title = titleSnippet.getTitle(this, data, langCode);
-  const subtitle = data.content.publications[0].text;
+  const subtitle = data.content.publications[0] ? data.content.publications[0].text : '';
   return `
   <header class="artefact-header">
     ${title}
@@ -83,12 +83,23 @@ const getLiteratureItems = (data, langCode, baseUrl) => {
     </table>`;
 };
 
+const getAuthors = (data, searchUrl) => {
+  const authors = data.content.authors;
+  if(!authors) return '';
+  const cleanAuthors = authors.replace(/, /g, ',');
+  const authorsList = cleanAuthors.split(/,/).map((author) => {
+    return `<a class="has-interaction" href="${searchUrl}?kind=literature_references&search_term=${author.replace(/ /, "+")}">${author}</a>`;
+  });
+  return authorsList.join(', ');
+};
+
 // eslint-disable-next-line func-names
 exports.render = function (pageData) {
   const data = pageData;
   langCode = getLangCode(data);
   config = this.getConfig();
   const baseUrl = this.getBaseUrl();
+  const cranachSearchURL = config.cranachSearchURL.replace(/langCode/, langCode);
 
   data.content.currentCollection = data.collections[data.collectionID];
   data.content.entityType = data.entityType;
@@ -103,6 +114,8 @@ exports.render = function (pageData) {
   data.content.description = `${data.content.textCategory}, ${data.content.shortTitle}, ${data.content.authors}`;
   const metaDataHead = metaDataHeader.getHeader(data);
   const literatureItems = getLiteratureItems(data, langCode, baseUrl);
+
+  const authors = getAuthors(data, cranachSearchURL);
   
   // const citeCda = citeCdaSnippet.getCiteCDA(this, data, langCode);
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
@@ -136,7 +149,7 @@ exports.render = function (pageData) {
                   <dt class="definition-list__term">${this.translate('kuerzel', langCode)}</dt>
                   <dd class="definition-list__definition">${data.content.shortTitle}</dd>
                   <dt class="definition-list__term">${this.translate('author', langCode)}, ${this.translate('publisher', langCode)}</dt>
-                  <dd class="definition-list__definition">${data.content.authors}</dd>
+                  <dd class="definition-list__definition">${authors}</dd>
                   <dt class="definition-list__term">${this.translate('title', langCode)}</dt>
                   <dd class="definition-list__definition">${documentTitle}</dd>
                   <dt class="definition-list__term">${this.translate('publishLocation', langCode)}</dt>

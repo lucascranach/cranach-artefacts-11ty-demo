@@ -11,7 +11,6 @@ const getSources = (params) => {
   const prefix = content.metadata.id;
   const additionalCss = hasGrayBackground ? 'with-gray-background' : '';
   const getLiteraturDetails = (item) => {
-    const linkToLiteraturePage = `../literature-${item.referenceId}`;
     const author = item && item.persons ? item.persons.filter((person) => person.role === 'AUTHOR').map((person) => person.name) : [];
     const publisher = item && item.persons
       ? item.persons.filter((person) => person.role === 'PUBLISHER' || person.role === 'UNKNOWN').map((person) => person.name) : [];
@@ -27,6 +26,14 @@ const getSources = (params) => {
           <th>${eleventy.translate(translationID, langCode)}</th>
           <td><a class="has-interaction" href="${eleventy.stripTags(rowContent)}" target="_blank">${eleventy.stripTags(rowContent)}</a></td>
         </tr>`);
+    const getLinkToLiteraturePage = () => {
+      if(!item) return '';
+      const linkToLiteraturePage = `../literature-${item.referenceId}`;
+
+      return `<div class="link-to-item-wrap">
+        <a href="${linkToLiteraturePage}" class="link-to-item">${eleventy.translate('showLiterature', langCode)}</a>
+      </div>`;
+    }
 
     return `
       <table class="literature-item-details-table">
@@ -53,9 +60,7 @@ const getSources = (params) => {
         ${getRow(alternateNumbers.join(', '), 'alternativeNumbers')}
       </table>
 
-      <div class="link-to-item-wrap">
-        <a href="${linkToLiteraturePage}" class="link-to-item">${eleventy.translate('showLiterature', langCode)}</a>
-      </div>
+      ${getLinkToLiteraturePage()}
     `;
   };
 
