@@ -15,7 +15,7 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "onlyDevObjects": false,
+  "onlyDevObjects": true,
   "generateLiterature": true,
   "generateAuthors": false,
   "generatePaintings": true,
@@ -215,7 +215,7 @@ const getPaintingsCollection = (lang) => {
 
 const getLiteratureCollection = (lang) => {
   const literatureForLang = literatureData[lang];
-  const devObjects = ["27765", "466", "136", "29373"];
+  const devObjects = ["27765", "466", "136", "29373", "29998"];
 
   const literature = config.onlyDevObjects === true
     ? literatureForLang.items.filter(item => devObjects.includes(item.referenceId))

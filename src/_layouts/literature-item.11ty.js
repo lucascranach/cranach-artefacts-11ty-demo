@@ -22,7 +22,7 @@ const getHeader = (data) => {
   </header>`;
 };
 
-const getLiteratureItems = (data, langCode, baseUrl) => {
+const getliteratureArtefactItems = (data, langCode, baseUrl) => {
   const litItems = data.content.connectedObjects;
   if(!litItems) return '';
 
@@ -83,15 +83,55 @@ const getLiteratureItems = (data, langCode, baseUrl) => {
     </table>`;
 };
 
-const getAuthors = (data, searchUrl) => {
-  const searchUrlIntern = searchUrl.replace(/de\/search/, 'de/intern/search');
-  const authors = data.content.authors;
-  if(!authors) return '';
-  const cleanAuthors = authors.replace(/, /g, ',');
-  const authorsList = cleanAuthors.split(/,/).map((author) => {
-    return `<a class="has-interaction is-stupid-link" href="${searchUrlIntern}?kind=literature_references&search_term=${author.replace(/ /g, "+")}">${author}</a>`;
-  });
-  return authorsList.join(', ');
+const getLiteratureDetails = (content, langCode, cranachSearchURL, documentTitle) => {
+
+  const getAuthors = (content, searchUrl) => {
+    const searchUrlIntern = searchUrl.replace(/de\/search/, 'de/intern/search');
+    const authors = content.authors;
+    if(!authors) return '';
+    const cleanAuthors = authors.replace(/, /g, ',');
+    const authorsList = cleanAuthors.split(/,/).map((author) => {
+      return `<a class="has-interaction is-stupid-link" href="${searchUrlIntern}?kind=literature_references&search_term=${author.replace(/ /g, "+")}">${author}</a>`;
+    });
+    return authorsList.join(', ');
+  };
+
+  const getEntry = (rowContent, translationID) => (!rowContent ? ''
+    : `<dt class="definition-list__term">${this.translate(translationID, langCode)}</dt><dd class="definition-list__definition">${this.stripTags(rowContent)}</dd>` );
+
+  const alternateNumbers = (!content || !content.alternateNumbers) ? []
+    : content.alternateNumbers.map((alternateNumber) => `${alternateNumber.description} ${alternateNumber.number}`);
+
+  const authors = getAuthors(content, cranachSearchURL);
+
+  return `
+    <dl class="definition-list is-grid is-loose">
+      <dt class="definition-list__term">${this.translate('kuerzel', langCode)}</dt>
+      <dd class="definition-list__definition">${content.shortTitle}</dd>
+      <dt class="definition-list__term">${this.translate('author', langCode)}, ${this.translate('publisher', langCode)}</dt>
+      <dd class="definition-list__definition">${authors}</dd>
+      <dt class="definition-list__term">${this.translate('title', langCode)}</dt>
+      <dd class="definition-list__definition">${documentTitle}</dd>
+      ${content.subtitle ? getEntry(content.subtitle, 'publication') : ''}
+      ${content.pages ? getEntry(content.pages, 'pages') : ''}
+      ${content.series ? getEntry(content.series, 'series') : ''}
+      ${content.volume ? getEntry(content.volume, 'volume') : ''}
+      ${content.journal ? getEntry(content.journal, 'journal') : ''}
+      ${content.issue ? getEntry(content.issue, 'issue') : ''}
+      ${content.publication ? getEntry(content.publication, 'publication') : ''}
+      ${content.publishLocation ? getEntry(content.publishLocation, 'publishLocation') : ''}
+      ${content.edition ? getEntry(content.edition, 'publishEdition') : ''}
+      ${content.publishDate ? getEntry(content.publishDate, 'publishDate') : ''}
+      ${content.periodOfOrigin ? getEntry(content.periodOfOrigin, 'periodOfOrigin') : ''}
+      ${content.physicalDescription ? getEntry(content.physicalDescription, 'physicalDescription') : ''}
+      ${content.mention ? getEntry(content.mention, 'mention') : ''}
+      ${content.link ? getEntry(content.link, 'permalink') : ''}
+      ${content.copyright ? getEntry(content.copyright, 'link') : ''}
+      ${content.pageNumbers ? getEntry(content.pageNumbers, 'pages') : ''}
+      ${getEntry(alternateNumbers.join(', '), 'alternativeNumbers')}
+    </dl>
+  `;
+
 };
 
 // eslint-disable-next-line func-names
@@ -114,9 +154,9 @@ exports.render = function (pageData) {
 
   data.content.description = `${data.content.textCategory}, ${data.content.shortTitle}, ${data.content.authors}`;
   const metaDataHead = metaDataHeader.getHeader(data);
-  const literatureItems = getLiteratureItems(data, langCode, baseUrl);
+  const literatureArtefactItems = getliteratureArtefactItems(data, langCode, baseUrl);
 
-  const authors = getAuthors(data, cranachSearchURL);
+  const literatureDetails = getLiteratureDetails(data.content, langCode, cranachSearchURL, documentTitle);
   
   // const citeCda = citeCdaSnippet.getCiteCDA(this, data, langCode);
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
@@ -158,21 +198,10 @@ exports.render = function (pageData) {
           </div>
           <div class="grid-wrapper">
             <div class="main-column">
-                <dl class="definition-list is-grid is-loose">
-                  <dt class="definition-list__term">${this.translate('kuerzel', langCode)}</dt>
-                  <dd class="definition-list__definition">${data.content.shortTitle}</dd>
-                  <dt class="definition-list__term">${this.translate('author', langCode)}, ${this.translate('publisher', langCode)}</dt>
-                  <dd class="definition-list__definition">${authors}</dd>
-                  <dt class="definition-list__term">${this.translate('title', langCode)}</dt>
-                  <dd class="definition-list__definition">${documentTitle}</dd>
-                  <dt class="definition-list__term">${this.translate('publishLocation', langCode)}</dt>
-                  <dd class="definition-list__definition">${data.content.publishLocation}</dd>
-                  <dt class="definition-list__term">${this.translate('publishDate', langCode)}</dt>
-                  <dd class="definition-list__definition">${data.content.publishDate}</dd>
-                </dl>
+              ${literatureDetails}
             </div>
             <div class="marginal-content">
-              ${literatureItems}
+              ${literatureArtefactItems}
             </div>
           </div>
         </section>
