@@ -602,5 +602,9 @@
   "showLiterature": {
     "de": "Literatur anzeigen",
     "en": "Show Literature"
+  },
+  "worksDiscussedInPublication":{
+    "de": "In der Publikation besprochene Werke",
+    "en": "Works discussed in publication"
   }
 }

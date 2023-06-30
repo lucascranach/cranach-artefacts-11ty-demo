@@ -12,6 +12,17 @@
   .grid-wrapper {
     .main-column {
       max-width: $column-large;
+      padding-bottom: var(--responsive-padding-bottom); 
+    }
+
+    .marginal-content {
+      padding-top: $m;
+
+      border-top: solid $border-stroke-weight-s $darken;
+      
+      & > h3{
+        margin-top: 0;
+      }
     }
 
     @media only screen and (min-width: $vp-xlarge) {
@@ -23,6 +34,58 @@
     @media only screen and (min-width: $vp-xxlarge) {
       display: grid;
       grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  .items-table{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-width: $column-large;
+    padding-bottom: $l;
+    border-collapse: separate;
+    border-spacing: 0 $half;
+
+    & th{
+      text-align: left;
+    }
+
+    & tr.related-item-row{
+
+      & > td{
+        border-bottom: solid $border-stroke-weight-s $accent;
+        background: $lighter;
+      }
+
+      & > td.related-item-image-field{
+        width: $image-small;
+
+        padding: $xs $m;
+        
+        .related-item{
+          position: relative;
+          background-color: $lighter;
+
+          &__image-holder{
+            position: relative;
+            width: 100%;
+            padding-top: 100%;
+            border-top: 1px solid rgba(255,255,255,.2);
+
+            & img{
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              display: block;
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
+        }
+      }
     }
   }
 }

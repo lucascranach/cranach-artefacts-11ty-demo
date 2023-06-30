@@ -49,10 +49,10 @@ const getliteratureArtefactItems = (data, langCode, baseUrl) => {
 
     return `
     <tr class="related-item-row">
-      <td>
+      <td class="related-item-image-field">
         <a href="${itemObjectLink}">
           <figure class="related-item">
-            <div class="related-item__image">
+            <div class="related-item__image-holder">
               <img loading="lazy" src="${this.url(itemData.metadata.imgSrc)}" alt="${itemData.metadata.title}">
             </div>
           </figure>
@@ -66,7 +66,7 @@ const getliteratureArtefactItems = (data, langCode, baseUrl) => {
     </tr>
     `;
   });
-  return `<table class="literature-table sortable">
+  return `<table class="items-table sortable">
     <thead>
       <tr>
         <th></th>
@@ -201,7 +201,11 @@ exports.render = function (pageData) {
               ${literatureDetails}
             </div>
             <div class="marginal-content">
-              ${literatureArtefactItems}
+              <h3>${this.translate('worksDiscussedInPublication', langCode)}</h3>
+
+              <div class="responsive-table-wrap">
+                ${literatureArtefactItems}
+              </div>
             </div>
           </div>
         </section>
