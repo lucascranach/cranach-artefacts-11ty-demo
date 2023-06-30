@@ -7,6 +7,11 @@ exports.getHeader = ({ content }) => {
     ? `${content.description.substr(0, descLength)} …`
     : content.description;
 
+  const currentDay= new Date().getDate();
+  const currentMonth = new Date().getMonth() +1;
+  const currentYear = new Date().getFullYear();
+  const publishDate = `${currentYear}-${currentMonth}-${currentDay}`;
+
   return `
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta property="og:title" content="${title}">
@@ -15,6 +20,7 @@ exports.getHeader = ({ content }) => {
     <meta property="og:image" content="${image}">
     <meta property="og:type" content="website">
     <meta name="description" content="${desc}">
-    <meta name="author" content="Christian Noss // TH Köln // Adcanced Media Institute">
+    <meta property="article:published_time" content="${publishDate}">
+    <meta name="author" content="Cranach Digital Archive Team // TH Köln">
   `;
 };

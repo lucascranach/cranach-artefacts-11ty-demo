@@ -1,1 +1,0 @@
-rsync -avz --delete -e ssh ./docs/ cnoss@lucascranach.org:/home/cnoss/web/html/artefacts/
