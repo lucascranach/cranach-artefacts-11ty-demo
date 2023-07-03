@@ -558,6 +558,14 @@
   "zur-suche": {
     "de": "zur Suche",
     "en": "go to search"
+  }, 
+  "zur-werksuche": {
+    "de": "zur Werksuche",
+    "en": "go to works search"
+  },
+  "zur-literatursuche": {
+    "de": "zur Literatursuche",
+    "en": "go to literature search"
   },
   "trans-to": {
     "de": "Transkription nach",

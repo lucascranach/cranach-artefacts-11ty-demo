@@ -162,7 +162,7 @@ exports.render = function (pageData) {
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
   const copyright = copyrightSnippet.getCopyright();
   const pageDate = pageDateSnippet.getPageDate(this, langCode);
-  const navigation = navigationSnippet.getNavigation(this, langCode, id);
+  const navigation = navigationSnippet.getNavigation(this, langCode, id, 'literature');
 
   const cranachCollectBaseUrl = this.getCranachCollectBaseUrl();
   const cranachCollectScript = config.cranachCollect.script;

@@ -1,16 +1,19 @@
-exports.getNavigation = (eleventy, langCode, objectId) => {
+exports.getNavigation = (eleventy, langCode, objectId, type) => {
   const config = eleventy.getConfig();
-  const cranachSearchURL = config.cranachSearchURL.replace(/langCode/, langCode);
+  const serachSuffix = type === 'literature' ? 'kind=literature_references' : 'kind=works';
+  const cranachSearchURL = `${config.cranachSearchURL.replace(/langCode/, langCode)}?${serachSuffix}`;
   const urlDe = `${eleventy.getBaseUrl()}/de/${objectId}/`;
   const urlEn = `${eleventy.getBaseUrl()}/en/${objectId}/`;
+  const text = type === 'literature' ? 'zur-literatursuche' : 'zur-werksuche';
+  const icon = type === 'literature' ? 'reorder' : 'apps';
   const isActiveDe = langCode === 'de' ? 'lang-selector__item--is-active' : '';
   const isActiveEn = langCode === 'en' ? 'lang-selector__item--is-active' : '';
 
   return `
     <nav class="main-navigation js-navigation">
       <a class="button button--is-transparent js-go-to-search" href="${cranachSearchURL}">
-        <span class="button__icon button__icon--is-large icon has-interaction">apps</span>
-        <span class="button__text button__text--is-important js-go-to-search-text">${eleventy.translate('zur-suche', langCode)}</span>
+        <span class="button__icon button__icon--is-large icon has-interaction">${icon}</span>
+        <span class="button__text button__text--is-important js-go-to-search-text">${eleventy.translate(text, langCode)}</span>
       </a>
       <div class="secondary-navigation">
         <div class="options js-options">

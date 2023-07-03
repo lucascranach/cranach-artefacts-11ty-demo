@@ -48,6 +48,27 @@
 
     & th{
       text-align: left;
+
+      &:hover {
+        cursor: pointer;
+      }
+  
+      &.dir-u:after,
+      &.dir-d:after {
+        display: inline-block;
+        padding: 0 $quad;
+        color: $accent-dark;
+        content: "filter_list";
+        font-family: $font-icons;
+        font-size: $m;
+        font-weight: $fw-bold;
+        transition: transform $tr-fast, background-color $tr-fast;
+        vertical-align: bottom;
+      }
+  
+      &.dir-d:after {
+        transform: rotate(180deg);
+      }
     }
 
     & tr.related-item-row{
