@@ -174,7 +174,7 @@ const markRemarks = str => {
   const mark = (match, str) => {
     return `<span class="is-remark">[${str}]</span>`;
   }
-  str = str.replace(/\[(.*)]/g, mark);
+  str = str.replace(/\[(.*?)]/g, mark);
   return str;
 }
 
