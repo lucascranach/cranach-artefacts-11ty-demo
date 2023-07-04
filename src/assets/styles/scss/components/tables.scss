@@ -225,7 +225,7 @@
     &.dir-u:after,
     &.dir-d:after {
       display: inline-block;
-      padding: 0 $quad;
+      padding: 0 $half;
       color: $accent-dark;
       content: "filter_list";
       font-family: $font-icons;

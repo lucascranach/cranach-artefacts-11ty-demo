@@ -14,7 +14,9 @@ exports.getCiteCDA = (eleventy, data, langCode) => {
     </dl>
   `;
 
-  citeTemplate = citeTemplate.replace(/{{objectTitle}}/g, data.content.metadata.title);
+  const maxLength = 120;
+  const shortenText = data.content.metadata.title.length > maxLength ? `${data.content.metadata.title.substring(0, maxLength)}…` : data.content.metadata.title;
+  citeTemplate = citeTemplate.replace(/{{objectTitle}}/g, shortenText);
   citeTemplate = citeTemplate.replace(/{{objectUrl}}/g, data.content.url);
 
   return citeTemplate;

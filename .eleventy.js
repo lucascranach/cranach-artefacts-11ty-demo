@@ -215,7 +215,7 @@ const getPaintingsCollection = (lang) => {
 
 const getLiteratureCollection = (lang) => {
   const literatureForLang = literatureData[lang];
-  const devObjects = ["27765", "466", "136", "29373", "29998", "27655"];
+  const devObjects = ["27765", "466", "136", "29373", "29998", "27655", "160"];
 
   const literature = config.onlyDevObjects === true
     ? literatureForLang.items.filter(item => devObjects.includes(item.referenceId))

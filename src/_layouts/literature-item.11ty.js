@@ -96,8 +96,11 @@ const getLiteratureDetails = (content, langCode, cranachSearchURL, documentTitle
     return authorsList.join(', ');
   };
 
-  const getEntry = (rowContent, translationID) => (!rowContent ? ''
-    : `<dt class="definition-list__term">${this.translate(translationID, langCode)}</dt><dd class="definition-list__definition">${this.stripTags(rowContent)}</dd>` );
+  const getEntry = (rowContent, translationID) => {
+    if(!rowContent) return '';
+    const content = rowContent.match(/^http/) ? `<a href="${rowContent}" class="has-interaction is-link">${rowContent}</a>` : this.stripTags(rowContent);
+    return `<dt class="definition-list__term">${this.translate(translationID, langCode)}</dt><dd class="definition-list__definition">${content}</dd>`;
+  }
 
   const alternateNumbers = (!content || !content.alternateNumbers) ? []
     : content.alternateNumbers.map((alternateNumber) => `${alternateNumber.description} ${alternateNumber.number}`);
