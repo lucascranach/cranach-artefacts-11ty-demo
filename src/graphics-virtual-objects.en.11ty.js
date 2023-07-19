@@ -1,5 +1,5 @@
 exports.data = {
-  layout: 'graphic-virtual-object.11ty.js',
+  layout: 'graphic-virtual-object-item.11ty.js',
   lang: 'en',
   collectionID: 'graphicsVirtualObjectsEN',
   entityType: 'graphicsVirualObject',

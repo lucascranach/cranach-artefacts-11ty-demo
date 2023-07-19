@@ -83,6 +83,10 @@
     "de": "Signatur",
     "en": "Signature"
   },
+  "kuerzel": {
+    "de": "Kürzel",
+    "en": "Signature"
+  },
   "signatureAndDate": {
     "de": "Signatur / Datierung",
     "en": "Signature / Dating"
@@ -187,6 +191,10 @@
     "de": "Katalognummer",
     "en": "Catalogue Number"
   },
+  "figurePlate": {
+    "de": "Abbildung / Tafel",
+    "en": "Figure / Plate"
+  },
   "plate": {
     "de": "Tafel",
     "en": "Figure / Plate"
@@ -248,7 +256,7 @@
     "en": "Copyright"
   },
   "publisher": {
-    "de": "Herausgeber",
+    "de": "Herausgeber/in",
     "en": "Editor"
   },
   "editorialStaff": {
@@ -435,6 +443,10 @@
     "de": "Art der Abbildung",
     "en": "File type / description"
   },
+  "textCategory": {
+    "de": "Textart",
+    "en": "Text Category"
+  },
   "citeCdaHeadline": {
     "de": "Zitieren aus dem Cranach Digital Archive",
     "en": "Citing from the Cranach Digital Archive"
@@ -546,6 +558,14 @@
   "zur-suche": {
     "de": "zur Suche",
     "en": "go to search"
+  }, 
+  "zur-werksuche": {
+    "de": "zur Werksuche",
+    "en": "go to works search"
+  },
+  "zur-literatursuche": {
+    "de": "zur Literatursuche",
+    "en": "go to literature search"
   },
   "trans-to": {
     "de": "Transkription nach",
@@ -586,5 +606,13 @@
   "description-interpretation-comments": {
     "de": "Forschungsgeschichte / Diskussion",
     "en": "Research History / Discussion"
+  },
+  "showLiterature": {
+    "de": "Literatur anzeigen",
+    "en": "Show Literature"
+  },
+  "worksDiscussedInPublication":{
+    "de": "In der Publikation besprochene Werke",
+    "en": "Works discussed in publication"
   }
 }

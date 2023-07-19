@@ -14,6 +14,18 @@ body {
 a {
   color: $darkest;
   text-decoration: none;
+
+  &.link{
+    border-bottom: solid $border-stroke-weight-s $accent;
+    transition: all $tr-fast;
+
+    &:hover{
+      display: inline-block;
+      padding-right: $quad;
+      padding-left: $quad;
+      background-color: $accent;
+    }
+  }
 }
 
 a[target=_blank] {
@@ -31,6 +43,8 @@ a[target=_blank] {
     background-color: $accent;
   }
 }
+
+
 
 /* Title & Subtitle
 ---------------------------------------------------------------------------- */

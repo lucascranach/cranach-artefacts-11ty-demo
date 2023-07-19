@@ -1,5 +1,5 @@
 exports.data = {
-  layout: "archival.11ty.js",
+  layout: "archival-item.11ty.js",
   lang: "de",
   collectionID: "archivalsDE",
   entityType: "archivals",

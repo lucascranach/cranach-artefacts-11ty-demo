@@ -26,6 +26,10 @@
   opacity: 1;
 }
 
+.is-stupid-link{
+  border-bottom: solid $border-stroke-weight-s $accent;
+}
+
 .is-less-important {
   opacity: $op-medium;
 }

@@ -42,6 +42,10 @@
     font-size: $xl;
     font-weight: $fw-light;
   }
+
+  & > .button{
+    padding-left:0;
+  }
 }
 
 

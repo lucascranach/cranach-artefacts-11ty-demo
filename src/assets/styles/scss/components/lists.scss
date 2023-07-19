@@ -24,7 +24,6 @@ ul {
   overflow: hidden;
   width: 100%;
   margin-top: 0;
-  margin-bottom: 0;
   font-weight: $fw-light;
 
   $self: &;
@@ -45,13 +44,10 @@ ul {
 
   &__term {
     padding-right: $quad;
+    padding-right: $s;
     font-weight: $fw-regular;
     hyphens: none;
     line-height: $lh-normal;
-
-    &::after {
-      content: ":";
-    }
   }
 
   &__definition {
@@ -75,12 +71,33 @@ ul {
 
   &__term,
   &__definition {
+    padding-top: $xxs;
     padding-bottom: $xs;
+    border-top: solid $border-stroke-weight-s $darken;
+  }
+
+  $this: &;
+  
+  &.is-loose{
+    #{$this}__term,
+    #{$this}__definition {
+      padding-top: $xs;
+    }
   }
 
   &.is-stacked {
     #{$self}__definition + #{$self}__term {
       margin-top: $m;
     }
+  }
+}
+
+// Artefact List
+//-----------------------------------------------------------------------------
+
+.artefact-list{
+  &__content{
+    display: grid;
+    grid-template-columns: auto;
   }
 }

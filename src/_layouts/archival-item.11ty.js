@@ -28,7 +28,7 @@ const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
 const getHeader = (data) => {
-  const title = titleSnippet.getTitleAsText(this, data, langCode);
+  const title = titleSnippet.getTitle(this, data, langCode);
   const archival = this.translate('archival', langCode);
   
   return `
@@ -64,6 +64,9 @@ exports.render = function (pageData) {
   const translationsClient = getClientTranslations(data);
 
   const location = locationSnippet.getArchivalLocation(this, data, langCode);
+
+  const archival = this.translate('archival', langCode);
+  data.content.description = `${getDocumentTitle(data)}, ${archival}`;
   const metaDataHead = metaDataHeader.getHeader(data);
   const image = representantImageSnippet.getRepresentant(this, data);
   const dating = datingSnippet.getDating(this, data, langCode);
@@ -88,7 +91,6 @@ exports.render = function (pageData) {
     <head>
       <title>cda :: ${this.translate('paintings', langCode)} :: ${documentTitle}</title>
       ${metaDataHead}
-      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
       <link href="${this.url('/compiled-assets/main.css')}" rel="stylesheet">
       <link href="${this.url('/assets/images/favicon.svg')}" rel="icon" type="image/svg">
       <script>

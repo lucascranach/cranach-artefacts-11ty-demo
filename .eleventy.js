@@ -16,6 +16,8 @@ const config = {
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
   "onlyDevObjects": false,
+  "generateLiterature": true,
+  "generateAuthors": false,
   "generatePaintings": true,
   "generateArchivals": true,
   "generateGraphicsVirtualObjects": true,
@@ -172,7 +174,7 @@ const markRemarks = str => {
   const mark = (match, str) => {
     return `<span class="is-remark">[${str}]</span>`;
   }
-  str = str.replace(/\[(.*)]/g, mark);
+  str = str.replace(/\[(.*?)]/g, mark);
   return str;
 }
 
@@ -190,10 +192,9 @@ const appendToFile = (path, str) => {
   fs.appendFileSync(filepath, str);
 }
 
-
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51"];
+  const devObjects = ["AT_KHM_GG6905","PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51", "DE_SMF_1398B"];
 
   const paintings = config.onlyDevObjects === true
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -212,13 +213,81 @@ const getPaintingsCollection = (lang) => {
   return publishedPaintings;
 }
 
+const getLiteratureCollection = (lang) => {
+  const literatureForLang = literatureData[lang];
+  const devObjects = ["27765", "466", "136", "29373", "29998", "27655", "160"];
+
+  const literature = config.onlyDevObjects === true
+    ? literatureForLang.items.filter(item => devObjects.includes(item.referenceId))
+    : literatureForLang.items; //.filter(item => item.metadata.id == 30838 );
+
+  let sortedLiterature = literature.sort((a, b) => {
+    if (a.searchSortingNumber < b.searchSortingNumber) return -1;
+    if (a.searchSortingNumber > b.searchSortingNumber) return 1;
+    return 0;
+  });
+
+  if (process.env.ELEVENTY_ENV === 'preview'
+    || process.env.ELEVENTY_ENV === 'development') return sortedLiterature;
+
+  return sortedLiterature;
+}
+
+const getAuthorCollection = (lang) => {
+  const literatureForLang = literatureData[lang];
+  const devObjects = ["27765", "466", "29373"];
+
+  const literature = config.onlyDevObjects === true
+    ? literatureForLang.items.filter(item => devObjects.includes(item.referenceId))
+    : literatureForLang.items; //.filter(item => item.metadata.id == 30838 );
+
+  const authors = literature.map(item => item.authors.split(", ")).flat().sort();
+  const uniqueAuthors = [...new Set(authors)];
+
+  const structuredAuthors = uniqueAuthors.map(item => {
+    if(!item.match(/(.*) (.*)/)) return false;
+    const author = item.match(/(.*) (.*)/);
+    return {
+      id: slugify(item),
+      title: item,
+      firstName: author[1],
+      lastName: author[2],
+      metadata: {
+        langCode: lang,
+        title: item
+      }
+    }
+  });
+
+  const filteredAuthors = structuredAuthors.filter(item => item.id !== undefined);
+
+  // Leider gibt es kleine Schreibfehler, darum muss hier nochmal gefiltert werden
+  const seen = new Set();
+  const uniqueAuthorObjects = filteredAuthors.filter(item => {
+    const duplicate = seen.has(item.id);
+    seen.add(item.id);
+    return !duplicate;
+  });
+
+  const sortedAuthors = uniqueAuthorObjects.sort((a, b) => {
+    if (a.lastName < b.lastName) return -1;
+    if (a.lastName > b.lastName) return 1;
+    return 0;
+  });
+  
+  if (process.env.ELEVENTY_ENV === 'preview'
+    || process.env.ELEVENTY_ENV === 'development') return sortedAuthors;
+
+  return sortedAuthors;
+}
+
 const getArchivalsCollection = (lang) => {
   const archivalsForLang = archivalsData[lang];
-  const devObjects = ["PRIVATE_NONE-P409"]; // , "DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739"
+  const devObjects = ["PRIVATE_NONE-P409", "DE_ThHStAW_EGA_Reg-Bb_2746_17v"]; // , "DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739"
 
   const archivals = process.env.ELEVENTY_ENV === 'development'
-    ? archivalsForLang.items
-    : archivalsForLang.items; // .filter(item => devObjects.includes(item.inventoryNumber));
+    ? archivalsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
+    : archivalsForLang.items;
   
   let sortedArchivals = archivals.sort((a, b) => {
     if (a.period < b.period) return -1;
@@ -274,6 +343,16 @@ const markdownify = (str, mode = 'full') => {
 
   return `<div class="markdown-it">${renderedText}</div>`;
 }
+
+const slugify = (str) => {
+  str = str.replace(/^\s+|\s+$/g, '').toLowerCase();
+  const from = "ÁÄÂÀÃÅČÇĆĎÉĚËÈÊẼĔȆÍÌÎÏŇÑÓÖÒÔÕØŘŔŠŤÚŮÜÙÛÝŸŽáäâàãåčçćďéěëèêẽĕȇíìîïňñóöòôõøðřŕšťúůüùûýÿžþÞĐđßÆa·/_,:;",
+    to = "AAAAAACCCDEEEEEEEEIIIINNOOOOOORRSTUUUUUYYZaaaaaacccdeeeeeeeeiiiinnooooooorrstuuuuuyyzbBDdBAa------";
+  for (var i = 0, l = from.length; i < l; i++) {
+    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+  }
+  return str.replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
+};
 
 const objectsForNavigation = (() => {
   const paintings = getPaintingsCollection("de");
@@ -585,6 +664,21 @@ module.exports = function (eleventyConfig) {
     }
   });
   
+  eleventyConfig.addJavaScriptFunction("getPainting", (inventoryNumber, langCode) => {
+    const paintings = paintingsData[langCode].items;
+    return paintings.find((painting) => painting.inventoryNumber === inventoryNumber);
+  });
+
+  eleventyConfig.addJavaScriptFunction("getLiteratureByAuthor", (author, langCode) => {
+    const literature = literatureData[langCode].items;
+    const literatureFromAuthor =  literature.filter((item) => {
+      if(!item.authors) return false;
+      const maskedAuthor = author.replace(/\(/g, '\\(').replace(/\)/g, '\\)');
+      return item.authors.match(maskedAuthor);
+    });
+    return literatureFromAuthor;
+  });
+
 
   /* Filter
   ########################################################################## */
@@ -603,13 +697,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("slugify", (str) => {
-    str = str.replace(/^\s+|\s+$/g, '').toLowerCase();
-    const from = "ÁÄÂÀÃÅČÇĆĎÉĚËÈÊẼĔȆÍÌÎÏŇÑÓÖÒÔÕØŘŔŠŤÚŮÜÙÛÝŸŽáäâàãåčçćďéěëèêẽĕȇíìîïňñóöòôõøðřŕšťúůüùûýÿžþÞĐđßÆa·/_,:;",
-      to = "AAAAAACCCDEEEEEEEEIIIINNOOOOOORRSTUUUUUYYZaaaaaacccdeeeeeeeeiiiinnooooooorrstuuuuuyyzbBDdBAa------";
-    for (var i = 0, l = from.length; i < l; i++) {
-      str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-    }
-    return str.replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
+    return slugify(str);
   });
 
   /* Collections
@@ -622,6 +710,33 @@ module.exports = function (eleventyConfig) {
       : getPaintingsCollection('de');
   
     return paintingsCollectionDE;
+  });
+
+  eleventyConfig.addCollection("literatureDE", () => {
+    clearRequireCache();
+    const literatureCollectionDE = config.generateLiterature === false
+      ? []
+      : getLiteratureCollection('de');
+  
+    return literatureCollectionDE;
+  });
+
+  eleventyConfig.addCollection("authorsDE", () => {
+    clearRequireCache();
+    const authorCollectionDE = config.generateAuthors === false
+      ? []
+      : getAuthorCollection('de');
+  
+    return authorCollectionDE;
+  });
+
+  eleventyConfig.addCollection("literatureEN", () => {
+    clearRequireCache();
+    const literatureCollectionEN = config.generateLiterature === false
+      ? []
+      : getLiteratureCollection('en');
+  
+    return literatureCollectionEN;
   });
 
   eleventyConfig.addCollection("paintingsEN", () => {

@@ -1,13 +1,13 @@
 exports.data = {
-  layout: "painting-item.11ty.js",
-  lang: "de",
-  collectionID: "paintingsDE",
-  entityType: "paintings",
+  layout: "archival-item.11ty.js",
+  lang: "en",
+  collectionID: "archivalsEN",
+  entityType: "archivals",
   pagination: {
-    data: "collections.paintingsDE",
+    data: "collections.archivalsEN",
     size: 1,
-    alias: "painting",
-    currentCollection: "collections.paintingsDE",
+    alias: "archival",
+    currentCollection: "collections.archivalsEN",
   },
   permalink: function(data){
     const item = data.pagination.items[0];

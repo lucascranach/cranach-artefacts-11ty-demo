@@ -26,6 +26,14 @@ const getSources = (params) => {
           <th>${eleventy.translate(translationID, langCode)}</th>
           <td><a class="has-interaction" href="${eleventy.stripTags(rowContent)}" target="_blank">${eleventy.stripTags(rowContent)}</a></td>
         </tr>`);
+    const getLinkToLiteraturePage = () => {
+      if(!item) return '';
+      const linkToLiteraturePage = `../literature-${item.referenceId}`;
+
+      return `<div class="link-to-item-wrap">
+        <a href="${linkToLiteraturePage}" class="link-to-item">${eleventy.translate('showLiterature', langCode)}</a>
+      </div>`;
+    }
 
     return `
       <table class="literature-item-details-table">
@@ -51,6 +59,8 @@ const getSources = (params) => {
         ${item && item.pageNumbers ? getRow(item.pageNumbers, 'pages') : ''}
         ${getRow(alternateNumbers.join(', '), 'alternativeNumbers')}
       </table>
+
+      ${getLinkToLiteraturePage()}
     `;
   };
 
@@ -90,12 +100,14 @@ const getSources = (params) => {
         pageNumber, catalogNumber, figureNumber,
       };
       const hasBackground = index % 2 ? 'has-bg' : '';
+
       return `
         <tr
           class="row ${hasBackground} is-head" 
           id="litRef${item.referenceId}-${index}">
 
-          <td class="cell has-interaction"><a href="#" data-js-toggle-literature="${item.referenceId}-${index}">${item.title}</a></td>
+          <td class="cell has-interaction"><a href="#" 
+            data-js-toggle-literature="${item.referenceId}-${index}">${item.title}</a></td>
           ${getTableData(tableDataFields, tableStructure)}
         </tr>
         <tr class="row ${hasBackground} is-detail" id="litRefData${item.referenceId}-${index}">
