@@ -208,6 +208,14 @@
                                 "dkultTermIdentifier": "01040516"
                             },
                             "subTerms": []
+                        },
+                        {
+                            "term": "Cleopatra",
+                            "alt": {
+                                "britishEquivalent": "Cleopatra",
+                                "dkultTermIdentifier": "01040517"
+                            },
+                            "subTerms": []
                         }
                     ]
                 },
@@ -2188,9 +2196,9 @@
                                             "subTerms": []
                                         },
                                         {
-                                            "term": "Johann der Beständige, Kurfürst von Sachsen",
+                                            "term": "Johann der Beständige, Kurfürst von Sachsen, 1468-1532",
                                             "alt": {
-                                                "britishEquivalent": "Johann the Steadfast, Elector of Saxony",
+                                                "britishEquivalent": "Johann the Steadfast, Elector of Saxony, 1468-1532",
                                                 "dkultTermIdentifier": "010402010225"
                                             },
                                             "subTerms": []
@@ -2260,9 +2268,9 @@
                                             "subTerms": []
                                         },
                                         {
-                                            "term": "Johann, Herzog von Sachsen",
+                                            "term": "Johann, Herzog von Sachsen, 1498-1537",
                                             "alt": {
-                                                "britishEquivalent": "Johann, Duke of Saxony",
+                                                "britishEquivalent": "Johann, Duke of Saxony, 1498-1537",
                                                 "dkultTermIdentifier": "010402010235"
                                             },
                                             "subTerms": []
@@ -3226,7 +3234,7 @@
                     "term": "Triptychon",
                     "alt": {
                         "britishEquivalent": "Triptych",
-                        "dkultTermIdentifier": "010204"
+                        "dkultTermIdentifier": "010202"
                     },
                     "subTerms": []
                 },
@@ -3234,7 +3242,7 @@
                     "term": "Polyptychon",
                     "alt": {
                         "britishEquivalent": "Polyptych",
-                        "dkultTermIdentifier": "010202"
+                        "dkultTermIdentifier": "010203"
                     },
                     "subTerms": []
                 },
@@ -3242,7 +3250,7 @@
                     "term": "Rundbild",
                     "alt": {
                         "britishEquivalent": "Circular painting\/Tondo",
-                        "dkultTermIdentifier": "010203"
+                        "dkultTermIdentifier": "010204"
                     },
                     "subTerms": []
                 },
@@ -3250,112 +3258,16 @@
                     "term": "Einblatt",
                     "alt": {
                         "britishEquivalent": "Single-leaf woodcut",
-                        "dkultTermIdentifier": "010205"
+                        "dkultTermIdentifier": "010206"
                     },
                     "subTerms": []
                 },
                 {
-                    "term": "Frontispiz",
+                    "term": "Folge\/Serie",
                     "alt": {
-                        "britishEquivalent": "Frontispiece",
+                        "britishEquivalent": "Series",
                         "dkultTermIdentifier": "010207",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300083021"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Illustriertes Buch",
-                    "alt": {
-                        "britishEquivalent": "illustrated book",
-                        "dkultTermIdentifier": "010206",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300311820"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Karte",
-                    "alt": {
-                        "britishEquivalent": "map",
-                        "dkultTermIdentifier": "010208",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300028094"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Miniatur",
-                    "alt": {
-                        "britishEquivalent": "miniature",
-                        "dkultTermIdentifier": "010209",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300033936"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Serie",
-                    "alt": {
-                        "britishEquivalent": "series",
-                        "dkultTermIdentifier": "010212",
                         "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300027349"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Skizzenbuch",
-                    "alt": {
-                        "britishEquivalent": "sketchbook",
-                        "dkultTermIdentifier": "010213",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300027354"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Stammbuch",
-                    "alt": {
-                        "britishEquivalent": "alba amicorum",
-                        "dkultTermIdentifier": "010214",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300374942"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Gebetbuch",
-                    "alt": {
-                        "britishEquivalent": "prayer book",
-                        "dkultTermIdentifier": "010211",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300026476"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Buch",
-                    "alt": {
-                        "britishEquivalent": "Book",
-                        "dkultTermIdentifier": "010210",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300028051"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "I. Zustand",
-                    "alt": {
-                        "britishEquivalent": "1st state",
-                        "dkultTermIdentifier": "010218"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "II. Zustand",
-                    "alt": {
-                        "britishEquivalent": "2nd state",
-                        "dkultTermIdentifier": "010216"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "III. Zustand",
-                    "alt": {
-                        "britishEquivalent": "3rd state",
-                        "dkultTermIdentifier": "010217"
                     },
                     "subTerms": []
                 },
@@ -3363,7 +3275,8 @@
                     "term": "Druckstock",
                     "alt": {
                         "britishEquivalent": "Printing block",
-                        "dkultTermIdentifier": "010215"
+                        "dkultTermIdentifier": "010205",
+                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300161798"
                     },
                     "subTerms": []
                 }
@@ -3395,8 +3308,8 @@
                 {
                     "term": "Studie",
                     "alt": {
-                        "britishEquivalent": "study",
-                        "dkultTermIdentifier": "010105",
+                        "britishEquivalent": "Study",
+                        "dkultTermIdentifier": "010106",
                         "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300081053"
                     },
                     "subTerms": []
@@ -3421,88 +3334,54 @@
                     "term": "Flugblatt",
                     "alt": {
                         "britishEquivalent": "Flier\/Broadside",
-                        "dkultTermIdentifier": "010107",
+                        "dkultTermIdentifier": "010108",
                         "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300224742"
                     },
                     "subTerms": []
                 },
                 {
-                    "term": "Architekturzeichnung",
+                    "term": "Entwurf",
                     "alt": {
-                        "britishEquivalent": "architectural drawing",
-                        "dkultTermIdentifier": "010108",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300034787"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Buchmalerei",
-                    "alt": {
-                        "britishEquivalent": "illumination",
-                        "dkultTermIdentifier": "010110",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300264522"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Chronik",
-                    "alt": {
-                        "britishEquivalent": "chronicle",
-                        "dkultTermIdentifier": "010111",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300026361"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Entwurfszeichnung",
-                    "alt": {
-                        "britishEquivalent": "preliminary drawing",
-                        "dkultTermIdentifier": "010112",
+                        "britishEquivalent": "Preliminary drawing",
+                        "dkultTermIdentifier": "010107",
                         "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300034430"
                     },
-                    "subTerms": []
+                    "subTerms": [
+                        {
+                            "term": "Presentationszeichnung",
+                            "alt": {
+                                "britishEquivalent": "Presentation drawing",
+                                "dkultTermIdentifier": "01010702",
+                                "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300069416"
+                            },
+                            "subTerms": []
+                        },
+                        {
+                            "term": "Vorzeichnung",
+                            "alt": {
+                                "britishEquivalent": "Preparatory drawing",
+                                "dkultTermIdentifier": "01010701",
+                                "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300068293"
+                            },
+                            "subTerms": []
+                        }
+                    ]
                 },
                 {
-                    "term": "Gedenkblatt\/Erinnerungsblatt",
+                    "term": "Karikatur",
                     "alt": {
-                        "britishEquivalent": "commemorative print",
-                        "dkultTermIdentifier": "010113",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300404230"
+                        "britishEquivalent": "Caricature",
+                        "dkultTermIdentifier": "010109",
+                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300015634"
                     },
                     "subTerms": []
                 },
                 {
-                    "term": "Presentationszeichnung",
+                    "term": "Illustration",
                     "alt": {
-                        "britishEquivalent": "presentation drawing",
-                        "dkultTermIdentifier": "010114",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300069416"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Politische Karikatur",
-                    "alt": {
-                        "britishEquivalent": "political cartoon",
-                        "dkultTermIdentifier": "010115",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300123224"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Probedruck",
-                    "alt": {
-                        "britishEquivalent": "proof",
-                        "dkultTermIdentifier": "010116",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300264637"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Vorzeichnung",
-                    "alt": {
-                        "britishEquivalent": "preparatory drawing",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300068293"
+                        "britishEquivalent": "Illustration",
+                        "dkultTermIdentifier": "010105",
+                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300015578"
                     },
                     "subTerms": []
                 }
@@ -3519,7 +3398,7 @@
                     "term": "Flügel",
                     "alt": {
                         "britishEquivalent": "Wing panel",
-                        "dkultTermIdentifier": "010302"
+                        "dkultTermIdentifier": "010301"
                     },
                     "subTerms": []
                 },
@@ -3527,7 +3406,7 @@
                     "term": "Mitteltafel",
                     "alt": {
                         "britishEquivalent": "Central panel",
-                        "dkultTermIdentifier": "010301"
+                        "dkultTermIdentifier": "010302"
                     },
                     "subTerms": []
                 },
@@ -3564,74 +3443,20 @@
                     "subTerms": []
                 },
                 {
-                    "term": "Illustration",
+                    "term": "Titelblatt\/Frontispiz",
                     "alt": {
-                        "britishEquivalent": "Illustration",
+                        "britishEquivalent": "Frontispiece\/Title page",
                         "dkultTermIdentifier": "010307",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300015578"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Titelblatt",
-                    "alt": {
-                        "britishEquivalent": "title page",
-                        "dkultTermIdentifier": "010309",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300055033"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Devise",
-                    "alt": {
-                        "britishEquivalent": "symbol\/motto",
-                        "dkultTermIdentifier": "010308",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300028714"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Bucheinband",
-                    "alt": {
-                        "britishEquivalent": "binding",
-                        "dkultTermIdentifier": "010310",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300055023"
+                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300083021"
                     },
                     "subTerms": []
                 },
                 {
                     "term": "Initiale",
                     "alt": {
-                        "britishEquivalent": "initial",
-                        "dkultTermIdentifier": "010311",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300168055"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Inschrift",
-                    "alt": {
-                        "britishEquivalent": "Inscription",
-                        "dkultTermIdentifier": "010312",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300028702"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Recto",
-                    "alt": {
-                        "britishEquivalent": "recto",
-                        "dkultTermIdentifier": "010313",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300078817"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Verso",
-                    "alt": {
-                        "britishEquivalent": "verso",
-                        "dkultTermIdentifier": "010314",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300010292"
+                        "britishEquivalent": "Decorated initial",
+                        "dkultTermIdentifier": "010308",
+                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300417548"
                     },
                     "subTerms": []
                 },
@@ -3656,27 +3481,65 @@
                 {
                     "term": "Holzschnitt",
                     "alt": {
-                        "britishEquivalent": "woodcut",
-                        "dkultTermIdentifier": "010501",
+                        "britishEquivalent": "Woodcut",
+                        "dkultTermIdentifier": "010505",
                         "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300041405"
                     },
-                    "subTerms": []
+                    "subTerms": [
+                        {
+                            "term": "Clair-obscure",
+                            "alt": {
+                                "britishEquivalent": "Chiaroscuro woodcut",
+                                "dkultTermIdentifier": "01050501",
+                                "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300041410"
+                            },
+                            "subTerms": []
+                        },
+                        {
+                            "term": "Farbdruck",
+                            "alt": {
+                                "britishEquivalent": "Colour print",
+                                "dkultTermIdentifier": "01050502",
+                                "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300041504"
+                            },
+                            "subTerms": []
+                        },
+                        {
+                            "term": "Kolorierung",
+                            "alt": {
+                                "britishEquivalent": "Hand-coloured",
+                                "dkultTermIdentifier": "01050503",
+                                "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300248263"
+                            },
+                            "subTerms": []
+                        }
+                    ]
                 },
                 {
                     "term": "Kupferstich",
                     "alt": {
-                        "britishEquivalent": "engraving",
-                        "dkultTermIdentifier": "010502",
+                        "britishEquivalent": "Engraving",
+                        "dkultTermIdentifier": "010506",
                         "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300041340"
                     },
-                    "subTerms": []
+                    "subTerms": [
+                        {
+                            "term": "Kolorierung",
+                            "alt": {
+                                "britishEquivalent": "Hand-coloured",
+                                "dkultTermIdentifier": "01050601",
+                                "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300041504"
+                            },
+                            "subTerms": []
+                        }
+                    ]
                 },
                 {
                     "term": "Zeichnung",
                     "alt": {
                         "britishEquivalent": "Drawing",
-                        "dkultTermIdentifier": "010503",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300033973"
+                        "dkultTermIdentifier": "010501",
+                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300034698"
                     },
                     "subTerms": []
                 },
@@ -3684,42 +3547,35 @@
                     "term": "Typendruck",
                     "alt": {
                         "britishEquivalent": "Letterpress",
+                        "dkultTermIdentifier": "010507",
+                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300195853"
+                    },
+                    "subTerms": []
+                },
+                {
+                    "term": "Buchmalerei",
+                    "alt": {
+                        "britishEquivalent": "Illumination",
                         "dkultTermIdentifier": "010504",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300178926"
+                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300220539"
                     },
                     "subTerms": []
                 },
                 {
-                    "term": "Handkoloriert",
+                    "term": "Tafelmalerei",
                     "alt": {
-                        "britishEquivalent": "Hand-coloured",
-                        "dkultTermIdentifier": "010505",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300248263"
+                        "britishEquivalent": "Panel painting",
+                        "dkultTermIdentifier": "010502",
+                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300178675"
                     },
                     "subTerms": []
                 },
                 {
-                    "term": "Helldunkelschnitt",
+                    "term": "Malerei auf textilem Träger",
                     "alt": {
-                        "britishEquivalent": "Chiaroscuro woodcut",
-                        "dkultTermIdentifier": "010506",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300041410"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Federzeichnung",
-                    "alt": {
-                        "britishEquivalent": "pen and ink drawing",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300404676"
-                    },
-                    "subTerms": []
-                },
-                {
-                    "term": "Lavierte Federzeichnung",
-                    "alt": {
-                        "britishEquivalent": "pen and wash drawing",
-                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300266219"
+                        "britishEquivalent": "Canvas painting",
+                        "dkultTermIdentifier": "010503",
+                        "aatTermId": "http:\/\/vocab.getty.edu\/page\/aat\/300410350"
                     },
                     "subTerms": []
                 }
