@@ -311,7 +311,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"];
+  const devObjects = ["ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"];
   
   const graphicsVirtualObjects = config.onlyDevObjects === true
     ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -543,11 +543,11 @@ module.exports = function (eleventyConfig) {
     const rows = content.map(item => {
       if(!item.remark) return;
       const remarkData = item.remark.match(/\[(.*?)\]\((.*?)\)/) 
-        ? item.remark.replace(/\[(.*?)\]\((.*?)\)/, '<a class="link-to-source" href="$2">[$1]</a>') 
+        ? item.remark.replace(/\[(.*?)\]\((.*?)\)/g, '<a class="link-to-source" href="$2">[$1]</a>') 
         : item.remark;
       const remark = item.remark ? `<td class="info-table__remark">${markdownify(remarkData)}</td>` : '<td class="info-table__remark">-</td>';
       return `
-          <tr><td class="info-table__data ${additionalCellClass}">${markdownify(item.text)}</td>${remark}</tr>
+          <tr><td class="info-table__data ${additionalCellClass}">${item.text}</td>${remark}</tr>
         `;
     });
 
