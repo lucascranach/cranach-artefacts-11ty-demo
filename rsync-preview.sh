@@ -1,1 +1,1 @@
-rsync -avz -e 'ssh -p 1602' ./docs/ cnoss@lucascranach.org:/home/cnoss/html/artefacts/
+rsync -avz -e 'ssh -p 1602' ./docs/ cnoss@lucascranach.org:/home/cnoss/html/intern/artefacts/
