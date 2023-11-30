@@ -15,11 +15,11 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "onlyDevObjects": false,
-  "generateLiterature": true,
+  "onlyDevObjects": true,
+  "generateLiterature": false,
   "generateAuthors": false,
   "generatePaintings": true,
-  "generateArchivals": true,
+  "generateArchivals": false,
   "generateGraphicsVirtualObjects": true,
   "pathPrefix": {
     "production": "artefacts",
@@ -311,7 +311,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"];
+  const devObjects = ["LC_HVI-56_79"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
   
   const graphicsVirtualObjects = config.onlyDevObjects === true
     ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -542,6 +542,8 @@ module.exports = function (eleventyConfig) {
 
     const rows = content.map(item => {
       if(!item.remark) return;
+
+      console.log(item)
       const remarkData = item.remark.match(/\[(.*?)\]\((.*?)\)/) 
         ? item.remark.replace(/\[(.*?)\]\((.*?)\)/g, '<a class="link-to-source" href="$2">[$1]</a>') 
         : item.remark;
