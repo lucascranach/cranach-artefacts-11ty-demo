@@ -1,7 +1,6 @@
 exports.getNavigation = (eleventy, langCode, objectId, type) => {
   const config = eleventy.getConfig();
-  const serachSuffix = type === 'literature' ? 'kind=literature_references' : 'kind=works';
-  const cranachSearchURL = `${config.cranachSearchURL.replace(/langCode/, langCode)}?${serachSuffix}&loadLatestSearchConfiguration=true`;
+  const cranachSearchURL = `${config.cranachSearchURL.replace(/langCode/, langCode)}?loadLatestSearchConfiguration=true`;
   const urlDe = `${eleventy.getBaseUrl()}/de/${objectId}/`;
   const urlEn = `${eleventy.getBaseUrl()}/en/${objectId}/`;
   const text = type === 'literature' ? 'zur-literatursuche' : 'zur-werksuche';
