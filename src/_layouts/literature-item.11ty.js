@@ -134,7 +134,6 @@ const getLiteratureDetails = (content, langCode, cranachSearchURL, documentTitle
       ${getEntry(alternateNumbers.join(', '), 'alternativeNumbers')}
     </dl>
   `;
-
 };
 
 // eslint-disable-next-line func-names
@@ -143,7 +142,7 @@ exports.render = function (pageData) {
   langCode = getLangCode(data);
   config = this.getConfig();
   const baseUrl = this.getBaseUrl();
-  const cranachSearchURL = config.cranachSearchURL.replace(/langCode/, langCode);
+  const cranachSearchURL = config.cranachSearchURL[process.env.ELEVENTY_ENV].replace(/langCode/, langCode);
 
   data.content.currentCollection = data.collections[data.collectionID];
   data.content.entityType = data.entityType;
