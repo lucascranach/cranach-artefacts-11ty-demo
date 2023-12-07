@@ -104,6 +104,7 @@ exports.render = function (pageData) {
         objectData.asseturl = "${this.url('/assets')}";
         objectData.inventoryNumber = "${id}";
         objectData.navigationObjects = '${navigationObjects}';
+        objectData.kind = 'archivals';
       </script>
     </head>
     <body>

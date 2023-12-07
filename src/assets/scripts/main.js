@@ -439,8 +439,18 @@ const expandReduce = (trigger, targetId) => {
 
 /* Search Results in Local Storage
 ============================================================================ */
-const getSearchResults = () => {
-  const searchResult = localStorage.getItem('searchResult');
+const getSearchResults = (kind) => {
+  let searchResult;
+  // Is it an artefact?
+  switch (kind) {
+    case 'archivals':
+      searchResult = localStorage.getItem('searchResult:archivals');
+      break;
+    default:
+      searchResult = localStorage.getItem('searchResult');
+      break;
+  }
+
   if (!searchResult) return false;
   return parseJson(searchResult);
 };
@@ -569,7 +579,7 @@ const reduceNavigation = () => {
 ============================================================================ */
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  const searchResults = getSearchResults();
+  const searchResults = getSearchResults(objectData.kind);
 
   /* Switchable Content
   --------------------------------------------------------------------------  */
