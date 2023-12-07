@@ -646,6 +646,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   /* Set Last Accessed Date
   --------------------------------------------------------------------------  */
+
   if (document.querySelector('.js-date-accessed') !== null) {
     const elements = document.querySelectorAll('.js-date-accessed');
     const date = new Date();
@@ -658,15 +659,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   /* Go to Search Button
   --------------------------------------------------------------------------  */
+  /*
   if (document.querySelector('.js-go-to-search') !== null) {
     const element = document.querySelector('.js-go-to-search');
     const { href } = element;
 
     const searchQueryParams = localStorage.getItem('searchQueryParams');
     if (href && searchQueryParams) {
-      element.href = `${href}?${searchQueryParams}`;
+      element.href = `${href}&${searchQueryParams}`;
     }
   }
+  */
 
   /* Events
   --------------------------------------------------------------------------  */
