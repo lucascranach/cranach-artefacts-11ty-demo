@@ -22,8 +22,8 @@ const config = {
   "generateArchivals": true,
   "generateGraphicsVirtualObjects": true,
   "pathPrefix": {
-    "production": "artefacts",
-    "preview": "intern/artefacts",
+    "external": "artefacts",
+    "internal": "intern/artefacts",
     "development": ""
   },
   "cranachCollect": {
@@ -42,11 +42,15 @@ const config = {
     "bug": "https://docs.google.com/forms/d/e/1FAIpQLSdtb8vAaRUZAZZUijLP099GFMm279HpbZBdVA5KZf5tnLZVCw/viewform?usp=pp_url&entry.810636170=artefactTitle&entry.1357028798=artefactUrl",
   },
   "cranachBaseUrl": {
-    "production": "https://lucascranach.org",
-    "preview": "https://lucascranach.org/intern/artefacts",
-    "development": "http://localhost:8080",
+    "external": "https://lucascranach.org",
+    "internal": "https://lucascranach.org/intern/artefacts",
+    "development": "http://localhost:8081",
   },
-  "cranachSearchURL": "https://lucascranach.org/langCode/search",
+  "cranachSearchURL": {
+    "external": "https://lucascranach.org/langCode/search",
+    "internal": "https://lucascranach.org/langCode/intern/search/",
+    "development": "http://localhost:8080"
+  },
   "documentsBasePath": "https://lucascranach.org/documents",
   "contentTypes": {
     "overall": {
@@ -206,7 +210,7 @@ const getPaintingsCollection = (lang) => {
     return 0;
   });
 
-  if (process.env.ELEVENTY_ENV === 'preview'
+  if (process.env.ELEVENTY_ENV === 'internal'
     || process.env.ELEVENTY_ENV === 'development') return sortedPaintings;
 
   const publishedPaintings = sortedPaintings.filter(item => !item.sortingNumber.match(/^20/));
@@ -227,7 +231,7 @@ const getLiteratureCollection = (lang) => {
     return 0;
   });
 
-  if (process.env.ELEVENTY_ENV === 'preview'
+  if (process.env.ELEVENTY_ENV === 'internal'
     || process.env.ELEVENTY_ENV === 'development') return sortedLiterature;
 
   return sortedLiterature;
@@ -275,7 +279,7 @@ const getAuthorCollection = (lang) => {
     return 0;
   });
   
-  if (process.env.ELEVENTY_ENV === 'preview'
+  if (process.env.ELEVENTY_ENV === 'internal'
     || process.env.ELEVENTY_ENV === 'development') return sortedAuthors;
 
   return sortedAuthors;
@@ -322,7 +326,7 @@ const getGraphicsVirtualObjectsCollection = (lang) => {
     return 0;
   });
 
-  if (process.env.ELEVENTY_ENV === 'preview'
+  if (process.env.ELEVENTY_ENV === 'internal'
     || process.env.ELEVENTY_ENV === 'development') return sortedGraphicsVirtualObjects;
 
   return sortedGraphicsVirtualObjects.filter(item => item.metadata.imgSrc.match(/[a-z]/));
@@ -438,8 +442,8 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addJavaScriptFunction("checkRessource", async (url) => {
     if (process.env.ELEVENTY_ENV === 'development') return;
-    if (process.env.ELEVENTY_ENV === 'preview') return;
-    if (process.env.ELEVENTY_ENV === 'production') return;
+    if (process.env.ELEVENTY_ENV === 'internal') return;
+    if (process.env.ELEVENTY_ENV === 'external') return;
     try { 
       await eleventyFetch(url, {
         duration: "2m",
@@ -799,7 +803,7 @@ module.exports = function (eleventyConfig) {
   /* Environment
   ########################################################################## */
 
-  if (process.env.ELEVENTY_ENV === 'production') {
+  if (process.env.ELEVENTY_ENV === 'external') {
     eleventyConfig.addTransform('htmlmin', (content, outputPath) => {
       if (outputPath.endsWith('.html')) {
         return content;
