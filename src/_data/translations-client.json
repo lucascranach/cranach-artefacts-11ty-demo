@@ -97,12 +97,12 @@
     "en": "Something went wrong :("
   },
   "prevWork":{
-    "de": "vorheriges Werk",
-    "en": "previous object"
+    "de": "vorheriges",
+    "en": "previous"
   },
   "nextWork":{
-    "de": "nächstes Werk",
-    "en": "next object"
+    "de": "nächstes",
+    "en": "next"
   },
   "imageInformation":{
     "de": "Bildinformationen",
