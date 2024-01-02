@@ -198,7 +198,7 @@ const appendToFile = (path, str) => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["AT_KHM_GG6905","PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51", "DE_SMF_1398B"];
+  const devObjects = ["AT_KHM_GG899", "PRIVATE_NONE-P614", "PRIVATE_NONE-P602", "AT_KHM_GG6905","PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51", "DE_SMF_1398B"];
 
   const paintings = config.onlyDevObjects === true
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -342,7 +342,10 @@ const markdownify = (str, mode = 'full') => {
     return `<ul class="is-block">${items.join("")}</ul>`;
   }
 
-  let renderedText = mode === 'full' ? markdownItRenderer.render(str) : simpleMarkdownItRenderer.render(str);
+  const newStr = str.match(/\[(.*?)\]\((.*?)\)/) 
+    ? str.replace(/\[(.*?)\]\((.*?)\)/g, '<a class="link-to-source" href="$2">[$1]</a>') 
+    : str;
+  let renderedText = mode === 'full' ? markdownItRenderer.render(newStr) : simpleMarkdownItRenderer.render(newStr);
   renderedText = renderedText.replace(/<pre><code>(.*?)<\/code><\/pre>/sg, replacePre);
 
   return `<div class="markdown-it">${renderedText}</div>`;
@@ -546,12 +549,7 @@ module.exports = function (eleventyConfig) {
 
     const rows = content.map(item => {
       if(!item.remark) return;
-
-      console.log(item)
-      const remarkData = item.remark.match(/\[(.*?)\]\((.*?)\)/) 
-        ? item.remark.replace(/\[(.*?)\]\((.*?)\)/g, '<a class="link-to-source" href="$2">[$1]</a>') 
-        : item.remark;
-      const remark = item.remark ? `<td class="info-table__remark">${markdownify(remarkData)}</td>` : '<td class="info-table__remark">-</td>';
+      const remark = item.remark ? `<td class="info-table__remark">${markdownify(item.remark)}</td>` : '<td class="info-table__remark">-</td>';
       return `
           <tr><td class="info-table__data ${additionalCellClass}">${item.text}</td>${remark}</tr>
         `;
