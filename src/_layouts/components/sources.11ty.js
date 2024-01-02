@@ -27,13 +27,13 @@ const getSources = (params) => {
           <td><a class="has-interaction" href="${eleventy.stripTags(rowContent)}" target="_blank">${eleventy.stripTags(rowContent)}</a></td>
         </tr>`);
     const getLinkToLiteraturePage = () => {
-      if(!item) return '';
-      const linkToLiteraturePage = `../literature-${item.referenceId}`;
+      if (!item) return '';
+      const linkToLiteraturePage = `/${langCode}/literature-${item.referenceId}`;
 
       return `<div class="link-to-item-wrap">
         <a href="${linkToLiteraturePage}" class="link-to-item">${eleventy.translate('showLiterature', langCode)}</a>
       </div>`;
-    }
+    };
 
     return `
       <table class="literature-item-details-table">
