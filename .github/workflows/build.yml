@@ -1,15 +1,14 @@
-name: 11ty Build
+name: 11ty build and deploy to intern
 
 on:
   push:
-    branches: ['public']
+    branches: ['intern']
   workflow_dispatch:
     inputs:
       environment:
         type: string
         default: prod
         required: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,10 +32,9 @@ jobs:
       - name: Run npm build
         run: npm run build
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/public'
+      - name: Push files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          publish_dir: docs 
-          publish_branch: gh-pages
-          deploy_key: ${{ secrets.MI_DEPLOY_KEY }}
+          server: lucascranach.org
+          username: autodeploy
+          password: ${{ secrets.ftp_password }}
