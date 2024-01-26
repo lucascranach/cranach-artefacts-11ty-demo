@@ -44,7 +44,7 @@ jobs:
           onlyNewer: true
           settings: 'sftp:auto-confirm=yes'
           # Mirror command options
-          localDir: './docs'
+          localDir: './docs/'
           remoteDir: '/var/www/html/intern/artefacts-autodeploy/'
           reverse: true
           ignoreFile: '.lftp_ignore'
