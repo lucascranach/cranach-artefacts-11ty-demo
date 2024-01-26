@@ -46,6 +46,6 @@ jobs:
           # Mirror command options
           localDir: './docs'
           remoteDir: '/var/www/html/intern/artefacts-autodeploy/'
-          reverse: false
+          reverse: true
           ignoreFile: '.lftp_ignore'
           options: '--verbose'
