@@ -32,9 +32,20 @@ jobs:
       - name: Run npm build
         run: npm run build
 
-      - name: Push files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Deploy files via SFTP
+        uses: pressidium/lftp-mirror-action@v1
         with:
-          server: lucascranach.org
-          username: autodeploy
-          password: ${{ secrets.ftp_password }}
+          # SFTP credentials
+          host: ${{ secrets.SFTP_HOST }}
+          port: ${{ secrets.SFTP_PORT }}
+          user: ${{ secrets.SFTP_USER }}
+          pass: ${{ secrets.SFTP_PASS }}
+          # lftp settings
+          onlyNewer: true
+          settings: 'sftp:auto-confirm=yes'
+          # Mirror command options
+          localDir: './docs'
+          remoteDir: '/var/www/html/intern/artefacts-autodeploy/'
+          reverse: false
+          ignoreFile: '.lftp_ignore'
+          options: '--verbose'
