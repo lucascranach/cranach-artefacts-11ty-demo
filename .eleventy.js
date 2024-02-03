@@ -46,6 +46,10 @@ const config = {
     "internal": "https://lucascranach.org/intern/artefacts",
     "development": "http://localhost:8081",
   },
+  "cranachBaseUrlHomepage": {
+    "de": "https://lucascranach.org",
+    "en": "https://lucascranach.org/home"
+  },
   "cranachSearchURL": {
     "external": "https://lucascranach.org/langCode/search",
     "internal": "https://lucascranach.org/langCode/intern/search/",
