@@ -27,6 +27,7 @@ const reportsSnippet = require('./components/reports.11ty');
 const additionalTextInformationSnippet = require('./components/additional-text-information.11ty');
 const referencesSnippet = require('./components/references.11ty');
 const navigationSnippet = require('./components/navigation.11ty');
+const overallOverview = require('./components/overall-overview.11ty');
 
 const ART_TECH_EXAMINATION = 'ArtTechExamination';
 const CONDITION_REPORT = 'ConditionReport';
@@ -104,6 +105,7 @@ exports.render = function (pageData) {
   const pageDate = pageDateSnippet.getPageDate(this, langCode);
   const navigation = navigationSnippet.getNavigation(this, langCode, id);
   const navigationObjects = JSON.stringify(this.getObjectsForNavigation(data.content.metadata.id));
+  const overall_overview = overallOverview.overallOverview(this, data, langCode);
 
   const cranachCollectBaseUrl = this.getCranachCollectBaseUrl();
   const cranachCollectScript = config.cranachCollect.script;
@@ -132,7 +134,10 @@ exports.render = function (pageData) {
       <div id="page">
         ${navigation}
           <section class="leporello-recog js-main-content">
-          ${image}
+          <div>
+            ${image}
+            ${overall_overview}
+          </div>
           <div class="leporello-recog__text">
             <div class="grid-wrapper">
               ${header}
