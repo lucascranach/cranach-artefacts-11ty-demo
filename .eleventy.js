@@ -15,7 +15,7 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "onlyDevObjects": true,
+  "onlyDevObjects": false,
   "generateLiterature": true,
   "generateAuthors": false,
   "generatePaintings": true,
@@ -551,7 +551,6 @@ module.exports = function (eleventyConfig) {
     const rows = content.map(item => {
       if(!item.remark) return;
 
-      console.log(item)
       const remarkData = item.remark.match(/\[(.*?)\]\((.*?)\)/) 
         ? item.remark.replace(/\[(.*?)\]\((.*?)\)/g, '<a class="link-to-source" href="$2">[$1]</a>') 
         : item.remark;
