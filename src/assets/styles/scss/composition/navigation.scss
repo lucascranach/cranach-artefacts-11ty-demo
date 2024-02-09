@@ -53,9 +53,20 @@
 // Logo
 // --------------------------------------------------------------------------
 
+.cda-logo-wrap{
+  width: $tile-xs;
+  padding: 0;
+  margin-right: -3px;
+}
+
 .cda-logo {
-  color: $accent-dark;
-  font-size: $xl;
+  height: $xl;
+  opacity: 0.3;
+
+  &:hover{
+    
+    opacity: 1;
+  }
 }
 
 

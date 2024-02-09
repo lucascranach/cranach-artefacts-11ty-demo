@@ -15,7 +15,7 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "onlyDevObjects": true,
+  "onlyDevObjects": false,
   "generateLiterature": true,
   "generateAuthors": false,
   "generatePaintings": true,
@@ -44,7 +44,7 @@ const config = {
   "cranachBaseUrl": {
     "external": "https://lucascranach.org",
     "internal": "https://lucascranach.org/intern/artefacts",
-    "development": "http://localhost:8081",
+    "development": "http://localhost:8080",
   },
   "cranachBaseUrlHomepage": {
     "de": "https://lucascranach.org",
@@ -478,6 +478,10 @@ module.exports = function (eleventyConfig) {
   
   eleventyConfig.addJavaScriptFunction("getBaseUrl", () => {
     return config.cranachBaseUrl[process.env.ELEVENTY_ENV];
+  });
+
+  eleventyConfig.addJavaScriptFunction("getPathPrefix", () => {
+    return pathPrefix
   });
 
   eleventyConfig.addJavaScriptFunction("getCranachCollectBaseUrl", () => {
