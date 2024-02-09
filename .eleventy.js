@@ -46,6 +46,10 @@ const config = {
     "internal": "https://lucascranach.org/intern/artefacts",
     "development": "http://localhost:8081",
   },
+  "cranachBaseUrlHomepage": {
+    "de": "https://lucascranach.org",
+    "en": "https://lucascranach.org/home"
+  },
   "cranachSearchURL": {
     "external": "https://lucascranach.org/langCode/search",
     "internal": "https://lucascranach.org/langCode/intern/search/",
@@ -547,7 +551,6 @@ module.exports = function (eleventyConfig) {
     const rows = content.map(item => {
       if(!item.remark) return;
 
-      console.log(item)
       const remarkData = item.remark.match(/\[(.*?)\]\((.*?)\)/) 
         ? item.remark.replace(/\[(.*?)\]\((.*?)\)/g, '<a class="link-to-source" href="$2">[$1]</a>') 
         : item.remark;

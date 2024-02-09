@@ -539,19 +539,21 @@ const setSearchResultNavigation = (element, searchResults) => {
   const { prev } = navigationItems;
   const { next } = navigationItems;
 
-  const prevArtefactHtml = !prev ? ''
+  const prevArtefactHtml = prev && translations
   // eslint-disable-next-line max-len
-    : `<a class="nav-item" href="${globalData.baseUrl}/${prev.id}/">
+    ? `<a class="nav-item" href="${globalData.baseUrl}/${prev.id}/">
     <span class="nav-item__icon" style="background-image: url(${prev.imgSrc})">&lt;</span>
     <span class="nav-item__text">${translations.prevWork[langCode]}</span>
-    </a>`;
+    </a>`
+    : '';
 
-  const nextArtefactHtml = !next ? ''
+  const nextArtefactHtml = next && translations
   // eslint-disable-next-line max-len
-    : `<a class="nav-item" href="${globalData.baseUrl}/${next.id}/">
+    ? `<a class="nav-item" href="${globalData.baseUrl}/${next.id}/">
     <span class="nav-item__text">${translations.nextWork[langCode]}</span>
     <span class="nav-item__icon" style="background-image: url(${next.imgSrc})">&gt;</span>
-    </a>`;
+    </a>`
+    : '';
 
   target.innerHTML = `<div class="nav">${prevArtefactHtml}${nextArtefactHtml}</div>`;
 };
