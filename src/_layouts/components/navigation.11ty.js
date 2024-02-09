@@ -5,14 +5,14 @@ exports.getNavigation = (eleventy, langCode, objectId, type) => {
 
   const baseUrlHomepage = config.cranachBaseUrlHomepage[langCode];
   const toCdaHomepage = `
-    <a class="button button--is-transparent js-go-to-search cda-logo" href="${baseUrlHomepage}">
-      <span class="button__text button__text--is-important">cda_</span>
+    <a class="button button--is-transparent cda-logo-wrap" href="${baseUrlHomepage}">
+      <img class="cda-logo" src="${eleventy.getBaseUrl()}/assets/images/cda-logo-bw.svg" alt="CDA Logo">
     </a>
   `;
 
-  const cranachSearchURL = `${config.cranachSearchURL[process.env.ELEVENTY_ENV].replace(/langCode/, langCode)}?loadLatestSearchConfiguration=true`;
+  const cranachSearchURL = `${config.cranachSearchURL[process.env.ELEVENTY_ENV].replace(/langCode/, langCode)}?kind=works&loadLatestSearchConfiguration=true`;
   const toMainSearch = `
-    <a class="button button--is-transparent js-go-to-search" href="${cranachSearchURL}">
+    <a class="button button--is-transparent" href="${cranachSearchURL}">
       <span class="button__icon button__icon--is-large icon has-interaction">apps</span>
       <span class="button__text button__text--is-important">${eleventy.translate('zur-werksuche', langCode)}</span>
     </a>
