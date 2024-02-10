@@ -6,7 +6,7 @@ exports.getNavigation = (eleventy, langCode, objectId, type) => {
   const baseUrlHomepage = config.cranachBaseUrlHomepage[langCode];
   const toCdaHomepage = `
     <a class="button button--is-transparent cda-logo-wrap" href="${baseUrlHomepage}">
-      <img class="cda-logo" src="${eleventy.url('/assets/images/cda-logo-bw.svg')}" alt="CDA Logo">
+      <img class="cda-logo" style="height: 1.2em" src="${eleventy.url('/assets/images/cda-logo-bw.svg')}" alt="CDA Logo">
     </a>
   `;
 

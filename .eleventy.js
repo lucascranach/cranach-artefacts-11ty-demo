@@ -223,7 +223,7 @@ const getPaintingsCollection = (lang) => {
 
 const getLiteratureCollection = (lang) => {
   const literatureForLang = literatureData[lang];
-  const devObjects = ["27765", "466", "136", "29373", "29998", "27655", "160"];
+  const devObjects = ["30317","27765", "466", "136", "29373", "29998", "27655", "160"];
 
   const literature = config.onlyDevObjects === true
     ? literatureForLang.items.filter(item => devObjects.includes(item.referenceId))
@@ -319,7 +319,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["LC_HVI-56_79"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
+  const devObjects = ["LC_HVI-56_79", "ANO_HVI-8_7-1"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
   
   const graphicsVirtualObjects = config.onlyDevObjects === true
     ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -422,6 +422,10 @@ module.exports = function (eleventyConfig) {
 
   /* Functions
   ########################################################################## */
+
+  eleventyConfig.addFilter("bust", (url) => {
+
+  });
 
   eleventyConfig.addJavaScriptFunction("translate", (term, lang, mode) => {
     if(mode === 'maybe') {
