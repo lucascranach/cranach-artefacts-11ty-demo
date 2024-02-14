@@ -109,7 +109,7 @@ const getLiteratureDetails = (content, langCode, cranachSearchURL, documentTitle
       return `<a class="has-interaction is-stupid-link" href="${searchUrlIntern}?kind=literature_references&search_term=${person.name.replace(/ /g, "+")}">${person.name}</a>`;
     });
 
-    return officinsList.join(', ');
+    return officinsList;
   };
 
   const getEntry = (rowContent, translationID) => {
@@ -123,6 +123,9 @@ const getLiteratureDetails = (content, langCode, cranachSearchURL, documentTitle
 
   const authors = getAuthors(content, cranachSearchURL);
   const officins = getOfficins(content, cranachSearchURL);
+  const officinBlock = (officins.length > 0 )
+    ? `<dt class="definition-list__term">${this.translate('officin', langCode)}</dt><dd class="definition-list__definition">${officins.join('')}</dd>`
+    : '';
 
   return `
     <dl class="definition-list is-grid is-loose">
@@ -130,8 +133,7 @@ const getLiteratureDetails = (content, langCode, cranachSearchURL, documentTitle
       <dd class="definition-list__definition">${content.shortTitle}</dd>
       <dt class="definition-list__term">${this.translate('author', langCode)}, ${this.translate('publisher', langCode)}</dt>
       <dd class="definition-list__definition">${authors}</dd>
-      <dt class="definition-list__term">${this.translate('officin', langCode)}</dt>
-      <dd class="definition-list__definition">${officins}</dd>
+      ${officinBlock}
       <dt class="definition-list__term">${this.translate('title', langCode)}</dt>
       <dd class="definition-list__definition">${documentTitle}</dd>
       ${content.subtitle ? getEntry(content.subtitle, 'publication') : ''}
