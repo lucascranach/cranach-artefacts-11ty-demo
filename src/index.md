@@ -38,7 +38,8 @@ th, td{
 }
 
 </style>
-## DE
+
+<h2>Paintings</h2>
 
 <ul class="overview">
 {%- for item in collections.paintingsDE -%}
@@ -55,6 +56,9 @@ th, td{
 {%- endfor -%}
 </ul>
 
+<hr>
+<h2>Graphics</h2>
+
 <ul class="overview">
 {%- for item in collections.graphicsVirtualObjectsDE -%}
   <li class="overview-item">
@@ -70,6 +74,9 @@ th, td{
 {%- endfor -%}
 </ul>
 
+<hr>
+<h2>Archivals</h2>
+
 <ul class="overview">
 {%- for item in collections.archivalsDE -%}
   <li class="overview-item">
@@ -84,6 +91,9 @@ th, td{
   </li>
 {%- endfor -%}
 </ul>
+
+<hr>
+<h2>Literature</h2>
 
 <table>
 {%- for item in collections.literatureDE -%}

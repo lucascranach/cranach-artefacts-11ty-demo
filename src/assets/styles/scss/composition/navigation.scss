@@ -18,7 +18,7 @@
     0;
   background-color: $lightest;
   gap: var(--responsive-gap);
-  grid-template-columns: max($tile-xs) 1fr;
+  grid-template-columns: max-content 1fr;
   transition: padding $tr-fast;
 
   &.is-loose {
@@ -44,6 +44,7 @@
   }
 
   & > .button{
+    padding-right: $xl;
     padding-left:0;
   }
 }
@@ -52,35 +53,32 @@
 // Logo
 // --------------------------------------------------------------------------
 
-// .logo {
-//   position: absolute;
-//   top: calc(var(--responsive-padding-top) / 2);
-//   left: -200px;
-//   display: flex;
-//   width: fit-content;
-//   align-items: center;
-//   justify-content: center;
-//   padding: $xxs;
-//   aspect-ratio: 1/1;
-//   background-color: $darken;
-//   border-radius: 50%;
-//   color: $accent-dark;
-//   font-size: $l;
-//   opacity: 0;
-//   transition: left $tr-medium $tr-medium, background-color $tr-fast, color $tr-fast, opacity $tr-slow $tr-medium;
-//   transition-timing-function: ease-out;
-//   vertical-align: center;
-// 
-//   &:hover {
-//     background-color: $darken-strong;
-//     color: $accent;
-//   }
-// 
-//   &.is-active {
-//     left: var(--responsive-padding-right-left);
-//     opacity: 1;
-//   }
-// }
+.cda-logo-wrap{
+  width: $tile-xs;
+  padding: 0;
+  margin-right: -3px;
+}
+
+.cda-logo {
+  height: $xl;
+  opacity: 0.3;
+
+  &:hover{
+    
+    opacity: 1;
+  }
+}
+
+
+// Primary Navigation
+// --------------------------------------------------------------------------
+
+.primary-navigation{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: $l;
+}
 
 // Secondary Navigation
 // --------------------------------------------------------------------------

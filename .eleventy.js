@@ -44,7 +44,11 @@ const config = {
   "cranachBaseUrl": {
     "external": "https://lucascranach.org",
     "internal": "https://lucascranach.org/intern/artefacts",
-    "development": "http://localhost:8081",
+    "development": "http://localhost:8080",
+  },
+  "cranachBaseUrlHomepage": {
+    "de": "https://lucascranach.org",
+    "en": "https://lucascranach.org/home"
   },
   "cranachSearchURL": {
     "external": "https://lucascranach.org/langCode/search",
@@ -219,7 +223,7 @@ const getPaintingsCollection = (lang) => {
 
 const getLiteratureCollection = (lang) => {
   const literatureForLang = literatureData[lang];
-  const devObjects = ["27765", "466", "136", "29373", "29998", "27655", "160"];
+  const devObjects = ["27884","30317","27765", "466", "136", "29373", "29998", "27655", "160"];
 
   const literature = config.onlyDevObjects === true
     ? literatureForLang.items.filter(item => devObjects.includes(item.referenceId))
@@ -289,7 +293,7 @@ const getArchivalsCollection = (lang) => {
   const archivalsForLang = archivalsData[lang];
   const devObjects = ["PRIVATE_NONE-P409", "DE_ThHStAW_EGA_Reg-Bb_2746_17v"]; // , "DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739"
 
-  const archivals = process.env.ELEVENTY_ENV === 'development'
+  const archivals = config.onlyDevObjects === true
     ? archivalsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
     : archivalsForLang.items;
   
@@ -315,7 +319,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["LC_HVI-56_79"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
+  const devObjects = ["LC_HVI-56_79", "ANO_HVI-8_7-1"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
   
   const graphicsVirtualObjects = config.onlyDevObjects === true
     ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -422,6 +426,10 @@ module.exports = function (eleventyConfig) {
   /* Functions
   ########################################################################## */
 
+  eleventyConfig.addFilter("bust", (url) => {
+
+  });
+
   eleventyConfig.addJavaScriptFunction("translate", (term, lang, mode) => {
     if(mode === 'maybe') {
       return (translations[term]) ? translations[term][lang] : term;
@@ -477,6 +485,10 @@ module.exports = function (eleventyConfig) {
   
   eleventyConfig.addJavaScriptFunction("getBaseUrl", () => {
     return config.cranachBaseUrl[process.env.ELEVENTY_ENV];
+  });
+
+  eleventyConfig.addJavaScriptFunction("getPathPrefix", () => {
+    return pathPrefix
   });
 
   eleventyConfig.addJavaScriptFunction("getCranachCollectBaseUrl", () => {

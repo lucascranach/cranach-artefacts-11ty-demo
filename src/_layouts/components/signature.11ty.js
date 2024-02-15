@@ -39,4 +39,3 @@ exports.getSignatureArchivals = (eleventy, { content }, langCode) => {
     ${signatureTable}
   `;
 };
-
