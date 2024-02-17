@@ -1,5 +1,5 @@
-const getDataList = (data, title) => {
-  const items = data.map((item) => `<li class="info-list__item">${item}</li>`);
+const getDataList = (eleventy, data, title) => {
+  const items = data.map((item) => `<li class="info-list__item">${eleventy.markdownify(item)}</li>`);
 
   return items.length === 0 ? ''
     : `
@@ -11,11 +11,11 @@ const getDataList = (data, title) => {
 };
 
 const getInscriptions = (eleventy, content, langCode) => {
-  let inscriptionsRaw = `${content.inscription}`.replace(/:\n/, ': ');
+  let inscriptionsRaw = `${content.inscription}`;
   inscriptionsRaw = inscriptionsRaw.replace(/\n *?\n/sg, '\n\n');
   const inscriptionsData = inscriptionsRaw.split(/\n/);
   const inscriptionsTitle = eleventy.translate('inscriptionsInnerHeadline', langCode);
-  return inscriptionsRaw ? getDataList(inscriptionsData, inscriptionsTitle) : '';
+  return inscriptionsRaw ? getDataList(eleventy, inscriptionsData, inscriptionsTitle) : '';
 };
 
 const getLabels = (eleventy, content, langCode) => {
@@ -23,14 +23,16 @@ const getLabels = (eleventy, content, langCode) => {
   labelsRaw = labelsRaw.replace(/\n *?\n/sg, '\n\n');
   const labelsData = labelsRaw.split(/\n/);
   const titleTitle = eleventy.translate('labelsInnerHeadline', langCode);
-  return labelsRaw ? getDataList(labelsData, titleTitle) : '';
+  return labelsRaw ? getDataList(eleventy, labelsData, titleTitle) : '';
 };
 
 exports.getInscriptionsAndLabels = (eleventy, { content }, langCode) => {
   const numberOfWords = 20;
   const inscriptionsAndLabels = content.inscription || content.markings;
   let inscriptionsAndLabelsRaw = content.inscription ? `${content.inscription} ${content.markings}` : content.markings;
-  inscriptionsAndLabelsRaw = inscriptionsAndLabelsRaw.replace(/\[.*?]/g, '');
+
+  inscriptionsAndLabelsRaw = inscriptionsAndLabelsRaw.replace(/:\n/, ': ');
+  inscriptionsAndLabelsRaw = eleventy.markdownify(inscriptionsAndLabelsRaw);
   const inscriptions = getInscriptions(eleventy, content, langCode);
   const labels = getLabels(eleventy, content, langCode);
 
