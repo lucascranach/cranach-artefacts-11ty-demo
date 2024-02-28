@@ -31,9 +31,11 @@ exports.getNavigation = (eleventy, langCode, objectId, type) => {
     : `${toCdaHomepage}${toMainSearch}`;
 
   /* Lang Switcher --------------------------------------------------------- */
+  const languageSwitcherPrefix = type === 'literature' ? "literature" : "";
 
-  const urlDe = `${eleventy.getBaseUrl()}/de/${objectId}/`;
-  const urlEn = `${eleventy.getBaseUrl()}/en/${objectId}/`;
+  const urlDe = `${eleventy.getBaseUrl()}/de/${languageSwitcherPrefix}-${objectId}/`;
+  const urlEn = `${eleventy.getBaseUrl()}/en/${languageSwitcherPrefix}-${objectId}/`;
+
   const isActiveDe = langCode === 'de' ? 'lang-selector__item--is-active' : '';
   const isActiveEn = langCode === 'en' ? 'lang-selector__item--is-active' : '';
 
