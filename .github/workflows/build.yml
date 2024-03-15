@@ -32,20 +32,14 @@ jobs:
       - name: Run npm build
         run: npm run build
 
-      - name: Deploy files via SFTP
-        uses: pressidium/lftp-mirror-action@v1
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
         with:
-          # SFTP credentials
-          host: ${{ secrets.SFTP_HOST }}
-          port: ${{ secrets.SFTP_PORT }}
-          user: ${{ secrets.SFTP_USER }}
-          pass: ${{ secrets.SFTP_PASS }}
-          # lftp settings
-          onlyNewer: true
-          settings: 'sftp:auto-confirm=yes'
-          # Mirror command options
-          localDir: './docs/'
-          remoteDir: '/var/www/html/intern/artefacts-autodeploy/'
-          reverse: true
-          ignoreFile: '.lftp_ignore'
-          options: '--verbose'
+          key: ${{ secrets.CRANACH_SSH }}
+          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+
+      - name: Adding Known Hosts
+        run: ssh-keyscan -P ${{ secrets.SSH_PORT }} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy with rsync
+        run: rsync -avz ./docs/ -e 'ssh -p ${{ secrets.SSH_PORT }}' ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/intern/artefacts-autodeploy/
