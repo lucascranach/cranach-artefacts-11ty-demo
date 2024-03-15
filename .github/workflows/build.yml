@@ -35,7 +35,7 @@ jobs:
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
         with:
-          key: ${{ secrets.CRANACH_SSH }}
+          key: ${{ secrets.CRANACH_SSH_AUTODEPLOY }}
           known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
 
       - name: Adding Known Hosts
