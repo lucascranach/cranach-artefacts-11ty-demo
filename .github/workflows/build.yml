@@ -32,7 +32,7 @@ jobs:
       - name: Run npm build
         run: npm run intern
         env:
-          API_URL: ${{ secrets.API_URL }}
+          API_KEY: ${{ secrets.API_KEY }}
           API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
           CACHE_FOLDER: ${{ secrets.CACHE_FOLDER }}
 
