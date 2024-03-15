@@ -39,7 +39,7 @@ jobs:
           known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
 
       - name: Adding Known Hosts
-        run: ssh-keyscan -P ${{ secrets.SSH_PORT }} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+        run: ssh-keyscan -p ${{ secrets.SSH_PORT }} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy with rsync
         run: rsync -avz ./docs/ -e 'ssh -p ${{ secrets.SSH_PORT }}' ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/intern/artefacts-autodeploy/
