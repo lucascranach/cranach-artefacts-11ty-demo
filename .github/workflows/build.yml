@@ -31,6 +31,10 @@ jobs:
 
       - name: Run npm build
         run: npm run intern
+        env:
+          API_URL: ${{ secrets.API_URL }}
+          API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
+          CACHE_FOLDER: ${{ secrets.CACHE_FOLDER }}
 
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
