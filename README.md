@@ -34,9 +34,12 @@ compiled-assets     Kompilierte Dateien, z.B. CSS
 
 ## Funktionen
 
-`npm install`
-`npm run build` 
-`npm run dev` 
+| Befehl    | Funktion |
+| -------- | ------- |
+| npm run dev  | startet die lokale Entwicklungsumgebung    |
+| npm run build | erzeugt einen Build für die [Prod Umgebung](https://lucascranach.org/de/search/)     |
+| npm run internal    | erzeugt einen Build für die [Preview Umgebung](https://lucascranach.org/de/intern/search/)    |
+
 
 ## Libs 
 

@@ -26,6 +26,21 @@
     }
   }
 
+  // Overall Overview Image
+  // --------------------------------------------------------------------------
+
+  .overall-overview {
+    padding: 0;
+    margin: 0;
+    margin-bottom: $l;
+
+    & > img {
+      width: auto;
+      height: 10em;
+    }
+  }
+
+
 
     
   // Grid Wrapper

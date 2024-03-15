@@ -15,7 +15,7 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "onlyDevObjects": false,
+  "onlyDevObjects": true,
   "generateLiterature": true,
   "generateAuthors": false,
   "generatePaintings": true,
@@ -44,7 +44,7 @@ const config = {
   "cranachBaseUrl": {
     "external": "https://lucascranach.org",
     "internal": "https://lucascranach.org/intern/artefacts",
-    "development": "http://localhost:8081",
+    "development": "http://localhost:8080",
   },
   "cranachBaseUrlHomepage": {
     "de": "https://lucascranach.org",
@@ -202,7 +202,7 @@ const appendToFile = (path, str) => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["AT_KHM_GG6905","PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51", "DE_SMF_1398B"];
+  const devObjects = ["CZ_RKFK_NONE-001","DE_MHK_GK11a","DE_MHK_GK11b","PRIVATE_NONE-P605", "AT_KHM_GG3567","AT_KHM_GG899", "PRIVATE_NONE-P614", "PRIVATE_NONE-P602", "AT_KHM_GG6905","PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51", "DE_SMF_1398B"];
 
   const paintings = config.onlyDevObjects === true
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -223,7 +223,7 @@ const getPaintingsCollection = (lang) => {
 
 const getLiteratureCollection = (lang) => {
   const literatureForLang = literatureData[lang];
-  const devObjects = ["27765", "466", "136", "29373", "29998", "27655", "160"];
+  const devObjects = ["27884","30317","27765", "466", "136", "29373", "29998", "27655", "160"];
 
   const literature = config.onlyDevObjects === true
     ? literatureForLang.items.filter(item => devObjects.includes(item.referenceId))
@@ -293,7 +293,7 @@ const getArchivalsCollection = (lang) => {
   const archivalsForLang = archivalsData[lang];
   const devObjects = ["PRIVATE_NONE-P409", "DE_ThHStAW_EGA_Reg-Bb_2746_17v"]; // , "DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739"
 
-  const archivals = process.env.ELEVENTY_ENV === 'development'
+  const archivals = config.onlyDevObjects === true
     ? archivalsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
     : archivalsForLang.items;
   
@@ -319,7 +319,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["LC_HVI-56_79"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
+  const devObjects = ["LC_HVI-56_79", "ANO_HVI-8_7-1"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
   
   const graphicsVirtualObjects = config.onlyDevObjects === true
     ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -346,7 +346,10 @@ const markdownify = (str, mode = 'full') => {
     return `<ul class="is-block">${items.join("")}</ul>`;
   }
 
-  let renderedText = mode === 'full' ? markdownItRenderer.render(str) : simpleMarkdownItRenderer.render(str);
+  const newStr = str.match(/\[(.*?)\]\((.*?)\)/) 
+    ? str.replace(/\[(.*?)\]\((.*?)\)/g, '<a class="link-to-source" href="$2">[$1]</a>') 
+    : str;
+  let renderedText = mode === 'full' ? markdownItRenderer.render(newStr) : simpleMarkdownItRenderer.render(newStr);
   renderedText = renderedText.replace(/<pre><code>(.*?)<\/code><\/pre>/sg, replacePre);
 
   return `<div class="markdown-it">${renderedText}</div>`;
@@ -423,6 +426,10 @@ module.exports = function (eleventyConfig) {
   /* Functions
   ########################################################################## */
 
+  eleventyConfig.addFilter("bust", (url) => {
+
+  });
+
   eleventyConfig.addJavaScriptFunction("translate", (term, lang, mode) => {
     if(mode === 'maybe') {
       return (translations[term]) ? translations[term][lang] : term;
@@ -478,6 +485,10 @@ module.exports = function (eleventyConfig) {
   
   eleventyConfig.addJavaScriptFunction("getBaseUrl", () => {
     return config.cranachBaseUrl[process.env.ELEVENTY_ENV];
+  });
+
+  eleventyConfig.addJavaScriptFunction("getPathPrefix", () => {
+    return pathPrefix
   });
 
   eleventyConfig.addJavaScriptFunction("getCranachCollectBaseUrl", () => {
@@ -550,11 +561,7 @@ module.exports = function (eleventyConfig) {
 
     const rows = content.map(item => {
       if(!item.remark) return;
-
-      const remarkData = item.remark.match(/\[(.*?)\]\((.*?)\)/) 
-        ? item.remark.replace(/\[(.*?)\]\((.*?)\)/g, '<a class="link-to-source" href="$2">[$1]</a>') 
-        : item.remark;
-      const remark = item.remark ? `<td class="info-table__remark">${markdownify(remarkData)}</td>` : '<td class="info-table__remark">-</td>';
+      const remark = item.remark ? `<td class="info-table__remark">${markdownify(item.remark)}</td>` : '<td class="info-table__remark">-</td>';
       return `
           <tr><td class="info-table__data ${additionalCellClass}">${item.text}</td>${remark}</tr>
         `;

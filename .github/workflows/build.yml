@@ -1,4 +1,4 @@
-name: 11ty build and deploy to intern
+name: 11ty build and deploy to cda Server
 
 on:
   push:

@@ -439,6 +439,10 @@
     "de": "Zugehörige Werke",
     "en": "Connected Works"
   },
+  "overallViewOfThePiece":{
+    "de": "Gesamtansicht des Werkes",
+    "en": "Overall view of the piece"
+  },
   "kindOfImage": {
     "de": "Art der Abbildung",
     "en": "File type / description"
