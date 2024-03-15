@@ -55,5 +55,8 @@
     "stylelint-config-recommended-scss": "^5.0.2",
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.0.1"
+  },
+  "dependencies": {
+    "sync-fetch": "^0.5.2"
   }
 }
