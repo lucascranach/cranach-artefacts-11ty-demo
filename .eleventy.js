@@ -15,7 +15,7 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "onlyDevObjects": true,
+  "onlyDevObjects": false,
   "generateLiterature": true,
   "generateAuthors": false,
   "generatePaintings": true,
@@ -828,6 +828,10 @@ module.exports = function (eleventyConfig) {
 
       return content;
     });
+  }
+
+  if (process.env.ELEVENTY_ENV === 'external' || process.env.ELEVENTY_ENV === 'internal') {
+    config.onlyDevObjects = false;
   }
 
   return {
