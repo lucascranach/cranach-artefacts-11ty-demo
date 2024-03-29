@@ -7,10 +7,13 @@ exports.getHeader = ({ content }) => {
     ? `${content.description.substr(0, descLength)} …`
     : content.description;
 
-  const currentDay= new Date().getDate();
-  const currentMonth = new Date().getMonth() +1;
-  const currentYear = new Date().getFullYear();
-  const publishDate = `${currentYear}-${currentMonth}-${currentDay}`;
+  const now = new Date();
+  const currentDay= now.getDate();
+  const currentMonth = now.getMonth() +1;
+  const currentYear = now.getFullYear();
+  const currentHour = now.getHours();
+  const currentMinute = now.getMinutes();
+  const publishDate = `${currentYear}-${currentMonth}-${currentDay} ${currentHour}:${currentMinute} CET`;
 
   return `
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
