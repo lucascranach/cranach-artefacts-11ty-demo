@@ -1,9 +1,9 @@
+require('dotenv').config()
+
 const htmlmin = require('html-minifier');
 const markdownIt = require('markdown-it');
 const fs = require('fs');
-const eleventyFetch = require("@11ty/eleventy-fetch");
-
-// fs.unlinkSync('missing-files.txt');
+const fetchData = require('./helper/sync-fetch-data');
 
 const logMissedLinks = 'missing-files.txt';
 
@@ -136,28 +136,28 @@ const kklGroupShortcuts = {
 };
 
 const paintingsData = {
-  "de": require("./src/_data/cda-paintings-v2.de.json"),
-  "en": require("./src/_data/cda-paintings-v2.en.json")
+  "de": fetchData({"lang":"de", "type":"paintings"}),
+  "en": fetchData({"lang":"en", "type":"paintings"}),
 }
 
 const archivalsData = {
-  "de": require("./src/_data/cda-archivals-v2.de.json"),
-  "en": require("./src/_data/cda-archivals-v2.en.json")
+  "de": fetchData({"lang":"de", "type":"archivals"}),
+  "en": fetchData({"lang":"en", "type":"archivals"}),
 }
 
 const graphicsRealObjectData = {
-  "de": require("./src/_data/cda-graphics-v2.real.de.json"),
-  "en": require("./src/_data/cda-graphics-v2.real.en.json")
+  "de": fetchData({"lang":"de", "type":"graphics-real"}),
+  "en": fetchData({"lang":"en", "type":"graphics-real"}),
 }
 
 const graphicsVirtualObjectData = {
-  "de": require("./src/_data/cda-graphics-v2.virtual.de.json"),
-  "en": require("./src/_data/cda-graphics-v2.virtual.en.json")
+  "de": fetchData({"lang":"de", "type":"graphics-virtual"}),
+  "en": fetchData({"lang":"en", "type":"graphics-virtual"}),
 }
 
 const literatureData = {
-  "de": require("./src/_data/cda-literaturereferences-v2.de"),
-  "en": require("./src/_data/cda-literaturereferences-v2.en")
+  "de": fetchData({"lang":"de", "type":"literature"}),
+  "en": fetchData({"lang":"en", "type":"literature"}),
 };
 const translations = require("./src/_data/translations.json");
 const translationsClient = require("./src/_data/translations-client.json");
