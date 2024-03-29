@@ -7,7 +7,13 @@ exports.getImageStripe = (eleventy, { content }, langCode, config, hasSeperator 
   const imageStripe = Object.keys(contentTypes).map((key) => {
     if (!imageStack || !imageStack[key]) return;
     const { images } = imageStack[key];
-    const html = images.map((image) => {
+
+    const filteredImages = images.filter(item => {
+      if(item.sizes.origin.src.match(/Overall_Overview/)) return false;
+      return true;
+    });
+
+    const html = filteredImages.map((image) => {
       const title = image.metadata && image.metadata[langCode] ? eleventy.altText(image.metadata[langCode].description) : `${key}`;
       return `
         <li
