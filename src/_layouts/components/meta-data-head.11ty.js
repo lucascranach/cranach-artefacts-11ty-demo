@@ -12,6 +12,27 @@ exports.getHeader = ({ content }) => {
   const currentYear = new Date().getFullYear();
   const publishDate = `${currentYear}-${currentMonth}-${currentDay}`;
 
+  const matomo = `
+    <!-- Matomo -->
+    <script>
+      var _paq = window._paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+      _paq.push(["setDomains", ["*.lucascranach.org"]]);
+      _paq.push(["disableCookies"]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//lucascranach.org/matomo/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
+  `;
+  
   return `
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,5 +44,6 @@ exports.getHeader = ({ content }) => {
     <meta name="description" content="${desc}">
     <meta property="article:published_time" content="${publishDate}">
     <meta name="author" content="Cranach Digital Archive Team // TH Köln">
+    ${matomo}
   `;
 };
