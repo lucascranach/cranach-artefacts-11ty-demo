@@ -32,7 +32,7 @@ exports.getHeader = ({ content }) => {
     </script>
     <!-- End Matomo Code -->
   `;
-  console.log(matomo);
+  
   return `
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
