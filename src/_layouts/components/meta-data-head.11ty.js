@@ -32,7 +32,7 @@ exports.getHeader = ({ content }) => {
     </script>
     <!-- End Matomo Code -->
   `;
-
+  console.log(matomo);
   return `
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -44,6 +44,6 @@ exports.getHeader = ({ content }) => {
     <meta name="description" content="${desc}">
     <meta property="article:published_time" content="${publishDate}">
     <meta name="author" content="Cranach Digital Archive Team // TH Köln">
-    
+    ${matomo}
   `;
 };
