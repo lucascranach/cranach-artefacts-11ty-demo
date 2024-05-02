@@ -46,8 +46,9 @@ exports.getReference = (eleventy, data, langCode, type, isOpen = false) => {
       <div class="foldable-block has-strong-separator">
         <h2 class="foldable-block__headline is-expand-trigger js-expand-trigger"
           data-js-expanded="${state}" data-js-expandable="${eleventy.slugify(type)}">
-          ${eleventy.translate(type, langCode)}</h2>
+          
           ${overallOverview}
+          ${eleventy.translate(type, langCode)}</h2>
         <div class="expandable-content" id="${eleventy.slugify(type)}">
         ${typeContentItemList.join('')}
         </div>

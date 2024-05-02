@@ -136,13 +136,15 @@ exports.render = function (pageData) {
           ${image}
           <div class="leporello-recog__text">
             <div class="grid-wrapper">
-              <div class="main-column">
-                <div class="grid-wraper">
-                  ${header}
-                </div>
+
+              <div class="base-content">
+                ${header}
                 <div class="copytext">
                   ${copy}
                 </div>
+              </div>
+
+              <div class="main-column">
                 <div class="block">
                   ${attribution}
                   ${dating}
