@@ -7,7 +7,7 @@ on:
     inputs:
       environment:
         type: string
-        default: intern
+        default: extern
         required: true
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
         run: npm ci
 
       - name: Run npm build
-        run: npm run intern
+        run: npm run build
         env:
           API_KEY: ${{ secrets.API_KEY }}
           API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
