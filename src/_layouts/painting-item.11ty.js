@@ -27,7 +27,6 @@ const reportsSnippet = require('./components/reports.11ty');
 const additionalTextInformationSnippet = require('./components/additional-text-information.11ty');
 const referencesSnippet = require('./components/references.11ty');
 const navigationSnippet = require('./components/navigation.11ty');
-const overallOverviewSnippet = require('./components/overall-overview.11ty');
 
 const ART_TECH_EXAMINATION = 'ArtTechExamination';
 const CONDITION_REPORT = 'ConditionReport';
@@ -98,7 +97,6 @@ exports.render = function (pageData) {
   const belongsTo = referencesSnippet.getReference(this, data, langCode, BELONGS_TO);
   const graphic = referencesSnippet.getReference(this, data, langCode, GRAPHIC);
 
-  const overallOverview = overallOverviewSnippet.getOverallOverview(this, data, langCode);
   const partOfWork = referencesSnippet.getReference(this, data, langCode, PART_OF_WORK, true);
   const imageDescriptionObjectInfo = imageDescriptionSnippet.getImageDescriptionObjectInfo(data);
   const citeCda = citeCdaSnippet.getCiteCDA(this, data, langCode);
@@ -138,13 +136,15 @@ exports.render = function (pageData) {
           ${image}
           <div class="leporello-recog__text">
             <div class="grid-wrapper">
-              <div class="main-column">
-                <div class="grid-wraper">
-                  ${header}
-                </div>
+
+              <div class="base-content">
+                ${header}
                 <div class="copytext">
                   ${copy}
                 </div>
+              </div>
+
+              <div class="main-column">
                 <div class="block">
                   ${attribution}
                   ${dating}
@@ -161,7 +161,6 @@ exports.render = function (pageData) {
               </div>
 
               <div class="marginal-content">
-                ${overallOverview}
                 ${partOfWork}  
                 ${provenance}
                 ${exhibitions}

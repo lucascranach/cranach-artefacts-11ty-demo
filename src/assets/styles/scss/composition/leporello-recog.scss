@@ -40,27 +40,48 @@
     }
   }
 
+  // Base Content
+  // --------------------------------------------------------------------------
+  .base-content{
+    max-width: $column-large;
+    grid-area: head;
+  }
+
     
   // Grid Wrapper
   // --------------------------------------------------------------------------
   .grid-wrapper {
     .main-column {
       max-width: $column-large;
+      grid-area: left;
     }
 
     .marginal-content {
       max-width: $column-large;
+      grid-area: right;
     }
 
     @media only screen and (min-width: $vp-xlarge) {
       display: grid;
       gap: var(--responsive-gap);
+      grid-template-areas: 
+        "head head"
+        "left right";
       grid-template-columns: 1fr $column-medium;
+      grid-template-rows: auto 1fr;
     }
 
     @media only screen and (min-width: $vp-xxlarge) {
       display: grid;
       grid-template-columns: 1fr $column-large;
+    }
+
+    &:has(.overall-overview){
+      @media only screen and (min-width: $vp-xlarge) {
+        grid-template-areas: 
+          "head right"
+          "left right";
+      }
     }
   }
 }
