@@ -125,6 +125,7 @@ exports.render = function (pageData) {
         objectData.translations = ${translationsClient};
         objectData.asseturl = "${this.url('/assets')}";
         objectData.inventoryNumber = "${id}";
+        objectData.idExtension = "${data.content.objectName}";
         objectData.navigationObjects = '${navigationObjects}';
       </script>
     </head>
@@ -138,7 +139,7 @@ exports.render = function (pageData) {
               ${header}
             </div>
 
-            <div class="grid-wrapper">
+            <div class="gridsid-wrapper">
               <div class="main-column">
                 <div class="copytext">
                   ${copy}
@@ -176,8 +177,11 @@ exports.render = function (pageData) {
                 <div id="viewer-content" class="image-viewer__content"></div>
               </div>
               <figcaption class="image-caption-wrap">
-                ${imageDescriptionObjectInfo}
-                <div id="image-caption" class="image-caption is-secondary has-seperator foldable-block"></div>
+              ${imageDescriptionObjectInfo}
+              <div id="image-caption" class="image-caption is-secondary has-seperator foldable-block"></div>
+              <iframe
+                style="width: 100%; border: 1px solid red;"
+              ></iframe>
               </figcaption>
             </figure>
           </div>
