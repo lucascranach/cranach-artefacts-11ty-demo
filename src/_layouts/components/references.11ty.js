@@ -1,15 +1,18 @@
 const overallOverviewSnippet = require('./overall-overview.11ty');
 
 const getReferencesForPaintings = (content) => content.references;
-const getReferencesForGraphics = (content) => content.references.relatedWorks;
+const getReferencesForGraphics = (content) => content.references;
 
 
 exports.getReference = (eleventy, data, langCode, type, isOpen = false) => {
   const { content } = data;
   const { entityType } = content;
+  const { isVirtual } = content;
   const references = entityType === 'paintings'
-    ? getReferencesForPaintings(content)
-    : getReferencesForGraphics(content);
+    ? getReferencesForPaintings(content):
+    type === 'IDENTICAL_WATERMARK'
+    ? getReferencesForGraphics(content).watermark:
+    getReferencesForGraphics(content).sameSheet;
 
   const overallOverview = overallOverviewSnippet.getOverallOverview(eleventy, data, langCode);
   

@@ -618,5 +618,14 @@
   "worksDiscussedInPublication":{
     "de": "In der Publikation besprochene Werke",
     "en": "Works discussed in publication"
+  },
+  "IDENTICAL_WATERMARK":
+  {
+    "de": "Identisches Wasserzeichen",
+    "en": "Identical watermark"
+  },
+  "ON_SAME_SHEET":{
+    "de": "Auf dem selben Blatt",
+    "en": "On the same sheet"
   }
 }
