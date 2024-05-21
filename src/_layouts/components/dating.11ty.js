@@ -31,7 +31,7 @@ exports.getDating = (eleventy, { content }, langCode) => {
     title: label,
     context: prefix,
   };
-  const allDates = eleventy.getRemarkDataTable(remarkDataTableData);
+  const allDates = eleventy.getRemarkDataTable(remarkDataTableData, 'simple');
 
   return datesShortListItems.length === 0 ? '' : `
     <dl id="${prefix}-dataList" class="definition-list is-grid">
