@@ -5,7 +5,6 @@ const metaDataHeader = require('./components/meta-data-head.11ty');
 const improveCda = require('./components/improve-cda.11ty');
 const pageDateSnippet = require('./components/page-date.11ty');
 const copyrightSnippet = require('./components/copyright.11ty');
-const citeCdaSnippet = require('./components/cite-cda.11ty');
 const titleSnippet = require('./components/title.11ty');
 const navigationSnippet = require('./components/navigation.11ty');
 
@@ -87,13 +86,30 @@ const getLiteratureDetails = (content, langCode, cranachSearchURL, documentTitle
 
   const getAuthors = (content, searchUrl) => {
     const searchUrlIntern = searchUrl.replace(/de\/search/, 'de/intern/search');
-    const authors = content.authors;
-    if(!authors) return '';
-    const cleanAuthors = authors.replace(/, /g, ',');
-    const authorsList = cleanAuthors.split(/,/).map((author) => {
-      return `<a class="has-interaction is-stupid-link" href="${searchUrlIntern}?kind=literature_references&search_term=${author.replace(/ /g, "+")}">${author}</a>`;
+    const { persons } = content; 
+    if(persons.length === 0) return '';
+
+    const personsWithoutOfficin = persons.filter((person) => person.role !== 'OFFICIN');
+
+    const authorsList = personsWithoutOfficin.map((person) => {
+      return `<a class="has-interaction is-stupid-link" href="${searchUrlIntern}?kind=literature_references&search_term=${person.name.replace(/ /g, "+")}">${person.name}</a>`;
     });
+
     return authorsList.join(', ');
+  };
+
+  const getOfficins = (content, searchUrl) => {
+    const searchUrlIntern = searchUrl.replace(/de\/search/, 'de/intern/search');
+    const { persons } = content; 
+    if(persons.length === 0) return '';
+
+    const officins = persons.filter((person) => person.role === 'OFFICIN');
+
+    const officinsList = officins.map((person) => {
+      return `<a class="has-interaction is-stupid-link" href="${searchUrlIntern}?kind=literature_references&search_term=${person.name.replace(/ /g, "+")}">${person.name}</a>`;
+    });
+
+    return officinsList;
   };
 
   const getEntry = (rowContent, translationID) => {
@@ -106,6 +122,10 @@ const getLiteratureDetails = (content, langCode, cranachSearchURL, documentTitle
     : content.alternateNumbers.map((alternateNumber) => `${alternateNumber.description} ${alternateNumber.number}`);
 
   const authors = getAuthors(content, cranachSearchURL);
+  const officins = getOfficins(content, cranachSearchURL);
+  const officinBlock = (officins.length > 0 )
+    ? `<dt class="definition-list__term">${this.translate('officin', langCode)}</dt><dd class="definition-list__definition">${officins.join('')}</dd>`
+    : '';
 
   return `
     <dl class="definition-list is-grid is-loose">
@@ -113,6 +133,7 @@ const getLiteratureDetails = (content, langCode, cranachSearchURL, documentTitle
       <dd class="definition-list__definition">${content.shortTitle}</dd>
       <dt class="definition-list__term">${this.translate('author', langCode)}, ${this.translate('publisher', langCode)}</dt>
       <dd class="definition-list__definition">${authors}</dd>
+      ${officinBlock}
       <dt class="definition-list__term">${this.translate('title', langCode)}</dt>
       <dd class="definition-list__definition">${documentTitle}</dd>
       ${content.subtitle ? getEntry(content.subtitle, 'publication') : ''}

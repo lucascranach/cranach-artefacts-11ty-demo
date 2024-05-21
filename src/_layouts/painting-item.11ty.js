@@ -96,6 +96,7 @@ exports.render = function (pageData) {
   const similarTo = referencesSnippet.getReference(this, data, langCode, SIMILAR_TO);
   const belongsTo = referencesSnippet.getReference(this, data, langCode, BELONGS_TO);
   const graphic = referencesSnippet.getReference(this, data, langCode, GRAPHIC);
+
   const partOfWork = referencesSnippet.getReference(this, data, langCode, PART_OF_WORK, true);
   const imageDescriptionObjectInfo = imageDescriptionSnippet.getImageDescriptionObjectInfo(data);
   const citeCda = citeCdaSnippet.getCiteCDA(this, data, langCode);
@@ -135,14 +136,15 @@ exports.render = function (pageData) {
           ${image}
           <div class="leporello-recog__text">
             <div class="grid-wrapper">
-              ${header}
-            </div>
 
-            <div class="grid-wrapper">
-              <div class="main-column">
+              <div class="base-content">
+                ${header}
                 <div class="copytext">
                   ${copy}
                 </div>
+              </div>
+
+              <div class="main-column">
                 <div class="block">
                   ${attribution}
                   ${dating}
@@ -159,11 +161,11 @@ exports.render = function (pageData) {
               </div>
 
               <div class="marginal-content">
+                ${partOfWork}  
                 ${provenance}
                 ${exhibitions}
                 ${sources}
                 ${additionalTextInformation}
-                ${partOfWork}
               </div>
             </div>
           </div>
