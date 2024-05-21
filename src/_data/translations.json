@@ -627,5 +627,9 @@
   "ON_SAME_SHEET":{
     "de": "Auf dem selben Blatt",
     "en": "On the same sheet"
+  },
+  "PART_OF_SERIES":{
+    "de": "Teil einer Serie",
+    "en": "Part of series"
   }
 }

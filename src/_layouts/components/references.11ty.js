@@ -7,12 +7,13 @@ const getReferencesForGraphics = (content) => content.references;
 exports.getReference = (eleventy, data, langCode, type, isOpen = false) => {
   const { content } = data;
   const { entityType } = content;
-  const { isVirtual } = content;
   const references = entityType === 'paintings'
     ? getReferencesForPaintings(content):
     type === 'IDENTICAL_WATERMARK'
     ? getReferencesForGraphics(content).watermark:
-    getReferencesForGraphics(content).sameSheet;
+    type === 'ON_SAME_SHEET'
+    ? getReferencesForGraphics(content).sameSheet:
+    getReferencesForGraphics(content).relatedWorks;
 
   const overallOverview = overallOverviewSnippet.getOverallOverview(eleventy, data, langCode);
   
