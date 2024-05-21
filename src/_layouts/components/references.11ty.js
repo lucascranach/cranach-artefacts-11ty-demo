@@ -20,10 +20,6 @@ exports.getReference = (eleventy, data, langCode, type, isOpen = false) => {
   
   const getTypeContent = (refType) => {
     const baseUrl = eleventy.getBaseUrl();
-
-    // console.log('references', references);
-    // console.log('currentCollection', content.currentCollection);
-    
     const typeContentItems = references.filter((item) => item.kind === refType);
     const typeContentItemList = typeContentItems.map((item) => {
       const refObjectMeta = eleventy.getRefObjectMeta(content.currentCollection, item.inventoryNumber);
