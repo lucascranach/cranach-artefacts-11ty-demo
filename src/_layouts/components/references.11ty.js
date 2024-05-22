@@ -8,6 +8,7 @@ exports.getReference = (eleventy, data, langCode, type, isOpen = false) => {
   const { content } = data;
   const { entityType } = content;
   
+  // Filterung der Referenztypen um zu den richtigen Daten zu kommen zwischen Gemälden, virtuellen Grafiken und realen Grafiken.
   const references = entityType === 'paintings'
     ? getReferencesForPaintings(content):
     type === 'IDENTICAL_WATERMARK'
