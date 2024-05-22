@@ -1,9 +1,9 @@
+require('dotenv').config()
+
 const htmlmin = require('html-minifier');
 const markdownIt = require('markdown-it');
 const fs = require('fs');
-const eleventyFetch = require("@11ty/eleventy-fetch");
-
-// fs.unlinkSync('missing-files.txt');
+const fetchData = require('./helper/sync-fetch-data');
 
 const logMissedLinks = 'missing-files.txt';
 
@@ -136,28 +136,28 @@ const kklGroupShortcuts = {
 };
 
 const paintingsData = {
-  "de": require("./src/_data/cda-paintings-v2.de.json"),
-  "en": require("./src/_data/cda-paintings-v2.en.json")
+  "de": fetchData({"lang":"de", "type":"paintings"}),
+  "en": fetchData({"lang":"en", "type":"paintings"}),
 }
 
 const archivalsData = {
-  "de": require("./src/_data/cda-archivals-v2.de.json"),
-  "en": require("./src/_data/cda-archivals-v2.en.json")
+  "de": fetchData({"lang":"de", "type":"archivals"}),
+  "en": fetchData({"lang":"en", "type":"archivals"}),
 }
 
 const graphicsRealObjectData = {
-  "de": require("./src/_data/cda-graphics-v2.real.de.json"),
-  "en": require("./src/_data/cda-graphics-v2.real.en.json")
+  "de": fetchData({"lang":"de", "type":"graphics-real"}),
+  "en": fetchData({"lang":"en", "type":"graphics-real"}),
 }
 
 const graphicsVirtualObjectData = {
-  "de": require("./src/_data/cda-graphics-v2.virtual.de.json"),
-  "en": require("./src/_data/cda-graphics-v2.virtual.en.json")
+  "de": fetchData({"lang":"de", "type":"graphics-virtual"}),
+  "en": fetchData({"lang":"en", "type":"graphics-virtual"}),
 }
 
 const literatureData = {
-  "de": require("./src/_data/cda-literaturereferences-v2.de"),
-  "en": require("./src/_data/cda-literaturereferences-v2.en")
+  "de": fetchData({"lang":"de", "type":"literature"}),
+  "en": fetchData({"lang":"en", "type":"literature"}),
 };
 const translations = require("./src/_data/translations.json");
 const translationsClient = require("./src/_data/translations-client.json");
@@ -202,7 +202,7 @@ const appendToFile = (path, str) => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["DE_LHW_G163_FR-none", "AT_KHM_GG899", "PRIVATE_NONE-P614", "PRIVATE_NONE-P602", "AT_KHM_GG6905","PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51", "DE_SMF_1398B"];
+  const devObjects = ["DE_KAZW_NONE-KAZW001A", "DE_KAZW_NONE-KAZW001B", "DE_KAZW_NONE-KAZW001C", "CZ_RKFK_NONE-001","DE_MHK_GK11a","DE_MHK_GK11b","PRIVATE_NONE-P605", "AT_KHM_GG3567","AT_KHM_GG899", "PRIVATE_NONE-P614", "PRIVATE_NONE-P602", "AT_KHM_GG6905","PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51", "DE_SMF_1398B"];
 
   const paintings = config.onlyDevObjects === true
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -828,6 +828,10 @@ module.exports = function (eleventyConfig) {
 
       return content;
     });
+  }
+
+  if (process.env.ELEVENTY_ENV === 'external' || process.env.ELEVENTY_ENV === 'internal') {
+    config.onlyDevObjects = false;
   }
 
   return {

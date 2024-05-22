@@ -1,11 +1,18 @@
+const overallOverviewSnippet = require('./overall-overview.11ty');
+
 const getReferencesForPaintings = (content) => content.references;
 const getReferencesForGraphics = (content) => content.references.relatedWorks;
 
-exports.getReference = (eleventy, { content }, langCode, type, isOpen = false) => {
+
+exports.getReference = (eleventy, data, langCode, type, isOpen = false) => {
+  const { content } = data;
   const { entityType } = content;
   const references = entityType === 'paintings'
     ? getReferencesForPaintings(content)
     : getReferencesForGraphics(content);
+
+  const overallOverview = overallOverviewSnippet.getOverallOverview(eleventy, data, langCode);
+  
   const getTypeContent = (refType) => {
     const baseUrl = eleventy.getBaseUrl();
     const typeContentItems = references.filter((item) => item.kind === refType);
@@ -39,6 +46,8 @@ exports.getReference = (eleventy, { content }, langCode, type, isOpen = false) =
       <div class="foldable-block has-strong-separator">
         <h2 class="foldable-block__headline is-expand-trigger js-expand-trigger"
           data-js-expanded="${state}" data-js-expandable="${eleventy.slugify(type)}">
+          
+          ${overallOverview}
           ${eleventy.translate(type, langCode)}</h2>
         <div class="expandable-content" id="${eleventy.slugify(type)}">
         ${typeContentItemList.join('')}
