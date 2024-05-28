@@ -16,8 +16,11 @@ const parseJson = (jsonString) => {
 /* Load live metadata from cranach-metadata-service
 ============================================================================ */
 
-const setMetadata = async (artefactId, imageId) => {
-  document.querySelector('iframe').setAttribute('src', `https://lucascranach.org/metadata/metadataForm.html?artefact=${artefactId}&image=${imageId}`)
+const setMetadata = async (artefactId, imageId, apiEndpoint, apiKey) => {
+  document.querySelector('iframe').setAttribute(
+    'src',
+    `${apiEndpoint}?artefact=${artefactId}&image=${imageId}&apiKey=${apiKey}`,
+  );
 };
 
 /* Global Notification
@@ -347,9 +350,9 @@ class ImageViewer {
   }
 
   setCaption(img) {
-    const artefactId = img.url.split('/')[5];
-    const image = img.url.split('/')[6].replace('_', '-');
-    setMetadata(artefactId, image);
+    const artefactIdentifier = `${globalData.inventoryNumber}_${globalData.idExtension}`;
+    const imageIdentifier = img.id.replace(`${artefactIdentifier}_`, '');
+    setMetadata(artefactIdentifier, imageIdentifier, globalData.metadataApiEndpoint, globalData.metadataApiKey);
     const { metadata } = img;
     const { translations } = globalData;
     const { langCode } = globalData;
@@ -712,6 +715,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
       const element = target.closest('.js-switch-content');
       const { id } = element;
       switchableContentElements[id].switchContent();
+    }
+
+    if (target.closest('.js-toggle-metadata-drawer')) {
+      const element = document.getElementById('metadata-drawer');
+      element.classList.toggle('is-visible');
     }
 
     if (target.closest('.js-edit-metadata')) {
