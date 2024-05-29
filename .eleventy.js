@@ -319,7 +319,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["LC_HVI-19-21_16"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
+  const devObjects = ["LC_HVI-57_80", "LC_HVI-19-21_16", "LC_HVI-19-21_16", "LC_HVI-68_92"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
   
   const graphicsVirtualObjects = config.onlyDevObjects === true
     ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -507,7 +507,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addJavaScriptFunction("getReprintRefItem", (ref, lang) => {
-    const reprintRefItemData = graphicsRealObjectData[lang].items.filter(item => item.metadata.id === ref && !item.sortingNumber.match(/^20/));
+    const reprintRefItemData = graphicsRealObjectData[lang].items.filter(item => item.metadata.id === ref);
 
     if (reprintRefItemData.length === 0) return;
     
@@ -554,7 +554,7 @@ module.exports = function (eleventyConfig) {
     return connectedObjects.shift();
   });  
 
-  eleventyConfig.addJavaScriptFunction("getRemarkDataTable", (objectData) => {
+  eleventyConfig.addJavaScriptFunction("getRemarkDataTable", (objectData, mode = 'full') => {
 
     const { content } = objectData;
     const { title } = objectData;
@@ -565,7 +565,7 @@ module.exports = function (eleventyConfig) {
 
     const rows = content.map(item => {
       if(!item.remark) return;
-      const remark = item.remark ? `<td class="info-table__remark">${markdownify(item.remark)}</td>` : '<td class="info-table__remark">-</td>';
+      const remark = item.remark ? `<td class="info-table__remark">${markdownify(item.remark, mode)}</td>` : '<td class="info-table__remark">-</td>';
       return `
           <tr><td class="info-table__data ${additionalCellClass}">${item.text}</td>${remark}</tr>
         `;
