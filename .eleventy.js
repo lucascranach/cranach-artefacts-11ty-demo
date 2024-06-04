@@ -206,7 +206,7 @@ const getPaintingsCollection = (lang) => {
 
   const paintings = config.onlyDevObjects === true
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
-    : paintingsForLang.items;
+    : paintingsForLang.items.filter(item => item.metadata.isPublished === true);
   
   let sortedPaintings = paintings.sort((a, b) => {
     if (a.searchSortingNumber < b.searchSortingNumber) return -1;
@@ -295,7 +295,7 @@ const getArchivalsCollection = (lang) => {
 
   const archivals = config.onlyDevObjects === true
     ? archivalsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
-    : archivalsForLang.items;
+    : archivalsForLang.items.filter(item => item.metadata.isPublished === true);
   
   let sortedArchivals = archivals.sort((a, b) => {
     if (a.period < b.period) return -1;
@@ -323,7 +323,7 @@ const getGraphicsVirtualObjectsCollection = (lang) => {
   
   const graphicsVirtualObjects = config.onlyDevObjects === true
     ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
-    : graphicsVirtualObjectsForLang.items;
+    : graphicsVirtualObjectsForLang.items.filter(item => item.metadata.isPublished === true);
   const sortedGraphicsVirtualObjects = graphicsVirtualObjects.sort((a, b)=>{
     if (a.sortingNumber < b.sortingNumber) return -1;
     if (a.sortingNumber > b.sortingNumber) return 1;
