@@ -15,12 +15,12 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "onlyDevObjects": false,
-  "generateLiterature": true,
+  "onlyDevObjects": true,
+  "generateLiterature": false,
   "generateAuthors": false,
-  "generatePaintings": true,
+  "generatePaintings": false,
   "generateArchivals": true,
-  "generateGraphicsVirtualObjects": true,
+  "generateGraphicsVirtualObjects": false,
   "pathPrefix": {
     "external": "artefacts",
     "internal": "intern/artefacts",
@@ -291,7 +291,7 @@ const getAuthorCollection = (lang) => {
 
 const getArchivalsCollection = (lang) => {
   const archivalsForLang = archivalsData[lang];
-  const devObjects = ["PRIVATE_NONE-P409", "DE_ThHStAW_EGA_Reg-Bb_2746_17v"]; // , "DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739"
+  const devObjects = ["DE_ThHStAW_EGA_Reg-Bb_2746_31v_49r" ]; // , "DE_LHW_G25","ANO_H-NONE-019","DE_KSW_G9", "AT_KHM_GG885", "AT_KHM_GG861a","AT_KHM_GG861","AT_KHM_GG886","AT_KHM_GG856","AT_KHM_GG858","PRIVATE_NONE-P449","AR_MNdBABA_8632","AT_KHM_GG860","AT_KHM_GG885","AT_KHM_GG3523","PRIVATE_NONE-P443","PRIVATE_NONE-P450","AT_SZ_SZ25-416-129","CZ_NGP_O9619","CH_PTSS-MAS_A653","CH_SORW_1925-1b","DE_AGGD_15","DE_StMB_NONE-001c","AT_KHM_GG6905", "DE_StMT","DE_StMB_NONE-001d", "AT_KHM_GG6739"
 
   const archivals = config.onlyDevObjects === true
     ? archivalsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))

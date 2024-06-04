@@ -27,6 +27,25 @@ const getClientTranslations = () => JSON.stringify(this.getClientTranslations())
 const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
+const getSortedImages = content => {
+  const { images } = content.images.overall;
+  const { scanNames } = content;
+  const imgs = scanNames.map((scanName) => {
+    console.log(scanName);
+    images.forEach((image) => {
+
+      if(image.id.match(scanName)) {
+      console.log(image.id);
+      console.log("-----");
+      }
+    });
+    // return images.find((image) => image.id.match(scanName));
+  });
+
+  //  console.log(imgs);
+
+};
+
 const getHeader = (data) => {
   const title = titleSnippet.getTitle(this, data, langCode);
   const archival = this.translate('archival', langCode);
@@ -52,7 +71,9 @@ exports.render = function (pageData) {
   data.content.currentCollection = data.collections[data.collectionID];
   data.content.entityType = data.entityType;
   data.content.url = `${this.getBaseUrl()}${data.page.url}`;
-
+  
+  const sortedImages = getSortedImages(data.content);
+console.log(sortedImages);
   this.log(data);
 
   const { id } = data.content.metadata;
