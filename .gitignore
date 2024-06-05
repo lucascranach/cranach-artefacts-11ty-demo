@@ -216,3 +216,5 @@ compiled-content/
 docs/
 rsync.sh
 env.txt
+
+.local
