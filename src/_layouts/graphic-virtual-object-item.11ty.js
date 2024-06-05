@@ -48,8 +48,6 @@ const getReprints = (eleventy, { content }, conditionLevel, secondConditionLevel
   const baseUrl = eleventy.getBaseUrl();
   const { masterData } = content;
 
-  
-
   // condition = zustand, edition = auflage
   // TODO: Filter editions only for selected condition
   // TODO: Filter reprints only for current edition
@@ -69,7 +67,7 @@ const getReprints = (eleventy, { content }, conditionLevel, secondConditionLevel
         const cardText = [];
         if (item.date) cardText.push(item.date);
         if (item.repository) cardText.push(item.repository);
-  
+
         return `
           <figure class="artefact-card">
             <a href="${url}" class="js-go-to-reprint">
@@ -89,10 +87,10 @@ const getReprints = (eleventy, { content }, conditionLevel, secondConditionLevel
       <details style="">
         <summary>Auflage ${letter}: ${edition.text}</summary>
         <p>${description}</p>
-        <div class="reprints-gallery">
-          ${reprintsList.join('')}
-        </div>
       </details>
+      <div class="reprints-gallery">
+        ${reprintsList.join('')}
+      </div>
     `;
   });
 
