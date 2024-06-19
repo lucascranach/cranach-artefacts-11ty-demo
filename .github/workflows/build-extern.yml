@@ -35,7 +35,9 @@ jobs:
           API_KEY: ${{ secrets.API_KEY }}
           API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
           CACHE_FOLDER: ${{ secrets.CACHE_FOLDER }}
-
+      
+      - name: Remove index.html
+        run: rm -f ./docs/index.html
 
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2

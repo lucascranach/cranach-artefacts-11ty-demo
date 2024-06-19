@@ -206,7 +206,7 @@ const getPaintingsCollection = (lang) => {
 
   const paintings = config.onlyDevObjects === true
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
-    : paintingsForLang.items;
+    : paintingsForLang.items.filter(item => item.metadata.isPublished === true);
   
   let sortedPaintings = paintings.sort((a, b) => {
     if (a.searchSortingNumber < b.searchSortingNumber) return -1;
@@ -295,7 +295,7 @@ const getArchivalsCollection = (lang) => {
 
   const archivals = config.onlyDevObjects === true
     ? archivalsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
-    : archivalsForLang.items;
+    : archivalsForLang.items.filter(item => item.metadata.isPublished === true);
   
   let sortedArchivals = archivals.sort((a, b) => {
     if (a.period < b.period) return -1;
@@ -319,11 +319,11 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["LC_HVI-56_79", "ANO_HVI-8_7-1"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
+  const devObjects = ["LC_HVI-57_80", "LC_HVI-19-21_16", "LC_HVI-68_92"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
   
   const graphicsVirtualObjects = config.onlyDevObjects === true
     ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
-    : graphicsVirtualObjectsForLang.items;
+    : graphicsVirtualObjectsForLang.items.filter(item => item.metadata.isPublished === true);
   const sortedGraphicsVirtualObjects = graphicsVirtualObjects.sort((a, b)=>{
     if (a.sortingNumber < b.sortingNumber) return -1;
     if (a.sortingNumber > b.sortingNumber) return 1;
@@ -507,7 +507,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addJavaScriptFunction("getReprintRefItem", (ref, lang) => {
-    const reprintRefItemData = graphicsRealObjectData[lang].items.filter(item => item.metadata.id === ref && !item.sortingNumber.match(/^20/));
+    const reprintRefItemData = graphicsRealObjectData[lang].items.filter(item => item.metadata.id === ref);
 
     if (reprintRefItemData.length === 0) return;
     
@@ -550,7 +550,7 @@ module.exports = function (eleventyConfig) {
     return connectedObjects.shift();
   });  
 
-  eleventyConfig.addJavaScriptFunction("getRemarkDataTable", (objectData) => {
+  eleventyConfig.addJavaScriptFunction("getRemarkDataTable", (objectData, mode = 'full') => {
 
     const { content } = objectData;
     const { title } = objectData;
@@ -561,7 +561,7 @@ module.exports = function (eleventyConfig) {
 
     const rows = content.map(item => {
       if(!item.remark) return;
-      const remark = item.remark ? `<td class="info-table__remark">${markdownify(item.remark)}</td>` : '<td class="info-table__remark">-</td>';
+      const remark = item.remark ? `<td class="info-table__remark">${markdownify(item.remark, mode)}</td>` : '<td class="info-table__remark">-</td>';
       return `
           <tr><td class="info-table__data ${additionalCellClass}">${item.text}</td>${remark}</tr>
         `;
