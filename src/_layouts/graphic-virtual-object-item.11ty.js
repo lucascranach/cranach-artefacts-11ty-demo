@@ -56,35 +56,55 @@ const getReprints = (eleventy, data, conditionLevel, secondConditionLevel = fals
   const baseUrl = eleventy.getBaseUrl();
   const { masterData } = content;
 
-  const reprintsList = reprints.map(
-    (item) => {
-      generateReprint(eleventy, item.id, masterData, collections);
-      const url = `${baseUrl}/${langCode}/${item.id}/`;
-      const title = eleventy.altText(item.title);
-      const cardText = [];
-      if (item.date) cardText.push(item.date);
-      if (item.repository) cardText.push(item.repository);
+  // condition = zustand, edition = auflage
+  const editionsInCondition = [...(new Set(reprints.map((reprint) => reprint.editionNumber)))];
+  const editions = content.dating.historicEventInformations.filter(((event) => event.eventType === 'EDITION'));
+  const filteredEditions = editions.filter((edition) => editionsInCondition.indexOf(edition.editionNumber) > -1);
 
-      return `
-        <figure class="artefact-card">
-          <a href="${url}" class="js-go-to-reprint">
-            <div class="artefact-card__image-holder">
-              <img src="${item.imgSrc}" alt="${title}" loading="lazy">
-            </div>
-            <figcaption class="artefact-card__content">
-              <p class="artefact-card__text">${cardText.join(', ', cardText)}</p>
-            </figcaption>
-          </a>
-        </figure>
-      `;
-    },
-  );
+  const editionsList = filteredEditions.map((edition) => {
+    const letter = edition.remarks.substring(0, edition.remarks.indexOf(' '));
+    const description = edition.remarks.substring(edition.remarks.indexOf(' ') + 1);
+
+    const reprintsList = reprints.filter((reprint) => reprint.editionNumber == edition.editionNumber).map(
+      (item) => {
+        generateReprint(eleventy, item.id, masterData);
+        const url = `${baseUrl}/${langCode}/${item.id}/`;
+        const title = eleventy.altText(item.title);
+        const cardText = [];
+        if (item.date) cardText.push(item.date);
+        if (item.repository) cardText.push(item.repository);
+
+        return `
+          <figure class="artefact-card">
+            <a href="${url}" class="js-go-to-reprint">
+              <div class="artefact-card__image-holder">
+                <img src="${item.imgSrc}" alt="${title}" loading="lazy">
+              </div>
+              <figcaption class="artefact-card__content">
+                <p class="artefact-card__text">${cardText.join(', ', cardText)} - ${item.editionNumber}</p>
+              </figcaption>
+            </a>
+          </figure>
+        `;
+      },
+    );
+
+    return `
+      <details style="">
+        <summary>Auflage ${letter}: ${edition.text}</summary>
+        <p>${description}</p>
+      </details>
+      <div class="reprints-gallery">
+        ${reprintsList.join('')}
+      </div>
+    `;
+  });
 
   return reprints.length === 0 ? '' : `
     <div class="reprints-block block">
       <h3 class="reprints-state">${state}</h3>
       <div class="artefact-overview">
-        ${reprintsList.join('')}
+        ${editionsList.join('')}
       </div>
     </div>
   `;
@@ -152,9 +172,9 @@ exports.render = function (pageData) {
         ${masterData}
         <section id="reprints" class="leporello-reprints js-main-content">
           <h2 class="leporello-reprints__headline">${this.translate('impressions', langCode)}</h2>
-          ${reprintsLevel1}
-          ${reprintsLevel2}
-          ${reprintsLevel3}
+          ${reprintsLevel1} <!-- Zustand 1 -->
+          ${reprintsLevel2} <!-- Zustand 2 -->
+          ${reprintsLevel3} <!-- Zustand 3 -->
           ${reprintsLevel4}
           ${reprintsLevel5}
         </section>
