@@ -49,8 +49,6 @@ const getReprints = (eleventy, { content }, conditionLevel, secondConditionLevel
   const { masterData } = content;
 
   // condition = zustand, edition = auflage
-  // TODO: Filter editions only for selected condition
-  // TODO: Filter reprints only for current edition
   const editionsInCondition = [...(new Set(reprints.map((reprint) => reprint.editionNumber)))];
   const editions = content.dating.historicEventInformations.filter(((event) => event.eventType === 'EDITION'));
   const filteredEditions = editions.filter((edition) => editionsInCondition.indexOf(edition.editionNumber) > -1);
