@@ -202,7 +202,7 @@ const appendToFile = (path, str) => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["DE_KAZW_NONE-KAZW001A", "DE_KAZW_NONE-KAZW001B", "DE_KAZW_NONE-KAZW001C", "CZ_RKFK_NONE-001","DE_MHK_GK11a","DE_MHK_GK11b","PRIVATE_NONE-P605", "AT_KHM_GG3567","AT_KHM_GG899", "PRIVATE_NONE-P614", "PRIVATE_NONE-P602", "AT_KHM_GG6905","PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51", "DE_SMF_1398B"];
+  const devObjects = ["CH_SORW_1925-1b", "CH_SORW_1925-1a"];
 
   const paintings = config.onlyDevObjects === true
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -533,6 +533,10 @@ module.exports = function (eleventyConfig) {
 
   });
 
+  eleventyConfig.addJavaScriptFunction("getAllReprintData", (lang) => {
+    return graphicsRealObjectData[lang];
+  });
+
   eleventyConfig.addJavaScriptFunction("getRefObjectMeta", (collection, id) => {
     if (!collection) return {};
     const reference = collection.filter(item => item.inventoryNumber === id);
@@ -768,17 +772,11 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("graphicsRealObjectsDE", () => {
-    const graphicsRealObjectsDE = !config.generateGraphicsRealObjects
-      ? []
-      : getGraphicsRealObjectsCollection('de');
-    return graphicsRealObjectsDE;
+    return  getGraphicsRealObjectsCollection('de');
   });
 
   eleventyConfig.addCollection("graphicsRealObjectsEN", () => {
-    const graphicsRealObjectsEN = !config.generateGraphicsRealObjects
-      ? []
-      : getGraphicsRealObjectsCollection('en');
-    return graphicsRealObjectsEN;
+    return getGraphicsRealObjectsCollection('en');
   });
 
   eleventyConfig.addCollection("graphicsVirtualObjectsDE", () => {

@@ -15,7 +15,7 @@ const getClientTranslations = () => JSON.stringify(this.getClientTranslations())
 const getLangCode = ({ content }) => content.metadata.langCode;
 const getDocumentTitle = ({ content }) => content.metadata.title;
 
-const generateReprint = (eleventy, id, masterData) => {
+const generateReprint = (eleventy, id, masterData, collections) => {
   const data = {
     content: eleventy.getReprintData(id, langCode),
   };
@@ -25,11 +25,19 @@ const generateReprint = (eleventy, id, masterData) => {
   const baseUrl = eleventy.getBaseUrl();
   data.content.url = `${baseUrl}/${langCode}/${id}`;
 
+  data.content.currentCollection = langCode === 'en'
+    ? collections.graphicsRealObjectsEN
+    : collections.graphicsRealObjectsDE;
+
   const reprint = graphicsRealObject.getRealObject(eleventy, data, langCode, masterData);
   eleventy.writeDocument(path, filename, reprint);
 };
 
-const getReprints = (eleventy, { content }, conditionLevel, secondConditionLevel = false) => {
+const getReprints = (eleventy, data, conditionLevel, secondConditionLevel = false) => {
+
+  const { content } = data;
+  const { collections } = data;
+
   if (!content.references.reprints) return '';
 
   const reprintsListData = [...content.references.reprints];
