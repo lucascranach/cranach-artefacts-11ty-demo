@@ -1,13 +1,13 @@
-name: Build and deploy to cda Server (extern)
+name: Build and deploy to cda Server (intern - preview)
 
 on:
   push:
-    branches: ['main']
+    branches: ['preview/intern']
   workflow_dispatch:
     inputs:
       environment:
         type: string
-        default: extern
+        default: intern
         required: true
 jobs:
   build:
@@ -30,14 +30,14 @@ jobs:
         run: npm ci
 
       - name: Run npm build
-        run: npm run build
+        run: npm run intern
         env:
           API_KEY: ${{ secrets.API_KEY }}
           API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
           CACHE_FOLDER: ${{ secrets.CACHE_FOLDER }}
-      
-      - name: Remove index.html
-        run: rm -f ./docs/index.html
+          METADATA_API_ENDPOINT: ${{ secrets.METADATA_API_ENDPOINT }}
+          METADATA_API_KEY: ${{ secrets.METADATA_API_KEY }}
+
 
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
@@ -49,4 +49,4 @@ jobs:
         run: ssh-keyscan -p ${{ secrets.SSH_PORT }} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy with rsync
-        run: rsync -avz ./docs/ -e 'ssh -p ${{ secrets.SSH_PORT }}' ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/artefacts-autodeploy/
+        run: rsync -avz ./docs/ -e 'ssh -p ${{ secrets.SSH_PORT }}' ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/intern/artefacts-preview-autodeploy/
