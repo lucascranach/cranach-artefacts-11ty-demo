@@ -204,9 +204,9 @@ const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
   const devObjects = ["DE_NJ_NONE-NJ001a", "DE_KAZW_NONE-KAZW001A", "DE_KAZW_NONE-KAZW001B", "DE_KAZW_NONE-KAZW001C", "CZ_RKFK_NONE-001","DE_MHK_GK11a","DE_MHK_GK11b","PRIVATE_NONE-P605", "AT_KHM_GG3567","AT_KHM_GG899", "PRIVATE_NONE-P614", "PRIVATE_NONE-P602", "AT_KHM_GG6905","PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51", "DE_SMF_1398B"];
 
-  const paintings = config.onlyDevObjects === true
+  const paintings = config.onlyDevObjects === true || process.env.ELEVENTY_ENV === 'development'
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
-    : paintingsForLang.items.filter(item => item.metadata.isPublished === true);
+    : paintingsForLang.items;
   
   let sortedPaintings = paintings.sort((a, b) => {
     if (a.searchSortingNumber < b.searchSortingNumber) return -1;
@@ -217,7 +217,7 @@ const getPaintingsCollection = (lang) => {
   if (process.env.ELEVENTY_ENV === 'internal'
     || process.env.ELEVENTY_ENV === 'development') return sortedPaintings;
 
-  const publishedPaintings = sortedPaintings.filter(item => !item.sortingNumber.match(/^20/));
+  const publishedPaintings = sortedPaintings.filter(item => item.metadata.isPublished === true);
   return publishedPaintings;
 }
 
@@ -225,7 +225,7 @@ const getLiteratureCollection = (lang) => {
   const literatureForLang = literatureData[lang];
   const devObjects = ["27884","30317","27765", "466", "136", "29373", "29998", "27655", "160"];
 
-  const literature = config.onlyDevObjects === true
+  const literature = config.onlyDevObjects === true || process.env.ELEVENTY_ENV === 'development'
     ? literatureForLang.items.filter(item => devObjects.includes(item.referenceId))
     : literatureForLang.items; //.filter(item => item.metadata.id == 30838 );
 
@@ -245,7 +245,7 @@ const getAuthorCollection = (lang) => {
   const literatureForLang = literatureData[lang];
   const devObjects = ["27765", "466", "29373"];
 
-  const literature = config.onlyDevObjects === true
+  const literature = config.onlyDevObjects === true || process.env.ELEVENTY_ENV === 'development'
     ? literatureForLang.items.filter(item => devObjects.includes(item.referenceId))
     : literatureForLang.items; //.filter(item => item.metadata.id == 30838 );
 
@@ -321,9 +321,9 @@ const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
   const devObjects = ["LC_HVI-57_80", "LC_HVI-19-21_16", "LC_HVI-68_92", "LC_HVI-56_79"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
   
-  const graphicsVirtualObjects = config.onlyDevObjects === true
+  const graphicsVirtualObjects = config.onlyDevObjects === true || process.env.ELEVENTY_ENV === 'development'
     ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
-    : graphicsVirtualObjectsForLang.items.filter(item => item.metadata.isPublished === true);
+    : graphicsVirtualObjectsForLang.items;
   const sortedGraphicsVirtualObjects = graphicsVirtualObjects.sort((a, b)=>{
     if (a.sortingNumber < b.sortingNumber) return -1;
     if (a.sortingNumber > b.sortingNumber) return 1;
@@ -333,7 +333,7 @@ const getGraphicsVirtualObjectsCollection = (lang) => {
   if (process.env.ELEVENTY_ENV === 'internal'
     || process.env.ELEVENTY_ENV === 'development') return sortedGraphicsVirtualObjects;
 
-  return sortedGraphicsVirtualObjects.filter(item => item.metadata.imgSrc.match(/[a-z]/));
+  return sortedGraphicsVirtualObjects.filter(item => item.metadata.isPublished === true);
 }
 
 const markdownify = (str, mode = 'full') => {
