@@ -15,7 +15,7 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "onlyDevObjects": false,
+  "onlyDevObjects": true,
   "generateLiterature": true,
   "generateAuthors": false,
   "generatePaintings": true,
@@ -319,7 +319,7 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["LC_HVI-57_80", "LC_HVI-19-21_16", "LC_HVI-68_92"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
+  const devObjects = ["LC_HVI-57_80", "LC_HVI-19-21_16", "LC_HVI-68_92", "LC_HVI-56_79"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
   
   const graphicsVirtualObjects = config.onlyDevObjects === true
     ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -435,7 +435,7 @@ module.exports = function (eleventyConfig) {
       return (translations[term]) ? translations[term][lang] : term;
     }
     if (!translations[term]) {
-      console.log(`Translation for ${term} in lang ${lang} is missing.`);
+      console.warn(`Translation for ${term} in lang ${lang} is missing.`);
       process.abort();
     }
     return translations[term][lang];
@@ -517,6 +517,7 @@ module.exports = function (eleventyConfig) {
       'title': reprintRefItem.metadata.title,
       'date': reprintRefItem.metadata.date,
       'conditionLevel': Number(reprintRefItem.conditionLevel),
+      'editionNumber': Number(reprintRefItem.editionNumber),
       'repository': reprintRefItem.repository,
       'sortingNumber': reprintRefItem.sortingNumber,
       'imgSrc': reprintRefItem.metadata.imgSrc,
@@ -530,6 +531,10 @@ module.exports = function (eleventyConfig) {
 
     return reprintRefItemData.shift();
 
+  });
+
+  eleventyConfig.addJavaScriptFunction("getAllReprintData", (lang) => {
+    return graphicsRealObjectData[lang];
   });
 
   eleventyConfig.addJavaScriptFunction("getRefObjectMeta", (collection, id) => {
@@ -561,7 +566,12 @@ module.exports = function (eleventyConfig) {
 
     const rows = content.map(item => {
       if(!item.remark) return;
-      const remark = item.remark ? `<td class="info-table__remark">${markdownify(item.remark, mode)}</td>` : '<td class="info-table__remark">-</td>';
+
+      const remarkData = item.remark.match(/\[(.*?)\]\((.*?)\)/) 
+        ? item.remark.replace(/\[(.*?)\]\((.*?)\)/g, '<a class="link-to-source" href="$2">[$1]</a>') 
+        : item.remark;
+      const remark = item.remark ? `<td class="info-table__remark">${markdownify(remarkData, mode)}</td>` : '<td class="info-table__remark">-</td>';
+
       return `
           <tr><td class="info-table__data ${additionalCellClass}">${item.text}</td>${remark}</tr>
         `;
@@ -657,7 +667,6 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addJavaScriptFunction("log", ({ content }) => {
-    // console.log(`\nWorking on ${content.inventoryNumber}`);
   });
 
   eleventyConfig.addJavaScriptFunction("convertTagsInText", (str) => {
@@ -763,17 +772,11 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("graphicsRealObjectsDE", () => {
-    const graphicsRealObjectsDE = !config.generateGraphicsRealObjects
-      ? []
-      : getGraphicsRealObjectsCollection('de');
-    return graphicsRealObjectsDE;
+    return  getGraphicsRealObjectsCollection('de');
   });
 
   eleventyConfig.addCollection("graphicsRealObjectsEN", () => {
-    const graphicsRealObjectsEN = !config.generateGraphicsRealObjects
-      ? []
-      : getGraphicsRealObjectsCollection('en');
-    return graphicsRealObjectsEN;
+    return getGraphicsRealObjectsCollection('en');
   });
 
   eleventyConfig.addCollection("graphicsVirtualObjectsDE", () => {
