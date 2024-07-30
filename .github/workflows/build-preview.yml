@@ -1,8 +1,8 @@
-name: Build and deploy to cda Server (intern - preview)
+name: Build preview
 
 on:
   push:
-    branches: ['preview/intern']
+    branches: ['preview/2026']
   workflow_dispatch:
     inputs:
       environment:
@@ -37,16 +37,3 @@ jobs:
           CACHE_FOLDER: ${{ secrets.CACHE_FOLDER }}
           METADATA_API_ENDPOINT: ${{ secrets.METADATA_API_ENDPOINT }}
           METADATA_API_KEY: ${{ secrets.METADATA_API_KEY }}
-
-
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.CRANACH_SSH_AUTODEPLOY }}
-          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
-
-      - name: Adding Known Hosts
-        run: ssh-keyscan -p ${{ secrets.SSH_PORT }} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-
-      - name: Deploy with rsync
-        run: rsync -avz ./docs/ -e 'ssh -p ${{ secrets.SSH_PORT }}' ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/intern/artefacts-preview-autodeploy/
