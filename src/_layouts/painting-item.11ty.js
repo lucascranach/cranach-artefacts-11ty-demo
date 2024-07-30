@@ -110,7 +110,9 @@ exports.render = function (pageData) {
   const cranachCollectBaseUrl = this.getCranachCollectBaseUrl();
   const cranachCollectScript = config.cranachCollect.script;
   const metadataDrawer = metadataDrawerSnippet.getMetadataDrawer();
-  const shouldIncludeMetadataEditor = process.env.ELEVENTY_ENV === 'internal' || process.env.ELEVENTY_ENV === 'development';
+  const shouldIncludeMetadataEditor = process.env.ELEVENTY_ENV === 'internal'
+    || process.env.ELEVENTY_ENV === 'development'
+    || process.env.ELEVENTY_ENV === 'preview';
   return `<!doctype html> 
   <html lang="${langCode}">
     <head>
