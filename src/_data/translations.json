@@ -519,6 +519,10 @@
     "de": "Abzüge",
     "en": "Impressions"
   },
+  "0-state": {
+    "de": "Unbekannter Zustand",
+    "en": "Unknown State"
+  },
   "1-state": {
     "de": "1. Zustand",
     "en": "1. State"

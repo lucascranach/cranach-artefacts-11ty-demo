@@ -40,7 +40,7 @@ const getReprints = (eleventy, data, conditionLevel, secondConditionLevel = fals
   if (!content.references.reprints) return '';
 
   const reprintsListData = [...content.references.reprints];
-  const reprintsListRefData = reprintsListData.map((item) => eleventy.getReprintRefItem(item.inventoryNumber, langCode, conditionLevel));
+  const reprintsListRefData = reprintsListData.map((item) => eleventy.getReprintRefItem(item.inventoryNumber, langCode));
 
   const checkConditionLevel = (item) => {
     if (!item) return false;
@@ -61,7 +61,8 @@ const getReprints = (eleventy, data, conditionLevel, secondConditionLevel = fals
   const filteredEditions = editions.filter((edition) => editionsInCondition.indexOf(edition.editionNumber) > -1);
 
   const editionsList = filteredEditions.map((edition) => {
-    const letter = edition.remarks.substring(0, edition.remarks.indexOf(' '));
+    let letter = edition.remarks.substring(0, edition.remarks.indexOf(' '));
+    if (letter.length !== 2) letter = '?)';
     const description = edition.remarks.substring(edition.remarks.indexOf(' ') + 1);
 
     const reprintsList = reprints.filter((reprint) => reprint.editionNumber == edition.editionNumber).map(
@@ -90,7 +91,7 @@ const getReprints = (eleventy, data, conditionLevel, secondConditionLevel = fals
 
     return `
       <details style="">
-        <summary>Auflage ${letter}: ${edition.text}</summary>
+        <summary>${this.translate('edition', langCode)} ${letter}: ${edition.text}</summary>
         <p>${description}</p>
       </details>
       <div class="reprints-gallery">
@@ -137,7 +138,8 @@ exports.render = function (pageData) {
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
   const copyright = copyrightSnippet.getCopyright();
   const pageDate = pageDateSnippet.getPageDate(this, langCode);
-  const reprintsLevel1 = getReprints(this, data, 1, 0);
+  const reprintsLevel0 = getReprints(this, data, 0);
+  const reprintsLevel1 = getReprints(this, data, 1);
   const reprintsLevel2 = getReprints(this, data, 2);
   const reprintsLevel3 = getReprints(this, data, 3);
   const reprintsLevel4 = getReprints(this, data, 4);
@@ -171,11 +173,12 @@ exports.render = function (pageData) {
         ${masterData}
         <section id="reprints" class="leporello-reprints js-main-content">
           <h2 class="leporello-reprints__headline">${this.translate('impressions', langCode)}</h2>
+          ${reprintsLevel0} <!-- Unbekannter Zustand -->
           ${reprintsLevel1} <!-- Zustand 1 -->
           ${reprintsLevel2} <!-- Zustand 2 -->
           ${reprintsLevel3} <!-- Zustand 3 -->
-          ${reprintsLevel4}
-          ${reprintsLevel5}
+          ${reprintsLevel4} <!-- Zustand 4 -->
+          ${reprintsLevel5} <!-- Zustand 5 -->
         </section>
           <section class="final-words">
           <div class="foldable-block text-block">
