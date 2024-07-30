@@ -24,19 +24,26 @@ const config = {
   "pathPrefix": {
     "external": "artefacts",
     "internal": "intern/artefacts",
+    "preview": "intern/artefacts-preview",
     "development": ""
   },
   "cranachCollect": {
     "baseUrl": {
       "development": "https://lucascranach.org/cranach-compare",
-      "production": "https://lucascranach.org/cranach-compare",
+      "production": "https://lucascranach.org/cranach-compare", // TODO: Check if it is still in use
+      "external": "https://lucascranach.org/cranach-compare",
+      "internal": "https://lucascranach.org/cranach-compare",
+      "preview": "https://lucascranach.org/cranach-compare",
     },
     "script": "/scripts/cranach-collect.js",
     "frontend": "/index.html",
   },
   "imageTiles": {
     "development": "https://lucascranach.org/data-proxy/image-tiles.php?obj=",
-    "production": "https://lucascranach.org/imageserver-2022"
+    "production": "https://lucascranach.org/imageserver-2022", // TODO: Check if it is still in use
+    "external": "https://lucascranach.org/imageserver-2022",
+    "internal": "https://lucascranach.org/imageserver-2022",
+    "preview": "https://lucascranach.org/imageserver-2022",
   },
   "issueReportUrl": {
     "bug": "https://docs.google.com/forms/d/e/1FAIpQLSdtb8vAaRUZAZZUijLP099GFMm279HpbZBdVA5KZf5tnLZVCw/viewform?usp=pp_url&entry.810636170=artefactTitle&entry.1357028798=artefactUrl",
@@ -44,6 +51,7 @@ const config = {
   "cranachBaseUrl": {
     "external": "https://lucascranach.org",
     "internal": "https://lucascranach.org/intern/artefacts",
+    "preview": "https://lucascranach.org/intern/artefacts-preview",
     "development": "http://localhost:8080",
   },
   "cranachBaseUrlHomepage": {
@@ -53,6 +61,7 @@ const config = {
   "cranachSearchURL": {
     "external": "https://lucascranach.org/langCode/search",
     "internal": "https://lucascranach.org/langCode/intern/search/",
+    "preview": "https://lucascranach.org/langCode/intern/search/",
     "development": "http://localhost:8080"
   },
   "documentsBasePath": "https://lucascranach.org/documents",
@@ -178,6 +187,11 @@ const simpleMarkdownItRenderer = new markdownIt('commonmark', {
 
 const pathPrefix = config.pathPrefix[process.env.ELEVENTY_ENV];
 
+const showUnpublishedArtefacts = 
+  process.env.ELEVENTY_ENV === 'internal'
+  || process.env.ELEVENTY_ENV === 'preview'
+  || process.env.ELEVENTY_ENV === 'development';
+
 const markRemarks = str => {
   const mark = (match, str) => {
     return `<span class="is-remark">[${str}]</span>`;
@@ -214,8 +228,7 @@ const getPaintingsCollection = (lang) => {
     return 0;
   });
 
-  if (process.env.ELEVENTY_ENV === 'internal'
-    || process.env.ELEVENTY_ENV === 'development') return sortedPaintings;
+  if (showUnpublishedArtefacts) return sortedPaintings;
 
   const publishedPaintings = sortedPaintings.filter(item => item.metadata.isPublished === true);
   return publishedPaintings;
@@ -235,8 +248,7 @@ const getLiteratureCollection = (lang) => {
     return 0;
   });
 
-  if (process.env.ELEVENTY_ENV === 'internal'
-    || process.env.ELEVENTY_ENV === 'development') return sortedLiterature;
+  if (showUnpublishedArtefacts) return sortedLiterature;
 
   return sortedLiterature;
 }
@@ -283,8 +295,7 @@ const getAuthorCollection = (lang) => {
     return 0;
   });
   
-  if (process.env.ELEVENTY_ENV === 'internal'
-    || process.env.ELEVENTY_ENV === 'development') return sortedAuthors;
+  if (showUnpublishedArtefacts) return sortedAuthors;
 
   return sortedAuthors;
 }
@@ -330,8 +341,11 @@ const getGraphicsVirtualObjectsCollection = (lang) => {
     return 0;
   });
 
-  if (process.env.ELEVENTY_ENV === 'internal'
-    || process.env.ELEVENTY_ENV === 'development') return sortedGraphicsVirtualObjects;
+  if (
+    process.env.ELEVENTY_ENV === 'internal'
+    || process.env.ELEVENTY_ENV === 'preview'
+    || process.env.ELEVENTY_ENV === 'development'
+  ) return sortedGraphicsVirtualObjects;
 
   return sortedGraphicsVirtualObjects.filter(item => item.metadata.isPublished === true);
 }

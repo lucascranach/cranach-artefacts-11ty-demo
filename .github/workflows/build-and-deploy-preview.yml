@@ -30,7 +30,7 @@ jobs:
         run: npm ci
 
       - name: Run npm build
-        run: npm run intern
+        run: npm run preview
         env:
           API_KEY: ${{ secrets.API_KEY }}
           API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
