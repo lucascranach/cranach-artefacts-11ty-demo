@@ -3,7 +3,7 @@ let config;
 
 const metaDataHeader = require('./components/meta-data-head.11ty');
 const improveCda = require('./components/improve-cda.11ty');
-const pageDateSnippet = require('./components/page-date.11ty');
+// const pageDateSnippet = require('./components/page-date.11ty');
 const copyrightSnippet = require('./components/copyright.11ty');
 const citeCdaSnippet = require('./components/cite-cda.11ty');
 const titleSnippet = require('./components/title.11ty');

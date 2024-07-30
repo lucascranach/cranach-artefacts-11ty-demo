@@ -3,7 +3,7 @@ let config;
 
 const metaDataHeader = require('./components/meta-data-head.11ty');
 const improveCda = require('./components/improve-cda.11ty');
-const pageDateSnippet = require('./components/page-date.11ty');
+// const pageDateSnippet = require('./components/page-date.11ty');
 const copyrightSnippet = require('./components/copyright.11ty');
 const citeCdaSnippet = require('./components/cite-cda.11ty');
 const masterDataSnippet = require('./components/graphic-virtual-object-master-data.11ty');
@@ -65,7 +65,7 @@ const getReprints = (eleventy, data, conditionLevel, secondConditionLevel = fals
     if (letter.length !== 2) letter = '?)';
     const description = edition.remarks.substring(edition.remarks.indexOf(' ') + 1);
 
-    const reprintsList = reprints.filter((reprint) => reprint.editionNumber == edition.editionNumber).map(
+    const reprintsList = reprints.filter((reprint) => reprint.editionNumber === edition.editionNumber).map(
       (item) => {
         generateReprint(eleventy, item.id, masterData, collections);
         const url = `${baseUrl}/${langCode}/${item.id}/`;
@@ -137,7 +137,7 @@ exports.render = function (pageData) {
   const citeCda = citeCdaSnippet.getCiteCDA(this, data, langCode);
   const improveCdaSnippet = improveCda.getImproveCDA(this, data, config, langCode);
   const copyright = copyrightSnippet.getCopyright();
-  const pageDate = pageDateSnippet.getPageDate(this, langCode);
+  // const pageDate = pageDateSnippet.getPageDate(this, langCode);
   const reprintsLevel0 = getReprints(this, data, 0);
   const reprintsLevel1 = getReprints(this, data, 1);
   const reprintsLevel2 = getReprints(this, data, 2);
