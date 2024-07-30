@@ -11,7 +11,7 @@ exports.getReference = (eleventy, data, langCode, type, isOpen = false) => {
     ? getReferencesForPaintings(content)
     : getReferencesForGraphics(content);
 
-  const overallOverview = overallOverviewSnippet.getOverallOverview(eleventy, data, langCode);
+  const overallOverview = type === 'PART_OF_WORK' ? overallOverviewSnippet.getOverallOverview(eleventy, data, langCode) : '';
   
   const getTypeContent = (refType) => {
     const baseUrl = eleventy.getBaseUrl();
@@ -46,7 +46,6 @@ exports.getReference = (eleventy, data, langCode, type, isOpen = false) => {
       <div class="foldable-block has-strong-separator">
         <h2 class="foldable-block__headline is-expand-trigger js-expand-trigger"
           data-js-expanded="${state}" data-js-expandable="${eleventy.slugify(type)}">
-          
           ${overallOverview}
           ${eleventy.translate(type, langCode)}</h2>
         <div class="expandable-content" id="${eleventy.slugify(type)}">
