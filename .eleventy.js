@@ -61,7 +61,7 @@ const config = {
   "cranachSearchURL": {
     "external": "https://lucascranach.org/langCode/search",
     "internal": "https://lucascranach.org/langCode/intern/search/",
-    "preview": "https://lucascranach.org/langCode/intern/search/",
+    "preview": "https://lucascranach.org/langCode/intern/search-internal-preview/",
     "development": "http://localhost:8080"
   },
   "documentsBasePath": "https://lucascranach.org/documents",
