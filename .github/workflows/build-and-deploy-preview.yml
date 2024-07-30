@@ -1,4 +1,4 @@
-name: Build and deploy to cda Server (intern)
+name: Build and deploy to cda Server (preview)
 
 on:
   push:
