@@ -34,7 +34,6 @@ const generateReprint = (eleventy, id, masterData, collections) => {
 };
 
 const getReprints = (eleventy, data, conditionLevel, secondConditionLevel = false) => {
-
   const { content } = data;
   const { collections } = data;
 
@@ -67,7 +66,7 @@ const getReprints = (eleventy, data, conditionLevel, secondConditionLevel = fals
 
     const reprintsList = reprints.filter((reprint) => reprint.editionNumber == edition.editionNumber).map(
       (item) => {
-        generateReprint(eleventy, item.id, masterData);
+        generateReprint(eleventy, item.id, masterData, collections);
         const url = `${baseUrl}/${langCode}/${item.id}/`;
         const title = eleventy.altText(item.title);
         const cardText = [];
