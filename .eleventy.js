@@ -20,6 +20,7 @@ const config = {
   "generateAuthors": false,
   "generatePaintings": true,
   "generateArchivals": true,
+  "generateDrawings": true,
   "generateGraphicsVirtualObjects": true,
   "pathPrefix": {
     "external": "artefacts",
@@ -168,6 +169,12 @@ const literatureData = {
   "de": fetchData({"lang":"de", "type":"literature"}),
   "en": fetchData({"lang":"en", "type":"literature"}),
 };
+
+const drawingsData = {
+  "de": fetchData({"lang":"de", "type":"drawings"}),
+  "en": fetchData({"lang":"en", "type":"drawings"}),
+};
+
 const translations = require("./src/_data/translations.json");
 const translationsClient = require("./src/_data/translations-client.json");
 
@@ -212,6 +219,26 @@ const clearRequireCache = () => {
 const appendToFile = (path, str) => {
   const filepath = `./${path}`;
   fs.appendFileSync(filepath, str);
+}
+
+const getDrawingsCollection = (lang) => {
+  const drawingsForLang = drawingsData[lang];
+  const devObjects = ['Z_US_NGA_2006-111-2', 'Z_US_MFAH_44-547'];
+
+  const drawings = config.onlyDevObjects === true || process.env.ELEVENTY_ENV === 'development'
+    ? drawingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
+    : drawingsForLang.items;
+  
+  let sortedDrawings = drawings.sort((a, b) => {
+    if (a.searchSortingNumber < b.searchSortingNumber) return -1;
+    if (a.searchSortingNumber > b.searchSortingNumber) return 1;
+    return 0;
+  });
+
+  if (showUnpublishedArtefacts) return sortedDrawings;
+
+  const publishedDrawings = sortedDrawings.filter(item => item.metadata.isPublished === true);
+  return publishedDrawings;
 }
 
 const getPaintingsCollection = (lang) => {
@@ -741,6 +768,24 @@ module.exports = function (eleventyConfig) {
 
   /* Collections
   ########################################################################## */
+
+  eleventyConfig.addCollection("drawingsDE", () => {
+    clearRequireCache();
+    const drawingsCollectionDE = config.generateDrawings === false
+      ? []
+      : getDrawingsCollection('de');
+  
+    return drawingsCollectionDE;
+  });
+
+  eleventyConfig.addCollection("drawingsEN", () => {
+    clearRequireCache();
+    const drawingsCollectionEN = config.generateDrawings === false
+      ? []
+      : getDrawingsCollection('en');
+  
+    return drawingsCollectionEN;
+  });
 
   eleventyConfig.addCollection("paintingsDE", () => {
     clearRequireCache();

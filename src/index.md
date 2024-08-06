@@ -57,6 +57,24 @@ th, td{
 </ul>
 
 <hr>
+<h2>Drawings</h2>
+
+<ul class="overview">
+{%- for item in collections.drawingsDE -%}
+  <li class="overview-item">
+  <a href="de/{{item.metadata.id}}">
+    <figure>
+      <div class="img-wrap">
+        <img src="{{item.metadata.imgSrc}}">
+      </div>
+      <figcaption>{{item.metadata.title}}<br>{{item.metadata.id}}<br>{{item.sortingInfo.year}}-{{item.sortingInfo.position}}</figcaption>
+    </figure>
+  </a>
+  </li>
+{%- endfor -%}
+</ul>
+
+<hr>
 <h2>Graphics</h2>
 
 <ul class="overview">
