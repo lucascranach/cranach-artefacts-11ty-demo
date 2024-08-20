@@ -135,6 +135,20 @@ const kklGroupShortcuts = {
   }
 };
 
+const referenceTypes = {
+  "RELATED_IN_CONTENT_TO": "relatedInContentTo",
+  "SIMILAR_TO": "similarTo",
+  "BELONGS_TO": "belongsTo",
+  "PART_OF_WORK": "partOfWork",
+  "COUNTERPART_TO": "counterpartTo",
+  "GRAPHIC": "graphic",
+  "REPRINTS": "reprints",
+  "PART_OF_WORKS": "partOfWorks",
+  "PART_OF_SERIES": "partOfSeries",
+  "ON_SAME_SHEET": "onSameSheet",
+  "IDENTICAL_WATERMARK": "identicalWatermark"
+};
+
 const paintingsData = {
   "de": fetchData({"lang":"de", "type":"paintings"}),
   "en": fetchData({"lang":"en", "type":"paintings"}),
@@ -495,6 +509,10 @@ module.exports = function (eleventyConfig) {
     return process.env.ELEVENTY_ENV === 'developement'
       ? config.cranachCollect.baseUrl.developement
       : config.cranachCollect.baseUrl.production;
+  });
+
+  eleventyConfig.addJavaScriptFunction("getReferenceTypes", () => {
+    return referenceTypes
   });
 
   eleventyConfig.addJavaScriptFunction("getConfig", () => {
