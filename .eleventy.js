@@ -31,7 +31,7 @@ const config = {
   "cranachCollect": {
     "baseUrl": {
       "development": "https://lucascranach.org/cranach-compare",
-      "production": "https://lucascranach.org/cranach-compare", // TODO: Check if it is still in use
+      "production": "https://lucascranach.org/cranach-compare", // TODO: Check if it is still in use -> cn 20-08-2024: ja, wird noch verwendet
       "external": "https://lucascranach.org/cranach-compare",
       "internal": "https://lucascranach.org/cranach-compare",
       "preview": "https://lucascranach.org/cranach-compare",
@@ -145,6 +145,21 @@ const kklGroupShortcuts = {
   }
 };
 
+const referenceTypes = {
+  "RELATED_IN_CONTENT_TO": "relatedInContentTo",
+  "SIMILAR_TO": "similarTo",
+  "BELONGS_TO": "belongsTo",
+  "PART_OF_WORK": "partOfWork",
+  "COUNTERPART_TO": "counterpartTo",
+  "GRAPHIC": "graphic",
+  "REPRINTS": "reprints",
+  "PART_OF_WORKS": "partOfWorks",
+  "PART_OF_SERIES": "partOfSeries",
+  "ON_SAME_SHEET": "onSameSheet",
+  "IDENTICAL_WATERMARK": "identicalWatermark"
+};
+
+
 const paintingsData = {
   "de": fetchData({"lang":"de", "type":"paintings"}),
   "en": fetchData({"lang":"en", "type":"paintings"}),
@@ -243,7 +258,7 @@ const getDrawingsCollection = (lang) => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["DE_NJ_NONE-NJ001a", "DE_KAZW_NONE-KAZW001A", "DE_KAZW_NONE-KAZW001B", "DE_KAZW_NONE-KAZW001C", "CZ_RKFK_NONE-001","DE_MHK_GK11a","DE_MHK_GK11b","PRIVATE_NONE-P605", "AT_KHM_GG3567","AT_KHM_GG899", "PRIVATE_NONE-P614", "PRIVATE_NONE-P602", "AT_KHM_GG6905","PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51", "DE_SMF_1398B"];
+  const devObjects = ["DE_NJ_NONE-NJ001a", "DE_KAZW_NONE-KAZW001A"];
 
   const paintings = config.onlyDevObjects === true || process.env.ELEVENTY_ENV === 'development'
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
@@ -490,6 +505,10 @@ module.exports = function (eleventyConfig) {
     return {
       url, kklGroupId
     };
+  });
+
+  eleventyConfig.addJavaScriptFunction("getReferenceTypes", () => {
+    return referenceTypes
   });
 
   eleventyConfig.addJavaScriptFunction("checkRessource", async (url) => {
