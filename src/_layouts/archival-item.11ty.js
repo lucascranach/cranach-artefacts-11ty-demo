@@ -21,7 +21,6 @@ const locationSnippet = require('./components/location.11ty');
 const transcriptionSnippet = require('./components/transcription.11ty');
 const commentsSnippet = require('./components/comments.11ty');
 
-const getImageStack = ({ content }) => JSON.stringify(content.images);
 const getimageBaseUrl = () => JSON.stringify(config.imageTiles);
 const getClientTranslations = () => JSON.stringify(this.getClientTranslations());
 const getLangCode = ({ content }) => content.metadata.langCode;
@@ -29,21 +28,15 @@ const getDocumentTitle = ({ content }) => content.metadata.title;
 
 const getSortedImages = content => {
   const { images } = content.images.overall;
+  const { infos } = content.images.overall;
   const { scanNames } = content;
-  const imgs = scanNames.map((scanName) => {
-    console.log(scanName);
-    images.forEach((image) => {
-
-      if(image.id.match(scanName)) {
-      console.log(image.id);
-      console.log("-----");
-      }
-    });
-    // return images.find((image) => image.id.match(scanName));
-  });
-
-  //  console.log(imgs);
-
+  const sortedImages = scanNames.map((scanName) => images.find((image) => image.id.match(scanName)));
+  return {
+    "overall": {
+      "images": sortedImages,
+      "infos": infos
+    }
+  }
 };
 
 const getHeader = (data) => {
@@ -71,15 +64,19 @@ exports.render = function (pageData) {
   data.content.currentCollection = data.collections[data.collectionID];
   data.content.entityType = data.entityType;
   data.content.url = `${this.getBaseUrl()}${data.page.url}`;
-  
-  const sortedImages = getSortedImages(data.content);
-console.log(sortedImages);
+
   this.log(data);
 
   const { id } = data.content.metadata;
   const documentTitle = getDocumentTitle(data);
   const header = getHeader(data);
-  const imageStack = getImageStack(data);
+
+  /* Images have a defined order given via TMS. 
+    This order is always the same as the order in the scanNames array. */
+  const sortedImages = getSortedImages(data.content);
+  data.content.images.overall = sortedImages.overall;
+  const imageStack = JSON.stringify(sortedImages);
+  
   const baseUrl = this.getBaseUrl();
   const imageBaseUrl = getimageBaseUrl(data);
   const translationsClient = getClientTranslations(data);
