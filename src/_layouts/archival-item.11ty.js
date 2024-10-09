@@ -129,7 +129,7 @@ console.log(sortedImages);
       </script>
     </head>
     <body>
-      <div id="page">
+      <div id="page" class="archivals">
         ${navigation}
           <section class="leporello-recog js-main-content">
           ${image}

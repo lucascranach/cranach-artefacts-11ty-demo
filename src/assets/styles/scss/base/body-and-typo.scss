@@ -67,6 +67,7 @@ a[target=_blank] {
 .title {
   font-size: $xl;
   font-weight: $fw-semibold;
+  max-width: $max-width-text;
 }
 
 .inner-title {
