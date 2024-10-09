@@ -202,11 +202,11 @@ const appendToFile = (path, str) => {
 
 const getPaintingsCollection = (lang) => {
   const paintingsForLang = paintingsData[lang];
-  const devObjects = ["DE_KAZW_NONE-KAZW001A", "DE_KAZW_NONE-KAZW001B", "DE_KAZW_NONE-KAZW001C", "CZ_RKFK_NONE-001","DE_MHK_GK11a","DE_MHK_GK11b","PRIVATE_NONE-P605", "AT_KHM_GG3567","AT_KHM_GG899", "PRIVATE_NONE-P614", "PRIVATE_NONE-P602", "AT_KHM_GG6905","PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51", "DE_SMF_1398B"];
+  const devObjects = ["DE_NJ_NONE-NJ001a", "DE_KAZW_NONE-KAZW001A", "DE_KAZW_NONE-KAZW001B", "DE_KAZW_NONE-KAZW001C", "CZ_RKFK_NONE-001","DE_MHK_GK11a","DE_MHK_GK11b","PRIVATE_NONE-P605", "AT_KHM_GG3567","AT_KHM_GG899", "PRIVATE_NONE-P614", "PRIVATE_NONE-P602", "AT_KHM_GG6905","PRIVATE_NONE-P322","CH_KMB_177","DE_DKK_NONE-DKK001b", "CH_KMB_177","DE_SMF_1723","DE_SKD_GG1918","DE_BStGS_WAF166","CH_SORW_1925-1b", "DE_HMR_KN1992-8", "RO_MNB_217", "DE_KsDW_I-51", "DE_SMF_1398B"];
 
   const paintings = config.onlyDevObjects === true
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
-    : paintingsForLang.items;
+    : paintingsForLang.items.filter(item => item.metadata.isPublished === true);
   
   let sortedPaintings = paintings.sort((a, b) => {
     if (a.searchSortingNumber < b.searchSortingNumber) return -1;
@@ -295,7 +295,7 @@ const getArchivalsCollection = (lang) => {
 
   const archivals = config.onlyDevObjects === true
     ? archivalsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
-    : archivalsForLang.items;
+    : archivalsForLang.items.filter(item => item.metadata.isPublished === true);
   
   let sortedArchivals = archivals.sort((a, b) => {
     if (a.period < b.period) return -1;
@@ -319,11 +319,11 @@ const getGraphicsRealObjectsCollection = (lang) => {
 
 const getGraphicsVirtualObjectsCollection = (lang) => {
   const graphicsVirtualObjectsForLang = graphicsVirtualObjectData[lang];
-  const devObjects = ["LC_HVI-56_79", "ANO_HVI-8_7-1"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
+  const devObjects = ["LC_HVI-57_80", "LC_HVI-19-21_16", "LC_HVI-68_92"]; // , "ANO_H-NONE-022", "LC_HVI-9_8", "LC_HVI-19-21_18","MIB_H-NONE-001", "MIB_H-NONE-002"
   
   const graphicsVirtualObjects = config.onlyDevObjects === true
     ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
-    : graphicsVirtualObjectsForLang.items;
+    : graphicsVirtualObjectsForLang.items.filter(item => item.metadata.isPublished === true);
   const sortedGraphicsVirtualObjects = graphicsVirtualObjects.sort((a, b)=>{
     if (a.sortingNumber < b.sortingNumber) return -1;
     if (a.sortingNumber > b.sortingNumber) return 1;
@@ -507,7 +507,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addJavaScriptFunction("getReprintRefItem", (ref, lang) => {
-    const reprintRefItemData = graphicsRealObjectData[lang].items.filter(item => item.metadata.id === ref && !item.sortingNumber.match(/^20/));
+    const reprintRefItemData = graphicsRealObjectData[lang].items.filter(item => item.metadata.id === ref);
 
     if (reprintRefItemData.length === 0) return;
     
