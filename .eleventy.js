@@ -15,11 +15,11 @@ const config = {
   "dist": "./docs",
   "compiledContent": "./compiled-content",
   "graphicPrefix": "GWN_",
-  "onlyDevObjects": true,
+  "onlyDevObjects": false,
   "generateLiterature": true,
   "generateAuthors": false,
-  "generatePaintings": true,
-  "generateArchivals": true,
+  "generatePaintings": false,
+  "generateArchivals": false,
   "generateGraphicsVirtualObjects": true,
   "pathPrefix": {
     "external": "artefacts",
@@ -220,7 +220,7 @@ const getPaintingsCollection = (lang) => {
 
   const paintings = config.onlyDevObjects === true
     ? paintingsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
-    : paintingsForLang.items.filter(item => item.metadata.isPublished === true);
+    : paintingsForLang.items;
   
   let sortedPaintings = paintings.sort((a, b) => {
     if (a.searchSortingNumber < b.searchSortingNumber) return -1;
@@ -231,7 +231,7 @@ const getPaintingsCollection = (lang) => {
   if (process.env.ELEVENTY_ENV === 'internal'
     || process.env.ELEVENTY_ENV === 'development') return sortedPaintings;
 
-  const publishedPaintings = sortedPaintings.filter(item => !item.sortingNumber.match(/^20/));
+  const publishedPaintings = sortedPaintings.filter(item => !item.sortingNumber.match(/^20/) && item.metadata.isPublished === true);
   return publishedPaintings;
 }
 
@@ -309,7 +309,7 @@ const getArchivalsCollection = (lang) => {
 
   const archivals = config.onlyDevObjects === true
     ? archivalsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
-    : archivalsForLang.items.filter(item => item.metadata.isPublished === true);
+    : archivalsForLang.items;
   
   let sortedArchivals = archivals.sort((a, b) => {
     if (a.period < b.period) return -1;
@@ -337,7 +337,7 @@ const getGraphicsVirtualObjectsCollection = (lang) => {
   
   const graphicsVirtualObjects = config.onlyDevObjects === true
     ? graphicsVirtualObjectsForLang.items.filter(item => devObjects.includes(item.inventoryNumber))
-    : graphicsVirtualObjectsForLang.items.filter(item => item.metadata.isPublished === true);
+    : graphicsVirtualObjectsForLang.items;
   const sortedGraphicsVirtualObjects = graphicsVirtualObjects.sort((a, b)=>{
     if (a.sortingNumber < b.sortingNumber) return -1;
     if (a.sortingNumber > b.sortingNumber) return 1;
@@ -347,7 +347,7 @@ const getGraphicsVirtualObjectsCollection = (lang) => {
   if (process.env.ELEVENTY_ENV === 'internal'
     || process.env.ELEVENTY_ENV === 'development') return sortedGraphicsVirtualObjects;
 
-  return sortedGraphicsVirtualObjects.filter(item => item.metadata.imgSrc.match(/[a-z]/));
+  return sortedGraphicsVirtualObjects.filter(item => item.metadata.imgSrc.match(/[a-z]/) && item.metadata.isPublished === true);
 }
 
 const markdownify = (str, mode = 'full') => {
